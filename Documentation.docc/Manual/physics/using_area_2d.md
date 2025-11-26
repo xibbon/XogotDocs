@@ -1,3 +1,4 @@
+<!-- Remove this line to publish to docs.xogot.com -->
 # Using Area2D
 
 ## Introduction
