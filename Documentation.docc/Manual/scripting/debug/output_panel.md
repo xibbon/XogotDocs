@@ -1,19 +1,12 @@
-<!-- Remove this line to publish to docs.xogot.com -->
 # Output panel
 
-The output panel is found at the bottom of the screen. Click on **Output** to open it.
+The output panel is found at the bottom of the screen. Tap on **Output** to open it.
 
 @Image(source: "overview_output.png")
 
 The output panel provides several features to make viewing text printed by the
 project (and editor) easier.
 
-> Note:
->
-> The output panel automatically opens when running a project by default.
-> You can control this behavior by changing the **Run > Bottom Panel > Action on Play**
-> editor setting.
->
 
 ## Message categories
 
@@ -33,18 +26,13 @@ undo/redo actions. Displayed in gray.
 
 ## Filtering messages
 
-By clicking on the buttons on the right, you can hide certain message categories.
+You can utilize the search bar on the bottom right to filter messages.
 This can make it easier to find specific messages you're looking for.
-
-You can also filter messages by their text content using the **Filter Messages** box
-at the bottom of the Output panel.
 
 ## Clearing messages
 
-When running the project, existing messages are automatically cleared by default. This
-is controlled by the **Run > Output > Always Clear Output on Play** editor setting.
-Additionally, you can manually clear messages by clicking the "cleaning brush" icon
-in the top-right corner of the Output panel.
+When running the project, existing messages can pile up.
+You can clear messages by tapping the "Trash" icon to the right of the "Filter" search bar.
 
 ## Printing messages
 
@@ -97,7 +85,7 @@ so it may not render correctly with all fonts.
 To get more advanced formatting capabilities, consider using
 <doc:gdscript_format_string> along with the above printing functions.
 
-> Seealso:
+> See also:
 >
 > The engine's logging facilities are covered in the <doc:logging>
 > documentation.
