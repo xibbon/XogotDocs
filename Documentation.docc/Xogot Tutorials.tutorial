@@ -10,16 +10,15 @@
         @Image(source: dodge_preview.gif)
     }
     
-<!--    @Chapter(name: "Step by Step") {-->
-<!--        @Image(source: scripting_first_script_rotating_godot.gif)-->
-<!--        @TutorialReference(tutorial: "doc:faq")-->
-<!--        @TutorialReference(tutorial: "doc:nodes_and_scenes")-->
-<!--        @TutorialReference(tutorial: "doc:instancing")-->
+    @Chapter(name: "Step by Step") {
+        @Image(source: scripting_first_script_rotating_godot.gif)
+        @TutorialReference(tutorial: "doc:nodes_and_scenes")
+        @TutorialReference(tutorial: "doc:instancing")
 <!--        @TutorialReference(tutorial: "doc:scripting_languages")-->
-<!--        @TutorialReference(tutorial: "doc:scripting_first_script")-->
-<!--        @TutorialReference(tutorial: "doc:scripting_player_input")-->
-<!--        @TutorialReference(tutorial: "doc:signals")-->
-<!--    }-->
+        @TutorialReference(tutorial: "doc:scripting_first_script")
+        @TutorialReference(tutorial: "doc:scripting_player_input")
+        @TutorialReference(tutorial: "doc:signals")
+    }
     @Chapter(name: "Your First 2D Game") {
         @Image(source: dodge_preview.gif)
         
@@ -35,21 +34,29 @@
         @TutorialReference(tutorial: "doc:06.heads_up_display")
         @TutorialReference(tutorial: "doc:07.finishing-up")
     }
-<!--    @Chapter(name: "Your First 3D Game") {-->
-<!--        @Image(source: squash-the-creeps-final.gif, -->
-<!--               alt: "An animation of Squash the Creeps running")-->
-<!--        -->
-<!--        The game we'll code here is similar to Your first 2D game, with a twist: you can now jump and your goal is to squash the creeps. This way, you will both recognize patterns you learned in the previous tutorial and build upon them with new code and features.-->
-<!---->
-<!--        @TutorialReference(tutorial: "doc:01.game_setup")-->
-<!--        @TutorialReference(tutorial: "doc:02.player_input")-->
-<!--        @TutorialReference(tutorial: "doc:03.player_movement_code")-->
-<!--        @TutorialReference(tutorial: "doc:04.mob_scene")-->
-<!--        @TutorialReference(tutorial: "doc:05.spawning_mobs")-->
-<!--        @TutorialReference(tutorial: "doc:06.jump_and_squash")-->
-<!--        @TutorialReference(tutorial: "doc:07.killing_player")-->
-<!--        @TutorialReference(tutorial: "doc:08.score_and_replay")-->
-<!--        @TutorialReference(tutorial: "doc:09.adding_animations")-->
-<!--        @TutorialReference(tutorial: "doc:going_further")-->
-<!--    }-->
+    @Chapter(name: "TileSets and TileMaps") {
+        @Image(source: using_tilesets_kenney_abstract_platformer_tile_sheet.png)
+        
+        Some notes about using TileMaps and TileSets.
+        @TutorialReference(tutorial: "doc:using_tilesets")
+        @TutorialReference(tutorial: "doc:using_tilemaps")
+        
+    }
+    @Chapter(name: "Your First 3D Game") {
+        @Image(source: squash-the-creeps-final.gif, 
+               alt: "An animation of Squash the Creeps running")
+        
+        The game we'll code here is similar to Your first 2D game, with a twist: you can now jump and your goal is to squash the creeps. This way, you will both recognize patterns you learned in the previous tutorial and build upon them with new code and features.
+
+        @TutorialReference(tutorial: "doc:01.game_setup")
+        @TutorialReference(tutorial: "doc:02.player_input")
+        @TutorialReference(tutorial: "doc:03.player_movement_code")
+        @TutorialReference(tutorial: "doc:04.mob_scene")
+        @TutorialReference(tutorial: "doc:05.spawning_mobs")
+        @TutorialReference(tutorial: "doc:06.jump_and_squash")
+        @TutorialReference(tutorial: "doc:07.killing_player")
+        @TutorialReference(tutorial: "doc:08.score_and_replay")
+        @TutorialReference(tutorial: "doc:09.adding_animations")
+        @TutorialReference(tutorial: "doc:going_further")
+    }
 }
