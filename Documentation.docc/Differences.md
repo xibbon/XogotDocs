@@ -1,36 +1,74 @@
 # Differences between Xogot and Godot
 
-Notable differences in adapting Godot to iPad
+Xogot is a native adaptation of the Godot engine, optimized specifically for the iPad environment.
+This page outlines the key technical and functional differences developers should expect when moving between the desktop engine and Xogot.
 
-## Only gdscript
+## Scripting and Languages
 
-Xogot does not include support for C#, nor other compiled languages, including
-Swift and Rust.
+### GDScript exclusive
 
-## Only gdscript add-ons and plugins
+Xogot utilizes **GDScript** as its primary scripting language. The development team has chosen to focus exclusively on GDScript to maintain a lightweight and efficient application footprint.
 
-Xogot only support addons and plugins that are written in gdscript.  Extensions
-written in C++, C#, or other compiled languages are not currently supported.
+While supporting additional toolchains like **C#** is technically possible on iOS, doing so would introduce significant external dependencies. By focusing on GDScript, Xogot ensures a streamlined and responsive experience optimized for mobile hardware.
+
+## Add-ons and Extensions
+
+### The Xogot Asset Library
+
+Xogot includes a custom, curated **Asset Library** with popular Godot community plugins.
+These add-ons have been adapted by the Xogot team for the iPad environment:
+
+- They are confirmed to function reliably on the platform.
+- Their visual elements have been translated to native Swift UI and touch interactions.
+- If originally written in a compiled language, they have been specially adapted or compiled to function within Xogot's constraints.
+
+If there is an add-on you need that is not in the library, you can suggest it to the [Xogot team](https://xogot.com/contact-us) for adaptation.
+
+### Importing existing plugins
+
+You can import most existing plugins written entirely in **GDScript** into your projects.
+
+- **Compatibility:** These plugins should function, but any visual elements they add may look inconsistent or “weird” compared to Xogot's native UI.
+- **Non-GDScript:** Plugins dependent on compiled languages (C++, C#, etc.) or **GDExtension** will not work.
 
 ## Project Settings
 
-In Xogot, tap the **...** button in the upper-righthand corner and choose **“Settings”**
-to open Project Settings.  The individual Project Settings tabs from Godot, such as
-Input Map, Autoload and Plugins, can be navigated to by tapping on the **General** in
-the drop-down list at the top of the Settings dialog.
+### Navigation
 
-## Visual Shader Editor
+Accessing project configuration differs slightly from the desktop interface to accommodate the streamlined header:
 
-While Xogot projects can include and run Visual Shaders that were created in Godot 
-on the desktop, Xogot does not currently include the Visual Shader Editor, so it is
-not currenlty possible to create or update Visual Shaders in Xogot.  
+- **Access:** Tap the **...** button in the upper-right corner and select **Settings**.
+- **Tabs:** Settings tabs found in Godot (such as **Input Map**, **Autoload**, and **Plugins**) are accessed via the **General** dropdown menu at the top of the Settings dialog.
 
-## Layout changes 
+### Xogot Settings
 
-Xogot's UI has been adapted to better suit the iPad, including making parts of
-the UI more tappable, and removing some parts of the user interface to economize
-available real estate.  Many toolbar icons have been replaced with Apple's 
-SF Symbols to better match the look and feel of iPadOS.  Because the iPad does 
-not have the concept of hovering over a button, tooltips are not surfaced in the
-UI.  <doc:Xogot-User-Interface> provides a guide to the layout and structure of 
-Xogot's toolbars.
+Xogot includes a **Xogot Settings** section that replaces **Editor Settings** from Godot.
+It is streamlined to align with iOS system conventions.
+
+#### Icon preferences
+
+By default, Xogot uses native **SF Symbols** for a cohesive iPadOS look.
+You can revert to standard Godot icons by toggling **Prefer Godot Icons** under **Environment** settings.
+
+## Visual Shaders
+
+### Runtime support
+
+Xogot supports running Visual Shaders created on the desktop.
+
+### Editing
+
+Xogot does not currently include the Visual Shader Editor.
+To create or modify a Visual Shader graph, use the desktop version of Godot.
+
+## Interface Adaptations
+
+### Optimized layout
+
+The editor interface is adapted to maximize screen real estate for iPad, including toolbars and panels that can be hidden or revealed as needed.
+
+For a detailed guide to the Xogot editor layout, see <doc:Xogot-User-Interface>.
+
+### Tooltips
+
+Because iPadOS does not rely on a hover cursor by default, tooltips are generally not surfaced in the UI.
