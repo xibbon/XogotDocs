@@ -1,15 +1,26 @@
 # Differences between Xogot and Godot
 
-Xogot is a native adaptation of the Godot engine, optimized specifically for the iPad environment.
-This page outlines the key technical and functional differences developers should expect when moving between the desktop engine and Xogot.
+Xogot is a native adaptation of the Godot engine, optimized specifically for iPad.
+This page summarizes the most important differences you’ll notice when moving between desktop Godot and Xogot.
+
+## At a glance
+
+- **Scripting:** GDScript-only (no C#, no compiled-language extensions).
+- **Add-ons:** Curated, adapted Asset Library; most pure-GDScript plugins can be imported.
+- **Settings UI:** Project settings live under the top-right menu and are grouped differently.
+- **Visual Shaders:** Visual Shaders run, but the Visual Shader Editor is not included.
+- **Interface:** Touch-first layout, native iconography, and fewer hover-driven affordances (like tooltips).
 
 ## Scripting and Languages
 
-### GDScript exclusive
+### Only GDScript
 
 Xogot utilizes **GDScript** as its primary scripting language. The development team has chosen to focus exclusively on GDScript to maintain a lightweight and efficient application footprint.
 
 While supporting additional toolchains like **C#** is technically possible on iOS, doing so would introduce significant external dependencies. By focusing on GDScript, Xogot ensures a streamlined and responsive experience optimized for mobile hardware.
+
+> Note
+> This also means plugins or workflows that depend on compiled languages (C#, C++, Swift, Rust, etc.) are not currently supported in Xogot.
 
 ## Add-ons and Extensions
 
@@ -31,13 +42,16 @@ You can import most existing plugins written entirely in **GDScript** into your 
 - **Compatibility:** These plugins should function, but any visual elements they add may look inconsistent or “weird” compared to Xogot's native UI.
 - **Non-GDScript:** Plugins dependent on compiled languages (C++, C#, etc.) or **GDExtension** will not work.
 
+> Tip
+> If a plugin’s functionality is pure scripting but its UI looks off, it may still be usable—expect visual mismatches rather than total failure.
+
 ## Project Settings
 
 ### Navigation
 
 Accessing project configuration differs slightly from the desktop interface to accommodate the streamlined header:
 
-- **Access:** Tap the **...** button in the upper-right corner and select **Settings**.
+- **Access:** Tap the **...** button in the upper-right corner and select **Settings** to open Project Settings.
 - **Tabs:** Settings tabs found in Godot (such as **Input Map**, **Autoload**, and **Plugins**) are accessed via the **General** dropdown menu at the top of the Settings dialog.
 
 ### Xogot Settings
@@ -52,11 +66,11 @@ You can revert to standard Godot icons by toggling **Prefer Godot Icons** under 
 
 ## Visual Shaders
 
-### Runtime support
+### Runtime support (included)
 
 Xogot supports running Visual Shaders created on the desktop.
 
-### Editing
+### Editing (not included)
 
 Xogot does not currently include the Visual Shader Editor.
 To create or modify a Visual Shader graph, use the desktop version of Godot.
