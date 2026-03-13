@@ -1,4 +1,3 @@
-<!-- Remove this line to publish to docs.xogot.com -->
 # 2D and 3D physics interpolation
 
 Generally 2D and 3D physics interpolation work in very similar ways. However, there

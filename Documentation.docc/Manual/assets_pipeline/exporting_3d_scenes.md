@@ -1,4 +1,3 @@
-<!-- Remove this line to publish to docs.xogot.com -->
 # Exporting 3D scenes
 
 ## Overview
@@ -14,7 +13,7 @@ program such as Blender, and then bring it back into Godot.
 > Only Blender 2.83 and newer can import glTF files exported by Godot.
 >
 
-To export a scene in the editor go to **Scene > Export As... > glTF 2.0 Scene...**
+To export a scene in the editor go to the scene drop down menu **> Export As... > glTF 2.0 Scene...**
 
 @Image(source: "gltf_godot_export.png")
 

@@ -1,4 +1,3 @@
-<!-- Remove this line to publish to docs.xogot.com -->
 # Node type customization using name suffixes
 
 Many times, when editing a scene, there are common tasks that need to be done
