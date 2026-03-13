@@ -1,4 +1,3 @@
-<!-- Remove this line to publish to docs.xogot.com -->
 # 2D Parallax
 
 ## Introduction
@@ -19,7 +18,7 @@ up though, so this page provides in-depth descriptions of some properties and ho
 The parallax node supports adding nodes that render things as children, so you can use one or many nodes to make up each
 layer. To begin, place each node or nodes you want to have scroll independently as a child of their own parallax node.
 Make sure that the top left of the textures used are at the `(0, 0)` crossing, like in the image below. See the section
-on <doc:2d_parallax#Positioning> for why this is important.
+on [Positioning](#Positioning) for why this is important.
 
 @Image(source: "2d_parallax_size_viewport.png")
 
@@ -48,6 +47,8 @@ values might be:
 - `(0.1, 1)` - Sky
 
 The video below displays how these values affect scrolling while in-game:
+
+@Image(source: "2d_parallax_scroll_scale.gif")
 
 ## Infinite repeat
 
@@ -79,6 +80,8 @@ scroll properly because the original texture doesn't cover the viewport. If we s
 [repeat_size](https://docs.godotengine.org/en/stable/classes/class_parallax2d.html#class-parallax2d-property-repeat-size) to the size of the viewport, we have a large gap. What can we
 do?
 
+### Make the viewport smaller
+
 The simplest answer is to make the viewport the same size or smaller than your textures.
 In **Project Settings > Display > Window**, change the
 [Viewport Width](https://docs.godotengine.org/en/stable/classes/class_projectsettings.html#class-projectsettings-property-display-window-size-viewport-width)
@@ -87,9 +90,13 @@ settings to match your background.
 
 @Image(source: "2d_parallax_size_viewport.png")
 
+### Scale the Parallax2D
+
 If you're not aiming for a pixel-perfect style, or don't mind a little blurriness, you may opt to scale the textures
 larger to fit your screen. Set the [scale](https://docs.godotengine.org/en/stable/classes/class_node2d.html#class-node2d-property-scale) of the [Parallax2D](https://docs.godotengine.org/en/stable/classes/class_parallax2d.html#class-parallax2d),
 and all child textures scale with it.
+
+### Scale the child nodes
 
 Similar to scaling the [Parallax2D](https://docs.godotengine.org/en/stable/classes/class_parallax2d.html#class-parallax2d), you can scale your [Sprite2D](https://docs.godotengine.org/en/stable/classes/class_sprite2d.html#class-sprite2d) nodes to
 be large enough to cover the screen. Keep in mind that some settings like
@@ -98,6 +105,8 @@ be large enough to cover the screen. Keep in mind that some settings like
 adjust these values based on the scale.
 
 @Image(source: "2d_parallax_size_scale.png")
+
+### Repeat the textures
 
 You can also start off on the right foot by preparing child nodes earlier in the process. If you have a
 [Sprite2D](https://docs.godotengine.org/en/stable/classes/class_sprite2d.html#class-sprite2d) you'd like to repeat, but is too small, you can do the following to repeat it:
@@ -127,7 +136,13 @@ value.
 If the textures are centered on the `(0,0)` crossing, the infinite repeat canvas is only partly covered, so it
 only partly repeats.
 
+<<<<<<< parallax
+### Would increasing `repeat_times` fix this?
+
+Increasing [repeat_times](https://docs.godotengine.org/en/stable/classes/class_parallax2d_property_repeat_times.html#class-parallax2d_property_repeat_times) technically would work in some scenarios, but
+=======
 Increasing [repeat_times](https://docs.godotengine.org/en/stable/classes/class_parallax2d.html#class-parallax2d-property-repeat-times) technically would work in some scenarios, but
+>>>>>>> main
 is a brute force solution and not the problem it is designed to solve (we'll go over this in a bit). A better fix is to
 understand how the repeat effect works and set up the parallax textures appropriately to begin with.
 
@@ -220,7 +235,3 @@ Prior to 4.3, the recommendation was to place every layer in their own
 [follow_viewport_enabled](https://docs.godotengine.org/en/stable/classes/class_canvaslayer.html#class-canvaslayer-property-follow-viewport-enabled) property, and scale the individual
 layer. This method has always been tricky to get right, but is still achievable by using a
 [CanvasLayer](https://docs.godotengine.org/en/stable/classes/class_canvaslayer.html#class-canvaslayer) instead of a [ParallaxBackground](https://docs.godotengine.org/en/stable/classes/class_parallaxbackground.html#class-parallaxbackground).
-
-> Note:
-> Another recommendation is KoBeWi's "Parallax2D Preview" addon.
-> It provides a few different preview modes and is very handy!
