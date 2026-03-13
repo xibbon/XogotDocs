@@ -1,4 +1,3 @@
-<!-- Remove this line to publish to docs.xogot.com -->
 # 3D Particle trails
 
 @Image(source: "particle_trails.png", alt: "Particle trails")
@@ -49,7 +48,7 @@ the number of sections to know the trail's total length.
 The `Section Segments` parameter further subdivides each section into segments.
 It has no effect on the smoothness of the trail's sections, though. Instead, it controls
 the smoothness of the particle trail's overall shape. The `Curve` property defines
-this shape. Click the box next to `Curve` and assign or create a new curve. The
+this shape. Select the box next to `Curve` and assign or create a new curve. The
 trail will be shaped just like the curve with the curve's value at `0.0` at the
 trail's head and the curve's value at `1.0` at the trail's tail.
 
@@ -90,7 +89,7 @@ to change the length of each section and with it the total length of the trail. 
 is the tube equivalent of the `Section Segments` property for ribbons. It subdivides the sections
 and adds more geometry to the tube to better fit the custom shape defined in the `Curve` property.
 
-You can shape tube trails with curves, just as you can with ribbon trails. Click the box next to the
+You can shape tube trails with curves, just as you can with ribbon trails. Tap the box next to the
 `Curve` property and assign or create a new curve. The trail will be shaped like the curve with
 the curve's value at `0.0` at the trail's head and the curve's value at `1.0` at the trail's tail.
 
