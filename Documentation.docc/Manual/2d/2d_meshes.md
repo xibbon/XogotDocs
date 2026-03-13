@@ -1,4 +1,3 @@
-<!-- Remove this line to publish to docs.xogot.com -->
 # 2D meshes
 
 ## Introduction
@@ -7,8 +6,7 @@ In 3D, meshes are used to display the world. In 2D, they are rare as images are 
 Godot's 2D engine is a pure two-dimensional engine, so it can't really display 3D meshes directly (although it can be done
 via `Viewport` and `ViewportTexture`).
 
-> Seealso: If you are interested in displaying 3D meshes on a 2D viewport, see the <doc:using_viewport_as_texture> tutorial.
->
+> See also: If you are interested in displaying 3D meshes on a 2D viewport, see the <doc:using_viewport_as_texture> tutorial.
 
 2D meshes are meshes that contain two-dimensional geometry (Z can be omitted or ignored) instead of 3D.
 You can experiment creating them yourself using `SurfaceTool` from code and displaying them in a `MeshInstance2D` node.
@@ -31,7 +29,7 @@ Start with an image that contains large amounts of transparency on the edges, li
 
 @Image(source: "mesh2d1.png")
 
-Put it in a `Sprite2D` and select "Convert to 2D Mesh" from the menu:
+Put it in a `Sprite2D` and tap "Convert to 2D Mesh" from the menu:
 
 @Image(source: "mesh2d2.png")
 
@@ -43,6 +41,6 @@ The default values are good enough for many cases, but you can change growth and
 
 @Image(source: "mesh2d4.png")
 
-Finally, push the :button:`Convert 2D Mesh` button and your Sprite2D will be replaced:
+Finally, tap the `Convert 2D Mesh` button and your Sprite2D will be replaced:
 
 @Image(source: "mesh2d5.png")
