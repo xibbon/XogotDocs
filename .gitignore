@@ -1,5 +1,6 @@
 .DS_Store
 *.xcuserstate
+docs-local
 /Xogot.xcodeproj/xcuserdata/nstamour.xcuserdatad/xcschemes
 /Xogot.xcodeproj/xcuserdata
 Xogot.xcodeproj/project.xcworkspace/xcuserdata/nstamour.xcuserdatad/IDEFindNavigatorScopes.plist
