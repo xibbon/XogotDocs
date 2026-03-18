@@ -10,22 +10,21 @@
             play a sound, represent a camera, and much more.
 
             @Image(source: "nodes_and_scenes_nodes.png")
+        
+            ### What is a Node?
+            Think of nodes as the basic building blocks of your game. No matter what kind of node you are using, they all share these core features:
+                
+            - **A name:** So you can easily identify them.
+            - **Editable properties:** Settings you can tweak, like size, position, or color.
+            - **Built-in updates:** They can automatically run instructions every single frame to handle things like movement and animation.
+            - **Expandable:** You can attach your own scripts to give them custom rules and abilities.
+            - **Parenting:** **You can attach a node to another node as its "child."**
+                
+            ### The Node Tree
+            That last point is the secret to how the engine works. **When you connect nodes together, they form a "tree."** 
+                
+            This tree structure is the main way you organize your game. Because different nodes do different things, snapping them together lets you create complex, interactive objects. 
         }
-        
-        ### What is a Node?
-        Think of nodes as the basic building blocks of your game. No matter what kind of node you are using, they all share these core features:
-            
-        - **A name:** So you can easily identify them.
-        - **Editable properties:** Settings you can tweak, like size, position, or color.
-        - **Built-in updates:** They can automatically run instructions every single frame to handle things like movement and animation.
-        - **Expandable:** You can attach your own scripts to give them custom rules and abilities.
-        - **Parenting:** **You can attach a node to another node as its "child."**
-            
-        ### The Node Tree
-        That last point is the secret to how the engine works. **When you connect nodes together, they form a "tree."** 
-            
-        This tree structure is the main way you organize your game. Because different nodes do different things, snapping them together lets you create complex, interactive objects. 
-        
         @ContentAndMedia {	
             ### Example: Building a Player Character
             Instead of writing complex code from scratch, you can build a fully playable character by grouping these specific nodes together:

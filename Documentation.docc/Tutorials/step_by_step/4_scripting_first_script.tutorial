@@ -3,7 +3,7 @@
 
         @Image(source: "scripting_first_script_rotating_godot.gif")
     }
-    @Section(title: "Introduction") {
+    @Section(title: "Your First Script") {
         @ContentAndMedia {
             In this lesson, you will code your first script to make the Godot icon turn in
             circles. 

@@ -3,7 +3,7 @@
 
         @Image(source: "signals_01_final.png")
     }
-    @Section(title: "Signals: Introduction") {
+    @Section(title: "Signals") {
         @ContentAndMedia {
             In this lesson, we will look at signals. They are messages that nodes emit when
             something specific happens to them, like a button being pressed. Other nodes can

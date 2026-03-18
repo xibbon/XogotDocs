@@ -3,7 +3,7 @@
 
         @Image(source: "using_scene_collection_header.gif")
     }
-    @Section(title: "Introduction") {
+    @Section(title: "TileSets and TileMaps") {
         @ContentAndMedia {
             A tilemap is a grid of tiles used to create a game's layout. There are several
             benefits to using [`TileMapLayer`](https://docs.godotengine.org/en/stable/classes/class_tilemaplayer.html#class-tilemaplayer) nodes to design your

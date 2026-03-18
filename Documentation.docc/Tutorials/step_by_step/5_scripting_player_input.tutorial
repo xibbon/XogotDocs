@@ -3,7 +3,7 @@
 
         @Image(source: "scripting_first_script_moving_with_input.gif")
     }
-    @Section(title: "Introduction") {
+    @Section(title: "Player Input") {
         @ContentAndMedia {
             Building upon the previous lesson, let's look
             at another important feature of any game: giving control to the player.
