@@ -51,7 +51,6 @@ jobs:
             --hosting-base-path / \
             --output-path /tmp/docs Documentation.docc;
           find docs -name index.html -exec cp /tmp/docs/index.html {} \;
-          find . \( -name '*.js' -o -name '*.py' \) -exec sed -i '' 's/"py","gyp","ipython"/"py","gyp","ipython","gd","gdscript"/g' {} +;
           for file in $(find . -name '*.js'); do
             count=$(grep -o 'e\.currentLanguage\.name' "$file" | wc -l)
             if [ "$count" -gt 0 ]; then

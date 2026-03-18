@@ -84,7 +84,6 @@ echo "Generating custom-template index..."
 
 echo "Applying local transform customizations..."
 find "$OUTPUT_PATH" -name index.html -exec cp "$TEMPLATE_PATH/index.html" {} \;
-find "$OUTPUT_PATH" \( -name '*.js' -o -name '*.py' \) -exec sed -i '' 's/"py","gyp","ipython"/"py","gyp","ipython","gd","gdscript"/g' {} +
 
 while IFS= read -r -d '' file; do
   if grep -q 'e\.currentLanguage\.name' "$file"; then
