@@ -4,6 +4,42 @@ Release notes for public releases of Xogot to the App Store.
 
 # Releases 
 
+## 1.5.4 (3949)
+
+* Performance optimizations: using the new Instruments profiler, we have been
+  fine tuning our user interface to make it snappier - we improved the response
+  times on almost all interactions of the UI.
+
+* Battery efficiency work:   We have been hard at work profiling
+  Xogot and measuring the battery impact - we have addressed most of the idle
+  busy work that Godot was doing, and we have contributed those changes to
+  upstream Godot.
+
+* AnimationPlayer: we brought support for the "Dummy Player" when using the
+  AnimationTree, brought Onion Skinning support, we display the current position
+  and allow it to be changed numerally, added cut and paste of keys across
+  players and you can now select keys across tracks.
+
+* We have now support for @icon(#path) annotations.
+
+* We now have a native Theme Editor replacing the Godot one
+
+### Small Improvements:
+
+* New Scene UI has been revamped to assist users with larger projects, you can
+  now search existing scenes, pick a project and we now use a sheet rather than
+  a small popup.
+
+* We now track Godot's editor unfolding rules more closely.
+
+* You can now launch your games without opening a new window.
+
+* Functions that are targets of signals will now show an indicator in the text
+  editor like Godot on desktop does.
+
+* 32 bugs that were either caught in the wild via crash reports or user feedback
+  were fixed.
+
 ## 1.5.2 (3804)
 
 * Learning Center content has been fully localized, including localized captions for all videos.

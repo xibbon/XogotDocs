@@ -2,7 +2,68 @@
 
 Release notes for our preview release of Xogot to TestFlight.
 
-## Release
+## Release 3947
+
+### Fixes
+
+* Small touch ups to the New Scene Dialog.
+
+* Fixes a crash in the wild related to reloading the inspector (#2394)
+
+* Fixes a crash while searching properties in Turkish (#2400)
+
+* We now use the same icon on iOS as we do on the Mac for showing/hiding the
+  inspector.
+
+* Fixes a crash in the wild when activating the context menu on the scenepad and
+  file pad.
+
+## Release 3938
+
+### Improvemets
+
+* New Scene has been revamped: it is no longer a popover, but a sheet, which
+  fixes a long standing issue that it was easy to dismiss, brings a search UI
+  for the case where you are inheriting from (if you had too many scenes, it was
+  hard to pick your base class) and allows yuou to pick a location for where the
+  scene will be created (#2051).
+
+* We now show a marker next to a function that is a signal handler (#1034) and
+  also used colors like Godot for the signal sources and those that are
+  connected to make it more clear that they can be interacted with, and they are
+  not documentation.
+
+* Animation Player improvements: we now show the current pointer position, we
+  also allow the time position to be entered with a numeric input (#2360); Added
+  scale increments to more easily tell what the time represents (#2361); Added
+  copy/paste support for animations between AnimationPlayer (#2363); you can now
+  select keys across animation trakcs (#2362).
+
+### Fixes
+
+* Fixes popups that were not properly positioned in the UI #2304, this
+  manifested itself as the AnimationTree showing a the add node popover in the
+  wrong place.
+
+* Save Scene will no longer fail silently (#2347, #2348)
+
+* iPhone Stop button was not responding  #2357
+
+* iPhone: array of nodes, assign not working - sheet issue #2358, 
+
+* iPhone: error thrown keeps appearing until close and reopen project, even
+  after it's fixed #2359.
+
+* Animation Resource now offers a better default name (Public #107).
+
+* Animation Resources do not load after being saved (Public #106).
+
+* Fixes a crash when editing grouped integer values with overflowing values
+  (#2361).
+
+* Fixes a crash in the SceneEditor caught in the wild (#2392).
+
+## Release 3899
 
 ### Improvements
 
