@@ -4,6 +4,11 @@ Release notes for public releases of Xogot to the App Store.
 
 # Releases 
 
+## 1.5.6 (4026)
+
+* This release contains over 36 bug fixes for issues reported by our users or
+  caught by crash reports which improves the reliability of Xogot.
+
 ## 1.5.4 (3949)
 
 * Performance optimizations: using the new Instruments profiler, we have been

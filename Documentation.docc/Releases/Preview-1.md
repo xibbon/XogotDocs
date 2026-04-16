@@ -2,6 +2,141 @@
 
 Release notes for our preview release of Xogot to TestFlight.
 
+## Release 4039
+
+### Improvements
+
+* AssetBrowser: lots of improvements to drag and drop, previews, search and
+  tags.  We think that this built in asset browser is more convenient to use
+  than dragging assets from the filepad.
+
+### Fixes
+
+* InputMap had a condition inverted that prevented editing built-in actions, but
+  did not allow editing other actions.
+
+* Potential fix for a crash in the wild when opening the Input Map tab.
+
+* We believe we have a fix for a pesky crash that we have not been able to
+  reproduce locally, but we have seen in crashes for a long time (#1274, #2424,
+  #2274, #2275, #2209)
+
+* Fixes a crash that would trigger when audio is interrupted via a call (#2476)
+
+## Release 4025
+
+## Fixes
+
+* Fixes Curve Editor becoming unresponsive after scrolling down #2463
+
+* Fixes panning on iOS, which we broke during the Testflight cycle
+
+* Fixes a crash on the new XogotSkeleton handler (#2468)
+
+## Release 4017
+
+### Improvements
+
+* Work in progress: SwiftUI-based Skeleton property, currently only enabled in
+  development mode.
+
+### Fixes
+
+* Fixes a crash on the array editor (#2444)
+
+* Fix iPhone: Remote debugger, modifying remote object properties makes value
+  change until it reaches back to 0 #2450
+
+* Fix iPhone: touch tap regression #2441
+
+* Fix InspectorArrayEditor: doesn't update elements when added / removed #2456
+
+* Fix curve inspector: editor not updating Array count properly #2457
+
+* Implement CurveEditor: Doesn't let you delete points from editor #2459
+
+### Testflight-only:
+
+* New asset browser tab, we will be iterating on this UI in the next few weeks.
+
+## Release 3996
+
+### Improvements
+
+* iPhone: InputMap will show bound keys inside list (Discord)
+
+* iPhone: Add mini viewport or update camera preview after tweaking some values
+  (#2437, Discord).  
+
+### Fixes
+
+* iPhone: Vector property editor title was not updating (#2436, Discord)
+
+* iPhone: it is now possible to switch the local/remote tabs (#2439, Discord)
+
+* iPhone: the inspector no longer automatically scrolls while the game is
+  running (#2438, Discord)
+
+* iPhone: do not surface "Run in Window" option that does not exist on iPhone
+  (#2240, Discord).
+
+## Release 3987
+
+## Improvements
+
+* About box shows the Godot version to assist in diagnosis.
+
+* We no longer show a focus ring around the 2D and 3D editors (#2188).
+
+* Improved the reliability of bottom bar tabs, sometimes they would show up as
+  duplicates.
+
+## Fixes
+
+* Fixes a crash caught in the wild related to the inspector unfolded state
+  (#2394)
+
+* Fixes a crash in 3D picking in the editor (#2404).
+
+* Fixes a crash related to stopping the animation playback when switching scenes
+  (#2405)
+
+* Fixes a family of crashes that were triggered when switching objects (#2409).
+
+* Fixes two crashes triggered by the context menu (#2407, #2393) when the underlying scene
+  object was deleted.
+
+* Fixes a regression, we were creating drag and drop names that looked too big
+  (#2408).
+
+* Disconnect All on the signal pad is now working (#2388)
+
+* Fixes a crash while closing a project (#2414).
+
+* Fixed a crash that could be triggering when connecting a signal.
+
+* Fixes a crash at startup on the game view if the game was not initialized yet (#2416)
+
+* Fixes a long-standing bug where we did not display certain properites in the
+  inspector, they were very rare, but they existed (#2212).
+
+* Fix iPhone: rename node not working after some point (5th node and below,
+  #2428) 
+
+* Fixes a tilemap crash (#2427)
+
+* Fixes a divergence in the UI between TileMap and TileSet editors (#2426).
+
+* Fixes the iPhone: Inspector accepting drag and rotates viewport #2429.
+
+* Improved the error reporting when creating shaders, it was very ugly (#2420)
+
+* Improves the reliabiltiy of showing where signals are connected to in the code
+  editor. 
+
+* Fixes a crash when drag and dropping certain nodes into the text editor
+  (#2432)
+ 
 ## Release 3947
 
 ### Fixes
