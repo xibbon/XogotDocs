@@ -2,6 +2,34 @@
 
 Release notes for our preview release of Xogot to TestFlight.
 
+## Release
+
+This version contains an important infrastructure change for us: we are merging
+the Mac and iOS codebases into one - there shoudl be no regressions, but if you
+find any, please let us know, this will allow us to develop both codebases at
+once from this point on.
+
+### Improvements
+
+* Learning Center: will re-download images for tutorials if there are transient
+  network errors.   It also brings a small UI touch, when scrolling, it will
+  automatically resize for easier browsing.
+
+* Adds support for editing sub-resources (#67)
+
+* AnimationEditor: Optimization to the display when modifying a value, this will
+  now redraw less.
+
+* The new asset browser now offers a button to create the thumbnail for
+  expensive scenes.
+  
+### Fixes
+
+* When manually switching themes, we will also notify Godot of the theme change:
+  #2478
+
+* 
+
 ## Release 4039
 
 ### Improvements
