@@ -2,6 +2,154 @@
 
 Release notes for our preview release of Xogot to TestFlight.
 
+## Release
+
+### Improvements
+
+* Add Node now will show the type hierarchy.
+
+* Asset browser improvements: inline rename, color selection, filtering and
+  removal options for tags and various small polish items and usability
+  improvements. 
+
+* Resources now have their tags shown on the inspector.
+
+* To make things less dull, we now auto-assign colors based on the tag name.
+
+* Updated localization for the Testflight cycle.
+
+* iPhone: added padding at the end of the inspector so you can scroll it when a
+  bottom bar shows up.
+
+### Fixes
+
+* Small rendering glitch on AnimationTree Editor (#2525)
+
+* Fixes some mouse gestures not being mapped from touches, this showed up as the
+  Curve Editor presets not working (#2474)
+
+* AnimationTree  edits were not getting saved
+
+* Fixes exported properties that were all in uppercase and were not rendered
+  correctly (would render "HELLO_WORLD" as "H E L L O W O R L D", now does it as
+  "Hello World"   #2541)
+
+* The remote tree properties are now sorted in the same was as the local
+  properties (#2542).
+
+## Release 4143
+
+### Improvements
+
+* iPhone: add scroll while in script editor during selection #2503
+
+* Surfaced additional Audio Importer options, matching the latest features in
+  Godot and improved the importer features to match the Godot behavior.
+
+* Performance improvements to the AnimationPlayer
+
+* iPhone: use a new bottom bar handler, which was previously preventing various
+  sheets from being displayed (sheet-on-sheet issue).   This should now be
+  fixed, but it is a large change.
+
+### UI and Usability
+
+* Made the learning center buttons more consistent with other platform idioms.
+
+* Animation Editor: getting to frame zero was not easy (#2511)
+
+* Fix iPhone: AnimationPlayer - position property editor doesn't have close
+  button #2512
+
+* iPhone: make warnings  links to place where issue is #2483 on the error
+  output.
+
+* Fixes the Action on Stopping a program debug options, it was setting the wrong
+  behavior.
+
+* iPhone: "Save New Scene As" did not work on smaller iPhone screens #2500
+
+* Small usability improvements to the Asset Browser
+
+### Fixes
+
+* iPhone: ScenePad selection losing color when parent collapses (it stays
+  selected) #2501
+
+* StringNameVariantArrayDetailsEditor was showing two labels, fixed #2499
+
+* iPhone: Inspector enum picker overlapping row on top and bottom when long
+  text #2506
+
+* Fixes a crash when you closed a scene and attempted an undo (#2509)
+
+* iPhone: AnimationPlayer - adding key from inspector fails on iPhone #2513
+
+* iPhone: Toolbar can't be moved up once dragged down #2507
+
+* Fix crash in sprite player
+
+* Fixes a crash triggered by InputActionView:New Action Event
+
+* Fixes a crash loading legacy scenes from older Godot versions
+
+* Fixes a crash when restarting the editor
+
+* Fixes a crash if the user was opening a file when he hit the close button.
+
+* Fixes a crash with invalid bitmaps in the TileMap editor #2520
+
+* iPhone: fixes the file dialog not showing on iOS.
+
+* Fix blank shader editor when multiple shaders are open. Fix GodotContent
+  cached property.
+
+## Release 4080
+
+### Improvements
+
+### Fixes
+
+* iPhone: Sidebar - toggling off file pad doesn't stay after toggling inspector
+  #2490 
+  
+## Release 4064
+
+### Improvements
+
+* Inspector: We now surface a SwiftUI-based Skeleton3D browser, instead of the
+  Godot one, that should work better with touch input.
+
+* Keyboard modifiers like shift, control, alt, meta are now propagated to the
+  game and you can bind to those events (a bug really, but it feels important
+  enough to mention as a featur #2467).
+
+* UI Improvements to the Theme Editor.
+
+### Fixes
+
+* Phone: Sidebar - toggling off file pad doesn't stay after toggling inspector
+  #2490
+
+### Fixes
+
+
+## Release 4059
+
+### Improvements
+
+* Pencil support: now if you hover over the timeline on the animation editor,
+  the tracker will temporarily snap to that position, to help you tune your
+  animations (#2171)
+
+* Double tap on the asset browser will open the asset, like the FilePad does.
+
+### Fixes
+
+* Close Project works again
+
+* iPhone: multi select scrolls up when selecting, fixed #2489
+
 ## Release 4052
 
 This version contains an important infrastructure change for us: we are merging
