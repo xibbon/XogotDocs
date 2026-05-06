@@ -15,6 +15,7 @@ To get started building games with Xogot, check out our <doc:Getting-Started> gu
 ### Release Notes
 - <doc:AppStore>
 - <doc:Preview-1>
+- <doc:Mac-Preview>
 
 ### Articles
 - <doc:Differences>
@@ -27,6 +28,7 @@ To get started building games with Xogot, check out our <doc:Getting-Started> gu
 - <doc:Xogot-Connect>
 - <doc:Command-Palette>
 - <doc:Testflight>
+- <doc:Mac-Testing>
 
 
 ### 2D
