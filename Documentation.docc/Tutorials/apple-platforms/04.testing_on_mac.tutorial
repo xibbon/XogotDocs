@@ -1,0 +1,100 @@
+@Tutorial(time: 10) {
+    @Intro(title: "Testing on Mac") {
+        Run your game on your Mac for quick playtesting or as a signed Mac app for
+        Apple platform features.
+
+        @Image(source: mac-app-running.png)
+    }
+
+    @Section(title: "Choose How to Run") {
+        @ContentAndMedia {
+            Xogot for Mac can run a project in two Mac-focused ways.
+
+            Use **Local Editor** for fast Godot-centric playtesting in Xogot's embedded
+            Game view. Use **This Mac** when you need the project to run as a Mac app with
+            Apple app capabilities, entitlements, or plugins.
+        }
+
+        @Steps {
+            @Step {
+                For quick gameplay checks, choose **Local Editor** as the run target.
+
+                Local Editor runs the game embedded inside Xogot. Open the **Game** view
+                with the game controller toolbar button next to the **3D**, **2D**, and
+                **Code Editor** buttons.
+
+                @Image(source: local-editor-target.png)
+            }
+
+            @Step {
+                To test Mac app behavior, choose **This Mac** from the run destination menu
+                next to the current scene.
+
+                The same menu also lists installed simulators and any detected iPhone or
+                iPad devices.
+
+                @Image(source: this-mac-target.png)
+            }
+
+            @Step {
+                Use **This Mac** when you need your game to behave like a real Mac app.
+
+                This target is useful for testing Godot Apple Plugins and features that
+                depend on Apple entitlements, such as StoreKit, Game Center, iCloud, or other macOS app
+                services.
+
+                @Image(source: mac-app-running.png)
+            }
+        }
+    }
+
+    @Section(title: "Install the Mac Runtime") {
+        @ContentAndMedia {
+            Xogot downloads runtime templates on demand. If the selected run mode needs a
+            missing Mac runtime, Xogot prompts you to install it.
+        }
+
+        @Steps {
+            @Step {
+                If Xogot shows the **Download Templates** dialog, click **Get** next to the
+                missing **Mac Runtime**.
+
+                @Image(source: mac-runtime-missing.png)
+            }
+
+            @Step {
+                Wait for the runtime download to finish.
+
+                When the Mac Runtime is installed, its row no longer shows a **Get** button.
+
+                @Image(source: mac-runtime-installed.png)
+            }
+        }
+    }
+
+    @Section(title: "Run on Mac") {
+        @ContentAndMedia {
+            After the runtime is installed, run the project from the toolbar.
+        }
+
+        @Steps {
+            @Step {
+                Click **Run**.
+
+                If macOS asks for Developer Tools access, authenticate with Touch ID or your
+                Mac password.
+
+                @Image(source: mac-developer-tools-access.png)
+            }
+
+            @Step {
+                Xogot launches the game on your Mac.
+
+                Use this local run to test gameplay, input, window behavior, and any Mac app
+                features enabled by your selected run mode.
+
+                @Image(source: mac-app-running.png)
+            }
+        }
+    }
+}

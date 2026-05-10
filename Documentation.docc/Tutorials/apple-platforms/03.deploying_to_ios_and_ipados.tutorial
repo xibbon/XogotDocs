@@ -1,0 +1,97 @@
+@Tutorial(time: 15) {
+    @Intro(title: "Deploying to iOS and iPadOS") {
+        Run your game on a connected iPhone or iPad from Xogot for Mac.
+
+        @Image(source: deployment-device-menu.png)
+    }
+
+    @Section(title: "Prepare Signing and Runtimes") {
+        @ContentAndMedia {
+            Physical device deployment needs signing credentials, an iOS device runtime
+            template, and a connected device that trusts your Mac.
+        }
+
+        @Steps {
+            @Step {
+                Complete Signing Setup before deploying to a physical iPhone or iPad.
+
+                Xogot uses your selected Apple Developer team to sign the device build.
+
+                @Image(source: signing-setup-signed-in.png)
+            }
+
+            @Step {
+                Open **Xogot > Settings**, select **Components**, and click **Get** next to the
+                **iOS Device Runtime** if it is missing.
+
+                @Image(source: templates-device-runtime.png)
+            }
+
+            @Step {
+                Wait for the iOS Device Runtime download to finish.
+
+                @Image(source: templates-runtimes-ready.png)
+            }
+        }
+    }
+
+    @Section(title: "Connect Your Device") {
+        @ContentAndMedia {
+            Connect the iPhone or iPad you want to test on. Keep the device unlocked while
+            pairing and running your first build.
+        }
+
+        @Steps {
+            @Step {
+                Connect your iPhone or iPad to the Mac.
+
+                If iOS or iPadOS asks whether to trust the computer, tap **Trust** and enter the
+                device passcode.
+
+                @Image(source: trust-computer.png)
+            }
+
+            @Step {
+                Open the run destination menu in Xogot.
+
+                Choose your connected iPhone or iPad. If the device is not listed, choose
+                **Search Pair Devices** from the same menu.
+
+                @Image(source: deployment-device-menu.png)
+            }
+
+            @Step {
+                Click **Run**.
+
+                Xogot signs the game, installs it on the selected iPhone or iPad, and starts it
+                on the device.
+
+                @Image(source: editor-game-preview.png)
+            }
+        }
+    }
+
+    @Section(title: "Troubleshooting") {
+        @ContentAndMedia {
+            Most device deployment problems come from signing, pairing, or a missing runtime.
+        }
+
+        @Steps {
+            @Step {
+                If signing fails, reopen **Signing Setup** and confirm that you are signed in
+                with the correct Apple Developer team.
+
+                @Image(source: signing-setup-signed-in.png)
+            }
+
+            @Step {
+                If the device does not appear, unlock it, reconnect it, and check that
+                Developer Mode is enabled on the device.
+
+                Then open the destination menu again and choose **Search Pair Devices**.
+
+                @Image(source: deployment-device-menu.png)
+            }
+        }
+    }
+}

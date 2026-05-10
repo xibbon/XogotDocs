@@ -1,0 +1,71 @@
+@Tutorial(time: 10) {
+    @Intro(title: "Simulator Deployment") {
+        Run your Xogot project in an iPhone or iPad simulator from the Xogot toolbar.
+
+        @Image(source: deployment-simulator-running.png)
+    }
+
+    @Section(title: "Install the Simulator Runtime") {
+        @ContentAndMedia {
+            Before Xogot can run a project in Simulator, the matching iOS Simulator runtime and
+            Xogot runtime template must be installed.
+        }
+
+        @Steps {
+            @Step {
+                Open **Xogot > Settings**, then select **Components**.
+
+                The Components pane lists the runtimes and templates available for Apple
+                platform deployment.
+
+                @Image(source: runtime-templates-settings.png)
+            }
+
+            @Step {
+                If the **iOS Simulator Runtime** is marked as missing, click **Get**.
+
+                @Image(source: templates-simulator-runtime.png)
+            }
+
+            @Step {
+                Wait for the runtime and template download to finish.
+
+                Xogot can run simulator builds after the iOS Simulator Runtime is installed.
+
+                @Image(source: templates-runtimes-ready.png)
+            }
+        }
+    }
+
+    @Section(title: "Choose a Simulator") {
+        @ContentAndMedia {
+            Simulators appear in the run destination menu after the simulator runtime is
+            installed.
+        }
+
+        @Steps {
+            @Step {
+                Open the run destination menu in the toolbar.
+
+                Choose an iPhone or iPad simulator from the list.
+
+                @Image(source: deployment-device-menu.png)
+            }
+
+            @Step {
+                Confirm that the selected simulator appears in the toolbar.
+
+                @Image(source: deployment-simulator-selected.png)
+            }
+
+            @Step {
+                Click **Run**.
+
+                Xogot builds the project for the selected simulator and launches it in the
+                Simulator app.
+
+                @Image(source: deployment-simulator-running.png)
+            }
+        }
+    }
+}

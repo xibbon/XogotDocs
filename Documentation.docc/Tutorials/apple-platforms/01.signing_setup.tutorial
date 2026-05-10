@@ -1,0 +1,130 @@
+@Tutorial(time: 10) {
+    @Intro(title: "Signing Setup") {
+        Sign in to an Apple Developer account so Xogot can sign builds for iPhone and iPad.
+
+        @Image(source: signing-setup-menu.png)
+    }
+
+    @Section(title: "Open Signing Setup") {
+        @ContentAndMedia {
+            Xogot uses signing information when you run a project on a physical iPhone or iPad.
+            You can sign in with an Apple ID or configure an App Store Connect API key.
+        }
+
+        @Steps {
+            @Step {
+                Open your project in Xogot for Mac, then open the run destination menu in the toolbar.
+                Choose **Signing Setup**.
+
+                @Image(source: signing-setup-menu.png)
+            }
+
+            @Step {
+                In the **Signing Setup** dialog, choose a signing method.
+
+                Use **Xcode Login** to sign in with an Apple ID. Use **App Store Connect API Key**
+                if your team manages signing with API credentials.
+
+                @Image(source: signing-setup-methods.png)
+            }
+        }
+    }
+
+    @Section(title: "Sign in with Apple ID") {
+        @ContentAndMedia {
+            The Xcode Login method stores the credentials needed to request signing assets for
+            your Apple Developer team.
+        }
+
+        @Steps {
+            @Step {
+                Enter the Apple ID and password for your Apple Developer account, then click
+                **Sign In**.
+
+                @Image(source: signing-setup-password.png)
+            }
+
+            @Step {
+                If Apple asks you to allow the sign-in on a trusted device, click **Allow** on
+                that device.
+
+                @Image(source: signing-setup-apple-allow.png)
+            }
+
+            @Step {
+                Enter the verification code from your trusted device and click **Continue**.
+
+                @Image(source: signing-setup-verification-code.png)
+            }
+
+            @Step {
+                After sign-in completes, confirm that the dialog shows **Signed in with Apple
+                Developer account**.
+
+                If your Apple ID belongs to more than one developer team, choose the team you
+                want Xogot to use for device builds.
+
+                @Image(source: signing-setup-signed-in.png)
+            }
+        }
+    }
+
+    @Section(title: "Use an API Key") {
+        @ContentAndMedia {
+            App Store Connect API keys are useful for teams that do not want to use an Apple ID
+            password on the development Mac.
+        }
+
+        @Steps {
+            @Step {
+                Sign in to [App Store Connect](https://appstoreconnect.apple.com), then open
+                **Users and Access**.
+
+                @Image(source: app-store-connect-home.png)
+            }
+
+            @Step {
+                In **Users and Access**, open **Integrations** and select **Team Keys**.
+
+                Team keys can be used by shared tools and services for your App Store Connect
+                team.
+
+                Copy the **Issuer ID** shown in this view. You will paste it into Xogot's
+                Signing Setup dialog later.
+
+                @Image(source: app-store-connect-integrations.png)
+            }
+
+            @Step {
+                Add a new App Store Connect API key.
+
+                Give the key a recognizable name, choose the access level your team wants to
+                use with Xogot, and click **Generate**.
+
+                Download the private key when App Store Connect offers it. The private key can
+                only be downloaded once.
+
+                @Image(source: app-store-connect-generate-api-key.png)
+            }
+
+            @Step {
+                Select **App Store Connect API Key** in the Xogot Signing Setup dialog.
+
+                Paste the **Issuer ID** from the Team Keys page. Use **Copy Key ID** next to
+                the key you generated to copy the **Key ID**, then paste or import the private
+                key file you downloaded when the key was generated.
+
+                @Image(source: signing-setup-methods.png)
+            }
+
+            @Step {
+                Click **Done** when the signing method is configured.
+
+                You can return to **Signing Setup** later to change teams, update credentials,
+                or sign out.
+
+                @Image(source: signing-setup-signed-in.png)
+            }
+        }
+    }
+}
