@@ -1,4 +1,3 @@
-<!-- Remove this line to publish to docs.xogot.com -->
 # Particle sub-emitters
 
 @Image(source: "particle_sub_chain.png", alt: "Chained sub-emitters")
@@ -9,7 +8,7 @@ another particle system. Fireworks are a good example of that. They usually cons
 several stages of explosions that happen in sequence. Sub-emitters are a good way to achieve
 this kind of effect.
 
-@Image(source: "particle_sub_assign.png", alt: "Assign sub-emitter") {Click to assign a sub-emitter...}
+@Image(source: "particle_sub_assign.png", alt: "Assign sub-emitter") {Tap to assign a sub-emitter...}
 
 @Image(source: "particle_sub_list.png", alt: "List particle systems") {...and select one from the scene}
 
