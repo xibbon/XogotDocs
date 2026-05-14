@@ -2,6 +2,94 @@
 
 Release notes for our preview release of Xogot to TestFlight.
 
+## Release
+
+### Improvements
+
+* Improved the look and feel of the learning center that was too crowded and
+  made it easier to navigate to samples and tutorials.
+
+* Will now save your main scene as a uid:// if possible, similar to desktop
+  Godot.
+
+### Fixes
+
+* Fixes the Animation Player that could hang when grouping large collections of
+  animations (#2607)
+
+* Improve color contrast in dark mode for anchors and layout in the inspector
+  (#2603)
+
+## Release 4244 (Beta 4.6: 628)
+
+### Improvements
+
+* The last component of the AnimationTree that needes some UI touchups has been
+  completed, the AnimationBlendTree.   This completes the UI revamp of
+  AnimationTree - we would love to get as many folks testing it before we enable
+  it publicly.
+
+* iPhone: Asset browser is now availble on the iPhone as well.
+
+* Even more battery saving changes, reduced some expensive operations in Godot
+  that were using battery while idling.
+
+* Added support for "Reload Played Scene", that was previously just relaunching
+  the selected scene (this is available on the long-press play when the game is running).
+
+### Fixes
+
+* Partial fix for a popup crash when sending mouse event while closing, this
+  happened in the Curve editor (#2553).   The most blatant parts are fixed, but
+  we have identified another corner case.
+
+* Fixes a scenario where closing an unsaved scene would still close the scene
+  and shutdown Xogot, and then request the save (#2556)
+
+* Fix: Output panel always opens when the project is ran, regardless of setting
+  #2547
+
+* Fix iPhone: bottom panel sheet stuck for ThemeEditor initially #2584
+
+* Theme Editor now defaults to 'Show Defaults'
+
+* Fixes #2528: Attach Node Script: changing path loses script file name
+
+* Fix iPhone: Shader Editor close button doesn't work #2589
+
+## Release 4196
+
+### Improvements
+
+* The ScenePad now accepts g:GROUP to filter out nodes that belong to the GROUP
+  and the t:TYPENAME to show only nodes that belong to the type.   This follows
+  the same feature in Godot (#2020)
+
+* Xogot now brings support for "Live Edit" allowing changes to your selected
+  scene to be reflected live on your game.  You can change the target on the new
+  options menu on the debugger tab (#2551)
+
+### AnimationTree
+
+We are still actively building a touch-friendly replacement for the
+AnimationTree.   The AnimationTree editor is currently only enabled on
+TestFlight releases and not on the final AppStore releases yet.
+
+There are several improvements in this release:
+
+* New UI for the Blend1D, Blend2D and StateMachine animation components that
+  eliminates the mode-switching design and is overall intended to be touch
+  friendly as well as a visual refresh.
+
+* Fixes to the node editor (#2543)
+
+### Fixes
+
+* We now clear the selected object when switching scenes, so the contents of the
+  inspector reflect your selection and not stale data.
+
+* Fixes the light-sliders on the 3D view not working (#2555)
+
 ## Release 4167
 
 ### Improvements

@@ -4,6 +4,64 @@ Release notes for public releases of Xogot to the App Store.
 
 # Releases 
 
+### AssetBrowser
+
+We now ship with an asset browser that should make it easier to quickly select
+images, meshes, audio, fonts and work with them in the editor.   This asset
+browser will also auto-tag your resources to help you find what you are looking
+for.  
+
+The inspector will now also show the tags for your resources.
+
+### Improvements
+
+* The ScenePad now accepts g:GROUP to filter out nodes that belong to the GROUP
+  and the t:TYPENAME to show only nodes that belong to the type.   This follows
+  the same feature in Godot (#2020)
+
+* Xogot now brings support for "Live Edit" allowing changes to your selected
+  scene to be reflected live on your game.  You can change the target on the new
+  options menu on the debugger tab (#2551)
+
+* Surfaced additional Audio Importer options, matching the latest features in
+  Godot and improved the importer features to match the Godot behavior.
+
+* Performance improvements to the AnimationPlayer
+
+* Inspector: We now surface a SwiftUI-based Skeleton3D browser, instead of the
+  Godot one, that should work better with touch input.
+
+* Keyboard modifiers like shift, control, alt, meta are now propagated to the
+  game and you can bind to those events.
+
+* Pencil support: now if you hover over the timeline on the animation editor,
+  the tracker will temporarily snap to that position, to help you tune your
+  animations, inspired by Final Cut Pro.
+  
+* Adds support for editing sub-resources (#67)
+
+* Lots of performance improvements to the UI.
+
+  ### Small Usability Chnages
+
+* Add Node now will show the type hierarchy in the inline documentation.
+
+* iPhone: add scroll while in script editor during selection #2503
+
+* iPhone: use a new bottom bar handler, which was previously preventing various
+  sheets from being displayed (sheet-on-sheet issue).   This should now be
+  fixed, but it is a large change.
+
+* Made the learning center buttons more consistent with other platform idioms.
+
+* UI Improvements to the Theme Editor.
+
+* Learning Center: will re-download images for tutorials if there are transient
+  network errors.   It also brings a small UI touch, when scrolling, it will
+  automatically resize for easier browsing.
+
+Over thirty five bugs addressed.
+
 ## 1.5.6 (4026)
 
 * This release contains over 36 bug fixes for issues reported by our users or
