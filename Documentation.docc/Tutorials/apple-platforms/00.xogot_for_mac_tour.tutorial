@@ -1,0 +1,152 @@
+@Tutorial(time: 8) {
+    @Intro(title: "Xogot for Mac Tour") {
+        Get oriented with Xogot's Mac-native Godot development environment.
+
+        @Image(source: mac-tour-editor-overview.png)
+    }
+
+    @Section(title: "Welcome to Your Workspace") {
+        @ContentAndMedia {
+            Xogot for Mac keeps the Godot project model, but presents it as a native Mac
+            workspace with a source list, centered editor surface, and inspector panes.
+        }
+
+        @Steps {
+            @Step {
+                When you first open Xogot, you will see the Projects screen.
+                
+                From this screen, you can open or create a new project, find recent projects,
+                or clone a Git repository. 
+
+                @Image(source: mac-tour-projects.png)
+            }
+
+            @Step {
+                If you don't have an existing project to start with or you don't know where
+                to begin, you can access Xogot tutorials, videos, and sample projects by
+                opening **Learning Center** under the **Window** menu.
+
+                @Image(source: mac-tour-learning-center.png)
+            }
+
+            @Step {
+                After you open a project, Xogot shows the main editor workspace.
+
+                As in Godot, the scene tree and file pad share the left side of the 
+                workspace. The selected scene, script, or game view opens in the center. 
+                Inspector, signal, node, import, and plugin details appear on the right.
+
+                @Image(source: mac-tour-editor-overview.png)
+            }
+
+            @Step {
+                Use the toolbar to switch between 3D, 2D, script, and running-game
+                contexts.
+
+                The selected run target appears in the center of the toolbar. **Local
+                Editor** runs the project in the editor on your Mac.
+
+                @Image(source: mac-tour-local-editor.png)
+            }
+        }
+    }
+
+    @Section(title: "Navigate Through Your Project") {
+        @ContentAndMedia {
+            Xogot's left sidebar is organized like Xcode's navigator area, with
+            dedicated tabs for browsing files, searching, reviewing breakpoints, and
+            inspecting a running project.
+        }
+
+        @Steps {
+            @Step {
+                The first tab after the Scene and Files tab is the Find Navigator.
+                Use this tab to search across files in your project.
+                
+                The Find Navigator can also be used for find and replace. The default
+                mode is text search, and it also supports regular expressions.
+
+                @Image(source: mac-tour-code-search.png)
+            }
+            @Step {
+                The Report Navigator keeps track of previous build and run logs.
+                
+                Use it to compare console output, debugging output, and build results
+                across changes.
+
+                @Image(source: mac-tour-report-navigator.png)
+            }
+            @Step {
+                Open the Breakpoints navigator to review active and disabled breakpoints
+                across project scripts.
+
+                Selecting a breakpoint opens the script and line that owns it. You can
+                also delete breakpoints or enable and disable them directly from here.
+
+                @Image(source: mac-tour-breakpoints.png)
+            }
+
+            @Step {
+                Open the Debug navigator while the project is running.
+
+                This view shows live monitors for frame time, memory, objects, rendering,
+                and other runtime counters.
+
+                @Image(source: mac-tour-debug-navigator.png)
+            }
+
+
+        }
+    }
+
+    @Section(title: "Settings, Commands, Scenes, and Targets") {
+        @ContentAndMedia {
+            Xogot also includes Mac-native controls for configuring the editor,
+            finding commands, choosing the scene to run, and selecting where the
+            project should launch.
+        }
+
+        @Steps {
+            
+            @Step {
+                Open **Xogot > Settings** when you need to adjust the editor experience or
+                install components.
+
+                Settings include appearance, code editor behavior, 3D navigation,
+                debugger, environment, running, locations, components, and AI options.
+                Use the Appearance pane to choose light mode, dark mode, or the system
+                appearance.
+
+                @Image(source: mac-tour-settings.png)
+            }
+            
+            @Step {
+                Press **Command-P** to open Xogot's Command Palette.
+
+                Use the Command Palette to quickly search files and documentation, jump
+                to specific line numbers, and run commands. For a full reference, see
+                <doc:Command-Palette>.
+
+                @Image(source: mac-tour-command-palette.png)
+            }
+            
+            @Step {
+                Use the Scene Selector to choose which scene Xogot launches the next
+                time you click the run button. This is similar to Godot's **Run
+                Specific Scene** command.
+
+                @Image(source: mac-tour-scene-selector.png)
+            }
+            @Step {
+                The Target Selector is located next to the Scene Selector.
+
+                You can run in the **Local Editor**, choose a connected device, or run
+                on **Vanilla Mac** to quickly launch your project without signing or
+                deploying. You can also choose other device and simulator targets, or
+                choose **This Mac** to build and run a fully signed Mac app.
+                
+                @Image(source: mac-tour-deployment-targets.png)
+            }
+        }
+    }
+}

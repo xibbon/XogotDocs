@@ -7,14 +7,23 @@ focus on Apple platform workflows.
 If you want to participate in early testing, please sign up on the 
  [Xogot for Mac sign-up page](https://xogot.com/mac).
 
+For a guided introduction to the preview, start with the
+<doc:Xogot-for-Mac-Tutorials>. The <doc:00.xogot_for_mac_tour> gives you
+a quick walkthrough of the Mac-native workspace, project navigation,
+Command Palette, scene selection, and run destination menu. It is also
+the best starting point if you want to get oriented quickly and continue
+on to signing and deploying your projects on mobile devices.
+
+@Image(source: "mac-tour-editor-overview.png", alt: "The Xogot for Mac editor workspace")
+
 Thank you for your interest in testing Xogot for Mac. This page explains 
 what we are looking for in the preview and how to provide feedback.
 
 Xogot layers a native Mac experience on top of the Godot editor engine, 
 so projects should remain compatible with the desktop edition of Godot. 
-Our goal is to make it easy to move projects between Xogot, Godot, iPad, 
-iPhone, and Mac workflows while improving the experience for developers 
-building on Apple platforms.
+Our goal is to make it easy to move projects between Godot and Xogot on 
+iPad, iPhone, and Mac while improving the experience for developers 
+building on and targeting Apple platforms.
 
 One of our principles is to preserve the capabilities needed for project 
 compatibility and interoperability. If something you need is missing or 
@@ -58,7 +67,10 @@ especially in high-traffic parts of the editor.
 One of the goals of Xogot for Mac is to make Apple platform development 
 more approachable for Godot developers. We are especially interested in 
 feedback related to running, testing, debugging, packaging, and deploying 
-projects for Mac, iPhone, and iPad.
+projects for Mac, iPhone, and iPad.  
+
+Check out our <doc:Xogot-for-Mac> for more details on signing and 
+deploying your projects to iPhone, iPad, and Mac.
 
 ### Missed Opportunities
 
@@ -69,5 +81,5 @@ could provide a better native experience, please let us know.
 
 ## Known Limitations and Release Notes
 
-Please read the <doc:Mac-Preview-Release-Notes> document for known 
-limitations and release notes for the latest Xogot for Mac preview builds.
+Please read the <doc:Mac-Preview> for known limitations and release 
+notes for the latest Xogot for Mac preview builds.

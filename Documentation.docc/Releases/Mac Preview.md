@@ -18,12 +18,6 @@ The current Mac preview has the following known limitations:
 
 ## Releases
 
-## Release 1319
+## Preview 1
 
-### Improvements
-
-- Register `project.godot` handling.
-
-### Fixes
-
-- Fixed a crash in Xogot for Mac.
+Initial Release

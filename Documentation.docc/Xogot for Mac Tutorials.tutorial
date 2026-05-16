@@ -1,4 +1,4 @@
-@Tutorials(name: "Xogot for Mac") {
+@Tutorials(name: "Xogot for Mac Tutorials") {
     @Intro(title: "Xogot for Mac") {
         Learn how to use Xogot for Mac's unique features for builds, testing and shipping
         Godot projects targeting Apple platforms.
@@ -8,6 +8,15 @@
         Xogot for Mac.
 
         @Image(source: iPhoneMacSimulator.png)
+    }
+
+    @Chapter(name: "First Tour") {
+        @Image(source: mac-tour-editor-overview.png)
+
+        Get oriented in the native Mac editor, including the workspace, Command Palette,
+        code navigation, debugging tools, settings, and run destination menu.
+
+        @TutorialReference(tutorial: "doc:00.xogot_for_mac_tour")
     }
 
     @Chapter(name: "Signing and Deployment") {

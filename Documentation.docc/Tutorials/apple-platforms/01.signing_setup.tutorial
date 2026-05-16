@@ -1,6 +1,6 @@
 @Tutorial(time: 10) {
     @Intro(title: "Signing Setup") {
-        Sign in to an Apple Developer account so Xogot can sign builds for iPhone and iPad.
+        Sign in to an Apple Developer account so Xogot can sign builds for Mac, iPhone and iPad.
 
         @Image(source: signing-setup-menu.png)
     }
