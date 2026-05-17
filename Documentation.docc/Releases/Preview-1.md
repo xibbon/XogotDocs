@@ -2,7 +2,38 @@
 
 Release notes for our preview release of Xogot to TestFlight.
 
-## Release
+## Release 4278 (Beta 643)
+
+### Improvements
+
+* Major Upgrade: We replaced our custom row rendering for a few elements with a
+  native built-in control (UICollectionView).   Our custom rendering over the
+  years accumulated touch handlers, drag triggers, context menus, swipe actions
+  and overloads for single and doubel taps.   These were competing goals, and
+  did not quite emulated all of the native behaviors, with the new
+  UICollectionView-based system these problems should go away and feel even more
+  native.
+  
+  The following views have been upgraded: ScenePad, FilePad and Breakpoint
+  Navigator. 
+
+* Mask layer editors: we now offer a "chip view" in addition to the grid of
+  numbers, which we are hoping is a better way of visualizing and maintaining
+  masks. 
+
+* Various color adjustments to better match Liquid Glass 
+
+### Fixes
+
+* Fixes a crash that we caught in the wild, related to the video player being
+  active and closing of an editor.
+
+* iPhone: Trimmed the amount of tabs on the launch screen for the iPhone
+
+* Bottom panels that showed up for transient panels will now auto-hide when the
+  panel is no longer active (#2619)
+
+## Release 4261
 
 ### Improvements
 
