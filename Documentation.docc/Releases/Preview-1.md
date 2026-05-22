@@ -2,6 +2,47 @@
 
 Release notes for our preview release of Xogot to TestFlight.
 
+## Release 4314
+
+We are moving Xogot to be powered by the Godot 4.6 engine.    Up until now, this
+was available on the "XogotBeta" testflight, and we are now ready for the
+broader testing, and soon a release to the AppStore.  
+
+This is also a release that is joinly being released with the Mac version, we
+now have a single codebsae for both.
+
+### Improvements
+
+* New native DependencyEditor, and DependencyError resolution windows.
+
+* Will now offer to make a backup as either a new folder or a ZIP file when
+  upgrading a project to the new version.
+
+### Fixes
+
+* Mac: opening TileSet bottom panel tab makes ViewPort freeze #2641
+
+* Mac: Closing main window will not close Xogot Settings / Project Settings
+  #2568
+
+* Fixes a crash when using the 3D picker when debugging (#2645)
+
+* Fixes a general race condition that would manifest when deleting objects that
+  were inspected.
+
+* Fixes an importer bug that would crash Xogot (#2644).
+
+* Fixes a Mac bug that would spam the output console when pausing a game.
+
+* Fixes support for external controllers on the Mac when using "Vanilla Mac"
+  mode (#2640).
+
+* Mac parity: Export Scene is now available
+
+* Fixes some memory leaks.
+
+* Mac: Return to active tab when Local Editor run is stopped #2636
+
 ## Release 4278 (Beta 643)
 
 ### Improvements
