@@ -22,7 +22,34 @@ The current Mac preview has the following known limitations:
 
 # Releases
 
-## Build 
+## Build 1417
+
+### Improvements
+
+* Find and Replace has been implemented, along with Find All  (#1909, #1628)
+
+### Fixes
+
+* Fixes debugging on iOS, it was previously not attaching, depending on your
+  IPV6 network tunnel.
+
+* 3D Navigation settings should now work, but most importantly, this fixed a
+  keyboard input issue on MacOS, so it should solve various small problems.
+
+* Fixes Mac debugging for the "My Mac" configuration.
+
+* Fix TileSet: Selecting TileSet objects in inspector makes bottom panel TileSet
+  option disappear
+
+* Fix Xogot Mac: Tilemap painting is not working as expected Public #120
+
+* Fix Xogot Mac: Tile Set physics UI is flipped #2671
+
+* Uses a different configuration name fixes public #122
+
+* Fixes the size for TileMapEditor
+
+## Build 1408
 
 ### Improvements
 

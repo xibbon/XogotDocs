@@ -2,6 +2,48 @@
 
 Release notes for our preview release of Xogot to TestFlight.
 
+## Release 4358
+
+### Improvements
+
+* Output View now has some additional filtering options (merge duplicate lines,
+  filter by kind).
+
+* Particles2D's EmissionMaskDialog is now a SwiftUI dialog.
+
+* Learning center downloads can now be canceled.
+
+* Camera Preview button on the main scene is now part of our shell, and no
+  longer hidden.
+
+* Find and Replace has been implemented, along with Find All (#1909, #1628)
+
+### Fixes
+
+* Drag and drop would temporarily leave 3D elements on the screen
+
+* Fixes a crash with some extensions.
+
+    Fix Script generation: Picking a folder and causes name to disappear and resets the template settings.
+
+* Right-size the bottom panel windows that were coming up at twice their height.
+
+* No longer surfaces pads on the extensions that were supposed to be shown on
+  demand.
+
+* Fix Xogot/iOS Settings button is not working Public #126
+
+* Fix TileSet: Selecting TileSet objects in inspector makes bottom panel TileSet option disappear
+
+* Small touch: two small pixel lines had sneaked upon us in the AnimationPlayer,
+  and would let some background show behind them.  This transgression has been
+  rectified (#2526)
+
+* Virtual controllers are back for portrait mode (despite the left side not
+  working - by popular demand)
+
+* Fix iPad/iPhone regression: open external location does nothing #2647
+
 ## Release 4314
 
 We are moving Xogot to be powered by the Godot 4.6 engine.    Up until now, this
