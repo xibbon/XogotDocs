@@ -22,6 +22,30 @@ The current Mac preview has the following known limitations:
 
 # Releases
 
+## Build 
+
+### Improvements
+
+* SceneImporter: improve parity with Godot, just a fix to an old gap.
+
+* Add support for "Run last build", by using Control-click on play, or
+  Control-Command-R, this prevents a build and install steps, similar to what
+  Xcode provides.
+
+* Code Editor upgrades: it should no longer lose your position when switching
+  tabs and vast memory reduction.
+
+* Report navigator should be localized now
+
+* Can now load projects that use SwiftGodot (before those projects were clashing
+  with the built-in version).
+  
+* Some work towards styling the inspector for the Mac
+
+* The Inspector can now be resized.
+
+* Should better track projects
+
 ## Build 1417
 
 ### Improvements
