@@ -22,7 +22,50 @@ The current Mac preview has the following known limitations:
 
 # Releases
 
-## Build 
+## Build Makefile
+
+### Improvements
+
+* The Embedded Game preview now supports configuring different stretching modes.
+
+* AssetBrowser: you can now preview audio from the asset browser.
+
+* AssetBrowswr: can now batch generate previews for 3D models.
+
+* Refined Inspector view, it is more bubbly than ever on Mac, and tasteful
+  titles and subtitles are added and the old and amateur header is gone.
+
+* AudioImporter: performance optimization when playing back audio, it was
+  choppy - and now it is not.
+
+* The inspector will now show a suble dot do show you which properties have
+  values that are not the same as the default property in Godot.
+
+* When you hit a breakpoint, we will actually show you the code where you hit it
+  - rather than letting you figure this out on your own #2690
+
+* We now have a nice, interactive and native SwiftUI Texture viewer instead of
+  the old static image that was not much fun.   We also made a native Mesh
+  previewer which allows us to use two icons and gives us control to spice this
+  control up.
+
+* Users of the WASD/QE regiment will now be happy to find that two-finger press
+  will honor those keystrokes.  We salute your service.
+
+### Fixes
+
+* Fix Mac: we are switching to the 3D editor view when resuming the game on My
+  Mac mode. #2678
+
+* SignalPad: Fix Mac: we are switching to the 3D editor view when resuming the
+  game on My Mac mode. #2678
+
+* Can now load projects that use SwiftGodot (before those projects were clashing
+  with the built-in version) - for real this time.
+
+* Small fixes in the UI of our Scene importer to bring it to Godot parity.
+
+## Build 1422
 
 ### Improvements
 
