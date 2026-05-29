@@ -2,11 +2,40 @@
 
 Release notes for our preview release of Xogot to TestFlight.
 
-## Release
+## Release 4410
 
-### Improvements
+* AudioImport Advanced Settings: new design for the UI.
+
+* Scene Import Advanced Settings: updates Skeleton bone preview: fix transform,
+  depth rendering, and skin binding so bones display correctly over the mesh and
+  animate with the model. 
+
+* Scene import parity: add zoom input, live loop-mode ed iting, timer lifecycle
+  fixes, MultiMesh handling, and material extract auto-disable to match native
+  Godot behavior.
+
+* Inspector: now we display a live audio preview component (#1288)
+
+* AssetBrowser: audio files will now include the runtime in the display.
 
 ### Fixes
+
+* Fixes a crash when editing a material
+
+* Fix Skeleton3D: editing bone dots doesn't work in edit mode #2706
+
+* Prevent panels from auto-closing the first time you instantiate an object of a
+  given type there (recent Testflight regression).
+
+* The new Material Preview will update instantly, instead of having a delay.
+
+### iOS Fixes
+
+* Fixes a crash during undo in Runestone in the wild #2698
+
+* Improves the layout of the asset browser for small screens (#2704)
+
+* Implemented "Show in Files" #2705 from the FilePad.
 
 * iOS: Fixes crash that occurs when doing rename of node and collapsing parent
   node at same time. That will attempt to apply a snapshot while already

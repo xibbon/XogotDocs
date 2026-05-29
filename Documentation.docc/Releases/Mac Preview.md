@@ -22,6 +22,103 @@ The current Mac preview has the following known limitations:
 
 # Releases
 
+## Build 1462
+
+### Features
+
+* Clicking on the close button will now close the project, not just the active
+  scene.
+
+* We will now warn users if they close a scene or project and there are unsaved
+  changes. 
+
+* An obscure feature in Godot that shows optional panels has been implemented
+  (PROPERTY_HINT_GROUP_ENABLE for those following at home)
+
+* We now have proper help popovers on Mac (also fixes
+  https://github.com/xibbon/XogotIssues/issues/113)
+
+* Enter-to-rename is now available on the ScenePad as well (it was only
+  available on the FilePad, but this oversight has been remedied).
+
+### Performance
+
+* Major performance optimization on the Scene and File pads by reducing busy
+  work.
+
+* Major performance upgrades to the inspector, they were not very noticeable day
+  to day, but they would turn up during our profiling and were noise that we
+  decided that was better to fix now, so we could focus and tune better in the
+  future.   So this is done.
+
+* Then on Discord, an observant user found that our Array editing on the
+  inspector left much to be desired.  And by much, I mean, it would take two
+  seconds to update a cell.    This abomination has been fixed and updating
+  array values is now instant.
+
+* Performance improvements to the AudioImport view.
+
+* Improved the editor status update.
+
+### Fixes
+
+* Fixed: "Unable to stop the game on the remote device when using Xogot Connect
+  to Xogot on iPhone"  https://github.com/xibbon/XogotIssues/issues/125
+
+* Closing a scene tab should be faster
+
+* Fixes "File/Open Project" sometimes failing to open.
+
+* Fixes a crash that was happening in the wild to users of the AnimationEditor.
+
+* Mesh and Material previews now update immediately in the inspector.
+
+* Fixes that used to crash our remote interface.
+
+* GLTFExportView now works on Mac.
+
+* QuickOpen now works as intended, before it would filter incorrectly the files.
+
+* Fix iPhone: Shader editor keyboard issues #2720
+
+
+## Build 1444
+
+### Improvements
+
+* AudioImport Advanced Settings: new design for the UI.
+
+* Scene Import Advanced Settings: updates Skeleton bone preview: fix transform,
+  depth rendering, and skin binding so bones display correctly over the mesh and
+  animate with the model. 
+
+* Scene import parity: add zoom input, live loop-mode ed iting, timer lifecycle
+  fixes, MultiMesh handling, and material extract auto-disable to match native
+  Godot behavior.
+
+* Inspector: now we display a live audio preview component (#1288)
+
+* AssetBrowser: audio files will now include the runtime in the display.
+
+### Fixes
+
+* Fixes a crash when editing a material
+
+* Fix Skeleton3D: editing bone dots doesn't work in edit mode #2706
+
+* Prevent panels from auto-closing the first time you instantiate an object of a
+  given type there (recent Testflight regression).
+
+* The new Material Preview will update instantly, instead of having a delay.
+
+### iOS Fixes
+
+* Fixes a crash during undo in Runestone in the wild #2698
+
+* Improves the layout of the asset browser for small screens (#2704)
+
+* Implemented "Show in Files" #2705 from the FilePad.
+
 ## Build 1431
 
 ### Improvements
