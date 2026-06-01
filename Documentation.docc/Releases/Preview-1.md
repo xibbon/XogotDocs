@@ -2,6 +2,86 @@
 
 Release notes for our preview release of Xogot to TestFlight.
 
+## Release
+
+### Improvements
+
+* Learning Center: added more samples and we have been updated the existing ones
+ to  Godot 4.6.
+
+* AnimationPlayerEditor gets support for AnimationMakers.
+
+* AnimationPlayerEditor gets shift/command-click selection for keys (#2733)
+
+* UI work to improve the Particles2D Emission Mask Dialog, Rename dialogs,
+  various popups that had a debug blue labels left behind and EaseAnimation.
+
+### Fixes
+
+* Fixes a crash when closing the editor with Command-Q
+
+* Fixes a crash in the wild with a race condition when updating documentation.
+
+### Fixes
+
+* Drag to rotate in 3D editor deselects node (#2727)
+
+* Fixes a race condition that would crash on the Godot IP resolver (#2732)
+
+
+## Release 4429
+
+### Features
+
+* Clicking on the close button will now close the project, not just the active
+  scene.
+
+* We will now warn users if they close a scene or project and there are unsaved
+  changes. 
+
+* An obscure feature in Godot that shows optional panels has been implemented
+  (PROPERTY_HINT_GROUP_ENABLE for those following at home)
+
+* We now have proper help popovers on Mac (also fixes
+  https://github.com/xibbon/XogotIssues/issues/113)
+
+* Enter-to-rename is now available on the ScenePad as well (it was only
+  available on the FilePad, but this oversight has been remedied).
+
+### Performance
+
+* Major performance optimization on the Scene and File pads by reducing busy
+  work.
+
+* Major performance upgrades to the inspector, they were not very noticeable day
+  to day, but they would turn up during our profiling and were noise that we
+  decided that was better to fix now, so we could focus and tune better in the
+  future.   So this is done.
+
+* Then on Discord, an observant user found that our Array editing on the
+  inspector left much to be desired.  And by much, I mean, it would take two
+  seconds to update a cell.    This abomination has been fixed and updating
+  array values is now instant.
+
+* Performance improvements to the AudioImport view.
+
+* Improved the performance of editor progress updates.
+
+### Fixes
+
+* Fixed: "Unable to stop the game on the remote device when using Xogot Connect
+  to Xogot on iPhone"  https://github.com/xibbon/XogotIssues/issues/125
+
+* Closing a scene tab should be faster
+
+* Fixes a crash that was happening in the wild to users of the AnimationEditor.
+
+* Mesh and Material previews now update immediately in the inspector.
+
+* QuickOpen now works as intended, before it would filter incorrectly the files.
+
+* Fix iPhone: Shader editor keyboard issues #2720
+
 ## Release 4410
 
 * AudioImport Advanced Settings: new design for the UI.
@@ -106,7 +186,8 @@ Release notes for our preview release of Xogot to TestFlight.
 
 * Fixes a crash with some extensions.
 
-    Fix Script generation: Picking a folder and causes name to disappear and resets the template settings.
+* Fix Script generation: Picking a folder and causes name to disappear and
+  resets the template settings.
 
 * Right-size the bottom panel windows that were coming up at twice their height.
 
@@ -115,7 +196,8 @@ Release notes for our preview release of Xogot to TestFlight.
 
 * Fix Xogot/iOS Settings button is not working Public #126
 
-* Fix TileSet: Selecting TileSet objects in inspector makes bottom panel TileSet option disappear
+* Fix TileSet: Selecting TileSet objects in inspector makes bottom panel TileSet
+  option disappear
 
 * Small touch: two small pixel lines had sneaked upon us in the AnimationPlayer,
   and would let some background show behind them.  This transgression has been

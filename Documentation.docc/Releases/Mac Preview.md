@@ -22,6 +22,37 @@ The current Mac preview has the following known limitations:
 
 # Releases
 
+## Build
+
+### Features
+
+* Learning Center: added more samples and we have been updated the existing ones
+ to  Godot 4.6.
+
+ * Code Editor: changed our zoom keyboard shortcut to Command-[+/-]
+   instead of Command-Shift-[+/-]
+
+* Code Editor: you can now pick any font size, you are no longer limited to the
+  limited selection we inherited from our iPad choices.
+
+* The inspector now evaluates GDScript extensions in numeric fields.   Prefix
+  the value with "=" to force an evaluation as an expression.   Otherwise, if
+  your input cannot be parsed as a number, we will try to parse as an
+  expression.  Fixes #369
+
+* AnimationPlayerEditor gets support for AnimationMakers.
+
+* AnimationPlayerEditor gets shift/command-click selection for keys (#2733)
+
+* UI work to improve the Particles2D Emission Mask Dialog, Rename dialogs,
+  various popups that had a debug blue labels left behind and EaseAnimation.
+
+### Fixes
+
+* Fixes a crash when closing the editor with Command-Q
+
+* Fixes a crash in the wild with a race condition when updating documentation.
+
 ## Build 1462
 
 ### Features
@@ -58,7 +89,7 @@ The current Mac preview has the following known limitations:
 
 * Performance improvements to the AudioImport view.
 
-* Improved the editor status update.
+  * Improved the performance of editor progress updates.
 
 ### Fixes
 
@@ -80,7 +111,6 @@ The current Mac preview has the following known limitations:
 * QuickOpen now works as intended, before it would filter incorrectly the files.
 
 * Fix iPhone: Shader editor keyboard issues #2720
-
 
 ## Build 1444
 

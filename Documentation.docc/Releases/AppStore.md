@@ -2,6 +2,69 @@
 
 Release notes for public releases of Xogot to the App Store.
 
+## Release 1.6.0
+
+## Improvements
+
+This release brings the Godot 4.6 features to Xogot, along with many
+iOS-specific improvements and a refreshed Learning Center.
+
+### iOS
+
+* More iOS native UIs: we have upgraded more Godot components to be iOS native
+  both large, like the Animation Tree Editor, small, including the Dependency
+  Editor, Material and Mesh inspectors, Texture Viewer, Emissions Mask, Camera
+  control, and audio inspector - plus small updates across the board for
+  consistency with the platform.
+
+* The Embedded Game preview now supports configuring different stretching modes
+  when playing your game, in addition to the setting you chose for your game,
+  during this debug mode, we can stretch or fill the view.
+
+* We now offer a visual representation of your masks and layers, as an
+  alternative to the numeric grid that we have used in the past.
+
+* We brought Find and Replace across all files.
+
+* The asset browser will now preview audio files and you can batch generate
+  previews for all assets directly from it.   It is now also available on the
+  iPhone. 
+
+### Performance
+
+This release further reduces battery consumption when idling, but we also
+improved the performance of several key components of Xogot: the inspector,
+scene pad and file pad were all subject of extensive updates to reduce busy work
+with noticeable response times.
+
+### Godot 4.6 
+
+In this release we are upgrading the Godot engine from 4.5 to 4.6, and this
+brings many capabilities.  Some of the most noticeable features include:
+
+* A new inverse kinematics framework adds new IK modifiers, solvers, and
+  constraints for procedural 3D animation.
+
+* Screen Space Reflections have been overhauled, with better visual stability,
+  roughness handling, and performance.
+
+* 3D texture imports are faster, with some compressed textures importing twice
+  as fast.
+
+* Mesh LOD generation has improved, helping distant 3D objects preserve their
+  shape better.
+
+* Jolt Physics is now the default for new 3D projects, bringing a faster and
+  more robust physics backend while leaving existing project settings unchanged
+
+* Rendering improvements include better glow blending, configurable AgX
+  tonemapping, lighter reflection and radiance probes, material debanding, and
+  improved HDR precision.
+
+### Fixes
+
+Over 57 bugs fixed since our last release.
+
 # Releases 1.5.8 (4197)
 
 ### AssetBrowser
