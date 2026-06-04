@@ -2,7 +2,11 @@
 
 Release notes for our preview release of Xogot to TestFlight.
 
-## Release
+## Release 4451
+
+Small label updates, nothing major.
+
+## Release 4447
 
 ### Improvements
 
@@ -22,12 +26,11 @@ Release notes for our preview release of Xogot to TestFlight.
 
 * Fixes a crash in the wild with a race condition when updating documentation.
 
-### Fixes
-
 * Drag to rotate in 3D editor deselects node (#2727)
 
 * Fixes a race condition that would crash on the Godot IP resolver (#2732)
 
+* Fixed selection in the filepad.
 
 ## Release 4429
 

@@ -24,6 +24,65 @@ The current Mac preview has the following known limitations:
 
 ## Build
 
+### Improvements
+
+* Our welcome page now has links to the Learning Center, videos and tutorials.
+
+* You can now resize the time of an animation in the AnimationPlayer
+  visually, you do not have to type in a value (#2729)
+
+* You can now copy entire values from categories and sections and paste them on
+  other categories/sections (borrowed from the upcoming Godot 4.7)
+
+* Large enumeration values now show a search box in addition to a popup.
+
+* Monaco commands are now available when you trigger the command palette  with
+  Command-Shift-P  and we will now display the shortcut values to trigger that
+  command. 
+
+* You can now right click on the scene tabs to get a number of common operations
+  on a scene (borrowed from the upcoming Godot 4.7)
+
+* We now have a MacOS/iOS native GridMap placer UI, this replaces the Godot
+  GridMap placer.
+
+* Setting breakpoints on canvas_item shaders will now show a preview of the
+  texture being assigned at that point in time (brorowed from the upcoming Godot
+  4.7)
+
+### Fixes
+
+* Fixes Action Input renaming, it was difficult to rename a field as we kept
+  resetting the value (#2571).
+
+## Build 1483
+
+In this release, the "Xogot" 3D Navigation setting has been updated to mirror
+the behavior of Reality Composer, this is very close to what you would get on
+the iPad and feels like the right approach and what we feel integrates best with
+the Trackpad, common on Apple platforms.
+
+The bindings are as follows:
+
+### TrackPad Bindings
+
+* Two finger pan: pan
+* Press-drag: rotate
+* Press-shift-drag: selection
+* Press-drag + Option: zoom
+* Two finger drag: rotate around camera
+
+### Magic Mouse Bindings
+
+* Click-drag: rotate
+* Two finger pan: pan
+* Right-click drag: rotate around camera
+* Finger pan: pan
+* Click-drag + Option: zoom
+
+
+## Build 1476
+
 ### Features
 
 * Learning Center: added more samples and we have been updated the existing ones

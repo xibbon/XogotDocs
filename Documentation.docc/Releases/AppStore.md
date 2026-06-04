@@ -2,7 +2,7 @@
 
 Release notes for public releases of Xogot to the App Store.
 
-## Release 1.6.0
+## Release 1.6.0 (4464)
 
 ## Improvements
 
