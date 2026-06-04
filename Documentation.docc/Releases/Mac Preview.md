@@ -22,7 +22,7 @@ The current Mac preview has the following known limitations:
 
 # Releases
 
-## Build
+## Build 1505
 
 ### Improvements
 
