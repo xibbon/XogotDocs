@@ -31,6 +31,10 @@ To get started building games with Xogot, check out our <doc:Getting-Started> gu
 - <doc:Testflight>
 - <doc:Mac-Testing>
 
+### Mac
+
+- <doc:mac_command_line>
+- <doc:integrating_with_ai_tools>
 
 ### 2D
 
