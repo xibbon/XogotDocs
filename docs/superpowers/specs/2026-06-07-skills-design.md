@@ -4,6 +4,8 @@
 **Status:** Approved (brainstorming session)
 **Owner:** DocC + XogotDocs maintainers
 
+> **Note:** Skills are **personal** (in `~/.agents/skills/`), not committed to the XogotDocs repo. Earlier draft said to commit them; revised per review feedback.
+
 ## Purpose
 
 Future agents working on the XogotDocs repo (or authoring new DocC tutorials anywhere) should be able to find a small, well-organized set of personal skills that:
@@ -12,7 +14,7 @@ Future agents working on the XogotDocs repo (or authoring new DocC tutorials any
 2. Document the XogotDocs repo layout, naming, and conventions so a new agent can navigate without re-discovering everything.
 3. Provide a workflow for translating an upstream Godot tutorial (e.g. `docs.godotengine.org`) into this repo's DocC format, including the asset-downloading and `.gd` code-file conventions we established.
 
-The three skills are personal (lived in `.agents/skills/`) and committed to the XogotDocs repo so the team shares them.
+The three skills are personal (live in the user's `~/.agents/skills/`) and are not committed to the XogotDocs repo. They're available across any project the user works in.
 
 ## Scope
 
@@ -50,7 +52,14 @@ The three skills are personal (lived in `.agents/skills/`) and committed to the 
 - `name: docc-syntax`
 - `description:` triggers on DocC, tutorial, directive, `@Tutorial`, `@Section`, `@Step`, `@ContentAndMedia`, `@Image`, `@Code`, `@Tutorials`, `@Chapter`, `@Intro`, aside, DocC aside, DocC link, DocC table, swift.org/documentation/docc. Under 1024 chars. Does NOT summarize the workflow.
 
-**Validation (TDD-style):** Walk through the existing 3D tutorial (`Documentation.docc/Tutorials/your-first-3d-game/`) and confirm every directive used there is covered. Specifically verify the asides (Note/Tip/Important/Experiment), the `@Code` reset/previousFile pattern, and the image filename convention.
+**Validation (TDD-style):** Open the existing 3D tutorial (`Documentation.docc/Tutorials/your-first-3d-game/`) and confirm the following specific test cases are all covered by the skill:
+- Every `@Step` block in the 3D tutorial is described (when to use, what it can contain).
+- All 5 canonical asides (Note, Tip, Important, Warning, Experiment) appear with both single-line and multi-line syntax shown.
+- The `@Code` directive's `reset: true` and `previousFile:` parameters are explained with an example of each.
+- The image filename convention (`@2x`, `~dark`, `~light`) is documented.
+- The `> TYPE: content` and `- TYPE: content` aside syntax alternatives are shown.
+- Link syntax for at least: symbol (backticks), article (`<doc:slug>`), and tutorial (`<doc:slug>`) is shown.
+A test "passes" when the skill's `tutorials.md` (or relevant topic file) has a section that the agent would naturally navigate to when asked.
 
 ### 2. `xogot-docs-repo-layout/` (repo-specific)
 **Purpose:** New agent can navigate the XogotDocs repo without rediscovering structure.
@@ -62,16 +71,22 @@ The three skills are personal (lived in `.agents/skills/`) and committed to the 
 
 **Content:**
 - High-level repo layout: `Documentation.docc/`, `Resources/`, `Resources/code-files/`, `Resources/tutorials-art/`, `Tutorials/`.
-- Where new tutorials go: `Documentation.docc/Tutorials/<tutorial-slug>/` with `img/`, and `Documentation.docc/Resources/code-files/<tutorial-slug>/`.
+- Where new tutorials go: `Documentation.docc/Tutorials/<tutorial-slug>/` with `img/` for tutorial-specific images, and `Documentation.docc/Resources/code-files/<tutorial-slug>/` for `.gd` samples.
 - How the table of contents is structured: `Documentation.docc/Xogot Tutorials.tutorial` with `@Chapter` blocks.
-- Image naming convention: kebab-case, e.g. `01.import_button.webp`, no spaces or uppercase.
+- Image naming convention: kebab-case with a numeric prefix to preserve upstream source order, e.g. `01.import_button.webp`, no spaces or uppercase. Each tutorial gets its own `img/` subfolder for tutorial-specific assets; the shared `Resources/tutorials-art/<tutorial-slug>/` folder is also available for cross-tutorial assets and reusable UI screenshots.
 - How to register a new tutorial in the catalog.
 
 **YAML frontmatter:**
 - `name: xogot-docs-repo-layout`
 - `description:` triggers on the XogotDocs repo, `Documentation.docc`, the catalog structure, or questions like "where do images go" / "how do I add a new tutorial".
 
-**Validation:** New agent reading the skill should be able to answer: where do I put a new `.tutorial`? where do the images go? where do the code samples go? how do I register the new tutorial in the catalog?
+**Validation:** Given the 3D tutorial as a test fixture, a new agent reading the skill should be able to answer these specific questions without opening any other file:
+- "Where do I put a new `.tutorial` file?"
+- "Where do its images go? Its code samples?"
+- "How do I register it in the catalog table of contents?"
+- "What naming convention should images follow?"
+- "How do I add a new chapter for it?"
+A test "passes" when the skill contains the answer with a path or example for each.
 
 ### 3. `translating-godot-tutorials/` (repo-specific workflow)
 **Purpose:** Step-by-step procedure for taking an upstream Godot tutorial and producing a XogotDocs `.tutorial` file.
@@ -100,7 +115,13 @@ The three skills are personal (lived in `.agents/skills/`) and committed to the 
 - `name: translating-godot-tutorials`
 - `description:` triggers on translating a Godot tutorial, adding a new tutorial to XogotDocs, working in `Documentation.docc/Tutorials/`, or when the user references the upstream `docs.godotengine.org` tutorial structure.
 
-**Validation:** Walk through the existing 3D tutorial and confirm every step in the workflow was followed.
+**Validation:** Walk through the existing 3D tutorial and confirm these specific checklist items:
+- The workflow's 8 steps can be matched one-to-one to the commits in the `add-your-first-3d-game-tutorial` branch history (`git log --oneline`).
+- Every image referenced in the 3D tutorial exists in `<tutorial>/img/` and every `@Code(file:)` resolves to a file in `Resources/code-files/your-first-3d-game/`.
+- The .gd code files form a strict additive chain (file N is a subset of file N+1).
+- The catalog table of contents (`Documentation.docc/Xogot Tutorials.tutorial`) has the 3D tutorial registered.
+- The Xogot touch adaptations (tap/long-tap, Virtual Joystick add-on, etc.) appear in the relevant sections of the 3D tutorial.
+A test "passes" when each item is true.
 
 ## Frontmatter standards (all three skills)
 
@@ -133,31 +154,31 @@ After writing, re-walk the tutorial and confirm coverage.
 
 ## File organization
 
+The three skills are written under the user's personal skills directory (`~/.agents/skills/`) on this machine, NOT in the XogotDocs repo. Approximate paths on Windows: `C:\Users\nicol\.agents\skills\<skill-name>\`.
+
 ```
-XogotDocs/
-  .agents/
-    skills/
-      docc-syntax/
-        SKILL.md
-        tutorials.md
-        articles-and-landing.md
-        formatting.md
-        asides.md
-        links.md
-        images.md
-        tables.md
-        code-snippets.md
-      xogot-docs-repo-layout/
-        SKILL.md
-      translating-godot-tutorials/
-        SKILL.md
+~/.agents/skills/
+  docc-syntax/
+    SKILL.md
+    tutorials.md
+    articles-and-landing.md
+    formatting.md
+    asides.md
+    links.md
+    images.md
+    tables.md
+    code-snippets.md
+  xogot-docs-repo-layout/
+    SKILL.md
+  translating-godot-tutorials/
+    SKILL.md
 ```
 
 ## Deployment
 
-- Commit the three skills to the current branch (`add-your-first-3d-game-tutorial`).
-- Push to `origin`.
-- The skills will be picked up by the user's personal agent catalog since the repo is checked out to a path the user works in.
+- Write the skill files to `~/.agents/skills/` directly.
+- The skills become immediately available to any future agent session in the user's personal agent catalog.
+- They are NOT committed to the XogotDocs repo. If the user wants the team to share them, they can copy the `~/.agents/skills/` directories into a shared location, but that's out of scope for this design.
 
 ## Out-of-scope followups
 
