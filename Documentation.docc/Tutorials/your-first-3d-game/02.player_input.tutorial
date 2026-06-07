@@ -178,31 +178,51 @@
                 @Image(source: keyboard_keys.webp)
             }
             @Step {
-                Let's now add support for a gamepad's left joystick. Tap the "**+**"
-                button again but this time, select the input within the input tree
-                yourself. Select the negative X axis of the left joystick under
-                **Joypad Axes**.
+                Now let's also bind the on-screen controller. Tap the "**+**"
+                button again but this time, select the input within the
+                input tree yourself. From the dropdown, pick **Joypad Axes**,
+                then choose **Left Stick Left (Joystick 1 Axis 0 -)**.
 
-                Leave the other values as default and press **OK**.
+                Leave the other values as default and tap **Create**.
 
-                > Note: If you want controllers to have different input actions,
-                > you can use the Devices option in Additional Options. Device 0
-                > corresponds to the first plugged gamepad, Device 1 to the
-                > second, and so on. We're leaving this off so a single gamepad
-                > configuration works for any plugged-in controller.
+                > Note: This is the same axis the on-screen left thumbstick
+                > drives. We enabled the Left Thumbstick in the project
+                > settings in the previous section.
 
-                @Image(source: joystick_axis_input.webp)
+                > Tip: If you want different controllers to have different
+                > bindings, you can use the Devices option in Additional
+                > Options. Device 0 is the first plugged gamepad, Device 1
+                > is the second, and so on. We're leaving this off so a
+                > single gamepad configuration works for any plugged-in
+                > controller.
+
+                @Image(source: configure-input-map.png)
             }
             @Step {
-                Do the same for the other input actions. For example, bind the right
-                arrow, D, and the left joystick's positive axis to `move_right`.
-                After binding all keys, your interface should look like this.
+                Do the same for the other input actions. For the movement
+                actions, bind:
+                - `move_right`: the right arrow key, `D`, and **Left Stick
+                  Right (Joystick 1 Axis 0 +)**
+                - `move_forward`: the up arrow key, `W`, and **Left Stick Up
+                  (Joystick 1 Axis 1 -)**
+                - `move_back`: the down arrow key, `S`, and **Left Stick
+                  Down (Joystick 1 Axis 1 +)**
+
+                After binding all keys, your interface should look like
+                this.
 
                 @Image(source: move_inputs_mapped.webp)
             }
             @Step {
-                The final action to set up is the `jump` action. Bind the Space key
-                and the gamepad's A button located under **Joypad Buttons**.
+                The final action to set up is the `jump` action. Tap the
+                "**+**" button, choose **Keyboard Keys** and press Space,
+                then tap the "**+**" button again. This time, choose
+                **Joypad Buttons** and select **A (Joystick 1 Button 0)**.
+
+                > Important: We're binding the **A** button — not B, X,
+                > or Y — because that's the on-screen button we enabled
+                > in the project settings. The Xogot virtual controller
+                > uses the Xbox naming convention.
 
                 Your jump input action should look like this.
 

@@ -215,4 +215,58 @@
             player scene and base movement.
         }
     }
+    @Section(title: "Enabling the onscreen controller") {
+        @ContentAndMedia {
+            We will set up the game to support a wireless gamepad, and we'll
+            also turn on Xogot's
+            [onscreen virtual controller](https://docs.xogot.com/documentation/xogot/onscreen-controls)
+            so players without a physical controller can play directly on
+            their iPad with on-screen touch controls.
+
+            The virtual controller emulates hardware gamepad actions, so
+            we'll bind the left thumbstick and the A button to our `move_*`
+            and `jump` input actions in the next section. For now, we just
+            enable the controller and decide which parts are visible.
+        }
+        @Steps {
+            @Step {
+                Open the project settings by tapping the **...** toolbar
+                button in the upper-right corner of Xogot and tapping
+                **Settings**.
+
+                @Image(source: fix-me.png, alt: "The ... toolbar button in the upper-right with the Settings menu open")
+            }
+            @Step {
+                In the left column, scroll down to **Input Devices** and tap
+                *Virtual Controller*.
+
+                > Tip: The *Virtual Controller* settings live under *Input
+                > Devices*, not under the more familiar *General* tab
+                > where the Input Map is.
+
+                @Image(source: fix-me.png, alt: "The Virtual Controller entry in the Input Devices list")
+            }
+            @Step {
+                Toggle **Enable Controller** on. Then turn **off** everything
+                except the **Left Thumbstick** and the **A** button.
+
+                For this project we'll use the left thumbstick to move the
+                player and the A button to jump — exactly what would
+                appear on a physical Xbox-style gamepad.
+
+                > Important: The button names use the **Xbox naming
+                > convention** (A, B, X, Y). We'll bind the A button to
+                > `jump` in the next section so the on-screen A button
+                > jumps the player.
+
+                @Image(source: configure-virtual-controller.png)
+            }
+            You can dismiss the settings dialog. The onscreen controls will
+            automatically appear when you run your project on an iPad and
+            hide themselves when a physical controller is connected.
+
+            In the next section we'll set up the input actions and bind
+            them to the on-screen controls.
+        }
+    }
 }
