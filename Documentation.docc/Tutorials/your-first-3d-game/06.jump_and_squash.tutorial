@@ -10,14 +10,12 @@
     }
     @Section(title: "Controlling physics interactions") {
         @ContentAndMedia {
-            Physics bodies have access to two complementary properties: layers and
-            masks. Layers define on which physics layer(s) an object is.
+            Physics bodies have access to two complementary properties: layers
+            and masks. Layers define on which physics layer(s) an object is.
 
             Masks control the layers that a body will listen to and detect. This
-            affects collision detection. When you want two bodies to interact, you
-            need at least one to have a mask corresponding to the other.
-
-            If that's confusing, don't worry, we'll see three examples in a second.
+            affects collision detection. When you want two bodies to interact,
+            you need at least one to have a mask corresponding to the other.
 
             The important point is that you can use layers and masks to filter
             physics interactions, control performance, and remove the need for
@@ -26,204 +24,214 @@
             By default, all physics bodies and areas are set to both layer and
             mask `1`. This means they all collide with each other.
 
-            Physics layers are represented by numbers, but we can give them names
-            to keep track of what's what.
+            Physics layers are represented by numbers, but we can give them
+            names to keep track of what's what.
         }
         @Steps {
             @Step {
                 Let's give our physics layers a name. Go to _Project -> Project
                 Settings_.
 
-                @Image(source: 02.project_settings1.webp)
-
                 In the left menu, navigate down to _Layer Names -> 3D Physics_.
-                You can see a list of layers with a field next to each of them on
-                the right. You can set their names there. Name the first three
-                layers _player_, _enemies_, and _world_, respectively.
-
-                @Image(source: 03.physics_layers.webp)
+                You can see a list of layers with a field next to each of them
+                on the right. You can set their names there. Name the first
+                three layers _player_, _enemies_, and _world_, respectively.
 
                 Now, we can assign them to our physics nodes.
+
+                @Image(source: 03.physics_layers.webp)
             }
             @Step {
-                In the _Main_ scene, select the `Ground` node. In the _Inspector_,
-                expand the _Collision_ section. There, you can see the node's
-                layers and masks as a grid of buttons.
+                In the _Main_ scene, select the `Ground` node. In the
+                _Inspector_, expand the _Collision_ section. There, you can
+                see the node's layers and masks as a grid of buttons.
 
-                @Image(source: 04.default_physics_properties.webp)
+                The ground is part of the world, so we want it to be part of
+                the third layer. Tap the lit button to toggle **off** the
+                first _Layer_ and toggle **on** the third one. Then, toggle
+                **off** the _Mask_ by tapping on it.
 
-                The ground is part of the world, so we want it to be part of the
-                third layer. Click the lit button to toggle **off** the first
-                _Layer_ and toggle **on** the third one. Then, toggle **off** the
-                _Mask_ by clicking on it.
+                As mentioned before, the _Mask_ property allows a node to
+                listen to interaction with other physics objects, but we
+                don't need it to have collisions. `Ground` doesn't need to
+                listen to anything; it's just there to prevent creatures
+                from falling.
+
+                Note that you can tap the "..." button on the right side of
+                the properties to see a list of named checkboxes.
 
                 @Image(source: 05.toggle_layer_and_mask.webp)
-
-                As mentioned before, the _Mask_ property allows a node to listen
-                to interaction with other physics objects, but we don't need it
-                to have collisions. `Ground` doesn't need to listen to anything;
-                it's just there to prevent creatures from falling.
-
-                Note that you can click the "..." button on the right side of the
-                properties to see a list of named checkboxes.
-
-                @Image(source: 06.named_checkboxes.webp)
-
+            }
+            @Step {
                 Next up are the `Player` and the `Mob`. Open `player.tscn` by
-                double-clicking the file in the _FileSystem_ dock.
+                double-tapping the file in the _FileSystem_ dock.
 
-                Select the _Player_ node and set its _Collision -> Mask_ to both
-                "enemies" and "world". You can leave the default _Layer_ property
-                as it is, because the first layer is the "player" layer.
+                Select the _Player_ node and set its _Collision -> Mask_ to
+                both "enemies" and "world". You can leave the default _Layer_
+                property as it is, because the first layer is the "player"
+                layer.
 
                 @Image(source: 07.player_physics_mask.webp)
-
-                Then, open the _Mob_ scene by double-clicking on `mob.tscn` and
-                select the `Mob` node.
+            }
+            @Step {
+                Then, open the _Mob_ scene by double-tapping on `mob.tscn`
+                and select the `Mob` node.
 
                 Set its _Collision -> Layer_ to "enemies" and unset its
                 _Collision -> Mask_, leaving the mask empty.
 
+                These settings mean the monsters will move through one
+                another. If you want the monsters to collide with and slide
+                against each other, turn **on** the "enemies" mask.
+
+                > Note: The mobs don't need to mask the "world" layer
+                > because they only move on the XZ plane. We don't apply
+                > any gravity to them by design.
+
                 @Image(source: 08.mob_physics_mask.webp)
-
-                These settings mean the monsters will move through one another.
-                If you want the monsters to collide with and slide against each
-                other, turn **on** the "enemies" mask.
-
-                > Note: The mobs don't need to mask the "world" layer because
-                > they only move on the XZ plane. We don't apply any gravity to
-                > them by design.
             }
         }
     }
     @Section(title: "Jumping") {
         @ContentAndMedia {
-            The jumping mechanic itself requires only two lines of code. Open the
-            _Player_ script. We need a value to control the jump's strength and
-            update `_physics_process()` to code the jump.
+            The jumping mechanic itself requires only two lines of code. Open
+            the _Player_ script. We need a value to control the jump's
+            strength and update `_physics_process()` to code the jump.
+        }
+        @Steps {
+            @Step {
+                After the line that defines `fall_acceleration`, at the top
+                of the script, add the `jump_impulse` property.
 
-            After the line that defines `fall_acceleration`, at the top of the
-            script, add the `jump_impulse`.
+                @Code(name: "player.gd", file: player-07.gd, previousFile: player-06.gd)
+            }
+            @Step {
+                Inside `_physics_process()`, add a check that applies the
+                jump impulse when the player is on the floor and just
+                pressed the "jump" action.
 
-            @Code(name: "player.gd", file: player-07.gd, previousFile: player-06.gd)
-
+                @Code(name: "player.gd", file: player-07.gd)
+            }
             That's all you need to jump!
 
             The `is_on_floor()` method is a tool from the `CharacterBody3D`
-            class. It returns `true` if the body collided with the floor in this
-            frame. That's why we apply gravity to the _Player_: so we collide with
-            the floor instead of floating over it like the monsters.
+            class. It returns `true` if the body collided with the floor in
+            this frame. That's why we apply gravity to the _Player_: so we
+            collide with the floor instead of floating over it like the
+            monsters.
 
-            If the character is on the floor and the player presses "jump", we
-            instantly give them a lot of vertical speed. In games, you really
-            want controls to be responsive and giving instant speed boosts like
-            these, while unrealistic, feels great.
+            If the character is on the floor and the player presses "jump",
+            we instantly give them a lot of vertical speed. In games, you
+            really want controls to be responsive and giving instant speed
+            boosts like these, while unrealistic, feels great.
 
-            Notice that the Y axis is positive upwards. That's unlike 2D, where
-            the Y axis is positive downwards.
-        }
-        @Steps {
+            Notice that the Y axis is positive upwards. That's unlike 2D,
+            where the Y axis is positive downwards.
         }
     }
     @Section(title: "Squashing monsters") {
         @ContentAndMedia {
-            Let's add the squash mechanic next. We're going to make the character
-            bounce over monsters and kill them at the same time.
+            Let's add the squash mechanic next. We're going to make the
+            character bounce over monsters and kill them at the same time.
 
-            We need to detect collisions with a monster and to differentiate them
-            from collisions with the floor. To do so, we can use Godot's
+            We need to detect collisions with a monster and to differentiate
+            them from collisions with the floor. To do so, we can use Godot's
             [group](https://docs.godotengine.org/en/stable/tutorials/scripting/groups.html#doc-groups)
             tagging feature.
-
-            Open the scene `mob.tscn` again and select the _Mob_ node. Go to the
-            _Groups_ dock on the right to see a list of groups, which allows you
-            to assign tags to nodes. Click on the _+_ button to open the _Create
-            new Group_ dialog.
-
-            @Image(source: 09.groups_tab.webp)
-
-            Enter "mob" in the _Name_ field and click the _Ok_ button.
-
-            @Image(source: 10.group_create_new.webp)
-
-            The "mob" group is now shown under the _Scene Groups_ section.
-
-            @Image(source: 11.group_scene_groups.webp)
-
-            An icon appears in the _Scene_ dock to indicate the node is part of at
-            least one group.
-
-            @Image(source: 12.group_scene_icon.webp)
-
-            We can now use the group from the code to distinguish collisions with
-            monsters from collisions with the floor.
         }
         @Steps {
             @Step {
-                Head back to the _Player_ script to code the squash and bounce.
+                Open the scene `mob.tscn` again and select the _Mob_ node.
+                Go to the _Groups_ dock on the right to see a list of
+                groups, which allows you to assign tags to nodes. Tap on
+                the _+_ button to open the _Create new Group_ dialog.
+
+                @Image(source: 09.groups_tab.webp)
+            }
+            @Step {
+                Enter "mob" in the _Name_ field and tap the _Ok_ button.
+
+                The "mob" group is now shown under the _Scene Groups_
+                section.
+
+                @Image(source: 10.group_create_new.webp)
+            }
+            @Step {
+                An icon appears in the _Scene_ dock to indicate the node is
+                part of at least one group.
+
+                We can now use the group from the code to distinguish
+                collisions with monsters from collisions with the floor.
+
+                @Image(source: 11.group_scene_groups.webp)
+            }
+            @Step {
+                Head back to the _Player_ script to code the squash and
+                bounce.
 
                 At the top of the script, we need another property,
-                `bounce_impulse`. When squashing an enemy, we don't necessarily
-                want the character to go as high up as when jumping.
+                `bounce_impulse`. When squashing an enemy, we don't
+                necessarily want the character to go as high up as when
+                jumping.
 
                 @Code(name: "player.gd", file: player-08.gd, previousFile: player-07.gd)
+            }
+            That's a lot of new functions. Here's some more information
+            about them.
 
-                That's a lot of new functions. Here's some more information
-                about them.
+            The functions `get_slide_collision_count()` and
+            `get_slide_collision()` both come from the
+            [CharacterBody3D](https://docs.godotengine.org/en/stable/classes/class%5Fcharacterbody3d.html#class-characterbody3d)
+            class and are related to `move_and_slide()`.
 
-                The functions `get_slide_collision_count()` and
-                `get_slide_collision()` both come from the
-                [CharacterBody3D](https://docs.godotengine.org/en/stable/classes/class%5Fcharacterbody3d.html#class-characterbody3d)
-                class and are related to `move_and_slide()`.
+            `get_slide_collision()` returns a
+            [KinematicCollision3D](https://docs.godotengine.org/en/stable/classes/class%5Fkinematiccollision3d.html#class-kinematiccollision3d)
+            object that holds information about where and how the collision
+            occurred. For example, we use its `get_collider` property to
+            check if we collided with a "mob" by calling `is_in_group()` on
+            it: `collision.get_collider().is_in_group("mob")`.
 
-                `get_slide_collision()` returns a
-                [KinematicCollision3D](https://docs.godotengine.org/en/stable/classes/class%5Fkinematiccollision3d.html#class-kinematiccollision3d)
-                object that holds information about where and how the collision
-                occurred. For example, we use its `get_collider` property to
-                check if we collided with a "mob" by calling `is_in_group()` on
-                it: `collision.get_collider().is_in_group("mob")`.
+            > Note: The method `is_in_group()` is available on every
+            > [Node](https://docs.godotengine.org/en/stable/classes/class%5Fnode.html#class-node).
 
-                > Note: The method `is_in_group()` is available on every
-                > [Node](https://docs.godotengine.org/en/stable/classes/class%5Fnode.html#class-node).
+            To check that we are landing on the monster, we use the vector
+            dot product: `Vector3.UP.dot(collision.get_normal()) > 0.1`.
+            The collision normal is a 3D vector that is perpendicular to
+            the plane where the collision occurred. The dot product allows
+            us to compare it to the up direction.
 
-                To check that we are landing on the monster, we use the vector
-                dot product:
-                `Vector3.UP.dot(collision.get_normal()) > 0.1`. The collision
-                normal is a 3D vector that is perpendicular to the plane where
-                the collision occurred. The dot product allows us to compare it
-                to the up direction.
+            With dot products, when the result is greater than `0`, the two
+            vectors are at an angle of fewer than 90 degrees. A value
+            higher than `0.1` tells us that we are roughly above the
+            monster.
 
-                With dot products, when the result is greater than `0`, the two
-                vectors are at an angle of fewer than 90 degrees. A value higher
-                than `0.1` tells us that we are roughly above the monster.
+            After handling the squash and bounce logic, we terminate the
+            loop early via the `break` statement to prevent further
+            duplicate calls to `mob.squash()`, which may otherwise result
+            in unintended bugs such as counting the score multiple times
+            for one kill.
 
-                After handling the squash and bounce logic, we terminate the
-                loop early via the `break` statement to prevent further
-                duplicate calls to `mob.squash()`, which may otherwise result
-                in unintended bugs such as counting the score multiple times
-                for one kill.
+            @Step {
+                We are calling one undefined function, `mob.squash()`, so
+                we have to add it to the Mob class.
 
-                We are calling one undefined function, `mob.squash()`, so we
-                have to add it to the Mob class.
-
-                Open the script `mob.gd` by double-clicking on it in the
-                _FileSystem_ dock. At the top of the script, we want to define
-                a new signal named `squashed`. And at the bottom, you can add
-                the squash function, where we emit the signal and destroy the
-                mob.
+                Open the script `mob.gd` by double-tapping on it in the
+                _FileSystem_ dock. At the top of the script, we want to
+                define a new signal named `squashed`. And at the bottom,
+                you can add the squash function, where we emit the signal
+                and destroy the mob.
 
                 @Code(name: "mob.gd", file: mob-05.gd, previousFile: mob-04.gd)
-
-                We will use the signal to add points to the score in the next
-                lesson.
-
-                With that, you should be able to kill monsters by jumping on
-                them. You can press F5 to try the game and set `main.tscn` as
-                your project's main scene.
-
-                However, the player won't die yet. We'll work on that in the
-                next part.
             }
+            We will use the signal to add points to the score in the next
+            lesson.
+
+            With that, you should be able to kill monsters by jumping on
+            them. You can press F5 to try the game and set `main.tscn` as
+            your project's main scene.
+
+            However, the player won't die yet. We'll work on that in the
+            next part.
         }
     }
 }

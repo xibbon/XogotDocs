@@ -6,91 +6,108 @@
     }
     @Section(title: "Creating the player scene") {
         @ContentAndMedia {
-            Create a new scene by going to the **Scene** menu in the top-left and
-            clicking **New Scene**.
-
-            @Image(source: new_scene.webp)
-
-            Click the **Other Node** button and select the `CharacterBody3D` node
-            type to create a
-            [CharacterBody3D](https://docs.godotengine.org/en/stable/classes/class%5Fcharacterbody3d.html#class-characterbody3d)
-            as the root node.
-
-            @Image(source: add_character_body3D.webp)
-
-            Rename the
-            [CharacterBody3D](https://docs.godotengine.org/en/stable/classes/class%5Fcharacterbody3d.html#class-characterbody3d)
-            to `Player`. Character bodies are complementary to the area and rigid
-            bodies used in the 2D game tutorial. Like rigid bodies, they can move and
-            collide with the environment, but instead of being controlled by the
-            physics engine, **you** dictate their movement. You will see how we use
-            the node's unique features when we code the jump and squash mechanics.
+            We'll start by creating a `Player` scene from a
+            [CharacterBody3D](https://docs.godotengine.org/en/stable/classes/class%5Fcharacterbody3d.html#class-characterbody3d).
+            Character bodies are complementary to the area and rigid bodies used in the
+            2D game tutorial. Like rigid bodies, they can move and collide with the
+            environment, but instead of being controlled by the physics engine,
+            **you** dictate their movement. You will see how we use the node's unique
+            features when we code the jump and squash mechanics.
 
             > See also: To learn more about the different physics node types, see the
             > [Physics introduction](https://docs.godotengine.org/en/stable/tutorials/physics/physics%5Fintroduction.html#doc-physics-introduction).
 
-            For now, we're going to create a basic rig for our character's 3D model.
-            This will allow us to rotate the model later via code while it plays an
+            We're also going to create a basic rig for our character's 3D model. This
+            will allow us to rotate the model later via code while it plays an
             animation.
-
-            Add a
-            [Node3D](https://docs.godotengine.org/en/stable/classes/class%5Fnode3d.html#class-node3d)
-            node as a child of `Player`. Select the `Player` node in the **Scene**
-            tree and click the "**+**" button to add a child node. Rename it to
-            `Pivot`.
-
-            @Image(source: adding_node3D.webp)
-
-            Then, in the FileSystem dock, expand the `art/` folder by double-clicking
-            it and drag and drop `player.glb` onto `Pivot`.
-
-            @Image(source: instantiating_the_model.webp)
-
-            This should instantiate the model as a child of `Pivot`. You can rename
-            it to `Character`.
-
-            @Image(source: scene_structure.webp)
-
-            > Note: The `.glb` files contain 3D scene data based on the open source
-            > glTF 2.0 specification. They're a modern and powerful alternative to a
-            > proprietary format like FBX, which Godot also supports. To produce these
-            > files, we designed the model in
-            > [Blender 3D](https://www.blender.org/) and exported it to glTF.
-
-            As with all kinds of physics nodes, we need a collision shape for our
-            character to collide with the environment. Select the `Player` node again
-            and add a child node
-            [CollisionShape3D](https://docs.godotengine.org/en/stable/classes/class%5Fcollisionshape3d.html#class-collisionshape3d).
-            In the **Inspector**, on the **Shape** property, add a new
-            [SphereShape3D](https://docs.godotengine.org/en/stable/classes/class%5Fsphereshape3d.html#class-sphereshape3d).
-
-            @Image(source: add_capsuleshape3d.webp)
-
-            The sphere's wireframe appears below the character.
-
-            @Image(source: sphere_shape.png)
-
-            It will be the shape the physics engine uses to collide with the
-            environment, so we want it to better fit the 3D model. Make it a bit
-            larger by dragging the orange dot in the viewport. My sphere has a radius
-            of about `0.8` meters.
-
-            Then, move the collision shape up so its bottom roughly aligns with the
-            grid's plane.
-
-            @Image(source: moving_the_sphere_up.png)
-
-            To make moving the shape easier, you can toggle the model's visibility by
-            clicking the **eye icon** next to the `Character` or the `Pivot` nodes.
-
-            @Image(source: toggling_visibility.webp)
-
-            Save the scene as `player.tscn`.
-
-            With the nodes ready, we can almost get coding. But first, we need to
-            define some input actions.
         }
         @Steps {
+            @Step {
+                Create a new scene by going to the **Scene** menu in the top-left and
+                tapping **New Scene**.
+
+                @Image(source: new_scene.webp)
+            }
+            @Step {
+                Tap the **Other Node** button and select the `CharacterBody3D` node
+                type to create a `CharacterBody3D` as the root node.
+
+                @Image(source: add_character_body3D.webp)
+            }
+            @Step {
+                Rename the
+                [CharacterBody3D](https://docs.godotengine.org/en/stable/classes/class%5Fcharacterbody3d.html#class-characterbody3d)
+                to `Player`.
+
+                @Image(source: fix-me.png, alt: "The CharacterBody3D node renamed to Player")
+            }
+            @Step {
+                Add a
+                [Node3D](https://docs.godotengine.org/en/stable/classes/class%5Fnode3d.html#class-node3d)
+                node as a child of `Player`. Select the `Player` node in the **Scene**
+                tree and tap the "**+**" button to add a child node. Rename it to
+                `Pivot`.
+
+                @Image(source: adding_node3D.webp)
+            }
+            @Step {
+                In the FileSystem dock, expand the `art/` folder by double-tapping it
+                and drag and drop `player.glb` onto `Pivot`.
+
+                @Image(source: instantiating_the_model.webp)
+            }
+            This should instantiate the model as a child of `Pivot`.
+
+            @Step {
+                Rename the newly instantiated `mob` (or `player`) node to `Character`.
+
+                > Note: The `.glb` files contain 3D scene data based on the open
+                > source glTF 2.0 specification. They're a modern and powerful
+                > alternative to a proprietary format like FBX, which Godot also
+                > supports. To produce these files, we designed the model in
+                > [Blender 3D](https://www.blender.org/) and exported it to glTF.
+
+                @Image(source: scene_structure.webp)
+            }
+            As with all kinds of physics nodes, we need a collision shape for our
+            character to collide with the environment.
+
+            @Step {
+                Select the `Player` node again and add a child node
+                [CollisionShape3D](https://docs.godotengine.org/en/stable/classes/class%5Fcollisionshape3d.html#class-collisionshape3d).
+                In the **Inspector**, on the **Shape** property, add a new
+                [SphereShape3D](https://docs.godotengine.org/en/stable/classes/class%5Fsphereshape3d.html#class-sphereshape3d).
+
+                The sphere's wireframe appears below the character.
+
+                @Image(source: add_capsuleshape3d.webp)
+            }
+            The sphere will be the shape the physics engine uses to collide with the
+            environment, so we want it to better fit the 3D model.
+
+            @Step {
+                Make the sphere a bit larger by dragging the orange dot in the
+                viewport. Mine has a radius of about `0.8` meters.
+
+                @Image(source: sphere_shape.png)
+            }
+            @Step {
+                Then, move the collision shape up so its bottom roughly aligns with
+                the grid's plane.
+
+                > Tip: To make moving the shape easier, you can toggle the model's
+                > visibility by tapping the **eye icon** next to the `Character` or
+                > the `Pivot` nodes.
+
+                @Image(source: moving_the_sphere_up.png)
+            }
+            @Step {
+                Save the scene as `player.tscn`.
+
+                @Image(source: toggling_visibility.webp, alt: "Save the scene as player.tscn")
+            }
+            With the nodes ready, we can almost get coding. But first, we need to
+            define some input actions.
         }
     }
     @Section(title: "Creating input actions") {
@@ -101,80 +118,90 @@
             set of keys and buttons. This simplifies our scripts and makes them more
             readable.
 
-            This system is the Input Map. To access its editor, head to the **Project**
-            menu and select **Project Settings...**.
+            This system is the Input Map.
+        }
+        @Steps {
+            @Step {
+                To access the Input Map editor, head to the **Project** menu and
+                select **Project Settings...**.
 
-            @Image(source: project_settings.webp)
+                @Image(source: project_settings.webp)
+            }
+            @Step {
+                At the top of the Project Settings window, there are multiple tabs.
+                Tap on **Input Map**. This window allows you to add new actions at
+                the top; they are your labels. In the bottom part, you can bind
+                keys to these actions.
 
-            At the top, there are multiple tabs. Click on **Input Map**. This window
-            allows you to add new actions at the top; they are your labels. In the
-            bottom part, you can bind keys to these actions.
+                Godot projects come with some predefined actions designed for user
+                interface design. These will become visible if you enable the **Show
+                Built-in Actions** toggle. We could use these here, but instead we're
+                defining our own to support gamepads. Leave **Show Built-in Actions**
+                disabled.
 
-            @Image(source: input_map_tab.webp)
+                @Image(source: input_map_tab.webp)
+            }
+            We're going to name our actions `move_left`, `move_right`,
+            `move_forward`, `move_back`, and `jump`.
 
-            Godot projects come with some predefined actions designed for user
-            interface design (see above screenshot). These will become visible if you
-            enable the **Show Built-in Actions** toggle. We could use these here, but
-            instead we're defining our own to support gamepads. Leave **Show Built-in
-            Actions** disabled.
+            @Step {
+                To add an action, write its name in the bar at the top and press
+                Enter or tap the **Add** button.
 
-            We're going to name our actions `move_left`, `move_right`, `move_forward`,
-            `move_back`, and `jump`.
+                @Image(source: adding_action.webp)
+            }
+            @Step {
+                Create the following five actions: `move_left`, `move_right`,
+                `move_forward`, `move_back`, and `jump`.
 
-            To add an action, write its name in the bar at the top and press Enter or
-            click the **Add** button.
+                @Image(source: actions_list_empty.webp)
+            }
+            @Step {
+                To bind a key or button to an action, tap the "**+**" button to its
+                right. Do this for `move_left`. Press the left arrow key and tap
+                **OK**.
 
-            @Image(source: adding_action.webp)
+                @Image(source: left_inputmap.webp)
+            }
+            @Step {
+                Bind also the A key, onto the action `move_left`.
 
-            Create the following five actions:
+                @Image(source: keyboard_keys.webp)
+            }
+            @Step {
+                Let's now add support for a gamepad's left joystick. Tap the "**+**"
+                button again but this time, select the input within the input tree
+                yourself. Select the negative X axis of the left joystick under
+                **Joypad Axes**.
 
-            @Image(source: actions_list_empty.webp)
+                Leave the other values as default and press **OK**.
 
-            To bind a key or button to an action, click the "**+**" button to its
-            right. Do this for `move_left`. Press the left arrow key and click
-            **OK**.
+                > Note: If you want controllers to have different input actions,
+                > you should use the Devices option in Additional Options. Device 0
+                > corresponds to the first plugged gamepad, Device 1 corresponds to
+                > the second plugged gamepad, and so on.
 
-            @Image(source: left_inputmap.webp)
+                @Image(source: joystick_axis_input.webp)
+            }
+            @Step {
+                Do the same for the other input actions. For example, bind the right
+                arrow, D, and the left joystick's positive axis to `move_right`.
+                After binding all keys, your interface should look like this.
 
-            Bind also the A key, onto the action `move_left`.
+                @Image(source: move_inputs_mapped.webp)
+            }
+            @Step {
+                The final action to set up is the `jump` action. Bind the Space key
+                and the gamepad's A button located under **Joypad Buttons**.
 
-            @Image(source: keyboard_keys.webp)
+                Your jump input action should look like this.
 
-            Let's now add support for a gamepad's left joystick. Click the "**+**"
-            button again but this time, select the input within the input tree
-            yourself. Select the negative X axis of the left joystick under **Joypad
-            Axes**.
-
-            @Image(source: joystick_axis_input.webp)
-
-            Leave the other values as default and press **OK**.
-
-            > Note: If you want controllers to have different input actions, you
-            > should use the Devices option in Additional Options. Device 0
-            > corresponds to the first plugged gamepad, Device 1 corresponds to the
-            > second plugged gamepad, and so on.
-
-            Do the same for the other input actions. For example, bind the right
-            arrow, D, and the left joystick's positive axis to `move_right`. After
-            binding all keys, your interface should look like this.
-
-            @Image(source: move_inputs_mapped.webp)
-
-            The final action to set up is the `jump` action. Bind the Space key and
-            the gamepad's A button located under **Joypad Buttons**.
-
-            @Image(source: joy_button_option.webp)
-
-            Your jump input action should look like this.
-
-            @Image(source: jump_input_action.webp)
-
+                @Image(source: jump_input_action.webp)
+            }
             That's all the actions we need for this game. You can use this menu to
             label any groups of keys and buttons in your projects.
 
             In the next part, we'll code and test the player's movement.
-        }
-        @Steps {
         }
     }
 }

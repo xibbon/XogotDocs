@@ -10,190 +10,202 @@
     }
     @Section(title: "Using the animation editor") {
         @ContentAndMedia {
-            The engine comes with tools to author animations in the editor. You
-            can then use the code to play and control them at runtime.
+            The engine comes with tools to author animations in the editor.
+            You can then use the code to play and control them at runtime.
 
-            Open the player scene, select the `Player` node, and add an
-            [AnimationPlayer](https://docs.godotengine.org/en/stable/classes/class%5Fanimationplayer.html#class-animationplayer)
-            node.
-
-            The _Animation_ dock appears in the bottom panel.
-
-            @Image(source: animation_player_dock.webp)
-
-            It features a toolbar and the animation drop-down menu at the top, a
-            track editor in the middle that's currently empty, and filter, snap,
-            and zoom options at the bottom.
-
-            Let's create an animation. Click on _Animation -> New_.
-
-            @Image(source: 02.new_animation.webp)
-
-            Name the animation "float".
-
-            @Image(source: 03.float_name.webp)
-
-            Once you've created the animation, the timeline appears with numbers
-            representing time in seconds.
-
-            @Image(source: 03.timeline.webp)
-
-            We want the animation to start playback automatically at the start
-            of the game. Also, it should loop.
-
-            To do so, you can click the autoplay button (![Autoplay](autoplay_button.webp))
-            in the animation toolbar and the looping arrows, respectively.
-
-            @Image(source: 04.autoplay_and_loop.webp)
-
-            You can also pin the animation editor by clicking the pin icon in
-            the top-right. This prevents it from folding when you click on the
-            viewport and deselect the nodes.
-
-            @Image(source: 05.pin_icon.webp)
-
-            Set the animation duration to `1.2` seconds in the top-right of the
-            dock.
-
-            You should see the gray ribbon widen a bit. It shows you the start
-            and end of your animation and the vertical blue line is your time
-            cursor.
-
-            @Image(source: 06.animation_duration.webp)
-
-            You can click and drag the slider in the bottom-right to zoom in
-            and out of the timeline.
-
-            @Image(source: 08.zoom_slider.webp)
+            It features a toolbar and the animation drop-down menu at the
+            top, a track editor in the middle that's currently empty, and
+            filter, snap, and zoom options at the bottom.
         }
         @Steps {
+            @Step {
+                Open the player scene, select the `Player` node, and add an
+                [AnimationPlayer](https://docs.godotengine.org/en/stable/classes/class%5Fanimationplayer.html#class-animationplayer)
+                node.
+
+                The _Animation_ dock appears in the bottom panel.
+
+                @Image(source: animation_player_dock.webp)
+            }
+            @Step {
+                Let's create an animation. Tap on _Animation -> New_.
+
+                @Image(source: 02.new_animation.webp)
+            }
+            @Step {
+                Name the animation "float".
+
+                @Image(source: 03.float_name.webp)
+            }
+            @Step {
+                Once you've created the animation, the timeline appears
+                with numbers representing time in seconds.
+
+                We want the animation to start playback automatically at
+                the start of the game. Also, it should loop.
+
+                To do so, you can tap the autoplay button
+                (![Autoplay](autoplay_button.webp)) in the animation
+                toolbar and the looping arrows, respectively.
+
+                @Image(source: 04.autoplay_and_loop.webp)
+            }
+            @Step {
+                You can also pin the animation editor by tapping the pin
+                icon in the top-right. This prevents it from folding when
+                you tap on the viewport and deselect the nodes.
+
+                @Image(source: 05.pin_icon.webp)
+            }
+            @Step {
+                Set the animation duration to `1.2` seconds in the
+                top-right of the dock.
+
+                You should see the gray ribbon widen a bit. It shows you
+                the start and end of your animation and the vertical blue
+                line is your time cursor.
+
+                You can tap and drag the slider in the bottom-right to
+                zoom in and out of the timeline.
+
+                @Image(source: 06.animation_duration.webp)
+            }
         }
     }
     @Section(title: "The float animation") {
         @ContentAndMedia {
-            With the animation player node, you can animate most properties on
-            as many nodes as you need. Notice the key icon next to properties
-            in the _Inspector_. You can click any of them to create a keyframe,
-            a time and value pair for the corresponding property. The keyframe
-            gets inserted where your time cursor is in the timeline.
+            With the animation player node, you can animate most properties
+            on as many nodes as you need. Notice the key icon next to
+            properties in the _Inspector_. You can tap any of them to
+            create a keyframe, a time and value pair for the corresponding
+            property. The keyframe gets inserted where your time cursor is
+            in the timeline.
 
-            Let's insert our first keys. Here, we will animate both the position
-            and the rotation of the `Character` node.
+            Let's insert our first keys. Here, we will animate both the
+            position and the rotation of the `Character` node.
 
-            Select the `Character` and in the _Inspector_ expand the _Transform_
-            section. Click the key icon next to _Position_, and _Rotation_.
-
-            @Image(source: 09.creating_first_keyframe.webp)
-
-            @Image(source: curves.webp)
-
-            For this tutorial, just create RESET Track(s) which is the default
-            choice
-
-            Two tracks appear in the editor with a diamond icon representing
-            each keyframe.
-
-            @Image(source: 10.initial_keys.webp)
-
-            You can click and drag on the diamonds to move them in time. Move
-            the position key to `0.3` seconds and the rotation key to `0.1`
-            seconds.
-
-            @Image(source: 11.moving_keys.webp)
-
-            Move the time cursor to `0.5` seconds by clicking and dragging on
-            the gray timeline, or by entering it into the input field.
-
-            @Image(source: timeline_05_click.webp)
-
-            In the _Inspector_, set the _Position_'s _Y_ axis to `0.65` meters
-            and the _Rotation_' _X_ axis to `8`.
-
-            If you don't see the properties in the _Inspector_ panel, first
-            click on the `Character` node again in the _Scene_ dock.
-
-            @Image(source: 12.second_keys_values.webp)
-
-            Create a keyframe for both properties
-
-            @Image(source: second_keys_both.webp)
-
-            Now, move the position keyframe to `0.7` seconds by dragging it on
-            the timeline.
-
-            @Image(source: 13.second_keys.webp)
+            > Note: Animations update the properties of the animated
+            > nodes every frame, overriding initial values. If we directly
+            > animated the _Player_ node, it would prevent us from moving
+            > it in code. This is where the _Pivot_ node comes in handy:
+            > even though we animated the _Character_, we can still move
+            > and rotate the _Pivot_ and layer changes on top of the
+            > animation in a script.
 
             > Note: A lecture on the principles of animation is beyond the
-            > scope of this tutorial. Just note that you don't want to time and
-            > space everything evenly. Instead, animators play with timing and
-            > spacing, two core animation principles. You want to offset and
-            > contrast in your character's motion to make them feel alive.
+            > scope of this tutorial. Just note that you don't want to
+            > time and space everything evenly. Instead, animators play
+            > with timing and spacing, two core animation principles. You
+            > want to offset and contrast in your character's motion to
+            > make them feel alive.
+        }
+        @Steps {
+            @Step {
+                Select the `Character` and in the _Inspector_ expand the
+                _Transform_ section. Tap the key icon next to _Position_,
+                and _Rotation_.
 
-            Move the time cursor to the end of the animation, at `1.2` seconds.
-            Set the Y position to about `0.35` and the X rotation to `-9`
-            degrees. Once again, create a key for both properties.
+                For this tutorial, just create RESET Track(s) which is
+                the default choice.
 
-            @Image(source: animation_final_keyframes.webp)
+                Two tracks appear in the editor with a diamond icon
+                representing each keyframe.
 
-            You can preview the result by clicking the play button or pressing
-            Shift + D. Click the stop button or press S to stop playback.
+                @Image(source: 09.creating_first_keyframe.webp)
+            }
+            @Step {
+                You can tap and drag on the diamonds to move them in time.
+                Move the position key to `0.3` seconds and the rotation
+                key to `0.1` seconds.
 
-            @Image(source: 14.play_button.webp)
+                @Image(source: 11.moving_keys.webp)
+            }
+            @Step {
+                Move the time cursor to `0.5` seconds by tapping and
+                dragging on the gray timeline, or by entering it into the
+                input field.
 
-            You can see that the engine interpolates between your keyframes to
-            produce a continuous animation. At the moment, though, the motion
-            feels very robotic. This is because the default interpolation is
-            linear, causing constant transitions, unlike how living things move
-            in the real world.
+                In the _Inspector_, set the _Position_'s _Y_ axis to
+                `0.65` meters and the _Rotation_' _X_ axis to `8`.
+
+                If you don't see the properties in the _Inspector_ panel,
+                first tap on the `Character` node again in the _Scene_
+                dock.
+
+                Create a keyframe for both properties.
+
+                @Image(source: 12.second_keys_values.webp)
+            }
+            @Step {
+                Now, move the position keyframe to `0.7` seconds by
+                dragging it on the timeline.
+
+                @Image(source: 13.second_keys.webp)
+            }
+            @Step {
+                Move the time cursor to the end of the animation, at
+                `1.2` seconds. Set the Y position to about `0.35` and the
+                X rotation to `-9` degrees. Once again, create a key for
+                both properties.
+
+                @Image(source: animation_final_keyframes.webp)
+            }
+            @Step {
+                You can preview the result by tapping the play button or
+                pressing Shift + D. Tap the stop button or press S to
+                stop playback.
+
+                @Image(source: 14.play_button.webp)
+            }
+            You can see that the engine interpolates between your
+            keyframes to produce a continuous animation. At the moment,
+            though, the motion feels very robotic. This is because the
+            default interpolation is linear, causing constant
+            transitions, unlike how living things move in the real
+            world.
 
             We can control the transition between keyframes using easing
             curves.
 
-            Click and drag around the first two keys in the timeline to box
-            select them.
+            @Step {
+                Tap and drag around the first two keys in the timeline to
+                box select them.
 
-            @Image(source: 15.box_select.webp)
+                You can edit the properties of both keys simultaneously
+                in the _Inspector_, where you can see an _Easing_
+                property.
 
-            You can edit the properties of both keys simultaneously in the
-            _Inspector_, where you can see an _Easing_ property.
+                @Image(source: 15.box_select.webp)
+            }
+            @Step {
+                Tap and drag on the curve, pulling it towards the left.
+                This will make it ease-out, that is to say, transition
+                fast initially and slow down as the time cursor reaches
+                the next keyframe.
 
-            @Image(source: 16.easing_property.webp)
+                Play the animation again to see the difference. The first
+                half should already feel a bit bouncier.
 
-            Click and drag on the curve, pulling it towards the left. This will
-            make it ease-out, that is to say, transition fast initially and slow
-            down as the time cursor reaches the next keyframe.
+                @Image(source: 17.ease_out.webp)
+            }
+            @Step {
+                Apply an ease-out to the second keyframe in the rotation
+                track.
 
-            @Image(source: 17.ease_out.webp)
+                @Image(source: 18.ease_out_second_rotation_key.webp)
+            }
+            @Step {
+                Do the opposite for the second position keyframe, dragging
+                it to the right.
 
-            Play the animation again to see the difference. The first half
-            should already feel a bit bouncier.
+                Your animation should look something like this.
 
-            Apply an ease-out to the second keyframe in the rotation track.
-
-            @Image(source: 18.ease_out_second_rotation_key.webp)
-
-            Do the opposite for the second position keyframe, dragging it to
-            the right.
-
-            @Image(source: 19.ease_in_second_translation_key.webp)
-
-            Your animation should look something like this.
-
-            @Image(source: 20.float_animation.gif)
-
-            > Note: Animations update the properties of the animated nodes
-            > every frame, overriding initial values. If we directly animated
-            > the _Player_ node, it would prevent us from moving it in code.
-            > This is where the _Pivot_ node comes in handy: even though we
-            > animated the _Character_, we can still move and rotate the
-            > _Pivot_ and layer changes on top of the animation in a script.
-
+                @Image(source: 20.float_animation.gif)
+            }
             If you play the game, the player's creature will now float!
 
-            If the creature is a little too close to the floor, you can move
-            the `Pivot` up to offset it.
-        }
-        @Steps {
+            If the creature is a little too close to the floor, you can
+            move the `Pivot` up to offset it.
         }
     }
     @Section(title: "Controlling the animation in code") {
@@ -202,77 +214,102 @@
             player's input. Let's change the animation speed when the
             character is moving.
 
-            Open the `Player`'s script by clicking the script icon next to it.
-
-            @Image(source: 21.script_icon.webp)
-
-            In `_physics_process()`, after the line where we check the
-            `direction` vector, add the following code.
-
-            @Code(name: "player.gd", file: player-10.gd, previousFile: player-09.gd)
-
             This code makes it so when the player moves, we multiply the
             playback speed by `4`. When they stop, we reset it to normal.
 
-            We mentioned that the `Pivot` could layer transforms on top of the
-            animation. We can make the character arc when jumping using the
-            following line of code. Add it at the end of `_physics_process()`.
+            We mentioned that the `Pivot` could layer transforms on top of
+            the animation. We can make the character arc when jumping using
+            the following line of code. Add it at the end of
+            `_physics_process()`.
+        }
+        @Steps {
+            @Step {
+                Open the `Player`'s script by tapping the script icon next
+                to it.
 
-            And with that, you finished coding your first complete 3D game.
+                @Image(source: 21.script_icon.webp)
+            }
+            @Step {
+                In `_physics_process()`, after the line where we check
+                the `direction` vector, add the code that bumps the
+                animation `speed_scale` when the player is moving and
+                resets it to `1` when they stop.
+
+                @Code(name: "player.gd", file: player-10.gd, previousFile: player-09.gd)
+            }
+            And with that, you finished coding your first complete 3D
+            game.
 
             **Congratulations**!
 
-            In the next part, we'll quickly recap what you learned and give you
-            some links to keep learning more. But for now, here are the
-            complete `player.gd` and `mob.gd` so you can check your code
-            against them.
+            In the next part, we'll quickly recap what you learned and
+            give you some links to keep learning more. But for now, here
+            are the complete `player.gd` and `mob.gd` so you can check
+            your code against them.
 
-            Here's the _Player_ script.
+            @Step {
+                Here's the _Player_ script.
 
-            @Code(name: "player.gd", file: player-10.gd)
+                @Code(name: "player.gd", file: player-10.gd)
+            }
+            @Step {
+                And the _Mob_'s script.
 
-            And the _Mob_'s script.
-
-            @Code(name: "mob.gd", file: mob-05.gd)
-        }
-        @Steps {
+                @Code(name: "mob.gd", file: mob-05.gd)
+            }
         }
     }
     @Section(title: "Animating the mobs") {
         @ContentAndMedia {
-            Here's another nice trick with animations in Godot: as long as you
-            use a similar node structure, you can copy them to different
-            scenes.
+            Here's another nice trick with animations in Godot: as long as
+            you use a similar node structure, you can copy them to
+            different scenes.
 
-            For example, both the `Mob` and the `Player` scenes have a `Pivot`
-            and a `Character` node, so we can reuse animations between them.
-
-            Open the _Player_ scene, select the AnimationPlayer node and then
-            click on **Animation > Manage Animations...**. Click the _Copy
-            animation to clipboard_ button (two small squares) alongside the
-            _float_ animation. Click OK to close the window.
-
-            Then open `mob.tscn`, create an
-            [AnimationPlayer](https://docs.godotengine.org/en/stable/classes/class%5Fanimationplayer.html#class-animationplayer)
-            child node and select it. Click **Animation > Manage Animations**,
-            then **New Library**. You should see the message "Global library
-            will be created." Leave the text field blank and click OK. Click
-            the _Paste_ icon (clipboard) and it should appear in the window.
-            Click OK to close the window.
-
-            Next, make sure that the autoplay button
-            (![Autoplay](autoplay_button.webp)) and the looping arrows
-            (Animation looping) are also turned on in the animation editor in
-            the bottom panel. That's it; all monsters will now play the float
-            animation.
+            For example, both the `Mob` and the `Player` scenes have a
+            `Pivot` and a `Character` node, so we can reuse animations
+            between them.
 
             We can change the playback speed based on the creature's
-            `random_speed`. Open the _Mob_'s script and at the end of the
-            `initialize()` function, add the following line.
-
-            @Code(name: "mob.gd", file: mob-06.gd, previousFile: mob-05.gd)
+            `random_speed`.
         }
         @Steps {
+            @Step {
+                Open the _Player_ scene, select the AnimationPlayer node
+                and then tap on **Animation > Manage Animations...**. Tap
+                the _Copy animation to clipboard_ button (two small
+                squares) alongside the _float_ animation. Tap OK to close
+                the window.
+
+                @Image(source: fix-me.png, alt: "The Manage Animations dialog with the Copy button highlighted")
+            }
+            @Step {
+                Then open `mob.tscn`, create an
+                [AnimationPlayer](https://docs.godotengine.org/en/stable/classes/class%5Fanimationplayer.html#class-animationplayer)
+                child node and select it. Tap **Animation > Manage
+                Animations**, then **New Library**. You should see the
+                message "Global library will be created." Leave the text
+                field blank and tap OK. Tap the _Paste_ icon (clipboard)
+                and it should appear in the window. Tap OK to close the
+                window.
+
+                @Image(source: fix-me.png, alt: "Pasting the float animation into the Mob scene")
+            }
+            @Step {
+                Next, make sure that the autoplay button
+                (![Autoplay](autoplay_button.webp)) and the looping
+                arrows (Animation looping) are also turned on in the
+                animation editor in the bottom panel. That's it; all
+                monsters will now play the float animation.
+
+                @Image(source: fix-me.png, alt: "The autoplay and looping arrows enabled in the animation editor")
+            }
+            @Step {
+                Open the _Mob_'s script and at the end of the
+                `initialize()` function, add the line that scales the
+                animation speed by `random_speed / min_speed`.
+
+                @Code(name: "mob.gd", file: mob-06.gd, previousFile: mob-05.gd)
+            }
         }
     }
 }

@@ -7,216 +7,251 @@
     }
     @Section(title: "Modifying the project settings") {
         @ContentAndMedia {
-            Double-click on `main.tscn` in the _FileSystem_ dock to open the `Main`
-            scene.
-
-            Before drawing the path, we're going to change the game resolution. Our
-            game has a default window size of `1152x648`. We're going to set it to
-            `720x540`, a nice little box.
-
-            Go to _Project -> Project Settings_.
-
-            @Image(source: 02.project_settings.webp)
-
-            If you still have _Input Map_ open, switch to the _General_ tab.
-
-            In the left menu, navigate down to _Display -> Window_. On the right,
-            set the _Viewport Width_ to `720` and the _Viewport Height_ to `540`.
-
-            @Image(source: 03.window_settings.webp)
+            Before drawing the path, we're going to change the game resolution.
+            Our game has a default window size of `1152x648`. We're going to set
+            it to `720x540`, a nice little box.
         }
         @Steps {
+            @Step {
+                Double-tap on `main.tscn` in the _FileSystem_ dock to open the
+                `Main` scene.
+
+                @Image(source: fix-me.png, alt: "The main.tscn scene open in the FileSystem dock")
+            }
+            @Step {
+                Go to _Project -> Project Settings_.
+
+                @Image(source: 02.project_settings.webp)
+            }
+            @Step {
+                If you still have _Input Map_ open, switch to the _General_
+                tab. In the left menu, navigate down to _Display -> Window_.
+                On the right, set the _Viewport Width_ to `720` and the
+                _Viewport Height_ to `540`.
+
+                @Image(source: 03.window_settings.webp)
+            }
         }
     }
     @Section(title: "Creating the spawn path") {
         @ContentAndMedia {
-            Like you did in the 2D game tutorial, you're going to design a path and
-            use a
+            Like you did in the 2D game tutorial, you're going to design a path
+            and use a
             [PathFollow3D](https://docs.godotengine.org/en/stable/classes/class%5Fpathfollow3d.html#class-pathfollow3d)
             node to sample random locations on it.
 
-            In 3D though, it's a bit more complicated to draw the path. We want it
-            to be around the game view so monsters appear right outside the screen.
-            But if we draw a path, we won't see it from the camera preview.
+            In 3D though, it's a bit more complicated to draw the path. We
+            want it to be around the game view so monsters appear right
+            outside the screen. But if we draw a path, we won't see it from
+            the camera preview.
 
-            To find the view's limits, we can use some placeholder meshes. Your
-            viewport should still be split into two parts, with the camera preview
-            at the bottom. If that isn't the case, press Ctrl + 2 (Cmd + 2 on
-            macOS) to split the view into two. Select the
-            [Camera3D](https://docs.godotengine.org/en/stable/classes/class%5Fcamera3d.html#class-camera3d)
-            node and click the _Preview_ checkbox in the bottom viewport.
-
-            @Image(source: 04.camera_preview.png)
-
-            Let's add the placeholder meshes. Add a new
-            [Node3D](https://docs.godotengine.org/en/stable/classes/class%5Fnode3d.html#class-node3d)
-            as a child of the `Main` node and name it `Cylinders`. We'll use it to
-            group the cylinders. Select `Cylinders` and add a child node
-            [MeshInstance3D](https://docs.godotengine.org/en/stable/classes/class%5Fmeshinstance3d.html#class-meshinstance3d)
-
-            @Image(source: 05.cylinders_node.webp)
-
-            In the _Inspector_, assign a _CylinderMesh_ to the _Mesh_ property.
-
-            @Image(source: 06.cylinder_mesh.webp)
-
-            Set the top viewport to the top orthogonal view using the menu in the
-            viewport's top-left corner. Alternatively, you can press the keypad's 7
-            key.
-
-            @Image(source: 07.top_view.webp)
-
-            The grid may be distracting. You can toggle it by going to the _View_
-            menu in the toolbar and clicking _View Grid_.
-
-            @Image(source: 08.toggle_view_grid.webp)
-
-            You now want to move the cylinder along the ground plane, looking at the
-            camera preview in the bottom viewport. I recommend using grid snap to do
-            so. You can toggle it by clicking the magnet icon in the toolbar or
-            pressing Y.
-
-            @Image(source: 09.toggle_grid_snap.webp)
-
-            Move the cylinder so it's right outside the camera's view in the
-            top-left corner.
-
-            @Image(source: 10.place_first_cylinder.png)
-
-            We're going to create copies of the mesh and place them around the game
-            area. Press Ctrl + D (Cmd + D on macOS) to duplicate the node. You can
-            also right-click the node in the _Scene_ dock and select _Duplicate_.
-            Move the copy down along the blue Z axis until it's right outside the
-            camera's preview.
-
-            Select both cylinders by pressing the Shift key and clicking on the
-            unselected one and duplicate them.
-
-            @Image(source: 11.both_cylinders_selected.png)
-
-            Move them to the right by dragging the red X axis.
-
-            @Image(source: 12.four_cylinders.png)
-
-            They're a bit hard to see in white, aren't they? Let's make them stand
-            out by giving them a new material.
-
-            In 3D, materials define a surface's visual properties like its color,
-            how it reflects light, and more. We can use them to change the color of
-            a mesh.
-
-            We can update all four cylinders at once. Select all the mesh instances
-            in the _Scene_ dock. To do so, you can click on the first one and Shift
-            click on the last one.
-
-            @Image(source: 13.selecting_all_cylinders.webp)
-
-            In the _Inspector_, expand the _Material_ section and assign a
-            [StandardMaterial3D](https://docs.godotengine.org/en/stable/classes/class%5Fstandardmaterial3d.html#class-standardmaterial3d)
-            to slot _0_.
-
-            @Image(source: 14.multi_material_selection.webp)
-
-            Click the sphere icon to open the material resource. You get a preview
-            of the material and a long list of sections filled with properties. You
-            can use these to create all sorts of surfaces, from metal to rock or
-            water.
-
-            Expand the _Albedo_ section.
-
-            @Image(source: albedo_section.webp)
-
-            Set the color to something that contrasts with the background, like a
-            bright orange.
-
-            @Image(source: 15.bright-cylinders.webp)
-
-            We can now use the cylinders as guides. Fold them in the _Scene_ dock
-            by clicking the grey arrow next to them. Moving forward, you can also
-            toggle their visibility by clicking the eye icon next to _Cylinders_.
-
-            @Image(source: 16.cylinders_fold.webp)
-
-            Add a child node
-            [Path3D](https://docs.godotengine.org/en/stable/classes/class%5Fpath3d.html#class-path3d)
-            to `Main` node. In the toolbar, four icons appear. Click the _Add
-            Point_ tool, the icon with the green "+" sign.
-
-            @Image(source: 17.points_options.webp)
-
-            > Note: You can hover any icon to see a tooltip describing the tool.
-
-            Click in the center of each cylinder to create a point. Then, click the
-            _Close Curve_ icon in the toolbar to close the path. If any point is a
-            bit off, you can click and drag on it to reposition it.
-
-            @Image(source: 18.close_path.webp)
-
-            Your path should look like this.
-
-            @Image(source: 19.path_result.png)
-
-            To sample random positions on it, we need a
-            [PathFollow3D](https://docs.godotengine.org/en/stable/classes/class%5Fpathfollow3d.html#class-pathfollow3d)
-            node. Add a
-            [PathFollow3D](https://docs.godotengine.org/en/stable/classes/class%5Fpathfollow3d.html#class-pathfollow3d)
-            as a child of the `Path3D`. Rename the two nodes to `SpawnLocation` and
-            `SpawnPath`, respectively. It's more descriptive of what we'll use them
-            for.
-
-            @Image(source: 20.spawn_nodes.webp)
-
-            With that, we're ready to code the spawn mechanism.
+            To find the view's limits, we can use some placeholder meshes. In
+            3D, materials define a surface's visual properties like its color,
+            how it reflects light, and more. We can use them to change the
+            color of a mesh.
         }
         @Steps {
+            @Step {
+                Your viewport should still be split into two parts, with the
+                camera preview at the bottom. If that isn't the case, press
+                Ctrl + 2 (Cmd + 2 on macOS) to split the view into two. Select
+                the
+                [Camera3D](https://docs.godotengine.org/en/stable/classes/class%5Fcamera3d.html#class-camera3d)
+                node and tap the _Preview_ checkbox in the bottom viewport.
+
+                @Image(source: 04.camera_preview.png)
+            }
+            Let's add the placeholder meshes.
+
+            @Step {
+                Add a new
+                [Node3D](https://docs.godotengine.org/en/stable/classes/class%5Fnode3d.html#class-node3d)
+                as a child of the `Main` node and name it `Cylinders`. We'll
+                use it to group the cylinders.
+
+                @Image(source: 05.cylinders_node.webp)
+            }
+            @Step {
+                Select `Cylinders` and add a child node
+                [MeshInstance3D](https://docs.godotengine.org/en/stable/classes/class%5Fmeshinstance3d.html#class-meshinstance3d).
+                In the _Inspector_, assign a _CylinderMesh_ to the _Mesh_
+                property.
+
+                @Image(source: 06.cylinder_mesh.webp)
+            }
+            @Step {
+                Set the top viewport to the top orthogonal view using the menu
+                in the viewport's top-left corner. Alternatively, you can
+                press the keypad's 7 key.
+
+                The grid may be distracting. You can toggle it by going to the
+                _View_ menu in the toolbar and tapping _View Grid_.
+
+                @Image(source: 07.top_view.webp)
+            }
+            You now want to move the cylinder along the ground plane, looking
+            at the camera preview in the bottom viewport. I recommend using
+            grid snap to do so.
+
+            @Step {
+                Toggle grid snap by tapping the magnet icon in the toolbar or
+                pressing Y.
+
+                @Image(source: 08.toggle_view_grid.webp)
+            }
+            @Step {
+                Move the cylinder so it's right outside the camera's view in
+                the top-left corner.
+
+                @Image(source: 09.toggle_grid_snap.webp)
+            }
+            We're going to create copies of the mesh and place them around the
+            game area.
+
+            @Step {
+                Press Ctrl + D (Cmd + D on macOS) to duplicate the node. You
+                can also right-tap the node in the _Scene_ dock and select
+                _Duplicate_. Move the copy down along the blue Z axis until
+                it's right outside the camera's preview.
+
+                @Image(source: 10.place_first_cylinder.png)
+            }
+            @Step {
+                Select both cylinders by pressing the Shift key and tapping on
+                the unselected one, then duplicate them.
+
+                @Image(source: 11.both_cylinders_selected.png)
+            }
+            @Step {
+                Move them to the right by dragging the red X axis.
+
+                @Image(source: 12.four_cylinders.png)
+            }
+            They're a bit hard to see in white, aren't they? Let's make them
+            stand out by giving them a new material.
+
+            @Step {
+                Select all the mesh instances in the _Scene_ dock. To do so, you
+                can tap on the first one and Shift tap on the last one. In the
+                _Inspector_, expand the _Material_ section and assign a
+                [StandardMaterial3D](https://docs.godotengine.org/en/stable/classes/class%5Fstandardmaterial3d.html#class-standardmaterial3d)
+                to slot _0_.
+
+                @Image(source: 13.selecting_all_cylinders.webp)
+            }
+            @Step {
+                Tap the sphere icon to open the material resource. You get a
+                preview of the material and a long list of sections filled
+                with properties. Expand the _Albedo_ section.
+
+                @Image(source: 14.multi_material_selection.webp)
+            }
+            @Step {
+                Set the color to something that contrasts with the background,
+                like a bright orange.
+
+                @Image(source: 15.bright-cylinders.webp)
+            }
+            We can now use the cylinders as guides.
+
+            @Step {
+                Fold them in the _Scene_ dock by tapping the grey arrow next to
+                them. Moving forward, you can also toggle their visibility by
+                tapping the eye icon next to _Cylinders_.
+
+                @Image(source: 16.cylinders_fold.webp)
+            }
+            @Step {
+                Add a child node
+                [Path3D](https://docs.godotengine.org/en/stable/classes/class%5Fpath3d.html#class-path3d)
+                to `Main`. In the toolbar, four icons appear. Tap the _Add
+                Point_ tool, the icon with the green "+" sign.
+
+                > Note: You can hover any icon to see a tooltip describing the
+                > tool.
+
+                @Image(source: 17.points_options.webp)
+            }
+            @Step {
+                Tap in the center of each cylinder to create a point. Then,
+                tap the _Close Curve_ icon in the toolbar to close the path.
+                If any point is a bit off, you can tap and drag on it to
+                reposition it.
+
+                Your path should look like this.
+
+                @Image(source: 18.close_path.webp)
+            }
+            To sample random positions on it, we need a
+            [PathFollow3D](https://docs.godotengine.org/en/stable/classes/class%5Fpathfollow3d.html#class-pathfollow3d)
+            node.
+
+            @Step {
+                Add a `PathFollow3D` as a child of the `Path3D`. Rename the
+                two nodes to `SpawnLocation` and `SpawnPath`, respectively.
+                It's more descriptive of what we'll use them for.
+
+                @Image(source: 20.spawn_nodes.webp)
+            }
+            With that, we're ready to code the spawn mechanism.
         }
     }
     @Section(title: "Spawning monsters randomly") {
         @ContentAndMedia {
-            Right-click on the `Main` node and attach a new script to it.
+            We'll attach a script to the `Main` node and wire up a timer that
+            spawns a new mob on each tick. Before we spawn anything, though,
+            we need to assign the `mob.tscn` file to the `mob_scene` property
+            on the `Main` node (otherwise it's null!).
+        }
+        @Steps {
+            @Step {
+                Right-tap on the `Main` node and attach a new script to it.
 
-            We first export a variable to the _Inspector_ so that we can assign
-            `mob.tscn` or any other monster to it.
+                @Code(name: "main.gd", file: main-00.gd, reset: true)
+            }
+            @Step {
+                We first export a variable to the _Inspector_ so that we can
+                assign `mob.tscn` or any other monster to it.
 
-            @Code(name: "main.gd", file: main-00.gd, reset: true)
+                @Code(name: "main.gd", file: main-01.gd)
+            }
+            @Step {
+                Head back to the 3D screen and select the `Main` node. Drag
+                `mob.tscn` from the _FileSystem_ dock to the _Mob Scene_ slot
+                in the _Inspector_.
 
-            @Code(name: "main.gd", file: main-01.gd)
+                @Image(source: 20.mob_scene_property.webp)
+            }
+            @Step {
+                Add a new
+                [Timer](https://docs.godotengine.org/en/stable/classes/class%5Ftimer.html#class-timer)
+                node as a child of `Main`. Name it `MobTimer`.
 
-            We want to spawn mobs at regular time intervals. To do this, we need to
-            go back to the scene and add a timer. Before that, though, we need to
-            assign the `mob.tscn` file to the `mob_scene` property above (otherwise
-            it's null!)
+                @Image(source: 21.mob_timer.webp)
+            }
+            @Step {
+                In the _Inspector_, set its _Wait Time_ to `0.5` seconds and
+                turn on _Autostart_ so it automatically starts when we run
+                the game.
 
-            Head back to the 3D screen and select the `Main` node. Drag `mob.tscn`
-            from the _FileSystem_ dock to the _Mob Scene_ slot in the _Inspector_.
+                @Image(source: 22.mob_timer_properties.webp)
+            }
+            Timers emit a `timeout` signal every time they reach the end of
+            their _Wait Time_. By default, they restart automatically,
+            emitting the signal in a cycle. We can connect to this signal
+            from the _Main_ node to spawn monsters every `0.5` seconds.
 
-            @Image(source: 20.mob_scene_property.webp)
+            @Step {
+                With the _MobTimer_ still selected, head to the _Signals_
+                dock on the right, and double-tap the `timeout` signal.
 
-            Add a new
-            [Timer](https://docs.godotengine.org/en/stable/classes/class%5Ftimer.html#class-timer)
-            node as a child of `Main`. Name it `MobTimer`.
+                @Image(source: 23.timeout_signal.webp)
+            }
+            @Step {
+                Connect it to the _Main_ node.
 
-            @Image(source: 21.mob_timer.webp)
-
-            In the _Inspector_, set its _Wait Time_ to `0.5` seconds and turn on
-            _Autostart_ so it automatically starts when we run the game.
-
-            @Image(source: 22.mob_timer_properties.webp)
-
-            Timers emit a `timeout` signal every time they reach the end of their
-            _Wait Time_. By default, they restart automatically, emitting the
-            signal in a cycle. We can connect to this signal from the _Main_ node
-            to spawn monsters every `0.5` seconds.
-
-            With the _MobTimer_ still selected, head to the _Signals_ dock on the
-            right, and double-click the `timeout` signal.
-
-            @Image(source: 23.timeout_signal.webp)
-
-            Connect it to the _Main_ node.
-
-            @Image(source: 24.connect_timer_to_main.webp)
-
+                @Image(source: 24.connect_timer_to_main.webp)
+            }
             This will take you back to the script, with a new empty
             `_on_mob_timer_timeout()` function.
 
@@ -229,32 +264,36 @@
                position and the player's position.
             5. Add the mob as a child of the _Main_ node.
 
-            @Code(name: "main.gd", file: main-02.gd)
+            @Step {
+                Add the spawn logic to the `_on_mob_timer_timeout` function.
 
-            Above, `randf()` produces a random value between `0` and `1`, which is
-            what the _PathFollow_ node's `progress_ratio` expects: 0 is the start
-            of the path, 1 is the end of the path. The path we have set is around
-            the camera's viewport, so any random value between 0 and 1 is a random
-            position alongside the edges of the viewport!
+                @Code(name: "main.gd", file: main-02.gd)
+            }
+            Above, `randf()` produces a random value between `0` and `1`,
+            which is what the _PathFollow_ node's `progress_ratio` expects:
+            0 is the start of the path, 1 is the end of the path. The path
+            we have set is around the camera's viewport, so any random
+            value between 0 and 1 is a random position alongside the edges
+            of the viewport!
 
-            Note that if you remove the `Player` from the main scene, the
-            following line
+            > Note: If you remove the `Player` from the main scene, the
+            > following line
+            >
+            > ```
+            > var player_position = $Player.position
+            > ```
+            >
+            > gives an error because there is no $Player!
 
-            ```
-            var player_position = $Player.position
-            ```
+            @Step {
+                You can test the scene by pressing F6 (Cmd + R on macOS).
+                You should see the monsters spawn and move in a straight
+                line.
 
-            gives an error because there is no $Player!
-
-            You can test the scene by pressing F6 (Cmd + R on macOS). You should
-            see the monsters spawn and move in a straight line.
-
-            @Image(source: 25.spawn_result.png)
-
-            For now, they bump and slide against one another when their paths
-            cross. We'll address this in the next part.
-        }
-        @Steps {
+                @Image(source: 25.spawn_result.png)
+            }
+            For now, they bump and slide against one another when their
+            paths cross. We'll address this in the next part.
         }
     }
 }

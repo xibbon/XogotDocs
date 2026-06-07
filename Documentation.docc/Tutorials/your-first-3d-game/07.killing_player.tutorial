@@ -12,121 +12,147 @@
     }
     @Section(title: "Hitbox with the Area node") {
         @ContentAndMedia {
-            Head back to the `player.tscn` scene and add a new child node
-            [Area3D](https://docs.godotengine.org/en/stable/classes/class%5Farea3d.html#class-area3d).
-            Name it `MobDetector`. Add a
-            [CollisionShape3D](https://docs.godotengine.org/en/stable/classes/class%5Fcollisionshape3d.html#class-collisionshape3d)
-            node as a child of it.
+            We'll add an Area3D node to the `Player` that detects mob bodies. By
+            tuning the size and position of the area, we make sure it only
+            triggers when the player is on or near the ground.
+        }
+        @Steps {
+            @Step {
+                Head back to the `player.tscn` scene and add a new child node
+                [Area3D](https://docs.godotengine.org/en/stable/classes/class%5Farea3d.html#class-area3d).
+                Name it `MobDetector`. Add a
+                [CollisionShape3D](https://docs.godotengine.org/en/stable/classes/class%5Fcollisionshape3d.html#class-collisionshape3d)
+                node as a child of it.
 
-            @Image(source: 01.adding_area_node.webp)
+                @Image(source: 01.adding_area_node.webp)
+            }
+            @Step {
+                In the _Inspector_, assign a cylinder shape to it.
 
-            In the _Inspector_, assign a cylinder shape to it.
-
-            @Image(source: 02.cylinder_shape.webp)
-
+                @Image(source: 02.cylinder_shape.webp)
+            }
             Here is a trick you can use to make the collisions only happen when
             the player is on the ground or close to it. You can reduce the
             cylinder's height and move it up to the top of the character. This
             way, when the player jumps, the shape will be too high up for the
             enemies to collide with it.
 
-            @Image(source: 03.cylinder_in_editor.png)
+            @Step {
+                Reduce the cylinder's height and move it up to the top of the
+                character.
 
-            You also want the cylinder to be wider than the sphere. This way,
-            the player gets hit before colliding and being pushed on top of the
-            monster's collision box.
+                You also want the cylinder to be wider than the sphere. This
+                way, the player gets hit before colliding and being pushed on
+                top of the monster's collision box.
 
-            The wider the cylinder, the more easily the player will get killed.
+                The wider the cylinder, the more easily the player will get
+                killed.
 
-            Next, select the `MobDetector` node again, and in the _Inspector_,
-            turn **off** its _Monitorable_ property. This makes it so other
-            physics nodes cannot detect the area. The complementary _Monitoring_
-            property allows it to detect collisions. Then, remove the _Collision
-            -> Layer_ and set the mask to the "enemies" layer.
+                @Image(source: 03.cylinder_in_editor.png)
+            }
+            @Step {
+                Select the `MobDetector` node again, and in the _Inspector_,
+                turn **off** its _Monitorable_ property. This makes it so other
+                physics nodes cannot detect the area. The complementary
+                _Monitoring_ property allows it to detect collisions. Then,
+                remove the _Collision -> Layer_ and set the mask to the
+                "enemies" layer.
 
-            @Image(source: 04.mob_detector_properties.webp)
-
+                @Image(source: 04.mob_detector_properties.webp)
+            }
             When areas detect a collision, they emit signals. We're going to
-            connect one to the `Player` node. Select `MobDetector` and go to the
-            Signals dock, double-click the `body_entered` signal and connect it
-            to the `Player`
+            connect one to the `Player` node.
 
-            @Image(source: 05.body_entered_signal.webp)
+            @Step {
+                Select `MobDetector` and go to the Signals dock, double-tap
+                the `body_entered` signal and connect it to the `Player`.
 
-            The _MobDetector_ will emit `body_entered` when a
-            [CharacterBody3D](https://docs.godotengine.org/en/stable/classes/class%5Fcharacterbody3d.html#class-characterbody3d)
-            or a
-            [RigidBody3D](https://docs.godotengine.org/en/stable/classes/class%5Frigidbody3d.html#class-rigidbody3d)
-            node enters it. As it only masks the "enemies" physics layers, it
-            will only detect the `Mob` nodes.
+                The _MobDetector_ will emit `body_entered` when a
+                [CharacterBody3D](https://docs.godotengine.org/en/stable/classes/class%5Fcharacterbody3d.html#class-characterbody3d)
+                or a
+                [RigidBody3D](https://docs.godotengine.org/en/stable/classes/class%5Frigidbody3d.html#class-rigidbody3d)
+                node enters it. As it only masks the "enemies" physics
+                layers, it will only detect the `Mob` nodes.
 
-            Code-wise, we're going to do two things: emit a signal we'll later
-            use to end the game and destroy the player. We can wrap these
-            operations in a `die()` function that helps us put a descriptive
-            label on the code.
+                @Image(source: 05.body_entered_signal.webp)
+            }
+            Code-wise, we're going to do two things: emit a signal we'll
+            later use to end the game and destroy the player. We can wrap
+            these operations in a `die()` function that helps us put a
+            descriptive label on the code.
 
-            @Code(name: "player.gd", file: player-09.gd, previousFile: player-08.gd)
-        }
-        @Steps {
+            @Step {
+                Add the `hit` signal, the `die()` function, and the
+                `_on_mob_detector_body_entered` callback to the player
+                script.
+
+                @Code(name: "player.gd", file: player-09.gd, previousFile: player-08.gd)
+            }
         }
     }
     @Section(title: "Ending the game") {
         @ContentAndMedia {
-            We can use the `Player`'s `hit` signal to end the game. All we need
-            to do is connect it to the `Main` node and stop the `MobTimer` in
-            reaction.
-
-            Open `main.tscn`, select the `Player` node, and in the _Signals_
-            dock, connect its `hit` signal to the `Main` node.
-
-            @Image(source: 06.player_hit_signal.webp)
-
-            Get the timer, and stop it, in the `_on_player_hit()` function.
-
-            @Code(name: "main.gd", file: main-03.gd, previousFile: main-02.gd)
-
-            If you try the game now, the monsters will stop spawning when you die,
-            and the remaining ones will leave the screen.
-
-            Notice also that the game no longer crashes or displays an error when
-            the player dies. Because we are stopping the MobTimer, it no longer
-            triggers the `_on_mob_timer_timeout()` function.
-
-            Also note that the enemy colliding with the player and dying depends
-            on the size and position of the `Player` and the `Mob`'s collision
-            shapes. You may need to move them and resize them to achieve a tight
-            game feel.
-
-            You can pat yourself on the back: you prototyped a complete 3D game,
-            even if it's still a bit rough.
-
-            From there, we'll add a score, the option to retry the game, and
-            you'll see how you can make the game feel much more alive with
-            minimalistic animations.
+            We can use the `Player`'s `hit` signal to end the game. All we
+            need to do is connect it to the `Main` node and stop the
+            `MobTimer` in reaction.
         }
         @Steps {
+            @Step {
+                Open `main.tscn`, select the `Player` node, and in the
+                _Signals_ dock, connect its `hit` signal to the `Main` node.
+
+                @Image(source: 06.player_hit_signal.webp)
+            }
+            @Step {
+                Get the timer, and stop it, in the `_on_player_hit()`
+                function.
+
+                @Code(name: "main.gd", file: main-03.gd, previousFile: main-02.gd)
+            }
+            If you try the game now, the monsters will stop spawning when
+            you die, and the remaining ones will leave the screen.
+
+            Notice also that the game no longer crashes or displays an error
+            when the player dies. Because we are stopping the MobTimer, it
+            no longer triggers the `_on_mob_timer_timeout()` function.
+
+            Also note that the enemy colliding with the player and dying
+            depends on the size and position of the `Player` and the `Mob`'s
+            collision shapes. You may need to move them and resize them to
+            achieve a tight game feel.
+
+            You can pat yourself on the back: you prototyped a complete 3D
+            game, even if it's still a bit rough.
+
+            From there, we'll add a score, the option to retry the game,
+            and you'll see how you can make the game feel much more alive
+            with minimalistic animations.
         }
     }
     @Section(title: "Code checkpoint") {
         @ContentAndMedia {
             Here are the complete scripts for the `Main`, `Mob`, and `Player`
-            nodes, for reference. You can use them to compare and check your code.
-
-            Starting with `main.gd`.
-
-            @Code(name: "main.gd", file: main-03.gd)
-
-            Next is `mob.gd`.
-
-            @Code(name: "mob.gd", file: mob-05.gd)
-
-            Finally, the longest script, `player.gd`:
-
-            @Code(name: "player.gd", file: player-09.gd)
-
-            See you in the next lesson to add the score and the retry option.
+            nodes, for reference. You can use them to compare and check your
+            code.
         }
         @Steps {
+            @Step {
+                Starting with `main.gd`.
+
+                @Code(name: "main.gd", file: main-03.gd)
+            }
+            @Step {
+                Next is `mob.gd`.
+
+                @Code(name: "mob.gd", file: mob-05.gd)
+            }
+            @Step {
+                Finally, the longest script, `player.gd`:
+
+                @Code(name: "player.gd", file: player-09.gd)
+            }
+            See you in the next lesson to add the score and the retry
+            option.
         }
     }
 }
