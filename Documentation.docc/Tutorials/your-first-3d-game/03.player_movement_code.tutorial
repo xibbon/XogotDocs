@@ -53,7 +53,7 @@
                 > may only correspond to half of your screen's width, in 3D it's
                 > a kilometer.
 
-                @Code(name: "player.gd", file: player-01.gd)
+                @Code(name: "player.gd", file: player-01.gd, previousFile: player-00.gd)
             }
         }
     }
@@ -85,7 +85,7 @@
                 > the Y component in this section; gravity will be applied to it
                 > in a later step.
 
-                @Code(name: "player.gd", file: player-02.gd)
+                @Code(name: "player.gd", file: player-02.gd, previousFile: player-01.gd)
             }
             In case the player presses, say, both W and D simultaneously, the
             vector will have a length of about `1.4`. But if they press a single
@@ -107,7 +107,7 @@
                 [Basis](https://docs.godotengine.org/en/stable/classes/class%5Fbasis.html#class-basis)
                 that looks in the `direction` direction.
 
-                @Code(name: "player.gd", file: player-03.gd)
+                @Code(name: "player.gd", file: player-03.gd, previousFile: player-02.gd)
             }
             Then, we update the velocity. We have to calculate the ground
             velocity and the fall speed separately. Be sure to go back one tab
@@ -118,7 +118,7 @@
                 Calculate the ground velocity by multiplying the direction's
                 horizontal components by `speed`.
 
-                @Code(name: "player.gd", file: player-04.gd)
+                @Code(name: "player.gd", file: player-04.gd, previousFile: player-03.gd)
             }
             @Step {
                 The `CharacterBody3D.is_on_floor()` function returns `true` if
@@ -131,7 +131,7 @@
                 > it is in the air. Without this guard, the character would
                 > keep accelerating downward and clip through the floor.
 
-                @Code(name: "player.gd", file: player-05.gd)
+                @Code(name: "player.gd", file: player-05.gd, previousFile: player-04.gd)
             }
             The physics engine can only detect interactions with walls, the
             floor, or other bodies during a given frame if movement and
@@ -146,7 +146,7 @@
                 for you. It uses the _velocity_ value native to the
                 [CharacterBody3D](https://docs.godotengine.org/en/stable/classes/class%5Fcharacterbody3d.html#class-characterbody3d).
 
-                @Code(name: "player.gd", file: player-06.gd)
+                @Code(name: "player.gd", file: player-06.gd, previousFile: player-05.gd)
             }
             And that's all the code you need to move the character on the floor.
         }

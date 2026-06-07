@@ -213,7 +213,7 @@
                 We first export a variable to the _Inspector_ so that we can
                 assign `mob.tscn` or any other monster to it.
 
-                @Code(name: "main.gd", file: main-01.gd)
+                @Code(name: "main.gd", file: main-01.gd, previousFile: main-00.gd)
             }
             @Step {
                 Head back to the 3D screen and select the `Main` node. Drag
@@ -267,7 +267,7 @@
             @Step {
                 Add the spawn logic to the `_on_mob_timer_timeout` function.
 
-                @Code(name: "main.gd", file: main-02.gd)
+                @Code(name: "main.gd", file: main-02.gd, previousFile: main-01.gd)
             }
             Above, `randf()` produces a random value between `0` and `1`,
             which is what the _PathFollow_ node's `progress_ratio` expects:

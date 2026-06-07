@@ -108,14 +108,11 @@
                 After the line that defines `fall_acceleration`, at the top
                 of the script, add the `jump_impulse` property.
 
-                @Code(name: "player.gd", file: player-07.gd, previousFile: player-06.gd)
-            }
-            @Step {
-                Inside `_physics_process()`, add a check that applies the
-                jump impulse when the player is on the floor and just
-                pressed the "jump" action.
+                Then, inside `_physics_process()`, add a check that
+                applies the jump impulse when the player is on the
+                floor and just pressed the "jump" action.
 
-                @Code(name: "player.gd", file: player-07.gd)
+                @Code(name: "player.gd", file: player-07.gd, previousFile: player-06.gd)
             }
             That's all you need to jump!
 

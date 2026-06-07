@@ -146,7 +146,7 @@
             @Step {
                 Define the `score` variable.
 
-                @Code(name: "score_label.gd", file: score_label-01.gd)
+                @Code(name: "score_label.gd", file: score_label-01.gd, previousFile: score_label-00.gd)
             }
             @Step {
                 Open the script `main.gd`. If it's still open, you can tap
@@ -159,7 +159,7 @@
                 the line that connects the mob's `squashed` signal to the
                 `ScoreLabel`'s callback.
 
-                @Code(name: "main.gd", file: main-02.gd)
+                @Code(name: "main.gd", file: main-02.gd, previousFile: main-01.gd)
             }
             This line means that when the mob emits the `squashed` signal,
             the `ScoreLabel` node will receive it and call the function
@@ -170,7 +170,7 @@
                 `_on_mob_squashed()` callback function. There, we increment
                 the score and update the displayed text.
 
-                @Code(name: "score_label.gd", file: score_label-02.gd)
+                @Code(name: "score_label.gd", file: score_label-02.gd, previousFile: score_label-01.gd)
             }
             @Step {
                 You can now play the game and squash a few enemies to see
