@@ -37,12 +37,21 @@
                 pressing the *Create* button. We set it to *Empty* because we want
                 to write our own code for player movement.
 
+                > Tip: Picking *Empty* ensures the script only contains the
+                > `extends` line we need. The default template would add `func
+                > _ready()` and `func _process()` stubs that we'd just delete.
+
                 @Code(name: "player.gd", file: player-00.gd, reset: true)
             }
             @Step {
                 Add the following properties to the top of the script. They define
                 the player's movement speed, a fall acceleration representing
                 gravity, and a velocity we'll reuse across frames.
+
+                > Note: The values are quite different from 2D code because
+                > distances are in meters. While in 2D a thousand units (pixels)
+                > may only correspond to half of your screen's width, in 3D it's
+                > a kilometer.
 
                 @Code(name: "player.gd", file: player-01.gd)
             }
@@ -72,12 +81,21 @@
                 These four conditions give us eight possibilities and eight
                 possible directions.
 
+                > Note: The XZ plane is the ground plane in 3D. We never touch
+                > the Y component in this section; gravity will be applied to it
+                > in a later step.
+
                 @Code(name: "player.gd", file: player-02.gd)
             }
             In case the player presses, say, both W and D simultaneously, the
             vector will have a length of about `1.4`. But if they press a single
             key, it will have a length of `1`. We want the vector's length to be
             consistent, and not move faster diagonally.
+
+            > Tip: Diagonal movement without normalization would be roughly
+            > 41% faster than cardinal movement. Calling `normalized()` on a
+            > 2-component input vector returns a unit vector, so the speed
+            > stays the same in every direction.
 
             @Step {
                 Call the vector's `normalized()` method to keep the length
@@ -109,8 +127,9 @@
                 delta time every frame. This causes our character to fall in
                 every frame, as long as it is not on or colliding with the floor.
 
-                That's why we apply gravity to the `Player` only while it is in
-                the air.
+                > Note: That's why we apply gravity to the `Player` only while
+                > it is in the air. Without this guard, the character would
+                > keep accelerating downward and clip through the floor.
 
                 @Code(name: "player.gd", file: player-05.gd)
             }
@@ -211,6 +230,10 @@
             @Step {
                 You can run the scene by pressing F6 (Cmd + R on macOS) and
                 press the arrow keys to move the character.
+
+                > Tip: If you're using a hardware keyboard, try the WASD keys
+                > in addition to the arrow keys. The gamepad joystick will
+                > also work because we bound it in the Input Map.
 
                 @Image(source: 09.camera_rotated.png)
             }

@@ -64,6 +64,11 @@
             at a distance from the monster, and the game will feel unfair to
             the players.
 
+            > Important: Make the box a little thinner than the model. If
+            > the player's sphere touches the box's corner even slightly, a
+            > collision fires — and the player will feel like they died from
+            > "thin air".
+
             @Step {
                 Resize the box to fit the 3D model.
 

@@ -276,19 +276,25 @@
             value between 0 and 1 is a random position alongside the edges
             of the viewport!
 
-            > Note: If you remove the `Player` from the main scene, the
+            > Important: If you remove the `Player` from the main scene, the
             > following line
             >
             > ```
             > var player_position = $Player.position
             > ```
             >
-            > gives an error because there is no $Player!
+            > gives a "node not found" error because there is no $Player!
 
             @Step {
                 You can test the scene by pressing F6 (Cmd + R on macOS).
                 You should see the monsters spawn and move in a straight
                 line.
+
+                > Tip: If you can't see the new monsters, double-check that
+                > the `MobTimer`'s `Autostart` is on and that the `timeout`
+                > signal is connected to the `Main` node. The Dock's
+                > "Remote" tab also shows the running scene tree so you can
+                > confirm the mob is being added.
 
                 @Image(source: 25.spawn_result.png)
             }

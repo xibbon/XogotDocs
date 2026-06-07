@@ -45,8 +45,10 @@
                 way, the player gets hit before colliding and being pushed on
                 top of the monster's collision box.
 
-                The wider the cylinder, the more easily the player will get
-                killed.
+                > Tip: The wider the cylinder, the more easily the player
+                > will get killed. This is a balance — too narrow and the
+                > player can graze a monster without dying; too wide and
+                > every encounter is fatal. Tune until it feels right.
 
                 @Image(source: 03.cylinder_in_editor.png)
             }
@@ -73,6 +75,11 @@
                 [RigidBody3D](https://docs.godotengine.org/en/stable/classes/class%5Frigidbody3d.html#class-rigidbody3d)
                 node enters it. As it only masks the "enemies" physics
                 layers, it will only detect the `Mob` nodes.
+
+                > Note: Unlike signals that come from `Control` nodes (like
+                > a button), `Area3D` body signals are not automatically
+                > shown in the editor's _Signals_ dock. We open the dock
+                > manually from the _MobDetector_ node.
 
                 @Image(source: 05.body_entered_signal.webp)
             }
@@ -112,9 +119,12 @@
             If you try the game now, the monsters will stop spawning when
             you die, and the remaining ones will leave the screen.
 
-            Notice also that the game no longer crashes or displays an error
-            when the player dies. Because we are stopping the MobTimer, it
-            no longer triggers the `_on_mob_timer_timeout()` function.
+            > Note: Notice also that the game no longer crashes or displays
+            > an error when the player dies. Because we are stopping the
+            > MobTimer, it no longer triggers the
+            > `_on_mob_timer_timeout()` function — and the player node has
+            > been queue_free'd, so any subsequent reference to `$Player`
+            > in the timer callback would fail.
 
             Also note that the enemy colliding with the player and dying
             depends on the size and position of the `Player` and the `Mob`'s

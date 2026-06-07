@@ -119,6 +119,11 @@
             readable.
 
             This system is the Input Map.
+
+            > Tip: Once you set up an action here, you can reuse it across
+            > scripts with `Input.is_action_pressed("your_action_name")`. You
+            > can also bind multiple keys and gamepad buttons to a single
+            > action.
         }
         @Steps {
             @Step {
@@ -133,11 +138,11 @@
                 the top; they are your labels. In the bottom part, you can bind
                 keys to these actions.
 
-                Godot projects come with some predefined actions designed for user
-                interface design. These will become visible if you enable the **Show
-                Built-in Actions** toggle. We could use these here, but instead we're
-                defining our own to support gamepads. Leave **Show Built-in Actions**
-                disabled.
+                > Note: Godot projects come with some predefined actions designed
+                > for user interface design. These will become visible if you
+                > enable the **Show Built-in Actions** toggle. We could use these
+                > here, but instead we're defining our own to support gamepads.
+                > Leave **Show Built-in Actions** disabled.
 
                 @Image(source: input_map_tab.webp)
             }
@@ -161,6 +166,10 @@
                 right. Do this for `move_left`. Press the left arrow key and tap
                 **OK**.
 
+                > Tip: You can repeat this for the `A` key so both left arrow and
+                > A drive `move_left` on a hardware keyboard. Players appreciate
+                > the option.
+
                 @Image(source: left_inputmap.webp)
             }
             @Step {
@@ -177,9 +186,10 @@
                 Leave the other values as default and press **OK**.
 
                 > Note: If you want controllers to have different input actions,
-                > you should use the Devices option in Additional Options. Device 0
-                > corresponds to the first plugged gamepad, Device 1 corresponds to
-                > the second plugged gamepad, and so on.
+                > you can use the Devices option in Additional Options. Device 0
+                > corresponds to the first plugged gamepad, Device 1 to the
+                > second, and so on. We're leaving this off so a single gamepad
+                > configuration works for any plugged-in controller.
 
                 @Image(source: joystick_axis_input.webp)
             }

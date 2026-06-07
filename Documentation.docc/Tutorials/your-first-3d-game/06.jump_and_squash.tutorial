@@ -39,6 +39,11 @@
 
                 Now, we can assign them to our physics nodes.
 
+                > Tip: Naming the layers is purely for the editor's benefit
+                > — the layers themselves are still just integers. But using
+                > readable names makes the _Collision_ section of the
+                > _Inspector_ far easier to scan.
+
                 @Image(source: 03.physics_layers.webp)
             }
             @Step {
@@ -125,8 +130,10 @@
             really want controls to be responsive and giving instant speed
             boosts like these, while unrealistic, feels great.
 
-            Notice that the Y axis is positive upwards. That's unlike 2D,
-            where the Y axis is positive downwards.
+            > Tip: Notice that the Y axis is positive upwards in 3D. That's
+            > unlike 2D, where the Y axis is positive downwards. The
+            > `jump_impulse` value is a positive Y velocity, so the
+            > character moves up — not down.
         }
     }
     @Section(title: "Squashing monsters") {
@@ -162,6 +169,11 @@
 
                 We can now use the group from the code to distinguish
                 collisions with monsters from collisions with the floor.
+
+                > Note: A node can belong to multiple groups, and a single
+                > group can hold many node types. Groups are commonly used
+                > as light-weight tags for collision filtering, palette
+                > swaps, achievement systems, and more.
 
                 @Image(source: 11.group_scene_groups.webp)
             }
@@ -200,10 +212,10 @@
             the plane where the collision occurred. The dot product allows
             us to compare it to the up direction.
 
-            With dot products, when the result is greater than `0`, the two
-            vectors are at an angle of fewer than 90 degrees. A value
-            higher than `0.1` tells us that we are roughly above the
-            monster.
+            > Tip: With dot products, when the result is greater than `0`,
+            > the two vectors are at an angle of fewer than 90 degrees. A
+            > value higher than `0.1` tells us that we are roughly above
+            > the monster — anything lower and we hit it from the side.
 
             After handling the squash and bounce logic, we terminate the
             loop early via the `break` statement to prevent further

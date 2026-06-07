@@ -47,6 +47,11 @@
                 enable _Font Color_ in order to tint the text to black (which
                 contrasts well with the white 3D scene).
 
+                > Tip: If you want a quick visual sanity check, set the
+                > color to something loud (red or green) while you build
+                > the layout, then dial it back to a more sensible color
+                > when you're done.
+
                 @Image(source: 03_score_font_color.webp)
             }
             @Step {
@@ -222,6 +227,10 @@
                 color's Alpha channel, that is to say, its
                 opacity/transparency.
 
+                > Tip: A black rectangle at 50% alpha (Color(0, 0, 0, 0.5))
+                > gives a classic "modal" feel — the player can still see
+                > the world behind the overlay, but it's clearly dimmed.
+
                 @Image(source: 13_retry_color_picker.webp)
             }
             @Step {
@@ -263,6 +272,10 @@
                 If the player pressed the predefined `ui_accept` input
                 action and `Retry` is visible, we reload the current
                 scene.
+
+                > Note: `ui_accept` is a built-in action mapped to Enter
+                > and gamepad A by default, so we don't need to add it to
+                > our Input Map.
 
                 @Code(name: "main.gd", file: main-06.gd, previousFile: main-05.gd)
             }
@@ -324,6 +337,11 @@
                 _Autoplay_ so the music plays automatically at the start of
                 the game.
 
+                > Tip: Toggle off _Autoplay_ here if you want to start the
+                > music from a script later (e.g. fade in over the first
+                > few seconds). Otherwise, leave it on and the music
+                > starts as soon as the scene loads.
+
                 @Image(source: 17_music_node_properties.webp)
             }
             @Step {
@@ -337,6 +355,11 @@
                 scene. Tap the folder icon to open the file browser and
                 double-tap on `music_player.tscn`. Then, tap the _Add_
                 button on the right to register the node.
+
+                > Important: When registering the autoload, the _Node
+                > Name_ defaults to the file's name (`music_player`).
+                > Leave it as is — that's the name we'll use to reference
+                > the autoload from any script.
 
                 @Image(source: 18_register_autoload.webp)
             }

@@ -16,6 +16,9 @@
             It features a toolbar and the animation drop-down menu at the
             top, a track editor in the middle that's currently empty, and
             filter, snap, and zoom options at the bottom.
+
+            > Tip: Don't worry about memorizing every toolbar button up
+            > front. We'll point at the ones you need as we use them.
         }
         @Steps {
             @Step {
@@ -55,6 +58,10 @@
                 icon in the top-right. This prevents it from folding when
                 you tap on the viewport and deselect the nodes.
 
+                > Tip: The pin is a small but very useful feature. Without
+                > it, the dock collapses the moment you click anywhere in
+                > the viewport to edit another node.
+
                 @Image(source: 05.pin_icon.webp)
             }
             @Step {
@@ -67,6 +74,10 @@
 
                 You can tap and drag the slider in the bottom-right to
                 zoom in and out of the timeline.
+
+                > Experiment: Try changing the duration to `0.6` or
+                > `2.0` seconds and see how the float motion changes. You
+                > can always change it back to `1.2` later.
 
                 @Image(source: 06.animation_duration.webp)
             }
@@ -84,7 +95,7 @@
             Let's insert our first keys. Here, we will animate both the
             position and the rotation of the `Character` node.
 
-            > Note: Animations update the properties of the animated
+            > Important: Animations update the properties of the animated
             > nodes every frame, overriding initial values. If we directly
             > animated the _Player_ node, it would prevent us from moving
             > it in code. This is where the _Pivot_ node comes in handy:
@@ -92,7 +103,7 @@
             > and rotate the _Pivot_ and layer changes on top of the
             > animation in a script.
 
-            > Note: A lecture on the principles of animation is beyond the
+            > Tip: A lecture on the principles of animation is beyond the
             > scope of this tutorial. Just note that you don't want to
             > time and space everything evenly. Instead, animators play
             > with timing and spacing, two core animation principles. You
@@ -186,6 +197,11 @@
                 Play the animation again to see the difference. The first
                 half should already feel a bit bouncier.
 
+                > Experiment: Try dragging the easing curve all the way
+                > to the left for an extreme ease-out, then drag it back
+                > to a straight line for linear. Feel how much personality
+                > the curve adds to the motion.
+
                 @Image(source: 17.ease_out.webp)
             }
             @Step {
@@ -234,6 +250,11 @@
                 the `direction` vector, add the code that bumps the
                 animation `speed_scale` when the player is moving and
                 resets it to `1` when they stop.
+
+                > Experiment: Try different speed multipliers — `2`,
+                > `6`, or even fractional values like `0.5` for a
+                > "sluggish" feel. Note that values above `1` speed up
+                > the animation; values below `1` slow it down.
 
                 @Code(name: "player.gd", file: player-10.gd, previousFile: player-09.gd)
             }
