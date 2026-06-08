@@ -29,12 +29,12 @@ To get started building games with Xogot, check out our <doc:Getting-Started> gu
 - <doc:Xogot-Connect>
 - <doc:Command-Palette>
 - <doc:Testflight>
-- <doc:Mac-Testing>
 
 ### Mac
 
 - <doc:mac_command_line>
 - <doc:integrating_with_ai_tools>
+- <doc:Mac-Testing>
 
 ### 2D
 

@@ -4,8 +4,8 @@ Xogot for Mac brings the Xogot experience to macOS: a native Mac app
 for creating, editing, testing, and shipping Godot projects, with a 
 focus on Apple platform workflows.
 
-If you want to participate in early testing, please sign up on the 
- [Xogot for Mac sign-up page](https://xogot.com/mac).
+Download Xogot for Mac and learn more about the open beta on the 
+ [Xogot for Mac](https://xogot.com/mac) page.
 
 For a guided introduction to the preview, start with the
 <doc:Xogot-for-Mac-Tutorials>. The <doc:00.xogot_for_mac_tour> gives you
