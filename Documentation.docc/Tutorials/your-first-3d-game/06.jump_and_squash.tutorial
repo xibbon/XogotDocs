@@ -26,6 +26,8 @@
 
             Physics layers are represented by numbers, but we can give them
             names to keep track of what's what.
+
+            @Image(source: fix-me.png)
         }
         @Steps {
             @Step {
@@ -102,6 +104,8 @@
             The jumping mechanic itself requires only two lines of code. Open
             the _Player_ script. We need a value to control the jump's
             strength and update `_physics_process()` to code the jump.
+
+            @Image(source: fix-me.png)
         }
         @Steps {
             @Step {
@@ -142,6 +146,8 @@
             them from collisions with the floor. To do so, we can use Godot's
             [group](https://docs.godotengine.org/en/stable/tutorials/scripting/groups.html#doc-groups)
             tagging feature.
+
+            @Image(source: fix-me.png)
         }
         @Steps {
             @Step {

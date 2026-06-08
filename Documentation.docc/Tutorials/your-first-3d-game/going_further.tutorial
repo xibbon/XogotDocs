@@ -45,6 +45,8 @@
 
             We hope you enjoyed this tutorial series, and we're looking forward to
             seeing what you achieve using Godot.
+
+            @Image(source: fix-me.png)
         }
         @Steps {
         }

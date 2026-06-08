@@ -17,6 +17,8 @@
             The `UserInterface` node allows us to group our UI in a branch of
             the scene tree and use a theme resource that will propagate to all
             its children. We'll use it to set our game's font.
+
+            @Image(source: fix-me.png)
         }
         @Steps {
             @Step {
@@ -71,6 +73,8 @@
             > design complex user interfaces, but that is beyond the scope of
             > this series. To learn more about creating and editing themes, see
             > [Introduction to GUI skinning](https://docs.godotengine.org/en/stable/tutorials/ui/gui%5Fskinning.html#doc-gui-skinning).
+
+            @Image(source: fix-me.png)
         }
         @Steps {
             @Step {
@@ -136,6 +140,8 @@
             > when prototyping or when your project is simple, it is fine
             > to keep your code simple. Programming is always a balancing
             > act.
+
+            @Image(source: fix-me.png)
         }
         @Steps {
             @Step {
@@ -159,7 +165,7 @@
                 the line that connects the mob's `squashed` signal to the
                 `ScoreLabel`'s callback.
 
-                @Code(name: "main.gd", file: main-02.gd, previousFile: main-01.gd)
+                @Code(name: "main.gd", file: main-06.gd, previousFile: main-05.gd)
             }
             This line means that when the mob emits the `squashed` signal,
             the `ScoreLabel` node will receive it and call the function
@@ -185,6 +191,8 @@
             We'll now add the ability to play again after dying. When the
             player dies, we'll display a message on the screen and wait for
             input.
+
+            @Image(source: fix-me.png)
         }
         @Steps {
             @Step {
@@ -248,6 +256,8 @@
         @ContentAndMedia {
             We can now head to the code to show and hide the `Retry` node
             when the player dies and plays again.
+
+            @Image(source: fix-me.png)
         }
         @Steps {
             @Step {
@@ -277,7 +287,7 @@
                 > and gamepad A by default, so we don't need to add it to
                 > our Input Map.
 
-                @Code(name: "main.gd", file: main-06.gd, previousFile: main-05.gd)
+                @Code(name: "main.gd", file: main-07.gd, previousFile: main-06.gd)
             }
             The function `get_tree()` gives us access to the global
             [SceneTree](https://docs.godotengine.org/en/stable/classes/class%5Fscenetree.html#class-scenetree)
@@ -314,6 +324,8 @@
 
             At the top are the autoloaded `MusicPlayer` and a _root_ node,
             which is your game's viewport.
+
+            @Image(source: fix-me.png)
         }
         @Steps {
             @Step {
@@ -376,7 +388,7 @@
             Here is the complete `main.gd` script for reference.
 
             @Step {
-                @Code(name: "main.gd", file: main-06.gd)
+                @Code(name: "main.gd", file: main-07.gd, reset: true)
             }
         }
     }

@@ -10,6 +10,8 @@
             Before drawing the path, we're going to change the game resolution.
             Our game has a default window size of `1152x648`. We're going to set
             it to `720x540`, a nice little box.
+
+            @Image(source: fix-me.png)
         }
         @Steps {
             @Step {
@@ -49,6 +51,8 @@
             3D, materials define a surface's visual properties like its color,
             how it reflects light, and more. We can use them to change the
             color of a mesh.
+
+            @Image(source: fix-me.png)
         }
         @Steps {
             @Step {
@@ -202,6 +206,8 @@
             spawns a new mob on each tick. Before we spawn anything, though,
             we need to assign the `mob.tscn` file to the `mob_scene` property
             on the `Main` node (otherwise it's null!).
+
+            @Image(source: fix-me.png)
         }
         @Steps {
             @Step {

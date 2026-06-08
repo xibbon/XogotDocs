@@ -20,6 +20,8 @@
             We're also going to create a basic rig for our character's 3D model. This
             will allow us to rotate the model later via code while it plays an
             animation.
+
+            @Image(source: fix-me.png)
         }
         @Steps {
             @Step {
@@ -124,6 +126,8 @@
             > scripts with `Input.is_action_pressed("your_action_name")`. You
             > can also bind multiple keys and gamepad buttons to a single
             > action.
+
+            @Image(source: fix-me.png)
         }
         @Steps {
             @Step {

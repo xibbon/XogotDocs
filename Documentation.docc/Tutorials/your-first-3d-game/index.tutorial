@@ -59,6 +59,8 @@
             - [Score and replay](doc:08.score_and_replay)
             - [Character animation](doc:09.adding_animations)
             - [Going further](doc:going_further)
+
+            @Image(source: fix-me.png)
         }
         @Steps {
         }

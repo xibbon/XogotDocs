@@ -29,6 +29,8 @@
             > Note: The values are quite different from 2D code because distances are
             > in meters. While in 2D, a thousand units (pixels) may only correspond
             > to half of your screen's width, in 3D, it's a kilometer.
+
+            @Image(source: fix-me.png)
         }
         @Steps {
             @Step {
@@ -70,6 +72,8 @@
             > See also: To learn more about the difference between `_process()` and
             > `_physics_process()`, see
             > [Idle and Physics Processing](https://docs.godotengine.org/en/stable/tutorials/scripting/idle%5Fand%5Fphysics%5Fprocessing.html#doc-idle-and-physics-processing).
+
+            @Image(source: fix-me.png)
         }
         @Steps {
             @Step {
@@ -157,6 +161,8 @@
             so, we need to instantiate the player and then add a camera. Unlike
             in 2D, in 3D, you won't see anything if your viewport doesn't have a
             camera pointing at something.
+
+            @Image(source: fix-me.png)
         }
         @Steps {
             @Step {

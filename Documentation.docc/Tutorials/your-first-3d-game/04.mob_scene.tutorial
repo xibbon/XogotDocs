@@ -7,6 +7,8 @@
         @ContentAndMedia {
             Let's design the monsters themselves in a new scene. The node
             structure is going to be similar to the `player.tscn` scene.
+
+            @Image(source: fix-me.png)
         }
         @Steps {
             @Step {
@@ -106,6 +108,8 @@
             > different technique to manage memory, reference counting, which
             > doesn't have that caveat. You can learn more about that here:
             > [Memory management](https://docs.godotengine.org/en/stable/tutorials/scripting/gdscript/gdscript%5Fbasics.html#doc-gdscript-basics-memory-management).
+
+            @Image(source: fix-me.png)
         }
         @Steps {
             @Step {
@@ -131,6 +135,8 @@
             function to initialize the monster. We'll then code the randomized
             spawn mechanism in the `main.tscn` scene and call the function from
             there.
+
+            @Image(source: fix-me.png)
         }
         @Steps {
             @Step {
@@ -192,6 +198,8 @@
             so, we'll connect our
             [VisibleOnScreenNotifier3D](https://docs.godotengine.org/en/stable/classes/class%5Fvisibleonscreennotifier3d.html#class-visibleonscreennotifier3d)
             node's `screen_exited` signal to the `Mob`.
+
+            @Image(source: fix-me.png)
         }
         @Steps {
             @Step {

@@ -19,6 +19,8 @@
 
             > Tip: Don't worry about memorizing every toolbar button up
             > front. We'll point at the ones you need as we use them.
+
+            @Image(source: fix-me.png)
         }
         @Steps {
             @Step {
@@ -109,6 +111,8 @@
             > with timing and spacing, two core animation principles. You
             > want to offset and contrast in your character's motion to
             > make them feel alive.
+
+            @Image(source: fix-me.png)
         }
         @Steps {
             @Step {
@@ -237,6 +241,8 @@
             the animation. We can make the character arc when jumping using
             the following line of code. Add it at the end of
             `_physics_process()`.
+
+            @Image(source: fix-me.png)
         }
         @Steps {
             @Step {
@@ -271,12 +277,12 @@
             @Step {
                 Here's the _Player_ script.
 
-                @Code(name: "player.gd", file: player-10.gd)
+                @Code(name: "player.gd", file: player-10.gd, reset: true)
             }
             @Step {
                 And the _Mob_'s script.
 
-                @Code(name: "mob.gd", file: mob-05.gd)
+                @Code(name: "mob.gd", file: mob-05.gd, reset: true)
             }
         }
     }
@@ -292,6 +298,8 @@
 
             We can change the playback speed based on the creature's
             `random_speed`.
+
+            @Image(source: fix-me.png)
         }
         @Steps {
             @Step {
@@ -353,6 +361,8 @@
             > Tip: There are lots of other add-ons for Xogot, with more
             > being added all the time. Trying out the available add-ons
             > is a great way to learn Xogot.
+
+            @Image(source: fix-me.png)
         }
         @Steps {
             @Step {
@@ -439,7 +449,7 @@
                 `$UI.hide()` to hide the joystick at the same time as
                 the retry overlay appears.
 
-                @Code(name: "main.gd", file: main-07.gd, previousFile: main-06.gd)
+                @Code(name: "main.gd", file: main-08.gd, previousFile: main-07.gd)
             }
             The retry mechanism in `_unhandled_input()` reloads the
             current scene, so the joystick will automatically reappear

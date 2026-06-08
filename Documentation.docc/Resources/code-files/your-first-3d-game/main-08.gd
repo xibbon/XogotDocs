@@ -30,6 +30,9 @@ func _on_mob_timer_timeout():
 func _on_player_hit():
 	$MobTimer.stop()
 	$UserInterface/Retry.show()
+	# Hide the on-screen virtual joystick while the retry overlay is
+	# shown, so it doesn't get in the way of the player reading the score.
+	$UI.hide()
 
 
 func _unhandled_input(event):

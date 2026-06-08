@@ -13,6 +13,8 @@
             Once you downloaded the archive, extract the .zip on your computer. We'll
             then import the starter project into Xogot and take a look at what is
             included.
+
+            @Image(source: fix-me.png)
         }
         @Steps {
             @Step {
@@ -67,6 +69,8 @@
             nodes. They require
             [CollisionShape3D](https://docs.godotengine.org/en/stable/classes/class%5Fcollisionshape3d.html#class-collisionshape3d)
             child nodes to define the collision area.
+
+            @Image(source: fix-me.png)
         }
         @Steps {
             @Step {

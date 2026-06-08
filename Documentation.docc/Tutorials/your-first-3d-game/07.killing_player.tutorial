@@ -15,6 +15,8 @@
             We'll add an Area3D node to the `Player` that detects mob bodies. By
             tuning the size and position of the area, we make sure it only
             triggers when the player is on or near the ground.
+
+            @Image(source: fix-me.png)
         }
         @Steps {
             @Step {
@@ -102,6 +104,8 @@
             We can use the `Player`'s `hit` signal to end the game. All we
             need to do is connect it to the `Main` node and stop the
             `MobTimer` in reaction.
+
+            @Image(source: fix-me.png)
         }
         @Steps {
             @Step {
@@ -144,22 +148,24 @@
             Here are the complete scripts for the `Main`, `Mob`, and `Player`
             nodes, for reference. You can use them to compare and check your
             code.
+
+            @Image(source: fix-me.png)
         }
         @Steps {
             @Step {
                 Starting with `main.gd`.
 
-                @Code(name: "main.gd", file: main-03.gd)
+                @Code(name: "main.gd", file: main-03.gd, reset: true)
             }
             @Step {
                 Next is `mob.gd`.
 
-                @Code(name: "mob.gd", file: mob-05.gd)
+                @Code(name: "mob.gd", file: mob-05.gd, reset: true)
             }
             @Step {
                 Finally, the longest script, `player.gd`:
 
-                @Code(name: "player.gd", file: player-09.gd)
+                @Code(name: "player.gd", file: player-09.gd, reset: true)
             }
             See you in the next lesson to add the score and the retry
             option.
