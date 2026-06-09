@@ -22,6 +22,34 @@ The current Mac preview has the following known limitations:
 
 # Releases
 
+## Build 1528
+
+### Improvements
+
+* Material and Texture2D previews tune ups for the inspector.
+
+* Godot Asset store now supports the verified badge.
+
+* Shader previews now draw colored regions to help you keep track of the preview
+  and the line of code.
+
+* Performance improvements for settings dialogs.
+
+* Added support for plugins registering toolbar docks.
+
+* Brings a handful of Onion animation support from 4.6 to our UI
+
+* New: our new Font Importer has landed.
+
+* New: new undo history browser had landed.
+
+### Fixes
+
+* Fixes a crash for scenarios where we only partially loaded third-party addon
+  extensions.
+
+* Works with users that were using SwiftGodot-based plugins
+
 ## Build 1505
 
 ### Improvements

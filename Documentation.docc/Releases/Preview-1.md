@@ -2,6 +2,43 @@
 
 Release notes for our preview release of Xogot to TestFlight.
 
+## Release 4516
+
+### Improvements
+
+* GameViewPad: now we surface the toolbar even if not running
+
+* Our welcome page now has links to the Learning Center, videos and tutorials.
+
+* You can now resize the time of an animation in the AnimationPlayer
+  visually, you do not have to type in a value (#2729)
+
+* You can now copy entire values from categories and sections and paste them on
+  other categories/sections (borrowed from the upcoming Godot 4.7)
+
+* We now have a MacOS/iOS native GridMap placer UI, this replaces the Godot
+  GridMap placer.
+
+* Setting breakpoints on canvas_item shaders will now show a preview of the
+  texture being assigned at that point in time (brorowed from the upcoming Godot
+  4.7)
+
+* Performance improvements in core elements of the app, various existing dialogs
+  should be faster (in particular settings), we use less memory as well.
+
+* Added support for plugins that registered controls on the toolbar.
+
+* Brings a handful of Onion animation support from 4.6 to our UI
+
+* New: our new Font Importer has landed.
+
+* New MultiMeshInstance plugin written in SwiftUI, which provides a convenient
+  prototyping UI.
+
+### Fixes
+
+Over a dozen bugs fixed.
+
 ## Release 4451
 
 Small label updates, nothing major.
