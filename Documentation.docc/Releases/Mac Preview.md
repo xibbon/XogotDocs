@@ -22,6 +22,56 @@ The current Mac preview has the following known limitations:
 
 # Releases
 
+### Improvements
+
+* Unified Debug/Output pad, like Xcode has.
+
+* CodeEditor: rounder breakpoint markers, the gutter for line numbers does not
+  waste so much space.
+
+### Fixes
+
+* New Folder inside EditorFileDialogView did not work. (#2802)
+
+* Open Documentation was ignoring the attached script documentation (#2804)
+
+* Reload project now reloads a project as expected (#2805).
+
+* Fixes loading of node types defined in external extensions.
+
+## Build 1557
+
+### Improvements
+
+* Adopt the Xcode 27-like style for the toplevel shell
+
+* Performance tuning for the startup sequence that on my hardware dropped 2
+  seconds from the startup sequence and reduced memory usage.   This was
+  achieved by avoiding a duplicate theme setting at the end of the sequence,
+  avoiding the use of compressed fonts, and replacing UI code with our own
+  SwiftUI code. 
+
+### Fixes
+
+* Exclude Xogot types from the user-visible types that can be instantiated,
+  fixes #2786
+
+* Fix iOS: make debug line scrollable #2789
+
+* Dismiss the login UI, so we don't get stuck in a login loop
+
+* Allow drops of resources into the godot editor views, fixes
+  https://github.com/xibbon/XogotIssues/issues/128
+
+* Fix GridMap showing in bottom tab when no GridMap is active
+
+* Fixes crash in the wild #2792
+
+* Fixes various TileSet paining bugs that were introduced in the 4.6-based
+  release.
+
+* Fixes Mac scene running settings not working properly (public #129)
+
 ## Build 1528
 
 ### Improvements

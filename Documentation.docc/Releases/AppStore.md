@@ -2,6 +2,35 @@
 
 Release notes for public releases of Xogot to the App Store.
 
+## Release 1.6.2
+
+* Performance improvements: starting the editor is about 30% faster now and the
+  setting dialogs are faster and consume less memory.
+
+* GameViewPad: now we surface the Game toolbar even when the game is not
+  running, allowing you to customize settings before you launch.
+
+* You can now resize the time of an animation in the AnimationPlayer
+  visually, you do not have to type in a value.
+
+* You can now copy entire values from categories and sections and paste them on
+  other categories/sections.
+
+* We now have a MacOS/iOS native GridMap placer UI, this replaces the Godot
+  GridMap placer.
+
+* Shader Visual Debugging: Setting breakpoints on canvas_item shaders will now
+  show a preview of the texture being assigned at that point in time.
+
+* Added support for plugins that registered controls on the toolbar.
+
+* New: new advanced Font Importer settings UI is included.
+
+* New MultiMeshInstance plugin written in SwiftUI, provides a convenient
+  prototyping UI for the multi-meshes.
+
+* Over 20 bugs fixed.
+
 ## Release 1.6.0 (4464)
 
 ## Improvements

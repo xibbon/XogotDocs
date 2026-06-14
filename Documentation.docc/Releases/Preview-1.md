@@ -2,6 +2,37 @@
 
 Release notes for our preview release of Xogot to TestFlight.
 
+## Release 4539
+
+### Improvements
+
+* Performance tuning for the startup sequence that on my hardware dropped 2
+  seconds from the startup sequence and reduced memory usage.   This was
+  achieved by avoiding a duplicate theme setting at the end of the sequence,
+  avoiding the use of compressed fonts, and replacing UI code with our own
+  SwiftUI code. 
+
+### Fixes
+
+* Exclude Xogot types from the user-visible types that can be instantiated,
+  fixes #2786
+
+* Fix iOS: make debug line scrollable #2789
+
+* Dismiss the login UI, so we don't get stuck in a login loop
+
+* Allow drops of resources into the godot editor views, fixes
+  https://github.com/xibbon/XogotIssues/issues/128
+
+* Fix GridMap showing in bottom tab when no GridMap is active
+
+* Fixes crash in the wild #2792
+
+* Fixes various TileSet paining bugs that were introduced in the 4.6-based
+  release.
+
+* Fixes Mac scene running settings not working properly (public #129)
+
 ## Release 4516
 
 ### Improvements
