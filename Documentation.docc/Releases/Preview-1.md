@@ -2,6 +2,13 @@
 
 Release notes for our preview release of Xogot to TestFlight.
 
+## Release
+
+### Improvements
+
+* iPhone: Add Node now has a "Show Experimental" option like iPad and Mac.
+
+
 ## Release 4539
 
 ### Improvements

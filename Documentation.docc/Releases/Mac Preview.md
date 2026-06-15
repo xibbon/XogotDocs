@@ -20,7 +20,34 @@ The current Mac preview has the following known limitations:
   iPadOS deployments are supported.   Since Xogot is compatible with Godot, you
   can just use Godot to export to those platforms.
 
-# Releases
+# Releases 
+
+## Build 
+
+### Improvements
+
+* Make it so that rather than hiding the "Attach Script" option when there is a
+  script and hoping the user discovers the scroll button offers those options,
+  we add a new "Script" menu and add the suboptions there (#2815)
+    
+* Make it so we can always show a breakpoint toggle in the UI, regardless of
+  whether the program is running, like Xcode and tunes the bottom panel
+  rendering
+
+* Import performance: we re-enabled the multi-threaded importer, and you should
+  get more feedback during long imports (#2810).
+
+* Project launch: additional codepaths like Open Recent and Open Project will
+  check for versions and prompt to backup or continue editing.
+
+* Handle a scenario where plugins would display new windows instead of dialogs,
+  which were not supported before - this was necessary for the Terrain3D plugin.
+
+### Fixes
+
+* Fix Issues with render script documentation (Public #133)
+
+## Build 1564 
 
 ### Improvements
 
