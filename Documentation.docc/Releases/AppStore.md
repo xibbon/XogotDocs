@@ -2,6 +2,8 @@
 
 Release notes for public releases of Xogot to the App Store.
 
+## Release 1.6.4
+
 ## Release 1.6.2
 
 * Performance improvements: starting the editor is about 30% faster now and the

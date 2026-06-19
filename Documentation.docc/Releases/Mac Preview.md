@@ -26,6 +26,123 @@ The current Mac preview has the following known limitations:
 
 ### Improvements
 
+* Code Editor now supports code folding of #region/#endregion sections in
+  GDScript
+
+* Fine tuning for the Asset Placer, and localization is now in place.
+
+* Animation Tracks for operations like "3D Position" that did not have a label,
+  now carry the name of the action ("3D Position").
+
+
+## Build 1595
+
+### Improvements
+
+* New Asset Placer integrated into our Assets Tab for placing 3D elements on the
+  UI with various options - we are working on documentation for this.
+
+* Standardizes the breakpoint icon across the board, and it is now always
+  present like it is on Xcode.
+
+* Adds support for Editor insets, as plugins can add additional toolbars to the
+  editors - we now avoid those surfaces with our floating toolbars.
+
+* We use a bold font to signal the selected editor mode (2d, 3d, script, game).
+
+* Slight menu reorganization.
+
+* VanillaMac target is no more: rather than having a separate target, Xogot will
+  now use a setting that you can change on the GameView to determine whether to
+  run inside the editor or a dedicated window.
+
+* Font Importer: UI touchups.
+
+* Add support for opening projects with quarantined files, and give the user the
+  option to remove the quarantine attribute.
+
+* We no longer show the focus ring around various Xogot containers.
+
+### Fixes
+
+* Color slides now work correctly (#2829)
+
+* Do not add "Make Scene Root" to the menu for the root node.
+
+* Fixes the rendering of Godot's documentation that included URLs in various
+  places that showed contextual help.
+
+* Stops the New Scene Window to jump when inheriting a class (#2832)
+
+* Improves the reliability of rendering shader previews, which might update a
+  frame later. 
+
+* The code editor will now refresh errors properly #2837
+
+* Fixes deleted scene reappears on disk when running the game if its editor tab
+  is still open #2845
+
+#### Asset Placer
+
+The built-in asset placer is available for 3D objects from the "Asset" tab, and
+it allows you to easily control the object placement for assets in the 
+
+Placement modes:
+
+  - Free / Grid / Surface (raycast + align-to-normal) / Vertex (screen-space
+    corner snap) / Spline.
+
+Transform & paint:
+  - Continuous rotation with snap modes + orientation/scale presets; random
+    rotation, tilt, and scale; axis flips.
+  - Paint mode (hold-drag with spacing), scatter radius, and a volumetric
+    brush (texture-mask falloff/density). Random-from-multi-selection.
+
+MultiMesh & collision:
+  - MultiMesh mode batches placements into MultiMeshInstance3D (GPU
+    instancing) for dense scatter; 'Generate Collision' builds per-instance
+    bodies for a batch.
+  - Auto-collision on place: Static/Rigid/Character/Area bodies x
+    Trimesh/Convex/Box/Sphere/Capsule shapes.
+
+Other:
+  - Material override (replace / next-pass), Asset Zoo, and per-session
+    config persistence (UserDefaults).
+  - Spline system (XogotUAPPath, a Path3D): per-layer scatter/deform along
+    the curve (MultiMesh or individual nodes), bake-to-nodes, terrain
+    drop/conform/subdivide, smooth/sharpen.
+  - Undo/redo wired for placement, MultiMesh strokes, spline
+    create/delete/bake, Asset Zoo, and generated collision.
+  - Numeric inputs reuse the inspector/settings editors (ValueEdit /
+    GroupNumericInput) so they match the rest of the app on Mac and iOS.
+
+## Build 1575
+
+### Improvements
+
+* Managed to get the EditorProgress view to give us updates while loading.
+
+* Preserve the native AnimationTree tab when Godot reports AnimationPlayer
+  visible as a side effect while AnimationTree is already selected.
+
+* Text Editor: added Line Height configuration option.
+
+### Fixes
+
+* Fixes Editing custom data layers (#2818)
+
+* Right-click context menu on the scene tree now is bound to the right-click
+  location, not the selection.
+
+* You can now resize Windows created from Godot with the flag to resize
+
+* Fixes external dialogs and windows that were being rendered at the wrong zoom
+  factor, and were not positioned correctly on the screen.
+
+## Build 1569
+
+### Improvements
+
 * Make it so that rather than hiding the "Attach Script" option when there is a
   script and hoping the user discovers the scroll button offers those options,
   we add a new "Script" menu and add the suboptions there (#2815)

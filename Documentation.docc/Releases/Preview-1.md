@@ -6,8 +6,94 @@ Release notes for our preview release of Xogot to TestFlight.
 
 ### Improvements
 
+* New!  We are bringing you a 3D asset placer for your games, see 'Asset Placer'
+  below for details
+
+* Scene Context Menu: will now show the "Script Detach"/"Extend" options under a
+  script option, even if the options were historically available from the scroll
+  button, as users have come to expect it here (where "Attach Script" is
+  located).
+  
+* Adds support for Editor insets, as plugins can add additional toolbars to the
+  editors - we now avoid those surfaces with our floating toolbars.
+
+* We use a bold font to signal the selected editor mode (2d, 3d, script, game).
+
+* Improved the AnimationPlayerEditor support for Apple Pencil with various
+  usability touches (hover does not re-snap back, easier to grab the resize
+  handle).
+
+* Many udpates to the FontImporter.
+
+#### Asset Placer
+
+The built-in asset placer is available for 3D objects from the "Asset" tab, and
+it allows you to easily control the object placement for assets in the 
+
+Placement modes:
+
+  - Free / Grid / Surface (raycast + align-to-normal) / Vertex (screen-space
+    corner snap) / Spline.
+
+Transform & paint:
+  - Continuous rotation with snap modes + orientation/scale presets; random
+    rotation, tilt, and scale; axis flips.
+  - Paint mode (hold-drag with spacing), scatter radius, and a volumetric
+    brush (texture-mask falloff/density). Random-from-multi-selection.
+
+MultiMesh & collision:
+  - MultiMesh mode batches placements into MultiMeshInstance3D (GPU
+    instancing) for dense scatter; 'Generate Collision' builds per-instance
+    bodies for a batch.
+  - Auto-collision on place: Static/Rigid/Character/Area bodies x
+    Trimesh/Convex/Box/Sphere/Capsule shapes.
+
+Other:
+  - Material override (replace / next-pass), Asset Zoo, and per-session
+    config persistence (UserDefaults).
+  - Spline system (XogotUAPPath, a Path3D): per-layer scatter/deform along
+    the curve (MultiMesh or individual nodes), bake-to-nodes, terrain
+    drop/conform/subdivide, smooth/sharpen.
+  - Undo/redo wired for placement, MultiMesh strokes, spline
+    create/delete/bake, Asset Zoo, and generated collision.
+  - Numeric inputs reuse the inspector/settings editors (ValueEdit /
+    GroupNumericInput) so they match the rest of the app on Mac and iOS.
+
+### Fixes
+
+* Fix iPad, bug: Asset Library was missing download option
+
+* Uses a new dedicated icon for breakpoints across the board.
+
+* Fixes the rendering of Godot's documentation that included URLs in various
+  places that showed contextual help.
+
+* Stops the New Scene Window to jump when inheriting a class (#2832)
+
+* Improves the reliability of rendering shader previews, which might update a
+  frame later. 
+
+* Font Import: now shows the various font attributes on the main page that were
+  collapsed before.
+
+## Release 4576
+
+### Improvements
+
 * iPhone: Add Node now has a "Show Experimental" option like iPad and Mac.
 
+* Brings back the multi-threaded importer, should import projects faster.
+
+* Managed to get the EditorProgress view to give us updates while loading.
+
+* Preserve the native AnimationTree tab when Godot reports AnimationPlayer
+  visible as a side effect while AnimationTree is already selected.
+
+* Text Editor: added Line Height configuration option.
+
+### Fixes
+
+* Fix Issues with render script documentation (Public #133)
 
 ## Release 4539
 

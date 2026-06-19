@@ -22,6 +22,7 @@ To get started building games with Xogot, check out our <doc:Getting-Started> gu
 - <doc:Differences>
 - <doc:Embedded-Game-View>
 - <doc:Importing-Assets>
+- <doc:Asset-Placer>
 - <doc:Onscreen-Controls>
 - <doc:Publishing-to-the-Web>
 - <doc:Remote-Debugging>
@@ -122,6 +123,7 @@ To get started building games with Xogot, check out our <doc:Getting-Started> gu
 
 ### 3D - Tools
 
+- <doc:Asset-Placer>
 - <doc:csg_tools>
 - <doc:using_gridmaps>
 - <doc:spring_arm>
