@@ -9,7 +9,7 @@ We have three sections:
 
 * Specific iPadOS/iOS differences compared to Godot
 
-* Mac specific differences are currently tracked in the <doc:Mac-Preview> document.
+* Mac specific differences are currently tracked in the <doc:Differences-Mac> document.
 
 # General Xogot and Godot Differences
 
@@ -18,6 +18,12 @@ We have three sections:
 Control icons have been replaced with Apple's SF Symbols to better match
 the look and feel of iPadOS, but if you want to bring back the Godot icons, you
 can do so on "Settings/Xogot Settings/Environment/Prefer Godot Icons".  
+
+## Asset Browser
+
+In Xogot, there is a permanent "Asset" tab in the bottom of the screen that
+shows your project resources - as an alternative to using the file system
+browser pad to locate files and bring them into your design surfaces.
 
 #  Xogot on iPad and Godot on Desktop
 

@@ -2,7 +2,91 @@
 
 Release notes for our preview release of Xogot to TestFlight.
 
-## Release
+## Release (4659, June 25th, 2026)
+
+### Improvements
+
+* Command Palette performance updates and rendering touchups for shortcuts.
+
+* AssetBrowser performance tuning, navigation with touch improved
+
+* AssetPlacer: two finger drag will let you move in place mode which will help
+  somewhat to move around while placing - rotation still requires browse mode
+  turned on.
+
+* AssetPlacer: undo/redo now works for the placement settings.
+
+* GameView will recenter fixed size rendering if it fits, rather than letting
+  bottom objects cover it.
+
+* AssetPlacer: better naming for Zoo nodes.
+
+* AssetPlacer: Zoos can be created from the selection on the asset browser, not
+  just the assets in the scene.
+
+* AssetBrowser: supports shift/command-click selection.
+
+### Fixes
+
+* Fixes shift-click selection to on our scenepad/filepad (#2889)
+
+* Improves the rendering of our own composite icons (like "AudioListener3D")
+
+* Fix typed arrays defined in script default to Int (#2892)
+
+* AssetPlacer: resets the settings on relaunch, to avoid confusing users.
+
+* AssetPlacer: Fixed bug that requires you to select different asset and reselect original one to start placing
+
+* Fixed typed array edit.
+
+* Crashes caught in the wild on stale scene nodes has been addressed.
+
+## Release 4635
+
+### Improvements
+
+* AssetBrowser: vastly revamped the creation of thumbnails for 3D scenes, your
+  objects should be better framed, and frozen in time, rather than having
+  artifacts from scenes that might have had animations or particles.
+
+* AssetBrowser: it will now automatically create thumbnails for assets on
+  demand, rather than having users manually tap the "Reload" icon.   This
+  feature can be disabled from settings.     It comes with various throttling
+  systems to prevent the system from burning CPU unless you are actually
+  browsing the assets in question.
+
+* Added support for restarting an editor session for properties that require a
+  restart with a prompt.
+
+* Auto-saving: now we auto-save both source code and scenes by default on
+  various operations: attaching scripts, closing scenes, running the program.
+  The old behavior is still available from the settings menu (addresses feature
+  requests #2863, #2862)
+
+* AssetBrowser now supports keyboard navigation.
+
+* Command Palette: now features a history feature, pressing the up-arrow key
+  will get you the previous actions or searches that were used.
+
+### Performance Work
+
+* AssetPlacer: reduce battery usage when we are not in active placement mode,
+  improved responsiveness of keyboard navigation, and scrolling speed
+
+### Fixes
+
+* Fixes a Project Settings and Import dialog crash: this was started to happen
+  on the wild (#2850, #2884)
+
+* Delete all breakpoints will now delete all breakpoints, not just those in the
+  currently open text editor (#1989)
+
+* Small style improvement to "Snap" in 3D editor (#2874)
+
+* Fix project layer warning spam on load
+
+## Release 4593
 
 ### Improvements
 
@@ -23,7 +107,7 @@ Release notes for our preview release of Xogot to TestFlight.
   usability touches (hover does not re-snap back, easier to grab the resize
   handle).
 
-* Many udpates to the FontImporter.
+* Many updates to the FontImporter.
 
 #### Asset Placer
 
