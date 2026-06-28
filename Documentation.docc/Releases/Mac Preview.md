@@ -25,6 +25,88 @@ The current Mac preview has the following known limitations:
 
 # Releases 
 
+## 
+
+### Improvements
+
+* We now will auto-throttle when Xogot is placed in the background and will
+  reload plugins when we are re-focused.
+
+* Added support for reloading scenes and other resources if modified externally
+  - and offer options for each modification.   This completes the auto-reloading
+    feature across the board.
+
+* Graphs in various places will now ensure that at least a portion of the graph
+  is visible, even if you had manually saved it without any visible data.   Also
+  graphs now have a button to auto-fit the graph into the canvas (AnimationTree,
+  AnimationState)
+
+* We now show the icon for the game you are running when you launch your game as
+  a separate window.
+
+* Launch: ProjectSelector: focus the first item on the list, not a useless
+  pre-list item
+
+### Fixes
+
+* Command Palette is now truly contextual when it comes to text editors, before
+  it would only be contextual if manually activated from the text editors.
+
+* Fix FilePad collapsing destination folders parent during drag and drop
+
+* Fixes an animation editor crash in the wild.
+
+* Fix Github download problem when the project did not have a "main" branch
+  #2938
+
+* Fixes a compatibility problem with extensions that used the ProjectSettings
+  API (LimboAI).
+  
+## Build 1690 (Jun 27, 2026)
+
+### Improvements
+
+* Added support for Sequoia (macOS 15.x) machines.
+
+* Debugger input line now accepts LLDB-like commands, rather than pure
+  expressions.
+   
+* Debugger error report now uses a popover instead of a sheet, which looks and
+  feels nicer.
+
+* Improves the layout of the Font Importer.
+
+* ShaderEditor now uses the Command Palette instead of the old QuickOpen dialog.
+
+* Surfaces MacOS panning settings for the 2D editor, to add support for
+  customizing the scroll wheel.
+
+* Tooltips for inspected properties now show the GDScript signature on the
+  inspector.   And they also show enum cases in dedicated lines.
+
+* Project setting properties will now display the path of the property they
+  modify.
+
+### Fixes
+
+* Fixes Live Debugging, now properties set in the inspector and changes done in
+  the editor are pushed to the running program.
+
+* Fix Script Editor: deleting script or renaming keeps script tabs out of sync
+  (#2907)
+
+* Hardening of "xo" as it was attempting to issue commands before Xogot was
+  ready.
+
+* Fixes a scenario where sometimes launching a game would leave an orphan empty
+  window on the screen.
+
+* Fixes Quick Load not attaching script to node (#2911)
+
+* Menu for Debug/Step/Step Into should be enabled now.
+
+* Fixes StickyScroll background (#2915)
+
 ## Build 1667 (Jun 25, 2026)
 
 ### Improvements
