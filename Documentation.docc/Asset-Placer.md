@@ -1,8 +1,6 @@
 # Asset Placer User Guide
 
-Asset Placer is the level-building workflow in the bottom Asset Browser panel. It lets you browse project assets, arm a placeable scene or mesh, preview it in the 3D viewport, and place one object, paint many objects, generate collision, override materials, or build along splines.
-
-Asset Placer works in 3D scenes. In 2D scenes, the Asset Browser remains available, but placement controls are disabled until you open or switch to a 3D scene.
+Asset Placer is the 3D level-building workflow in the bottom Asset Browser panel. It lets you browse project assets, arm a placeable scene or mesh, preview it in the 3D viewport, and place one object, paint many objects, generate collision, override materials, or build along splines.
 
 ## What You Can Place
 
@@ -257,19 +255,3 @@ Surface mode depends on collision. If the preview does not stick to the visible 
 5. Tune offsets, scale, spacing, and alignment.
 6. Bake when the result is ready for hand editing.
 
-## Notes and Limits
-
-- Asset Placer only owns viewport input while the Asset Browser bottom panel is selected, visible, and in Place mode.
-- Pausing placement hides placement previews and lets you interact with the scene without disarming the selected asset.
-- Placement settings are saved and restored between sessions, but transient state such as the armed asset and active placement mode is not.
-- Spline terrain operations and Surface mode rely on collision, not visual mesh surfaces alone.
-- MultiMesh painting is efficient but less individually editable than normal scene nodes.
-- Undo/redo is supported for normal placement, MultiMesh paint strokes, Asset Zoo creation, spline creation/deletion, and spline baking.
-
-## Implementation Overview
-
-Asset Placer is split into three parts:
-
-- `AssetPlacerModel`: Godot-independent placement state, settings, persistence-facing properties, and UI actions.
-- `AssetPlacerView` / `AssetPlacerConfigView`: SwiftUI bottom panel and inspector configuration UI.
-- `XogotAssetPlacerModel` and `XogotAssetPlacer`: Xogot/Godot bridge and viewport backing plugin. The bridge persists settings, arms assets, and forwards UI actions to the plugin. The plugin owns the 3D preview, input handling, placement commits, collision, MultiMesh painting, Asset Zoo creation, and spline backing behavior.
