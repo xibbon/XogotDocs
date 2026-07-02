@@ -25,7 +25,37 @@ The current Mac preview has the following known limitations:
 
 # Releases 
 
-## 
+## Build
+
+### Improvements
+
+* GameView will now show "Start" buttons depending on the context, so it will
+  show "Start Here" and "Start in new Window" when those apply, but "Start" for
+  cases where only an external window applies.
+
+* You can now right-click on a file on finder, and it will open a new instance
+  of Xogot if one is already running (#2900)
+
+* Resource Editorrs now display an indicator if resources are shared to make 
+  it more clear that you should make them unique.   Also, wired up the "Make
+  Unique Recursively" if there are nested resource to the same menu, which is
+  more discoverable.
+  
+* Holding the command key while dropping a resource will also automatically make
+  it unique.
+  
+### Fixes
+
+* AssetBrowser: Command-A will select all items on the FilmStrip view (#2946)
+
+* Asset Zoo generator: fixes ugly label names (#2944) and no longer produces
+  warnings when reloading (#2945).
+
+* Fixes a user-after-free crash (#2951)
+
+* 
+
+## Build 1709 (Jun 29, 2026)
 
 ### Improvements
 
@@ -47,6 +77,10 @@ The current Mac preview has the following known limitations:
 * Launch: ProjectSelector: focus the first item on the list, not a useless
   pre-list item
 
+* Will now auto-open a script after being created.
+
+* xo can now be used to get the console output of a running game.
+
 ### Fixes
 
 * Command Palette is now truly contextual when it comes to text editors, before
@@ -61,7 +95,21 @@ The current Mac preview has the following known limitations:
 
 * Fixes a compatibility problem with extensions that used the ProjectSettings
   API (LimboAI).
-  
+
+* Fixes the icons on the inspector diverging from the icons on the
+  scene tree display.
+
+* When using Godot icons, we now pick the right style for dark/light modes.
+
+* Toolbar items should no longer take over the whole editor space.
+
+* Code Editor: Fix to highlight AND, OR keywords
+
+* Running games stop if you quit Xogot.
+
+* Fixes CMD+delete to deletes file instead of selected node if the file pad has
+  the focus.
+
 ## Build 1690 (Jun 27, 2026)
 
 ### Improvements

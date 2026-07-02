@@ -2,6 +2,40 @@
 
 Release notes for our preview release of Xogot to TestFlight.
 
+## Release
+
+### Improvements
+
+* Brings complete coverage for Godot's Live Edit feature: now properties and
+  editor changes are reflected on the target
+
+* Improve tooltips for Godot-backed properties.
+    
+    Up until now, we only showed "Property" as the caption for a
+    tooltip, while Godot shows either "Property" or "Setting"
+    depending on the context.
+    
+    And additionaly, Godot would show the GDScript declaration, or
+    the path to the setting on the file.   So now we augmented the
+    tooltip to contain this information.
+
+*    GraphEdit: add some smarts, if the view is not visible at startup, make it 
+    so
+    that we center it.  Also add a 'Fit to Scene' button to toolbars that use
+    GraphEdit.
+
+### Fixes
+
+* Fix Script Editor: deleting script or renaming keeps script tabs out of sync
+  (2907)
+
+* Fixes downloading samples from GitHub that do not use a branch named "main"
+
+* Fix to open script in editor after creation
+
+*  Fixes the icons on the inspector diverging from the icons on the
+    scene tree display, as reported on Discord.
+
 ## Release (4659, June 25th, 2026)
 
 ### Improvements
