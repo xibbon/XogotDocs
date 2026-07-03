@@ -29,6 +29,45 @@ The current Mac preview has the following known limitations:
 
 ### Improvements
 
+* We now show the line and colum number in the status bar when editing text
+  files.
+
+* New: errors and warnings are displayed on the toolbar, and a new Issue
+  Navigator like the one in Xcode can be used to navigate through the issues of
+  all open files.
+
+* More battery saving changes: Godot relies on polling the 3D and 2D editor for
+  changes to reflect those changes into the inspector.  We now suspend that
+  polling when Xogot is not in the foreground.
+
+
+### Fixes
+
+* Attach script dialog was jumpy as you typed filenames and it validated -
+  fixed (#2969)
+
+* Fix inspected file/resource vanishing from Inspector on save (#2967)
+
+* Improves the breakpoint parser.
+
+* Opening Theme Overrides will no longer auto-set unset colors to black.
+
+* Folding of code will no longer folder empty lines.
+
+* Fixes a long standing visual-notification that would popup when saving a file
+  with errors.   This will no longer show up as a popup.
+
+* Fixes the "NodePath" propery editor.
+
+* Removed a benging debug message that could spam your output (cursor setting)
+
+* The Monaco editor will no longer shift/unshift text that contains markers on
+  the gutter depending on the parsing success.
+  
+## Build 1736
+
+### Improvements
+
 * GameView will now show "Start" buttons depending on the context, so it will
   show "Start Here" and "Start in new Window" when those apply, but "Start" for
   cases where only an external window applies.
@@ -44,16 +83,61 @@ The current Mac preview has the following known limitations:
 * Holding the command key while dropping a resource will also automatically make
   it unique.
   
+* Add Node dialog now has selectable text for your cut and paste delight.
+
+* Scene and Target Selector font is now .body, like Xcode 27.
+
+* Resources now will be flagged if they are shared, and a right-click button
+  lets you choose how you want to uniquify them, or a simple tap uniquifies
+  recursively (#2966)
+
+* Moved "Prefer Godot Icons" to Appearance.
+
+* Scene Selector now offers a search bar
+
+* Scene selector now shows the last four recent scenes used.
+
+* Asset Browser: you can now tag assets as "Hidden" to not see them.
+
+* Project Launcher will incorporate your system Godot projects in the list as
+  well (#2957)
+  
+* Performance: selecting a new node shaved 120ms from selection.
+
 ### Fixes
 
-* AssetBrowser: Command-A will select all items on the FilmStrip view (#2946)
+* AssetBrowser: Command-A will select all items on the view (#2946, #2943)
 
 * Asset Zoo generator: fixes ugly label names (#2944) and no longer produces
   warnings when reloading (#2945).
 
 * Fixes a user-after-free crash (#2951)
 
-* 
+* Add Node will now respect "Prefer Godot Icons" #2958
+
+* Add node fixes the glitches in rendering certain icons that looked like just
+  "3D" instead of the actual icon (#2959)
+
+* Fix Saving resource ends up in wrong directory (#2960)
+
+* Fixes last focused scene is reset after quit/relaunch (#2950)
+
+* Fixes Command Palette not having the full row of text be clickable (#2952) and
+  also on Input Map.
+
+* Manually creating a GDScript as a resource now triggers our UI (#2968)
+
+* Fixes a bug that prevented a node from being edited if the Node was flagged as
+  Mode = .disabled
+
+* Create Script dialog will now auto-select the filename withou the extension
+  (#2970)
+
+* Fixes the placeholder and label rendering for string editors in the settings
+  page and other places that use the settings mode.
+
+* Restores compatibility with Godot with four obscure APIs that we broke two
+  years ago - found via an automated audit.
 
 ## Build 1709 (Jun 29, 2026)
 
