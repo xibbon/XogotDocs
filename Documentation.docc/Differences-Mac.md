@@ -128,3 +128,12 @@ scene, or lookup the documentation for a type based on the prefix you type.
 Xogot will automatically save scenes and text files at more points than just
 Run the scene.  So using Xogot with a tool like git is very useful if you use a
 different workflow.
+
+# Quarantined Files
+
+Xogot will detect if you attempt to open a project that contains quarantined
+files (usually dynamic libraries download from the network) and offer to remove
+the quarantine attribute.   It also does that when you unpack an addon directly
+into a running project - you might choose to not allow the quarantined files to
+be loaded - and Xogot will remember this setting for the duration of the
+session.   It will prompt you again on next startup.

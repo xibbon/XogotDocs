@@ -29,6 +29,53 @@ The current Mac preview has the following known limitations:
 
 ### Improvements
 
+* Input Map settings now allow you to import settings from another project, so
+  you do not have to do this by hand (#2781)
+
+* Input Map now comes with a list of templates, so you can quickly get up and
+  running with some commond input settings, or save your own custom settings (my
+  suggestion on #2781).
+
+* We now detect if a user unpacks a binary addon in the project, and rather than
+  entering an obnoxious loop that would have the system ask you to move the file
+  to the trash or ignore it, we now detect this scenario and offer to remove the
+  Quarantine flag from the files for you (#2980).
+
+* Performance optimization in the inspector, it should be slightly faster, in
+  our synthetic tests, we reduced the time to render in ms from 300->273,
+  1110->761 and 295->268.
+
+* Code Editor now has a small diagnostics window so we can diagnose problems
+  with LSP.
+
+* Keybinding and View menu reorganization: the View Menu now has two submenu
+  entries, one for navigators - which is similar to Xcode's navigators and the
+  hotkeys are command-number for the various navigators.   And the Editors which
+  are Godot's 3d/2d/script/gameview and use command-control-number (which
+  happens to be the same binding Godot uses, this is a change as it used to be
+  command-number).   Additionally, the numbers in the navigators match the
+  numbers in Xcode for those familiar with them, so there are a couple of gaps
+  in the numbering for features that Xcode has that we lack, but should help
+  folks' muscle memory.
+
+* 
+### Fixes
+
+* Fixes a crash at project shutdown (#2985)
+
+* Fixes a race condition on the text editor that prevented the code-editing
+  features that relied on the Language Server Protocol to work reliably.
+  Sometimes it would fail to start and you would not get any of those benefits.
+  This provided things like contextual help on types, indentation and support
+  for sticky scroll, context aware code completion, live errors and warnings in
+  the text editor.  (#2974)
+
+
+
+## Build 1745
+
+### Improvements
+
 * We now show the line and colum number in the status bar when editing text
   files.
 
@@ -57,13 +104,13 @@ The current Mac preview has the following known limitations:
 * Fixes a long standing visual-notification that would popup when saving a file
   with errors.   This will no longer show up as a popup.
 
-* Fixes the "NodePath" propery editor.
+* Fixes the "NodePath" property editor.
 
 * Removed a benging debug message that could spam your output (cursor setting)
 
 * The Monaco editor will no longer shift/unshift text that contains markers on
   the gutter depending on the parsing success.
-  
+
 ## Build 1736
 
 ### Improvements
