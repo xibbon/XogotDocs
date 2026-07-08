@@ -2,6 +2,8 @@
 
 Managing project files with Git on iPad and iOS.
 
+For Xogot's built-in Git tools on Mac, see <doc:MacSourceControl>.
+
 ## Working Copy
 
 To work with Godot projects stored in Git, Xogot recommends using [Working
