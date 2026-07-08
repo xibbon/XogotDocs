@@ -6,7 +6,7 @@ The Mac preview is still early, and some areas are incomplete or
 expected to change. These notes are intended to help testers understand
 what to try, what to expect, and where feedback will be most useful.
 
-# Differences and Knonw Limitations
+# Differences and Known Limitations
 
 Please see the document <doc:Differences-Mac> for information about the
 differences between Godot on Mac and Xogot.
@@ -23,7 +23,7 @@ The current Mac preview has the following known limitations:
   iPadOS deployments are supported.   Since Xogot is compatible with Godot, you
   can just use Godot to export to those platforms.
 
-# Releases 
+# Releases
 
 ## Build
 
@@ -33,7 +33,7 @@ The current Mac preview has the following known limitations:
   you do not have to do this by hand (#2781)
 
 * Input Map now comes with a list of templates, so you can quickly get up and
-  running with some commond input settings, or save your own custom settings (my
+  running with some common input settings, or save your own custom settings (my
   suggestion on #2781).
 
 Input Map forms have been revamped, rather than walls of text, we now provide
@@ -54,7 +54,7 @@ Input Map forms have been revamped, rather than walls of text, we now provide
 * Keybinding and View menu reorganization: the View Menu now has two submenu
   entries, one for navigators - which is similar to Xcode's navigators and the
   hotkeys are command-number for the various navigators.   And the Editors which
-  are Godot's 3d/2d/script/gameview and use command-control-number (which
+  are Godot's 3D/2D/script/GameView and use command-control-number (which
   happens to be the same binding Godot uses, this is a change as it used to be
   command-number).   Additionally, the numbers in the navigators match the
   numbers in Xcode for those familiar with them, so there are a couple of gaps
@@ -78,7 +78,7 @@ Input Map forms have been revamped, rather than walls of text, we now provide
 
 ### Improvements
 
-* We now show the line and colum number in the status bar when editing text
+* We now show the line and column number in the status bar when editing text
   files.
 
 * New: errors and warnings are displayed on the toolbar, and a new Issue
@@ -101,14 +101,14 @@ Input Map forms have been revamped, rather than walls of text, we now provide
 
 * Opening Theme Overrides will no longer auto-set unset colors to black.
 
-* Folding of code will no longer folder empty lines.
+* Folding of code will no longer fold empty lines.
 
 * Fixes a long standing visual-notification that would popup when saving a file
   with errors.   This will no longer show up as a popup.
 
 * Fixes the "NodePath" property editor.
 
-* Removed a benging debug message that could spam your output (cursor setting)
+* Removed a benign debug message that could spam your output (cursor setting)
 
 * The Monaco editor will no longer shift/unshift text that contains markers on
   the gutter depending on the parsing success.
@@ -124,14 +124,14 @@ Input Map forms have been revamped, rather than walls of text, we now provide
 * You can now right-click on a file on finder, and it will open a new instance
   of Xogot if one is already running (#2900)
 
-* Resource Editorrs now display an indicator if resources are shared to make 
+* Resource Editors now display an indicator if resources are shared to make
   it more clear that you should make them unique.   Also, wired up the "Make
   Unique Recursively" if there are nested resource to the same menu, which is
   more discoverable.
-  
+
 * Holding the command key while dropping a resource will also automatically make
   it unique.
-  
+
 * Add Node dialog now has selectable text for your cut and paste delight.
 
 * Scene and Target Selector font is now .body, like Xcode 27.
@@ -150,7 +150,7 @@ Input Map forms have been revamped, rather than walls of text, we now provide
 
 * Project Launcher will incorporate your system Godot projects in the list as
   well (#2957)
-  
+
 * Performance: selecting a new node shaved 120ms from selection.
 
 ### Fixes
@@ -179,7 +179,7 @@ Input Map forms have been revamped, rather than walls of text, we now provide
 * Fixes a bug that prevented a node from being edited if the Node was flagged as
   Mode = .disabled
 
-* Create Script dialog will now auto-select the filename withou the extension
+* Create Script dialog will now auto-select the filename without the extension
   (#2970)
 
 * Fixes the placeholder and label rendering for string editors in the settings
@@ -251,7 +251,7 @@ Input Map forms have been revamped, rather than walls of text, we now provide
 
 * Debugger input line now accepts LLDB-like commands, rather than pure
   expressions.
-   
+
 * Debugger error report now uses a popover instead of a sheet, which looks and
   feels nicer.
 
@@ -384,7 +384,7 @@ Input Map forms have been revamped, rather than walls of text, we now provide
 
 * Changes to the selection sync, users were a bit confused by the behavior when
   they double-clicked on a source file, which changed the selection, but going
-  from the script editor to the scene showed a highlited item, but the selection
+  from the script editor to the scene showed a highlighted item, but the selection
   was still the file - this is closer to Godot Fixes #2855, #1808, #2851.
 
 * Fixes a Project Settings and Import dialog crash: this was started to happen
@@ -407,7 +407,7 @@ Input Map forms have been revamped, rather than walls of text, we now provide
 * Fix Mac: Inspector sometimes mixes up two objects in EditorInspectorView
   (#2881)
 
-* Fixes the filepad/scenepad keyboard navigation and selection.
+* Fixes the FilePad/ScenePad keyboard navigation and selection.
 
 ## Build 1611 (Jun 19, 2026)
 
@@ -483,7 +483,7 @@ in recent builds.
 * Stops the New Scene Window to jump when inheriting a class (#2832)
 
 * Improves the reliability of rendering shader previews, which might update a
-  frame later. 
+  frame later.
 
 * The code editor will now refresh errors properly #2837
 
@@ -493,7 +493,7 @@ in recent builds.
 #### Asset Placer
 
 The built-in asset placer is available for 3D objects from the "Asset" tab, and
-it allows you to easily control the object placement for assets in the 
+it allows you to easily control the object placement for assets in the
 
 Placement modes:
 
@@ -553,8 +553,8 @@ Other:
 
 * Make it so that rather than hiding the "Attach Script" option when there is a
   script and hoping the user discovers the scroll button offers those options,
-  we add a new "Script" menu and add the suboptions there (#2815)
-    
+  we add a new "Script" menu and add the sub-options there (#2815)
+
 * Make it so we can always show a breakpoint toggle in the UI, regardless of
   whether the program is running, like Xcode and tunes the bottom panel
   rendering
@@ -562,7 +562,7 @@ Other:
 * Import performance: we re-enabled the multi-threaded importer, and you should
   get more feedback during long imports (#2810).
 
-* Project launch: additional codepaths like Open Recent and Open Project will
+* Project launch: additional code paths like Open Recent and Open Project will
   check for versions and prompt to backup or continue editing.
 
 * Handle a scenario where plugins would display new windows instead of dialogs,
@@ -595,13 +595,13 @@ Other:
 
 ### Improvements
 
-* Adopt the Xcode 27-like style for the toplevel shell
+* Adopt the Xcode 27-like style for the top-level shell
 
 * Performance tuning for the startup sequence that on my hardware dropped 2
   seconds from the startup sequence and reduced memory usage.   This was
   achieved by avoiding a duplicate theme setting at the end of the sequence,
   avoiding the use of compressed fonts, and replacing UI code with our own
-  SwiftUI code. 
+  SwiftUI code.
 
 ### Fixes
 
@@ -668,7 +668,7 @@ Other:
 
 * Monaco commands are now available when you trigger the command palette  with
   Command-Shift-P  and we will now display the shortcut values to trigger that
-  command. 
+  command.
 
 * You can now right click on the scene tabs to get a number of common operations
   on a scene (borrowed from the upcoming Godot 4.7)
@@ -677,7 +677,7 @@ Other:
   GridMap placer.
 
 * Setting breakpoints on canvas_item shaders will now show a preview of the
-  texture being assigned at that point in time (brorowed from the upcoming Godot
+  texture being assigned at that point in time (borrowed from the upcoming Godot
   4.7)
 
 ### Fixes
@@ -690,11 +690,11 @@ Other:
 In this release, the "Xogot" 3D Navigation setting has been updated to mirror
 the behavior of Reality Composer, this is very close to what you would get on
 the iPad and feels like the right approach and what we feel integrates best with
-the Trackpad, common on Apple platforms.
+the trackpad, common on Apple platforms.
 
 The bindings are as follows:
 
-### TrackPad Bindings
+### Trackpad Bindings
 
 * Two finger pan: pan
 * Press-drag: rotate
@@ -750,7 +750,7 @@ The bindings are as follows:
   scene.
 
 * We will now warn users if they close a scene or project and there are unsaved
-  changes. 
+  changes.
 
 * An obscure feature in Godot that shows optional panels has been implemented
   (PROPERTY_HINT_GROUP_ENABLE for those following at home)
@@ -809,9 +809,9 @@ The bindings are as follows:
 
 * Scene Import Advanced Settings: updates Skeleton bone preview: fix transform,
   depth rendering, and skin binding so bones display correctly over the mesh and
-  animate with the model. 
+  animate with the model.
 
-* Scene import parity: add zoom input, live loop-mode ed iting, timer lifecycle
+* Scene import parity: add zoom input, live loop-mode editing, timer lifecycle
   fixes, MultiMesh handling, and material extract auto-disable to match native
   Godot behavior.
 
@@ -826,7 +826,7 @@ The bindings are as follows:
 * Fix Skeleton3D: editing bone dots doesn't work in edit mode #2706
 
 * Prevent panels from auto-closing the first time you instantiate an object of a
-  given type there (recent Testflight regression).
+  given type there (recent TestFlight regression).
 
 * The new Material Preview will update instantly, instead of having a delay.
 
@@ -846,7 +846,7 @@ The bindings are as follows:
 
 * AssetBrowser: you can now preview audio from the asset browser.
 
-* AssetBrowswr: can now batch generate previews for 3D models.
+* AssetBrowser: can now batch generate previews for 3D models.
 
 * Refined Inspector view, it is more bubbly than ever on Mac, and tasteful
   titles and subtitles are added and the old and amateur header is gone.
@@ -854,7 +854,7 @@ The bindings are as follows:
 * AudioImporter: performance optimization when playing back audio, it was
   choppy - and now it is not.
 
-* The inspector will now show a suble dot do show you which properties have
+* The inspector will now show a subtle dot do show you which properties have
   values that are not the same as the default property in Godot.
 
 * When you hit a breakpoint, we will actually show you the code where you hit it
@@ -898,7 +898,7 @@ The bindings are as follows:
 
 * Can now load projects that use SwiftGodot (before those projects were clashing
   with the built-in version).
-  
+
 * Some work towards styling the inspector for the Mac
 
 * The Inspector can now be resized.
@@ -924,7 +924,7 @@ The bindings are as follows:
 * Fix TileSet: Selecting TileSet objects in inspector makes bottom panel TileSet
   option disappear
 
-* Fix Xogot Mac: Tilemap painting is not working as expected Public #120
+* Fix Xogot Mac: TileMap painting is not working as expected Public #120
 
 * Fix Xogot Mac: Tile Set physics UI is flipped #2671
 
@@ -1038,10 +1038,10 @@ The bindings are as follows:
 
 * Improves the semantics of in-place node renaming.
 
-* Settings windows for projects and Xogot are also rechable from the Window
+* Settings windows for projects and Xogot are also reachable from the Window
   menu, and they now work.
 
-* New native DepedencyError window (#1723)
+* New native DependencyError window (#1723)
 
 ## Build 1359 (May 16, 2026)
 
