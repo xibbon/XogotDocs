@@ -1,6 +1,6 @@
 # Working with Git in Xogot
 
-Managing project files with Git
+Managing project files with Git on iPad and iOS.
 
 ## Working Copy
 
