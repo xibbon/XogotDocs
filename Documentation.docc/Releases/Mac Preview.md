@@ -36,6 +36,9 @@ The current Mac preview has the following known limitations:
   running with some commond input settings, or save your own custom settings (my
   suggestion on #2781).
 
+Input Map forms have been revamped, rather than walls of text, we now provide
+  visual cues for their features.
+
 * We now detect if a user unpacks a binary addon in the project, and rather than
   entering an obnoxious loop that would have the system ask you to move the file
   to the trash or ignore it, we now detect this scenario and offer to remove the
@@ -58,7 +61,8 @@ The current Mac preview has the following known limitations:
   in the numbering for features that Xcode has that we lack, but should help
   folks' muscle memory.
 
-* 
+* Adjusted the SpriteFrameEditor to be more Mac-centric.
+
 ### Fixes
 
 * Fixes a crash at project shutdown (#2985)
@@ -69,8 +73,6 @@ The current Mac preview has the following known limitations:
   This provided things like contextual help on types, indentation and support
   for sticky scroll, context aware code completion, live errors and warnings in
   the text editor.  (#2974)
-
-
 
 ## Build 1745
 
@@ -239,7 +241,7 @@ The current Mac preview has the following known limitations:
 * Running games stop if you quit Xogot.
 
 * Fixes CMD+delete to deletes file instead of selected node if the file pad has
-  the focus.
+  the focus (#2909)
 
 ## Build 1690 (Jun 27, 2026)
 

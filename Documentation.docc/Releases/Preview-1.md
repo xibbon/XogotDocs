@@ -2,7 +2,7 @@
 
 Release notes for our preview release of Xogot to TestFlight.
 
-## Release
+## Release 4777 (June 8th, 2026)
 
 ### Improvements
 
@@ -10,21 +10,65 @@ Release notes for our preview release of Xogot to TestFlight.
   editor changes are reflected on the target
 
 * Improve tooltips for Godot-backed properties.
-    
-    Up until now, we only showed "Property" as the caption for a
-    tooltip, while Godot shows either "Property" or "Setting"
-    depending on the context.
-    
-    And additionaly, Godot would show the GDScript declaration, or
-    the path to the setting on the file.   So now we augmented the
-    tooltip to contain this information.
 
-*    GraphEdit: add some smarts, if the view is not visible at startup, make it 
-    so
-    that we center it.  Also add a 'Fit to Scene' button to toolbars that use
-    GraphEdit.
+  Up until now, we only showed "Property" as the caption for a
+  tooltip, while Godot shows either "Property" or "Setting"
+  depending on the context.
+
+  And additionally, Godot would show the GDScript declaration, or
+  the path to the setting on the file.   So now we augmented the
+  tooltip to contain this information.
+
+*  GraphEdit: add some smarts, if the view is not visible at startup, make it so
+  that we center it.  Also add a 'Fit to Scene' button to toolbars that use
+  GraphEdit.
+
+* Resource Editors now display an indicator if resources are shared to make
+  it more clear that you should make them unique.   Also, wired up the "Make
+  Unique Recursively" if there are nested resource to the same menu, which is
+  more discoverable.
+
+* Holding the command key while dropping a resource will also automatically make
+  it unique.
+
+* Moved "Prefer Godot Icons" to Appearance.
+
+* Asset Browser: you can now tag assets as "Hidden" to not see them.
+
+* Performance: extensive improvements to the selection speed of notes and
+  rendering in the inspector.
+
+* Input Map settings now allow you to import settings from another project, so
+  you do not have to do this by hand (#2781)
+
+* Input Map now comes with a list of templates, so you can quickly get up and
+  running with some common input settings, or save your own custom settings (my
+  suggestion on #2781).
+
+* Input Map forms have been revamped, rather than walls of text, we now provide
+  visual cues for their features.
+
+* New: Issue Navigator, rather than displaying the errors inline on the bottom
+  of the text editor, they now show up in a dedicated navigator on the sidebar.
+
+* Asset Browser now allows multiple types to be selected to help filtering.
 
 ### Fixes
+
+* Fix inspected file/resource vanishing from Inspector on save (#2967)
+
+* Improves the breakpoint parser.
+
+* Opening Theme Overrides will no longer auto-set unset colors to black.
+
+* Fixes a long standing visual-notification that would popup when saving a file
+  with errors.   This will no longer show up as a popup.
+
+* Fixes the "NodePath" property editor.
+
+* Removed a benign debug message that could spam your output (cursor setting)
+
+* Fixed a spammy error report when saving scripts with errors (#2657)
 
 * Fix Script Editor: deleting script or renaming keeps script tabs out of sync
   (2907)
@@ -35,6 +79,36 @@ Release notes for our preview release of Xogot to TestFlight.
 
 *  Fixes the icons on the inspector diverging from the icons on the
     scene tree display, as reported on Discord.
+
+* Fixes CMD+delete to deletes file instead of selected node if the file pad has
+  the focus. (#2909)
+
+* Fixes the icons on the inspector diverging from the icons on the
+  scene tree display.
+
+* When using Godot icons, we now pick the right style for dark/light modes.
+
+* Plugin-driven toolbar items should no longer take over the whole editor space.
+
+* Fix Github download problem when the project did not have a "main" branch
+  #2938
+
+* AssetBrowser: Command-A will select all items on the view (#2946, #2943)
+
+* Asset Zoo generator: fixes ugly label names (#2944) and no longer produces
+  warnings when reloading (#2945).
+
+* Fixes a user-after-free crash (#2951)
+
+* Add node fixes the glitches in rendering certain icons that looked like just
+  "3D" instead of the actual icon (#2959)
+
+* Manually creating a GDScript as a resource now triggers our UI (#2968)
+
+* Fixes a bug that prevented a node from being edited if the Node was flagged as
+  Mode = .disabled
+
+* Ugly labels in the Asset Zoo have been fixed.
 
 ## Release (4659, June 25th, 2026)
 
@@ -62,7 +136,7 @@ Release notes for our preview release of Xogot to TestFlight.
 
 ### Fixes
 
-* Fixes shift-click selection to on our scenepad/filepad (#2889)
+* Fixes shift-click selection to on our ScenePad/FilePad (#2889)
 
 * Improves the rendering of our own composite icons (like "AudioListener3D")
 
@@ -131,7 +205,7 @@ Release notes for our preview release of Xogot to TestFlight.
   script option, even if the options were historically available from the scroll
   button, as users have come to expect it here (where "Attach Script" is
   located).
-  
+
 * Adds support for Editor insets, as plugins can add additional toolbars to the
   editors - we now avoid those surfaces with our floating toolbars.
 
@@ -146,7 +220,7 @@ Release notes for our preview release of Xogot to TestFlight.
 #### Asset Placer
 
 The built-in asset placer is available for 3D objects from the "Asset" tab, and
-it allows you to easily control the object placement for assets in the 
+it allows you to easily control the object placement for assets in the
 
 Placement modes:
 
@@ -189,7 +263,7 @@ Other:
 * Stops the New Scene Window to jump when inheriting a class (#2832)
 
 * Improves the reliability of rendering shader previews, which might update a
-  frame later. 
+  frame later.
 
 * Font Import: now shows the various font attributes on the main page that were
   collapsed before.
@@ -221,7 +295,7 @@ Other:
   seconds from the startup sequence and reduced memory usage.   This was
   achieved by avoiding a duplicate theme setting at the end of the sequence,
   avoiding the use of compressed fonts, and replacing UI code with our own
-  SwiftUI code. 
+  SwiftUI code.
 
 ### Fixes
 
@@ -262,7 +336,7 @@ Other:
   GridMap placer.
 
 * Setting breakpoints on canvas_item shaders will now show a preview of the
-  texture being assigned at that point in time (brorowed from the upcoming Godot
+  texture being assigned at that point in time (borrowed from the upcoming Godot
   4.7)
 
 * Performance improvements in core elements of the app, various existing dialogs
@@ -309,7 +383,7 @@ Small label updates, nothing major.
 
 * Fixes a race condition that would crash on the Godot IP resolver (#2732)
 
-* Fixed selection in the filepad.
+* Fixed selection in the FilePad.
 
 ## Release 4429
 
@@ -319,7 +393,7 @@ Small label updates, nothing major.
   scene.
 
 * We will now warn users if they close a scene or project and there are unsaved
-  changes. 
+  changes.
 
 * An obscure feature in Godot that shows optional panels has been implemented
   (PROPERTY_HINT_GROUP_ENABLE for those following at home)
@@ -370,9 +444,9 @@ Small label updates, nothing major.
 
 * Scene Import Advanced Settings: updates Skeleton bone preview: fix transform,
   depth rendering, and skin binding so bones display correctly over the mesh and
-  animate with the model. 
+  animate with the model.
 
-* Scene import parity: add zoom input, live loop-mode ed iting, timer lifecycle
+* Scene import parity: add zoom input, live loop-mode editing, timer lifecycle
   fixes, MultiMesh handling, and material extract auto-disable to match native
   Godot behavior.
 
@@ -387,7 +461,7 @@ Small label updates, nothing major.
 * Fix Skeleton3D: editing bone dots doesn't work in edit mode #2706
 
 * Prevent panels from auto-closing the first time you instantiate an object of a
-  given type there (recent Testflight regression).
+  given type there (recent TestFlight regression).
 
 * The new Material Preview will update instantly, instead of having a delay.
 
@@ -412,7 +486,7 @@ Small label updates, nothing major.
 
 * AssetBrowser: you can now preview audio from the asset browser.
 
-* AssetBrowswr: can now batch generate previews for 3D models.
+* AssetBrowser: can now batch generate previews for 3D models.
 
 * Refined Inspector view, it is more bubbly than ever on Mac, and tasteful
   titles and subtitles are added and the old and amateur header is gone.
@@ -420,7 +494,7 @@ Small label updates, nothing major.
 * AudioImporter: performance optimization when playing back audio, it was
   choppy - and now it is not.
 
-* The inspector will now show a suble dot do show you which properties have
+* The inspector will now show a subtle dot do show you which properties have
   values that are not the same as the default property in Godot.
 
 * When you hit a breakpoint, we will actually show you the code where you hit it
@@ -439,7 +513,7 @@ Small label updates, nothing major.
 * Fixes the game playback stopping immediately.
 
 * Fix: we are switching to the 3D editor view when resuming the game on My Mac
-  mode. #2678 
+  mode. #2678
 
 * The Embedded Game preview now supports configuring different stretching modes.
 
@@ -493,11 +567,11 @@ Small label updates, nothing major.
 ## Release 4314
 
 We are moving Xogot to be powered by the Godot 4.6 engine.    Up until now, this
-was available on the "XogotBeta" testflight, and we are now ready for the
-broader testing, and soon a release to the AppStore.  
+was available on the "XogotBeta" TestFlight, and we are now ready for the
+broader testing, and soon a release to the AppStore.
 
-This is also a release that is joinly being released with the Mac version, we
-now have a single codebsae for both.
+This is also a release that is jointly being released with the Mac version, we
+now have a single codebase for both.
 
 ### Improvements
 
@@ -538,19 +612,19 @@ now have a single codebsae for both.
 * Major Upgrade: We replaced our custom row rendering for a few elements with a
   native built-in control (UICollectionView).   Our custom rendering over the
   years accumulated touch handlers, drag triggers, context menus, swipe actions
-  and overloads for single and doubel taps.   These were competing goals, and
+  and overloads for single and double taps.   These were competing goals, and
   did not quite emulated all of the native behaviors, with the new
   UICollectionView-based system these problems should go away and feel even more
   native.
-  
+
   The following views have been upgraded: ScenePad, FilePad and Breakpoint
-  Navigator. 
+  Navigator.
 
 * Mask layer editors: we now offer a "chip view" in addition to the grid of
   numbers, which we are hoping is a better way of visualizing and maintaining
-  masks. 
+  masks.
 
-* Various color adjustments to better match Liquid Glass 
+* Various color adjustments to better match Liquid Glass
 
 ### Fixes
 
@@ -584,12 +658,12 @@ now have a single codebsae for both.
 
 ### Improvements
 
-* The last component of the AnimationTree that needes some UI touchups has been
+* The last component of the AnimationTree that needed some UI touchups has been
   completed, the AnimationBlendTree.   This completes the UI revamp of
   AnimationTree - we would love to get as many folks testing it before we enable
   it publicly.
 
-* iPhone: Asset browser is now availble on the iPhone as well.
+* iPhone: Asset browser is now available on the iPhone as well.
 
 * Even more battery saving changes, reduced some expensive operations in Godot
   that were using battery while idling.
@@ -658,13 +732,13 @@ There are several improvements in this release:
 
 * Asset browser improvements: inline rename, color selection, filtering and
   removal options for tags and various small polish items and usability
-  improvements. 
+  improvements.
 
 * Resources now have their tags shown on the inspector.
 
 * To make things less dull, we now auto-assign colors based on the tag name.
 
-* Updated localization for the Testflight cycle.
+* Updated localization for the TestFlight cycle.
 
 * iPhone: added padding at the end of the inspector so you can scroll it when a
   bottom bar shows up.
@@ -759,8 +833,8 @@ There are several improvements in this release:
 ### Fixes
 
 * iPhone: Sidebar - toggling off file pad doesn't stay after toggling inspector
-  #2490 
-  
+  #2490
+
 ## Release 4064
 
 ### Improvements
@@ -770,7 +844,7 @@ There are several improvements in this release:
 
 * Keyboard modifiers like shift, control, alt, meta are now propagated to the
   game and you can bind to those events (a bug really, but it feels important
-  enough to mention as a featur #2467).
+  enough to mention as a feature #2467).
 
 * UI Improvements to the Theme Editor.
 
@@ -801,7 +875,7 @@ There are several improvements in this release:
 ## Release 4052
 
 This version contains an important infrastructure change for us: we are merging
-the Mac and iOS codebases into one - there shoudl be no regressions, but if you
+the Mac and iOS codebases into one - there should be no regressions, but if you
 find any, please let us know, this will allow us to develop both codebases at
 once from this point on.
 
@@ -830,7 +904,7 @@ once from this point on.
 
 * AssetBrowser: lots of improvements to drag and drop, previews, search and
   tags.  We think that this built in asset browser is more convenient to use
-  than dragging assets from the filepad.
+  than dragging assets from the FilePad.
 
 ### Fixes
 
@@ -851,7 +925,7 @@ once from this point on.
 
 * Fixes Curve Editor becoming unresponsive after scrolling down #2463
 
-* Fixes panning on iOS, which we broke during the Testflight cycle
+* Fixes panning on iOS, which we broke during the TestFlight cycle
 
 * Fixes a crash on the new XogotSkeleton handler (#2468)
 
@@ -877,7 +951,7 @@ once from this point on.
 
 * Implement CurveEditor: Doesn't let you delete points from editor #2459
 
-### Testflight-only:
+### TestFlight-only:
 
 * New asset browser tab, we will be iterating on this UI in the next few weeks.
 
@@ -888,7 +962,7 @@ once from this point on.
 * iPhone: InputMap will show bound keys inside list (Discord)
 
 * iPhone: Add mini viewport or update camera preview after tweaking some values
-  (#2437, Discord).  
+  (#2437, Discord).
 
 ### Fixes
 
@@ -939,13 +1013,13 @@ once from this point on.
 
 * Fixes a crash at startup on the game view if the game was not initialized yet (#2416)
 
-* Fixes a long-standing bug where we did not display certain properites in the
+* Fixes a long-standing bug where we did not display certain properties in the
   inspector, they were very rare, but they existed (#2212).
 
 * Fix iPhone: rename node not working after some point (5th node and below,
-  #2428) 
+  #2428)
 
-* Fixes a tilemap crash (#2427)
+* Fixes a TileMap crash (#2427)
 
 * Fixes a divergence in the UI between TileMap and TileSet editors (#2426).
 
@@ -953,12 +1027,12 @@ once from this point on.
 
 * Improved the error reporting when creating shaders, it was very ugly (#2420)
 
-* Improves the reliabiltiy of showing where signals are connected to in the code
-  editor. 
+* Improves the reliability of showing where signals are connected to in the code
+  editor.
 
 * Fixes a crash when drag and dropping certain nodes into the text editor
   (#2432)
- 
+
 ## Release 3947
 
 ### Fixes
@@ -972,17 +1046,17 @@ once from this point on.
 * We now use the same icon on iOS as we do on the Mac for showing/hiding the
   inspector.
 
-* Fixes a crash in the wild when activating the context menu on the scenepad and
+* Fixes a crash in the wild when activating the context menu on the ScenePad and
   file pad.
 
 ## Release 3938
 
-### Improvemets
+### Improvements
 
 * New Scene has been revamped: it is no longer a popover, but a sheet, which
   fixes a long standing issue that it was easy to dismiss, brings a search UI
   for the case where you are inheriting from (if you had too many scenes, it was
-  hard to pick your base class) and allows yuou to pick a location for where the
+  hard to pick your base class) and allows you to pick a location for where the
   scene will be created (#2051).
 
 * We now show a marker next to a function that is a signal handler (#1034) and
@@ -994,7 +1068,7 @@ once from this point on.
   also allow the time position to be entered with a numeric input (#2360); Added
   scale increments to more easily tell what the time represents (#2361); Added
   copy/paste support for animations between AnimationPlayer (#2363); you can now
-  select keys across animation trakcs (#2362).
+  select keys across animation tracks (#2362).
 
 ### Fixes
 
@@ -1006,7 +1080,7 @@ once from this point on.
 
 * iPhone Stop button was not responding  #2357
 
-* iPhone: array of nodes, assign not working - sheet issue #2358, 
+* iPhone: array of nodes, assign not working - sheet issue #2358,
 
 * iPhone: error thrown keeps appearing until close and reopen project, even
   after it's fixed #2359.
@@ -1068,7 +1142,7 @@ once from this point on.
 * Identified various idle tasks in Godot that were burning battery and CPU when
   idling, those have been removed.   You can follow our contributions here:
   https://github.com/godotengine/godot/issues/116845
-   
+
 ### Fixes
 
 * Fixes a crash in the wild with the Skeleton3D editor when dragging other nodes
@@ -1111,7 +1185,7 @@ contains internal refactors in preparation for a Mac release.
 
 * Fixes a crash when nodes on a scene were deleted but you still had a reference
   to them (#2240, #2241, #2256).
-  
+
 * Resolves black screen appearing sometimes in 2d and 3d editors when because of
   structural identity loss / change editor view gets blank because leaving view
   removes renderingLayer for upcoming view by mistake.
@@ -1137,9 +1211,9 @@ contains internal refactors in preparation for a Mac release.
 
 * iPhone: Undo / Redo, 2D / 3D buttons no longer cover the bottom TabBar #2215 - Discord.
 
-* Fixes a warning on the tile set editor (#2214, Testflight)
+* Fixes a warning on the tile set editor (#2214, TestFlight)
 
-* Fixes a crash on the popup menu (#2202, Testflight).
+* Fixes a crash on the popup menu (#2202, TestFlight).
 
 ## Build 3761/Beta 310
 
@@ -1151,27 +1225,27 @@ contains internal refactors in preparation for a Mac release.
 
 ### Fixes
 
-* Fixes a crash on Godot's polygon editor (Testflight, #2196)
+* Fixes a crash on Godot's polygon editor (TestFlight, #2196)
 
-* Fixes a crash when opening a sheet (Testflight, #2197)
+* Fixes a crash when opening a sheet (TestFlight, #2197)
 
-* Fixes a crash on the VisualShaderEditor caught in the wild (Testflight).
+* Fixes a crash on the VisualShaderEditor caught in the wild (TestFlight).
 
-* Fixes a crash when you have made changes to a proejct and go back to the main
-  screen (Testflight, #2205)
+* Fixes a crash when you have made changes to a project and go back to the main
+  screen (TestFlight, #2205)
 
-* Fixes a crash in the scene 3D debugging (Testflight, #2206)
+* Fixes a crash in the scene 3D debugging (TestFlight, #2206)
 
 * Fixes a crash on various text input fields where we auto-selected text, but
   the text contained complex unicode strings - a mismatch between Swift's
   grapheme-based string indexes and UIKit UTF16-scalar based indexes
-  (Testflight, #2208).
+  (TestFlight, #2208).
 
-* Fixes a crash on code completion on the editor (Testflight, #2210)
+* Fixes a crash on code completion on the editor (TestFlight, #2210)
 
 * Fixes another unicode crash, because indexes in strings can not be assumed to
-  be the same after a string has been lowercased (Testflight, #2211).
-  
+  be the same after a string has been lowercased (TestFlight, #2211).
+
 ## Build 3752
 
 ### Improvements
@@ -1185,7 +1259,7 @@ contains internal refactors in preparation for a Mac release.
 ### Fixes
 
 * Update mode on the animation track was not showing up for a number of values
-  correctly - for example the 'frame' property of a SpriteFrame (Discord). 
+  correctly - for example the 'frame' property of a SpriteFrame (Discord).
 
 * Remote debugging sync with 4.5
 
@@ -1202,10 +1276,10 @@ contains internal refactors in preparation for a Mac release.
 ### Fixes
 
 * Fixes a Godot crash when a user would close a file and then call eof_reached
-  which would crash the editor (Testflight, #2178)
+  which would crash the editor (TestFlight, #2178)
 
 * Fixes a crash when audio notifications were arriving after a game stopped and
-  could crash the editor (Testflight)
+  could crash the editor (TestFlight)
 
 ## Build 3725
 
@@ -1222,16 +1296,16 @@ contains internal refactors in preparation for a Mac release.
 
 ## Build 3725
 
-We are moving Testflight to version 4.5.1, so that is the major change in this
+We are moving TestFlight to version 4.5.1, so that is the major change in this
 release.   The Godot engine is now built in release mode as opposed to debug
 mode, so many operations (in particular importing) should be vastly faster.
 
 ### Fixes
 
 * Animation when switching the bottom bar pads should no longer feel "jumpy"
-  (#2162). 
+  (#2162).
 
-* Fixes a crash on the context menu on the file and scene pad caught in the wild (Testflight)
+* Fixes a crash on the context menu on the file and scene pad caught in the wild (TestFlight)
 
 ## Build 3711/Beta 229
 
@@ -1244,10 +1318,10 @@ mode, so many operations (in particular importing) should be vastly faster.
 
 * Fixes an iOS to iOS pairing via pin bug.
 
-* Fixes a crash while closing a project (#2137, Testflight)
+* Fixes a crash while closing a project (#2137, TestFlight)
 
 * Improves Project Reload, fixed two problems related to the reloading that
-  could sometimes trigger a crash during the reload operation (Testflight).
+  could sometimes trigger a crash during the reload operation (TestFlight).
 
 * Fixes ConnectSignalToMethod that was not respecting the tab vs spaces setting
   (#2138, Discord).
@@ -1284,11 +1358,11 @@ cycle.
 
 ### Fixes
 
-* Scene Pad: Show a label when we run out of space on the sidebar toolbar 
+* Scene Pad: Show a label when we run out of space on the sidebar toolbar
  #2118.   This was showing as an entry with no text.
 
 * Fix CommandPalette: Calling to open scene that is already opened in another
-  tab doesn't switch tab 
+  tab doesn't switch tab
 
 * UI: Fix Scene Tab asymmetric padding(#2120, Discord)
 
@@ -1296,22 +1370,22 @@ cycle.
   surface set.   This was an upstream bug in Godot, but it is more pronounced on
   iPad.
 
-* Thoroguh fix for bug #2095 where we would sometimes not show a Godot
+* Thorough fix for bug #2095 where we would sometimes not show a Godot
   component in the inspector, or sometimes it would show up as black.
 
-* Fixes a crash on the CodeEditor while performing completions (Testflight,
+* Fixes a crash on the CodeEditor while performing completions (TestFlight,
   #1753).
 
-* Fixes a crash on the Tile Editor caught in the wild (#2123, Testflight).
+* Fixes a crash on the Tile Editor caught in the wild (#2123, TestFlight).
 
-* Improves TerrainSet: We fix the way selected tile properites are computed into
+* Improves TerrainSet: We fix the way selected tile properties are computed into
   property bag and now terrain peering bits appear as they should, second part
   of fix is occlusion layer wasn't properly parsed and it wasn't getting
-  Polygin editor in inspector that is fixed now too along with's get/set methods
+  Polygon editor in inspector that is fixed now too along with's get/set methods
   so ti works good now (#2127 and #2125, Discord)
 
 * When creating a shader, we now implement the same heuristics as Godot to give
-  you the best shader type based on what it is being attached to (#2124, Discor)
+  you the best shader type based on what it is being attached to (#2124, Discord)
 
 * We no longer display an extra Resource tab when picking a Scene, it was
   useless and users could get unnecessary errors (#2122)
@@ -1321,7 +1395,7 @@ cycle.
 
 * Fixes another crash in the wild #2128.
 
-* Fixes a crash when editing CollishionShapes caught in the wild.
+* Fixes a crash when editing CollisionShapes caught in the wild.
 
 * Fixes a crash when the GameController was being used and you were stopping a
   game (only in the non-Beta release, fix coming to the beta soon).
@@ -1347,17 +1421,17 @@ cycle.
   remove it now (#2116).
 
 * Fixes a heavy crash in the wild that might have been introduced by the support
-  for quit() (#2092, Testflight)
+  for quit() (#2092, TestFlight)
 
 ## Build 3645/Beta 204
 
 ### Fixes
 
 * Fixes for a crash in the wild related to invalid coordinates being computed
-  (#2108, Testflight)
+  (#2108, TestFlight)
 
 * Fixes for a Runestone crash in the wild involving selection (#2109,
-  Testflight)
+  TestFlight)
 
 * Fixes get_scene.quit() to return Xogot to the editing mode (#2092, Discord).
 
@@ -1412,22 +1486,22 @@ cycle.
 
 * New scenes will be visible after they are created (#2052, Discord).
 
-* Skeleton3D Editor: fixes a crash (#2099, Testflight)
+* Skeleton3D Editor: fixes a crash (#2099, TestFlight)
 
-* Fixes a Vector editor crash that we saw in the wild (#2089, Testflight)
+* Fixes a Vector editor crash that we saw in the wild (#2089, TestFlight)
 
-* Prevents a crash on invalid timeline definitions (#2097, Testflight)
+* Prevents a crash on invalid timeline definitions (#2097, TestFlight)
 
 * Fixes a crash that happens during the theme change, dangling pointer access in
- Godot (#2096, Testflight).
+ Godot (#2096, TestFlight).
 
 * Fixes a crash when creating a new script under certain conditions (#2085,
-  Testflight). 
+  TestFlight).
 
 * Fixes a crash on the Sprite2DEditor (upstream Godot bug)
 
 * Fixes a crash when you switch the current scene from a _ready handler, only on
-  the Xogot Beta build 
+  the Xogot Beta build
 
 ## Build 3606/Beta 190
 
@@ -1435,7 +1509,7 @@ cycle.
 
 * iPhone: the keyboard accessory went on a diet, the copy/paste action were
   repetitive as these have standard idioms on iOS, and we gained a new "hide
-  keyboard" and undo/redo now share a slot (long-press to redo). (#2078) 
+  keyboard" and undo/redo now share a slot (long-press to redo). (#2078)
 
 * iPhone: on the search tab, the search button is triggered on your current
   selection.
@@ -1504,10 +1578,10 @@ cycle.
   will now auto-close the search when you take an action, automatically selects
   the text input.
 
-* iPhone: synced the fact that our iPhone tabs are not exacly the same as the
+* iPhone: synced the fact that our iPhone tabs are not exactly the same as the
   iPad tabs, and we need to propagate some state.
 
-* iPhone: Fixes the sizing after rotation, the bug was alwasy present, but the
+* iPhone: Fixes the sizing after rotation, the bug was always present, but the
   new TabView made it more pronounced (#2077)
 
 ## Build 3575
@@ -1529,10 +1603,10 @@ Glass presentation from Slack.
 
 ### Fixes
 
-* Fixes a crash on the tileset in the wild (#2067, TestFlight)
+* Fixes a crash on the TileSet in the wild (#2067, TestFlight)
 
 * Fixes the new scene tabs when adding new scene scene view turns black (#2068,
-  Discord). 
+  Discord).
 
 ## Build 3568
 
@@ -1562,7 +1636,7 @@ Glass presentation from Slack.
 
 ### Fixes
 
-* An elusive bug that we have been monitoring on Testflight that had an
+* An elusive bug that we have been monitoring on TestFlight that had an
   impossible stack trace has been fixed - I happened to run into it in person,
   it affects iOS 18 users, and it would crash Xogot if your pressed the [x]
   button on the Command Palette (#1939).
@@ -1583,9 +1657,9 @@ Glass presentation from Slack.
 * Search on the inspector was not matching properties correctly (#2058, Discord)
 
 * Fixes a crash in the resource previewed when the bitmap importer was triggered
-  (#2061, Testflight, upstream bug)
+  (#2061, TestFlight, upstream bug)
 
-* Fixes a crash in the debugger at startup (#2062, Testflight, upstream bug).
+* Fixes a crash in the debugger at startup (#2062, TestFlight, upstream bug).
 
 * Fixes the errors when embedding Godot controls in the inspector that rendered
   some warnings when activated (#2038, Discord)
@@ -1603,7 +1677,7 @@ Glass presentation from Slack.
 
 * "Memory Usage" option has been renamed "System Information" and includes build
   version and various other memory statistics.
-  
+
 ### Fixes
 
 * Fixes a crash when the the debugger disconnects before the debugger starts up
@@ -1638,20 +1712,20 @@ Glass presentation from Slack.
   auto-select the file, without selecting the extension (#2030, Discord).
 
 * Another attempt at fixing the crash on the keyboard layout guide that
-  sometimes gets triggered (#2032, Testflight).  We have tracked this down
+  sometimes gets triggered (#2032, TestFlight).  We have tracked this down
   to a bug in SwiftUI on iPhone, and we have added a workaround.
 
 * Fixes a race condition in Godot that crashes the editor when closing a project
-  (#2034, Testflight).
+  (#2034, TestFlight).
 
 * Fixes a crash on the text editor when attempting to highlight a line that has
-  been removed (#2033, Testflight)
+  been removed (#2033, TestFlight)
 
 * Fixes a crash when starting a game, related to the Virtual Controller
   initialization.   We finally tracked down our major source of crashes (#1920,
-  related to #1633 - Testflight)
+  related to #1633 - TestFlight)
 
-* Fixes a problem with remote debugging (#2026, Testflight)
+* Fixes a problem with remote debugging (#2026, TestFlight)
 
 * Fixes instantiate menu option on the FilePad not working (#2036, Discord).
 
@@ -1662,13 +1736,13 @@ Glass presentation from Slack.
 * Fix CodeEditorUI: completion popup size issue #2046
 
 * Fixes some bugs in the remote debugging support, stemming from older
-  non-thread safe code (Testflight)
+  non-thread safe code (TestFlight)
 
 ## Build 3501 (beta 151)
 
 ### Improvements
 
-* Improved our numeric input controls - it no longer roundrips data to strings,
+* Improved our numeric input controls - it no longer round-trips data to strings,
   so it should keep the precision just as you see it.   This fixed a handful of
   small usability problems too with numeric input, and would love if you could
   test this.
@@ -1679,7 +1753,7 @@ Glass presentation from Slack.
   globals (#2016).
 
 * Fixes a crash related to the gizmo display update when the selection changed
-  before the finger was lifted (Testflight, #2023)
+  before the finger was lifted (TestFlight, #2023)
 
 * Fixed ranged input on the project settings, which was getting choppy (#2017)
 
@@ -1693,7 +1767,7 @@ Glass presentation from Slack.
 
 ### Fixes
 
-* Caught another crash in the wild that should now be fixed (Testflight)
+* Caught another crash in the wild that should now be fixed (TestFlight)
 
 * When you use the command to show the file in the FilePad inspector
   (Command-Shift-J), we will now open the sidebar if it is closed.
@@ -1705,10 +1779,10 @@ Glass presentation from Slack.
   (#1992, Discord)
 
 * Workaround for a SwiftUI problem when you shrank the window and it would crash
-  on you (Testflight)
+  on you (TestFlight)
 
 * Fix for a crash when trying to setup a remote debugging connection (#2005,
-  Testflight).
+  TestFlight).
 
 * We now react to changes on resource objects, before you had to navigate
   back/forward in the inspector.  #2004. This worked for Nodes, this was just a
@@ -1731,18 +1805,18 @@ Glass presentation from Slack.
 
 ### Fixes
 
-* Fixes a crash in the wild in the Tilemap editor (Testflight, #1977) when the
-  following condition took place: 
+* Fixes a crash in the wild in the TileMap editor (TestFlight, #1977) when the
+  following condition took place:
   - Create pattern in TileMap bottom menu
   - Select probability mode on (dice image)
   - Paint some pattern with this mode on over TileMap layer
   - Go to TileSet delete one of tiles that was part of pattern
-  - Go back to tile map bottom panel selction and try to paint pattern again
+  - Go back to tile map bottom panel selection and try to paint pattern again
 
-* Fixes a crash when drag and dropping a node (Testflight, #1978)
+* Fixes a crash when drag and dropping a node (TestFlight, #1978)
 
 * Fixes a Godot issue related to the Skeleton3D editor that would sometimes
-  crash (submitted upstream) (Testflight)
+  crash (submitted upstream) (TestFlight)
 
 * Fixes an issue with the Keyboard layout on certain locales that started
   happening in iOS 26.2 beta.
@@ -1782,7 +1856,7 @@ on VisionOS.
 
 ### Fixes
 
-* Fixes a big leak that would be triggerred every time you ran a game, this
+* Fixes a big leak that would be triggered every time you ran a game, this
   addresses the major source of leaks but there are a handful of smaller leaks
   still present (Discord, #1943).
 
@@ -1826,7 +1900,7 @@ on VisionOS.
 
 * We no longer attempt to trigger an action when tapping on a directory
   (avoiding a warning on the console output - #1941).
-  
+
 * Fixes dragging of a directory onto itself, #1942.
 
 ## Build 3395
@@ -1837,7 +1911,7 @@ on VisionOS.
   now the bone elements are visible (#876)
 
 * Added support for Godot's "Recovery Mode", if Godot crashes at startup, we now
-  offer the option of strating the game in recovery mode, where various plugins
+  offer the option of starting the game in recovery mode, where various plugins
   and features are disabled to help you restore your project to a well know
   state (#1915).
 
@@ -1849,7 +1923,7 @@ on VisionOS.
   Transformations, Planes, Basis and so on) were refactored so that we can
   support on MacOS in-line text editing, rather than the popups that we have
   now.
-  
+
   We are still pending the single-value editors for numbers.
 
 ### Fixes
@@ -1880,7 +1954,7 @@ on VisionOS.
 * Inspector gained support for typed dictionaries from Godot 4.4 (#1111).
 
 * The multi-finger gesture for undo and redo is now part of the release
-  build, not just testflight.
+  build, not just TestFlight.
 
 * It is now possible to pair a device for remote debugging using pairing
   codes, not just being logged in.
@@ -1894,10 +1968,10 @@ on VisionOS.
 ### Improvements
 
 * iPhone: using a drag gesture from the edge of the screen should either open
-  the inspector or the scenepad/filepad - similar to what other apps on the
+  the inspector or the ScenePad/FilePad - similar to what other apps on the
   iPhone do, which should make it easier to access content.
 
-* iPhone: it is now possible to scroll the tabs without triggering a reodering
+* iPhone: it is now possible to scroll the tabs without triggering a reordering
   operation (#1907, Discord).
 
 * Script editing node should be visible in the inspector now for Nodes and
@@ -1957,7 +2031,7 @@ on VisionOS.
 * iPhone: Game Tab now display items in a list, not as a grid, which gives was
   very crowded and looked bad (#1895)
 
-* Attempt to get terrain plugin to work on Testflight.
+* Attempt to get terrain plugin to work on TestFlight.
 
 * Undo/Redo gesture was incorrectly bound to 2-taps and 3-taps respectively, but
   it should have been single-tap with 2 fingers, and single-tap with three
@@ -1988,7 +2062,7 @@ on VisionOS.
 
 * Fixes an order condition that prevented certain file types on the FilePad to
   default to the previous directory, rather than the highlighted directory
-  (Discord). 
+  (Discord).
 
 * iPhone: fixes a bug where suggestions were not displayed on the Command
   Palette (#1892, Discord)
@@ -2000,11 +2074,11 @@ on VisionOS.
 ### Improvements
 
 * Support for External Displays: while you can move windows manually into the
-  external display with Stage Manager, we now support explict support for
+  external display with Stage Manager, we now support explicit support for
   running your game on an external display, without having to manually manage
   the windows yourself.   This pairs great with an external controller.
 
-  Addresses #1173, #1285, #1286 (Discord/Testflight feature requests).
+  Addresses #1173, #1285, #1286 (Discord/TestFlight feature requests).
 
 * Remote Scene View: you can now toggle on/off individual nodes and these will
   show hide the nodes in the running game (#1868)
@@ -2033,7 +2107,7 @@ on VisionOS.
 
 * The AnimationPlayerEditor had some very large icons as part of making them
   more tappable, we adjusted the sizes to be both tappable and good looking
-  (#1859). 
+  (#1859).
 
 ## Build 3257
 
@@ -2043,7 +2117,7 @@ on VisionOS.
   for Godot from TokisanGames.   If your project already includes it, Xogot will
   dynamically replace it with the bundled version, allowing your game to work
   with it.    The UI for Terrain3D has not been updated to be mobile friendly,
-  but the keyboard shortcuts should work. 
+  but the keyboard shortcuts should work.
 
 ### Fixes
 
@@ -2103,8 +2177,8 @@ on VisionOS.
 ### Fixes
 
 * A family of crashes that would trigger when closing a game has been fixed.
-  This is not exactly easy to reproduce. 
-  
+  This is not exactly easy to reproduce.
+
 ## Build 3193
 
 ### Improvements
@@ -2120,7 +2194,7 @@ on VisionOS.
 
 * iPhone: new option to run a game in a dedicated window in the game tab
   (#1834).
-  
+
 * When loading, we now pulse the icon for the folder, rather than have a
   separate progress view indicator that I could not align.
 
@@ -2203,7 +2277,7 @@ on VisionOS.
 * We now provide guidance to users if their tiles from a texture are incorrectly
   configured (#1841).
 
-* After you create a directory in the Filepad, it is now selected after creation
+* After you create a directory in the FilePad, it is now selected after creation
   (#1805)
 
 * iPhone: will stay on the "Remote" tab after a remote session completes (#1821)
@@ -2226,7 +2300,7 @@ on VisionOS.
   some of these, this fixes the Mesh dialog display and also adds the ability to
   close these popups from a native UI.   Fixes #1813 and #1583 (Discord,
   TestFlight).
-  
+
 * Fixes linked value editing in the numeric editor (#1817).
 
 * Properties that are supposed to be linked (like a Node's transformation scale)
@@ -2341,8 +2415,8 @@ on VisionOS.
 * Fixed a family of memory leaks that we discovered during testing on the
   AnimationPlayer editor (#1779, #1782).
 
-* Some properites on the track editor were not updating (#1783, internal
-  testing). 
+* Some properties on the track editor were not updating (#1783, internal
+  testing).
 
 * iPhone: play button missing in toolbar #1781
 
@@ -2393,14 +2467,14 @@ on VisionOS.
 
 * Fixed the remote sync login.
 
-* Fixes a crash caught in testflight in the AnimationPlayerEditor involving
+* Fixes a crash caught in TestFlight in the AnimationPlayerEditor involving
   color tracks (#1774)
 
 * Command Palette will now correctly jump to the line of a file if you specified
   it, when the file had not been previously opened (#1770)
 
 * Command Palette will no longer use smart quotes by default when typing text
-  (#1766). 
+  (#1766).
 
 ## Build 3016
 
@@ -2440,7 +2514,7 @@ on VisionOS.
 * Improve UX for Dictionary/Array editing, will start pushing nested untyped
   arrays in NavigationStack rather than displaying sheet one over another
   (#769).
-  
+
 * The Shader File menu now has a "New Shader" convenience menu (#1675)
 
 * The iPadOS menu for Xogot settings now opens the app settings, instead of the
@@ -2465,7 +2539,7 @@ on VisionOS.
 
 * Output pad now responds to the shortcuts (#1742, Discord)
 
-* Various fixes and touch ups to the numeric data intut on the inspector (Fixes
+* Various fixes and touch ups to the numeric data input on the inspector (Fixes
   #1743 reported in Discord and three-four papercuts in the UI)
 
 
@@ -2530,7 +2604,7 @@ they are opened in Godot's preferred location (either a scene is opened, or the
 current object is displayed on the property editor).
 
 This file search also allows you to filter by kind (Scene, Script, Shader,
-Resource), and I hope to replace the existing "Quick Open" dialog with this one. 
+Resource), and I hope to replace the existing "Quick Open" dialog with this one.
 
 When editing a text file or a script the ":NUMBER" will take you directly to
 that line - and this will soon replace the existing "Go To Line" shortcut with
@@ -2566,10 +2640,10 @@ Godot 4.5 that we are bringing early to Xogot (#1706).
 
 * New: ShareSheet, it is now possible to share content to Xogot from various
   creator apps by selecting Xogot from their share sheets.   Once this is done,
-  the file is tranferred to Xogot, and when you switch back to Xogot, or open
+  the file is transferred to Xogot, and when you switch back to Xogot, or open
   Xogot for the first time, you can place the file in their proper location
   (#714).
-  
+
 * Improves the slider editor to ensure that the value 0 always gets a label.
 
 ### Internals
@@ -2589,13 +2663,13 @@ Godot 4.5 that we are bringing early to Xogot (#1706).
   system that gives us better control than the format-string system that we used
   before.   These were bugs reported on Discord.
 
-* Fixes a crash that would happen when inspecting remote objects (Testflight
+* Fixes a crash that would happen when inspecting remote objects (TestFlight
   crash).
 
 * SpriteFrame's delete frame operation would delete all the frames afterwards,
   this is now fixed (#1695).
 
-* Prevents a crash when out-of-range zoom values were passed (Testflight crash).
+* Prevents a crash when out-of-range zoom values were passed (TestFlight crash).
 
 ## Build 2919 (1.4.1)
 
@@ -2624,14 +2698,14 @@ Godot 4.5 that we are bringing early to Xogot (#1706).
 
 * We found two heavy crashes happening in the wild, and we managed to reproduce
   them after a lot of trial and error and we have a fix for them (#1681,
-  #1682). They would typcially happen when resuming a program.
+  #1682). They would typically happen when resuming a program.
 
 * Fixes to remote program restarting and uploading of projects.
 
 * ScenePad: Fixes the rename node on iOS 26 (#1689)
 
 * Fixes a crash in the wild that we have not been able to reproduce, but added a
-  defensive check to prevent the crash (Testflight)
+  defensive check to prevent the crash (TestFlight)
 
 * Command-. and Command-Control-y will now also work when the game is focused.
 
@@ -2663,7 +2737,7 @@ code editor and back.   Fixes #1503, Discord, direct feedback.
 
 * iPhone: renaming of nodes in the scene pad has been fixed (#1678, Discord)
 
-* Lond standing: some coloring in the editor might have been off for some
+* Long-standing: some coloring in the editor might have been off for some
   keywords (Updated highlights.scm for tree-sitter).
 
 ## Build 2882
@@ -2775,13 +2849,13 @@ code editor and back.   Fixes #1503, Discord, direct feedback.
 ### Improvements
 
 * Performance improvement to node selection - internally we stopped doing a lot
-  fo work when scanning for plugins for a node (#1108).
+  of work when scanning for plugins for a node (#1108).
 
 * Additional languages supported in addition to English: Arabic, Chinese
   Simplified, French, German, Japanese, Portuguese, Russian, Spanish and Turkish.
 
 * iPhone: extend the Xogot editors beyond the safe area at the bottom of the
-  screen. 
+  screen.
 
 * iPhone: scene info node is now a sheet, rather than a full screen popup
  (#1639).
@@ -2793,7 +2867,7 @@ code editor and back.   Fixes #1503, Discord, direct feedback.
   #1638, ).
 
 * You can now delete exported games, and deletes ones will not show up (#1498,
-  Discord). 
+  Discord).
 
 * TileSet, custom data was not working (#1632, Discord).
 
@@ -2805,7 +2879,7 @@ code editor and back.   Fixes #1503, Discord, direct feedback.
 * Game controllers no longer stay visible in the screen after a game crashes
   (#1633)
 
-* iPhone: State of the bottom bar items should be properly synchornized with the
+* iPhone: State of the bottom bar items should be properly synchronized with the
   menu - some popups might appear more often than before, would love to know if
   you run into some of these.
 
@@ -2819,7 +2893,7 @@ code editor and back.   Fixes #1503, Discord, direct feedback.
 
 * AnimationEditor UX improvements: no longer resets the current editing object
   if you tap on the timeline or you select a track.   We will only change the
-  currentlys selected item if you tap on an actual key element on a track.
+  currently selected item if you tap on an actual key element on a track.
 
 * Spanish translation: uniformized the text to match Apple idioms.
 
@@ -2828,11 +2902,11 @@ code editor and back.   Fixes #1503, Discord, direct feedback.
 * iPhone mostly, but also iPad: after you hit "stop" in the embedded view, it
   will take you back to the editor you were in (if you started from the
   toolbar. - #1626, Discord).
-  
+
 * Project settings are internationalized.   Which completes all known pending
   localization tasks.
 
-### Fixes 
+### Fixes
 
 * AnimationEditor: some icons that were previously not being shown for certain
   properties are now being shown (Discord, #1627, the icon was missing so it
@@ -2842,7 +2916,7 @@ code editor and back.   Fixes #1503, Discord, direct feedback.
   conversion, but not updating the result on the property editor.  This has now
   been fixed (email bug report).
 
-* 
+*
 ### Changes
 
 * Mac update: changes on the way that we handle some internals - a work in
@@ -2866,7 +2940,7 @@ code editor and back.   Fixes #1503, Discord, direct feedback.
 
 ## Build 2774
 
-Starting to test publicly the iOS26 changes.  
+Starting to test publicly the iOS26 changes.
 
 This version has been built with Xcode 26 in preparation for iOS 26 and includes
 a few updates to track the new iOS 2026 look.
@@ -2891,7 +2965,7 @@ a few updates to track the new iOS 2026 look.
   swiping out action (#1611).
 
 * Command-S hot key will now route it to the shader editor if you are editing a
-  shader. 
+  shader.
 
 * Mac Catalyst: major changes internally to support various scenarios that were
   broken due to how this system works (crashes when triggering sheets should now
@@ -2957,14 +3031,14 @@ Another major push, thanks for all the feedback on the iPhone challenges.
 
 * All the bottom tabs were revamped once again, now that we are using iOS
   sheets, it was worth taking full advantage of them - and on iOS 26, there was
-  more padding added, so it was necessasry to restructure a few views.
+  more padding added, so it was necessary to restructure a few views.
 
 * More dialogs that were too large have been tuned (#1596),
 
 * SpriteSheetImport was reworked to be usable on the phone (#1593, Discord).
 
 * Touch ups for iOS 26 to prevent button bleeding at the bottom of the screen
-  (#1597). 
+  (#1597).
 
 * Run and Stop are now pervasive on the UI, as it was too common of an operation
   (#1592, Discord)
@@ -2993,7 +3067,7 @@ Another major push, thanks for all the feedback on the iPhone challenges.
 We are getting very close to feature completion now on the iPhone-side of
 things, as we are running out of well known gaps for the phone.
 
-* Axololt Rex is now visible on the iPhone as well, it is not limited to the
+* Axolotl Rex is now visible on the iPhone as well, it is not limited to the
   iPad anymore.
 
 * Bottom pads now take a little more screen space, to match the iPhone's Sheet
@@ -3003,7 +3077,7 @@ things, as we are running out of well known gaps for the phone.
   Export Game, Reference Guide, Asset Library).
 
 * On the iPhone the project title will just show the scene, not the project
-  name. 
+  name.
 
 * Work around for run menus on iOS 26.
 
@@ -3033,7 +3107,7 @@ things, as we are running out of well known gaps for the phone.
   be specified, requiring all matches to be present, as well as the notation
   "-word" to exclude any matches containing that word.
 
-* Added keyboard shortcuts to increase and decreate the text editor font size
+* Added keyboard shortcuts to increase and decrease the text editor font size
   using Command-Shift-minus and Command-shift-plus.  (Discord, #1323)
 
 * Provides visual guidance that the editor is closing down a project when you go
@@ -3046,7 +3120,7 @@ things, as we are running out of well known gaps for the phone.
   while both Xogot and Godot support this, the feature is not fully baked in
   Godot, and has various limitations:
   https://github.com/godotengine/godot/issues/99115
-  
+
 * Godot native popovers now use our Floating Window (the feature part of a bug
   request #1531).
 
@@ -3061,13 +3135,13 @@ things, as we are running out of well known gaps for the phone.
   phone.   Will discuss in more detail on a follow up blog post.
 
   While we are very happy with the new iPhone shell, we are looking for real
-  user feedback on annoyances and hinderances in people's workflows so we can
-  address those. 
+  user feedback on annoyances and hindrances in people's workflows so we can
+  address those.
 
 * We started to adapt various components to work on this new design on the
   iPhone, taking advantage of the native "toolbar item" capabilities of the
   platform, many of the iPad tabs are being modified to embrace this new idiom
-  on the iPhone.   
+  on the iPhone.
 
 * Significant progress on the AnimationPlayer on the iPhone, still not amazing -
   but getting impressive.
@@ -3091,7 +3165,7 @@ things, as we are running out of well known gaps for the phone.
   debugger is selected to switch to the REPL window.
 
 * Inspector: reviewed the padding of some elements and discovered a handful of
-  pixels here and there that were needlessly consuming space that was needed.   
+  pixels here and there that were needlessly consuming space that was needed.
 
 * Reparenting of nodes will now report an error if you are editing a foreign
   scene, and the operation is not allowed (Discord).  My preference would have
@@ -3102,14 +3176,14 @@ things, as we are running out of well known gaps for the phone.
   new node selection dialog, rather than defaulting to the limited tree-view
   one (#1501)
 
-* The reference guide now has an index to search by words in the documetnation
+* The reference guide now has an index to search by words in the documentation
   (#1379, Discord).
 
 ### Fixes
 
 * Fixes the lingering and highlighted line in the editor (Discord).
 
-* Caught a crash on Testlight crash logs and applied a fix.
+* Caught a crash on TestFlight crash logs and applied a fix.
 
 * Fixes the crash when downloading the project template (#1569, Discord).
 
@@ -3120,9 +3194,9 @@ things, as we are running out of well known gaps for the phone.
   generating unnecessary warnings.
 
 * Fixes a regression introduced by the model importer fix that would produce
-  unecessary warnings on the console (#1574, Discord).
+  unnecessary warnings on the console (#1574, Discord).
 
-* Gamesharing: Remove a stray numeric prefix from game ID in URL (Discord).
+* Game sharing: Remove a stray numeric prefix from game ID in URL (Discord).
 
 * Fixes a potential hang when there is no networking available and you have
   previously opened a project on the network.
@@ -3181,7 +3255,7 @@ things, as we are running out of well known gaps for the phone.
 ### Improvements
 
 * You can now configure in Xogot Settings your default execution target, either
-  the embedded window, or a separate window.   
+  the embedded window, or a separate window.
 
 * You can now copy the error message when there is a runtime error (#1122)
 
@@ -3201,7 +3275,7 @@ things, as we are running out of well known gaps for the phone.
   hide if you switch out of the "Game" mode (#1282)
 
 * Chat conversations are now relative to the game project, rather than being
-  global. 
+  global.
 
 * It is now possible to start a new chat from the Chat window.
 
@@ -3228,9 +3302,9 @@ things, as we are running out of well known gaps for the phone.
 
 This release starts the testing process for making Xogot a free app that will
 put some features behind a paywall, but will allow the core of the editor to be
-used. 
+used.
 
-### iOS 2026 adjustements
+### iOS 2026 adjustments
 
 Generally, adopted various idioms from iOS 26, the current branch that we
 are going to publish is still based on the public Xcode, so Liquid Glass will
@@ -3238,18 +3312,18 @@ not show up just yet, but the idioms should start tracking the new idioms.
 
 We have completed the Liquid Glass work, with the exception of some bugs in the
 betas that we have not been able to address yet.   While we have done this, the
-release that is going into Testflight is built with the stable Xcode, so the UI
+release that is going into TestFlight is built with the stable Xcode, so the UI
 will not change just yet.
 
 * Add support for menus on iOS 26: Follows some of the guidance for iPad apps
-  on iOS 25, by not making menu entries appear/dissapear, instead they are
+  on iOS 25, by not making menu entries appear/disappear, instead they are
   enabled/disabled.   Added a few icons to the menus.
-    
-  This moves the "Navigation" items to "View" as suggested by the iPad talk for navi6ation.
-    
+
+  This moves the "Navigation" items to "View" as suggested by the iPad talk for navigation.
+
   The most important and ugly change is that with the new menu system on iOS
   26, the system is defining an "Open" menu with the same shortcut we had
-  that is permanently greyed-out and can not be implemented at all.  
+  that is permanently greyed-out and can not be implemented at all.
 
 * On iOS 26, our interaction dialogs will follow the system style.
 
@@ -3295,7 +3369,7 @@ will not change just yet.
 * Fix SpriteImport sheet and TileMap cropping when zooming out (Discord, #1519).
 
 * TileSet: When creating big Atlas it doesn't resize properly on first load
-  (#1520). 
+  (#1520).
 
 * Fix in Settings - Visible Collision Shapes not persisting (Discord, #1527)
 
@@ -3319,7 +3393,7 @@ will not change just yet.
 * SpriteSheetImport: will now remember the settings that you had when importing
   a new texture if the size of the texture matches the previous size (Discord
   request).
-  
+
 * Grouped numeric input: we will now auto-select in the popup the entry that you
   tapped on (Discord).
 
@@ -3338,11 +3412,11 @@ will not change just yet.
 ### Improvements
 
 * New 'use_hidpi' setting under the display/window/stretch settings, which is
-  independent of the previous attempt we had to support HIDPI by extending the
+  independent of the previous attempt we had to support HiDPI by extending the
   meaning of the 'display/window/stretch/scale_mode' to have an 'auto' mode,
   which was not compatible with Desktop Godot.
 
-* It is now possible to edit the labels of collission masks - the feature had
+* It is now possible to edit the labels of collision masks - the feature had
   not been wired up before (Discord, #1488)
 
 * Double-tapping a node in the create node dialog will create the node, this
@@ -3376,7 +3450,7 @@ will not change just yet.
    documentation (#1490, the regression was introduced with the fix for #1353)
 
 * Fixes drag-and-drop of a node not undoing the work in a single step (Discord,
-  #1500). 
+  #1500).
 
 ## Build-2486
 
@@ -3399,7 +3473,7 @@ will not change just yet.
 
 * Unlock message was showing up too often (#1467, #1468 - fixed)
 
-* Fixes "New Input Map" actions were not appearing until list is refreshed (#1470, Testflight feedback)
+* Fixes "New Input Map" actions were not appearing until list is refreshed (#1470, TestFlight feedback)
 
 * Fixes a crash that would happen sometimes when the selection was updated (#1474, Crashlytics).
 
@@ -3453,13 +3527,13 @@ will not change just yet.
 
 * Added a drag handle to the top toolbars, as not every element in the toolbar is draggable - will probably iterate on this, and remove draggability from any other place other than the handlebar.
 
-* Improved the UI in the "Input Map" project settings, using the same idiom of guiding the user to their next step, and moving the common operations from the toolbar closer to where they belong. 
+* Improved the UI in the "Input Map" project settings, using the same idiom of guiding the user to their next step, and moving the common operations from the toolbar closer to where they belong.
 
 ### Experimenting
 
 * Experimenting with less friction to start a drag gesture for numeric inputs as well as the ranged sliders.
 
-* Going to start using "Release" builds of the Godot engine, instead of the "Debug" build, we are goig to see if the results still produce good crash logs.   This reduces the download size by 193 megabytes, and will likely improve the performance of Godot.
+* Going to start using "Release" builds of the Godot engine, instead of the "Debug" build, we are going to see if the results still produce good crash logs.   This reduces the download size by 193 megabytes, and will likely improve the performance of Godot.
 
 ### Fixes
 
@@ -3545,7 +3619,7 @@ will not change just yet.
 
 * In some places in the UI (Some Resource Editors, Shader Globals, Array editing popups), tapping on a row would not automatically navigate to its destination, you had to tap on the disclosure button and select "Inspect", this step is no longer necessary (#1389).
 
-* Prevenets a crash when importing new projects at startup #1413 (Xcode crash logs).
+* Prevents a crash when importing new projects at startup #1413 (Xcode crash logs).
 
 ## Build 2334
 
@@ -3569,7 +3643,7 @@ will not change just yet.
 
 ### Fixes
 
-* Remove Inputmap autocapitalization (#1393, Discord).
+* Remove InputMap autocapitalization (#1393, Discord).
 
 * Fixes the removal of polygons in the TileSet editor (#1392, Discord).
 
@@ -3611,7 +3685,7 @@ will not change just yet.
 
 * Added Command-L shortcut to jump to a line in the text editor.
 
-* Easier to spot that we have more than one subscription plan, fixes the savings button, 
+* Easier to spot that we have more than one subscription plan, fixes the savings button,
 
 * Highlights the main scene in the FilePad to easily spot it, using the accent color, public bug #66.
 
@@ -3623,13 +3697,13 @@ will not change just yet.
 
 * Bezier data can now be edited for bezier tracks (#1381 among others).
 
-* Tapping on documetnation items in the "Signal Info" will now open the documentation for it (#1335).
+* Tapping on documentation items in the "Signal Info" will now open the documentation for it (#1335).
 
 * Fixes icons being out of sync between the Add-Node operation and the ScenePad (#1383 and #1369).
 
 ## Build 2274
 
-This release introduces new subscription tier, and we are starting to experiment where the line should be.   We would appreciate if you could test different scenarios where the weekly, yearly or full time unlock.  
+This release introduces new subscription tier, and we are starting to experiment where the line should be.   We would appreciate if you could test different scenarios where the weekly, yearly or full time unlock.
 
 ### Improvements
 
@@ -3699,7 +3773,7 @@ This release introduces new subscription tier, and we are starting to experiment
   the spacing and the popup windows now have fixed-size buttons, rather than
   being relative to the display size (#1272).
 
-* If you tap on the `script` icon on the Filepad and you are in compact mode,
+* If you tap on the `script` icon on the FilePad and you are in compact mode,
   the sidebar will collapse to show the text editor (#1307).
 
 * Easier to spot the app unlock (#1311).
@@ -3716,9 +3790,9 @@ This release introduces new subscription tier, and we are starting to experiment
 
 * iPhone: the keyboard accessory view for the iphone is no longer cramped, and reorganized the buttons for iPhones (#1272).
 
-* When the editormode switches and there is no room to show the sidebar and the editor, auto-hide the sidebar (#1307).
+* When the editor mode switches and there is no room to show the sidebar and the editor, auto-hide the sidebar (#1307).
 
-* When you select the filepad entry, the + and gear icons dissapear to give more space to the text input (#1333).
+* When you select the FilePad entry, the + and gear icons disappear to give more space to the text input (#1333).
 
 ### Fixes
 
@@ -3732,7 +3806,7 @@ This release introduces new subscription tier, and we are starting to experiment
 
 * Fixed the Viewport view options labels to match the actual viewport settings.
 
-* The inspector can now edit arrays of NodePaths and arrays of Nodes (Testflight
+* The inspector can now edit arrays of NodePaths and arrays of Nodes (TestFlight
   feedback, #1284).
 
 * The defaults for the debugger to sync scenes and sync scripts are now enabled
@@ -3768,14 +3842,14 @@ to observe the selection.
 * Prevents scenarios where the user could spawn a new Project Window and then
   attempt to run the editor when a game was running, and variations of it.
 
-* Small message consistency improvemen in the 4.4 project upgrade dialog
-  (Testflight feedback).
-  
+* Small message consistency improvement in the 4.4 project upgrade dialog
+  (TestFlight feedback).
+
 * Initial plumbing to support external displays, but it is not yet fully
-  working. 
+  working.
 
 * Rewrote the rendering code for the TileSets and TileMapLayer editor, making it
- very smooth. 
+ very smooth.
 
  * New Audio bus editor, this replaces the original Godot one, and it was the
    last part of the main editor screen that had not been ported to SwiftUI,
@@ -3787,13 +3861,13 @@ to observe the selection.
   completing some shutdown tasks after the Godot instance had been closed,
   another instance of #999.
 
-* Crash a crash related to dereferencing a null pointer (Testflight, #1268).
+* Crash a crash related to dereferencing a null pointer (TestFlight, #1268).
 
 * Fixes a crash that would sometimes trigger after Godot has finished scanning
-  your project directory (Testflight).
+  your project directory (TestFlight).
 
-* Prevents a crash triggered by a race condition when attempting to relase the
-  game controller (Testflight).
+* Prevents a crash triggered by a race condition when attempting to release the
+  game controller (TestFlight).
 
 
 ## Build 2171
@@ -3813,13 +3887,13 @@ to observe the selection.
 * Prevents users from launching the game repeatedly at startup, which fixes a
   crash, additionally, the Game View experience will show that the game is
   running on a separate window if that is what the user did, rather than
-  offering to start the game again (#1274).   
-  
+  offering to start the game again (#1274).
+
 * And we now also have a general system from preventing this from happening
   again.  For example, if the user cloned the launcher window and then tried to
   launch two editors at once.
 
-* Internal runtime fix #1250, 
+* Internal runtime fix #1250,
 
 * We will no longer crash when the user launches a "Play Unoptimized" game from
   the launch screen.
@@ -3854,14 +3928,14 @@ to observe the selection.
 * Xogot will once again honor the display driver and rendering method feature
   that we regressed - this completes #1256.
 
-* Fixes a crash that we saw reported via Testflight.
+* Fixes a crash that we saw reported via TestFlight.
 
 * Removed a blue debugging background that was left by accident in the Gameplay
-  pad. 
+  pad.
 
 * Fixes a crash that would happen when using the TileSet editor (multiple
-  Testflight feedback reports).
-  
+  TestFlight feedback reports).
+
 ## Build 2134
 
 ### Features
@@ -3879,7 +3953,7 @@ areas that were touched on which might affect the iPad experience as well:
 * 2D and 3D toolbars will wrap around on portrait mode to allow all the
   operations to be accessible on the phone.
 
-* The popups from the toolbars have been styled to work properlty on iPhone too.
+* The popups from the toolbars have been styled to work properly on iPhone too.
 
 * Tapping on the documentation icon on the inspector on the iPhone will open the
   documentation automatically
@@ -3893,11 +3967,11 @@ areas that were touched on which might affect the iPad experience as well:
 
 ### Fixes
 
-* One pesky crash on closing a project has finally been deal with (yes, the same
+* One pesky crash on closing a project has finally been dealt with (yes, the same
   one as #999, there were more issues to deal with).
 
 * Thanks to the recent telemetry changes, we could narrow down and fix the
-  crashers for #1265 - good news, it only ever happened on the launch screen,
+  crashes for #1265 - good news, it only ever happened on the launch screen,
   never with your game.
 
 * If you delete your Xogot account, it is now possible to create a new one
@@ -3908,12 +3982,12 @@ areas that were touched on which might affect the iPad experience as well:
 
 ## Build 2121 (1.0.9)
 
-* Quick crash fix on startup, from telemtry.
+* Quick crash fix on startup, from telemetry.
 
 ## Build 2114 (1.0.6), (AppStore: 2115, 1.0.7)
 
 * FilePad changes: now the current path line, rather than being an input line
-  that can be used to navigat to a specific path, becomes the search bar when
+  that can be used to navigate to a specific path, becomes the search bar when
   tapped - usability improvement based on our own testing (before the search
   bar had to be manually toggled due to space constraints).
 
@@ -3926,16 +4000,16 @@ areas that were touched on which might affect the iPad experience as well:
 
 * Node pickers on the property editor should now save Nodes, previously they
   were saving NodePaths, preventing the inspector from working correctly (#1266,
-  Testflight).
+  TestFlight).
 
 * Should prevent a crash that happened when closing a project (#999,
-  Crashlytics). 
+  Crashlytics).
 
 * Workaround for a crash induced by iOS when your application goes to the
   background: iOS attempts to take screenshots in light and dark modes, and this
-  triggers a crash in UIKit via the Runestone editor.  
+  triggers a crash in UIKit via the Runestone editor.
   We have a band-aid that we suspect will help (#1264).
-  
+
 * Controllers that were already paired were not recognized by the game.   This
   was a fix we had already fixed, but we regressed during the 4.4 upgrade, it
   has been fixed again (#283).
@@ -3946,9 +4020,9 @@ areas that were touched on which might affect the iPad experience as well:
 
 ### Telemetry
 
-* We added telemtry to try to catch a situation where the editor fails to start
+* We added telemetry to try to catch a situation where the editor fails to start
   and crashes.  This is internal bug #1232, which we tracked down using
-  Crashlytics.  
+  Crashlytics.
 
 * New telemetry: another issue that we found in the wild is that Xogot is
   crashing due to the system doing screenshots of light/dark modes when sending
@@ -4004,7 +4078,7 @@ areas that were touched on which might affect the iPad experience as well:
 
 * Added support for deleting your account.
 
-* Fixes "Can not instantiate Child Scene" (#1246, Testflight)
+* Fixes "Can not instantiate Child Scene" (#1246, TestFlight)
 
 * Fixes a common crash when terminating an application (#1213, Crashlytics
   reports)
@@ -4031,7 +4105,7 @@ areas that were touched on which might affect the iPad experience as well:
   progress).
 
 * We will now adjust the size of the running application based on the display
-  density. 
+  density.
 
 * Exporting games to Wasm will now will export a virtual controller if enabled.
 
@@ -4058,12 +4132,12 @@ areas that were touched on which might affect the iPad experience as well:
 
 * Prevents a crash if you attempted to zoom an empty scene
 
-* Various TileSet bug fixes introduced (in Build 2019, we would hide the tileset
+* Various TileSet bug fixes introduced (in Build 2019, we would hide the TileSet
   when you changed views, this fixes it).
 
 * Fixes a family of crashes when terminating an application (#1213, but also
-  many crash reports submitted via Testflight).
-  
+  many crash reports submitted via TestFlight).
+
 
 ## Build 2019
 
@@ -4071,7 +4145,7 @@ areas that were touched on which might affect the iPad experience as well:
 
 * In-App Purchases are here.  We are starting to test the In-App Purchase
   workflow, the first time that you start the editor, it will prompt you for the
-  IAP.   You will not be charged for this purchase on the Testflight.
+  IAP.   You will not be charged for this purchase on the TestFlight.
 
 * Large samples that consume too much memory are no longer shown for low-end
   iPads that might not be able to run them (#962)
@@ -4107,7 +4181,7 @@ areas that were touched on which might affect the iPad experience as well:
 * Uses the internal scene structure as the source of truth for the node names -
   fixes #1069.
 
-* Should prevent the "Another Editor is Already Running" Error 
+* Should prevent the "Another Editor is Already Running" Error
 
 ## Build 1992/1994
 
@@ -4115,7 +4189,7 @@ areas that were touched on which might affect the iPad experience as well:
 
 ### Fixes
 
-* Addons can once again be selected from the toplevel set of menus.
+* Addons can once again be selected from the top-level set of menus.
 
 * Addons now work, a new puzzle icon is shown in the toolbar if you have addons
   that contribute a menu item (#806, #1215).
@@ -4138,7 +4212,7 @@ areas that were touched on which might affect the iPad experience as well:
   triggers a SwiftUI bug that hides those buttons after the first time you
   launch a game.
 
-* Fixes a regression that hid the remote tree view from the scenepad while
+* Fixes a regression that hid the remote tree view from the ScenePad while
   running (#1216).
 
 * Fixes the selection not rendering on the remote scene pad (it was working,
@@ -4175,10 +4249,10 @@ areas that were touched on which might affect the iPad experience as well:
   iPhone UI.
 
 * Fixes the conversion of scene groups to global groups and back (#1200,
-  Testflight).
+  TestFlight).
 
 * It is now possible to change the visibility status of all gizmos, not just one
-  (#1196). 
+  (#1196).
 
 * It is possible to drag the ScenePad/FilePad divider from any portion of the
   divider, not just the center (#1208)
@@ -4206,7 +4280,7 @@ areas that were touched on which might affect the iPad experience as well:
   it was still initializing (#1207).
 
 - Prevents a crash when stopping a project, this was one of our top crashes
-  (#1202, Testflight).
+  (#1202, TestFlight).
 
 ### Small Features
 
@@ -4224,7 +4298,7 @@ areas that were touched on which might affect the iPad experience as well:
 
 - Added Smooth Scrolling to SpriteSheetImport and tile set: This allows for
   smooth scrolling, improves performance with large grids and also does auto
-  scalling to fill view size if image is smaller than container view. 
+  scaling to fill view size if image is smaller than container view.
 
 - TileSet editor now uses the toaster notifications to report errors.
 
@@ -4271,7 +4345,7 @@ areas that were touched on which might affect the iPad experience as well:
 
 - This release disables our Metal Shader cache, as this was causing crashes when
 running games with the 'mobile' rendering method, or when you had edited a game
-with the 'mobile' rendering method.   
+with the 'mobile' rendering method.
 
 - New "Rescan" directory option on the FilePad, for when you make changes
   externally to your document folder and you want to force a rescan (for example
@@ -4311,7 +4385,7 @@ game controls on top of the game editor window (Discord)
 * Additional tune up for TileSet editor, and we have officially deprecated
   Godot's original TileSet editor tab, so it is no longer available.
 
-* Upgraded from Godot 4.4 Release Candiate 1 to Godot 4.4 official release.
+* Upgraded from Godot 4.4 Release Candidate 1 to Godot 4.4 official release.
 
 ### TileSet editor
 
@@ -4345,9 +4419,9 @@ game controls on top of the game editor window (Discord)
 Upgraded Godot to the 4.4 Release Candidate 1 release and switched from Vulkan
 to the Metal renderer engine.  There might be some hiccups as we work through
 some of the differences from our pre-4.3 release to our 4.4-based Godot.
-  
+
 This fixes the long-standing "The editor does not fill the screen when using an
-external display" (Testflight Feedback #22, Internal #689)
+external display" (TestFlight Feedback #22, Internal #689)
 
 This introduces support for the new Shader Global Variable type "External" (#1119).
 
@@ -4360,8 +4434,8 @@ The sample projects have been updated to 4.4
 
 - You can now choose between Metal or Vulkan rendering engines, you can do this
   from the project launcher, by selecting "Get Info" and setting the desired
-  renderer options (#1148).   
-  
+  renderer options (#1148).
+
 - The above UI additionally lets you configure the rendering method before you
   start a game: Mobile, Forward+ or OpenGL.
 
@@ -4394,7 +4468,7 @@ The sample projects have been updated to 4.4
   the same style as other dialogs.
 
 - Godot should now detect changes done to the files if you modified them
-  externally (#1000, Testflight feedback).
+  externally (#1000, TestFlight feedback).
 
 - Allow reimport of assets to be done without having to change any properties in
   the import pad.
@@ -4412,7 +4486,7 @@ The sample projects have been updated to 4.4
   Meshes (#1127).   This also adds the Constructive Solid Geometry nodes to the
   3D tab.
 
-- CreateNode wrap up: added construcive solid geometry nodes to the 3D tab.
+- CreateNode wrap up: added constructive solid geometry nodes to the 3D tab.
 
 - CPU/GPU 3D/2D particle emitters interaction dialogs have been moved over to
   be iOS native as well.
@@ -4440,8 +4514,8 @@ The sample projects have been updated to 4.4
 - Hides an old-style toolbar that was accidentally left enabled in Godot 2D
   editor.
 
-- Fixes the "Add" node to auto-dimiss the Create Node Dialog when you are in the
-  "All" tab. 
+- Fixes the "Add" node to auto-dismiss the Create Node Dialog when you are in the
+  "All" tab.
 
 ## Build 1846
 
@@ -4484,12 +4558,12 @@ The sample projects have been updated to 4.4
   than displaying markup (#1125).
 
 - The "Export Game" option has moved into the menu, to avoid accidentally
-  attemtping to export while developing a game.
+  attempting to export while developing a game.
 
 - Project Launcher: It will no longer show "On my iPad" on iPhone, Vision or
   Macs, it will use the proper name and icon.
 
-### Infrastrucutre Work
+### Infrastructure Work
 
 - Ongoing work on the new TileSet Editor.
 
@@ -4514,9 +4588,9 @@ The sample projects have been updated to 4.4
   be auto-selected;   New command "Find Next in Project" to navigate your find
   matches in the project;   It now highlights the line you tap on the Find
   Results.
-  
+
 - 2D Toolbar now hosts the Zoom control, and we added a new convenience method
-  "Zoom to Fit" technicall not in Godot, but present in Apple's Freeform, it
+  "Zoom to Fit" technically not in Godot, but present in Apple's Freeform, it
   seemed like a good match.   Both the Godot custom center-selection and zoom
   controls are now removed from the UI.
 
@@ -4537,7 +4611,7 @@ The sample projects have been updated to 4.4
 - Fixes project deletion not working for projects that were loaded externally,
   bug #1110.
 
-- Fixes the "Create New Node" dialog not collapsing nodes when requested, 
+- Fixes the "Create New Node" dialog not collapsing nodes when requested,
   bug #1099.
 
 - Fixes Input map list overlaps toggle, bug #981.
@@ -4575,7 +4649,7 @@ The sample projects have been updated to 4.4
 - Improved icons for the CollisionPolygon2D, and now they properly track their
   state (#1094), but this change also will improve any other Godot toolbar
   items.
-  
+
 - When renaming a node in the ScenePad, tapping anywhere else will complete the
   renaming operation.
 
@@ -4598,7 +4672,7 @@ The sample projects have been updated to 4.4
   to add certain kinds of objects (most noticeable, "Streams" into playlists,
   but would also happen in a few other places).  Completes the work on #787 and
   #634.
-  
+
 - SpriteFramesEditor: images were not updating right away, required switching
   tabs to update (#1092, #1086).
 
@@ -4621,10 +4695,10 @@ Usability improvements:
 
 * Control buttons have been adjusted to have a larger tappable region as well as
   adding additional space between the controls.
-  
+
 * Playback will now provide visual feedback.
-  
-* When selecting the sprite frame editor the first animation will be   
+
+* When selecting the sprite frame editor the first animation will be
   auto-selected, rather than forcing you to select one first.
 
 * When adding a new "SpriteFrames" to a resource, the SpriteFrame tabs will
@@ -4679,7 +4753,7 @@ and to help us improve it.
 * When adding a new "Other Node" on a fresh scene, we will go automatically into
   rename-mode.
 
-* Bezier track and Subanimations are now supported in the Animation Editor -
+* Bezier track and Sub-animations are now supported in the Animation Editor -
   this completes all the editing tasks.
 
 * When adding a new Animation track, we auto-select it.
@@ -4695,7 +4769,7 @@ and to help us improve it.
 * Animation Key editing for setting animations (#1072)
 
 * When selecting projects on the main screen, we no longer auto-launch one of
-  them - oops (#1067), 
+  them - oops (#1067),
 
 * Moving files over themselves on the file manager is a no-op, rather than
   corruption (#1081)
@@ -4747,7 +4821,7 @@ more detail here: https://blog.la-terminal.net/xogot-animations-tab/
   but it also helped clear up the user interface (#1055).
 
 * Fixes to the 2D snap parameters, some properties were rendering degrees
-  incorrectly, and two properties were loaded as zeroes due to a type mismatch. 
+  incorrectly, and two properties were loaded as zeroes due to a type mismatch.
 
 * Improves the look of the swipe icons on the ScenePad (#996, #1062)
 
@@ -4761,7 +4835,7 @@ This new editor has been adapted to be a good iPad citizen, and being a complete
 SwiftUI rewrite, gives us opportunities to improve the editor over time with
 more native features.
 
-We are particularly interestd in feedback on how the experience feels to touch -
+We are particularly interested in feedback on how the experience feels to touch -
 and make sure that everything that you need to do is present, but also that it
 is an enjoyable experience - so feel free to send us feedback on Discord or via
 TestFlight on any issues you might have - no matter how small.
@@ -4772,11 +4846,11 @@ Known limitations:
 
 * Can not currently add sub-animation tracks.
 
-* The timeline rendering currentl only displays the timeline in seconds, but not
+* The timeline rendering currently only displays the timeline in seconds, but not
   in frames.
 
 * Various advanced commands are not implemented: Bake Animation, Optimize
-  Animation, Cleanup Animation, Make Easing Keys. 
+  Animation, Cleanup Animation, Make Easing Keys.
 
 * Missing Onion Support.
 
@@ -4812,7 +4886,7 @@ This new editor has been adapted to be a good iPad citizen, and being a complete
 SwiftUI rewrite, gives us opportunities to improve the editor over time with
 more native features.
 
-We are particularly interestd in feedback on how the experience feels to touch -
+We are particularly interested in feedback on how the experience feels to touch -
 and make sure that everything that you need to do is present, but also that it
 is an enjoyable experience - so feel free to send us feedback on Discord or via
 TestFlight on any issues you might have - no matter how small.
@@ -4828,11 +4902,11 @@ Known limitations:
 
 * The Animation Library Editor is missing Save-as functionality.
 
-* The timeline rendering currentl only displays the timeline in seconds, but not
+* The timeline rendering currently only displays the timeline in seconds, but not
   in frames.
 
 * Various advanced commands are not implemented: Bake Animation, Optimize
-  Animation, Cleanup Animation, Make Easing Keys. 
+  Animation, Cleanup Animation, Make Easing Keys.
 
 * Missing Onion Support.
 
@@ -4866,7 +4940,7 @@ Known limitations:
 * Removing tracks from the animation editor now works (#1054).
 
 * Auto-mapped Godot toolbar items are easier to tap, with a wider tap
-  region. 
+  region.
 
 * Menus in auto-mapped toolbars that do not contain any text are now displayed
   with an ellipsis, previously they were completely hidden (#1030).
@@ -4900,7 +4974,7 @@ This new editor has been adapted to be a good iPad citizen, and being a complete
 SwiftUI rewrite, gives us opportunities to improve the editor over time with
 more native features.
 
-We are particularly interestd in feedback on how the experience feels to touch -
+We are particularly interested in feedback on how the experience feels to touch -
 and make sure that everything that you need to do is present, but also that it
 is an enjoyable experience - so feel free to send us feedback on Discord or via
 TestFlight on any issues you might have - no matter how small.
@@ -4921,11 +4995,11 @@ on them, and they will be coming in the next few releases:
 
 * The Animation Library Editor is missing Save-as functionality.
 
-* The timeline rendering currentl only displays the timeline in seconds, but not
+* The timeline rendering currently only displays the timeline in seconds, but not
   in frames.
 
 * Various advanced commands are not implemented: Bake Animation, Optimize
-  Animation, Cleanup Animation, Make Easing Keys. 
+  Animation, Cleanup Animation, Make Easing Keys.
 
 * Missing Onion Support.
 
@@ -4945,7 +5019,7 @@ This new editor has been adapted to be a good iPad citizen, and being a complete
 SwiftUI rewrite, gives us opportunities to improve the editor over time with
 more native features.
 
-We are particularly interestd in feedback on how the experience feels to touch -
+We are particularly interested in feedback on how the experience feels to touch -
 and make sure that everything that you need to do is present, but also that it
 is an enjoyable experience - so feel free to send us feedback on Discord or via
 TestFlight on any issues you might have - no matter how small.
@@ -4968,19 +5042,19 @@ on them, and they will be coming in the next few releases:
 
 * The Animation Library Editor is missing Save-as functionality.
 
-* The timeline rendering currentl only displays the timeline in seconds, but not
+* The timeline rendering currently only displays the timeline in seconds, but not
   in frames.
 
 * Various advanced commands are not implemented: Bake Animation, Optimize
-  Animation, Cleanup Animation, Make Easing Keys. 
+  Animation, Cleanup Animation, Make Easing Keys.
 
 * Missing Onion Support.
 
 * Missing Bezier Editor.
 
 ### Sharing
-  
-You can now tap the share button in the upper-right corner of the app to 
+
+You can now tap the share button in the upper-right corner of the app to
 share a build of your project that can playtested by anyone else running Xogot.
 
 ### Bug Fixes
@@ -4989,7 +5063,7 @@ share a build of your project that can playtested by anyone else running Xogot.
   TestFlight feedback).
 
 * We are starting to test the capability of sharing your games with other Xogot
-  users.  
+  users.
 
 * Signal pad: change the colors for signals to be the secondary color, and the
   connections to use the primary color to be easier to spot.
@@ -5004,20 +5078,20 @@ share a build of your project that can playtested by anyone else running Xogot.
 * Updated profile page.
 
 * Fixes the "jumpy" behavior while dragging public bug report #25 (Internal
-  #889). 
+  #889).
 
 ## Build 1717
 
 * Opening the property inspector should now be snappy, at the cost of a cute
-  animation (#669, public bug #4, and multiple Testflight feedbacks).
+  animation (#669, public bug #4, and multiple TestFlight feedbacks).
 
-* Crash fix reported via Testflight crash reporting in the 2D editor(#957), this
-  happened a lot, but we never had good instructions on how to reproduce it.  
+* Crash fix reported via TestFlight crash reporting in the 2D editor(#957), this
+  happened a lot, but we never had good instructions on how to reproduce it.
 
 * Prevent a scenario where we would display the game controllers on the Game
   Editor window (#987, Discord feedback).
 
-* Fixes node renaming on the scenepad not working on landscape mode (#1017).
+* Fixes node renaming on the ScenePad not working on landscape mode (#1017).
 
 * Fixes the multiple-editor check at startup.
 
@@ -5034,7 +5108,7 @@ share a build of your project that can playtested by anyone else running Xogot.
   games that have been shared with you.
 
 * Not enabled: work in progress on the new Animation Editor and the TileMap
-  Editor. 
+  Editor.
 
 
 ## Build 1678
@@ -5044,11 +5118,11 @@ share a build of your project that can playtested by anyone else running Xogot.
 * Multi-touch events now responds to multiple-finger inputs, and does not ignore
   the second touch (#909, follow up from #854 and the improvements in build
   1567).
-  
-* Fixes a crash when going back to the homescreen that was introduced in the
+
+* Fixes a crash when going back to the home screen that was introduced in the
   last release.
 
-* Short-term fix for Skeleton/Bones editor crash (Xcode Crash reports), with 
+* Short-term fix for Skeleton/Bones editor crash (Xcode Crash reports), with
   telemetry to try to find the root cause.
 
 * Shift+two finger move on the trackpad will now pan, rather than rotate (#913).
@@ -5077,18 +5151,18 @@ share a build of your project that can playtested by anyone else running Xogot.
 * Potential crash fix related to the Joypad (#850).   Some users had their Xogot
   crash due to us invoking Joypad methods, we believe that there was a scenario
   where we could invoke the Joypad methods on the wrong process/thread.   We
-  hope that this fixes the problem.  
+  hope that this fixes the problem.
 
 * Fixes the launch screen display for large displays - this only happens when
   you connect an external display to your iPad at a higher resolution (#923).
 
 * Avoid inserting quotes when it is not necessary when dragging nodes from the
-  scenepad into the text editor (fine tuning #973)
+  ScenePad into the text editor (fine tuning #973)
 
 * SpriteAnimationEditor: the FPS value was not being set on the animation, now
   it is (Discord, #994).
 
-* SpriteAnimationEditor: inputing a value on the FPS display on the sprite frame
+* SpriteAnimationEditor: inputting a value on the FPS display on the sprite frame
   editor will auto-dismiss.
 
 ## Build 1648
@@ -5119,7 +5193,7 @@ share a build of your project that can playtested by anyone else running Xogot.
 * The ScenePad Info popup will now format the brief documentation for the node
   and will show the entire brief description.
 
-* SignalPad: "Get Info" on a signal will now render its documentation, previousy
+* SignalPad: "Get Info" on a signal will now render its documentation, previously
   it would only render it for the signals on the most-derived class.
 
 * Undo/Redo buttons on the code editor are wired up when not using the physical
@@ -5127,13 +5201,13 @@ share a build of your project that can playtested by anyone else running Xogot.
 
 ## Build 1636
 
-* Some resource previews on the inspector were not being dispayed if the
+* Some resource previews on the inspector were not being displayed if the
   resource renderer did not support generating tiny versions of the image (which
   we did not even use).  Fixes #837.
 
 * Fixes the missing Output data when debugging a program (Discord feedback).
 
-* Allows Animation Key Frames to be edited in the inspector (Testflight
+* Allows Animation Key Frames to be edited in the inspector (TestFlight
   feedback, internal #795).
 
 ## Build 1631
@@ -5144,7 +5218,7 @@ share a build of your project that can playtested by anyone else running Xogot.
 * Temporarily remove the "Minimize debugger" option, which produced an ugly UI,
   proper fix will come soon (#922).
 
-* Breakpoints on early code (typically _ready) are now honored (Testflight
+* Breakpoints on early code (typically _ready) are now honored (TestFlight
   feedback, #761)
 
 * Fixes a lifecycle bug that we caught thanks to recent hardening of the
@@ -5160,7 +5234,7 @@ share a build of your project that can playtested by anyone else running Xogot.
 ## Build 1620
 
 * Crash fix on the Project Settings if you modified a text input field and
-  switched tabs.  But it means that in Stage Manager, an extra empty row 
+  switched tabs.  But it means that in Stage Manager, an extra empty row
   is shown when a hardware keyboard is attached when editing text (Xcode crash
   reports, internal #964)
 
@@ -5173,7 +5247,7 @@ share a build of your project that can playtested by anyone else running Xogot.
   is an active animation (Issue #995, feedback from recent survey).
 
 * Added comment/uncomment shortcut for code (various feedback requests, among
-  those #40, Testflight and survey feedback).
+  those #40, TestFlight and survey feedback).
 
 * The Inspector will now show the object name/type when inspecting it, but only
   if the name is different than the first category name (#948).
@@ -5184,27 +5258,27 @@ share a build of your project that can playtested by anyone else running Xogot.
   bottom bar panel sizes for fixed panels (like the Audio one).   #931.
 
 * Fixes the scenario where the completion window could become too small.
-  Testtflight feedback.
+  TestFlight feedback.
 
 * Reworked the ownership model in SwiftGodot, which fixes a fundamental design
   flaw which we had worked around by leaking.
 
 * Fixes the code completion window not being large enough after running a
-  program with an error (#921), Testflight feedback.
+  program with an error (#921), TestFlight feedback.
 
 * Fixes a scenario that took up too much space in the debugger (#922),
-  Testflight feedback.
+  TestFlight feedback.
 
 * Fixes Drag gestures: Camera jumps on transition from moving to dragging
   (public bug #45).
 
 * Look and Feel: Create New Dialog does not have uneven row sizes (#952).
 
-* 
+*
 ## Build 1594 - a Christmas Miracle!
 
 * The Godot Embedded content will now track the system color scheme.  While
-  Xogot already did this, the embedded Godot code did not, it was running in 
+  Xogot already did this, the embedded Godot code did not, it was running in
   dark mode (#924, #627, #715)
 
 * By popular demand, the ScenePad now shows the Godot icons for the node types,
@@ -5216,9 +5290,9 @@ share a build of your project that can playtested by anyone else running Xogot.
 * New size font picker for the code editor (#906, based on survey feedback).
 
 * Added a nested array editing capability, this was surfaced as lacking support
-  for adding an InputEventAction (#920, based on Testflight feedback).
+  for adding an InputEventAction (#920, based on TestFlight feedback).
 
-* Show type icons on the scenepad.
+* Show type icons on the ScenePad.
 
 ## Build 1582
 
@@ -5240,10 +5314,10 @@ share a build of your project that can playtested by anyone else running Xogot.
 * When you create shaders, we will open the shader editor right away.
 
 * Fixes a bug when trying to rename a scene node, and the keyboard would cover
-  up the pad, and dismiss the rename operation (#919, Testflight feedback).
+  up the pad, and dismiss the rename operation (#919, TestFlight feedback).
 
 * Add additional space to the "trash" icon on the output window, so that it is
-  easier to close (#927, Testflight feedback).
+  easier to close (#927, TestFlight feedback).
 
 ## Build 1572
 
@@ -5256,12 +5330,12 @@ share a build of your project that can playtested by anyone else running Xogot.
 
 * Magic trackpad support for panning (Part of #17).
 
-* Fix an infinite loop in the bottombar update.
+* Fix an infinite loop in the bottom bar update.
 
 ## Build 1567
 
 * Fixes the touchesEnded event being delayed with multiple finger inputs
-  (#823, submitted as Testflight feedback).
+  (#823, submitted as TestFlight feedback).
 
 * Further refinements to the multi-touch handling (improvement over the fix for
   #854 from Build 1552).
@@ -5274,9 +5348,9 @@ share a build of your project that can playtested by anyone else running Xogot.
 
 * If you do not have a physical keyboard attached, we will not auto-focus the
   search field in the "Create New Node" dialog, going to experiment if this is a
-  better workflow for users (#749).   But if you have a keybaord, it will
+  better workflow for users (#749).   But if you have a keyboard, it will
   autofocus.
-  
+
 * Launch Screen: style changes for the "Delete Project" confirmation dialog
   (#821).
 
@@ -5290,7 +5364,7 @@ share a build of your project that can playtested by anyone else running Xogot.
 * Improved the heuristics for positioning the code completion window, it should
   not jump anymore (Discord feedback).
 
-  
+
 ## Build 1552
 
 * When loading a Godot project, if the configured renderer is not support in
@@ -5317,7 +5391,7 @@ share a build of your project that can playtested by anyone else running Xogot.
 * Fixes the "Tile Set" tab bar not showing when a new TileSet resource was
   created.  This is a proper fix for #14, which we had not quite fixed, and we
   had just grown used to
-  select-another-node-and-come-back-and-select-the-tilemap.   The issue was that
+  select-another-node-and-come-back-and-select-the-TileMap.   The issue was that
   we were tracking items being hidden from the bottom bar, but not items being
   shown.  So this would have impacted other plugins as well that were not
   activated on demand.
@@ -5358,7 +5432,7 @@ share a build of your project that can playtested by anyone else running Xogot.
 * Fixes an issue with array elements crashing the editor (Crashlytics).
 
 * Fixes a hang when activating certain resources on the inspector (reported on Discord).
-  
+
 ## Build 1516
 
 * Improvements to the signal connection dialog:
@@ -5391,7 +5465,7 @@ share a build of your project that can playtested by anyone else running Xogot.
 * Fixes double-tapping to select on various places.
 
 * Add support for the soft-keyboard return key accepting a completion option
-  (prevously, it only worked for the physical keyboard).
+  (previously, it only worked for the physical keyboard).
 
 * Fixed a crash spotted on Crashlytics related to Godot embedded views
 
@@ -5406,7 +5480,7 @@ share a build of your project that can playtested by anyone else running Xogot.
 * When using the "Show Node in Tree" option in the inspector, we now use a
   different color than the selection to highlight those nodes (#817)
 
-* SpriteFramEditor: the new editor now goes through the Godot undo/redo system,
+* SpriteFrameEditor: the new editor now goes through the Godot undo/redo system,
   fixing a plethora of bugs identified.
 
 * We now show a quick tooltip for items in the toolbar to guide users on what
@@ -5419,7 +5493,7 @@ share a build of your project that can playtested by anyone else running Xogot.
 * Styled the editor so that breakpoints lines are more clearly visible, it used
   to be dark enough that it was unpleasant to look at.
 
-* Code Editor: "Replace" functionality is now working (Testflight feedback)
+* Code Editor: "Replace" functionality is now working (TestFlight feedback)
 
 * Prevent iOS 18.0 users from going back to the main screen, as this triggers an
   iOS 18.0 bug.
@@ -5434,7 +5508,7 @@ share a build of your project that can playtested by anyone else running Xogot.
 ## Build 1465
 
 * Interacting with embedded inspector plugins will no longer scroll the
-  inspector as you scroll inside those elements. 
+  inspector as you scroll inside those elements.
 
 * Gradient previews will now properly show.
 
@@ -5442,7 +5516,7 @@ share a build of your project that can playtested by anyone else running Xogot.
 
 * Follow up to picking custom locations: there were a few file pickers in Godot
   that defaulted to the wrong file system location if you had picked a custom
-  location. 
+  location.
 
 * Panning: panning across the Godot controls should now track the finger, as
   expected by ipad users, rather than the accelerated mode that is more suitable
@@ -5450,7 +5524,7 @@ share a build of your project that can playtested by anyone else running Xogot.
   panning in the Godot controls.
 
 * New Text Editor Setting for completion: add type hints on/off toggle, feedback
-  from Testflight.
+  from TestFlight.
 
 
 ## Build 1464
@@ -5473,7 +5547,7 @@ share a build of your project that can playtested by anyone else running Xogot.
 * Clears memory used after a game terminates, this also fixes crashes that
   happen when restarting a game (AppStore crashes)..
 
-* Fixes an imbalance of objects, that prevents another crash from happening   
+* Fixes an imbalance of objects, that prevents another crash from happening
   (#833)
 
 ## Build 1452
@@ -5502,7 +5576,7 @@ share a build of your project that can playtested by anyone else running Xogot.
   swipe gestures.   So I disabled the swipe gestures on the inspector, and will
   have to figure out a good UI for it.
 
-* Fixes the Setting crasher 
+* Fixes the Settings crash
 
 ## Build 1439
 
@@ -5512,7 +5586,7 @@ share a build of your project that can playtested by anyone else running Xogot.
 
 * 2D Editor: Disable rotation line, when pinch or pan event occurred, also seen
   as "Pinch to zoom causes node to move if transform tool is selected" reported
-  via Testflight.
+  via TestFlight.
 
 * Sets the minimum hardware requirements required by Godot, as older iPads (7th
   generation and older) do not have the GPU support that the Godot editor
@@ -5545,13 +5619,13 @@ share a build of your project that can playtested by anyone else running Xogot.
 
 * Bring back the stricter object tracking.
 
-* You can now type in any place in a row in the "Create New" dialog (Testflight
+* You can now type in any place in a row in the "Create New" dialog (TestFlight
   report).
 
 * In the Project Manager, the delete option is properly colored (red, internal
   #800
 
-* Dictionaries and array editors no longer use pagiation for consistency with
+* Dictionaries and array editors no longer use pagination for consistency with
   the other editors.  Internal #810.
 
 * When deleting files from the FilePad, we will now show the user the impact
@@ -5564,19 +5638,19 @@ share a build of your project that can playtested by anyone else running Xogot.
 * Fixes crash in the tile editor when painting with a physics layer.
 
 * Create Node dialog now hides deprecated and experimental by default, but
-  allows you to show them if needed.  
+  allows you to show them if needed.
 
-* Create Node dialog can be expanded to have more space to see the node types. 
+* Create Node dialog can be expanded to have more space to see the node types.
 
 * Undoes the stricter object tracking, as it has a design flaw.
 
 ## Build 1411
 
-* Qualify of life improvement: for resources that only have a single type,
+* Quality of life improvement: for resources that only have a single type,
   rather than offering a "New" submenu, just inline the value, like "New
   TileSet"
 
-* Quality of life: when pausing a program, if the program is paused and there 
+* Quality of life: when pausing a program, if the program is paused and there
   is not script to highlight, rather than showing the debugger pad, show the
   output pad, internal #772.
 
@@ -5605,7 +5679,7 @@ share a build of your project that can playtested by anyone else running Xogot.
 
 * Fixes setVirtualControllerCallbacks
 
-* Fixes a series of crashes that we tracked via Testflight related to spawning a
+* Fixes a series of crashes that we tracked via TestFlight related to spawning a
   game and the editor.
 
 * Related, fixes a crash on the virtual controller that might crash.
@@ -5615,7 +5689,7 @@ share a build of your project that can playtested by anyone else running Xogot.
 
 ## Build 1387
 
-* Fix a crash on the audio interruption handler (Testflight feedback)
+* Fix a crash on the audio interruption handler (TestFlight feedback)
 
 * Additional telemetry to track down the MoltenVK issue that crashes on certain
   projects at startup.
@@ -5637,7 +5711,7 @@ share a build of your project that can playtested by anyone else running Xogot.
 
 ## Build 1379
 
-* Fixes the scenario where directories removed from the filepad would not be
+* Fixes the scenario where directories removed from the FilePad would not be
   removed from the file listing.
 
 * Start to roll out a system to track objects that Godot releases but that the
@@ -5658,7 +5732,7 @@ share a build of your project that can playtested by anyone else running Xogot.
 * Completes the audio setup for the game, so audio for your game will follow the
   settings you had configured when it plays.
 
-* Should fix the "Crashes when you close a scene" (Testflight crash/feedback)
+* Should fix the "Crashes when you close a scene" (TestFlight crash/feedback)
 
 
 ## Build 1370
@@ -5668,38 +5742,38 @@ share a build of your project that can playtested by anyone else running Xogot.
 
 * "Pad" menu becomes more noticeable when launching an app.
 
-* Dirty-file indicator is now properly tracked (Discord, Testflight feedback).
+* Dirty-file indicator is now properly tracked (Discord, TestFlight feedback).
 
 * Fixes the icon alignment on the toolbars.
 
 * Bring a visual indicator that "select mode" is active in 2D and 3D toolbars.
 
-* Bring back the Display Type Selector in te 3DViewport options.
+* Bring back the Display Type Selector in the 3DViewport options.
 
 * Work in progress: audio modes from the game are saved when the game pauses and
   the system defaults are put back in place, and restored when the game resumes (Discord feedback).
 
 * Built-in scripts will now get their proper name when creating them.
 
-* Fixed scrolling on launch screen for the learning projects (Testflight
+* Fixed scrolling on launch screen for the learning projects (TestFlight
   feedback)
 
 ## Build 1360
 
-* Updates MoltenVK to v1.2.11, hoping that this fixes a number of crashes that 
-happen on startup (Testflight feedback)
+* Updates MoltenVK to v1.2.11, hoping that this fixes a number of crashes that
+happen on startup (TestFlight feedback)
 
-* Removes an assertion for a resource that was not released (Testflight crash report)
+* Removes an assertion for a resource that was not released (TestFlight crash report)
 
 * Reduces the FPS to 60 frames per second while using the editor, and keeps it
   at 120 while running games.   This should reduce battery usage a little, but
-  there is more work to do here (Testflight feedback)
+  there is more work to do here (TestFlight feedback)
 
 * Fixes a crash on the dictionary editor for unknown dictionary types
-  (Testflight crash)
+  (TestFlight crash)
 
 * Fixed: Attempting to scroll Godot node selection dialogs drags instead of
-  scrolling (Testflight feedback).
+  scrolling (TestFlight feedback).
 
 ## Build 1354
 
@@ -5724,7 +5798,7 @@ happen on startup (Testflight feedback)
 
 * Improve the numeric data input, the small arrow keys will now at least
   increment values in 0.1, instead of the hardcoded values in Godot, as
-  sometimes those would be as small as 0.001 which were barelly noticeable
+  sometimes those would be as small as 0.001 which were barely noticeable
 
 * Numeric Input changes: for users with keyboards using a modifier with the up
   and down arrow keys now change the value like this:
@@ -5736,7 +5810,7 @@ happen on startup (Testflight feedback)
 ## Build 1342
 
 * Resource pickers will now have the proper filters for the data type being
-  edited, instead of defaulting to a useles default that did not show the right
+  edited, instead of defaulting to a useless default that did not show the right
   files.
 
 ## Build 1338
@@ -5832,7 +5906,7 @@ crash reports were getting very hard to see due to the lack of this information.
 
 * Fixes crash on the Groups pad.
 
-* Brings Crashlytics, hoping to find the location of some ellusive bugs being reported.
+* Brings Crashlytics, hoping to find the location of some elusive bugs being reported.
 
 ## Build 1296
 
@@ -5855,7 +5929,7 @@ crash reports were getting very hard to see due to the lack of this information.
 
 ## Build 1280
 
-* Fixes the scenario where tapping the filepad and scenepad icons to
+* Fixes the scenario where tapping the FilePad and ScenePad icons to
 hide the sidebar would cause the sidebar to not be shown again (#446).
 
 * *Did not set min/max settings for windows when resizing, which
@@ -5873,7 +5947,7 @@ the keyboard appears on the screen, we hide the bottom bar.  Fixes
 * Allows the dragging handle to be used when a bottom pad is
 maximized.
 
-* It is now possible to tap anwyhere in a row on the Create New Dialog,
+* It is now possible to tap anywhere in a row on the Create New Dialog,
 
 * Disable node 3D editor plugin mouse motion event handling if pinch or pan
   event occurred.
@@ -5887,10 +5961,10 @@ maximized.
 
 ## Build 1274
 
-* Now it valides project names
+* Now it validates project names
 
 * Fixes slow response times on dialogs, this fixes a regression from when I
-  added double-tap to activate. 
+  added double-tap to activate.
 
 * Fixes the ratio-lock button not working.
 
@@ -5903,7 +5977,7 @@ maximized.
 
 ## Build 1260
 
-* Font color in the filepad search is now visible in dark themes.
+* Font color in the FilePad search is now visible in dark themes.
 
 * A serious bug that would prevent plenty of components of Xogot to work on the
   second project opened has been fixed.   It was most obviously manifest as
@@ -5952,7 +6026,7 @@ orderly shutdown has been implemented now.
 
 * Fixes the text input in the inspector
 
-* If you have a node selected in the scenepad and tap the "Script" icon at the
+* If you have a node selected in the ScenePad and tap the "Script" icon at the
   top automatically load that script (only happens if you do not have any
   scripts opened).
 
