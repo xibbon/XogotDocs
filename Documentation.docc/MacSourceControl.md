@@ -452,6 +452,8 @@ Use it to:
 - Choose the default account for a host.
 - Set the global committer name and email.
 - Set the default branch name used for new repositories.
+- Set the size threshold for the large binary file warning, or turn the warning
+  off. See [The Large Binary File Warning](#The-Large-Binary-File-Warning).
 
 ## Working with Remotes
 
@@ -572,17 +574,168 @@ conflict.
 
 ## Git LFS
 
-<!-- Screenshot needed: Git LFS sheet showing installed state, tracked patterns, Install LFS Hooks, and Pull LFS Objects. -->
+Game projects are full of large binary files — textures, audio, 3D models,
+`.blend` source files, video. Git was designed for text, and storing big
+binaries directly in a repository makes it slow to clone and causes it to grow
+without bound, because every version of every asset is kept forever.
 
-Open Integrate > Git LFS... to view repository Git LFS status.
+**Git Large File Storage (LFS)** solves this. Instead of putting a large file's
+contents in the repository, Git stores a small text *pointer*, and the real
+bytes live in a separate LFS store on your hosting service. Your history stays
+small and fast, and the large assets are downloaded only when you actually need
+them.
 
-The Git LFS sheet shows whether LFS is installed and whether the repository uses
-tracked LFS patterns. From this sheet you can:
+Xogot has full, built-in Git LFS support on Mac. It is woven throughout the Git
+feature — you do not have to open a separate tool to benefit from it — and a
+dedicated management sheet is available under Integrate > Git LFS… when you want
+fine control.
 
-- Install Git LFS hooks.
-- Pull LFS objects for repositories that use LFS.
+### Installing Git LFS
 
-Git LFS settings require an open Git repository.
+Git LFS is a separate program (`git-lfs`) that Xogot drives on your behalf. It is
+**not** included with the Xcode Command Line Tools, so you usually install it
+with [Homebrew](https://brew.sh):
+
+```sh
+brew install git-lfs
+```
+
+If Xogot needs Git LFS and cannot find it, it shows a short guidance sheet with a
+copyable `brew install git-lfs` command, a link to git-lfs.com, and a Check Again
+button that rechecks once you have installed it. Everything else in this section
+becomes available once `git-lfs` is present.
+
+<!-- Screenshot needed: Git LFS install-guidance sheet with the copyable brew command, the git-lfs.com link, and Check Again. -->
+
+### How Xogot Uses LFS Automatically
+
+You do not have to think about LFS most of the time — Xogot surfaces it where it
+matters:
+
+- **When you open a repository that uses LFS,** Xogot silently installs the
+  repository's LFS hooks. If `git-lfs` is missing, or if some large files are
+  present only as pointers (not yet downloaded), it shows a notice banner at the
+  top of the Changes tab. The banner offers a Download action (with progress and
+  a cancel control) or install guidance. Dismissed banners stay dismissed for
+  that repository and reappear on their own if the situation changes.
+- **In the file pad,** files routed through LFS carry an `LFS` badge. The badge
+  is dimmed when the file is still just a pointer whose contents have not been
+  downloaded. Locked files show a lock glyph — subdued for locks you hold, and
+  orange for locks held by someone else, with the owner's name in the tooltip.
+- **When you commit,** a safety net catches large binaries that are not yet in
+  LFS. See [The Large Binary File Warning](#The-Large-Binary-File-Warning)
+  below.
+
+<!-- Screenshot needed: Changes tab with the LFS notice banner showing the Download action and progress. -->
+@Image(source: "SourceControl-LFS-badges.png", alt: "File pad rows showing the LFS badge (one dimmed pointer file) and a lock glyph.")
+
+### Tracking Files with LFS
+
+Telling Git LFS to manage a file is called *tracking* it. Control-click one or
+more files in the file pad and use the Source Control submenu:
+
+- **Track in Git LFS > This File** tracks exactly the selected file.
+- **Track in Git LFS > All Files Matching `*.ext`** tracks every file with that
+  extension — usually what you want, so that all your `.png` textures or `.wav`
+  sounds are handled the same way.
+
+Tracking records a rule in the repository's `.gitattributes` file, converts the
+matching files to LFS, and stages `.gitattributes` so the rule is committed and
+shared with everyone on the project.
+
+To stop managing a file with LFS, use **Untrack from Git LFS**. (Untrack is
+offered for files named individually; broad wildcard rules are managed from the
+Git LFS sheet, described next.)
+
+> Tip: Track your asset types **before** you commit them for the first time. If
+> large files were already committed normally, tracking them now changes future
+> commits but does not rewrite the history that already contains them.
+
+@Image(source: "SourceControl-LFS-TrackThis.png", alt: "File pad Source Control submenu open, showing Track in Git LFS with the This File / All Files Matching submenu.")
+
+### The Git LFS Sheet
+
+For a full view of LFS in a repository, choose Integrate > Git LFS…. The sheet
+requires an open Git repository and has three tabs.
+
+@Image(source: "SourceControl-LFS-Settings.png", alt: "Git LFS sheet, Overview tab, showing install state and version, tracked patterns with match counts, the Add Godot Asset Patterns preset, and the Maintenance actions.")
+
+**Overview** shows whether Git LFS is installed and its version, the
+repository's hook state, and the LFS endpoint (the server the objects live on).
+Below that:
+
+- **Tracked Patterns** lists the rules from `.gitattributes`, each with a count
+  of how many files it currently matches. You can add a pattern — with a live
+  preview of what it would match — or remove one, with an explanation of what
+  untracking means.
+- **Add Godot Asset Patterns…** offers a ready-made checklist of the file types
+  common in Godot projects (images, audio, models, and so on), each showing how
+  many files it matches in your project, so you can enable sensible LFS coverage
+  in one step.
+- **Maintenance** collects housekeeping actions: **Download All Objects**
+  (with progress and cancel), **Verify Local Files** (checks that your local LFS
+  files are intact), and **Prune Old Objects…** (reclaims disk space; it shows a
+  dry-run preview of how many objects and how much space would be freed before
+  anything is deleted). The current local LFS cache size is shown here too.
+
+**Files** is a sortable, filterable table of every file LFS manages, with its
+size and whether it is Downloaded or Not Downloaded. Pointer-only files have a
+per-row Download button, and a footer totals the set.   It also renders the status
+as to who holds the lock (if that is the case), and buttons to lock/unlock a
+file quickly.
+
+**Locks** lists the files currently locked (path, owner — with your own locks
+marked — and how long ago the lock was taken). You can Refresh the list, lock a
+file by path, unlock your own locks, or Force Unlock… someone else's after a
+confirmation. If the hosting service does not support LFS file locking, the tab
+explains that in one line.
+
+@Image(source: "SounceControl-LFS-Files.png", alt: "Git LFS sheet, Files tab, showing the table with Downloaded / Not Downloaded status and a per-row Download button.")
+
+@Image(source: "SounceControl-LFS-Locks.png", alt: "Git LFS sheet, Locks tab, showing locked files with owners and the Refresh, Lock, and Force Unlock controls.")
+
+### Locking Files
+
+Binary assets cannot be merged the way text can: if two people edit the same
+`.png` or `.blend` at once, one person's work has to be thrown away. **File
+locking** prevents this. Locking a file tells everyone else on the project that
+you are editing it, so they hold off until you unlock it.
+
+Lock and unlock files from the file pad's Source Control submenu (**Lock File**,
+**Unlock File**) or from the Locks tab of the Git LFS sheet. Locks you hold
+appear subdued; locks held by others appear in orange with the owner's name.
+File locking requires a hosting service that supports the Git LFS locking API.
+
+### Downloading LFS Objects
+
+After cloning or pulling, large files may be present only as *pointers* — Xogot
+shows them with a dimmed LFS badge and lists them as Not Downloaded. Bring the
+real contents down in whichever way suits you:
+
+- Click Download in the Changes-tab banner to fetch everything at once.
+- Use Download All Objects in the Git LFS sheet's Overview tab.
+- Download individual files from the per-row button in the sheet's Files tab.
+
+### The Large Binary File Warning
+
+To keep large files from being committed the ordinary way by accident, Xogot
+watches your commits. If you commit a staged binary file at or above the size
+threshold (10 MB by default) that is **not** routed through LFS, Xogot pauses
+the commit and offers:
+
+- **Track in LFS and Commit** — tracks the file, converts it to LFS, stages the
+  updated `.gitattributes`, and completes the commit. This is usually the right
+  choice.
+- **Commit Anyway** — commits the file normally this one time.
+- **Cancel** — stops so you can decide.
+
+If `git-lfs` is not installed, the track option becomes **How to Install…** and
+opens the guidance sheet instead.
+
+You can change the size threshold, or turn the warning off entirely, in Xogot
+Settings > Source Control.
+
+@Image(source: "SourceControl-LFS-LargeFileWarning.png", alt: "Commit large-binary warning dialog showing Track in LFS and Commit, Commit Anyway, and Cancel.")
 
 ## Reference
 
@@ -639,6 +792,10 @@ Git LFS settings require an open Git repository.
 | Discard Changes | Selected tracked files with unstaged changes. |
 | Add | Selected untracked files. |
 | Mark as Resolved | Selected conflicted files. |
+| Track in Git LFS | Selected files not yet managed by LFS (This File or All Files Matching `*.ext`). |
+| Untrack from Git LFS | Selected files tracked individually by LFS. |
+| Lock File | Selected LFS files (locking-capable remote). |
+| Unlock File | Selected files you have locked. |
 
 ### Repositories Tab Context Menus
 
@@ -660,3 +817,10 @@ or provider-specific workflows still require Terminal or a dedicated Git client.
   tools such as Working Copy or iSH.
 - Hosted repository creation is limited to account types exposed by Xogot's
   account flow.
+- Git LFS features require the separate `git-lfs` program, which is not part of
+  the Xcode Command Line Tools and is usually installed with Homebrew.
+- Xogot does not rewrite history to move already-committed files into LFS
+  (`git lfs migrate`); track asset types before committing them.
+- File locks load when you open the Locks tab or perform a lock action; lock
+  badges appear after that lock data has been fetched, not through background
+  polling.
