@@ -29,15 +29,42 @@ The current Mac preview has the following known limitations:
 
 ### Improvements
 
+* New: Git support, available in the "Integrate" menu and as the "Source Code
+  Navigator" on the UI.   Documentation at:
+  https://docs.xogot.com/documentation/xogot/macsourcecontrol
+
+* Project launcher "Open with Git" now clones, rather than just downloading a
+  copy of the game, so it integrates with Git.
+
+
+* AssetBrowser: you can now use checkboxes to toggle the file types you want to
+  see (#2955)
+
+* AssetStore: you can now import plugins from the local disk, without a network
+  (#2979)
+
+* Input Map forms have been revamped, rather than walls of text, we now provide
+  visual cues for their features.
+
+### Fixes
+
+* Fixes the control positioning for toolbar items (the rider bug, #2994).
+
+* Fix NewScene inherits list row overlaping
+
+* Fixes a crash in the wild when closing Xogot:
+  https://github.com/xibbon/Xogot/issues/3005
+
+## Build 1752
+
+### Improvements
+
 * Input Map settings now allow you to import settings from another project, so
   you do not have to do this by hand (#2781)
 
 * Input Map now comes with a list of templates, so you can quickly get up and
   running with some common input settings, or save your own custom settings (my
   suggestion on #2781).
-
-Input Map forms have been revamped, rather than walls of text, we now provide
-  visual cues for their features.
 
 * We now detect if a user unpacks a binary addon in the project, and rather than
   entering an obnoxious loop that would have the system ask you to move the file
