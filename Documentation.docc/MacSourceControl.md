@@ -532,9 +532,43 @@ The banner shows the current operation and offers:
   conflicts remain.
 - Abort: cancels the current merge or rebase and restores the prior state.
 
-Conflicted files show the conflict status. Resolve the conflicts by editing the
-files, then mark them resolved from the Changes tab or the file pad Source
-Control submenu. Continue is disabled while conflicts remain.
+Conflicted files show the conflict status.
+
+@Image(source: "SourceControl-ConflictDetected.png", alt: "Conflict detection")
+
+Resolve the conflicts by either activating the conflict resolution tool
+with "Resolve Conflict", or edit the hands manually with your favorite tool
+and  then mark them resolved from the Changes tab or the file pad Source
+Control submenu.  
+
+The Continue operation is disabled while conflicts remain.
+
+## Conflict Resolution Tool
+
+When Xogot detects that there has been a conflict because both your local copy and
+the copy that is being merged edited the same region of the file, you will get a
+warning icon indicating the conflicts and a banner guiding you to the next step.
+
+Choose "Resolve Conflicts" when you are ready to address those, and it will open
+the conflict resolution tool.   There, you will be presented with a navigation UI 
+that you can use to navigate to the different conflict zones.   On the left panel
+you have your current code, and on the right panel you have the incoming code.
+
+@Image(source: "SourceControl-ConflictResolution.png", alt: "Conflict resolution")
+
+There are toggles that can help you choose which side of the changes you want, the
+current code, the incoming or accept both.   
+
+If neither is appropriate, you can choose the "Edit" button:
+
+@Image(source: "SourceControl-ConflictEditText.png", alt: "Conflict resolution")
+
+Then manually adjust and then use "Accept Edits".
+
+You can also bulk-resolve all issues by using the context menu that lets you accept all changes.
+
+Once you have resolved all the changes, you can "Mark as Resolved" and move on to the next
+conflict.
 
 ## Git LFS
 
