@@ -283,11 +283,17 @@ project through Xogot's normal project-open flow.
 
 ## Understanding File Status
 
-@Image(source: "SourceControl-FileList.png", alt: "File Listing with indicators")
+Xogot shows Git status in the file pad and the Source Control navigator. 
+
+In the file pad, you will see single-letter indicators next to the file indicating their status.
+
+@Image(source: "SourceControl-FileList.png", alt: "The File Pad shows letters indicating relevant source code control operations")
+
+On the Source Code Navigator only the files that have a flag are displayed:
 
 @Image(source: "SourceControl-ChangesPad.png", alt: "View from the changes pad")
 
-Xogot shows Git status in the file pad and the Source Control navigator. These
+These
 indicators are how you see, at a glance, what Git is doing with each file:
 which files are already under version control, which ones you have changed since
 your last commit, and which new files are not being tracked yet. Reading them
@@ -469,7 +475,7 @@ remotes and unrecognized URL forms may not support browser actions.
 
 ## Branches, Tags, and History
 
-<!-- Screenshot needed: Branch history editor tab showing commit list, filters, and selected commit diff. -->
+@Image(source: "SourceControl-CommitList.png", alt: "Selecting a branch shows the history of commits and the changes")
 
 The Repositories tab organizes repository data into Branches, Tags, Stashes, and
 Remotes.
