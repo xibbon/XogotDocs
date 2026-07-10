@@ -55,7 +55,7 @@ The current Mac preview has the following known limitations:
 * Fixes a crash in the wild when closing Xogot:
   https://github.com/xibbon/Xogot/issues/3005
 
-## Build 1752
+## Build 1752 (July 5th, 2026)
 
 ### Improvements
 
@@ -101,7 +101,7 @@ The current Mac preview has the following known limitations:
   for sticky scroll, context aware code completion, live errors and warnings in
   the text editor.  (#2974)
 
-## Build 1745
+## Build 1745 (July 2nd, 2026)
 
 ### Improvements
 
@@ -140,7 +140,7 @@ The current Mac preview has the following known limitations:
 * The Monaco editor will no longer shift/unshift text that contains markers on
   the gutter depending on the parsing success.
 
-## Build 1736
+## Build 1736 (July 1st, 2026)
 
 ### Improvements
 
@@ -215,7 +215,7 @@ The current Mac preview has the following known limitations:
 * Restores compatibility with Godot with four obscure APIs that we broke two
   years ago - found via an automated audit.
 
-## Build 1709 (Jun 29, 2026)
+## Build 1709 - Beta 2 (Jun 29, 2026)
 
 ### Improvements
 

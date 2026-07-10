@@ -2,6 +2,28 @@
 
 Release notes for our preview release of Xogot to TestFlight.
 
+## Release 4800
+
+### Improvements
+
+* Inspector: additional performance improvements for resources that were doing
+  some repeated operations when it was not necessary (#2990)
+
+* Improves the code completion heuristics to prioritize matches the least
+  fuzzier of results over the fuzziest (#3017).
+
+### Fixes
+
+* Fix New Scene inherits list row overlaping
+
+* Fixes a crash at shutdown caused by accessing an object that has already
+  been destroyed triggered by the audio system.
+
+* Localization and internationalization fixes audit that we had not caught
+  before.
+
+* Fixes a crash on shutdown in the editor (#3006).
+
 ## Release 4777 (June 8th, 2026)
 
 ### Improvements
