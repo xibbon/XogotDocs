@@ -1,6 +1,46 @@
 # Differences between Xogot and Godot
 
-Notable differences in adapting Godot to iPad
+Notable differences between Godot and our readaptaion of the UI to be Apple
+platform focused.
+
+We have three sections:
+
+* General differences that apply to all platforms supported by Xogot
+
+* Specific iPadOS/iOS differences compared to Godot
+
+* Mac specific differences are currently tracked in the <doc:Differences-Mac> document.
+
+# General Xogot and Godot Differences
+
+## Icons
+
+Control icons have been replaced with Apple's SF Symbols to better match
+the look and feel of iPadOS, but if you want to bring back the Godot icons, you
+can do so on "Settings/Xogot Settings/Environment/Prefer Godot Icons".  
+
+## Asset Browser
+
+In Xogot, there is a permanent "Asset" tab in the bottom of the screen that
+shows your project resources - as an alternative to using the file system
+browser pad to locate files and bring them into your design surfaces.
+
+#  Xogot on iPad and Godot on Desktop
+
+## Layout changes 
+
+Xogot's UI has been adapted to better suit various Apple idioms.
+
+For iPad and iOS, we generally had to make things more tappable, which required
+expanding the size of items, but the expansion also made us have to remove some
+elements from the UI, as we did not have enough space to fit things.   The
+functionality remains in place, it is just not always in the same places.
+
+## Hover
+
+Because the iPad does not have the concept of hovering over a button, tooltips
+are not surfaced in the UI (unless you have a trackpad or a pencil). <doc:Xogot-User-Interface> provides a guide to the
+layout and structure of Xogot's toolbars.
 
 ## Only gdscript
 
@@ -14,26 +54,11 @@ written in C++, C#, or other compiled languages are not currently supported.
 
 ## Project Settings
 
-In Xogot, tap the menu button in the upper-righthand corner and choose **“Settings”**
-to open Project Settings.  The individual Project Settings tabs from Godot, such as
-Input Map, Autoload and Plugins, can be navigated to by tapping on the **General** in
-the drop-down list at the top of the Settings dialog.
-
-## Visual Shader Editor
-
-While Xogot projects can include and run Visual Shaders that were created in Godot 
-on the desktop, Xogot does not currently include the Visual Shader Editor, so it is
-not currenlty possible to create or update Visual Shaders in Xogot.  
-
-## Layout changes 
-
-Xogot's UI has been adapted to better suit the iPad, including making parts of
-the UI more tappable, and removing some parts of the user interface to economize
-available real estate.  Many toolbar icons have been replaced with Apple's 
-SF Symbols to better match the look and feel of iPadOS.  Because the iPad does 
-not have the concept of hovering over a button, tooltips are not surfaced in the
-UI.  <doc:Xogot-User-Interface> provides a guide to the layout and structure of 
-Xogot's toolbars.
+In Xogot, tap the menu button in the upper-righthand corner and choose
+**“Settings”** to open Project Settings.  The individual Project Settings tabs
+from Godot, such as Input Map, Autoload and Plugins, can be navigated to by
+tapping on the **General** in the drop-down list at the top of the Settings
+dialog.
 
 ## Additional Resources
 
