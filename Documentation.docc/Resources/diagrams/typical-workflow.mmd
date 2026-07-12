@@ -1,0 +1,18 @@
+%% Typical day-to-day source control workflow in Xogot for Mac.
+%% Rendered to Resources/typical-workflow.png by `make diagrams` (see Resources/diagrams/Makefile).
+flowchart TD
+    A([Start working]) --> B["Pull latest changes<br/>Integrate &gt; Pull"]
+    B --> C["Edit your project in Xogot"]
+    C --> D["Review what changed<br/>Changes tab &amp; file-pad badges"]
+    D --> E["Stage the changes<br/>that belong in this commit"]
+    E --> F["Write a commit message"]
+    F --> G[["Commit"]]
+    G --> H{"More work<br/>to do?"}
+    H -- "Yes" --> C
+    H -- "No" --> I["Push to the remote<br/>Integrate &gt; Push"]
+    I --> J([Work backed up and shared])
+
+    classDef start fill:#1f6feb,stroke:#0d419d,color:#fff;
+    classDef done fill:#238636,stroke:#116329,color:#fff;
+    class A start;
+    class J done;

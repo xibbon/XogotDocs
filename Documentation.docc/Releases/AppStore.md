@@ -2,6 +2,64 @@
 
 Release notes for public releases of Xogot to the App Store.
 
+## Release 1.6.4
+
+* New: Asset Placer for faster 3D scene building, including grid, surface,
+  vertex, spline, paint, scatter, MultiMesh, collision, material override.
+
+* AssetBrowser will now automatically generate the thumbnails for your assets,
+  rather than requring the user to manually reload each asset.   
+
+* AssetBrowser has been extended with support for Asset Zoo construction.
+
+* Usability: Improved project importing with threaded loading, cancelable
+  progress, and smoother progress updates.
+
+* Automatic saving: Added automatic scene saving around run, close, export,
+  focus changes, and script attachment.   You can configure this option if you
+  rather have full control of saving.
+
+* Command Palette now has a command history.
+
+* Context menu now always has a script node present, rather than being
+  contextual, and it will let you add/remove/extend without resorting to a
+  separate menu.
+
+*  Improved Font Import and Animation editing on iOS with better selectors,
+   platform navigation, glyph tapping, Pencil hover behavior, and clearer resize
+   affordances.
+
+* Fixed 45 tracked user-facing bugs.
+
+## Release 1.6.2 (4560)
+
+* Performance improvements: starting the editor is about 30% faster now and the
+  setting dialogs are faster and consume less memory.
+
+* GameViewPad: now we surface the Game toolbar even when the game is not
+  running, allowing you to customize settings before you launch.
+
+* You can now resize the time of an animation in the AnimationPlayer
+  visually, you do not have to type in a value.
+
+* You can now copy entire values from categories and sections and paste them on
+  other categories/sections.
+
+* We now have a MacOS/iOS native GridMap placer UI, this replaces the Godot
+  GridMap placer.
+
+* Shader Visual Debugging: Setting breakpoints on canvas_item shaders will now
+  show a preview of the texture being assigned at that point in time.
+
+* Added support for plugins that registered controls on the toolbar.
+
+* New: new advanced Font Importer settings UI is included.
+
+* New MultiMeshInstance plugin written in SwiftUI, provides a convenient
+  prototyping UI for the multi-meshes.
+
+* Over 20 bugs fixed.
+
 ## Release 1.6.0 (4464)
 
 ## Improvements

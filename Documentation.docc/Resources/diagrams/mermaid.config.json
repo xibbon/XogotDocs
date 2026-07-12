@@ -1,0 +1,14 @@
+{
+  "theme": "neutral",
+  "themeVariables": {
+    "fontSize": "11px"
+  },
+  "flowchart": {
+    "htmlLabels": true,
+    "curve": "basis",
+    "useMaxWidth": true,
+    "rankSpacing": 18,
+    "nodeSpacing": 28,
+    "padding": 4
+  }
+}
