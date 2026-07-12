@@ -199,9 +199,9 @@
 
                 @Code(name: "main.gd", file: main-03.gd, previousFile: main-02.gd)
             }
-            You can now press F5 (Cmd + R on an external keyboard) and try the game. Jump
-            on a snake to squash it and bounce off it. The player can't die
-            yet — that's the next lesson.
+            You can now run the game by tapping the **Run Project** button in
+            the toolbar. Jump on a snake to squash it and bounce off it. The
+            player can't die yet — that's the next lesson.
         }
     }
     @Section(title: "Code checkpoint") {

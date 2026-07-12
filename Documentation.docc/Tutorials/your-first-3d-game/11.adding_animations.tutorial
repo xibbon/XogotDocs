@@ -227,9 +227,8 @@
     }
     @Section(title: "Adding a custom on-screen joystick") {
         @ContentAndMedia {
-            For extra credit: let's give the game a better, more
-            customizable touch experience for players by adding an
-            on-screen joystick add-on.
+            On iPhone and iPad, the player needs on-screen controls. Let's
+            add a customizable on-screen joystick add-on.
 
             The add-on we'll use is
             [*Virtual Joystick*](https://github.com/MarcoFazioRandom/Virtual-Joystick-Godot)
@@ -237,10 +236,10 @@
             full touch thumbstick on screen and lets you wire it to any
             input action.
 
-            > Note: This is an "extra credit" section. The game is fully
-            > playable on a external keyboard or gamepad. The add-on
-            > only matters when you want to play the game directly on an
-            > iPad with on-screen touch controls.
+            > Note: Because this game is built for iOS, the on-screen joystick
+            > is required to play without an external keyboard or gamepad. You
+            > should still keep the keyboard and gamepad bindings we set up
+            > earlier — they work alongside the joystick.
 
             > Tip: There are lots of other add-ons for Xogot, with more
             > being added all the time. Trying out the available add-ons
@@ -339,11 +338,11 @@
             current scene, so the joystick will automatically reappear
             on the reloaded scene — no extra `show()` call needed.
 
-            That's it! When you run the project on an iPad, you'll see
-            the on-screen joystick appear wherever you touch the left
-            half of the screen. Tap and drag to move the player, and
-            the rest of the input (jump, etc.) is already wired to the
-            on-screen controls or external keyboard.
+            That's it! When you run the project on an iPhone or iPad, you'll
+            see the on-screen joystick appear wherever you touch the left
+            half of the screen. Tap and drag to move the player, and the
+            rest of the input (jump, etc.) is already wired to the on-screen
+            controls or an external keyboard/gamepad.
 
             > Tip: The add-on also exposes a `Virtual Joystick Right`
             > scene if you want to add a second stick for things like

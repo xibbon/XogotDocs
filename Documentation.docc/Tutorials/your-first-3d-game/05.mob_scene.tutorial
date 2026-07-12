@@ -266,8 +266,7 @@
         @Steps {
             @Step {
                 Head back to the 3D viewport by tapping on the _3D_ label at
-                the top of the editor. You can also press Ctrl + F2 (Option + 2
-                on an external keyboard).
+                the top of the editor.
 
                 @Image(source: 09.switch_to_3d_workspace.webp)
             }

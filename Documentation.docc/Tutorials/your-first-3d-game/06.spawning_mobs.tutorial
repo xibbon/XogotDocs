@@ -58,9 +58,9 @@
         @Steps {
             @Step {
                 Your viewport should still be split into two parts, with the
-                camera preview at the bottom. If that isn't the case, press
-                Ctrl + 2 (Cmd + 2 on an external keyboard) to split the view into two. Select
-                the
+                camera preview at the bottom. If that isn't the case, tap the
+                **View** menu in the 3D editor toolbar and choose _2 Viewports_.
+                Select the
                 [Camera3D](https://docs.godotengine.org/en/stable/classes/class%5Fcamera3d.html#class-camera3d)
                 node and tap the _Preview_ checkbox in the bottom viewport.
 
@@ -86,8 +86,7 @@
             }
             @Step {
                 Set the top viewport to the top orthogonal view using the menu
-                in the viewport's top-left corner. Alternatively, you can
-                press the keypad's 7 key.
+                in the viewport's top-left corner.
 
                 The grid may be distracting. You can toggle it by going to the
                 _View_ menu in the toolbar and tapping _View Grid_.
@@ -100,7 +99,7 @@
 
             @Step {
                 Toggle grid snap by tapping the *Use Snap* button in the 3D
-                Editor Toolbar or pressing Y.
+                Editor Toolbar.
 
                 @Image(source: 08.toggle_view_grid.webp)
             }
@@ -114,16 +113,16 @@
             game area.
 
             @Step {
-                Press Ctrl + D (Cmd + D on an external keyboard) to duplicate the node. You
-                can also long-press the node in the _Scene Tree_ and select
+                Long-press the node in the _Scene Tree_ and select
                 _Duplicate_. Move the copy down along the blue Z axis until
                 it's right outside the camera's preview.
 
                 @Image(source: 10.place_first_cylinder.png)
             }
             @Step {
-                Select both cylinders by pressing the Shift key and tapping on
-                the unselected one, then duplicate them.
+                Select both cylinders by tapping the first one, then tapping
+                the second one with a selection modifier (on an external
+                keyboard, hold Shift while tapping), then duplicate them.
 
                 @Image(source: 11.both_cylinders_selected.png)
             }
@@ -136,9 +135,10 @@
             stand out by giving them a new material.
 
             @Step {
-                Select all the mesh instances in the _Scene Tree_. To do so, you
-                can tap on the first one and Shift tap on the last one. In the
-                _Inspector_, expand the _Material_ section and assign a
+                Select all the mesh instances in the _Scene Tree_. To do so,
+                tap the first one and then tap the last one with a selection
+                modifier (on an external keyboard, hold Shift while tapping).
+                In the _Inspector_, expand the _Material_ section and assign a
                 [StandardMaterial3D](https://docs.godotengine.org/en/stable/classes/class%5Fstandardmaterial3d.html#class-standardmaterial3d)
                 to slot _0_.
 
@@ -293,7 +293,7 @@
             > gives a "node not found" error because there is no $Player!
 
             @Step {
-                You can test the scene by pressing F6 (Cmd + R on an external keyboard).
+                You can test the scene by tapping the **Run Project** button in the toolbar.
                 You should see the monsters spawn and move in a straight
                 line.
 

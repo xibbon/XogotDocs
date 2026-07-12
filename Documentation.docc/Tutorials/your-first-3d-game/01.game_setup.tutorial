@@ -96,15 +96,13 @@
                 icon) and double-tap on *Node*. Name the node `Main`.
 
                 > Tip: An alternate method to rename the node is to long-press on
-                > *Node* and choose *Rename* (or use the F2 shortcut on a hardware
-                > keyboard). You can also add a node by pressing Ctrl + A
-                > (Cmd + A on an external keyboard).
+                > *Node* and choose *Rename*.
 
                 @Image(source: 05.main_node.webp)
             }
             @Step {
-                Save the scene as `main.tscn` by pressing Ctrl + S (Cmd + S on
-                macOS).
+                Save the scene as `main.tscn` by tapping **Save** in the
+                **Document Menu**.
 
                 > Important: Saving early and often prevents accidental loss of
                 > work if the app closes unexpectedly.
@@ -183,10 +181,9 @@
             do this, the grid snapping feature can be used.
 
             > Tip: Grid snapping can be activated in two ways. The first is by
-            > tapping the *Use Snap* button in the 3D Editor Toolbar (or pressing
-            > the Y key on an external keyboard). The second is by selecting a
-            > node, dragging a handle on the gizmo **then** holding Ctrl (Cmd on
-            > an external keyboard) while holding the selected node.
+            > tapping the *Use Snap* button in the 3D Editor Toolbar. The
+            > second is by selecting a node, dragging a handle on the gizmo
+            > **then** holding a modifier key while holding the selected node.
 
             @Image(source: use_snap.webp)
 

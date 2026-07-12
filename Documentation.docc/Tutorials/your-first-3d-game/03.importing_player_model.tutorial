@@ -145,7 +145,7 @@
             @Step {
                 Open `player.tscn`. In the _Scene Tree_, select the
                 `MeshInstance3D` placeholder we added under `Pivot` and
-                delete it (press Delete on an external keyboard, or long-press it and choose _Delete_).
+                delete it (long-press it and choose _Delete_).
 
                 @Image(source: fix-me.png, alt: "Delete the placeholder MeshInstance3D")
             }
@@ -207,10 +207,10 @@
                 @Image(source: fix-me.png, alt: "Position the box so it wraps the axolotl body")
             }
             @Step {
-                Save the scene and run it (F6 / Cmd + R on an external keyboard). The axolotl
-                should now appear in place of the placeholder box, idling on
-                the spot, and you can still move it with the arrow keys or
-                gamepad.
+                Save the scene and run it by tapping **Run Project** in the
+                toolbar. The axolotl should now appear in place of the
+                placeholder box, idling on the spot, and you can still move
+                it with an external keyboard or gamepad.
 
                 In the next lesson, we'll code the player's movement.
             }

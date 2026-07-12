@@ -210,8 +210,7 @@
 
             @Step {
                 In the 3D editor toolbar above the viewport, tap the **View**
-                menu, then choose _2 Viewports_. You can also press Ctrl + 2
-                (Cmd + 2 on an external keyboard).
+                menu, then choose _2 Viewports_.
 
                 @Image(source: 12.viewport_change.webp)
             }
@@ -237,12 +236,12 @@
                 @Image(source: 08.camera_moved.png)
             }
             @Step {
-                You can run the scene by pressing F6 (Cmd + R on an external keyboard) and
-                press the arrow keys to move the character.
+                Run the scene by tapping the **Run Project** button in the
+                toolbar. Use the on-screen controls, an external keyboard's arrow
+                keys, or a gamepad joystick to move the character.
 
-                > Tip: If you're using a external keyboard, try the WASD keys
-                > in addition to the arrow keys. The gamepad joystick will
-                > also work because we bound it in the Input Map.
+                > Tip: If you have an external keyboard attached, you can also
+                > try the WASD keys in addition to the arrow keys.
 
                 @Image(source: 09.camera_rotated.png)
             }

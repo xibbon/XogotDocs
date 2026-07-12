@@ -113,11 +113,11 @@
     }
     @Section(title: "Creating input actions") {
         @ContentAndMedia {
-            To move the character, we will listen to the player's input, like pressing
-            the arrow keys. In Xogot, while we could write all the key bindings in
-            code, there's a powerful system that allows you to assign a label to a
-            set of keys and buttons. This simplifies our scripts and makes them more
-            readable.
+            To move the character, we will listen to the player's input, like the
+            arrow keys on an external keyboard or a gamepad joystick. In Xogot,
+            while we could write all the key bindings in code, there's a powerful
+            system that allows you to assign a label to a set of keys and
+            buttons. This simplifies our scripts and makes them more readable.
 
             This system is the Input Map.
 
@@ -154,8 +154,8 @@
             `move_forward`, `move_back`, and `jump`.
 
             @Step {
-                To add an action, write its name in the bar at the top and press
-                Enter or tap the **Add** button.
+                To add an action, write its name in the bar at the top and tap
+                the **Add** button.
 
                 @Image(source: adding_action.webp)
             }
@@ -167,17 +167,19 @@
             }
             @Step {
                 To bind a key or button to an action, tap the "**+**" button to its
-                right. Do this for `move_left`. Press the left arrow key and tap
-                **OK**.
+                right. Do this for `move_left`. If you have an external keyboard
+                attached, press the left arrow key; otherwise, tap the matching
+                key on the on-screen virtual keyboard. Then tap **OK**.
 
-                > Tip: You can repeat this for the `A` key so both left arrow and
-                > A drive `move_left` on a external keyboard. Players appreciate
-                > the option.
+                > Tip: If you have an external keyboard attached, you can also
+                > bind the `A` key so both left arrow and `A` drive
+                > `move_left`.
 
                 @Image(source: left_inputmap.webp)
             }
             @Step {
-                Bind also the A key, onto the action `move_left`.
+                Bind also the `A` key onto the action `move_left` if you have
+                an external keyboard attached.
 
                 @Image(source: keyboard_keys.webp)
             }
@@ -205,8 +207,10 @@
                 @Image(source: move_inputs_mapped.webp)
             }
             @Step {
-                The final action to set up is the `jump` action. Bind the Space key
-                and the gamepad's A button located under **Joypad Buttons**.
+                The final action to set up is the `jump` action. If you have an
+                external keyboard attached, bind the Space key; otherwise, tap
+                Space on the on-screen keyboard. Also bind the gamepad's A
+                button located under **Joypad Buttons**.
 
                 Your jump input action should look like this.
 
