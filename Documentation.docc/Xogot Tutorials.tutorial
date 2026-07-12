@@ -51,9 +51,9 @@
     }
     @Chapter(name: "Your First 3D Game") {
         @Image(source: squash-the-creeps-final.gif,
-            alt: "An animation of Save the Axolotl: Squash the Snakes running")
+            alt: "An animation of Save the Axolotl: Snake Stomp running")
 
-        The game we'll code here is Save the Axolotl: Squash the Snakes. It's similar to
+        The game we'll code here is Save the Axolotl: Snake Stomp. It's similar to
         Your first 2D game, with a twist: you can now jump and your goal is to squash the
         snakes. This way, you will both recognize patterns you learned in the previous
         tutorial and build upon them with new code and features.

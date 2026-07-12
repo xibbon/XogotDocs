@@ -4,9 +4,9 @@
         game with Xogot. By the end of the series, you will have a simple yet finished
         project of your own like the animated gif below.
 
-        @Image(source: squash-the-creeps-final.gif, alt: "Animated gif of Save the Axolotl: Squash the Snakes running")
+        @Image(source: squash-the-creeps-final.gif, alt: "Animated gif of Save the Axolotl: Snake Stomp running")
 
-        The game we'll code here is **Save the Axolotl: Squash the Snakes**. It's
+        The game we'll code here is **Save the Axolotl: Snake Stomp**. It's
         similar to [Your first 2D game](https://docs.xogot.com/documentation/tutorials/your-first-2d-game),
         with a twist: you can now jump and your goal is to squash the snakes. This way,
         you will both **recognize patterns** you learned in the previous tutorial and
@@ -28,7 +28,7 @@
         steps. If you're an experienced programmer, you can browse the complete demo's
         source code here:
 
-        - [Save the Axolotl: Squash the Snakes source code (GDScript)](https://github.com/godotengine/godot-demo-projects/tree/master/3d/squash%5Fthe%5Fcreeps)
+        - [Save the Axolotl: Snake Stomp source code (GDScript)](https://github.com/godotengine/godot-demo-projects/tree/master/3d/squash%5Fthe%5Fcreeps)
 
         > Note: You can follow this series without having done the 2D one. However, if
         > you're new to game development, we recommend you to start with 2D. 3D game
@@ -37,7 +37,7 @@
 
         We prepared some game assets so we can jump straight to the code. You can
         download them here:
-        [Save the Axolotl: Squash the Snakes assets](https://github.com/godotengine/godot-docs-project-starters/releases/download/latest-4.x/3d%5Fsquash%5Fthe%5Fcreeps%5Fstarter.zip).
+        [Save the Axolotl: Snake Stomp assets](https://github.com/godotengine/godot-docs-project-starters/releases/download/latest-4.x/3d%5Fsquash%5Fthe%5Fcreeps%5Fstarter.zip).
 
         We will first work on a basic prototype for the player's movement, then import
         the player's 3D model. We will then add the monsters that we'll spawn randomly
