@@ -1,5 +1,8 @@
 extends CharacterBody3D
 
+# Emitted when the player was hit by a mob.
+signal hit
+
 # How fast the player moves in meters per second.
 @export var speed = 14
 # The downward acceleration when in the air, in meters per second squared.
@@ -22,6 +25,13 @@ var _coyote_timer = 0.0
 # Counts down from jump_buffer after a jump press.
 var _jump_buffer_timer = 0.0
 
+# The AnimationPlayer that lives inside the glTF model. It holds the
+# model's embedded animations, like "Idle" and "Run".
+@onready var skeleton_animation_player = $Pivot/Character/AnimationPlayer
+# The AnimationPlayer we added to the Player scene. It holds the custom
+# "jump" animation we loaded from resources/jump.res.
+@onready var animation_player = $AnimationPlayer
+
 
 func _physics_process(delta):
     # We create a local variable to store the input direction.
@@ -43,6 +53,11 @@ func _physics_process(delta):
         direction = direction.normalized()
         # Setting the basis property will affect the rotation of the node.
         $Pivot.basis = Basis.looking_at(direction)
+        # Speed up the run animation while the character is moving.
+        skeleton_animation_player.speed_scale = 4
+    else:
+        # Back to normal speed when standing still.
+        skeleton_animation_player.speed_scale = 1
 
     # Ground Velocity
     target_velocity.x = direction.x * speed
@@ -73,7 +88,7 @@ func _physics_process(delta):
     # Fire when there is both a buffered press and a valid coyote
     # window. Clearing both timers prevents double-jumping off coyote.
     if _jump_buffer_timer > 0.0 and _coyote_timer > 0.0:
-        target_velocity.y = jump_impulse
+        jump()
         _coyote_timer = 0.0
         _jump_buffer_timer = 0.0
 
@@ -81,7 +96,27 @@ func _physics_process(delta):
     velocity = target_velocity
     move_and_slide()
 
+    # Tilt the Pivot based on the vertical velocity to give the jump an arc.
+    $Pivot.rotation.x = PI / 6 * velocity.y / jump_impulse
+
+
+func jump():
+    target_velocity.y = jump_impulse
+    # While in the air, switch the skeleton back to Idle so the run cycle
+    # doesn't keep playing.
+    skeleton_animation_player.play("Idle")
+    # Play the custom jump animation on the Player scene's AnimationPlayer.
+    animation_player.play("jump")
+
+
+# Called by the mob's HurtBox when the player touches the snake's body
+# while on the floor.
+func die():
+    hit.emit()
+    queue_free()
+
 
 # Called by Main after a mob is squashed: the squasher bounces back up.
 func bounce():
     target_velocity.y = bounce_impulse
+    animation_player.play("jump")

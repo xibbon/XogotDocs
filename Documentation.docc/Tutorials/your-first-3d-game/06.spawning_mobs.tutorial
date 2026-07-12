@@ -15,13 +15,14 @@
         }
         @Steps {
             @Step {
-                Double-tap on `main.tscn` in the _FileSystem_ dock to open the
+                Double-tap on `main.tscn` in the _File Pad_ to open the
                 `Main` scene.
 
-                @Image(source: fix-me.png, alt: "The main.tscn scene open in the FileSystem dock")
+                @Image(source: fix-me.png, alt: "The main.tscn scene open in the File Pad")
             }
             @Step {
-                Go to _Project -> Project Settings_.
+                Tap the **"..."** toolbar button in the upper-right corner and choose
+                **Settings** to open Project Settings.
 
                 @Image(source: 02.project_settings.webp)
             }
@@ -58,7 +59,7 @@
             @Step {
                 Your viewport should still be split into two parts, with the
                 camera preview at the bottom. If that isn't the case, press
-                Ctrl + 2 (Cmd + 2 on macOS) to split the view into two. Select
+                Ctrl + 2 (Cmd + 2 on an external keyboard) to split the view into two. Select
                 the
                 [Camera3D](https://docs.godotengine.org/en/stable/classes/class%5Fcamera3d.html#class-camera3d)
                 node and tap the _Preview_ checkbox in the bottom viewport.
@@ -98,8 +99,8 @@
             grid snap to do so.
 
             @Step {
-                Toggle grid snap by tapping the magnet icon in the toolbar or
-                pressing Y.
+                Toggle grid snap by tapping the *Use Snap* button in the 3D
+                Editor Toolbar or pressing Y.
 
                 @Image(source: 08.toggle_view_grid.webp)
             }
@@ -113,8 +114,8 @@
             game area.
 
             @Step {
-                Press Ctrl + D (Cmd + D on macOS) to duplicate the node. You
-                can also right-tap the node in the _Scene_ dock and select
+                Press Ctrl + D (Cmd + D on an external keyboard) to duplicate the node. You
+                can also long-press the node in the _Scene Tree_ and select
                 _Duplicate_. Move the copy down along the blue Z axis until
                 it's right outside the camera's preview.
 
@@ -135,7 +136,7 @@
             stand out by giving them a new material.
 
             @Step {
-                Select all the mesh instances in the _Scene_ dock. To do so, you
+                Select all the mesh instances in the _Scene Tree_. To do so, you
                 can tap on the first one and Shift tap on the last one. In the
                 _Inspector_, expand the _Material_ section and assign a
                 [StandardMaterial3D](https://docs.godotengine.org/en/stable/classes/class%5Fstandardmaterial3d.html#class-standardmaterial3d)
@@ -159,7 +160,7 @@
             We can now use the cylinders as guides.
 
             @Step {
-                Fold them in the _Scene_ dock by tapping the grey arrow next to
+                Fold them in the _Scene Tree_ by tapping the grey arrow next to
                 them. Moving forward, you can also toggle their visibility by
                 tapping the eye icon next to _Cylinders_.
 
@@ -171,8 +172,8 @@
                 to `Main`. In the toolbar, four icons appear. Tap the _Add
                 Point_ tool, the icon with the green "+" sign.
 
-                > Note: You can hover any icon to see a tooltip describing the
-                > tool.
+                > Note: You can long-press any icon to see a tooltip describing
+                > the tool.
 
                 @Image(source: 17.points_options.webp)
             }
@@ -211,7 +212,7 @@
         }
         @Steps {
             @Step {
-                Right-tap on the `Main` node and attach a new script to it.
+                Long-press the `Main` node and attach a new script to it.
 
                 @Code(name: "main.gd", file: main-00.gd, reset: true)
             }
@@ -223,7 +224,7 @@
             }
             @Step {
                 Head back to the 3D screen and select the `Main` node. Drag
-                `mob.tscn` from the _FileSystem_ dock to the _Mob Scene_ slot
+                `mob.tscn` from the _File Pad_ to the _Mob Scene_ slot
                 in the _Inspector_.
 
                 @Image(source: 20.mob_scene_property.webp)
@@ -248,8 +249,8 @@
             from the _Main_ node to spawn monsters every `0.5` seconds.
 
             @Step {
-                With the _MobTimer_ still selected, head to the _Signals_
-                dock on the right, and double-tap the `timeout` signal.
+                With the _MobTimer_ still selected, head to the _Signals_ tab
+                in the _Inspector_, and double-tap the `timeout` signal.
 
                 @Image(source: 23.timeout_signal.webp)
             }
@@ -292,20 +293,22 @@
             > gives a "node not found" error because there is no $Player!
 
             @Step {
-                You can test the scene by pressing F6 (Cmd + R on macOS).
+                You can test the scene by pressing F6 (Cmd + R on an external keyboard).
                 You should see the monsters spawn and move in a straight
                 line.
 
                 > Tip: If you can't see the new monsters, double-check that
                 > the `MobTimer`'s `Autostart` is on and that the `timeout`
-                > signal is connected to the `Main` node. The Dock's
+                > signal is connected to the `Main` node. The Inspector's
                 > "Remote" tab also shows the running scene tree so you can
                 > confirm the mob is being added.
 
                 @Image(source: 25.spawn_result.png)
             }
             For now, they bump and slide against one another when their
-            paths cross. We'll address this in the next part.
+            paths cross. We'll refine how they interact with the player and
+            each other when we set up physics layers and hit boxes in a
+            later lesson. Next, let's add the ability to jump.
         }
     }
 }

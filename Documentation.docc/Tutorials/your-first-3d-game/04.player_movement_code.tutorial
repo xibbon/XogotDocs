@@ -1,17 +1,19 @@
 @Tutorial(time: 30) {
     @Intro(title: "Moving the player with code") {
-        It's time to code! We're going to use the input actions we created in the
-        last part to move the character.
+        It's time to code! We're going to use the input actions we created earlier
+        to move the character. With the axolotl model now in the scene, you'll
+        see it rotate to face its movement direction.
 
-        > Note: For this project, we will be following the Godot naming conventions.
+        > Note: Xogot uses GDScript, and we'll follow the GDScript naming
+        > conventions in this project:
         >
-        > - **GDScript**: Classes (nodes) use PascalCase, variables and functions use
-        >   snake\_case, and constants use ALL\_CAPS (See
-        >   [GDScript style guide](https://docs.godotengine.org/en/stable/tutorials/scripting/gdscript/gdscript%5Fstyleguide.html#doc-gdscript-styleguide)).
-        > - **C#**: Classes, export variables and methods use PascalCase, private
-        >   fields use \_camelCase, local variables and parameters use camelCase (See
-        >   [C# style guide](https://docs.godotengine.org/en/stable/tutorials/scripting/c%5Fsharp/c%5Fsharp%5Fstyle%5Fguide.html#doc-c-sharp-styleguide)).
-        >   Be careful to type the method names precisely when connecting signals.
+        > - Classes (nodes) use PascalCase.
+        > - Variables and functions use snake\_case.
+        > - Constants use ALL\_CAPS.
+        >
+        > See the [GDScript style guide](https://docs.godotengine.org/en/stable/tutorials/scripting/gdscript/gdscript%5Fstyleguide.html#doc-gdscript-styleguide)
+        > for more details, and be careful to type method names precisely when
+        > connecting signals.
 
         @Image(source: 01.attach_script_to_player.webp)
     }
@@ -34,9 +36,9 @@
         }
         @Steps {
             @Step {
-                Right-tap the `Player` node and select *Attach Script* to add a new
+                Long-press the `Player` node and select *Attach Script* to add a new
                 script to it. In the popup, set the *Template* to *Empty* before
-                pressing the *Create* button. We set it to *Empty* because we want
+                tapping the *Create* button. We set it to *Empty* because we want
                 to write our own code for player movement.
 
                 > Tip: Picking *Empty* ensures the script only contains the
@@ -169,13 +171,13 @@
                 Save your `Player` scene and open the `Main` scene. You can tap
                 on the _Main_ tab at the top of the editor to do so.
 
-                If you closed the scene before, head to the _FileSystem_ dock and
+                If you closed the scene before, head to the _File Pad_ and
                 double-tap `main.tscn` to re-open it.
 
                 @Image(source: 02.clicking_main_tab.webp)
             }
             @Step {
-                To instantiate the `Player`, right-tap on the `Main` node and
+                To instantiate the `Player`, long-press the `Main` node and
                 select _Instantiate Child Scene_.
 
                 In the popup, double-tap `player.tscn`. The character should
@@ -185,13 +187,13 @@
             }
             @Step {
                 Let's add the camera next. Like we did with our _Player_'s
-                _Pivot_, we're going to create a basic rig. Right-tap on the
-                `Main` node again and select _Add Child Node_. Create a new
-                [Marker3D](https://docs.godotengine.org/en/stable/classes/class%5Fmarker3d.html#class-marker3d),
-                and name it `CameraPivot`. Select `CameraPivot` and add a child
-                node
+                _Pivot_, we're going to create a basic rig. With the `Main` node
+                selected, tap the **Create New Node** button (the "+" icon) and add a
+                [Marker3D](https://docs.godotengine.org/en/stable/classes/class%5Fmarker3d.html#class-marker3d).
+                Name it `CameraPivot`. With `CameraPivot` selected, tap the
+                **Create New Node** button again and add a
                 [Camera3D](https://docs.godotengine.org/en/stable/classes/class%5Fcamera3d.html#class-camera3d)
-                to it. Your scene tree should look similar to this.
+                child. Your scene tree should look similar to this.
 
                 @Image(source: 04.scene_tree_with_camera.webp)
             }
@@ -207,8 +209,9 @@
             navigate the scene and see what the camera sees.
 
             @Step {
-                In the toolbar right above the viewport, tap on _View_, then
-                _2 Viewports_. You can also press Ctrl + 2 (Cmd + 2 on macOS).
+                In the 3D editor toolbar above the viewport, tap the **View**
+                menu, then choose _2 Viewports_. You can also press Ctrl + 2
+                (Cmd + 2 on an external keyboard).
 
                 @Image(source: 12.viewport_change.webp)
             }
@@ -234,10 +237,10 @@
                 @Image(source: 08.camera_moved.png)
             }
             @Step {
-                You can run the scene by pressing F6 (Cmd + R on macOS) and
+                You can run the scene by pressing F6 (Cmd + R on an external keyboard) and
                 press the arrow keys to move the character.
 
-                > Tip: If you're using a hardware keyboard, try the WASD keys
+                > Tip: If you're using a external keyboard, try the WASD keys
                 > in addition to the arrow keys. The gamepad joystick will
                 > also work because we bound it in the Input Map.
 
@@ -254,7 +257,7 @@
                 character should now look flatter and the ground should fill
                 the background.
 
-                > Note: When using an orthogonal camera in Godot 4, directional
+                > Note: When using an orthogonal camera in Xogot, directional
                 > shadow quality is dependent on the camera's _Far_ value. The
                 > higher the _Far_ value, the further away the camera will be
                 > able to see. However, higher _Far_ values also decrease shadow

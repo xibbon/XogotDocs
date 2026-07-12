@@ -26,9 +26,9 @@
     }
     @Chapter(name: "Your First 2D Game") {
         @Image(source: dodge_preview.gif)
-        
-        In this step-by-step tutorial series, you will create your first complete 2D game 
-        with Godot. By the end of the series, you will have a simple yet finished project 
+
+        In this step-by-step tutorial series, you will create your first complete 2D game
+        with Xogot. By the end of the series, you will have a simple yet finished project
         of your own like this animation.
         
         @TutorialReference(tutorial: "doc:01.project_setup")
@@ -51,19 +51,24 @@
     }
     @Chapter(name: "Your First 3D Game") {
         @Image(source: squash-the-creeps-final.gif,
-            alt: "An animation of Squash the Creeps running")
-        
-        The game we'll code here is similar to Your first 2D game, with a twist: you can now jump and your goal is to squash the creeps. This way, you will both recognize patterns you learned in the previous tutorial and build upon them with new code and features.
+            alt: "An animation of Save the Axolotl: Squash the Snakes running")
+
+        The game we'll code here is Save the Axolotl: Squash the Snakes. It's similar to
+        Your first 2D game, with a twist: you can now jump and your goal is to squash the
+        snakes. This way, you will both recognize patterns you learned in the previous
+        tutorial and build upon them with new code and features.
 
         @TutorialReference(tutorial: "doc:01.game_setup")
         @TutorialReference(tutorial: "doc:02.player_input")
-        @TutorialReference(tutorial: "doc:03.player_movement_code")
-        @TutorialReference(tutorial: "doc:04.mob_scene")
-        @TutorialReference(tutorial: "doc:05.spawning_mobs")
-        @TutorialReference(tutorial: "doc:06.jump_and_squash")
-        @TutorialReference(tutorial: "doc:07.killing_player")
-        @TutorialReference(tutorial: "doc:08.score_and_replay")
-        @TutorialReference(tutorial: "doc:09.adding_animations")
+        @TutorialReference(tutorial: "doc:03.importing_player_model")
+        @TutorialReference(tutorial: "doc:04.player_movement_code")
+        @TutorialReference(tutorial: "doc:05.mob_scene")
+        @TutorialReference(tutorial: "doc:06.spawning_mobs")
+        @TutorialReference(tutorial: "doc:07.jump")
+        @TutorialReference(tutorial: "doc:08.hit_boxes")
+        @TutorialReference(tutorial: "doc:09.hurt_boxes")
+        @TutorialReference(tutorial: "doc:10.score_and_replay")
+        @TutorialReference(tutorial: "doc:11.adding_animations")
         @TutorialReference(tutorial: "doc:going_further")
     }
 }

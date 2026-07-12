@@ -25,8 +25,8 @@
         }
         @Steps {
             @Step {
-                Create a new scene by going to the **Scene** menu in the top-left and
-                tapping **New Scene**.
+                Create a new scene by opening the **Document Menu** (the down-arrow
+                icon) in the upper-left corner and tapping **New Scene**.
 
                 @Image(source: new_scene.webp)
             }
@@ -46,28 +46,27 @@
             @Step {
                 Add a
                 [Node3D](https://docs.godotengine.org/en/stable/classes/class%5Fnode3d.html#class-node3d)
-                node as a child of `Player`. Select the `Player` node in the **Scene**
-                tree and tap the "**+**" button to add a child node. Rename it to
-                `Pivot`.
+                node as a child of `Player`. Select the `Player` node in the **Scene
+                Tree** and tap the **Create New Node** button (the "+" icon) to add a
+                child node. Rename it to `Pivot`.
 
                 @Image(source: adding_node3D.webp)
             }
             @Step {
-                In the FileSystem dock, expand the `art/` folder by double-tapping it
-                and drag and drop `player.glb` onto `Pivot`.
+                For now, we'll use a simple placeholder so we can see and test
+                the character before we add the 3D model. Select the `Pivot`
+                node and add a child
+                [MeshInstance3D](https://docs.godotengine.org/en/stable/classes/class_meshinstance3d.html#class-meshinstance3d).
+                If the _Inspector_ is hidden, tap the _scope icon_ in the upper-right
+                toolbar to show it. In the _Inspector_, assign a [BoxMesh](https://docs.godotengine.org/en/stable/classes/class_boxmesh.html#class-boxmesh)
+                to the _Mesh_ property, and set its _Size_ to about `1` on
+                each axis.
 
-                @Image(source: instantiating_the_model.webp)
-            }
-            This should instantiate the model as a child of `Pivot`.
-
-            @Step {
-                Rename the newly instantiated `mob` (or `player`) node to `Character`.
-
-                > Note: The `.glb` files contain 3D scene data based on the open
-                > source glTF 2.0 specification. They're a modern and powerful
-                > alternative to a proprietary format like FBX, which Godot also
-                > supports. To produce these files, we designed the model in
-                > [Blender 3D](https://www.blender.org/) and exported it to glTF.
+                > Note: We'll replace this placeholder with the axolotl 3D
+                > model in the next lesson, where we cover importing glTF
+                > files. The `Pivot` node will still come in handy then: it
+                > lets us rotate the model to face its movement direction
+                > without fighting the physics body.
 
                 @Image(source: scene_structure.webp)
             }
@@ -115,7 +114,7 @@
     @Section(title: "Creating input actions") {
         @ContentAndMedia {
             To move the character, we will listen to the player's input, like pressing
-            the arrow keys. In Godot, while we could write all the key bindings in
+            the arrow keys. In Xogot, while we could write all the key bindings in
             code, there's a powerful system that allows you to assign a label to a
             set of keys and buttons. This simplifies our scripts and makes them more
             readable.
@@ -131,18 +130,19 @@
         }
         @Steps {
             @Step {
-                To access the Input Map editor, head to the **Project** menu and
-                select **Project Settings...**.
+                To access the Input Map editor, tap the **"..."** toolbar button in
+                the upper-right corner of Xogot and choose **Settings**. In the
+                Settings dialog, tap the dropdown next to **General** and select
+                **Input Map**.
 
                 @Image(source: project_settings.webp)
             }
             @Step {
-                At the top of the Project Settings window, there are multiple tabs.
-                Tap on **Input Map**. This window allows you to add new actions at
-                the top; they are your labels. In the bottom part, you can bind
-                keys to these actions.
+                The **Input Map** panel allows you to add new actions at the top;
+                they are your labels. In the bottom part, you can bind keys to these
+                actions.
 
-                > Note: Godot projects come with some predefined actions designed
+                > Note: Xogot projects come with some predefined actions designed
                 > for user interface design. These will become visible if you
                 > enable the **Show Built-in Actions** toggle. We could use these
                 > here, but instead we're defining our own to support gamepads.
@@ -171,7 +171,7 @@
                 **OK**.
 
                 > Tip: You can repeat this for the `A` key so both left arrow and
-                > A drive `move_left` on a hardware keyboard. Players appreciate
+                > A drive `move_left` on a external keyboard. Players appreciate
                 > the option.
 
                 @Image(source: left_inputmap.webp)
@@ -187,7 +187,7 @@
                 yourself. Select the negative X axis of the left joystick under
                 **Joypad Axes**.
 
-                Leave the other values as default and press **OK**.
+                Leave the other values as default and tap **OK**.
 
                 > Note: If you want controllers to have different input actions,
                 > you can use the Devices option in Additional Options. Device 0

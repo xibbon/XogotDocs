@@ -1,0 +1,359 @@
+@Tutorial(time: 25) {
+    @Intro(title: "Character animation") {
+        In this final lesson, we'll bring our characters to life using a
+        mix of glTF-embedded animations, a loaded animation resource,
+        and a hand-authored animation.
+
+        The axolotl and snake models already have animations built into
+        their `.glb` files — `Idle` and `Run` for the axolotl, `Move` for
+        the snake. We set those to autoplay in the wrapper scenes, so the
+        characters are already moving. Now we'll add a second
+        `AnimationPlayer` to each gameplay scene for custom animations
+        — a jump arc for the player (loaded from a ready-made resource)
+        and a sway for the mobs (keyed by hand in the editor) — and
+        control everything from code.
+
+        @Image(source: fix-me.png)
+    }
+    @Section(title: "Two animation players") {
+        @ContentAndMedia {
+            Each character scene ends up with two
+            [AnimationPlayer](https://docs.godotengine.org/en/stable/classes/class%5Fanimationplayer.html#class-animationplayer)
+            nodes working together:
+
+            - A **skeleton AnimationPlayer** that lives inside the
+              instantiated model, at `$Pivot/Character/AnimationPlayer`.
+              It plays the animations embedded in the `.glb` file. We
+              already set its _Autoplay_ in the wrapper scene — `Idle`
+              for the player and `Move` for the mob — so the model
+              animates as soon as it spawns.
+            - A **scene AnimationPlayer** that we add to the root of the
+              gameplay scene. It plays custom animations — either loaded
+              from a `.res` file in the `resources/` folder, or keyed by
+              hand right in the editor.
+
+            The starter project ships one custom animation:
+
+            - `resources/jump.res` — a short animation that tilts and
+              lifts the player for a satisfying jump arc.
+
+            You'll **author** the mob's sway yourself, right in the
+            editor — it's simple enough to key by hand, and it's a good
+            introduction to the animation editor.
+
+            Keeping the embedded and custom animations on separate
+            players lets us control them independently: we speed up the
+            skeleton's run cycle when the player moves, and trigger the
+            custom jump animation only when the player jumps.
+
+            > Note: An `AnimationPlayer` stores its animations in an
+            > `AnimationLibrary` resource. Each library maps a name
+            > (like `jump`) to an `Animation` resource. You can author
+            > animations by hand in the editor or load ready-made
+            > `.res` files — we'll do both in this lesson.
+
+            @Image(source: fix-me.png)
+        }
+    }
+    @Section(title: "Adding the jump animation to the player") {
+        @ContentAndMedia {
+            Let's start with the player. We'll add a scene-level
+            `AnimationPlayer` and load `jump.res` into it.
+
+            @Image(source: fix-me.png)
+        }
+        @Steps {
+            @Step {
+                Open `player.tscn`. Select the `Player` node and add a
+                child
+                [AnimationPlayer](https://docs.godotengine.org/en/stable/classes/class%5Fanimationplayer.html#class-animationplayer).
+
+                @Image(source: fix-me.png, alt: "Add an AnimationPlayer child to the Player node")
+            }
+            @Step {
+                With the `AnimationPlayer` selected, head to the
+                _Inspector_. In the `libraries` property, create a new
+                `AnimationLibrary` sub-resource. Expand it and find its
+                `data` dictionary. Add an entry with the key `jump` and
+                drag `resources/jump.res` from the _File Pad_
+                onto the value.
+
+                > Tip: The key you type in the dictionary is the name
+                > you use in code to play the animation. We called it
+                > `jump` to match the file.
+
+                @Image(source: fix-me.png, alt: "Load jump.res into the AnimationLibrary as jump")
+            }
+            @Step {
+                Now open the `player.gd` script. We add two `@onready`
+                references — one to the skeleton `AnimationPlayer` inside
+                the model, one to the scene `AnimationPlayer` we just
+                added.
+
+                In `_physics_process()`, we speed the skeleton up to `4x`
+                while the player is moving and reset it to `1x` when
+                standing still. We also tilt the `Pivot` based on the
+                vertical velocity so the character arcs when jumping.
+
+                Finally, `jump()` and `bounce()` play the custom `jump`
+                animation on the scene `AnimationPlayer`. `jump()` also
+                switches the skeleton back to `Idle` so the run cycle
+                doesn't keep playing in the air.
+
+                @Code(name: "player.gd", file: player-11.gd, previousFile: player-10.gd)
+            }
+            And with that, you finished coding your first complete 3D
+            game.
+
+            **Congratulations**!
+
+            Here is the complete `player.gd` so you can check your code
+            against it.
+
+            @Step {
+                @Code(name: "player.gd", file: player-11.gd, reset: true)
+            }
+        }
+    }
+    @Section(title: "Animating the mobs") {
+        @ContentAndMedia {
+            The mobs get the same treatment. The snake's `Move`
+            animation is already autoplaying from the wrapper scene. Now
+            we'll **author** a gentle looping sway by hand — no resource
+            file needed — and add it to a scene-level `AnimationPlayer`.
+            Then we'll scale both players' speed with the mob's random
+            movement speed, so faster mobs also animate faster.
+
+            Authoring the sway ourselves is a great introduction to the
+            animation editor. The sway itself is simple: three
+            keyframes that slide the `Pivot` a little to the side and
+            back, looping forever. We'll use round numbers for both the
+            timing (`0`, `0.6`, and `1.2` seconds) and the slide
+            distance (`0.5` units), so it's easy to follow and to tweak
+            later.
+
+            @Image(source: fix-me.png)
+        }
+        @Steps {
+            @Step {
+                Open `mob.tscn`. Select the `Mob` node and add a child
+                [AnimationPlayer](https://docs.godotengine.org/en/stable/classes/class%5Fanimationplayer.html#class-animationplayer).
+
+                @Image(source: fix-me.png, alt: "Add an AnimationPlayer child to the Mob node")
+            }
+            @Step {
+                With the `AnimationPlayer` selected, open the
+                _Animation_ panel at the bottom of the editor. Tap the
+                _Animation_ button and choose _New Animation_. Name it
+                `Sway`.
+
+                In the animation's settings at the top of the panel,
+                turn on the **Loop** toggle so the sway plays
+                continuously, and set the animation length to `1.2`
+                seconds.
+
+                @Image(source: fix-me.png, alt: "Create a new animation named Sway, enable looping, set length to 1.2 seconds")
+            }
+            @Step {
+                Now we key the sway. Select the `Pivot` node. Leave the
+                playhead at `0.0` seconds, so the `Pivot` is at its
+                rest position. In the _Inspector_, hover the _Position_
+                property and tap the **key** icon that appears next to
+                it — this inserts a keyframe for the `Pivot`'s position
+                at time `0.0`.
+
+                @Image(source: fix-me.png, alt: "Key the Pivot's position at time 0.0")
+            }
+            @Step {
+                Move the playhead to `0.6` seconds. In the _Inspector_,
+                change the `Pivot`'s _Position_ **X** value by `0.5` —
+                either add or subtract `0.5`, the direction doesn't
+                matter, you just want a small sideways slide. Tap the
+                key icon next to _Position_ to insert the second
+                keyframe.
+
+                You should see the `Pivot` (and the snake) jump to the
+                side in the viewport.
+
+                > Tip: You want the slide to go *across* the snake's
+                > body, not along its length. Depending on how you
+                > oriented the `Pivot` when you built the mob scene,
+                > that may be the X axis or the Z axis. If sliding X
+                > moves the snake forward or back instead of
+                > side-to-side, undo and slide Z by `0.5` instead.
+
+                @Image(source: fix-me.png, alt: "At 0.6s, slide the Pivot 0.5 units on X and key it")
+            }
+            @Step {
+                Move the playhead to `1.2` seconds. Set the `Pivot`'s
+                _Position_ back to the value you keyed at `0.0` (the
+                start position). Tap the key icon to insert the third
+                keyframe.
+
+                Press the _Play_ button in the animation panel to
+                preview the sway. The snake should slide to the side
+                and back, then repeat.
+
+                > Note: We used a `0.5` unit slide over `1.2` seconds
+                > because the numbers are easy to read and the result
+                > is a gentle, visible lean. Once it works, try
+                > doubling the slide to `1.0` unit or halving the
+                > length to `0.6` seconds to see how the feel changes.
+
+                @Image(source: fix-me.png, alt: "At 1.2s, return the Pivot to its start position and key it")
+            }
+            @Step {
+                Finally, set the `AnimationPlayer`'s _Autoplay_
+                property (in the _Inspector_) to `Sway` so the mob
+                starts swaying as soon as it spawns.
+
+                @Image(source: fix-me.png, alt: "Set the AnimationPlayer autoplay to Sway")
+            }
+            @Step {
+                Open `mob.gd`. We add `@onready` references to both
+                animation players, a `min_anim_speed`/`max_anim_speed`
+                range, and a `_sync_animation_speed()` helper that maps
+                the mob's movement speed onto that range. We call it at
+                the end of `initialize()`.
+
+                @Code(name: "mob.gd", file: mob-07.gd, previousFile: mob-06.gd)
+            }
+            @Step {
+                Here is the complete `mob.gd` for reference.
+
+                @Code(name: "mob.gd", file: mob-07.gd, reset: true)
+            }
+        }
+    }
+    @Section(title: "Adding a custom on-screen joystick") {
+        @ContentAndMedia {
+            For extra credit: let's give the game a better, more
+            customizable touch experience for players by adding an
+            on-screen joystick add-on.
+
+            The add-on we'll use is
+            [*Virtual Joystick*](https://github.com/MarcoFazioRandom/Virtual-Joystick-Godot)
+            by Marco Fazio. It's an open-source add-on that gives you a
+            full touch thumbstick on screen and lets you wire it to any
+            input action.
+
+            > Note: This is an "extra credit" section. The game is fully
+            > playable on a external keyboard or gamepad. The add-on
+            > only matters when you want to play the game directly on an
+            > iPad with on-screen touch controls.
+
+            > Tip: There are lots of other add-ons for Xogot, with more
+            > being added all the time. Trying out the available add-ons
+            > is a great way to learn Xogot.
+
+            @Image(source: fix-me.png)
+        }
+        @Steps {
+            @Step {
+                Tap on the dropdown next to the **scope icon** (1) and
+                access the **Asset Library** (2).
+
+                @Image(source: fin-asset-library-menu.png)
+            }
+            @Step {
+                Find or search for **Virtual Joystick** (3) and once
+                selected, tap **Import** (4).
+
+                @Image(source: fin-asset-library-browser.png)
+            }
+            @Step {
+                Exit the **Asset Library**. You should now have an
+                `addons/` folder in your project. Inside you'll find the
+                `virtual_joystick/` folder containing its scene.
+
+                > Tip: You can also find example implementations inside
+                > the add-on's `test/` folder if you'd like to dive
+                > deeper.
+
+                @Image(source: fin-assets.png)
+            }
+            In the `main.tscn` scene we'll set up a UI layer to host the
+            joystick.
+
+            @Step {
+                With the `Main` node selected, add a
+                [CanvasLayer](https://docs.godotengine.org/en/stable/classes/class_canvaslayer.html#class-canvaslayer)
+                child node and rename it to `UI`.
+
+                @Image(source: fin-rename-ui.png)
+            }
+            @Step {
+                With the new `UI` node selected, instantiate a child
+                scene (1) and pick the Virtual Joystick scene:
+                `virtual_joystick_scene.tscn` (2).
+
+                Rename the instantiated node to `Virtual Joystick Left`.
+
+                @Image(source: fin-instantiate.png)
+            }
+            @Step {
+                Select the joystick node and in the *Inspector* set the
+                **Joystick Mode** to `Following` (1) and the **Visibility
+                Mode** to `When Touched` (2).
+
+                `Following` means the joystick appears wherever the
+                player first touches, so it doesn't get in the way of
+                the rest of the UI.
+
+                @Image(source: fin-joystick-settings.png)
+            }
+            @Step {
+                Still in the *Inspector*, change `action_left` through
+                to `action_down` so they equal the names of the custom
+                input actions we added in the Input Map: `move_left`,
+                `move_right`, `move_forward`, and `move_back`.
+
+                > Important: Make sure you keep track of capitalization
+                > as these variable names are case-sensitive. They must
+                > match the action names exactly.
+
+                @Image(source: fin-actions.png)
+            }
+            @Step {
+                With the `Virtual Joystick Left` node still selected,
+                open the anchor controls (1) and set the anchor mode to
+                `Full Rect` (2).
+
+                This makes the joystick follow the player's touch
+                anywhere on the left half of the screen.
+
+                @Image(source: fin-full-rect.png)
+            }
+            We need to make sure the joystick is hidden when the player
+            dies, otherwise it would still be visible while the retry
+            overlay is shown.
+
+            @Step {
+                Open the script `main.gd`. In `_on_player_hit()`, add
+                `$UI.hide()` to hide the joystick at the same time as
+                the retry overlay appears.
+
+                @Code(name: "main.gd", file: main-09.gd, previousFile: main-08.gd)
+            }
+            The retry mechanism in `_unhandled_input()` reloads the
+            current scene, so the joystick will automatically reappear
+            on the reloaded scene — no extra `show()` call needed.
+
+            That's it! When you run the project on an iPad, you'll see
+            the on-screen joystick appear wherever you touch the left
+            half of the screen. Tap and drag to move the player, and
+            the rest of the input (jump, etc.) is already wired to the
+            on-screen controls or external keyboard.
+
+            > Tip: The add-on also exposes a `Virtual Joystick Right`
+            > scene if you want to add a second stick for things like
+            > camera control. The setup is the same.
+
+            Here is the complete `main.gd` for reference.
+
+            @Step {
+                @Code(name: "main.gd", file: main-09.gd, reset: true)
+            }
+        }
+    }
+}

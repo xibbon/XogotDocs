@@ -1,0 +1,302 @@
+@Tutorial(time: 25) {
+    @Intro(title: "Designing the mob scene") {
+        In this part, you're going to code the monsters, which we'll call mobs. In
+        the next lesson, we'll spawn them randomly around the playable area.
+
+        We'll build the mob scene the same way we built the player: a wrapper
+        scene that inherits the `.glb`, and a gameplay scene that instances it
+        under a `Pivot`. We'll also add a fake blob shadow under the mob so
+        it's easier to read its position on the ground.
+
+        We won't add the gameplay collision shapes for hitting or squashing
+        the mob in this lesson — that comes in a later lesson dedicated to
+        hit boxes and hurt boxes. For now, the mob just needs to look right
+        and move.
+    }
+    @Section(title: "Creating a wrapper scene for the mob model") {
+        @ContentAndMedia {
+            Just like the player, the mob model lives in a `.glb` file:
+            `art/enemy_snake.glb`. We'll create a wrapper scene that inherits
+            it, so we can scale and orient the model without touching the
+            original file.
+
+            The snake's `Move` animation should also loop seamlessly. We'll
+            configure that in the import settings.
+
+            @Image(source: fix-me.png)
+        }
+        @Steps {
+            @Step {
+                In the _File Pad_, locate `art/enemy_snake.glb`.
+                Long-press the file and select _New Inherited Scene_.
+
+                @Image(source: fix-me.png, alt: "Long-press enemy_snake.glb and choose New Inherited Scene")
+            }
+            @Step {
+                Save the new scene as `enemy_snake.tscn`, inside the `art/`
+                folder next to the `.glb`. Keeping the wrapper next to the
+                model file makes it easy to find.
+
+                @Image(source: fix-me.png, alt: "Save the inherited scene as art/enemy_snake.tscn")
+            }
+            @Step {
+                In the _Scene Tree_, select the `Armature` node. In the
+                _Inspector_, scale it by `2.5` on all axes and rotate it
+                `180` degrees around Y, just like we did for the player. This
+                makes the snake face -Z and gives it a sensible size.
+
+                @Image(source: fix-me.png, alt: "Scale the Armature 2.5 and rotate 180 on Y")
+            }
+            @Step {
+                Expand the `Armature` and select the `AnimationPlayer` child.
+                In the _Inspector_, set its _Autoplay_ to `Move` so the snake
+                starts crawling as soon as it spawns.
+
+                @Image(source: fix-me.png, alt: "Set the AnimationPlayer autoplay to Move")
+            }
+            @Step {
+                The `Move` animation needs to loop so the snake keeps crawling
+                instead of playing once and stopping. Select `enemy_snake.glb`
+                in the _File Pad_ and switch to the _Import_ tab. Expand the _Animation_ section, find the `Move`
+                animation, and set its _Loop Mode_ to _Loop_.
+
+                > Tip: This import setting is saved in the `enemy_snake.glb.import`
+                > file, so it persists across project reloads. The wrapper scene
+                > and the gameplay scene will both use the looped animation.
+
+                @Image(source: fix-me.png, alt: "Set the Move animation loop mode to Loop in the Import tab")
+            }
+            @Step {
+                Save the `enemy_snake.tscn` wrapper scene.
+            }
+        }
+    }
+    @Section(title: "Creating the mob gameplay scene") {
+        @ContentAndMedia {
+            Now we'll create the `Mob` scene that we'll instantiate from code
+            when spawning enemies.
+
+            @Image(source: fix-me.png)
+        }
+        @Steps {
+            @Step {
+                Create a scene with a
+                [CharacterBody3D](https://docs.godotengine.org/en/stable/classes/class_characterbody3d.html#class-characterbody3d)
+                node as its root. Name it `Mob`.
+
+                @Image(source: fix-me.png, alt: "A new scene with a CharacterBody3D root node named Mob")
+            }
+            @Step {
+                Add a child node
+                [Node3D](https://docs.godotengine.org/en/stable/classes/class_node3d.html#class-node3d)
+                and name it `Pivot`.
+
+                @Image(source: fix-me.png, alt: "A Node3D child named Pivot added to Mob")
+            }
+            @Step {
+                With the `Pivot` node selected, instantiate a child scene and
+                pick `art/enemy_snake.tscn`. Rename the instantiated node to
+                `Character`.
+
+                @Image(source: 01.initial_three_nodes.webp)
+            }
+            We'll add a fake blob shadow next, then a node to detect when the
+            mob leaves the screen.
+        }
+    }
+    @Section(title: "Adding a blob shadow") {
+        @ContentAndMedia {
+            Because we use an orthographic camera looking down at an angle,
+            real-time shadows can be hard to read. A simple trick is to add a
+            flat, semi-transparent dark circle under the mob — a "blob
+            shadow." It grounds the character visually and helps the player
+            judge where the mob is.
+
+            The starter project includes a gradient texture for exactly this
+            purpose, in `resources/CircleGrandient.tres`.
+
+            @Image(source: fix-me.png)
+        }
+        @Steps {
+            @Step {
+                Select the `Mob` node and add a child
+                [Sprite3D](https://docs.godotengine.org/en/stable/classes/class_sprite3d.html#class-sprite3d).
+                This node draws a 2D texture in 3D space.
+
+                @Image(source: fix-me.png, alt: "Add a Sprite3D child to the Mob node")
+            }
+            @Step {
+                In the _Inspector_, assign `resources/CircleGrandient.tres` to
+                the _Texture_ property.
+
+                @Image(source: fix-me.png, alt: "Assign the CircleGrandient texture to the Sprite3D")
+            }
+            @Step {
+                Set the _Modulate_ color to black and drag the _Transparency_
+                slider so the shadow is about 30% opaque. Set the _Scale_ to
+                about `8` on X and Y so the blob is wider than the snake, and
+                rotate the sprite `90` degrees on X so it lies flat on the
+                ground.
+
+                > Tip: Disable the sprite's _Cast Shadow_ property so the blob
+                > doesn't cast its own real-time shadow on top of itself.
+
+                @Image(source: fix-me.png, alt: "Tint the sprite black, make it transparent, scale and rotate flat")
+            }
+        }
+    }
+    @Section(title: "Removing monsters off-screen") {
+        @ContentAndMedia {
+            We're going to spawn monsters at regular time intervals in the game
+            level. If we're not careful, their count could increase to infinity,
+            and we don't want that. Each mob instance has both a memory and a
+            processing cost, and we don't want to pay for it when the mob is
+            outside the screen.
+
+            Once a monster leaves the screen, we don't need it anymore, so we
+            should delete it. Xogot has a node that detects when objects leave
+            the screen,
+            [VisibleOnScreenNotifier3D](https://docs.godotengine.org/en/stable/classes/class_visibleonscreennotifier3d.html#class-visibleonscreennotifier3d),
+            and we're going to use it to destroy our mobs.
+
+            > Note: When you keep instancing an object, there's a technique you
+            > can use to avoid the cost of creating and destroying instances
+            > all the time called pooling. It consists of pre-creating an
+            > array of objects and reusing them over and over.
+            >
+            > When working with GDScript, you don't need to worry about this.
+            > The main reason to use pools is to avoid freezes with
+            > garbage-collected languages. GDScript uses a different technique
+            > to manage memory, reference counting, which doesn't have that
+            > caveat. You can learn more about that here:
+            > [Memory management](https://docs.godotengine.org/en/stable/tutorials/scripting/gdscript/gdscript_basics.html#doc-gdscript-basics-memory-management).
+
+            @Image(source: fix-me.png)
+        }
+        @Steps {
+            @Step {
+                Select the `Mob` node and add a child node
+                [VisibleOnScreenNotifier3D](https://docs.godotengine.org/en/stable/classes/class_visibleonscreennotifier3d.html#class-visibleonscreennotifier3d).
+                Another box, pink this time, appears. When this box completely
+                leaves the screen, the node will emit a signal.
+
+                @Image(source: 06.visibility_notifier.webp)
+            }
+            @Step {
+                Resize it using the orange dots until it covers the entire 3D
+                model.
+
+                @Image(source: 07.visibility_notifier_bbox_resized.png)
+            }
+        }
+    }
+    @Section(title: "Coding the mob's movement") {
+        @ContentAndMedia {
+            Let's implement the monster's motion. We're going to do this in two
+            steps. First, we'll write a script on the `Mob` that defines a
+            function to initialize the monster. We'll then code the randomized
+            spawn mechanism in the `main.tscn` scene and call the function from
+            there.
+
+            @Image(source: fix-me.png)
+        }
+        @Steps {
+            @Step {
+                Attach a script to the `Mob`.
+
+                @Image(source: 08.mob_attach_script.webp)
+            }
+            @Step {
+                We define two properties, `min_speed` and `max_speed`, to define
+                a random speed range, which we will later use to define
+                `CharacterBody3D.velocity`.
+
+                @Code(name: "mob.gd", file: mob-00.gd, reset: true)
+            }
+            @Step {
+                Add a `_physics_process` function that calls `move_and_slide()`.
+                Similarly to the player, we move the mob every frame by calling
+                the function `CharacterBody3D.move_and_slide()`. This time, we
+                don't update the `velocity` every frame; we want the monster
+                to move at a constant speed and leave the screen, even if it
+                were to hit an obstacle.
+
+                @Code(name: "mob.gd", file: mob-01.gd, previousFile: mob-00.gd)
+            }
+            We need to define another function to calculate the
+            `CharacterBody3D.velocity`. This function will turn the monster
+            towards the player and randomize both its angle of motion and its
+            velocity. The function will take a `start_position`, the mob's
+            spawn position, and the `player_position` as its arguments.
+
+            @Step {
+                We position the mob at `start_position` and turn it towards
+                the player using the `look_at_from_position()` method, and
+                randomize the angle by rotating a random amount around the Y
+                axis. Below, `randf_range()` outputs a random value between
+                `-PI / 4` radians and `PI / 4` radians.
+
+                @Code(name: "mob.gd", file: mob-02.gd, previousFile: mob-01.gd)
+            }
+            We got a random position, now we need a `random_speed`.
+            `randi_range()` will be useful as it gives random int values, and
+            we will use `min_speed` and `max_speed`. `random_speed` is just an
+            integer, and we just use it to multiply our
+            `CharacterBody3D.velocity`. After `random_speed` is applied, we
+            rotate `CharacterBody3D.velocity` Vector3 towards the player.
+
+            @Step {
+                Add the random speed calculation and rotate the velocity
+                vector based on the mob's Y rotation in order to move in the
+                direction the mob is looking.
+
+                @Code(name: "mob.gd", file: mob-03.gd, previousFile: mob-02.gd)
+            }
+        }
+    }
+    @Section(title: "Leaving the screen") {
+        @ContentAndMedia {
+            We still have to destroy the mobs when they leave the screen. To do
+            so, we'll connect our
+            [VisibleOnScreenNotifier3D](https://docs.godotengine.org/en/stable/classes/class_visibleonscreennotifier3d.html#class-visibleonscreennotifier3d)
+            node's `screen_exited` signal to the `Mob`.
+
+            @Image(source: fix-me.png)
+        }
+        @Steps {
+            @Step {
+                Head back to the 3D viewport by tapping on the _3D_ label at
+                the top of the editor. You can also press Ctrl + F2 (Option + 2
+                on an external keyboard).
+
+                @Image(source: 09.switch_to_3d_workspace.webp)
+            }
+            @Step {
+                Select the
+                [VisibleOnScreenNotifier3D](https://docs.godotengine.org/en/stable/classes/class_visibleonscreennotifier3d.html#class-visibleonscreennotifier3d)
+                node and, in the _Signals_ tab, double-tap the `screen_exited()`
+                signal.
+
+                @Image(source: 10.node_dock.webp)
+            }
+            @Step {
+                Connect the signal to the `Mob`.
+
+                @Image(source: 11.connect_signal.webp)
+            }
+            This will add a new function for you in your mob script,
+            `_on_visible_on_screen_notifier_3d_screen_exited()`. From it, call
+            the `queue_free()` method. This function destroys the instance
+            it's called on.
+
+            @Step {
+                The connected handler calls `queue_free()` to free the node
+                when it leaves the screen.
+
+                @Code(name: "mob.gd", file: mob-04.gd, previousFile: mob-03.gd)
+            }
+            Our monster is ready to enter the game! In the next part, you
+            will spawn monsters in the game level.
+        }
+    }
+}

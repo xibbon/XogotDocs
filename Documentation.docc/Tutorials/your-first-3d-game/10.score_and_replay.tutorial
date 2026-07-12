@@ -98,7 +98,7 @@
                 on your computer. Two common font file formats are TrueType
                 Font (TTF) and OpenType Font (OTF).
 
-                In the _FileSystem_ dock, expand the `fonts` directory and
+                In the _File Pad_, expand the `fonts` directory and
                 tap and drag the `Montserrat-Medium.ttf` file we included in
                 the project onto the _Default Font_. The text will reappear
                 in the theme preview.
@@ -124,14 +124,12 @@
 
             The second line in `_on_mob_squashed()` uses the value of the
             `score` variable to replace the placeholder `%s`. When using
-            this feature, Godot automatically converts values to string
+            this feature, Xogot automatically converts values to string
             text, which is convenient when outputting text in labels or when
             using the `print()` function.
 
             > See also: You can learn more about string formatting here:
             > [GDScript format strings](https://docs.godotengine.org/en/stable/tutorials/scripting/gdscript/gdscript%5Fformat%5Fstring.html#doc-gdscript-printf).
-            > In C#, consider using
-            > [string interpolation with "$"](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/tokens/interpolated).
 
             > Note: In a complex game, you may want to completely separate
             > your user interface from the game world. In that case, you
@@ -159,13 +157,13 @@
                 on its name in the script editor's left column.
 
                 Alternatively, you can double-tap the `main.gd` file in the
-                _FileSystem_ dock.
+                _File Pad_.
 
                 At the bottom of the `_on_mob_timer_timeout()` function, add
                 the line that connects the mob's `squashed` signal to the
                 `ScoreLabel`'s callback.
 
-                @Code(name: "main.gd", file: main-06.gd, previousFile: main-05.gd)
+                @Code(name: "main.gd", file: main-05.gd, previousFile: main-04.gd)
             }
             This line means that when the mob emits the `squashed` signal,
             the `ScoreLabel` node will receive it and call the function
@@ -265,12 +263,12 @@
                 overlay at the start of the game. Add this line to the
                 `_ready()` function.
 
-                @Code(name: "main.gd", file: main-04.gd, previousFile: main-03.gd)
+                @Code(name: "main.gd", file: main-06.gd, previousFile: main-05.gd)
             }
             @Step {
                 Then, when the player gets hit, we show the overlay.
 
-                @Code(name: "main.gd", file: main-05.gd, previousFile: main-04.gd)
+                @Code(name: "main.gd", file: main-07.gd, previousFile: main-06.gd)
             }
             @Step {
                 Finally, when the `Retry` node is visible, we need to
@@ -287,7 +285,7 @@
                 > and gamepad A by default, so we don't need to add it to
                 > our Input Map.
 
-                @Code(name: "main.gd", file: main-07.gd, previousFile: main-06.gd)
+                @Code(name: "main.gd", file: main-08.gd, previousFile: main-07.gd)
             }
             The function `get_tree()` gives us access to the global
             [SceneTree](https://docs.godotengine.org/en/stable/classes/class%5Fscenetree.html#class-scenetree)
@@ -298,7 +296,7 @@
     @Section(title: "Adding music") {
         @ContentAndMedia {
             To add music that plays continuously in the background, we're
-            going to use another feature in Godot:
+            going to use another feature in Xogot:
             [autoloads](https://docs.godotengine.org/en/stable/tutorials/scripting/singletons%5Fautoload.html#doc-singletons-autoload).
 
             To play audio, all you need to do is add an
@@ -308,13 +306,13 @@
             reload the scene, like we do to play again, the audio nodes are
             also reset, and the music starts back from the beginning.
 
-            You can use the autoload feature to have Godot load a node or a
+            You can use the autoload feature to have Xogot load a node or a
             scene automatically at the start of the game, outside the
             current scene. You can also use it to create globally
             accessible objects.
 
             Before we wrap up this lesson, here's a quick look at how it
-            works under the hood. When you run the game, your _Scene_ dock
+            works under the hood. When you run the game, your _Scene Tree_
             changes to give you two tabs: _Remote_ and _Local_.
 
             The _Remote_ tab allows you to visualize the node tree of your
@@ -329,9 +327,8 @@
         }
         @Steps {
             @Step {
-                Create a new scene by going to the _Scene_ menu and tapping
-                _New Scene_ or by using the _+_ icon next to your currently
-                opened scene.
+                Create a new scene by opening the **Document Menu** (the down-arrow
+                icon) in the upper-left corner and tapping **New Scene**.
 
                 @Image(source: 15_new_scene.webp)
             }
@@ -359,9 +356,9 @@
             @Step {
                 Save the scene as `music_player.tscn`.
 
-                We have to register it as an autoload. Head to the
-                _Project -> Project Settings…_ menu and tap on the
-                _Globals -> Autoload_ tab.
+                We have to register it as an autoload. Tap the **"..."** toolbar
+                button in the upper-right corner, choose **Settings**, and then tap
+                the dropdown next to **General** to select **Globals -> Autoload**.
 
                 In the _Path_ field, you want to enter the path to your
                 scene. Tap the folder icon to open the file browser and
@@ -388,7 +385,7 @@
             Here is the complete `main.gd` script for reference.
 
             @Step {
-                @Code(name: "main.gd", file: main-07.gd, reset: true)
+                @Code(name: "main.gd", file: main-08.gd, reset: true)
             }
         }
     }

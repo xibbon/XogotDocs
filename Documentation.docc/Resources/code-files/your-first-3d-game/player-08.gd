@@ -6,11 +6,27 @@ extends CharacterBody3D
 @export var fall_acceleration = 75
 # Vertical impulse applied to the character upon jumping in meters per second.
 @export var jump_impulse = 20
-# Vertical impulse applied to the character upon bouncing over a mob in
-# meters per second.
-@export var bounce_impulse = 16
+# Grace period (in seconds) after leaving the ground during which the
+# player can still jump. This is "coyote time": for a brief moment after
+# walking off a ledge, the game pretends the player is still on the
+# floor, so a slightly-late jump press still works. It feels fair on a
+# keyboard and especially on a touch screen, where input latency eats a
+# few frames.
+@export var coyote_time = 0.1
+# How long (in seconds) to remember a jump press that happened while the
+# player was still in the air. This is "jump buffering": if the player
+# presses jump a hair too early while falling toward the ground, the
+# press is buffered and fires the instant they land, instead of being
+# swallowed.
+@export var jump_buffer = 0.1
 
 var target_velocity = Vector3.ZERO
+# Counts down from coyote_time while the player is in the air. Reset to
+# coyote_time every frame they are on the floor.
+var _coyote_timer = 0.0
+# Counts down from jump_buffer after a jump press. Reset to jump_buffer
+# on every fresh press of the jump action.
+var _jump_buffer_timer = 0.0
 
 
 func _physics_process(delta):
@@ -42,33 +58,35 @@ func _physics_process(delta):
     if not is_on_floor(): # If in the air, fall towards the floor. Literally gravity
         target_velocity.y = target_velocity.y - (fall_acceleration * delta)
 
-    # Jumping.
-    if is_on_floor() and Input.is_action_just_pressed("jump"):
+    # --- Coyote time ---
+    # While on the ground, keep the coyote window fully open. Once the
+    # player leaves the ground, tick it down. As long as it is above
+    # zero, we still treat them as "close enough to the floor" to jump.
+    if is_on_floor():
+        _coyote_timer = coyote_time
+    else:
+        _coyote_timer = max(0.0, _coyote_timer - delta)
+
+    # --- Jump buffering ---
+    # On a fresh jump press, fill the buffer. Otherwise, tick it down so
+    # a stale press eventually expires. We use is_action_just_pressed so
+    # holding the button does not keep refilling the buffer forever.
+    if Input.is_action_just_pressed("jump"):
+        _jump_buffer_timer = jump_buffer
+    else:
+        _jump_buffer_timer = max(0.0, _jump_buffer_timer - delta)
+
+    # --- Jump ---
+    # Fire the jump when there is both a buffered press AND a valid
+    # coyote window. Using both timers (instead of is_on_floor() alone)
+    # is what gives us the forgiving feel: a press a few frames early or
+    # a press a few frames after leaving a ledge both still jump.
+    # Clearing both timers on a successful jump prevents double-jumping
+    # off the coyote window.
+    if _jump_buffer_timer > 0.0 and _coyote_timer > 0.0:
         target_velocity.y = jump_impulse
-
-    # Iterate through all collisions that occurred this frame
-    for index in range(get_slide_collision_count()):
-        # We get one of the collisions with the player
-        var collision = get_slide_collision(index)
-
-        # If there are duplicate collisions with a mob in a single frame
-        # the mob will be deleted after the first collision, and a second call to
-        # get_collider will return null, leading to a null pointer when calling
-        # collision.get_collider().is_in_group("mob").
-        # This block of code prevents processing duplicate collisions.
-        if collision.get_collider() == null:
-            continue
-
-        # If the collider is with a mob
-        if collision.get_collider().is_in_group("mob"):
-            var mob = collision.get_collider()
-            # we check that we are hitting it from above.
-            if Vector3.UP.dot(collision.get_normal()) > 0.1:
-                # If so, we squash it and bounce.
-                mob.squash()
-                target_velocity.y = bounce_impulse
-                # Prevent further duplicate calls.
-                break
+        _coyote_timer = 0.0
+        _jump_buffer_timer = 0.0
 
     # Moving the Character
     velocity = target_velocity

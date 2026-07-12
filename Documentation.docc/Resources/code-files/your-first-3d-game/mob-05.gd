@@ -5,8 +5,9 @@ extends CharacterBody3D
 # Maximum speed of the mob in meters per second.
 @export var max_speed = 18
 
-# Emitted when the player jumped on the mob.
-signal squashed
+# Emitted when the player jumped on the mob. The argument is the body
+# that squashed it (the player), so Main can make it bounce.
+signal squashed(by: Node3D)
 
 
 func _physics_process(_delta):
@@ -35,6 +36,13 @@ func _on_visible_on_screen_notifier_3d_screen_exited():
     queue_free()
 
 
-func squash():
-    squashed.emit()
+func squash(by = null):
+    squashed.emit(by)
     queue_free()
+
+
+# Called when a physics body enters the HitBox area above the mob's back.
+# We only squash the mob if the body is falling — a player landing on top.
+func _on_hit_box_body_entered(body):
+    if body is CharacterBody3D and body.velocity.y < 0:
+        squash(body)
