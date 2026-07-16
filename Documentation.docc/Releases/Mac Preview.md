@@ -27,6 +27,8 @@ The current Mac preview has the following known limitations:
 
 ## Build 1812
 
+### Improvements
+
 - Very early: Added a built-in Coding Assistant with persistent project
   conversations and “Fix with AI” actions.   It stores credentials on the
   Keychains
@@ -72,7 +74,7 @@ The current Mac preview has the following known limitations:
   many of the same limitations that the iPad has (like no .NET, no third party
   dynamic library extensions).
 
-## Bug Fixes
+### Bug Fixes
 
 - Fixed a frequent crash during shutdown caused by deleted 3D gizmo objects
   being accessed (#3006).
@@ -88,10 +90,6 @@ The current Mac preview has the following known limitations:
 
 - Fixed Project Launcher focus problems and improved the display of projects
   with duplicate names.
-
-### Improvements
-
-### Fixes
 
 
 ## Build 1773
