@@ -25,7 +25,76 @@ The current Mac preview has the following known limitations:
 
 # Releases
 
-## Build
+## Build YY
+
+- Very early: Added a built-in Coding Assistant with persistent project
+  conversations and “Fix with AI” actions.   It stores credentials on the
+  Keychains
+
+  The coding assistant is based on PiSwift/pi.det.   To use it, you need to
+  either log into an existing known provider and we even include a version so
+  run against your local LLM if you want.
+
+  The UI is still not finished, we are aware that some places are overwhelming
+  (like the amount of LLM providers and models that PiSwift surfaces), we will
+  be tuning this.   
+
+- Git gained LFS support. Expanded Git LFS with tracking rules, file and lock
+  management, transfer progress and cancellation, large-file warnings,
+  integrity checks, pruning, and File Browser status badges (#3013).
+  
+- Git tied the room together with some important actions that were missing:
+  including cherry-pick, force push, branch and remote deletion, refreshed
+  pulls, and commit and branch details in the Inspector (#3014, #3015).   The
+  inspiration, once again, was Xcode.
+
+- Added support for creating, assigning, and opening built-in scripts directly
+  from Resource properties (#2953).
+
+- Inspector properties can now be rendered in the same modes that Godot
+  supports: localized, GD-script styled (they call it raw) and the current
+  system ("Model Options")
+
+- Improved Inspector performance by caching valid property types and added
+  localized property names (#2990, #1631).
+
+- Updated editor window titles to display the project name instead of its
+  directory (#2995).
+
+- Expanded localization across the editor, including the Bottom Bar (#3016).
+
+- Dropped the ugly icon that we used in the text editor gutter, which was taking
+  extra space.   Now, we use Monaco's CodeLens, so you get a hint above your
+  function.    Not sure if it is obvious enough or not.
+
+- Not visible in this build, but we started to make Xogot Sandbox-friendly for
+  distributing eventually on the AppStore.  The downside is that it will have
+  many of the same limitations that the iPad has (like no .NET, no third party
+  dynamic library extensions).
+
+## Bug Fixes
+
+- Fixed a frequent crash during shutdown caused by deleted 3D gizmo objects
+  being accessed (#3006).
+
+- Fixed a crash that could occur after selecting an imported GLB model (#3019).
+
+- Fixed embedded games being incorrectly sized or partially hidden behind the
+  bottom panel (#3009).
+
+- Fixed the macOS Attach Node Script dialog, including class selection,
+  confirmation controls, inheritance paths, and state restoration when switching
+  modes (#3028).
+
+- Fixed Project Launcher focus problems and improved the display of projects
+  with duplicate names.
+
+### Improvements
+
+### Fixes
+
+
+## Build 1773
 
 ### Improvements
 
@@ -55,6 +124,7 @@ The current Mac preview has the following known limitations:
 * Fixes a crash in the wild when closing Xogot:
   https://github.com/xibbon/Xogot/issues/3005
 
+* 
 ## Build 1752 (July 5th, 2026)
 
 ### Improvements

@@ -2,6 +2,31 @@
 
 Release notes for our preview release of Xogot to TestFlight.
 
+## Release 4835
+
+## Improvements
+
+- Replaced Monaco’s signal markers with clickable CodeLens entries and
+  improved restoration of editor decorations. #3025
+
+- Refined the Create Script and Create Shader dialogs with clearer fields,
+  validation, and iOS layouts.
+  
+- Expanded localization coverage across the editor and Coding Assistant.
+
+  ## Fixes
+
+- Fixed a crash when selecting GLB models in the Scene Import dialog. #3019
+
+- Fixed embedded scripts on Resources so they can be created and opened in the
+  code editor. #2953
+
+- Fixed the editor title to display the project name instead of its directory.
+  #2995
+
+- Fixed game previews being cropped or leaving blank space when the bottom panel
+  is visible. #3009
+
 ## Release 4800
 
 ### Improvements

@@ -431,8 +431,9 @@ Use the Integrate menu for repository-wide sync commands:
 | Command | What it does |
 | --- | --- |
 | Fetch | Downloads remote updates without merging them. |
-| Pull | Fetches and integrates remote changes into the current branch. |
+| Pull | Opens the Pull dialog to bring in remote changes. See [Pulling Changes](#Pulling-Changes). |
 | Push | Uploads local commits. If needed, Xogot sets the upstream branch. |
+| Force Push… | Overwrites the remote branch with your local commits. See [Force Push](#Force-Push). |
 | Refresh Status | Reloads Git status from disk. |
 | Undo Last Commit | Removes the last commit while keeping its changes staged. |
 
@@ -440,6 +441,37 @@ If your current branch has a hosted remote, Create Pull Request opens the
 hosting provider's pull request or merge request page in your browser when Xogot
 can build the URL. This is a handoff to the provider website; Xogot does not
 create the pull request inside the app.
+
+### Pulling Changes
+
+<!-- Screenshot needed: Pull dialog showing the Remote Branch picker and the "Rebase local changes onto upstream changes" toggle. -->
+
+Choosing Integrate > Pull opens a dialog instead of pulling immediately, so you
+can choose how the pull happens:
+
+- **Remote Branch** — pick which remote branch to integrate.
+- **Rebase local changes onto upstream changes** — when on, Xogot rebases your
+  local commits on top of the incoming ones (a linear history); when off, it
+  merges. Xogot seeds this toggle from your Git configuration (`pull.rebase`, or
+  a per-branch `branch.<name>.rebase` setting) so it defaults to your usual
+  preference, and it always runs the pull explicitly as `--rebase` or
+  `--no-rebase`.
+
+Click Pull to run it.
+
+### Force Push
+
+<!-- Screenshot needed: Force push confirmation alert with its warning text and the Force Push / Cancel buttons. -->
+
+Force pushing rewrites the remote branch to match your local one. You need it
+after rewriting local history — for example, amending or rebasing commits that
+were already pushed (see [Commit vs. Amend](#Commit-vs.-Amend)).
+
+Choose Integrate > Force Push…. Xogot asks you to confirm, because force pushing
+can discard commits on the remote that you do not have. When you confirm, Xogot
+uses `--force-with-lease` — a safer form of force push that refuses to proceed
+if the remote has changed in a way you have not seen, protecting a collaborator's
+commits from being silently overwritten — and then refreshes status.
 
 ## Accounts and Credentials
 
@@ -489,6 +521,9 @@ Control-click a branch, remote branch, or tag to:
 - Rename a local branch.
 - Create a tag at the selected reference.
 - Merge a branch into the current branch.
+- Delete the branch, remote branch, or tag. Xogot asks you to confirm first,
+  since deletion cannot be undone. Deleting a remote branch removes it on the
+  hosting service.
 
 Selecting a branch opens a branch history tab in the editor. The history view
 shows commits on the branch and the selected commit's details and diffs.
@@ -501,6 +536,26 @@ Use the history scope picker to show:
 - Commits from the last 30 days.
 
 Use the filter field to search by author, email, subject, body, or commit hash.
+
+### Working with a Commit
+
+<!-- Screenshot needed: Commit-history context menu open on a commit, showing Checkout, Copy Commit Message, Copy Identifier, Email author, Tag, New Branch from, Cherry-pick, and View on provider. -->
+
+Control-click a commit in the history list to act on that specific commit:
+
+| Command | What it does |
+| --- | --- |
+| Checkout “abc1234” | Checks out that exact commit. Your working copy moves to that commit in a *detached* state, not on any branch — create a branch from it if you want to keep committing there. |
+| Copy Commit Message | Copies the commit's message to the clipboard. |
+| Copy Identifier | Copies the full commit SHA. |
+| Email *author* | Opens a new mail message addressed to the commit's author. |
+| Tag “abc1234”… | Creates a tag at the commit. |
+| New Branch from “abc1234”… | Creates a new branch starting at the commit. |
+| Cherry-pick “abc1234” | Applies that commit's changes onto your current branch. If it conflicts, Xogot shows the operation banner so you can resolve and continue, or abort. See [Merge and Rebase States](#Merge-and-Rebase-States). |
+| View on *provider* | Opens the commit's page on the hosting provider (GitHub, GitLab, and so on) in your browser, when the remote is recognized. |
+
+(“abc1234” stands for the commit's abbreviated identifier; the menu shows the
+real one.)
 
 ## Stashes
 
@@ -520,6 +575,39 @@ Control-click a stash to:
 - Apply the stashed changes.
 - Export the stash as a patch file.
 - Delete the stash.
+
+## The Source Control Inspector
+
+<!-- Screenshot needed: Source Control inspector showing a selected commit's identifier, date, author, verification, containing branches, message, and changed files. -->
+
+The Source Control inspector is a read-only panel that summarizes whatever you
+have selected in the Source Control navigator or a branch history tab. It appears
+in the editor's inspector area, and Xogot switches to it automatically the first
+time you select a Git item during a visit to the navigator. You can switch back
+to the other inspectors (such as the Properties inspector) at any time; Xogot
+does not force it open again after that.
+
+What it shows depends on the selection:
+
+- **Commit** — the identifier, date, and author; the signature verification
+  status when the commit is signed; the branches that contain the commit; the
+  commit message; and the list of changed files.
+- **Branch** — the branch name and its upstream remote branch, followed by the
+  details of the commit it points to.
+- **Tag** — the tag name and message, followed by the details of the commit it
+  points to.
+- **Stash** — the stash title, message, and creation date, followed by its
+  changed files.
+
+Details load asynchronously, and the inspector always reflects the current
+selection rather than a stale one.
+
+### Signature Verification
+
+When a commit is signed, the inspector reports the verification result, such as
+"Signed — verified", "Signed — unknown validity", or "Signed — bad signature".
+Verification uses the signing keys configured in your Git environment; a commit
+that is not signed simply omits this row.
 
 ## Merge and Rebase States
 
@@ -748,6 +836,7 @@ Settings > Source Control.
 | Clone repository | Integrate > Clone Repository |
 | Open Git LFS sheet | Integrate > Git LFS... |
 | Add accounts and global settings | Xogot Settings > Source Control |
+| Source Control inspector | Appears automatically when you select a Git item in the navigator |
 
 ### Integrate Menu
 
@@ -763,8 +852,9 @@ Settings > Source Control.
 | Create Pull Request | Opens the provider web flow when available. |
 | Discard All Changes | Reverts discardable tracked changes. |
 | Fetch | Fetches remote updates. |
-| Pull | Fetches and integrates remote updates. |
+| Pull | Opens the Pull dialog (remote branch and rebase choice). |
 | Push | Pushes the current branch. |
+| Force Push… | Confirms, then force pushes the current branch with `--force-with-lease`. |
 | Stash Changes | Saves uncommitted work, including untracked files. |
 | Undo Last Commit | Removes the last commit and keeps its changes staged. |
 | Refresh Status | Reloads Git state. |
@@ -801,12 +891,13 @@ Settings > Source Control.
 
 | Item | Commands |
 | --- | --- |
-| Branch | Switch, create branch from reference, rename local branch, tag, merge into current branch. |
-| Remote branch | Create branch from reference, tag, merge into current branch. |
-| Tag | Create branch from reference, tag. |
+| Branch | Switch, create branch from reference, rename local branch, tag, merge into current branch, delete branch (confirmed). |
+| Remote branch | Create branch from reference, tag, merge into current branch, delete remote branch (confirmed). |
+| Tag | Create branch from reference, tag, delete tag (confirmed). |
 | Remotes group | New Remote, Add Existing Remote. |
 | Remote | Show in hosting provider, delete remote. |
 | Stash | Apply, export as patch file, delete. |
+| Commit (history list) | Checkout, copy message, copy identifier, email author, tag, new branch from commit, cherry-pick, view on hosting provider. |
 
 ## Known Limitations
 
