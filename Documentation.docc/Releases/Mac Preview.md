@@ -25,7 +25,7 @@ The current Mac preview has the following known limitations:
 
 # Releases
 
-## Build YY
+## Build 1812
 
 - Very early: Added a built-in Coding Assistant with persistent project
   conversations and “Fix with AI” actions.   It stores credentials on the
