@@ -2,6 +2,77 @@
 
 Release notes for our preview release of Xogot to TestFlight.
 
+## Release 4874 (July 17th)
+
+## Improvements
+
+- Enabled the Coding Assistant in iPhone and iPad TestFlight builds, including
+  AI settings and direct access to project-editing tools.   It requires you to
+  enable "Developer Mode" - will drop this in a future Testflight
+  release.
+    
+- Improved the Coding Assistant with secure credential storage, clearer provider setup, grouped tool activity, and selectable transcript text.
+  
+- Reworked the New Scene dialog to clarify creating a new root or inheriting
+  from an existing scene - and dropped the annoying jumping behavior. #2787
+
+
+- Added a gizmo-free Select Mode to the 3D editor and renamed the original
+  Select tool to Transform Mode, with dedicated keyboard shortcuts - this is a
+  change we missed from Godot https://github.com/godotengine/godot/pull/101168
+  #2776
+
+- Added file-size information to the Asset Browser, calculated only when needed
+  to keep browsing responsive. #2632
+
+- Made keyboard tool menus faster and more responsive, with instant long-menu
+  popovers and drag selection inspired by Codea, and driven by feedback on Discord. #2782
+
+- Improved signal connection details, form layouts, AI provider settings, and
+  the debugger’s Step Out icon.
+
+- Upgraded PiSwift to v0.80.10 which includes the latest GPT models - we have
+  still not cleaned up the list of models, it is too extensive, will clean up
+  soon.
+
+## Bug Fixes
+  
+- Fixed a spectrum of race conditions on the PiSwift agent - too many ways
+  that were easy to deadlock the UI, removed.
+
+- Fixed editor and Coding Assistant layout update loops that could cause
+  instability or unnecessary redraws.
+
+
+## Release 4862 (July 16th)
+
+- We brought the unified Output/Debug Added a unified Output and Debug bottom
+  panel to the iPhone where is feels as convenient as on the Mac, with quick
+  page switching.   iPad remains with two tabs, as we think that works better
+  there #2997
+
+- Added file-size information to the Asset Browser, calculated only when needed
+  to keep browsing responsive. #2632
+
+- Enabled the AI assistant, it was too hard to reach, and now we have it as a
+  bona-fide action.   But also, it is currently only enabled in Testflight when
+  you enable developer mode, as we are not ready for mainstream use.
+
+- Added AI settings and provider controls on iPhone and iPad, including a
+  selectable working folder, clearer forms, compact thinking-level controls, and
+  improved sign-in and API-key sheets. We are still working on improving the
+  look and feel of these dialogs
+
+- Improved AI conversations with selectable transcript text, grouped related
+  activity, and smoother automatic scrolling while responses stream.
+
+- Improved the security and reliability of AI provider credentials by migrating
+  them to protected Keychain storage.
+
+- We did a major audit of our use of style for TextFields across our codebase to
+  make sure that we used the proper idioms in Forms that have captions and
+  prompts.   I hope you enjoy it.
+
 ## Release 4835
 
 ## Improvements
@@ -14,7 +85,7 @@ Release notes for our preview release of Xogot to TestFlight.
   
 - Expanded localization coverage across the editor and Coding Assistant.
 
-  ## Fixes
+## Fixes
 
 - Fixed a crash when selecting GLB models in the Scene Import dialog. #3019
 

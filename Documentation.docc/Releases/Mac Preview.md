@@ -25,7 +25,68 @@ The current Mac preview has the following known limitations:
 
 # Releases
 
-## Build 1812
+## Build 1836 (July 17, 2026)
+
+# Improvements 
+
+- Reworked the New Scene dialog to clarify creating a new root or inheriting
+  from an existing scene - and dropped the annoying jumping behavior. #2787
+
+- Recent Projects will always display full project paths and show exact paths on
+  hover. #3022
+
+- Upgraded PiSwift to v0.80.10 which includes the latest GPT models - we have
+  still not cleaned up the list of models, it is too extensive, will clean up
+  soon.
+
+  ## Bug Fixes
+
+- Fixed Skeleton3D scaling changes not remaining undoable in Transform Mode.
+  #2776
+
+- Fixed a spectrum of race conditions on the PiSwift agent - too many ways that
+  were easy to deadlock the UI, removed.
+
+- Added a gizmo-free Select Mode to the 3D editor and renamed the original
+  Select tool to Transform Mode, with dedicated keyboard shortcuts - this is a
+  change we missed from Godot https://github.com/godotengine/godot/pull/101168
+  #2776
+
+
+## Build 1827 (July 16, 2026)
+
+- Added file-size information to the Asset Browser, calculated only when needed
+  to keep browsing responsive. #2632
+
+- Improved AI conversations with selectable transcript text, grouped related
+  activity, and smoother automatic scrolling while responses stream.
+
+- Improved the signal connection sheet with a clearer grouped layout for
+  methods, source paths, signals, and targets.
+
+## Fixes
+
+- Fixed the code editor dropping keyboard input after extending a selection
+  backward with Shift. #3033
+
+- Fixed the `xo` command sometimes reporting that no Xogot instances were
+  running after its background service restarted.
+
+- Fixed AI edit commands sometimes rejecting valid replacement instructions
+  instead of applying them.
+
+- Fixed Retry failing after a connection error left the conversation in an
+  invalid state.
+
+- Fixed overlapping Coding Assistant interactions that could start runaway
+  background work.
+
+### Fixes
+
+- Fixed the code editor dropping keyboard input after extending a selection backward with Shift. #3033
+
+
+## Build 1812 (July 15, 2026)
 
 ### Improvements
 
