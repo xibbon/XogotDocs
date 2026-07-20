@@ -59,16 +59,15 @@
         tutorial and build upon them with new code and features.
 
         @TutorialReference(tutorial: "doc:01.game_setup")
-        @TutorialReference(tutorial: "doc:02.player_input")
-        @TutorialReference(tutorial: "doc:03.importing_player_model")
-        @TutorialReference(tutorial: "doc:04.player_movement_code")
-        @TutorialReference(tutorial: "doc:05.mob_scene")
-        @TutorialReference(tutorial: "doc:06.spawning_mobs")
-        @TutorialReference(tutorial: "doc:07.jump")
-        @TutorialReference(tutorial: "doc:08.hit_boxes")
-        @TutorialReference(tutorial: "doc:09.hurt_boxes")
-        @TutorialReference(tutorial: "doc:10.score_and_replay")
-        @TutorialReference(tutorial: "doc:11.adding_animations")
+        @TutorialReference(tutorial: "doc:02.player_scene_and_model")
+        @TutorialReference(tutorial: "doc:03.player_movement_code")
+        @TutorialReference(tutorial: "doc:04.mob_scene")
+        @TutorialReference(tutorial: "doc:05.spawning_mobs")
+        @TutorialReference(tutorial: "doc:06.jump")
+        @TutorialReference(tutorial: "doc:07.hit_boxes")
+        @TutorialReference(tutorial: "doc:08.hurt_boxes")
+        @TutorialReference(tutorial: "doc:09.score_and_replay")
+        @TutorialReference(tutorial: "doc:10.adding_animations")
         @TutorialReference(tutorial: "doc:going_further")
     }
 }

@@ -39,8 +39,9 @@
         download them here:
         [Save the Axolotl: Snake Stomp assets](https://github.com/godotengine/godot-docs-project-starters/releases/download/latest-4.x/3d%5Fsquash%5Fthe%5Fcreeps%5Fstarter.zip).
 
-        We will first work on a basic prototype for the player's movement, then import
-        the player's 3D model. We will then add the monsters that we'll spawn randomly
+        We will first set up the game area and the player's input actions, then
+        build the player scene and import the player's 3D model, then code the
+        player's movement. We will then add the monsters that we'll spawn randomly
         around the screen. After that, we'll add the jump and the hit box and hurt box
         mechanics for squashing monsters and dying. We'll then add the score and the
         retry screen, and wrap up by refining the game with some nice character
@@ -51,16 +52,15 @@
             This tutorial is divided into the following lessons:
 
             - [Setting up the game area](doc:01.game_setup)
-            - [Player scene and input actions](doc:02.player_input)
-            - [Importing the player model](doc:03.importing_player_model)
-            - [Moving the player with code](doc:04.player_movement_code)
-            - [Designing the mob scene](doc:05.mob_scene)
-            - [Spawning monsters](doc:06.spawning_mobs)
-            - [Jumping](doc:07.jump)
-            - [Hit boxes](doc:08.hit_boxes)
-            - [Hurt boxes](doc:09.hurt_boxes)
-            - [Score and replay](doc:10.score_and_replay)
-            - [Character animation](doc:11.adding_animations)
+            - [Player scene and model](doc:02.player_scene_and_model)
+            - [Moving the player with code](doc:03.player_movement_code)
+            - [Designing the mob scene](doc:04.mob_scene)
+            - [Spawning monsters](doc:05.spawning_mobs)
+            - [Jumping](doc:06.jump)
+            - [Hit boxes](doc:07.hit_boxes)
+            - [Hurt boxes](doc:08.hurt_boxes)
+            - [Score and replay](doc:09.score_and_replay)
+            - [Character animation](doc:10.adding_animations)
             - [Going further](doc:going_further)
 
             @Image(source: fix-me.png)

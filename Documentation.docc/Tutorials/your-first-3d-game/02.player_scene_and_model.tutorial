@@ -1,8 +1,19 @@
-@Tutorial(time: 20) {
-    @Intro(title: "Importing the player model") {
-        In the previous lesson, we built the player scene with a placeholder
-        box so we could test movement. Now, we'll replace that placeholder with
-        the axolotl 3D model included in the starter project.
+@Tutorial(time: 40) {
+    @Intro(title: "Player scene and model") {
+        In this lesson, we'll build the `Player` scene from a
+        [CharacterBody3D](https://docs.godotengine.org/en/stable/classes/class%5Fcharacterbody3d.html#class-characterbody3d),
+        then import the axolotl 3D model included in the starter project and
+        instance it inside the scene. By the end, you'll have a character in
+        the viewport, idling on the spot, ready to move.
+
+        Character bodies are complementary to the area and rigid bodies used in the
+        2D game tutorial. Like rigid bodies, they can move and collide with the
+        environment, but instead of being controlled by the physics engine,
+        **you** dictate their movement. You will see how we use the node's unique
+        features when we code the jump and squash mechanics.
+
+        > See also: To learn more about the different physics node types, see the
+        > [Physics introduction](https://docs.godotengine.org/en/stable/tutorials/physics/physics%5Fintroduction.html#doc-physics-introduction).
 
         When you import a 3D model into Xogot, the file becomes a scene. You
         can then instance it inside other scenes, just like any other scene
@@ -17,6 +28,95 @@
         review.
 
         @Image(source: fix-me.png)
+    }
+    @Section(title: "Creating the player scene") {
+        @ContentAndMedia {
+            We'll start by creating a `Player` scene from a
+            [CharacterBody3D](https://docs.godotengine.org/en/stable/classes/class%5Fcharacterbody3d.html#class-characterbody3d).
+
+            We're also going to create a basic rig for our character's 3D model. This
+            will allow us to rotate the model later via code while it plays an
+            animation.
+
+            @Image(source: fix-me.png)
+        }
+        @Steps {
+            @Step {
+                Create a new scene by opening the **Document Menu** (the down-arrow
+                icon) in the upper-left corner and tapping **New Scene**.
+
+                @Image(source: new_scene.webp)
+            }
+            @Step {
+                In the `New Scene` window set the name to `player`, pick the `Scenes` folder location and then in the *New* tab set the type to **Empty** and press **Create**
+
+                @Image(source: new_scene.webp)
+            }
+            @Step {
+                Tap the **Create Other Node** button and select the `CharacterBody3D` node
+                type to create a `CharacterBody3D` as the root node.
+
+                @Image(source: add_character_body3D.webp)
+            }
+            @Step {
+                Rename the
+                [CharacterBody3D](https://docs.godotengine.org/en/stable/classes/class%5Fcharacterbody3d.html#class-characterbody3d)
+                to `Player`.
+
+                @Image(source: fix-me.png, alt: "The CharacterBody3D node renamed to Player")
+            }
+            Add a
+            [Node3D](https://docs.godotengine.org/en/stable/classes/class%5Fnode3d.html#class-node3d)
+            node as a child of `Player`.
+            @Step {
+                Select the `Player` node in the **Scene
+                Tree** and tap the **Create New Node** button (the "+" icon) to add a
+                child node. Rename it to `Pivot`.
+
+                > Note: The `Pivot` node will hold the character model. It lets
+                > us rotate the model to face its movement direction without
+                > fighting the physics body. We'll instance the axolotl
+                > under it later in this lesson.
+
+                @Image(source: adding_node3D.webp)
+            }
+            As with all kinds of physics nodes, we need a collision shape for our
+            character to collide with the environment.
+
+            @Step {
+                Select the `Player` node again and add a child node
+                [CollisionShape3D](https://docs.godotengine.org/en/stable/classes/class%5Fcollisionshape3d.html#class-collisionshape3d).
+                In the **Inspector**, on the **Shape** property, add a new
+                [BoxShape3D](https://docs.godotengine.org/en/stable/classes/class_boxshape3d.html#class-boxshape3d).
+
+                The Box's wireframe appears below the character.
+
+                @Image(source: add_capsuleshape3d.webp)
+            }
+            The box will be the shape the physics engine uses to collide with the
+            environment, so we want to pick one that will best fit the 3D model.
+
+            @Step {
+                Make the box a bit larger by dragging the orange dot in the
+                viewport or editing the shape size property in the **Inspector**. 
+                We want it to have a size of 1.2 on the `x-axis`, 1.0 on the `y-axis` and 2.2 on the `z-axis`.
+
+                @Image(source: sphere_shape.png)
+            }
+            @Step {
+                Then, move the collision shape up so its bottom roughly aligns with
+                the grid's plane. It should now have a Transform position on the `y-axis` of 0.5.
+
+                @Image(source: moving_the_sphere_up.png)
+            }
+            @Step {
+                Save the scene as `player.tscn`.
+
+                @Image(source: toggling_visibility.webp, alt: "Save the scene as player.tscn")
+            }
+            With the player scene ready, let's import the 3D model and instance
+            it under the `Pivot` node.
+        }
     }
     @Section(title: "Creating a wrapper scene from the glb") {
         @ContentAndMedia {
@@ -35,14 +135,19 @@
         }
         @Steps {
             @Step {
-                In the _File Pad_, locate `art/Player_Axolotl.glb`.
-                Long-press the file and select _New Inherited
-                Scene_.
+                In the _File Tree_, locate `art/player_axolotl.glb`.
+                
+                Tap the file to select it, and in the inspector press the **Open Scene** button.
 
                 @Image(source: fix-me.png, alt: "Long-press the glb file and choose New Inherited Scene")
             }
             @Step {
-                A new scene opens with the glb's contents as its root. Save it
+                In the pop-up window select **New Inherited** to create a new copy of the scene.
+                
+                @Image(source: fix-me.png)
+            }
+            @Step {
+                A new scene will open with the glb's contents as its root. Save it
                 as `player_axolotl.tscn` inside the `scenes/` folder (create
                 the folder if it doesn't exist yet).
 
@@ -136,23 +241,16 @@
     }
     @Section(title: "Instantiating the model in the Player scene") {
         @ContentAndMedia {
-            Now we'll swap the placeholder box in `player.tscn` for the
-            wrapper scene we just built.
+            Now we'll instance the wrapper scene we just built inside
+            `player.tscn`, under the `Pivot` node we created earlier.
 
             @Image(source: fix-me.png)
         }
         @Steps {
             @Step {
-                Open `player.tscn`. In the _Scene Tree_, select the
-                `MeshInstance3D` placeholder we added under `Pivot` and
-                delete it (long-press it and choose _Delete_).
-
-                @Image(source: fix-me.png, alt: "Delete the placeholder MeshInstance3D")
-            }
-            @Step {
-                With the `Pivot` node selected, instantiate a child scene by
-                long-pressing it and choosing _Instantiate Child Scene_. In the
-                popup, pick `player_axolotl.tscn`.
+                Open `player.tscn`. With the `Pivot` node selected, instantiate
+                a child scene by long-pressing it and choosing _Instantiate Child
+                Scene_. In the popup, pick `player_axolotl.tscn`.
 
                 @Image(source: fix-me.png, alt: "Instantiate player_axolotl.tscn under Pivot")
             }
@@ -169,10 +267,9 @@
     }
     @Section(title: "Resizing the collision shape to fit the model") {
         @ContentAndMedia {
-            The `SphereShape3D` we added earlier was a good fit for the
-            placeholder box, but the axolotl is longer than it is tall. We'll
-            swap the sphere for a `BoxShape3D` and size it to wrap the
-            character's body.
+            The `BoxShape3D` we added earlier was sized generically. We'll now
+            resize it to wrap the axolotl's body, which is longer along the Z
+            axis (front-to-back) than it is wide.
 
             > Tip: Collision shapes don't need to match the model exactly —
             > they just need to feel right when you play the game. A box is
@@ -182,16 +279,9 @@
         }
         @Steps {
             @Step {
-                Select the `CollisionShape3D` node. In the _Inspector_, tap
-                the _Shape_ property and replace the `SphereShape3D` with a
-                new [BoxShape3D](https://docs.godotengine.org/en/stable/classes/class_boxshape3d.html#class-boxshape3d).
-
-                @Image(source: fix-me.png, alt: "Replace the SphereShape3D with a BoxShape3D")
-            }
-            @Step {
-                Expand the _BoxShape3D_ resource and set its _Size_ to roughly
-                `1.1` on X, `1.2` on Y, and `2.6` on Z. The axolotl is longer
-                along the Z axis (front-to-back) than it is wide.
+                Select the `CollisionShape3D` node. In the _Inspector_, expand
+                the _BoxShape3D_ resource and set its _Size_ to roughly `1.1`
+                on X, `1.2` on Y, and `2.6` on Z.
 
                 @Image(source: fix-me.png, alt: "Set the box size to fit the axolotl body")
             }
@@ -208,9 +298,8 @@
             }
             @Step {
                 Save the scene and run it by tapping **Run Project** in the
-                toolbar. The axolotl should now appear in place of the
-                placeholder box, idling on the spot, and you can still move
-                it with an external keyboard or gamepad.
+                toolbar. The axolotl should appear in the viewport, idling on
+                the spot.
 
                 In the next lesson, we'll code the player's movement.
             }
