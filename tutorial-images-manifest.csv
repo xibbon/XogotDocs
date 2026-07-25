@@ -42,6 +42,7 @@ index.tutorial,66,fix-me.png,index-02.tutorial-overview.png,Overview image for t
 01.game_setup.tutorial,445,fix-me.png,01-38.virtual-controller-concept.png,Built-in Virtual Controller explanation
 01.game_setup.tutorial,463,fix-me.png,01-39.enable-virtual-controller.png,Enable Controller switch turned on
 01.game_setup.tutorial,476,fix-me.png,01-40.enable-button-a-only.png,Only Button A enabled in settings
+01.game_setup.tutorial,481,N/A,01-41.emulate-touch-toggle.png,Emulate Touch From Mouse toggle settings
 02.player_scene_and_model.tutorial,30,fix-me.png,02-01.character-body3d-concept.png,CharacterBody3D node explanation
 02.player_scene_and_model.tutorial,41,fix-me.png,02-02.player-scene-structure.png,Player scene hierarchy overview
 02.player_scene_and_model.tutorial,48,new_scene.webp,02-03.new-scene-menu.png,Creating new scene from Document Menu
@@ -90,28 +91,29 @@ index.tutorial,66,fix-me.png,index-02.tutorial-overview.png,Overview image for t
 03.player_movement_code.tutorial,294,13.camera3d_values.webp,03-17.camera-orthogonal-settings.png,Camera set to Orthogonal Size 19
 03.player_movement_code.tutorial,299,10.camera_perspective.png,03-18.game-orthogonal-view.png,Game with orthogonal camera view
 04.mob_scene.tutorial,26,fix-me.png,04-01.mob-wrapper-scene-concept.png,Creating mob wrapper scene concept
-04.mob_scene.tutorial,33,fix-me.png,04-02.new-inherited-snake-scene.png,New Inherited Scene from enemy_snake.glb
-04.mob_scene.tutorial,40,fix-me.png,04-03.save-enemy-snake-scene.png,Saving enemy_snake.tscn
-04.mob_scene.tutorial,48,fix-me.png,04-04.scale-rotate-snake-armature.png,Armature scaled 2.5 rotated 180°
-04.mob_scene.tutorial,55,fix-me.png,04-05.autoplay-move-animation.png,AnimationPlayer autoplay set to Move
-04.mob_scene.tutorial,67,fix-me.png,04-06.move-animation-loop-mode.png,Move animation Loop Mode set to Loop
+04.mob_scene.tutorial,33,N/A,04-01a.advanced-import-window-main.png,Advanced Import Settings window main view
+04.mob_scene.tutorial,39,N/A,04-01b.advanced-import-window-main.png,Advanced Import Settings with Loop Mode set to Linear
+04.mob_scene.tutorial,46,fix-me.png,04-02.new-inherited-snake-scene.png,New Inherited Scene from enemy_snake.glb
+04.mob_scene.tutorial,52,fix-me.png,04-03.save-enemy-snake-scene.png,Saving enemy_snake.tscn
+04.mob_scene.tutorial,60,fix-me.png,04-04.scale-rotate-snake-armature.png,Armature scaled 2.5 rotated 180°
+04.mob_scene.tutorial,67,fix-me.png,04-05.autoplay-move-animation.png,AnimationPlayer autoplay set to Move
 04.mob_scene.tutorial,79,fix-me.png,04-07.mob-gameplay-scene-concept.png,Mob gameplay scene structure
 04.mob_scene.tutorial,87,fix-me.png,04-08.create-mob-character-body.png,New scene with Mob CharacterBody3D
-04.mob_scene.tutorial,94,fix-me.png,04-09.add-pivot-to-mob.png,Node3D Pivot added to Mob
-04.mob_scene.tutorial,101,01.initial_three_nodes.webp,04-10.initial-mob-scene-tree.png,Mob/Pivot/Character structure
-04.mob_scene.tutorial,118,fix-me.png,04-11.blob-shadow-concept.png,Blob shadow technique explanation
-04.mob_scene.tutorial,126,fix-me.png,04-12.add-sprite3d-node.png,Sprite3D child of Mob
-04.mob_scene.tutorial,132,fix-me.png,04-13.assign-circle-gradient.png,CircleGrandient.tres texture assigned
-04.mob_scene.tutorial,144,fix-me.png,04-14.sprite3d-shadow-settings.png,Sprite3D tinted black scaled rotated flat
-04.mob_scene.tutorial,174,fix-me.png,04-15.visibility-notifier-concept.png,VisibleOnScreenNotifier3D explanation
-04.mob_scene.tutorial,183,06.visibility_notifier.webp,04-16.visibility-notifier-added.png,VisibleOnScreenNotifier3D node added
-04.mob_scene.tutorial,189,07.visibility_notifier_bbox_resized.png,04-17.visibility-bbox-resized.png,Notifier bbox covering model
-04.mob_scene.tutorial,201,fix-me.png,04-18.mob-movement-code-concept.png,Mob movement logic overview
-04.mob_scene.tutorial,207,08.mob_attach_script.webp,04-19.mob-attach-script.png,Attaching script to Mob
-04.mob_scene.tutorial,264,fix-me.png,04-20.screen-exit-signal-concept.png,screen_exited signal explanation
-04.mob_scene.tutorial,271,09.switch_to_3d_workspace.webp,04-21.switch-to-3d-workspace.png,Switching to 3D view
-04.mob_scene.tutorial,279,10.node_dock.webp,04-22.signals-tab-screen-exited.png,screen_exited signal in Signals tab
-04.mob_scene.tutorial,284,11.connect_signal.webp,04-23.connect-signal-to-mob.png,Connecting signal to Mob node
+04.mob_scene.tutorial,93,fix-me.png,04-09.add-pivot-to-mob.png,Node3D Pivot added to Mob
+04.mob_scene.tutorial,100,01.initial_three_nodes.webp,04-10.initial-mob-scene-tree.png,Mob/Pivot/Character structure
+04.mob_scene.tutorial,117,fix-me.png,04-11.blob-shadow-concept.png,Blob shadow technique explanation
+04.mob_scene.tutorial,125,fix-me.png,04-12.add-sprite3d-node.png,Sprite3D child of Mob
+04.mob_scene.tutorial,131,fix-me.png,04-13.assign-circle-gradient.png,CircleGrandient.tres texture assigned
+04.mob_scene.tutorial,143,fix-me.png,04-14.sprite3d-shadow-settings.png,Sprite3D tinted black scaled rotated flat
+04.mob_scene.tutorial,173,fix-me.png,04-15.visibility-notifier-concept.png,VisibleOnScreenNotifier3D explanation
+04.mob_scene.tutorial,182,06.visibility_notifier.webp,04-16.visibility-notifier-added.png,VisibleOnScreenNotifier3D node added
+04.mob_scene.tutorial,188,07.visibility_notifier_bbox_resized.png,04-17.visibility-bbox-resized.png,Notifier bbox covering model
+04.mob_scene.tutorial,200,fix-me.png,04-18.mob-movement-code-concept.png,Mob movement logic overview
+04.mob_scene.tutorial,206,08.mob_attach_script.webp,04-19.mob-attach-script.png,Attaching script to Mob
+04.mob_scene.tutorial,263,fix-me.png,04-20.screen-exit-signal-concept.png,screen_exited signal explanation
+04.mob_scene.tutorial,270,09.switch_to_3d_workspace.webp,04-21.switch-to-3d-workspace.png,Switching to 3D view
+04.mob_scene.tutorial,278,10.node_dock.webp,04-22.signals-tab-screen-exited.png,screen_exited signal in Signals tab
+04.mob_scene.tutorial,283,11.connect_signal.webp,04-23.connect-signal-to-mob.png,Connecting signal to Mob node
 05.spawning_mobs.tutorial,6,01.monsters_path_preview.png,05-01.monsters-path-preview.png,Mobs spawning along path
 05.spawning_mobs.tutorial,14,fix-me.png,05-02.window-size-settings.png,Changing viewport resolution
 05.spawning_mobs.tutorial,21,fix-me.png,05-03.open-main-scene.png,main.tscn open in File Pad

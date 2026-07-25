@@ -28,43 +28,43 @@
         @Steps {
             @Step {
                 In the _File Pad_, locate `art/enemy_snake.glb`.
-                Long-press the file and select _New Inherited Scene_.
+                
+                Double tap it to open the _Advanced Import Settings_ window.
+                @Image(source: 04-01a.advanced-import-window-main.png)
+            }
+            @Step {
+                Got to the **Move** animation node and open the _Inspector_.
+                
+                Set the **Loop Mode** to `Linear`; then press **Reimport**.
+                @Image(source: 04-01b.advanced-import-window-main.png)
+            }
+            @Step {
+                Tap `art/enemy_snake.glb` once, then press **Open Scene** in the _Inspector_. 
+                
+                In the pop-up, press **New Inherited**.
 
                 @Image(source: 04-02.new-inherited-snake-scene.png, alt: "Long-press enemy_snake.glb and choose New Inherited Scene")
             }
             @Step {
-                Save the new scene as `enemy_snake.tscn`, inside the `art/`
-                folder next to the `.glb`. Keeping the wrapper next to the
-                model file makes it easy to find.
+                Save the new scene as `enemy_snake.tscn`, inside the `scenes/`
+                folder we made earlier.
 
-                @Image(source: 04-03.save-enemy-snake-scene.png, alt: "Save the inherited scene as art/enemy_snake.tscn")
+                @Image(source: 04-03.save-enemy-snake-scene.png, alt: "Save the inherited scene as scenes/enemy_snake.tscn")
             }
             @Step {
-                In the _Scene Tree_, select the `Armature` node. In the
-                _Inspector_, scale it by `2.5` on all axes and rotate it
+                In the _Node Tree_, select the `Armature` node. In the
+                _Inspector_ using the **Transform** parameter, scale it by `2.5` on all axes and rotate it
                 `180` degrees around Y, just like we did for the player. This
                 makes the snake face -Z and gives it a sensible size.
 
                 @Image(source: 04-04.scale-rotate-snake-armature.png, alt: "Scale the Armature 2.5 and rotate 180 on Y")
             }
             @Step {
-                Expand the `Armature` and select the `AnimationPlayer` child.
-                In the _Inspector_, set its _Autoplay_ to `Move` so the snake
+                Select the `AnimationPlayer` node.
+                Open the Animation window at the bottom of the screen and tap the `A` next to `Move` to turn on `Autoplay` so the snake
                 starts crawling as soon as it spawns.
 
                 @Image(source: 04-05.autoplay-move-animation.png, alt: "Set the AnimationPlayer autoplay to Move")
-            }
-            @Step {
-                The `Move` animation needs to loop so the snake keeps crawling
-                instead of playing once and stopping. Select `enemy_snake.glb`
-                in the _File Pad_ and switch to the _Import_ tab. Expand the _Animation_ section, find the `Move`
-                animation, and set its _Loop Mode_ to _Loop_.
-
-                > Tip: This import setting is saved in the `enemy_snake.glb.import`
-                > file, so it persists across project reloads. The wrapper scene
-                > and the gameplay scene will both use the looped animation.
-
-                @Image(source: 04-06.move-animation-loop-mode.png, alt: "Set the Move animation loop mode to Loop in the Import tab")
             }
             @Step {
                 Save the `enemy_snake.tscn` wrapper scene.
@@ -80,16 +80,15 @@
         }
         @Steps {
             @Step {
-                Create a scene with a
+                Create a `Empty` scene named `mob` in the `scenes` folder we made earlier and then add a
                 [CharacterBody3D](https://docs.godotengine.org/en/stable/classes/class_characterbody3d.html#class-characterbody3d)
-                node as its root. Name it `Mob`.
+                node as its root. Name the node `Mob` as well.
 
                 @Image(source: 04-08.create-mob-character-body.png, alt: "A new scene with a CharacterBody3D root node named Mob")
             }
             @Step {
-                Add a child node
-                [Node3D](https://docs.godotengine.org/en/stable/classes/class_node3d.html#class-node3d)
-                and name it `Pivot`.
+                Select the root and add a child node
+                [Node3D](https://docs.godotengine.org/en/stable/classes/class_node3d.html#class-node3d), naming it `Pivot`.
 
                 @Image(source: 04-09.add-pivot-to-mob.png, alt: "A Node3D child named Pivot added to Mob")
             }

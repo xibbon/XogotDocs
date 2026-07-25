@@ -478,6 +478,7 @@
             Finally we need to disable one setting toggle to make the Joystick work well.
             @Step {
                 In the **Pointing** page, set **Emulate Touch From Mouse** to **ON** and **Emulate Mouse From Touch** to **OFF**
+                @Image(source: 01.41.emulate-touch-toggle.png)
             }
             Perfect! Later when you run the game on an iPhone or iPad, you'll
             see both the Virtual Joystick for movement and an on-screen
