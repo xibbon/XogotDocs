@@ -21,7 +21,7 @@
             works well. We'll place this one under the `Pivot` so it rotates
             and moves with the model.
 
-            @Image(source: fix-me.png)
+            @Image(source: 08-01.hurt-box-concept.png)
         }
         @Steps {
             @Step {
@@ -31,7 +31,7 @@
                 [CollisionShape3D](https://docs.godotengine.org/en/stable/classes/class_collisionshape3d.html#class-collisionshape3d)
                 child to it.
 
-                @Image(source: fix-me.png, alt: "Add an Area3D named HurtBox under Pivot with a CollisionShape3D child")
+                @Image(source: 08-02.add-hurt-box-area.png, alt: "Add an Area3D named HurtBox under Pivot with a CollisionShape3D child")
             }
             @Step {
                 In the _Inspector_, assign a
@@ -41,13 +41,13 @@
                 Y or Z so it lies along the snake's body, and position it so
                 it covers the body from head to tail.
 
-                @Image(source: fix-me.png, alt: "Resize and orient the capsule along the snake's body")
+                @Image(source: 08-03.capsule-shape-settings.png, alt: "Resize and orient the capsule along the snake's body")
             }
             @Step {
                 Select the `HurtBox` node and, in the _Signals_ tab, connect
                 its `body_entered` signal to the `Mob` node.
 
-                @Image(source: fix-me.png, alt: "Connect the HurtBox body_entered signal to the Mob")
+                @Image(source: 08-04.connect-hurt-box-signal.png, alt: "Connect the HurtBox body_entered signal to the Mob")
             }
         }
     }
@@ -59,7 +59,7 @@
             safe. The player doesn't have a `die()` function yet; we'll add
             it next.
 
-            @Image(source: fix-me.png)
+            @Image(source: 08-05.hurt-callback-code.png)
         }
         @Steps {
             @Step {
@@ -68,7 +68,7 @@
                 `die` method, and again if the body is in the air — so a
                 player jumping over the snake is untouched.
 
-                @Code(name: "mob.gd", file: mob-3d-06.gd, previousFile: mob-05.gd)
+                @Code(name: "mob.gd", file: mob-3d-06.gd, previousFile: mob-3d-05.gd)
             }
         }
     }
@@ -79,14 +79,14 @@
             — `Main` will listen for that to stop the game — and then frees
             itself.
 
-            @Image(source: fix-me.png)
+            @Image(source: 08-06.player-death-code.png)
         }
         @Steps {
             @Step {
                 Open the `player.gd` script. We add the `hit` signal and
                 the `die()` function.
 
-                @Code(name: "player.gd", file: player-3d-10.gd, previousFile: player-09.gd)
+                @Code(name: "player.gd", file: player-3d-10.gd, previousFile: player-3d-09.gd)
             }
         }
     }
@@ -96,20 +96,20 @@
             can use that to stop spawning new mobs. Connect the signal to
             the `Main` node and stop the `MobTimer` in reaction.
 
-            @Image(source: fix-me.png)
+            @Image(source: 08-07.end-game-logic.png)
         }
         @Steps {
             @Step {
                 Open `main.tscn`, select the `Player` node, and in the
                 _Signals_ tab, connect its `hit` signal to the `Main` node.
 
-                @Image(source: 06.player_hit_signal.webp)
+                @Image(source: 08-08.player-hit-signal-connection.png)
             }
             @Step {
                 In the `_on_player_hit()` function that was just added, stop
                 the `MobTimer`.
 
-                @Code(name: "main.gd", file: main-3d-04.gd, previousFile: main-03.gd)
+                @Code(name: "main.gd", file: main-3d-04.gd, previousFile: main-3d-03.gd)
             }
             If you try the game now, running into a snake on the ground
             kills the player and the monsters stop spawning, while the
@@ -135,7 +135,7 @@
             `Main` nodes at this point, for reference. You can use them to
             compare and check your code.
 
-            @Image(source: fix-me.png)
+            @Image(source: 08-09.code-checkpoint-reference.png)
         }
         @Steps {
             @Step {
