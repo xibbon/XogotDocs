@@ -96,12 +96,16 @@
         @Steps {
             @Step {
                 We start by initializing a `direction` variable to `Vector3.ZERO`.
-                Then, we check if the player is pressing one or more of the
-                `move_*` inputs and update the vector's `x` and `z` components
-                accordingly. These correspond to the ground plane's axes.
+                Then, we use `Input.get_vector()` to get the player's input as
+                a 2D vector and convert it to a 3D direction.
 
-                These four conditions give us eight possibilities and eight
-                possible directions.
+                `Input.get_vector()` is perfect for this game because it handles
+                both digital input (keyboard) and analog input (joysticks) seamlessly.
+                When you press arrow keys or WASD, it returns values like `-1`,
+                `0`, or `1`. But when you use the on-screen virtual joystick we
+                set up earlier, it returns smooth analog values like `0.7` or
+                `-0.3` based on how far you've moved your finger. This gives you
+                full 360-degree movement instead of being limited to 8 directions.
 
                 > Note: The XZ plane is the ground plane in 3D. We never touch
                 > the Y component in this section; gravity will be applied to it
@@ -109,30 +113,27 @@
 
                 @Code(name: "player.gd", file: player-3d-02.gd, previousFile: player-3d-01.gd)
             }
-            > You might notice that we placed two new lines before the function declaration. 
-            This is best practice in GDScript and helps improve readability.
-            
-            We can't end here though because you may notice that in cases where the player presses, 
-            say, both W and D simultaneously, the vector will have a length of about `1.4`. 
-            But if they press a single
-            key, it will have a length of `1`. We want the vector's length to be
-            consistent, and not move faster diagonally.
+            Even though `Input.get_vector()` handles normalization internally
+            for digital inputs, we still need to normalize the direction vector
+            after converting it to 3D. This is because the input might be a
+            partial analog value (like `0.8` in one direction), and we want
+            consistent movement speed in all directions.
 
-            > Tip: Diagonal movement without normalization would be roughly
-            > 41% faster than cardinal movement. Calling `normalized()` on a
-            > 2-component input vector returns a unit vector, so the speed
-            > stays the same in every direction.
+            > Tip: Without normalization, diagonal movement could be faster
+            > than cardinal movement. Calling `normalized()` ensures the
+            > direction vector has a length of exactly `1`, so the player
+            > moves at the same speed no matter which direction they choose.
 
             @Step {
-                First we check if the player is pressing a key and then
-                we can call the vector's `normalized()` method to keep the length
-                consistent. We only normalize the vector if the direction has a
-                length greater than zero, which means the player is pressing a
-                direction key.
+                We check if the player is moving and then normalize the direction
+                vector to ensure consistent speed. We only normalize if the
+                direction has a length greater than zero, which means the player
+                is actually providing input.
 
-                We compute the direction the `$Pivot` is looking by creating a
+                We also update the `$Pivot`'s rotation to face the movement
+                direction by creating a
                 [Basis](https://docs.godotengine.org/en/stable/classes/class%5Fbasis.html#class-basis)
-                that looks in the `direction` direction.
+                that looks in that direction.
 
                 @Code(name: "player.gd", file: player-3d-03.gd, previousFile: player-3d-02.gd)
             }
