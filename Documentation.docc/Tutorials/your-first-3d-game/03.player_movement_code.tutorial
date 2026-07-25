@@ -99,7 +99,7 @@
                 Then, we use `Input.get_vector()` to get the player's input as
                 a 2D vector and convert it to a 3D direction.
 
-                `Input.get_vector()` is perfect for this game because it handles
+                > Tip: `Input.get_vector()` is perfect for this game because it handles
                 both digital input (keyboard) and analog input (joysticks) seamlessly.
                 When you press arrow keys or WASD, it returns values like `-1`,
                 `0`, or `1`. But when you use the on-screen virtual joystick we

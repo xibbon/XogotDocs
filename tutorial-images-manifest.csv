@@ -5,6 +5,7 @@ index.tutorial,66,fix-me.png,index-02.tutorial-overview.png,Overview image for t
 01.game_setup.tutorial,27,01.import_button.webp,01-02.import-button.png,Project Manager with Folder button highlighted
 01.game_setup.tutorial,35,02.browse_to_project_folder.webp,01-03.browse-to-project-folder.png,File browser navigating to project directory
 01.game_setup.tutorial,49,04.start_assets.webp,01-04.start-assets.png,File tree showing art and fonts folders
+01.game_setup.tutorial,90,05.main_node.webp,01-05a.create-main-node.png,Scene tree with Main node created
 01.game_setup.tutorial,80,fix-me.png,01-05.static-body-collision-concept.png,Diagram showing StaticBody3D and CollisionShape3D concept
 01.game_setup.tutorial,101,fix-me.png,01-06.save-scene-dialog.png,Save dialog showing main.tscn being saved
 01.game_setup.tutorial,112,adding_static_body3D.webp,01-07.adding-static-body3d.png,Scene tree with Ground/StaticBody3D/CollisionShape3D
