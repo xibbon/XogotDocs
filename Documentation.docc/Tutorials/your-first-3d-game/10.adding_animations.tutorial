@@ -13,7 +13,7 @@
         and a sway for the mobs (keyed by hand in the editor) — and
         control everything from code.
 
-        @Image(source: fix-me.png)
+        @Image(source: 10-01.two-animation-players-concept.png)
     }
     @Section(title: "Two animation players") {
         @ContentAndMedia {
@@ -52,7 +52,7 @@
             > animations by hand in the editor or load ready-made
             > `.res` files — we'll do both in this lesson.
 
-            @Image(source: fix-me.png)
+            @Image(source: 10-02.animation-library-concept.png)
         }
     }
     @Section(title: "Adding the jump animation to the player") {
@@ -60,7 +60,7 @@
             Let's start with the player. We'll add a scene-level
             `AnimationPlayer` and load `jump.res` into it.
 
-            @Image(source: fix-me.png)
+            @Image(source: 10-03.jump-animation-setup.png)
         }
         @Steps {
             @Step {
@@ -68,7 +68,7 @@
                 child
                 [AnimationPlayer](https://docs.godotengine.org/en/stable/classes/class%5Fanimationplayer.html#class-animationplayer).
 
-                @Image(source: fix-me.png, alt: "Add an AnimationPlayer child to the Player node")
+                @Image(source: 10-04.add-animation-player-player.png, alt: "Add an AnimationPlayer child to the Player node")
             }
             @Step {
                 With the `AnimationPlayer` selected, head to the
@@ -82,7 +82,7 @@
                 > you use in code to play the animation. We called it
                 > `jump` to match the file.
 
-                @Image(source: fix-me.png, alt: "Load jump.res into the AnimationLibrary as jump")
+                @Image(source: 10-05.load-jump-resource.png, alt: "Load jump.res into the AnimationLibrary as jump")
             }
             @Step {
                 Now open the `player.gd` script. We add two `@onready`
@@ -132,14 +132,14 @@
             distance (`0.5` units), so it's easy to follow and to tweak
             later.
 
-            @Image(source: fix-me.png)
+            @Image(source: 10-06.mob-animation-concept.png)
         }
         @Steps {
             @Step {
                 Open `mob.tscn`. Select the `Mob` node and add a child
                 [AnimationPlayer](https://docs.godotengine.org/en/stable/classes/class%5Fanimationplayer.html#class-animationplayer).
 
-                @Image(source: fix-me.png, alt: "Add an AnimationPlayer child to the Mob node")
+                @Image(source: 10-07.add-animation-player-mob.png, alt: "Add an AnimationPlayer child to the Mob node")
             }
             @Step {
                 With the `AnimationPlayer` selected, open the
@@ -152,7 +152,7 @@
                 continuously, and set the animation length to `1.2`
                 seconds.
 
-                @Image(source: fix-me.png, alt: "Create a new animation named Sway, enable looping, set length to 1.2 seconds")
+                @Image(source: 10-08.new-sway-animation.png, alt: "Create a new animation named Sway, enable looping, set length to 1.2 seconds")
             }
             @Step {
                 Now we key the sway. Select the `Pivot` node. Leave the
@@ -162,7 +162,7 @@
                 it — this inserts a keyframe for the `Pivot`'s position
                 at time `0.0`.
 
-                @Image(source: fix-me.png, alt: "Key the Pivot's position at time 0.0")
+                @Image(source: 10-09.key-pivot-position-0.png, alt: "Key the Pivot's position at time 0.0")
             }
             @Step {
                 Move the playhead to `0.6` seconds. In the _Inspector_,
@@ -182,7 +182,7 @@
                 > moves the snake forward or back instead of
                 > side-to-side, undo and slide Z by `0.5` instead.
 
-                @Image(source: fix-me.png, alt: "At 0.6s, slide the Pivot 0.5 units on X and key it")
+                @Image(source: 10-10.key-pivot-slide-0-6.png, alt: "At 0.6s, slide the Pivot 0.5 units on X and key it")
             }
             @Step {
                 Move the playhead to `1.2` seconds. Set the `Pivot`'s
@@ -200,14 +200,14 @@
                 > doubling the slide to `1.0` unit or halving the
                 > length to `0.6` seconds to see how the feel changes.
 
-                @Image(source: fix-me.png, alt: "At 1.2s, return the Pivot to its start position and key it")
+                @Image(source: 10-11.key-pivot-return-1-2.png, alt: "At 1.2s, return the Pivot to its start position and key it")
             }
             @Step {
                 Finally, set the `AnimationPlayer`'s _Autoplay_
                 property (in the _Inspector_) to `Sway` so the mob
                 starts swaying as soon as it spawns.
 
-                @Image(source: fix-me.png, alt: "Set the AnimationPlayer autoplay to Sway")
+                @Image(source: 10-12.autoplay-sway-animation.png, alt: "Set the AnimationPlayer autoplay to Sway")
             }
             @Step {
                 Open `mob.gd`. We add `@onready` references to both
@@ -232,7 +232,7 @@
             the joystick when the player dies, so it doesn't get in the
             way of the retry overlay.
 
-            @Image(source: fix-me.png)
+            @Image(source: 10-13.hide-joystick-concept.png)
         }
         @Steps {
             @Step {
