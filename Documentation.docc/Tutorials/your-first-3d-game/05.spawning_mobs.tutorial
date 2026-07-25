@@ -3,7 +3,7 @@
         In this part, we're going to spawn monsters along a path randomly. By the
         end, you will have monsters roaming the game board.
 
-        @Image(source: 01.monsters_path_preview.png)
+        @Image(source: 05-01.monsters-path-preview.png)
     }
     @Section(title: "Modifying the project settings") {
         @ContentAndMedia {
@@ -11,20 +11,20 @@
             Our game has a default window size of `1152x648`. We're going to set
             it to `720x540`, a nice little box.
 
-            @Image(source: fix-me.png)
+            @Image(source: 05-02.window-size-settings.png)
         }
         @Steps {
             @Step {
                 Double-tap on `main.tscn` in the _File Pad_ to open the
                 `Main` scene.
 
-                @Image(source: fix-me.png, alt: "The main.tscn scene open in the File Pad")
+                @Image(source: 05-03.open-main-scene.png, alt: "The main.tscn scene open in the File Pad")
             }
             @Step {
                 Tap the **"..."** toolbar button in the upper-right corner and choose
                 **Settings** to open Project Settings.
 
-                @Image(source: 02.project_settings.webp)
+                @Image(source: 05-04.project-settings-menu.png)
             }
             @Step {
                 If you still have _Input Map_ open, switch to the _General_
@@ -32,7 +32,7 @@
                 On the right, set the _Viewport Width_ to `720` and the
                 _Viewport Height_ to `540`.
 
-                @Image(source: 03.window_settings.webp)
+                @Image(source: 05-05.window-size-720x540.png)
             }
         }
     }
@@ -53,7 +53,7 @@
             how it reflects light, and more. We can use them to change the
             color of a mesh.
 
-            @Image(source: fix-me.png)
+            @Image(source: 05-06.spawn-path-concept.png)
         }
         @Steps {
             @Step {
@@ -64,7 +64,7 @@
                 [Camera3D](https://docs.godotengine.org/en/stable/classes/class%5Fcamera3d.html#class-camera3d)
                 node and tap the _Preview_ checkbox in the bottom viewport.
 
-                @Image(source: 04.camera_preview.png)
+                @Image(source: 05-07.camera-preview-split.png)
             }
             Let's add the placeholder meshes.
 
@@ -74,7 +74,7 @@
                 as a child of the `Main` node and name it `Cylinders`. We'll
                 use it to group the cylinders.
 
-                @Image(source: 05.cylinders_node.webp)
+                @Image(source: 05-08.cylinders-node-added.png)
             }
             @Step {
                 Select `Cylinders` and add a child node
@@ -82,7 +82,7 @@
                 In the _Inspector_, assign a _CylinderMesh_ to the _Mesh_
                 property.
 
-                @Image(source: 06.cylinder_mesh.webp)
+                @Image(source: 05-09.cylinder-mesh-instance.png)
             }
             @Step {
                 Set the top viewport to the top orthogonal view using the menu
@@ -91,7 +91,7 @@
                 The grid may be distracting. You can toggle it by going to the
                 _View_ menu in the toolbar and tapping _View Grid_.
 
-                @Image(source: 07.top_view.webp)
+                @Image(source: 05-10.top-orthogonal-view.png)
             }
             You now want to move the cylinder along the ground plane, looking
             at the camera preview in the bottom viewport. I recommend using
@@ -101,13 +101,13 @@
                 Toggle grid snap by tapping the *Use Snap* button in the 3D
                 Editor Toolbar.
 
-                @Image(source: 08.toggle_view_grid.webp)
+                @Image(source: 05-11.toggle-grid-snap.png)
             }
             @Step {
                 Move the cylinder so it's right outside the camera's view in
                 the top-left corner.
 
-                @Image(source: 09.toggle_grid_snap.webp)
+                @Image(source: 05-12.first-cylinder-positioned.png)
             }
             We're going to create copies of the mesh and place them around the
             game area.
@@ -117,19 +117,19 @@
                 _Duplicate_. Move the copy down along the blue Z axis until
                 it's right outside the camera's preview.
 
-                @Image(source: 10.place_first_cylinder.png)
+                @Image(source: 05-13.second-cylinder-placed.png)
             }
             @Step {
                 Select both cylinders by tapping the first one, then tapping
                 the second one with a selection modifier (on an external
                 keyboard, hold Shift while tapping), then duplicate them.
 
-                @Image(source: 11.both_cylinders_selected.png)
+                @Image(source: 05-14.both-cylinders-selected.png)
             }
             @Step {
                 Move them to the right by dragging the red X axis.
 
-                @Image(source: 12.four_cylinders.png)
+                @Image(source: 05-15.four-cylinders-corners.png)
             }
             They're a bit hard to see in white, aren't they? Let's make them
             stand out by giving them a new material.
@@ -142,20 +142,20 @@
                 [StandardMaterial3D](https://docs.godotengine.org/en/stable/classes/class%5Fstandardmaterial3d.html#class-standardmaterial3d)
                 to slot _0_.
 
-                @Image(source: 13.selecting_all_cylinders.webp)
+                @Image(source: 05-16.selecting-all-cylinders.png)
             }
             @Step {
                 Tap the sphere icon to open the material resource. You get a
                 preview of the material and a long list of sections filled
                 with properties. Expand the _Albedo_ section.
 
-                @Image(source: 14.multi_material_selection.webp)
+                @Image(source: 05-17.standard-material-created.png)
             }
             @Step {
                 Set the color to something that contrasts with the background,
                 like a bright orange.
 
-                @Image(source: 15.bright-cylinders.webp)
+                @Image(source: 05-18.bright-orange-cylinders.png)
             }
             We can now use the cylinders as guides.
 
@@ -164,7 +164,7 @@
                 them. Moving forward, you can also toggle their visibility by
                 tapping the eye icon next to _Cylinders_.
 
-                @Image(source: 16.cylinders_fold.webp)
+                @Image(source: 05-19.cylinders-folded-tree.png)
             }
             @Step {
                 Add a child node
@@ -175,7 +175,7 @@
                 > Note: You can long-press any icon to see a tooltip describing
                 > the tool.
 
-                @Image(source: 17.points_options.webp)
+                @Image(source: 05-20.path-add-point-tool.png)
             }
             @Step {
                 Tap in the center of each cylinder to create a point. Then,
@@ -185,7 +185,7 @@
 
                 Your path should look like this.
 
-                @Image(source: 18.close_path.webp)
+                @Image(source: 05-21.path-closed-complete.png)
             }
             To sample random positions on it, we need a
             [PathFollow3D](https://docs.godotengine.org/en/stable/classes/class%5Fpathfollow3d.html#class-pathfollow3d)
@@ -196,7 +196,7 @@
                 two nodes to `SpawnLocation` and `SpawnPath`, respectively.
                 It's more descriptive of what we'll use them for.
 
-                @Image(source: 20.spawn_nodes.webp)
+                @Image(source: 05-22.spawn-path-nodes.png)
             }
             With that, we're ready to code the spawn mechanism.
         }
@@ -208,7 +208,7 @@
             we need to assign the `mob.tscn` file to the `mob_scene` property
             on the `Main` node (otherwise it's null!).
 
-            @Image(source: fix-me.png)
+            @Image(source: 05-23.mob-spawning-logic.png)
         }
         @Steps {
             @Step {
@@ -227,21 +227,21 @@
                 `mob.tscn` from the _File Pad_ to the _Mob Scene_ slot
                 in the _Inspector_.
 
-                @Image(source: 20.mob_scene_property.webp)
+                @Image(source: 05-24.mob-scene-property-assigned.png)
             }
             @Step {
                 Add a new
                 [Timer](https://docs.godotengine.org/en/stable/classes/class%5Ftimer.html#class-timer)
                 node as a child of `Main`. Name it `MobTimer`.
 
-                @Image(source: 21.mob_timer.webp)
+                @Image(source: 05-25.mob-timer-added.png)
             }
             @Step {
                 In the _Inspector_, set its _Wait Time_ to `0.5` seconds and
                 turn on _Autostart_ so it automatically starts when we run
                 the game.
 
-                @Image(source: 22.mob_timer_properties.webp)
+                @Image(source: 05-26.mob-timer-properties.png)
             }
             Timers emit a `timeout` signal every time they reach the end of
             their _Wait Time_. By default, they restart automatically,
@@ -252,12 +252,12 @@
                 With the _MobTimer_ still selected, head to the _Signals_ tab
                 in the _Inspector_, and double-tap the `timeout` signal.
 
-                @Image(source: 23.timeout_signal.webp)
+                @Image(source: 05-27.timeout-signal-selected.png)
             }
             @Step {
                 Connect it to the _Main_ node.
 
-                @Image(source: 24.connect_timer_to_main.webp)
+                @Image(source: 05-28.connect-timer-to-main.png)
             }
             This will take you back to the script, with a new empty
             `_on_mob_timer_timeout()` function.
@@ -303,7 +303,7 @@
                 > "Remote" tab also shows the running scene tree so you can
                 > confirm the mob is being added.
 
-                @Image(source: 25.spawn_result.png)
+                @Image(source: 05-29.mobs-spawning-in-game.png)
             }
             For now, they bump and slide against one another when their
             paths cross. We'll refine how they interact with the player and
