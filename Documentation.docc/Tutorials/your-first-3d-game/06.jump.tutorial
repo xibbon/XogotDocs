@@ -5,7 +5,7 @@
         them — which we'll implement in the next two lessons using hit boxes
         and hurt boxes.
 
-        @Image(source: fix-me.png)
+        @Image(source: 06-01.jump-mechanic-concept.png)
     }
     @Section(title: "Jumping") {
         @ContentAndMedia {
@@ -13,7 +13,7 @@
             the _Player_ script. We need a value to control the jump's
             strength and update `_physics_process()` to code the jump.
 
-            @Image(source: fix-me.png)
+            @Image(source: 06-02.jump-code-explanation.png)
         }
         @Steps {
             @Step {
@@ -63,7 +63,7 @@
             of countdown timers. Read the comments in the code — they
             walk through each piece.
 
-            @Image(source: fix-me.png)
+            @Image(source: 06-03.coyote-jump-buffer-concept.png)
         }
         @Steps {
             @Step {
