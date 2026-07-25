@@ -15,7 +15,7 @@
         > for more details, and be careful to type method names precisely when
         > connecting signals.
 
-        @Image(source: 01.attach_script_to_player.webp)
+        @Image(source: 03-01.attach-script-to-player.png)
     }
     @Section(title: "Starting the player script") {
         @ContentAndMedia {
@@ -23,7 +23,7 @@
             define the class's properties: a movement speed, a fall acceleration
             representing gravity, and a velocity we'll use to move the character.
             
-            @Image(source: fix-me.png)
+            @Image(source: 03-02.script-template-empty.png)
         }
         @Steps {
             @Step {
@@ -35,7 +35,7 @@
                 > Tip: Picking *Empty* ensures the script only contains the
                 > `extends` line we need. The default template would add `func
                 > _ready()` and `func _process()` stubs that we'd just delete.
-                @Image(source: fix-me.png)
+                @Image(source: 03-03.attach-script-dialog.png)
             }
             Before creating the script, let's create a folder to help with organization.
             @Step {
@@ -43,7 +43,7 @@
                 
                 In the new window, press the three dots in the top right, press **Folders** and then **res://**.
                 
-                @Image(source: fix-me.png)
+                @Image(source: 03-04.folder-navigation-dialog.png)
             }
             @Step {
                 Next  press the three dots again and tap **Create Folder**.
@@ -52,7 +52,7 @@
                 Then tap the newly created folder to select it and 
                 press **Select** in the upper right.
                 
-                @Image(source: fix-me.png)
+                @Image(source: 03-05.create-scripts-folder.png)
             }
             
             @Step {
@@ -91,7 +91,7 @@
             > `_physics_process()`, see
             > [Idle and Physics Processing](https://docs.godotengine.org/en/stable/tutorials/scripting/idle%5Fand%5Fphysics%5Fprocessing.html#doc-idle-and-physics-processing).
 
-            @Image(source: fix-me.png)
+            @Image(source: 03-06.physics-process-concept.png)
         }
         @Steps {
             @Step {
@@ -187,7 +187,7 @@
             in 2D, in 3D, you won't see anything if your viewport doesn't have a
             camera pointing at something.
 
-            @Image(source: fix-me.png)
+            @Image(source: 03-07.testing-player-concept.png)
         }
         @Steps {
             @Step {
@@ -197,7 +197,7 @@
                 If you closed the scene before, head to the _File Tree_ and
                 double-tap `main.tscn` to re-open it.
 
-                @Image(source: 02.clicking_main_tab.webp)
+                @Image(source: 03-08.clicking-main-tab.png)
             }
             @Step {
                 To instantiate the `Player`, press the **Chain** icon next to the **Add Node** icon.
@@ -205,7 +205,7 @@
                 In the popup, double-tap `player.tscn`. The character should
                 appear in the center of the viewport.
 
-                @Image(source: 03.instance_child_scene.webp)
+                @Image(source: 03-09.instance-player-scene.png)
             }
             @Step {
                 Let's add the camera next. Like we did with our _Player_'s
@@ -217,7 +217,7 @@
                 [Camera3D](https://docs.godotengine.org/en/stable/classes/class%5Fcamera3d.html#class-camera3d)
                 child. Your scene tree should look similar to this.
 
-                @Image(source: 04.scene_tree_with_camera.webp)
+                @Image(source: 03-10.scene-tree-with-camera.png)
             }
             @Step {
                 Notice the _Preview_ icon that appears in the top-left of
@@ -226,7 +226,7 @@
                 
                 The icon acts a check-box, you can press it again to go back to the perspective view.`
 
-                @Image(source: 05.camera_preview_checkbox.webp)
+                @Image(source: 03-11.camera-preview-checkbox.png)
             }
             We're going to use the _Pivot_ to rotate the camera as if it was
             on a crane. Let's first split the 3D view to be able to freely
@@ -236,28 +236,28 @@
                 In the 3D editor toolbar above the viewport, tap the **Settings** (Cog icon)
                 menu, then change viewports from _Single_ to _Stacked_.
 
-                @Image(source: 12.viewport_change.webp)
+                @Image(source: 03-12.viewport-split-stacked.png)
             }
             @Step {
                 On the bottom view, select your
                 [Camera3D](https://docs.godotengine.org/en/stable/classes/class%5Fcamera3d.html#class-camera3d)
                 and turn on camera Preview by tapping the checkbox.
 
-                @Image(source: 06.two_viewports.webp)
+                @Image(source: 03-13.two-viewports-active.png)
             }
             @Step {
                 In the top view, make sure your _Camera3D_ is selected and
                 move the camera about `19` units on the Z axis (drag the blue
                 arrow).
 
-                @Image(source: 07.camera_preview_checkbox.webp)
+                @Image(source: 03-14.camera-moved-z-19.png)
             }
             @Step {
                 Select the _CameraPivot_ and rotate it `-45` degrees around
                 the X axis (using the red circle). You'll see the camera move
                 as if it was attached to a crane.
 
-                @Image(source: 08.camera_moved.png)
+                @Image(source: 03-15.camera-pivot-rotated-45.png)
             }
             @Step {
                 Run the scene by tapping the **Run Project** button in the
@@ -267,7 +267,7 @@
                 > Tip: If you have an external keyboard attached, you can also
                 > try the WASD keys in addition to the arrow keys.
 
-                @Image(source: 09.camera_rotated.png)
+                @Image(source: 03-16.game-running-perspective.png)
             }
             We can see some empty space around the character due to the
             perspective projection. In this game, we're going to use an
@@ -292,12 +292,12 @@
                 > lower value such as `100`. Don't decrease this _Far_ property
                 > too much, or objects in the distance will start disappearing.
 
-                @Image(source: 13.camera3d_values.webp)
+                @Image(source: 03-17.camera-orthogonal-settings.png)
             }
             Test your scene and you should be able to move in all 8 directions
             and not glitch through the floor!
 
-            @Image(source: 10.camera_perspective.png)
+            @Image(source: 03-18.game-orthogonal-view.png)
 
             Ultimately, we have both player movement and the view in place.
             Next, we will work on the monsters.
