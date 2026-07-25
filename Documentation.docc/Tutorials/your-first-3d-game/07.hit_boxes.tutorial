@@ -179,7 +179,7 @@
                 squashes the mob if the entering body is falling —
                 `body.velocity.y < 0` — which means a player landing on top.
 
-                @Code(name: "mob.gd", file: mob-05.gd, previousFile: mob-04.gd)
+                @Code(name: "mob.gd", file: mob-3d-05.gd, previousFile: mob-3d-04.gd)
             }
             @Step {
                 Now open the `player.gd` script. We'll add the
@@ -189,7 +189,7 @@
                 mob — it gives the player an upward impulse so they bounce
                 off the snake's head.
 
-                @Code(name: "player.gd", file: player-09.gd, previousFile: player-08.gd)
+                @Code(name: "player.gd", file: player-3d-09.gd, previousFile: player-3d-08.gd)
             }
             @Step {
                 Finally, open the `main.gd` script. We connect the mob's
@@ -197,7 +197,7 @@
                 that calls `by.bounce()` if the squasher has a `bounce`
                 method.
 
-                @Code(name: "main.gd", file: main-03.gd, previousFile: main-02.gd)
+                @Code(name: "main.gd", file: main-3d-03.gd, previousFile: main-3d-02.gd)
             }
             You can now run the game by tapping the **Run Project** button in
             the toolbar. Jump on a snake to squash it and bounce off it. The
@@ -216,17 +216,17 @@
             @Step {
                 Starting with `mob.gd`.
 
-                @Code(name: "mob.gd", file: mob-05.gd, reset: true)
+                @Code(name: "mob.gd", file: mob-3d-05.gd, reset: true)
             }
             @Step {
                 Next is `player.gd`.
 
-                @Code(name: "player.gd", file: player-09.gd, reset: true)
+                @Code(name: "player.gd", file: player-3d-09.gd, reset: true)
             }
             @Step {
                 Finally, the `main.gd` script.
 
-                @Code(name: "main.gd", file: main-03.gd, reset: true)
+                @Code(name: "main.gd", file: main-3d-03.gd, reset: true)
             }
             In the next lesson, we'll add the hurt box so the player can
             die — and make jumping over a snake a safe strategy.

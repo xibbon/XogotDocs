@@ -24,7 +24,7 @@
                 applies the jump impulse when the player is on the
                 floor and just pressed the "jump" action.
 
-                @Code(name: "player.gd", file: player-07.gd, previousFile: player-06.gd)
+                @Code(name: "player.gd", file: player-3d-07.gd, previousFile: player-3d-06.gd)
             }
             That's all you need to jump!
 
@@ -80,7 +80,7 @@
                 on a successful jump prevents double-jumping off the
                 coyote window.
 
-                @Code(name: "player.gd", file: player-08.gd, previousFile: player-07.gd)
+                @Code(name: "player.gd", file: player-3d-08.gd, previousFile: player-3d-07.gd)
             }
             Try the game. Walk off the edge of the ground and press jump
             just after leaving — you'll still jump. Jump a hair too

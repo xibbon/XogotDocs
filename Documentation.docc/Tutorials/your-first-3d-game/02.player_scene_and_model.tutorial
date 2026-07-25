@@ -99,7 +99,7 @@
             @Step {
                 Make the box a bit larger by dragging the orange dot in the
                 viewport or editing the shape size property in the **Inspector**. 
-                We want it to have a size of 1.2 on the `x-axis`, 1.0 on the `y-axis` and 2.2 on the `z-axis`.
+                We want it to have a size of 1.2 on the `x-axis`, 1.0 on the `y-axis` and 2.6 on the `z-axis`.
 
                 @Image(source: sphere_shape.png)
             }
@@ -137,7 +137,17 @@
             @Step {
                 In the _File Tree_, locate `art/player_axolotl.glb`.
                 
-                Tap the file to select it, and in the inspector press the **Open Scene** button.
+                First, double click the file to open the import settings pane.
+                @Image(source: fix-me.png)
+            }
+            @Step {
+                Then open the tree for the `Animation Player` and select `Idle`. Inside the settings, in the **Inspector** set the `Loop Mode` to `Linear`.
+                
+                Do the same for `Run`, then press **ReImport**
+                @Image(source: fix-me.png)
+            }
+            @Step {
+                Now, tap the file `player_axolotl.glb` once to select it, and in the inspector press the **Open Scene** button.
 
                 @Image(source: fix-me.png, alt: "Long-press the glb file and choose New Inherited Scene")
             }
@@ -219,19 +229,13 @@
                 @Image(source: fix-me.png, alt: "Select the AnimationPlayer inside the Armature")
             }
             @Step {
-                In the _Inspector_, find the _Autoplay_ property and enter
-                `Idle`. This tells the AnimationPlayer to start playing the
+                Open the **Animation** drawer, press the `A` icon next to the animation you want to turn autoplay on for. We will do this for `Idle`. This tells the AnimationPlayer to start playing the
                 `Idle` animation as soon as the scene loads.
-
-                > Note: The autoplay name must exactly match an animation
-                > that exists in the player. If the model's idle animation
-                > has a different name in your project, use that name
-                > instead.
 
                 @Image(source: fix-me.png, alt: "Set the Autoplay property to Idle")
             }
             @Step {
-                Save the `player_axolotl.tscn` scene. The wrapper is ready.
+                Save the `player_axolotl.tscn` scene.
 
                 We'll use the exact same pattern — inherit the `.glb`, scale
                 the armature, rotate 180° on Y, set autoplay — for the mob
@@ -248,9 +252,8 @@
         }
         @Steps {
             @Step {
-                Open `player.tscn`. With the `Pivot` node selected, instantiate
-                a child scene by long-pressing it and choosing _Instantiate Child
-                Scene_. In the popup, pick `player_axolotl.tscn`.
+                Open `player.tscn`. In the _File Tree_ long press and drag `player_axolotl.tscn` 
+                onto the `Pivot` node.
 
                 @Image(source: fix-me.png, alt: "Instantiate player_axolotl.tscn under Pivot")
             }
@@ -279,15 +282,8 @@
         }
         @Steps {
             @Step {
-                Select the `CollisionShape3D` node. In the _Inspector_, expand
-                the _BoxShape3D_ resource and set its _Size_ to roughly `1.1`
-                on X, `1.2` on Y, and `2.6` on Z.
-
-                @Image(source: fix-me.png, alt: "Set the box size to fit the axolotl body")
-            }
-            @Step {
                 Move the `CollisionShape3D` up so the box's bottom aligns with
-                the ground grid, and shift it slightly forward in -Z so it
+                the ground grid if it doesn't already, and shift it slightly forward in -Z so it
                 covers the body. You can drag the gizmo in the viewport or
                 enter values directly in the _Transform_ section.
 
@@ -297,9 +293,7 @@
                 @Image(source: fix-me.png, alt: "Position the box so it wraps the axolotl body")
             }
             @Step {
-                Save the scene and run it by tapping **Run Project** in the
-                toolbar. The axolotl should appear in the viewport, idling on
-                the spot.
+                Save the scene.
 
                 In the next lesson, we'll code the player's movement.
             }

@@ -211,7 +211,7 @@
                 a random speed range, which we will later use to define
                 `CharacterBody3D.velocity`.
 
-                @Code(name: "mob.gd", file: mob-00.gd, reset: true)
+                @Code(name: "mob.gd", file: mob-3d-00.gd, reset: true)
             }
             @Step {
                 Add a `_physics_process` function that calls `move_and_slide()`.
@@ -221,7 +221,7 @@
                 to move at a constant speed and leave the screen, even if it
                 were to hit an obstacle.
 
-                @Code(name: "mob.gd", file: mob-01.gd, previousFile: mob-00.gd)
+                @Code(name: "mob.gd", file: mob-3d-01.gd, previousFile: mob-3d-00.gd)
             }
             We need to define another function to calculate the
             `CharacterBody3D.velocity`. This function will turn the monster
@@ -236,7 +236,7 @@
                 axis. Below, `randf_range()` outputs a random value between
                 `-PI / 4` radians and `PI / 4` radians.
 
-                @Code(name: "mob.gd", file: mob-02.gd, previousFile: mob-01.gd)
+                @Code(name: "mob.gd", file: mob-3d-02.gd, previousFile: mob-3d-01.gd)
             }
             We got a random position, now we need a `random_speed`.
             `randi_range()` will be useful as it gives random int values, and
@@ -250,7 +250,7 @@
                 vector based on the mob's Y rotation in order to move in the
                 direction the mob is looking.
 
-                @Code(name: "mob.gd", file: mob-03.gd, previousFile: mob-02.gd)
+                @Code(name: "mob.gd", file: mob-3d-03.gd, previousFile: mob-3d-02.gd)
             }
         }
     }
@@ -292,7 +292,7 @@
                 The connected handler calls `queue_free()` to free the node
                 when it leaves the screen.
 
-                @Code(name: "mob.gd", file: mob-04.gd, previousFile: mob-03.gd)
+                @Code(name: "mob.gd", file: mob-3d-04.gd, previousFile: mob-3d-03.gd)
             }
             Our monster is ready to enter the game! In the next part, you
             will spawn monsters in the game level.

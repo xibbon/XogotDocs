@@ -68,7 +68,7 @@
                 `die` method, and again if the body is in the air — so a
                 player jumping over the snake is untouched.
 
-                @Code(name: "mob.gd", file: mob-06.gd, previousFile: mob-05.gd)
+                @Code(name: "mob.gd", file: mob-3d-06.gd, previousFile: mob-05.gd)
             }
         }
     }
@@ -86,7 +86,7 @@
                 Open the `player.gd` script. We add the `hit` signal and
                 the `die()` function.
 
-                @Code(name: "player.gd", file: player-10.gd, previousFile: player-09.gd)
+                @Code(name: "player.gd", file: player-3d-10.gd, previousFile: player-09.gd)
             }
         }
     }
@@ -109,7 +109,7 @@
                 In the `_on_player_hit()` function that was just added, stop
                 the `MobTimer`.
 
-                @Code(name: "main.gd", file: main-04.gd, previousFile: main-03.gd)
+                @Code(name: "main.gd", file: main-3d-04.gd, previousFile: main-03.gd)
             }
             If you try the game now, running into a snake on the ground
             kills the player and the monsters stop spawning, while the
@@ -141,17 +141,17 @@
             @Step {
                 Starting with `mob.gd`.
 
-                @Code(name: "mob.gd", file: mob-06.gd, reset: true)
+                @Code(name: "mob.gd", file: mob-3d-06.gd, reset: true)
             }
             @Step {
                 Next is `player.gd`.
 
-                @Code(name: "player.gd", file: player-10.gd, reset: true)
+                @Code(name: "player.gd", file: player-3d-10.gd, reset: true)
             }
             @Step {
                 Finally, the `main.gd` script.
 
-                @Code(name: "main.gd", file: main-04.gd, reset: true)
+                @Code(name: "main.gd", file: main-3d-04.gd, reset: true)
             }
             In the next lesson, we'll add the score and the option to
             retry the game.

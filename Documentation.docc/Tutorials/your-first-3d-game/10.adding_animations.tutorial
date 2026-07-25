@@ -100,7 +100,7 @@
                 switches the skeleton back to `Idle` so the run cycle
                 doesn't keep playing in the air.
 
-                @Code(name: "player.gd", file: player-11.gd, previousFile: player-10.gd)
+                @Code(name: "player.gd", file: player-3d-11.gd, previousFile: player-3d-10.gd)
             }
             And with that, you finished coding your first complete 3D
             game.
@@ -111,7 +111,7 @@
             against it.
 
             @Step {
-                @Code(name: "player.gd", file: player-11.gd, reset: true)
+                @Code(name: "player.gd", file: player-3d-11.gd, reset: true)
             }
         }
     }
@@ -216,123 +216,31 @@
                 the mob's movement speed onto that range. We call it at
                 the end of `initialize()`.
 
-                @Code(name: "mob.gd", file: mob-07.gd, previousFile: mob-06.gd)
+                @Code(name: "mob.gd", file: mob-3d-07.gd, previousFile: mob-3d-06.gd)
             }
             @Step {
                 Here is the complete `mob.gd` for reference.
 
-                @Code(name: "mob.gd", file: mob-07.gd, reset: true)
+                @Code(name: "mob.gd", file: mob-3d-07.gd, reset: true)
             }
         }
     }
-    @Section(title: "Adding a custom on-screen joystick") {
+    @Section(title: "Finishing the on-screen joystick") {
         @ContentAndMedia {
-            On iPhone and iPad, the player needs on-screen controls. Let's
-            add a customizable on-screen joystick add-on.
-
-            The add-on we'll use is
-            [*Virtual Joystick*](https://github.com/MarcoFazioRandom/Virtual-Joystick-Godot)
-            by Marco Fazio. It's an open-source add-on that gives you a
-            full touch thumbstick on screen and lets you wire it to any
-            input action.
-
-            > Note: Because this game is built for iOS, the on-screen joystick
-            > is required to play without an external keyboard or gamepad. You
-            > should still keep the keyboard and gamepad bindings we set up
-            > earlier — they work alongside the joystick.
-
-            > Tip: There are lots of other add-ons for Xogot, with more
-            > being added all the time. Trying out the available add-ons
-            > is a great way to learn Xogot.
+            Earlier in the tutorial, we added an on-screen joystick for
+            touch controls. Now we need to complete the setup by hiding
+            the joystick when the player dies, so it doesn't get in the
+            way of the retry overlay.
 
             @Image(source: fix-me.png)
         }
         @Steps {
             @Step {
-                Tap on the dropdown next to the **scope icon** (1) and
-                access the **Asset Library** (2).
-
-                @Image(source: fin-asset-library-menu.png)
-            }
-            @Step {
-                Find or search for **Virtual Joystick** (3) and once
-                selected, tap **Import** (4).
-
-                @Image(source: fin-asset-library-browser.png)
-            }
-            @Step {
-                Exit the **Asset Library**. You should now have an
-                `addons/` folder in your project. Inside you'll find the
-                `virtual_joystick/` folder containing its scene.
-
-                > Tip: You can also find example implementations inside
-                > the add-on's `test/` folder if you'd like to dive
-                > deeper.
-
-                @Image(source: fin-assets.png)
-            }
-            In the `main.tscn` scene we'll set up a UI layer to host the
-            joystick.
-
-            @Step {
-                With the `Main` node selected, add a
-                [CanvasLayer](https://docs.godotengine.org/en/stable/classes/class_canvaslayer.html#class-canvaslayer)
-                child node and rename it to `UI`.
-
-                @Image(source: fin-rename-ui.png)
-            }
-            @Step {
-                With the new `UI` node selected, instantiate a child
-                scene (1) and pick the Virtual Joystick scene:
-                `virtual_joystick_scene.tscn` (2).
-
-                Rename the instantiated node to `Virtual Joystick Left`.
-
-                @Image(source: fin-instantiate.png)
-            }
-            @Step {
-                Select the joystick node and in the *Inspector* set the
-                **Joystick Mode** to `Following` (1) and the **Visibility
-                Mode** to `When Touched` (2).
-
-                `Following` means the joystick appears wherever the
-                player first touches, so it doesn't get in the way of
-                the rest of the UI.
-
-                @Image(source: fin-joystick-settings.png)
-            }
-            @Step {
-                Still in the *Inspector*, change `action_left` through
-                to `action_down` so they equal the names of the custom
-                input actions we added in the Input Map: `move_left`,
-                `move_right`, `move_forward`, and `move_back`.
-
-                > Important: Make sure you keep track of capitalization
-                > as these variable names are case-sensitive. They must
-                > match the action names exactly.
-
-                @Image(source: fin-actions.png)
-            }
-            @Step {
-                With the `Virtual Joystick Left` node still selected,
-                open the anchor controls (1) and set the anchor mode to
-                `Full Rect` (2).
-
-                This makes the joystick follow the player's touch
-                anywhere on the left half of the screen.
-
-                @Image(source: fin-full-rect.png)
-            }
-            We need to make sure the joystick is hidden when the player
-            dies, otherwise it would still be visible while the retry
-            overlay is shown.
-
-            @Step {
                 Open the script `main.gd`. In `_on_player_hit()`, add
                 `$UI.hide()` to hide the joystick at the same time as
                 the retry overlay appears.
 
-                @Code(name: "main.gd", file: main-09.gd, previousFile: main-08.gd)
+                @Code(name: "main.gd", file: main-3d-09.gd, previousFile: main-3d-08.gd)
             }
             The retry mechanism in `_unhandled_input()` reloads the
             current scene, so the joystick will automatically reappear
@@ -344,14 +252,10 @@
             rest of the input (jump, etc.) is already wired to the on-screen
             controls or an external keyboard/gamepad.
 
-            > Tip: The add-on also exposes a `Virtual Joystick Right`
-            > scene if you want to add a second stick for things like
-            > camera control. The setup is the same.
-
             Here is the complete `main.gd` for reference.
 
             @Step {
-                @Code(name: "main.gd", file: main-09.gd, reset: true)
+                @Code(name: "main.gd", file: main-3d-09.gd, reset: true)
             }
         }
     }

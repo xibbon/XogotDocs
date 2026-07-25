@@ -4,7 +4,7 @@
         game with Xogot. By the end of the series, you will have a simple yet finished
         project of your own like the animated gif below.
 
-        @Image(source: squash-the-creeps-final.gif, alt: "Animated gif of Save the Axolotl: Snake Stomp running")
+        @Image(source: index-01.game-preview-animation.gif, alt: "Animated gif of Save the Axolotl: Snake Stomp running")
 
         The game we'll code here is **Save the Axolotl: Snake Stomp**. It's
         similar to [Your first 2D game](https://docs.xogot.com/documentation/tutorials/your-first-2d-game),
@@ -63,7 +63,7 @@
             - [Character animation](doc:10.adding_animations)
             - [Going further](doc:going_further)
 
-            @Image(source: fix-me.png)
+            @Image(source: index-02.tutorial-overview.png)
         }
         @Steps {
         }

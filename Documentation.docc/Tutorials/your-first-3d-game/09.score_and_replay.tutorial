@@ -145,12 +145,12 @@
             @Step {
                 Attach a new script to the `ScoreLabel`.
 
-                @Code(name: "score_label.gd", file: score_label-00.gd, reset: true)
+                @Code(name: "score_label.gd", file: score_label-3d-00.gd, reset: true)
             }
             @Step {
                 Define the `score` variable.
 
-                @Code(name: "score_label.gd", file: score_label-01.gd, previousFile: score_label-00.gd)
+                @Code(name: "score_label.gd", file: score_label-3d-01.gd, previousFile: score_label-3d-00.gd)
             }
             @Step {
                 Open the script `main.gd`. If it's still open, you can tap
@@ -163,7 +163,7 @@
                 the line that connects the mob's `squashed` signal to the
                 `ScoreLabel`'s callback.
 
-                @Code(name: "main.gd", file: main-05.gd, previousFile: main-04.gd)
+                @Code(name: "main.gd", file: main-3d-05.gd, previousFile: main-04.gd)
             }
             This line means that when the mob emits the `squashed` signal,
             the `ScoreLabel` node will receive it and call the function
@@ -174,7 +174,7 @@
                 `_on_mob_squashed()` callback function. There, we increment
                 the score and update the displayed text.
 
-                @Code(name: "score_label.gd", file: score_label-02.gd, previousFile: score_label-01.gd)
+                @Code(name: "score_label.gd", file: score_label-3d-02.gd, previousFile: score_label-3d-01.gd)
             }
             @Step {
                 You can now play the game and squash a few enemies to see
@@ -263,12 +263,12 @@
                 overlay at the start of the game. Add this line to the
                 `_ready()` function.
 
-                @Code(name: "main.gd", file: main-06.gd, previousFile: main-05.gd)
+                @Code(name: "main.gd", file: main-3d-06.gd, previousFile: main-3d-05.gd)
             }
             @Step {
                 Then, when the player gets hit, we show the overlay.
 
-                @Code(name: "main.gd", file: main-07.gd, previousFile: main-06.gd)
+                @Code(name: "main.gd", file: main-3d-07.gd, previousFile: main-3d-06.gd)
             }
             @Step {
                 Finally, when the `Retry` node is visible, we need to
@@ -285,7 +285,7 @@
                 > and gamepad A by default, so we don't need to add it to
                 > our Input Map.
 
-                @Code(name: "main.gd", file: main-08.gd, previousFile: main-07.gd)
+                @Code(name: "main.gd", file: main-3d-08.gd, previousFile: main-3d-07.gd)
             }
             The function `get_tree()` gives us access to the global
             [SceneTree](https://docs.godotengine.org/en/stable/classes/class%5Fscenetree.html#class-scenetree)
@@ -385,7 +385,7 @@
             Here is the complete `main.gd` script for reference.
 
             @Step {
-                @Code(name: "main.gd", file: main-08.gd, reset: true)
+                @Code(name: "main.gd", file: main-3d-08.gd, reset: true)
             }
         }
     }

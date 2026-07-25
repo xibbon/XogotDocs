@@ -22,31 +22,46 @@
             We'll start by adding an empty script to the `Player` node. We'll then
             define the class's properties: a movement speed, a fall acceleration
             representing gravity, and a velocity we'll use to move the character.
-
-            The `target_velocity` is a
-            [3D vector](https://docs.godotengine.org/en/stable/classes/class%5Fvector3.html#class-vector3)
-            combining a speed with a direction. Here, we define it as a property
-            because we want to update and reuse its value across frames.
-
-            > Note: The values are quite different from 2D code because distances are
-            > in meters. While in 2D, a thousand units (pixels) may only correspond
-            > to half of your screen's width, in 3D, it's a kilometer.
-
+            
             @Image(source: fix-me.png)
         }
         @Steps {
             @Step {
                 Long-press the `Player` node and select *Attach Script* to add a new
-                script to it. In the popup, set the *Template* to *Empty* before
-                tapping the *Create* button. We set it to *Empty* because we want
+                script to it. In the popup, set the *Template* to *Empty*.
+                We set it to *Empty* because we want
                 to write our own code for player movement.
 
                 > Tip: Picking *Empty* ensures the script only contains the
                 > `extends` line we need. The default template would add `func
                 > _ready()` and `func _process()` stubs that we'd just delete.
-
-                @Code(name: "player.gd", file: player-00.gd, reset: true)
+                @Image(source: fix-me.png)
             }
+            Before creating the script, let's create a folder to help with organization.
+            @Step {
+                Tap the *folder* icone next to `res://scenes/player.gd`
+                
+                In the new window, press the three dots in the top right, press **Folders** and then **res://**.
+                
+                @Image(source: fix-me.png)
+            }
+            @Step {
+                Next  press the three dots again and tap **Create Folder**.
+                
+                Name this folder `scripts` and press **Okay**. 
+                Then tap the newly created folder to select it and 
+                press **Select** in the upper right.
+                
+                @Image(source: fix-me.png)
+            }
+            
+            @Step {
+                Now that we've picked our folder, press **Create**.
+                
+                Our newly created script will open.
+                @Code(name: "player.gd", file: player-3d-00.gd, reset: true)
+            }
+            
             @Step {
                 Add the following properties to the top of the script. They define
                 the player's movement speed, a fall acceleration representing
@@ -57,8 +72,9 @@
                 > may only correspond to half of your screen's width, in 3D it's
                 > a kilometer.
 
-                @Code(name: "player.gd", file: player-01.gd, previousFile: player-00.gd)
+                @Code(name: "player.gd", file: player-3d-01.gd, previousFile: player-3d-00.gd)
             }
+            We use `@export` to add variables to the **Inspector** when selecting the node a script is linked to. It allows you to edit those values and test different speeds.+
         }
     }
     @Section(title: "Coding the movement") {
@@ -91,10 +107,14 @@
                 > the Y component in this section; gravity will be applied to it
                 > in a later step.
 
-                @Code(name: "player.gd", file: player-02.gd, previousFile: player-01.gd)
+                @Code(name: "player.gd", file: player-3d-02.gd, previousFile: player-3d-01.gd)
             }
-            In case the player presses, say, both W and D simultaneously, the
-            vector will have a length of about `1.4`. But if they press a single
+            > You might notice that we placed two new lines before the function declaration. 
+            This is best practice in GDScript and helps improve readability.
+            
+            We can't end here though because you may notice that in cases where the player presses, 
+            say, both W and D simultaneously, the vector will have a length of about `1.4`. 
+            But if they press a single
             key, it will have a length of `1`. We want the vector's length to be
             consistent, and not move faster diagonally.
 
@@ -104,7 +124,8 @@
             > stays the same in every direction.
 
             @Step {
-                Call the vector's `normalized()` method to keep the length
+                First we check if the player is pressing a key and then
+                we can call the vector's `normalized()` method to keep the length
                 consistent. We only normalize the vector if the direction has a
                 length greater than zero, which means the player is pressing a
                 direction key.
@@ -113,7 +134,7 @@
                 [Basis](https://docs.godotengine.org/en/stable/classes/class%5Fbasis.html#class-basis)
                 that looks in the `direction` direction.
 
-                @Code(name: "player.gd", file: player-03.gd, previousFile: player-02.gd)
+                @Code(name: "player.gd", file: player-3d-03.gd, previousFile: player-3d-02.gd)
             }
             Then, we update the velocity. We have to calculate the ground
             velocity and the fall speed separately. Be sure to go back one tab
@@ -124,7 +145,7 @@
                 Calculate the ground velocity by multiplying the direction's
                 horizontal components by `speed`.
 
-                @Code(name: "player.gd", file: player-04.gd, previousFile: player-03.gd)
+                @Code(name: "player.gd", file: player-3d-04.gd, previousFile: player-3d-03.gd)
             }
             @Step {
                 The `CharacterBody3D.is_on_floor()` function returns `true` if
@@ -137,7 +158,7 @@
                 > it is in the air. Without this guard, the character would
                 > keep accelerating downward and clip through the floor.
 
-                @Code(name: "player.gd", file: player-05.gd, previousFile: player-04.gd)
+                @Code(name: "player.gd", file: player-3d-05.gd, previousFile: player-3d-04.gd)
             }
             The physics engine can only detect interactions with walls, the
             floor, or other bodies during a given frame if movement and
@@ -150,9 +171,10 @@
                 allows you to move a character smoothly. If it hits a wall
                 midway through a motion, the engine will try to smooth it out
                 for you. It uses the _velocity_ value native to the
-                [CharacterBody3D](https://docs.godotengine.org/en/stable/classes/class%5Fcharacterbody3d.html#class-characterbody3d).
+                [CharacterBody3D](https://docs.godotengine.org/en/stable/classes/class%5Fcharacterbody3d.html#class-characterbody3d). Which is why we set the node's velocity 
+                parameter to our target. This must be done before `move_and_slide()`.
 
-                @Code(name: "player.gd", file: player-06.gd, previousFile: player-05.gd)
+                @Code(name: "player.gd", file: player-3d-06.gd, previousFile: player-3d-05.gd)
             }
             And that's all the code you need to move the character on the floor.
         }
@@ -168,17 +190,16 @@
         }
         @Steps {
             @Step {
-                Save your `Player` scene and open the `Main` scene. You can tap
-                on the _Main_ tab at the top of the editor to do so.
+                Save your `Player` scene. Switch back to 3D view and then you can tap
+                on the _Main_ tab at the top of the editor to switch to it.
 
-                If you closed the scene before, head to the _File Pad_ and
+                If you closed the scene before, head to the _File Tree_ and
                 double-tap `main.tscn` to re-open it.
 
                 @Image(source: 02.clicking_main_tab.webp)
             }
             @Step {
-                To instantiate the `Player`, long-press the `Main` node and
-                select _Instantiate Child Scene_.
+                To instantiate the `Player`, press the **Chain** icon next to the **Add Node** icon.
 
                 In the popup, double-tap `player.tscn`. The character should
                 appear in the center of the viewport.
@@ -198,9 +219,11 @@
                 @Image(source: 04.scene_tree_with_camera.webp)
             }
             @Step {
-                Notice the _Preview_ checkbox that appears in the top-left of
+                Notice the _Preview_ icon that appears in the top-left of
                 the 3D view when you have the _Camera_ selected. You can tap it
-                to preview the in-game camera projection.
+                to preview the in-game camera projection. 
+                
+                The icon acts a check-box, you can press it again to go back to the perspective view.`
 
                 @Image(source: 05.camera_preview_checkbox.webp)
             }
@@ -209,8 +232,8 @@
             navigate the scene and see what the camera sees.
 
             @Step {
-                In the 3D editor toolbar above the viewport, tap the **View**
-                menu, then choose _2 Viewports_.
+                In the 3D editor toolbar above the viewport, tap the **Settings** (Cog icon)
+                menu, then change viewports from _Single_ to _Stacked_.
 
                 @Image(source: 12.viewport_change.webp)
             }

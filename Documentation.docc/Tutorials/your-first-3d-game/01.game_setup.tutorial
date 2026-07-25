@@ -5,8 +5,7 @@
         and setting up the game scene.
 
         We've prepared a starter project with the 3D models and sounds we'll use for this
-        tutorial, linked in the index page. If you haven't done so yet, you can download
-        the archive here:
+        tutorial. You can download the archive here:
         [Save the Axolotl: Snake Stomp assets](https://github.com/godotengine/godot-docs-project-starters/releases/download/latest-4.x/3d%5Fsquash%5Fthe%5Fcreeps%5Fstarter.zip).
     }
     @Section(title: "Importing the start assets") {
@@ -320,7 +319,171 @@
 
                 @Image(source: jump_input_action.webp)
             }
-            That's all the actions we need for this game. In the next part,
+            That's all the actions we need for this game. Now let's add
+            on-screen controls so you can play the game on your iPhone or iPad.
+        }
+    }
+    @Section(title: "Adding on-screen controls") {
+        @ContentAndMedia {
+            On iPhone and iPad, the player needs on-screen controls. Let's
+            add a customizable on-screen joystick add-on that will work with
+            the input actions we just created.
+
+            The add-on we'll use is
+            [*Virtual Joystick*](https://github.com/MarcoFazioRandom/Virtual-Joystick-Godot)
+            by Marco Fazio. It's an open-source add-on that gives you a
+            full touch thumbstick on screen and lets you wire it to any
+            input action.
+
+            > Note: Because this game is built for iOS, the on-screen joystick
+            > is required to play without an external keyboard or gamepad. You
+            > should still keep the keyboard and gamepad bindings we just set up
+            > — they work alongside the joystick.
+
+            > Tip: There are lots of other add-ons for Xogot, with more
+            > being added all the time. Trying out the available add-ons
+            > is a great way to learn Xogot.
+
+            @Image(source: fix-me.png)
+        }
+        @Steps {
+            @Step {
+                Tap on the menu to the left of the **Inspector icon** and
+                access the **Asset Library**.
+
+                @Image(source: fin-asset-library-menu.png)
+            }
+            @Step {
+                Find or search for **Virtual Joystick** and once
+                selected, tap **Get** and then **Import**
+
+                @Image(source: fin-asset-library-browser.png)
+            }
+            @Step {
+                Exit the **Asset Library**. You should now have an
+                `addons/` folder in your project. Inside you'll find the
+                `virtual_joystick/` folder containing its scene.
+
+                > Tip: You can also find example implementations inside
+                > the add-on's `test/` folder if you'd like to dive
+                > deeper.
+
+                @Image(source: fin-assets.png)
+            }
+            Now we'll add the joystick to the `main.tscn` scene we created
+            earlier. We'll set up a UI layer to host the joystick.
+
+            @Step {
+                With the `Main` node selected, add a
+                [CanvasLayer](https://docs.godotengine.org/en/stable/classes/class_canvaslayer.html#class-canvaslayer)
+                child node and rename it to `UI`.
+
+                @Image(source: fin-rename-ui.png)
+            }
+            @Step {
+                With the new `UI` node selected, instantiate a child
+                scene by tapping the _Chain_ icon and pick the Virtual Joystick scene:
+                `virtual_joystick_scene.tscn`.
+
+                Rename the instantiated node to `Virtual Joystick Left`.
+
+                @Image(source: fin-instantiate.png)
+            }
+            @Step {
+                Select the joystick node and in the *Inspector* set the
+                **Joystick Mode** to `Following` and the **Visibility
+                Mode** to `When Touched`.
+
+                `Following` means the joystick appears wherever the
+                player first touches, so it doesn't get in the way of
+                the rest of the UI.
+
+                @Image(source: fin-joystick-settings.png)
+            }
+            @Step {
+                Still in the *Inspector*, change `action_left` through
+                to `action_down` so they equal the names of the custom
+                input actions we added in the Input Map: `move_left`,
+                `move_right`, `move_forward`, and `move_back`.
+
+                > Important: Make sure you keep track of capitalization
+                > as these variable names are case-sensitive. They must
+                > match the action names exactly.
+
+                @Image(source: fin-actions.png)
+            }
+            @Step {
+                With the `Virtual Joystick Left` node still selected,
+                open the anchor controls (1) and set the anchor mode to
+                `Full Rect` (2).
+
+                This makes the joystick follow the player's touch
+                anywhere on the left half of the screen.
+
+                @Image(source: fin-full-rect.png)
+            }
+            The joystick is now set up and will appear when you
+            touch the screen. Because we set the **Visibility Mode** to
+            `When Touched`, it won't be visible until you actually touch
+            the screen, keeping the game view clean.
+
+            > Tip: The add-on also exposes a `Virtual Joystick Right`
+            > scene if you want to add a second stick for things like
+            > camera control. The setup is the same.
+
+            Now we need to enable the built-in Virtual Controller for
+            additional buttons like jumping.
+        }
+    }
+    @Section(title: "Enabling the Virtual Controller") {
+        @ContentAndMedia {
+            The Virtual Joystick handles movement, but we also need a button
+            for jumping. Xogot includes a built-in Virtual Controller that
+            provides on-screen buttons for iOS. Let's enable it and configure
+            it to show only the jump button we need.
+
+            @Image(source: fix-me.png)
+        }
+        @Steps {
+            @Step {
+                Tap the **Menu** toolbar button in the upper-right corner
+                of Xogot and choose **Settings** to open the Project Settings
+                dialog.
+
+                In the Settings dialog, from the General menu, scroll down to the **Input Devices** section.
+
+                @Image(source: project_settings.webp)
+            }
+            @Step {
+                In the **Input Devices** section, find the **Virtual Controller**
+                settings. Turn **ON** the **Enable Controller** switch.
+
+                This enables the built-in virtual controller for iOS devices.
+
+                @Image(source: fix-me.png)
+            }
+            @Step {
+                Still in the **Virtual Controller** settings, make sure all
+                other switches are turned **OFF** except for **Enable Button A**.
+
+                We only need Button A for jumping. The Virtual Joystick
+                we added earlier will handle all the movement controls.
+
+                > Note: Button A will automatically trigger the `jump` input
+                > action we created earlier, since we mapped it to the gamepad's
+                > "Bottom Action" button.
+
+                @Image(source: fix-me.png)
+            }
+            Finally we need to disable one setting toggle to make the Joystick work well.
+            @Step {
+                In the **Pointing** page, set **Emulate Touch From Mouse** to **ON** and **Emulate Mouse From Touch** to **OFF**
+            }
+            Perfect! Later when you run the game on an iPhone or iPad, you'll
+            see both the Virtual Joystick for movement and an on-screen
+            Button A for jumping.
+
+            That's all the setup we need for now. In the next part,
             we'll build the player scene and import the player model.
         }
     }
