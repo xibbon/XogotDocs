@@ -18,7 +18,7 @@
             the scene tree and use a theme resource that will propagate to all
             its children. We'll use it to set our game's font.
 
-            @Image(source: fix-me.png)
+            @Image(source: 09-01.score-label-concept.png)
         }
         @Steps {
             @Step {
@@ -26,20 +26,20 @@
                 [Control](https://docs.godotengine.org/en/stable/classes/class%5Fcontrol.html#class-control)
                 to `Main` and name it `UserInterface`.
 
-                @Image(source: fix-me.png, alt: "The UserInterface Control node added to Main")
+                @Image(source: 09-02.add-user-interface-control.png, alt: "The UserInterface Control node added to Main")
             }
             @Step {
                 Add a
                 [Label](https://docs.godotengine.org/en/stable/classes/class%5Flabel.html#class-label)
                 node and name it `ScoreLabel`.
 
-                @Image(source: 01_label_node.webp)
+                @Image(source: 09-03.add-score-label.png)
             }
             @Step {
                 In the _Inspector_, set the _Label_'s _Text_ to a placeholder
                 like "Score: 0".
 
-                @Image(source: 02_score_placeholder.webp)
+                @Image(source: 09-04.score-placeholder-text.png)
             }
             @Step {
                 Also, the text is white by default, like our game's
@@ -54,13 +54,13 @@
                 > the layout, then dial it back to a more sensible color
                 > when you're done.
 
-                @Image(source: 03_score_font_color.webp)
+                @Image(source: 09-05.score-font-color-black.png)
             }
             @Step {
                 Finally, tap and drag on the text in the viewport to move it
                 away from the top-left corner.
 
-                @Image(source: 04_score_label_moved.webp)
+                @Image(source: 09-06.score-label-positioned.png)
             }
         }
     }
@@ -74,14 +74,14 @@
             > this series. To learn more about creating and editing themes, see
             > [Introduction to GUI skinning](https://docs.godotengine.org/en/stable/tutorials/ui/gui%5Fskinning.html#doc-gui-skinning).
 
-            @Image(source: fix-me.png)
+            @Image(source: 09-07.ui-theme-concept.png)
         }
         @Steps {
             @Step {
                 Once again, select the `UserInterface` node. In the
                 _Inspector_, create a new theme resource in _Theme -> Theme_.
 
-                @Image(source: 05_creating_theme.webp)
+                @Image(source: 09-08.create-theme-resource.png)
             }
             @Step {
                 Tap on it to open the theme editor in the bottom panel. It
@@ -91,7 +91,7 @@
                 By default, a theme only has a few properties: _Default Base
                 Scale_, _Default Font_ and _Default Font Size_.
 
-                @Image(source: 06_theme_preview.webp)
+                @Image(source: 09-09.theme-preview-panel.png)
             }
             @Step {
                 The _Default Font_ expects a font file like the ones you have
@@ -106,7 +106,7 @@
                 The text is a bit small. Set the _Default Font Size_ to `22`
                 pixels to increase the text's size.
 
-                @Image(source: 07_font_size.webp)
+                @Image(source: 09-10.font-montserrat-size-22.png)
             }
         }
     }
@@ -139,7 +139,7 @@
             > to keep your code simple. Programming is always a balancing
             > act.
 
-            @Image(source: fix-me.png)
+            @Image(source: 09-11.score-tracking-concept.png)
         }
         @Steps {
             @Step {
@@ -163,7 +163,7 @@
                 the line that connects the mob's `squashed` signal to the
                 `ScoreLabel`'s callback.
 
-                @Code(name: "main.gd", file: main-3d-05.gd, previousFile: main-04.gd)
+                @Code(name: "main.gd", file: main-3d-05.gd, previousFile: main-3d-04.gd)
             }
             This line means that when the mob emits the `squashed` signal,
             the `ScoreLabel` node will receive it and call the function
@@ -180,7 +180,7 @@
                 You can now play the game and squash a few enemies to see
                 the score increase.
 
-                @Image(source: 09_score_in_game.png)
+                @Image(source: 09-12.score-displayed-in-game.png)
             }
         }
     }
@@ -190,7 +190,7 @@
             player dies, we'll display a message on the screen and wait for
             input.
 
-            @Image(source: fix-me.png)
+            @Image(source: 09-13.retry-overlay-concept.png)
         }
         @Steps {
             @Step {
@@ -201,7 +201,7 @@
                 uniform color and will serve as an overlay to darken the
                 screen.
 
-                @Image(source: 10_anchor_preset.webp)
+                @Image(source: 09-14.add-color-rect-retry.png)
             }
             @Step {
                 To make it span over the whole viewport, you can use the
@@ -216,14 +216,14 @@
                 bounding box. Here, the `UserInterface` node has a small
                 size and the `Retry` one is limited by it.
 
-                @Image(source: 11_full_rect_option.webp)
+                @Image(source: 09-15.full-rect-anchor-preset.png)
             }
             @Step {
                 Select the `UserInterface` and apply _Anchor Preset -> Full
                 Rect_ to it as well. The `Retry` node should now span the
                 whole viewport.
 
-                @Image(source: 12_anchors_updated.webp)
+                @Image(source: 09-16.retry-full-viewport.png)
             }
             @Step {
                 Let's change its color so it darkens the game area. Select
@@ -237,7 +237,7 @@
                 > gives a classic "modal" feel — the player can still see
                 > the world behind the overlay, but it's clearly dimmed.
 
-                @Image(source: 13_retry_color_picker.webp)
+                @Image(source: 09-17.retry-color-transparent.png)
             }
             @Step {
                 Next, add a
@@ -246,7 +246,7 @@
                 retry." To move it and anchor it in the center of the
                 screen, apply _Anchor Preset -> Center_ to it.
 
-                @Image(source: 14_center_option.webp)
+                @Image(source: 09-18.retry-label-centered.png)
             }
         }
     }
@@ -255,7 +255,7 @@
             We can now head to the code to show and hide the `Retry` node
             when the player dies and plays again.
 
-            @Image(source: fix-me.png)
+            @Image(source: 09-19.retry-code-concept.png)
         }
         @Steps {
             @Step {
@@ -323,21 +323,21 @@
             At the top are the autoloaded `MusicPlayer` and a _root_ node,
             which is your game's viewport.
 
-            @Image(source: fix-me.png)
+            @Image(source: 09-20.music-autoload-concept.png)
         }
         @Steps {
             @Step {
                 Create a new scene by opening the **Document Menu** (the down-arrow
                 icon) in the upper-left corner and tapping **New Scene**.
 
-                @Image(source: 15_new_scene.webp)
+                @Image(source: 09-21.new-scene-music-player.png)
             }
             @Step {
                 Tap the _Other Node_ button to create an
                 [AudioStreamPlayer](https://docs.godotengine.org/en/stable/classes/class%5Faudiostreamplayer.html#class-audiostreamplayer)
                 and rename it to `MusicPlayer`.
 
-                @Image(source: 16_music_player_node.webp)
+                @Image(source: 09-22.audio-stream-player-node.png)
             }
             @Step {
                 We included a music soundtrack in the `art/` directory,
@@ -351,7 +351,7 @@
                 > few seconds). Otherwise, leave it on and the music
                 > starts as soon as the scene loads.
 
-                @Image(source: 17_music_node_properties.webp)
+                @Image(source: 09-23.music-stream-autoplay.png)
             }
             @Step {
                 Save the scene as `music_player.tscn`.
@@ -370,14 +370,14 @@
                 > Leave it as is — that's the name we'll use to reference
                 > the autoload from any script.
 
-                @Image(source: 18_register_autoload.webp)
+                @Image(source: 09-24.register-autoload-settings.png)
             }
             @Step {
                 `music_player.tscn` now loads into any scene you open or
                 play. So if you run the game now, the music will play
                 automatically in any scene.
 
-                @Image(source: 19_scene_dock_tabs.webp)
+                @Image(source: 09-25.scene-dock-remote-local.png)
             }
             And that does it for this lesson. In the next part, we'll add
             an animation to make the game both look and feel much nicer.
