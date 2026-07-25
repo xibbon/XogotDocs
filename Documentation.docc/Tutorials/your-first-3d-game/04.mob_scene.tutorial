@@ -23,21 +23,21 @@
             The snake's `Move` animation should also loop seamlessly. We'll
             configure that in the import settings.
 
-            @Image(source: fix-me.png)
+            @Image(source: 04-01.mob-wrapper-scene-concept.png)
         }
         @Steps {
             @Step {
                 In the _File Pad_, locate `art/enemy_snake.glb`.
                 Long-press the file and select _New Inherited Scene_.
 
-                @Image(source: fix-me.png, alt: "Long-press enemy_snake.glb and choose New Inherited Scene")
+                @Image(source: 04-02.new-inherited-snake-scene.png, alt: "Long-press enemy_snake.glb and choose New Inherited Scene")
             }
             @Step {
                 Save the new scene as `enemy_snake.tscn`, inside the `art/`
                 folder next to the `.glb`. Keeping the wrapper next to the
                 model file makes it easy to find.
 
-                @Image(source: fix-me.png, alt: "Save the inherited scene as art/enemy_snake.tscn")
+                @Image(source: 04-03.save-enemy-snake-scene.png, alt: "Save the inherited scene as art/enemy_snake.tscn")
             }
             @Step {
                 In the _Scene Tree_, select the `Armature` node. In the
@@ -45,14 +45,14 @@
                 `180` degrees around Y, just like we did for the player. This
                 makes the snake face -Z and gives it a sensible size.
 
-                @Image(source: fix-me.png, alt: "Scale the Armature 2.5 and rotate 180 on Y")
+                @Image(source: 04-04.scale-rotate-snake-armature.png, alt: "Scale the Armature 2.5 and rotate 180 on Y")
             }
             @Step {
                 Expand the `Armature` and select the `AnimationPlayer` child.
                 In the _Inspector_, set its _Autoplay_ to `Move` so the snake
                 starts crawling as soon as it spawns.
 
-                @Image(source: fix-me.png, alt: "Set the AnimationPlayer autoplay to Move")
+                @Image(source: 04-05.autoplay-move-animation.png, alt: "Set the AnimationPlayer autoplay to Move")
             }
             @Step {
                 The `Move` animation needs to loop so the snake keeps crawling
@@ -64,7 +64,7 @@
                 > file, so it persists across project reloads. The wrapper scene
                 > and the gameplay scene will both use the looped animation.
 
-                @Image(source: fix-me.png, alt: "Set the Move animation loop mode to Loop in the Import tab")
+                @Image(source: 04-06.move-animation-loop-mode.png, alt: "Set the Move animation loop mode to Loop in the Import tab")
             }
             @Step {
                 Save the `enemy_snake.tscn` wrapper scene.
@@ -76,7 +76,7 @@
             Now we'll create the `Mob` scene that we'll instantiate from code
             when spawning enemies.
 
-            @Image(source: fix-me.png)
+            @Image(source: 04-07.mob-gameplay-scene-concept.png)
         }
         @Steps {
             @Step {
@@ -84,21 +84,21 @@
                 [CharacterBody3D](https://docs.godotengine.org/en/stable/classes/class_characterbody3d.html#class-characterbody3d)
                 node as its root. Name it `Mob`.
 
-                @Image(source: fix-me.png, alt: "A new scene with a CharacterBody3D root node named Mob")
+                @Image(source: 04-08.create-mob-character-body.png, alt: "A new scene with a CharacterBody3D root node named Mob")
             }
             @Step {
                 Add a child node
                 [Node3D](https://docs.godotengine.org/en/stable/classes/class_node3d.html#class-node3d)
                 and name it `Pivot`.
 
-                @Image(source: fix-me.png, alt: "A Node3D child named Pivot added to Mob")
+                @Image(source: 04-09.add-pivot-to-mob.png, alt: "A Node3D child named Pivot added to Mob")
             }
             @Step {
                 With the `Pivot` node selected, instantiate a child scene and
                 pick `art/enemy_snake.tscn`. Rename the instantiated node to
                 `Character`.
 
-                @Image(source: 01.initial_three_nodes.webp)
+                @Image(source: 04-10.initial-mob-scene-tree.png)
             }
             We'll add a fake blob shadow next, then a node to detect when the
             mob leaves the screen.
@@ -115,7 +115,7 @@
             The starter project includes a gradient texture for exactly this
             purpose, in `resources/CircleGrandient.tres`.
 
-            @Image(source: fix-me.png)
+            @Image(source: 04-11.blob-shadow-concept.png)
         }
         @Steps {
             @Step {
@@ -123,13 +123,13 @@
                 [Sprite3D](https://docs.godotengine.org/en/stable/classes/class_sprite3d.html#class-sprite3d).
                 This node draws a 2D texture in 3D space.
 
-                @Image(source: fix-me.png, alt: "Add a Sprite3D child to the Mob node")
+                @Image(source: 04-12.add-sprite3d-node.png, alt: "Add a Sprite3D child to the Mob node")
             }
             @Step {
                 In the _Inspector_, assign `resources/CircleGrandient.tres` to
                 the _Texture_ property.
 
-                @Image(source: fix-me.png, alt: "Assign the CircleGrandient texture to the Sprite3D")
+                @Image(source: 04-13.assign-circle-gradient.png, alt: "Assign the CircleGrandient texture to the Sprite3D")
             }
             @Step {
                 Set the _Modulate_ color to black and drag the _Transparency_
@@ -141,7 +141,7 @@
                 > Tip: Disable the sprite's _Cast Shadow_ property so the blob
                 > doesn't cast its own real-time shadow on top of itself.
 
-                @Image(source: fix-me.png, alt: "Tint the sprite black, make it transparent, scale and rotate flat")
+                @Image(source: 04-14.sprite3d-shadow-settings.png, alt: "Tint the sprite black, make it transparent, scale and rotate flat")
             }
         }
     }
@@ -171,7 +171,7 @@
             > caveat. You can learn more about that here:
             > [Memory management](https://docs.godotengine.org/en/stable/tutorials/scripting/gdscript/gdscript_basics.html#doc-gdscript-basics-memory-management).
 
-            @Image(source: fix-me.png)
+            @Image(source: 04-15.visibility-notifier-concept.png)
         }
         @Steps {
             @Step {
@@ -180,13 +180,13 @@
                 Another box, pink this time, appears. When this box completely
                 leaves the screen, the node will emit a signal.
 
-                @Image(source: 06.visibility_notifier.webp)
+                @Image(source: 04-16.visibility-notifier-added.png)
             }
             @Step {
                 Resize it using the orange dots until it covers the entire 3D
                 model.
 
-                @Image(source: 07.visibility_notifier_bbox_resized.png)
+                @Image(source: 04-17.visibility-bbox-resized.png)
             }
         }
     }
@@ -198,13 +198,13 @@
             spawn mechanism in the `main.tscn` scene and call the function from
             there.
 
-            @Image(source: fix-me.png)
+            @Image(source: 04-18.mob-movement-code-concept.png)
         }
         @Steps {
             @Step {
                 Attach a script to the `Mob`.
 
-                @Image(source: 08.mob_attach_script.webp)
+                @Image(source: 04-19.mob-attach-script.png)
             }
             @Step {
                 We define two properties, `min_speed` and `max_speed`, to define
@@ -261,14 +261,14 @@
             [VisibleOnScreenNotifier3D](https://docs.godotengine.org/en/stable/classes/class_visibleonscreennotifier3d.html#class-visibleonscreennotifier3d)
             node's `screen_exited` signal to the `Mob`.
 
-            @Image(source: fix-me.png)
+            @Image(source: 04-20.screen-exit-signal-concept.png)
         }
         @Steps {
             @Step {
                 Head back to the 3D viewport by tapping on the _3D_ label at
                 the top of the editor.
 
-                @Image(source: 09.switch_to_3d_workspace.webp)
+                @Image(source: 04-21.switch-to-3d-workspace.png)
             }
             @Step {
                 Select the
@@ -276,12 +276,12 @@
                 node and, in the _Signals_ tab, double-tap the `screen_exited()`
                 signal.
 
-                @Image(source: 10.node_dock.webp)
+                @Image(source: 04-22.signals-tab-screen-exited.png)
             }
             @Step {
                 Connect the signal to the `Mob`.
 
-                @Image(source: 11.connect_signal.webp)
+                @Image(source: 04-23.connect-signal-to-mob.png)
             }
             This will add a new function for you in your mob script,
             `_on_visible_on_screen_notifier_3d_screen_exited()`. From it, call
