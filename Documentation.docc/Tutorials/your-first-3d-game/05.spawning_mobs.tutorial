@@ -193,10 +193,8 @@
     }
     @Section(title: "Spawning monsters randomly") {
         @ContentAndMedia {
-            We'll attach a script to the `Main` node and wire up a timer that
-            spawns a new mob on each tick. Before we spawn anything, though,
-            we need to assign the `mob.tscn` file to the `mob_scene` property
-            on the `Main` node (otherwise it's null!).
+            In this section, we'll attach a script to the `Main` node and wire up a timer that
+            spawns a new mob on each tick.
 
             @Image(source: 05-23.mob-spawning-logic.png)
         }
