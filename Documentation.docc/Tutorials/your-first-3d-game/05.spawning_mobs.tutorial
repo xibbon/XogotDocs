@@ -20,7 +20,7 @@
                 @Image(source: 05-03.open-main-scene.png, alt: "The main.tscn scene open in the File Pad")
             }
             @Step {
-                Tap the **"..."** toolbar button in the upper-right corner and choose
+                Tap the **Dropdown** toolbar button in the upper-right corner and choose
                 **Settings** to open Project Settings.
 
                 @Image(source: 05-04.project-settings-menu.png)
@@ -33,6 +33,11 @@
 
                 @Image(source: 05-05.window-size-720x540.png)
             }
+            @Step {
+                Scroll down to `stretch` and set the **Mode** to `viewport`.
+                @Image(source: 05-05a.window-mode-viewport.png)
+            }
+            Now the game window will scale correctly when you view it on different screens.
         }
     }
     @Section(title: "Creating the spawn path") {
@@ -58,7 +63,7 @@
             @Step {
                 Your viewport should still be split into two parts, with the
                 camera preview at the bottom. If that isn't the case, tap the
-                **View** menu in the 3D editor toolbar and choose _2 Viewports_.
+                **Cog** menu in the 3D editor toolbar and choose _Stacked_.
                 Select the
                 [Camera3D](https://docs.godotengine.org/en/stable/classes/class%5Fcamera3d.html#class-camera3d)
                 node and tap the _Preview_ checkbox in the bottom viewport.
@@ -84,11 +89,19 @@
                 @Image(source: 05-09.cylinder-mesh-instance.png)
             }
             @Step {
+                Next, Open the _Surface Material Override_ menu and create a new _StandardMaterial3D_.
+                
+                Then, tap the new material to open it and change the _Albedo_ color to _Orange_ like so:
+                
+                @Image(source: 05-09a.cylinder-material-override-color.png)
+            }
+            Doing this step will help make the cylinders visible when we move them into position later.
+            @Step {
                 Set the top viewport to the top orthogonal view using the menu
-                in the viewport's top-left corner.
+                in the viewport's top-left corner. Tap _Perspective_ and then tap _Top_ and change _Perspective_ to _Orthagonal_. It should now say _TopOrthagonal_ in the bar.
 
                 The grid may be distracting. You can toggle it by going to the
-                _View_ menu in the toolbar and tapping _View Grid_.
+                _Cog_ menu in the toolbar and tapping the toggle next to _Show Grid_.
 
                 @Image(source: 05-10.top-orthogonal-view.png)
             }
@@ -97,8 +110,7 @@
             grid snap to do so.
 
             @Step {
-                Toggle grid snap by tapping the *Use Snap* button in the 3D
-                Editor Toolbar.
+                Toggle grid snap by tapping the `#` (Grid) icon and toggling _Snap_.
 
                 @Image(source: 05-11.toggle-grid-snap.png)
             }
@@ -119,67 +131,44 @@
                 @Image(source: 05-13.second-cylinder-placed.png)
             }
             @Step {
-                Select both cylinders by tapping the first one, then tapping
-                the second one with a selection modifier (on an external
-                keyboard, hold Shift while tapping), then duplicate them.
+                Select both cylinders by swiping right on each in the _Node Tree_, then duplicate them.
 
                 @Image(source: 05-14.both-cylinders-selected.png)
             }
             @Step {
+                Select the two new Cylinder meshes.
+                
                 Move them to the right by dragging the red X axis.
 
                 @Image(source: 05-15.four-cylinders-corners.png)
             }
-            They're a bit hard to see in white, aren't they? Let's make them
-            stand out by giving them a new material.
 
-            @Step {
-                Select all the mesh instances in the _Scene Tree_. To do so,
-                tap the first one and then tap the last one with a selection
-                modifier (on an external keyboard, hold Shift while tapping).
-                In the _Inspector_, expand the _Material_ section and assign a
-                [StandardMaterial3D](https://docs.godotengine.org/en/stable/classes/class%5Fstandardmaterial3d.html#class-standardmaterial3d)
-                to slot _0_.
-
-                @Image(source: 05-16.selecting-all-cylinders.png)
-            }
-            @Step {
-                Tap the sphere icon to open the material resource. You get a
-                preview of the material and a long list of sections filled
-                with properties. Expand the _Albedo_ section.
-
-                @Image(source: 05-17.standard-material-created.png)
-            }
-            @Step {
-                Set the color to something that contrasts with the background,
-                like a bright orange.
-
-                @Image(source: 05-18.bright-orange-cylinders.png)
-            }
-            We can now use the cylinders as guides.
+           We can now use the meshes as a guide.
 
             @Step {
                 Fold them in the _Scene Tree_ by tapping the grey arrow next to
-                them. Moving forward, you can also toggle their visibility by
+                the _Cylinders_ node. Moving forward, you can also toggle their visibility by
                 tapping the eye icon next to _Cylinders_.
 
                 @Image(source: 05-19.cylinders-folded-tree.png)
             }
             @Step {
-                Add a child node
-                [Path3D](https://docs.godotengine.org/en/stable/classes/class%5Fpath3d.html#class-path3d)
-                to `Main`. In the toolbar, four icons appear. Tap the _Add
-                Point_ tool, the icon with the green "+" sign.
+                Select `Main` again and add a child node
+                [Path3D](https://docs.godotengine.org/en/stable/classes/class%5Fpath3d.html#class-path3d). 
+                With the `Path3D` selected, in the main viewport, you'll notice a new bar with six icons 
+                has appeared. Tap the _Add
+                Point_ tool, the icon with the "+" sign in a circle.
 
-                > Note: You can long-press any icon to see a tooltip describing
-                > the tool.
 
                 @Image(source: 05-20.path-add-point-tool.png)
             }
             @Step {
-                Tap in the center of each cylinder to create a point. Then,
-                tap the _Close Curve_ icon in the toolbar to close the path.
-                If any point is a bit off, you can tap and drag on it to
+                Tap in the center of each cylinder to create a point. 
+                Move in a clockwise direction from Top-Left to the right, 
+                making your way to Bottom-Left. Then,
+                tap the `...` menu and tap _Close Curve_ to close the path.
+                If any point is a bit off, you can tap the Pointer icon on 
+                the left of the menu and then select and drag on it to
                 reposition it.
 
                 Your path should look like this.
@@ -198,6 +187,8 @@
                 @Image(source: 05-22.spawn-path-nodes.png)
             }
             With that, we're ready to code the spawn mechanism.
+            
+            Save your work and move to the next section.
         }
     }
     @Section(title: "Spawning monsters randomly") {
@@ -222,13 +213,6 @@
                 @Code(name: "main.gd", file: main-3d-01.gd, previousFile: main-3d-00.gd)
             }
             @Step {
-                Head back to the 3D screen and select the `Main` node. Drag
-                `mob.tscn` from the _File Pad_ to the _Mob Scene_ slot
-                in the _Inspector_.
-
-                @Image(source: 05-24.mob-scene-property-assigned.png)
-            }
-            @Step {
                 Add a new
                 [Timer](https://docs.godotengine.org/en/stable/classes/class%5Ftimer.html#class-timer)
                 node as a child of `Main`. Name it `MobTimer`.
@@ -241,6 +225,12 @@
                 the game.
 
                 @Image(source: 05-26.mob-timer-properties.png)
+            }
+            @Step {
+                Now select the `Main` node. Drag `mob.tscn` from the _File
+                Pad_ to the _Mob Scene_ slot in the _Inspector_.
+
+                @Image(source: 05-24.mob-scene-property-assigned.png)
             }
             Timers emit a `timeout` signal every time they reach the end of
             their _Wait Time_. By default, they restart automatically,
