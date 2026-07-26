@@ -1,4 +1,4 @@
-@Tutorial(time: 30) {
+@Tutorial(time: 40) {
     @Intro(title: "Spawning monsters") {
         In this part, we're going to spawn monsters along a path randomly. By the
         end, you will have monsters roaming the game board.

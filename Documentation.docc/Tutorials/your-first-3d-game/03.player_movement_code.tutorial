@@ -1,4 +1,4 @@
-@Tutorial(time: 30) {
+@Tutorial(time: 40) {
     @Intro(title: "Moving the player with code") {
         It's time to code! We're going to use the input actions we created earlier
         to move the character. With the axolotl model now in the scene, you'll

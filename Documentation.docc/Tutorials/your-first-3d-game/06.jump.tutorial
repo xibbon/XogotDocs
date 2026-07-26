@@ -1,4 +1,4 @@
-@Tutorial(time: 20) {
+@Tutorial(time: 25) {
     @Intro(title: "Jumping") {
         In this part, we'll add the ability to jump. With the character able
         to leave the ground, we'll be ready to squash monsters by landing on
@@ -47,21 +47,24 @@
     }
     @Section(title: "Making the jump feel forgiving") {
         @ContentAndMedia {
-            The jump works, but it's strict: press a frame too late after
-            walking off a ledge and nothing happens. Press a frame too
+            The jump works, but it's strict. This next session teaches 
+            two concepts in platforming that can help.
+            
+            If we had multiple platforms, 
+            a fall off the platform would ignore a jump press that is too late. Press a frame too
             early while falling toward the ground and the press is
             swallowed. On a touch screen in particular, where input
-            latency eats a few frames, that feels unfair.
+            latency can eat a few frames, that feels unfair.
 
-            Two cheap tricks fix this. **Coyote time** keeps treating the
+            Two cheap tricks fix this. **Coyote time** (like Wile-E-Coyote) keeps treating the
             player as "on the floor" for a brief moment after they leave
             it, so a slightly-late jump still works. **Jump buffering**
             remembers a too-early jump press for a brief moment and
             fires it the instant the player lands.
 
             Both are just a couple of `@export` properties and a couple
-            of countdown timers. Read the comments in the code — they
-            walk through each piece.
+            of countdown timers. For more reason on why we do this you can read the comments in the code — they
+            walk through each piece in detail.
 
             @Image(source: 06-03.coyote-jump-buffer-concept.png)
         }
@@ -82,9 +85,7 @@
 
                 @Code(name: "player.gd", file: player-3d-08.gd, previousFile: player-3d-07.gd)
             }
-            Try the game. Walk off the edge of the ground and press jump
-            just after leaving — you'll still jump. Jump a hair too
-            early while falling onto a snake's head and you'll still
+            Try the game. Jump a hair too early while falling onto a snake's head and you'll still
             bounce. The game feels forgiving without becoming
             overpowered.
 

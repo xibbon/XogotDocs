@@ -4,7 +4,7 @@
         monster. Let's fix that by adding a **hit box** to the mob: a
         wide, thin
         [Area3D](https://docs.godotengine.org/en/stable/classes/class_area3d.html#class-area3d)
-        above the snake's back that detects a stomp. When the player
+         that detects a stomp. When the player
         lands on it, we squash the mob and the player bounces off.
 
         We'll deal with the player getting hurt — the **hurt box** — in
@@ -41,14 +41,14 @@
         }
         @Steps {
             @Step {
-                Let's give our physics layers a name. Tap the **"..."** toolbar
+                Let's give our physics layers a name. Tap the **Dropdown Menu** toolbar
                 button in the upper-right corner and choose **Settings** to open Project
                 Settings.
 
                 In the left menu, navigate down to _Layer Names -> 3D Physics_.
                 You can see a list of layers with a field next to each of them
                 on the right. You can set their names there. Name the first
-                three layers _player_, _enemies_, and _world_, respectively.
+                three layers _player_, _enemies_, and _world_, in that order.
 
                 Now, we can assign them to our physics nodes.
 
@@ -61,7 +61,7 @@
             }
             @Step {
                 In the _Main_ scene, select the `Ground` node. In the
-                _Inspector_, expand the _Collision_ section. There, you can
+                _Inspector_, tap to open the _Collision_ section. There, you can
                 see the node's layers and masks as a grid of buttons.
 
                 The ground is part of the world, so we want it to be part of
@@ -75,17 +75,17 @@
                 listen to anything; it's just there to prevent creatures
                 from falling.
 
-                Note that you can tap the "..." button on the right side of
-                the properties to see a list of named checkboxes.
+                Note that you can tap the blue "List" button on the right side of
+                the properties to see a list of named layers.
 
                 @Image(source: 07-03.ground-collision-settings.png)
             }
             @Step {
                 Next up is the `Player`. Open `player.tscn` by double-tapping
-                the file in the _File Pad_.
+                the file in the _File Tree_.
 
                 Select the _Player_ node and set its _Collision -> Mask_ to
-                both "enemies" and "world". You can leave the default _Layer_
+                both "enemies" and "world", deselecting Layer 1. You can leave the default _Layer_
                 property as it is, because the first layer is the "player"
                 layer.
 
@@ -116,16 +116,18 @@
     @Section(title: "Adding the hit box") {
         @ContentAndMedia {
             The hit box is the area that detects a stomp. We want it to
-            cover the top of the snake's body, so a wide, thin box works
+            cover the snake's body, so a wide, thin box works
             well. It should sit just above the model's back.
 
             @Image(source: 07-06.hit-box-concept.png)
         }
         @Steps {
             @Step {
-                Open the `Mob` scene. Select the `Mob` node and add a child
+                Select the `Mob` node and add a child
                 [Area3D](https://docs.godotengine.org/en/stable/classes/class_area3d.html#class-area3d).
-                Name it `HitBox`. Add a
+                Name it `HitBox`. 
+                
+                Add a
                 [CollisionShape3D](https://docs.godotengine.org/en/stable/classes/class_collisionshape3d.html#class-collisionshape3d)
                 as a child of it.
 
@@ -135,24 +137,19 @@
                 In the _Inspector_, assign a
                 [BoxShape3D](https://docs.godotengine.org/en/stable/classes/class_boxshape3d.html#class-boxshape3d)
                 to the _Shape_ property. Set its _Size_ to about `4` on X,
-                `1` on Y, and `5` on Z — a wide, thin box. Move it up so it
-                sits above the snake's back.
+                `1` on Y, and `5` on Z — a wide, thin box.
 
                 > Tip: The exact size isn't critical. You want it wide enough
                 > that landing near the snake counts as a stomp, but thin
                 > enough in height that the player only triggers it while
                 > coming down on top. Tweak it when you test the game.
-
+                
                 @Image(source: 07-08.resize-hit-box-shape.png, alt: "Resize the BoxShape3D to a wide thin box above the snake's back")
             }
             @Step {
                 Select the `HitBox` node and, in the _Signals_ tab, connect
-                its `body_entered` signal to the `Mob` node.
-
-                > Note: `Area3D` body signals appear in the _Signals_ tab
-                > only when the area node itself is selected. They aren't
-                > shown when the root `Mob` node is selected.
-
+                its `body_entered` signal to the `Mob` node's script.
+                
                 @Image(source: 07-09.connect-body-entered-signal.png, alt: "Connect the HitBox body_entered signal to the Mob")
             }
         }
@@ -166,8 +163,6 @@
             bounces.
 
             Let's start with the mob.
-
-            @Image(source: 07-10.squash-bounce-code-concept.png)
         }
         @Steps {
             @Step {
@@ -196,10 +191,12 @@
                 `squashed` signal to a new `_on_mob_squashed(by)` function
                 that calls `by.bounce()` if the squasher has a `bounce`
                 method.
+                
+                We also add a `mob.squashed.connect()` line to bind that new function.
 
                 @Code(name: "main.gd", file: main-3d-03.gd, previousFile: main-3d-02.gd)
             }
-            You can now run the game by tapping the **Run Project** button in
+            You can now run the game by tapping the **Play** button in
             the toolbar. Jump on a snake to squash it and bounce off it. The
             player can't die yet — that's the next lesson.
         }
@@ -209,8 +206,6 @@
             Here are the complete scripts for the `Mob`, `Player`, and
             `Main` nodes at this point, for reference. You can use them to
             compare and check your code.
-
-            @Image(source: 07-11.code-checkpoint-reference.png)
         }
         @Steps {
             @Step {

@@ -196,7 +196,7 @@
             @Step {
                 In the _Inspector_, expand the _Transform_ section. Set the
                 _Scale_ to `4` on the X, Y, and Z axes to make the axolotl
-                roughly life-sized in the scene.
+                roughly life-sized in the scene. 
 
                 @Image(source: 02-20.scale-armature-to-4.png, alt: "Scale the Armature to 4 on all axes")
             }
@@ -282,8 +282,8 @@
         }
         @Steps {
             @Step {
-                Move the `CollisionShape3D` up so the box's bottom aligns with
-                the ground grid if it doesn't already, and shift it slightly forward in -Z so it
+                Move the `CollisionShape3D` down so the box's bottom aligns with
+                the players feet if it doesn't already, and shift it slightly forward in -Z so it
                 covers the body. You can drag the gizmo in the viewport or
                 enter values directly in the _Transform_ section.
 

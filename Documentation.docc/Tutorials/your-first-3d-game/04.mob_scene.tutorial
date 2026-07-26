@@ -1,4 +1,4 @@
-@Tutorial(time: 25) {
+@Tutorial(time: 30) {
     @Intro(title: "Designing the mob scene") {
         In this part, you're going to code the monsters, which we'll call mobs. In
         the next lesson, we'll spawn them randomly around the playable area.
@@ -56,6 +56,8 @@
                 _Inspector_ using the **Transform** parameter, scale it by `2.5` on all axes and rotate it
                 `180` degrees around Y, just like we did for the player. This
                 makes the snake face -Z and gives it a sensible size.
+                
+                Also set the **Transform** `Position` `Y` to `-0.5`. This will align the mesh to the `Ground` Mesh.
 
                 @Image(source: 04-04.scale-rotate-snake-armature.png, alt: "Scale the Armature 2.5 and rotate 180 on Y")
             }
