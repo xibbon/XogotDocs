@@ -2,31 +2,28 @@
     @Intro(title: "Score and replay") {
         In this part, we'll add the score, music playback, and the ability to
         restart the game.
-
-        We have to keep track of the current score in a variable and display
-        it on screen using a minimal interface. We will use a text label to
-        do that.
     }
     @Section(title: "Creating the score label") {
         @ContentAndMedia {
-            In the main scene, add a new child node
+            In the main scene, we already have a `UI` CanvasLayer from when
+            we added the virtual joystick. Now we'll add a
             [Control](https://docs.godotengine.org/en/stable/classes/class%5Fcontrol.html#class-control)
-            to `Main` and name it `UserInterface`. Ensure you are on the 2D
+            child node to `UI` and name it `Labels`. Ensure you are on the 2D
             screen, where you can edit your User Interface (UI).
 
-            The `UserInterface` node allows us to group our UI in a branch of
-            the scene tree and use a theme resource that will propagate to all
-            its children. We'll use it to set our game's font.
+            The `Labels` Control node allows us to group our UI labels in a
+            branch of the scene tree and use a theme resource that will
+            propagate to all its children. We'll use it to set our game's font.
 
             @Image(source: 09-01.score-label-concept.png)
         }
         @Steps {
             @Step {
-                Add a child node
+                Select the existing `UI` CanvasLayer node and add a child node
                 [Control](https://docs.godotengine.org/en/stable/classes/class%5Fcontrol.html#class-control)
-                to `Main` and name it `UserInterface`.
+                to it. Rename this Control node to `Labels`.
 
-                @Image(source: 09-02.add-user-interface-control.png, alt: "The UserInterface Control node added to Main")
+                @Image(source: 09-02.add-user-interface-control.png, alt: "The Labels Control node added as child of UI")
             }
             @Step {
                 Add a
@@ -66,8 +63,8 @@
     }
     @Section(title: "Creating a UI theme") {
         @ContentAndMedia {
-            We'll create a theme resource on the `UserInterface` node that
-            defines the default font and font size for the whole UI tree.
+            We'll create a theme resource on the `Labels` node that
+            defines the default font and font size for all label children.
 
             > See also: You can add more properties to the theme resource to
             > design complex user interfaces, but that is beyond the scope of
@@ -78,7 +75,7 @@
         }
         @Steps {
             @Step {
-                Once again, select the `UserInterface` node. In the
+                Select the `Labels` node. In the
                 _Inspector_, create a new theme resource in _Theme -> Theme_.
 
                 @Image(source: 09-08.create-theme-resource.png)
@@ -195,7 +192,7 @@
         @Steps {
             @Step {
                 Head back to the `main.tscn` scene, select the
-                `UserInterface` node, add a child node
+                `Labels` node, add a child node
                 [ColorRect](https://docs.godotengine.org/en/stable/classes/class%5Fcolorrect.html#class-colorrect),
                 and name it `Retry`. This node fills a rectangle with a
                 uniform color and will serve as an overlay to darken the
@@ -213,13 +210,13 @@
 
                 This is because UI nodes (all the ones with a green icon)
                 work with anchors and margins relative to their parent's
-                bounding box. Here, the `UserInterface` node has a small
+                bounding box. Here, the `Labels` node has a small
                 size and the `Retry` one is limited by it.
 
                 @Image(source: 09-15.full-rect-anchor-preset.png)
             }
             @Step {
-                Select the `UserInterface` and apply _Anchor Preset -> Full
+                Select the `Labels` node and apply _Anchor Preset -> Full
                 Rect_ to it as well. The `Retry` node should now span the
                 whole viewport.
 

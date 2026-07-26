@@ -4,7 +4,7 @@ extends Node
 
 
 func _ready():
-    $UserInterface/Retry.hide()
+    $UI/Labels/Retry.hide()
 
 
 func _on_mob_timer_timeout():
@@ -27,7 +27,7 @@ func _on_mob_timer_timeout():
     mob.squashed.connect(_on_mob_squashed.bind())
 
     # We connect the mob to the score label to update the score upon squashing one.
-    mob.squashed.connect($UserInterface/ScoreLabel._on_mob_squashed.bind())
+    mob.squashed.connect($UI/Labels/ScoreLabel._on_mob_squashed.bind())
 
 
 func _on_mob_squashed(by):
