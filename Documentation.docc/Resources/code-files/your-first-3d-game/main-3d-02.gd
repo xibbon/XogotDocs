@@ -13,7 +13,7 @@ func _on_mob_timer_timeout():
     # And give it a random offset.
     mob_spawn_location.progress_ratio = randf()
 
-    var player_position = $Player.position
+    var player_position = Vector3($Player.position.x, 0, $Player.position.z)
     mob.initialize(mob_spawn_location.position, player_position)
 
     # Spawn the mob by adding it to the Main scene.

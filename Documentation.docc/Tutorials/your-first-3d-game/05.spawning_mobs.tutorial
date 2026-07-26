@@ -200,7 +200,8 @@
         }
         @Steps {
             @Step {
-                Long-press the `Main` node and attach a new script to it.
+                Long-press the `Main` node and attach a new _Empty_ script to it, 
+                saving it in the `scripts` folder.
 
                 @Code(name: "main.gd", file: main-3d-00.gd, reset: true)
             }
@@ -209,6 +210,12 @@
                 assign `mob.tscn` or any other monster to it.
 
                 @Code(name: "main.gd", file: main-3d-01.gd, previousFile: main-3d-00.gd)
+            }
+            @Step {
+                Now select the `Main` node. Drag `mob.tscn` from the _File
+                Pad_ to the _Mob Scene_ slot in the _Inspector_.
+
+                @Image(source: 05-24.mob-scene-property-assigned.png)
             }
             @Step {
                 Add a new
@@ -224,12 +231,6 @@
 
                 @Image(source: 05-26.mob-timer-properties.png)
             }
-            @Step {
-                Now select the `Main` node. Drag `mob.tscn` from the _File
-                Pad_ to the _Mob Scene_ slot in the _Inspector_.
-
-                @Image(source: 05-24.mob-scene-property-assigned.png)
-            }
             Timers emit a `timeout` signal every time they reach the end of
             their _Wait Time_. By default, they restart automatically,
             emitting the signal in a cycle. We can connect to this signal
@@ -237,7 +238,7 @@
 
             @Step {
                 With the _MobTimer_ still selected, head to the _Signals_ tab
-                in the _Inspector_, and double-tap the `timeout` signal.
+                in the _Inspector_, and tap the `timeout` signal.
 
                 @Image(source: 05-27.timeout-signal-selected.png)
             }
@@ -253,7 +254,7 @@
 
             1. Instantiate the mob scene.
             2. Sample a random position on the spawn path.
-            3. Get the player's position.
+            3. Get the player's ground position (flattening the Y coordinate).
             4. Call the mob's `initialize()` method, passing it the random
                position and the player's position.
             5. Add the mob as a child of the _Main_ node.
@@ -270,12 +271,16 @@
             value between 0 and 1 is a random position alongside the edges
             of the viewport!
 
+            Notice we flatten the player's position to the ground plane by
+            setting the Y component to `0`. This ensures mobs always face
+            horizontally toward the player's ground position, even when the
+            player is jumping. Without this, mobs would tilt up when the
+            player is in the air, which looks strange.
+
             > Important: If you remove the `Player` from the main scene, the
-            > following line
+            > line
             >
-            > ```
-            > var player_position = $Player.position
-            > ```
+            > `var player_position = Vector3($Player.position.x, 0, $Player.position.z)`
             >
             > gives a "node not found" error because there is no $Player!
 
