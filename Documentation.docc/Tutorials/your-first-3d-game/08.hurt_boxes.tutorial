@@ -1,4 +1,4 @@
-@Tutorial(time: 15) {
+@Tutorial(time: 20) {
     @Intro(title: "Hurt boxes") {
         In the previous lesson, we made the player able to squash monsters
         by landing on them. Now let's add the consequence: when the player
@@ -6,7 +6,7 @@
 
         We'll add a second
         [Area3D](https://docs.godotengine.org/en/stable/classes/class_area3d.html#class-area3d)
-        to the mob — a **hurt box**: a capsule along the snake's body that
+        to the mob - we will call it a **hurt box**: a capsule along the snake's body that
         detects the player running into it. The trick is that the hurt box
         only kills the player if they're on the floor, so jumping *over* a
         snake is a safe strategy.
@@ -25,6 +25,8 @@
         }
         @Steps {
             @Step {
+                Go back to the 3D view.
+                
                 Open the `Mob` scene. Select the `Pivot` node and add an
                 [Area3D](https://docs.godotengine.org/en/stable/classes/class_area3d.html#class-area3d)
                 child named `HurtBox`. Add a
@@ -36,10 +38,12 @@
             @Step {
                 In the _Inspector_, assign a
                 [CapsuleShape3D](https://docs.godotengine.org/en/stable/classes/class_capsuleshape3d.html#class-capsuleshape3d)
-                to the _Shape_ property. Set its _Radius_ to about `0.6` and
-                _Height_ to about `2.5`. Rotate the capsule `90` degrees on
-                Y or Z so it lies along the snake's body, and position it so
-                it covers the body from head to tail.
+                to the _Shape_ property. Tap it to open the new resource and set its _Radius_ to about `0.6` and
+                _Height_ to about `2.5`. 
+                
+                In the Transform section: Rotate the capsule `90` degrees on
+                `Y` and `Z` so it lies along the snake's body, and position it so
+                it covers the head of the snake. For mine, `Z` is set to `-1.2` in the position parameter
 
                 @Image(source: 08-03.capsule-shape-settings.png, alt: "Resize and orient the capsule along the snake's body")
             }
@@ -59,11 +63,11 @@
             safe. The player doesn't have a `die()` function yet; we'll add
             it next.
 
-            @Image(source: 08-05.hurt-callback-code.png)
         }
         @Steps {
             @Step {
-                Open the `mob.gd` script. We add the `_on_hurt_box_body_entered`
+                Open the `mob.gd` script if it's not open. 
+                Next, add the following to the `_on_hurt_box_body_entered`
                 callback. It bails out early if the entering body has no
                 `die` method, and again if the body is in the air — so a
                 player jumping over the snake is untouched.
@@ -78,13 +82,11 @@
             `die()` function. When it runs, the player emits a `hit` signal
             — `Main` will listen for that to stop the game — and then frees
             itself.
-
-            @Image(source: 08-06.player-death-code.png)
         }
         @Steps {
             @Step {
-                Open the `player.gd` script. We add the `hit` signal and
-                the `die()` function.
+                Open the `player.gd` script. We add the `hit` signal at the top and
+                the `die()` function near the bottom.
 
                 @Code(name: "player.gd", file: player-3d-10.gd, previousFile: player-3d-09.gd)
             }
@@ -95,13 +97,11 @@
             When the player dies, the `Player` emits its `hit` signal. We
             can use that to stop spawning new mobs. Connect the signal to
             the `Main` node and stop the `MobTimer` in reaction.
-
-            @Image(source: 08-07.end-game-logic.png)
         }
         @Steps {
             @Step {
-                Open `main.tscn`, select the `Player` node, and in the
-                _Signals_ tab, connect its `hit` signal to the `Main` node.
+                Switch back to 3D mode and open `main.tscn`. Select the `Player` node, and in the
+                _Signals_ tab, connect its `hit` signal to the `Main` node. Name the function `_on_player_hit`.
 
                 @Image(source: 08-08.player-hit-signal-connection.png)
             }
@@ -116,7 +116,8 @@
             remaining ones leave the screen. Jump over a snake and you're
             safe.
 
-            > Note: The game no longer crashes or displays an error when
+            > Note: If you had tried the game earlier before we did this, 
+            > you'll notice that the game no longer crashes or displays an error when
             > the player dies. Because we stop the `MobTimer`, it no longer
             > triggers the `_on_mob_timer_timeout()` function — and the
             > player node has been `queue_free`'d, so any subsequent
