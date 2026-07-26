@@ -94,7 +94,7 @@
             }
             @Step {
                 With the `Pivot` node selected, instantiate a child scene and
-                pick `art/enemy_snake.tscn`. Rename the instantiated node to
+                pick `scenes/enemy_snake.tscn`. Rename the instantiated node to
                 `Character`.
 
                 @Image(source: 04-10.initial-mob-scene-tree.png)
@@ -126,19 +126,22 @@
             }
             @Step {
                 In the _Inspector_, assign `resources/CircleGrandient.tres` to
-                the _Texture_ property.
+                the _Texture_ property by tapping `Pick Resource` and then `Load` and navigating to the `resources` folder.
+                
+                Tap the `shadow.tres` file and press **Select**.
 
                 @Image(source: 04-13.assign-circle-gradient.png, alt: "Assign the CircleGrandient texture to the Sprite3D")
             }
             @Step {
-                Set the _Modulate_ color to black and drag the _Transparency_
-                slider so the shadow is about 30% opaque. Set the _Scale_ to
-                about `8` on X and Y so the blob is wider than the snake, and
+                Tap the Circle next to `Modulate` and change the color to black by setting the `Red`, `Green` and `Blue` sliders to `0`. 
+                
+                Scroll down to `Transform` and then set the _Scale_ to
+                `8` on X and Y so the blob is wider than the snake, and
                 rotate the sprite `90` degrees on X so it lies flat on the
                 ground.
 
                 > Tip: Disable the sprite's _Cast Shadow_ property so the blob
-                > doesn't cast its own real-time shadow on top of itself.
+                > doesn't cast its own real-time shadow on top of itself by going to `Geometry` and toggling `Cast Shadow` to `Off`.
 
                 @Image(source: 04-14.sprite3d-shadow-settings.png, alt: "Tint the sprite black, make it transparent, scale and rotate flat")
             }
@@ -201,7 +204,9 @@
         }
         @Steps {
             @Step {
-                Attach a script to the `Mob`.
+                Attach a script by tapping the `Mob` node and pressing the _Script_ icon.
+                
+                Use the following settings:
 
                 @Image(source: 04-19.mob-attach-script.png)
             }
@@ -210,7 +215,7 @@
                 a random speed range, which we will later use to define
                 `CharacterBody3D.velocity`.
 
-                @Code(name: "mob.gd", file: mob-3d-00.gd, reset: true)
+                @Code(name: "mob.gd", file: mob-3d-00.gd, previousFile: mob-3d-0.gd)
             }
             @Step {
                 Add a `_physics_process` function that calls `move_and_slide()`.

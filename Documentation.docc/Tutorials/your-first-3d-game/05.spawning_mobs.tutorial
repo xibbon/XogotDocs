@@ -15,8 +15,7 @@
         }
         @Steps {
             @Step {
-                Double-tap on `main.tscn` in the _File Pad_ to open the
-                `Main` scene.
+                Go back to the 3D view and open the `main` scene.
 
                 @Image(source: 05-03.open-main-scene.png, alt: "The main.tscn scene open in the File Pad")
             }
