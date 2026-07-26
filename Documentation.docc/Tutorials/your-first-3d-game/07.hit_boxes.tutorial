@@ -210,19 +210,23 @@
         @Steps {
             @Step {
                 Starting with `mob.gd`.
-
+                
                 @Code(name: "mob.gd", file: mob-3d-05.gd, reset: true)
             }
             @Step {
                 Next is `player.gd`.
-
+                
                 @Code(name: "player.gd", file: player-3d-09.gd, reset: true)
             }
             @Step {
                 Finally, the `main.gd` script.
-
+                
                 @Code(name: "main.gd", file: main-3d-03.gd, reset: true)
             }
+            > Tip: If you copy any of this code directly and overwrite a 
+            linked function, you will need to 
+            link the signal again to ensure it works correctly.
+            
             In the next lesson, we'll add the hurt box so the player can
             die — and make jumping over a snake a safe strategy.
         }

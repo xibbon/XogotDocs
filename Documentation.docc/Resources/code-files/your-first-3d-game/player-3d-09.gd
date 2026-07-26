@@ -24,9 +24,11 @@ extends CharacterBody3D
 @export var jump_buffer = 0.1
 
 var target_velocity = Vector3.ZERO
-# Counts down from coyote_time while the player is in the air.
+# Counts down from coyote_time while the player is in the air. Reset to
+# coyote_time every frame they are on the floor.
 var _coyote_timer = 0.0
-# Counts down from jump_buffer after a jump press.
+# Counts down from jump_buffer after a jump press. Reset to jump_buffer
+# on every fresh press of the jump action.
 var _jump_buffer_timer = 0.0
 
 
@@ -57,25 +59,30 @@ func _physics_process(delta):
         target_velocity.y = target_velocity.y - (fall_acceleration * delta)
 
     # --- Coyote time ---
-    # Keep the coyote window open while on the ground; tick it down once
-    # the player is in the air. While it is above zero, the player may
-    # still jump as if they were on the floor.
+    # While on the ground, keep the coyote window fully open. Once the
+    # player leaves the ground, tick it down. As long as it is above
+    # zero, we still treat them as "close enough to the floor" to jump.
     if is_on_floor():
         _coyote_timer = coyote_time
     else:
         _coyote_timer = max(0.0, _coyote_timer - delta)
 
     # --- Jump buffering ---
-    # On a fresh jump press, fill the buffer. Otherwise tick it down so a
-    # stale press eventually expires.
+    # On a fresh jump press, fill the buffer. Otherwise, tick it down so
+    # a stale press eventually expires. We use is_action_just_pressed so
+    # holding the button does not keep refilling the buffer forever.
     if Input.is_action_just_pressed("jump"):
         _jump_buffer_timer = jump_buffer
     else:
         _jump_buffer_timer = max(0.0, _jump_buffer_timer - delta)
 
     # --- Jump ---
-    # Fire when there is both a buffered press and a valid coyote
-    # window. Clearing both timers prevents double-jumping off coyote.
+    # Fire the jump when there is both a buffered press AND a valid
+    # coyote window. Using both timers (instead of is_on_floor() alone)
+    # is what gives us the forgiving feel: a press a few frames early or
+    # a press a few frames after leaving a ledge both still jump.
+    # Clearing both timers on a successful jump prevents double-jumping
+    # off the coyote window.
     if _jump_buffer_timer > 0.0 and _coyote_timer > 0.0:
         target_velocity.y = jump_impulse
         _coyote_timer = 0.0
