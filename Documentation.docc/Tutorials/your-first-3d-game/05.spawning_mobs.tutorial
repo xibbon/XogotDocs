@@ -297,8 +297,7 @@
 
                 @Image(source: 05-29.mobs-spawning-in-game.png)
             }
-            For now, they bump and slide against one another when their
-            paths cross. We'll refine how they interact with the player and
+            For now, they just slide across the scene. We'll refine how they interact with the player and
             each other when we set up physics layers and hit boxes in a
             later lesson. Next, let's add the ability to jump.
         }
