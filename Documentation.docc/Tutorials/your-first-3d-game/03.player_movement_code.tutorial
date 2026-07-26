@@ -74,7 +74,7 @@
 
                 @Code(name: "player.gd", file: player-3d-01.gd, previousFile: player-3d-00.gd)
             }
-            We use `@export` to add variables to the **Inspector** when selecting the node a script is linked to. It allows you to edit those values and test different speeds.+
+            We use `@export` to add variables to the _Inspector_ when selecting the node a script is linked to. It allows you to edit those values and test different speeds.+
         }
     }
     @Section(title: "Coding the movement") {

@@ -17,10 +17,10 @@
             @Step {
                 Go back to the 3D view and open the `main` scene.
 
-                @Image(source: 05-03.open-main-scene.png, alt: "The main.tscn scene open in the File Pad")
+                @Image(source: 05-03.open-main-scene.png, alt: "The main.tscn scene open in the _File Tree_")
             }
             @Step {
-                Tap the **Dropdown** toolbar button in the upper-right corner and choose
+                Tap the **Dropdown Menu** toolbar button in the upper-right corner and choose
                 **Settings** to open Project Settings.
 
                 @Image(source: 05-04.project-settings-menu.png)
@@ -213,7 +213,7 @@
             }
             @Step {
                 Now select the `Main` node. Drag `mob.tscn` from the _File
-                Pad_ to the _Mob Scene_ slot in the _Inspector_.
+                Tree_ to the _Mob Scene_ slot in the _Inspector_.
 
                 @Image(source: 05-24.mob-scene-property-assigned.png)
             }

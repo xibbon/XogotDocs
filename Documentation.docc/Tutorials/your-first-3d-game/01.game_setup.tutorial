@@ -81,7 +81,7 @@
         }
         @Steps {
             @Step {
-                In the *Scene Tree*, tap the *Create New Node* button (the "+"
+                In the _Scene Tree_, tap the **Create New Node** button (the "+"
                 icon), tap the *All* tab and tap on *Node*. Name the node `Main`.
 
                 > Tip: An alternate method to rename the node is to long-press on
@@ -121,8 +121,8 @@
             }
 
             @Step {
-                Select the `CollisionShape3D` node. If the *Inspector* is hidden,
-                tap the *Inspector sidebar icon* in the upper-right toolbar to show it. Then tap
+                Select the `CollisionShape3D` node. If the _Inspector_ is hidden,
+                tap the _Inspector_ sidebar icon in the upper-right toolbar to show it. Then tap
                 the **Pick Resource** field next to the *Shape* property and create a new
                 *BoxShape3D*.
 
@@ -154,7 +154,7 @@
                 @Image(source: 01-11.mesh-instance3d-node.png)
             }
             @Step {
-                In the *Inspector*, tap on the field next to *Mesh* and create a
+                In the _Inspector_, tap on the field next to *Mesh* and create a
                 [BoxMesh](https://docs.godotengine.org/en/stable/classes/class%5Fboxmesh.html#class-boxmesh)
                 resource to create a visible box.
 
@@ -207,7 +207,7 @@
                 manipulator's green arrow, then switching to `Rotate Mode` tap and drag on the red arc to
                 rotate it around the X-axis until the ground is lit.
 
-                In the *Inspector*, turn on *Shadow* by tapping the checkbox.
+                In the _Inspector_, turn on *Shadow* by tapping the checkbox.
 
                 @Image(source: 01-17.turn-on-shadows.png)
             }
@@ -242,7 +242,7 @@
             @Step {
                 To access the Input Map editor, tap the **Menu** toolbar button in
                 the upper-right corner of Xogot and choose **Settings**. In the
-                Settings dialog, tap the dropdown next to **General** and select
+                Settings dialog, tap the **Dropdown Menu** next to **General** and select
                 **Input Map**.
 
                 @Image(source: 01-20.project-settings-menu.png)
@@ -295,7 +295,7 @@
                 **Joypad Axes**.
 
                 > Note: If you want controllers to have different input actions,
-                > you can use the Devices option in the All Devices dropdown menu. Device 0
+                > you can use the Devices option in the All Devices **Dropdown Menu**. Device 0
                 > corresponds to the first plugged gamepad, Device 1 to the
                 > second, and so on. We're leaving this off so a single gamepad
                 > configuration works for any plugged-in controller.
@@ -348,7 +348,7 @@
         }
         @Steps {
             @Step {
-                Tap on the menu to the left of the **Inspector icon** and
+                Tap on the menu to the left of the _Inspector_ icon and
                 access the **Asset Library**.
 
                 @Image(source: 01-30.asset-library-menu.png)
@@ -390,7 +390,7 @@
                 @Image(source: 01-34.instantiate-virtual-joystick.png)
             }
             @Step {
-                Select the joystick node and in the *Inspector* set the
+                Select the joystick node and in the _Inspector_ set the
                 **Joystick Mode** to `Following` and the **Visibility
                 Mode** to `When Touched`.
 
@@ -401,7 +401,7 @@
                 @Image(source: 01-35.joystick-mode-settings.png)
             }
             @Step {
-                Still in the *Inspector*, change `action_left` through
+                Still in the _Inspector_, change `action_left` through
                 to `action_down` so they equal the names of the custom
                 input actions we added in the Input Map: `move_left`,
                 `move_right`, `move_forward`, and `move_back`.

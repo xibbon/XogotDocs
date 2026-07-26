@@ -75,7 +75,7 @@
                 _Inspector_. In the `libraries` property, create a new
                 `AnimationLibrary` sub-resource. Expand it and find its
                 `data` dictionary. Add an entry with the key `jump` and
-                drag `resources/jump.res` from the _File Pad_
+                drag `resources/jump.res` from the _File Tree_
                 onto the value.
 
                 > Tip: The key you type in the dictionary is the name

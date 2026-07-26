@@ -98,7 +98,7 @@
                 on your computer. Two common font file formats are TrueType
                 Font (TTF) and OpenType Font (OTF).
 
-                In the _File Pad_, expand the `fonts` directory and
+                In the _File Tree_, expand the `fonts` directory and
                 tap and drag the `Montserrat-Medium.ttf` file we included in
                 the project onto the _Default Font_. The text will reappear
                 in the theme preview.
@@ -157,7 +157,7 @@
                 on its name in the script editor's left column.
 
                 Alternatively, you can double-tap the `main.gd` file in the
-                _File Pad_.
+                _File Tree_.
 
                 At the bottom of the `_on_mob_timer_timeout()` function, add
                 the line that connects the mob's `squashed` signal to the
@@ -358,7 +358,7 @@
 
                 We have to register it as an autoload. Tap the **"..."** toolbar
                 button in the upper-right corner, choose **Settings**, and then tap
-                the dropdown next to **General** to select **Globals -> Autoload**.
+                the **Dropdown Menu** next to **General** to select **Globals -> Autoload**.
 
                 In the _Path_ field, you want to enter the path to your
                 scene. Tap the folder icon to open the file browser and

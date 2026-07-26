@@ -86,7 +86,7 @@
             @Step {
                 Select the `Player` node again and add a child node
                 [CollisionShape3D](https://docs.godotengine.org/en/stable/classes/class%5Fcollisionshape3d.html#class-collisionshape3d).
-                In the **Inspector**, on the **Shape** property, add a new
+                In the _Inspector_, on the **Shape** property, add a new
                 [BoxShape3D](https://docs.godotengine.org/en/stable/classes/class_boxshape3d.html#class-boxshape3d).
 
                 The Box's wireframe appears below the character.
@@ -98,7 +98,7 @@
 
             @Step {
                 Make the box a bit larger by dragging the orange dot in the
-                viewport or editing the shape size property in the **Inspector**. 
+                viewport or editing the shape size property in the _Inspector_. 
                 We want it to have a size of 1.2 on the `x-axis`, 1.0 on the `y-axis` and 2.6 on the `z-axis`.
 
                 @Image(source: 02-09.resize-collision-box.png)
@@ -141,13 +141,13 @@
                 @Image(source: 02-13.glb-import-settings.png)
             }
             @Step {
-                Then open the tree for the `Animation Player` and select `Idle`. Inside the settings, in the **Inspector** set the `Loop Mode` to `Linear`.
+                Then open the tree for the `Animation Player` and select `Idle`. Inside the settings, in the _Inspector_ set the `Loop Mode` to `Linear`.
                 
                 Do the same for `Run`, then press **ReImport**
                 @Image(source: 02-14.animation-loop-mode.png)
             }
             @Step {
-                Now, tap the file `player_axolotl.glb` once to select it, and in the inspector press the **Open Scene** button.
+                Now, tap the file `player_axolotl.glb` once to select it, and in the _Inspector_ press the **Open Scene** button.
 
                 @Image(source: 02-15.open-scene-button.png, alt: "Long-press the glb file and choose New Inherited Scene")
             }

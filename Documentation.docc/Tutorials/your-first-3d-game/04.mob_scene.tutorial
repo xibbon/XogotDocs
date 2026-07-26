@@ -27,7 +27,7 @@
         }
         @Steps {
             @Step {
-                In the _File Pad_, locate `art/enemy_snake.glb`.
+                In the _File Tree_, locate `art/enemy_snake.glb`.
                 
                 Double tap it to open the _Advanced Import Settings_ window.
                 @Image(source: 04-01a.advanced-import-window-main.png)
