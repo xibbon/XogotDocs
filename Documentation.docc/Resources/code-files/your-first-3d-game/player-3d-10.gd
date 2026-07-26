@@ -13,10 +13,17 @@ signal hit
 # meters per second.
 @export var bounce_impulse = 16
 # Grace period (in seconds) after leaving the ground during which the
-# player can still jump ("coyote time"). See the jump code below.
+# player can still jump. This is "coyote time": for a brief moment after
+# walking off a ledge, the game pretends the player is still on the
+# floor, so a slightly-late jump press still works. It feels fair on a
+# keyboard and especially on a touch screen, where input latency eats a
+# few frames.
 @export var coyote_time = 0.1
-# How long (in seconds) to remember a jump press that happened while
-# still in the air ("jump buffering"). See the jump code below.
+# How long (in seconds) to remember a jump press that happened while the
+# player was still in the air. This is "jump buffering": if the player
+# presses jump a hair too early while falling toward the ground, the
+# press is buffered and fires the instant they land, instead of being
+# swallowed.
 @export var jump_buffer = 0.1
 
 var target_velocity = Vector3.ZERO
