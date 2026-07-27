@@ -262,14 +262,14 @@
 
                 We check for two types of input: the predefined `ui_accept` action
                 (Enter key or gamepad A button) or a screen touch event. When either
-                occurs, we reload the scene and call `set_input_as_handled()` to
-                mark the input as processed.
+                occurs, we first call `set_input_as_handled()` to mark the input as
+                processed, then reload the scene.
 
                 > Note: `ui_accept` is a built-in action mapped to Enter
                 > and gamepad A by default, so we don't need to add it to
-                > our Input Map. We use `_input()` instead of
-                > `_unhandled_input()` so we can call `set_input_as_handled()`
-                > to consume the event before it reaches other nodes.
+                > our Input Map. We call `set_input_as_handled()` before
+                > `reload_current_scene()` because reloading starts destroying
+                > the scene immediately, which would make the viewport null.
 
                 @Code(name: "main.gd", file: main-3d-08.gd, previousFile: main-3d-07.gd)
             }

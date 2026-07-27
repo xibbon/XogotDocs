@@ -46,6 +46,6 @@ func _input(event):
     if $UI/Labels/Retry.visible:
         var is_tap = event is InputEventScreenTouch and event.pressed
         if event.is_action_pressed("ui_accept") or is_tap:
+            get_viewport().set_input_as_handled()
             # This restarts the current scene.
             get_tree().reload_current_scene()
-            get_viewport().set_input_as_handled()
