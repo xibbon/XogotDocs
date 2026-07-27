@@ -1,4 +1,4 @@
-@Tutorial(time: 25) {
+@Tutorial(time: 35) {
     @Intro(title: "Character animation") {
         In this final lesson, we'll bring our characters to life using a
         mix of glTF-embedded animations, a loaded animation resource,
@@ -12,48 +12,6 @@
         — a jump arc for the player (loaded from a ready-made resource)
         and a sway for the mobs (keyed by hand in the editor) — and
         control everything from code.
-
-        @Image(source: 10-01.two-animation-players-concept.png)
-    }
-    @Section(title: "Two animation players") {
-        @ContentAndMedia {
-            Each character scene ends up with two
-            [AnimationPlayer](https://docs.godotengine.org/en/stable/classes/class%5Fanimationplayer.html#class-animationplayer)
-            nodes working together:
-
-            - A **skeleton AnimationPlayer** that lives inside the
-              instantiated model, at `$Pivot/Character/AnimationPlayer`.
-              It plays the animations embedded in the `.glb` file. We
-              already set its _Autoplay_ in the wrapper scene — `Idle`
-              for the player and `Move` for the mob — so the model
-              animates as soon as it spawns.
-            - A **scene AnimationPlayer** that we add to the root of the
-              gameplay scene. It plays custom animations — either loaded
-              from a `.res` file in the `resources/` folder, or keyed by
-              hand right in the editor.
-
-            The starter project ships one custom animation:
-
-            - `resources/jump.res` — a short animation that tilts and
-              lifts the player for a satisfying jump arc.
-
-            You'll **author** the mob's sway yourself, right in the
-            editor — it's simple enough to key by hand, and it's a good
-            introduction to the animation editor.
-
-            Keeping the embedded and custom animations on separate
-            players lets us control them independently: we speed up the
-            skeleton's run cycle when the player moves, and trigger the
-            custom jump animation only when the player jumps.
-
-            > Note: An `AnimationPlayer` stores its animations in an
-            > `AnimationLibrary` resource. Each library maps a name
-            > (like `jump`) to an `Animation` resource. You can author
-            > animations by hand in the editor or load ready-made
-            > `.res` files — we'll do both in this lesson.
-
-            @Image(source: 10-02.animation-library-concept.png)
-        }
     }
     @Section(title: "Adding the jump animation to the player") {
         @ContentAndMedia {
