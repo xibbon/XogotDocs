@@ -117,7 +117,7 @@ func jump():
     # doesn't keep playing.
     skeleton_animation_player.play("Idle")
     # Play the custom jump animation on the Player scene's AnimationPlayer.
-    animation_player.play("jump")
+    animation_player.play("Animations/jump.res")
 
 
 # Called by the mob's HurtBox when the player touches the snake's body
@@ -130,4 +130,4 @@ func die():
 # Called by Main after a mob is squashed: the squasher bounces back up.
 func bounce():
     target_velocity.y = bounce_impulse
-    animation_player.play("jump")
+    animation_player.play("Animations/jump.res")

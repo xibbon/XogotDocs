@@ -22,7 +22,7 @@
         }
         @Steps {
             @Step {
-                Open `player.tscn`. Select the `Player` node and add a
+                In the 3D view, open `player.tscn`. Select the `Player` node and add a
                 child
                 [AnimationPlayer](https://docs.godotengine.org/en/stable/classes/class%5Fanimationplayer.html#class-animationplayer).
 
@@ -30,20 +30,22 @@
             }
             @Step {
                 With the `AnimationPlayer` selected, head to the
-                _Inspector_. In the `libraries` property, create a new
-                `AnimationLibrary` sub-resource. Expand it and find its
-                `data` dictionary. Add an entry with the key `jump` and
-                drag `resources/jump.res` from the _File Tree_
-                onto the value.
-
-                > Tip: The key you type in the dictionary is the name
-                > you use in code to play the animation. We called it
-                > `jump` to match the file.
+                _Animation Drawer_ at the bottom of the screen. You can open it by tapping **Animation**.
+                
+                Tap **Options** and then **Edit Animations**. 
+            }
+            @Step {
+                In the new window, tap **New Library** to create a new
+                `AnimationLibrary` sub-resource. You can name it anything. 
+                
+                Expand it by taping on it and tap **Load Animation into Library** 
+                then navigate to `resources/jump.res` and tap **Select**.
 
                 @Image(source: 10-05.load-jump-resource.png, alt: "Load jump.res into the AnimationLibrary as jump")
             }
+            You can close the window.
 
-            Now we'll update the player script. We add two `@onready`
+            Next we'll update the player script. We add two `@onready`
             references — one to the skeleton `AnimationPlayer` inside
             the model, one to the scene `AnimationPlayer` we just
             added.
@@ -53,25 +55,25 @@
             standing still. We also tilt the `Pivot` based on the
             vertical velocity so the character arcs when jumping.
 
-            Finally, `jump()` and `bounce()` play the custom `jump`
-            animation on the scene `AnimationPlayer`. `jump()` also
-            switches the skeleton back to `Idle` so the run cycle
-            doesn't keep playing in the air.
+            Finally, `jump()` and `bounce()` play the custom jump
+            animation on the scene `AnimationPlayer` using the full library
+            path `"Animations/jump.res"`. `jump()` also switches the skeleton
+            back to `Idle` so the run cycle doesn't keep playing in the air.
 
             @Step {
                 Open the `player.gd` script and add the animation references and controls.
 
+                > Note: When playing an animation, we use the full library path
+                > `"Animations/jump.res"` rather than just the filename. Godot's
+                > `AnimationPlayer` requires the library name followed by the
+                > animation name when referencing animations.
+
                 @Code(name: "player.gd", file: player-3d-11.gd, previousFile: player-3d-10.gd)
             }
-            And with that, you finished coding your first complete 3D
-            game.
-
-            **Congratulations**!
-
-            Here is the complete `player.gd` so you can check your code
-            against it.
 
             @Step {
+                Here is the complete `player.gd` so you can check your code
+                against it.
                 @Code(name: "player.gd", file: player-3d-11.gd, reset: true)
             }
         }
@@ -80,8 +82,8 @@
         @ContentAndMedia {
             The mobs get the same treatment. The snake's `Move`
             animation is already autoplaying from the wrapper scene. Now
-            we'll **author** a gentle looping sway by hand — no resource
-            file needed — and add it to a scene-level `AnimationPlayer`.
+            we'll **author** a gentle looping sway by hand so we can learn how that is done
+            and add it to a scene-level `AnimationPlayer`.
             Then we'll scale both players' speed with the mob's random
             movement speed, so faster mobs also animate faster.
 
