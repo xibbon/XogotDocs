@@ -48,7 +48,7 @@ func _input(event):
         if event.is_action_pressed("ui_accept") or is_tap:
             get_viewport().set_input_as_handled()
             # Release any pressed movement actions before reloading.
-            for action in ["ui_left", "ui_right", "ui_up", "ui_down"]:
+            for action in ["move_left", "move_right", "move_forward", "move_back"]:
                 if Input.is_action_pressed(action):
                     Input.action_release(action)
             # This restarts the current scene.
