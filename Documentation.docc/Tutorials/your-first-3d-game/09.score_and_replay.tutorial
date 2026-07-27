@@ -262,14 +262,14 @@
 
                 We check for two types of input: the predefined `ui_accept` action
                 (Enter key or gamepad A button) or a screen touch event. When either
-                occurs, we first call `set_input_as_handled()` to mark the input as
-                processed, then reload the scene.
+                occurs, we mark the input as handled, release any pressed movement
+                actions from the joystick, then reload the scene.
 
-                > Note: `ui_accept` is a built-in action mapped to Enter
-                > and gamepad A by default, so we don't need to add it to
-                > our Input Map. We call `set_input_as_handled()` before
-                > `reload_current_scene()` because reloading starts destroying
-                > the scene immediately, which would make the viewport null.
+                > Note: We must release the movement actions (`ui_left`,
+                > `ui_right`, `ui_up`, `ui_down`) before reloading because
+                > when we disabled the joystick's input processing, any actions
+                > it had pressed remain pressed. If we don't release them, the
+                > player will move automatically when the scene reloads.
 
                 @Code(name: "main.gd", file: main-3d-08.gd, previousFile: main-3d-07.gd)
             }

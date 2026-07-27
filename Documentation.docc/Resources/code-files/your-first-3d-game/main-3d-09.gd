@@ -49,5 +49,9 @@ func _input(event):
         var is_tap = event is InputEventScreenTouch and event.pressed
         if event.is_action_pressed("ui_accept") or is_tap:
             get_viewport().set_input_as_handled()
+            # Release any pressed movement actions before reloading.
+            for action in ["ui_left", "ui_right", "ui_up", "ui_down"]:
+                if Input.is_action_pressed(action):
+                    Input.action_release(action)
             # This restarts the current scene.
             get_tree().reload_current_scene()
