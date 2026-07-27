@@ -6,7 +6,7 @@
 
         We've prepared a starter project with the 3D models and sounds we'll use for this
         tutorial. You can download the archive here:
-        [Save the Axolotl: Snake Stomp assets](https://github.com/godotengine/godot-docs-project-starters/releases/download/latest-4.x/3d%5Fsquash%5Fthe%5Fcreeps%5Fstarter.zip).
+        [Save the Axolotl: Snake Stomp assets](https://github.com/xogot-projects/Your-First-3D-Game-Project/releases/download/starters/3d_save_the_axolotl_snake_stomp.zip).
     }
     @Section(title: "Importing the start assets") {
         @ContentAndMedia {
