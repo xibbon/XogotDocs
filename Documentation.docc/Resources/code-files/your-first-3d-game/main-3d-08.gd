@@ -41,6 +41,8 @@ func _on_player_hit():
 
 
 func _unhandled_input(event):
-    if event.is_action_pressed("ui_accept") and $UI/Labels/Retry.visible:
-        # This restarts the current scene.
-        get_tree().reload_current_scene()
+    if $UI/Labels/Retry.visible:
+        var is_tap = event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed
+        if event.is_action_pressed("ui_accept") or is_tap:
+            # This restarts the current scene.
+            get_tree().reload_current_scene()

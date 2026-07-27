@@ -99,10 +99,10 @@
                 In the _File Tree_, expand the `fonts` directory and
                 tap and drag the `Montserrat-Medium.ttf` file we included in
                 the project onto the _Default Font_. The text will reappear
-                in the theme preview. The text is a bit small, so set the _Default Font Size_ to `22`
+                in the theme preview. The text is a bit small, so set the _Default Font Size_ to `50`
                 pixels to increase the text's size.
 
-                @Image(source: 09-10.font-montserrat-size-22.png)
+                @Image(source: 09-10.font-montserrat-size-50.png)
             }
         }
     }
@@ -192,7 +192,7 @@
         }
         @Steps {
             @Step {
-                Head back to the `main.tscn` scene, select the
+                Switch to 3D mode and head back to the `main.tscn` scene, select the
                 `Labels` node, add a child node
                 [ColorRect](https://docs.godotengine.org/en/stable/classes/class%5Fcolorrect.html#class-colorrect),
                 and name it `Retry`. This node fills a rectangle with a
@@ -206,21 +206,7 @@
                 _Anchor Preset_ menu in the toolbar. Open it and apply the
                 _Full Rect_ command.
 
-                > Note: At first, nothing happens — only the four green
-                > pins move to the corners of the selection box.
-                > This is because UI nodes (all the ones with a green icon)
-                > work with anchors and margins relative to their parent's
-                > bounding box. Here, the `Labels` node has a small
-                > size and the `Retry` one is limited by it.
-
                 @Image(source: 09-15.full-rect-anchor-preset.png)
-            }
-            @Step {
-                Select the `Labels` node and apply _Anchor Preset -> Full
-                Rect_ to it as well. The `Retry` node should now span the
-                whole viewport.
-
-                @Image(source: 09-16.retry-full-viewport.png)
             }
             @Step {
                 Let's change its color so it darkens the game area. Select
@@ -239,20 +225,19 @@
             @Step {
                 Next, add a
                 [Label](https://docs.godotengine.org/en/stable/classes/class%5Flabel.html#class-label)
-                as a child of `Retry` and give it the _Text_ "Press Enter to
+                as a child of `Retry` and give it the _Text_ "Press Enter or touch the screen to
                 retry." To move it and anchor it in the center of the
                 screen, apply _Anchor Preset -> Center_ to it.
 
                 @Image(source: 09-18.retry-label-centered.png)
             }
+            The screen looks cluttered now, but once you play it back at scale, things will look correct.
         }
     }
     @Section(title: "Coding the retry option") {
         @ContentAndMedia {
             We can now head to the code to show and hide the `Retry` node
             when the player dies and plays again.
-
-            @Image(source: 09-19.retry-code-concept.png)
         }
         @Steps {
             @Step {
@@ -270,17 +255,21 @@
             @Step {
                 Finally, when the `Retry` node is visible, we need to
                 listen to the player's input and restart the game if they
-                press enter. To do this, we use the built-in
+                press enter or tap the screen. To do this, we use the built-in
                 `_unhandled_input()` callback, which is triggered on any
                 input.
 
-                If the player pressed the predefined `ui_accept` input
-                action and `Retry` is visible, we reload the current
-                scene.
+                We check for two types of input: the predefined `ui_accept` action
+                (Enter key or gamepad A button) or a mouse/tap event. Since we have
+                _Emulate Touch From Mouse_ enabled in project settings, touch events
+                are converted to mouse button events, so we check for
+                `InputEventMouseButton` with the left button pressed.
 
                 > Note: `ui_accept` is a built-in action mapped to Enter
                 > and gamepad A by default, so we don't need to add it to
-                > our Input Map.
+                > our Input Map. For mobile/desktop click support, we check
+                > for left mouse button which also captures touch taps when
+                > _Emulate Touch From Mouse_ is enabled.
 
                 @Code(name: "main.gd", file: main-3d-08.gd, previousFile: main-3d-07.gd)
             }
