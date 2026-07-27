@@ -55,10 +55,11 @@
             standing still. We also tilt the `Pivot` based on the
             vertical velocity so the character arcs when jumping.
 
-            Finally, the `bounce()` function plays the jump/bounce
+            Finally, the `bounce()` function applies the jump impulse,
+            switches the skeleton animation to `Idle`, and plays the jump
             animation on the scene `AnimationPlayer` using the full library
-            path `"Animations/jump.res"`. This animation plays when the player
-            bounces off a squashed mob.
+            path `"Animations/jump.res"`. This gives the player a satisfying
+            bounce arc when they squash a mob.
 
             @Step {
                 Open the `player.gd` script and add the animation references and controls.

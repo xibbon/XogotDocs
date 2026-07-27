@@ -120,5 +120,9 @@ func die():
 
 # Called by Main after a mob is squashed: the squasher bounces back up.
 func bounce():
-    target_velocity.y = bounce_impulse
+    target_velocity.y = jump_impulse
+    # While in the air, switch the skeleton back to Idle so the run cycle
+    # doesn't keep playing.
+    skeleton_animation_player.play("Idle")
+    # Play the custom jump animation on the Player scene's AnimationPlayer.
     animation_player.play("Animations/jump.res")
