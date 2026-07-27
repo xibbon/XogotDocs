@@ -38,11 +38,13 @@ func _on_mob_squashed(by):
 func _on_player_hit():
     $MobTimer.stop()
     $UI/Labels/Retry.show()
+    $UI/VirtualJoystickLeft.hide()
 
 
-func _unhandled_input(event):
+func _input(event):
     if $UI/Labels/Retry.visible:
-        var is_tap = event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed
+        var is_tap = event is InputEventScreenTouch and event.pressed
         if event.is_action_pressed("ui_accept") or is_tap:
             # This restarts the current scene.
             get_tree().reload_current_scene()
+            get_viewport().set_input_as_handled()

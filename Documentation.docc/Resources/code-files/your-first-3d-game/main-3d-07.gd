@@ -38,3 +38,4 @@ func _on_mob_squashed(by):
 func _on_player_hit():
     $MobTimer.stop()
     $UI/Labels/Retry.show()
+    $UI/VirtualJoystickLeft.hide()
