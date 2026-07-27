@@ -52,8 +52,10 @@
 
             In `_physics_process()`, we speed the skeleton up to `4x`
             while the player is moving and reset it to `1x` when
-            standing still. We also tilt the `Pivot` based on the
-            vertical velocity so the character arcs when jumping.
+            standing still. When the player jumps, we switch the skeleton
+            animation to `Idle` so the run cycle doesn't keep playing in
+            the air. We also tilt the `Pivot` based on the vertical velocity
+            so the character arcs when jumping.
 
             Finally, the `bounce()` function applies the jump impulse,
             switches the skeleton animation to `Idle`, and plays the jump

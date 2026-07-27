@@ -100,6 +100,9 @@ func _physics_process(delta):
     # off the coyote window.
     if _jump_buffer_timer > 0.0 and _coyote_timer > 0.0:
         target_velocity.y = jump_impulse
+        # While in the air, switch the skeleton back to Idle so the run cycle
+        # doesn't keep playing.
+        skeleton_animation_player.play("Idle")
         _coyote_timer = 0.0
         _jump_buffer_timer = 0.0
 
