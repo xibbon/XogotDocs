@@ -53,5 +53,7 @@ func _input(event):
             for action in ["move_left", "move_right", "move_forward", "move_back"]:
                 if Input.is_action_pressed(action):
                     Input.action_release(action)
+            # Re-enable input processing on the joystick.
+            $UI/VirtualJoystickLeft.set_process_input(true)
             # This restarts the current scene.
             get_tree().reload_current_scene()
