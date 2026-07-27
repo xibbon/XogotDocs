@@ -166,6 +166,12 @@
                 `_on_mob_squashed()` callback function. There, we increment
                 the score and update the displayed text.
 
+                > Note: The `squashed` signal passes a `by` parameter (the
+                > node that did the squashing), but the score label doesn't
+                > need it. We prefix the parameter with an underscore (`_by`)
+                > to indicate it's intentionally unused. This is a GDScript
+                > convention that helps with code clarity.
+
                 @Code(name: "score_label.gd", file: score_label-3d-02.gd, previousFile: score_label-3d-01.gd)
             }
             @Step {
