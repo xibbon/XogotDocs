@@ -293,30 +293,13 @@
             start the scene, it can play automatically. However, when you
             reload the scene, like we do to play again, the audio nodes are
             also reset, and the music starts back from the beginning.
-
-            You can use the autoload feature to have Xogot load a node or a
-            scene automatically at the start of the game, outside the
-            current scene. You can also use it to create globally
-            accessible objects.
-
-            Before we wrap up this lesson, here's a quick look at how it
-            works under the hood. When you run the game, your _Scene Tree_
-            changes to give you two tabs: _Remote_ and _Local_.
-
-            The _Remote_ tab allows you to visualize the node tree of your
-            running game. There, you will see the _Main_ node and
-            everything the scene contains and the instantiated mobs at the
-            bottom.
-
-            At the top are the autoloaded `MusicPlayer` and a _root_ node,
-            which is your game's viewport.
-
-            @Image(source: 09-20.music-autoload-concept.png)
         }
         @Steps {
             @Step {
-                Create a new scene by opening the **Document Menu** (the down-arrow
-                icon) in the upper-left corner and tapping **New Scene**.
+                Create a new empty scene by opening the **Document Menu** (the down-arrow
+                icon) in the upper-left corner and tapping **New Scene**. 
+                
+                Set the type to `Empty` and name the scene `music_player`. Saving it to the `scenes` folder.
 
                 @Image(source: 09-21.new-scene-music-player.png)
             }
@@ -329,10 +312,12 @@
             }
             @Step {
                 We included a music soundtrack in the `art/` directory,
-                `House In a Forest Loop.ogg`. Tap and drag it onto the
+                `House In a Forest Loop.ogg`. Hold and drag it onto the
                 _Stream_ property in the _Inspector_. Also, turn on
                 _Autoplay_ so the music plays automatically at the start of
                 the game.
+                
+                Save the scene.
 
                 > Tip: Toggle off _Autoplay_ here if you want to start the
                 > music from a script later (e.g. fade in over the first
@@ -342,14 +327,13 @@
                 @Image(source: 09-23.music-stream-autoplay.png)
             }
             @Step {
-                Save the scene as `music_player.tscn`.
-
-                @Image(source: 09-24a.save-music-player-scene.png)
-            }
-            @Step {
                 We have to register it as an autoload. Tap the **Toolbar Menu**
                 button in the upper-right corner, choose **Settings**, and then tap
-                the **Dropdown Menu** next to **General** to select **Globals -> Autoload**. In the _Path_ field, tap the folder icon to open the file browser and
+                the **Dropdown Menu** next to **General** to select **Globals -> Autoload**. 
+                @Image(source: 09-24a.register-autoload-settings.png)
+            }
+            @Step {
+                Tap **New Autoload**. Then in the _Path_ field, tap the folder icon to open the file browser and
                 double-tap on `music_player.tscn`. Then, tap the _Add_
                 button on the right to register the node.
 
@@ -358,21 +342,34 @@
                 > Leave it as is — that's the name we'll use to reference
                 > the autoload from any script.
 
-                @Image(source: 09-24.register-autoload-settings.png)
+                @Image(source: 09-24b.register-autoload-settings.png)
             }
+            You can use the autoload feature to have Xogot load a node or a
+            scene automatically at the start of the game, outside the
+            current scene. You can also use it to create globally
+            accessible objects.
+            
+            `music_player.tscn` now loads into any scene you open or
+            play. So if you run the game now, the music will play
+            automatically in any scene.
+
             @Step {
-                `music_player.tscn` now loads into any scene you open or
-                play. So if you run the game now, the music will play
-                automatically in any scene.
+                Before we wrap up this lesson, here's a quick look at how it
+                works under the hood. When you run the game, your _Scene Tree_
+                changes to give you two tabs: _Remote_ and _Local_.
+                
+                The _Remote_ tab allows you to visualize the node tree of your
+                running game. There, you will see the _Main_ node and
+                everything the scene contains and the instantiated mobs at the
+                bottom.
 
                 @Image(source: 09-25.scene-dock-remote-local.png)
             }
             And that does it for this lesson. In the next part, we'll add
             an animation to make the game both look and feel much nicer.
 
-            Here is the complete `main.gd` script for reference.
-
             @Step {
+                Here is the complete `main.gd` script for reference.
                 @Code(name: "main.gd", file: main-3d-08.gd, reset: true)
             }
         }
