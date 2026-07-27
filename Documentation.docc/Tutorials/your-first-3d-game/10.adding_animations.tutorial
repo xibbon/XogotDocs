@@ -9,7 +9,7 @@
         the snake. We set those to autoplay in the wrapper scenes, so the
         characters are already moving. Now we'll add a second
         `AnimationPlayer` to each gameplay scene for custom animations
-        — a jump arc for the player (loaded from a ready-made resource)
+        — a jump/bounce arc for the player (loaded from a ready-made resource)
         and a sway for the mobs (keyed by hand in the editor) — and
         control everything from code.
     }
@@ -36,12 +36,12 @@
             }
             @Step {
                 In the new window, tap **New Library** to create a new
-                `AnimationLibrary` sub-resource. You can name it anything. 
-                
-                Expand it by taping on it and tap **Load Animation into Library** 
+                `AnimationLibrary` sub-resource. You can name it anything.
+
+                Expand it by taping on it and tap **Load Animation into Library**
                 then navigate to `resources/jump.res` and tap **Select**.
 
-                @Image(source: 10-05.load-jump-resource.png, alt: "Load jump.res into the AnimationLibrary as jump")
+                @Image(source: 10-05.load-jump-resource.png, alt: "Load jump.res into the AnimationLibrary")
             }
             You can close the window.
 
@@ -55,10 +55,10 @@
             standing still. We also tilt the `Pivot` based on the
             vertical velocity so the character arcs when jumping.
 
-            Finally, `jump()` and `bounce()` play the custom jump
+            Finally, the `bounce()` function plays the jump/bounce
             animation on the scene `AnimationPlayer` using the full library
-            path `"Animations/jump.res"`. `jump()` also switches the skeleton
-            back to `Idle` so the run cycle doesn't keep playing in the air.
+            path `"Animations/jump.res"`. This animation plays when the player
+            bounces off a squashed mob.
 
             @Step {
                 Open the `player.gd` script and add the animation references and controls.

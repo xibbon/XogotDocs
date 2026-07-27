@@ -99,7 +99,7 @@ func _physics_process(delta):
     # Clearing both timers on a successful jump prevents double-jumping
     # off the coyote window.
     if _jump_buffer_timer > 0.0 and _coyote_timer > 0.0:
-        jump()
+        target_velocity.y = jump_impulse
         _coyote_timer = 0.0
         _jump_buffer_timer = 0.0
 
@@ -109,15 +109,6 @@ func _physics_process(delta):
 
     # Tilt the Pivot based on the vertical velocity to give the jump an arc.
     $Pivot.rotation.x = PI / 6 * velocity.y / jump_impulse
-
-
-func jump():
-    target_velocity.y = jump_impulse
-    # While in the air, switch the skeleton back to Idle so the run cycle
-    # doesn't keep playing.
-    skeleton_animation_player.play("Idle")
-    # Play the custom jump animation on the Player scene's AnimationPlayer.
-    animation_player.play("Animations/jump.res")
 
 
 # Called by the mob's HurtBox when the player touches the snake's body
