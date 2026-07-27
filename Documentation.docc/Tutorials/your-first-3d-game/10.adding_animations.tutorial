@@ -84,21 +84,24 @@
 
                 @Image(source: 10-05.load-jump-resource.png, alt: "Load jump.res into the AnimationLibrary as jump")
             }
+
+            Now we'll update the player script. We add two `@onready`
+            references — one to the skeleton `AnimationPlayer` inside
+            the model, one to the scene `AnimationPlayer` we just
+            added.
+
+            In `_physics_process()`, we speed the skeleton up to `4x`
+            while the player is moving and reset it to `1x` when
+            standing still. We also tilt the `Pivot` based on the
+            vertical velocity so the character arcs when jumping.
+
+            Finally, `jump()` and `bounce()` play the custom `jump`
+            animation on the scene `AnimationPlayer`. `jump()` also
+            switches the skeleton back to `Idle` so the run cycle
+            doesn't keep playing in the air.
+
             @Step {
-                Now open the `player.gd` script. We add two `@onready`
-                references — one to the skeleton `AnimationPlayer` inside
-                the model, one to the scene `AnimationPlayer` we just
-                added.
-
-                In `_physics_process()`, we speed the skeleton up to `4x`
-                while the player is moving and reset it to `1x` when
-                standing still. We also tilt the `Pivot` based on the
-                vertical velocity so the character arcs when jumping.
-
-                Finally, `jump()` and `bounce()` play the custom `jump`
-                animation on the scene `AnimationPlayer`. `jump()` also
-                switches the skeleton back to `Idle` so the run cycle
-                doesn't keep playing in the air.
+                Open the `player.gd` script and add the animation references and controls.
 
                 @Code(name: "player.gd", file: player-3d-11.gd, previousFile: player-3d-10.gd)
             }

@@ -41,16 +41,16 @@
         }
         @Steps {
             @Step {
-                Let's give our physics layers a name. Tap the **Dropdown Menu** toolbar
+                Let's give our physics layers a name. Tap the **Toolbar Menu**
                 button in the upper-right corner and choose **Settings** to open Project
                 Settings.
 
+                @Image(source: 07-01a.open-project-settings.png)
+            }
+            @Step {
                 In the left menu, navigate down to _Layer Names -> 3D Physics_.
                 You can see a list of layers with a field next to each of them
-                on the right. You can set their names there. Name the first
-                three layers _player_, _enemies_, and _world_, in that order.
-
-                Now, we can assign them to our physics nodes.
+                on the right. Name the first three layers _player_, _enemies_, and _world_, in that order.
 
                 > Tip: Naming the layers is purely for the editor's benefit
                 > — the layers themselves are still just integers. But using
@@ -59,24 +59,23 @@
 
                 @Image(source: 07-02.physics-layer-names.png)
             }
+
+            Now, we can assign them to our physics nodes.
             @Step {
                 In the _Main_ scene, select the `Ground` node. In the
-                _Inspector_, tap to open the _Collision_ section. There, you can
-                see the node's layers and masks as a grid of buttons.
-
-                The ground is part of the world, so we want it to be part of
-                the third layer. Tap the lit button to toggle **off** the
+                _Inspector_, tap to open the _Collision_ section. The ground is part of
+                the world, so we want it to be part of the third layer. Tap the lit button to toggle **off** the
                 first _Layer_ and toggle **on** the third one. Then, toggle
                 **off** the _Mask_ by tapping on it.
 
-                As mentioned before, the _Mask_ property allows a node to
-                listen to interaction with other physics objects, but we
-                don't need it to have collisions. `Ground` doesn't need to
-                listen to anything; it's just there to prevent creatures
-                from falling.
+                > Note: The _Mask_ property allows a node to
+                > listen to interaction with other physics objects, but we
+                > don't need it to have collisions. `Ground` doesn't need to
+                > listen to anything; it's just there to prevent creatures
+                > from falling.
 
-                Note that you can tap the blue "List" button on the right side of
-                the properties to see a list of named layers.
+                > Tip: You can tap the blue "List" button on the right side of
+                > the properties to see a list of named layers.
 
                 @Image(source: 07-03.ground-collision-settings.png)
             }
@@ -92,18 +91,16 @@
                 @Image(source: 07-04.player-physics-mask.png)
             }
             @Step {
-                Then, open the _Mob_ scene by double-tapping on `mob.tscn`
-                and select the `Mob` node.
-
-                Set its _Collision -> Layer_ to "enemies" and unset its
+                Then, open the _Mob_ scene by double-tapping on `mob.tscn`,
+                select the `Mob` node, and set its _Collision -> Layer_ to "enemies". Unset its
                 _Collision -> Mask_ entirely, leaving the mask empty.
 
-                With an empty mask, the mob's `CharacterBody3D` itself won't
-                push or get pushed by anything — it just slides forward. All
-                the gameplay interactions (squashing and getting hit) will
-                happen through the `Area3D` sensors we add next. This keeps
-                the movement clean: mobs never get stuck on the player or on
-                each other.
+                > Note: With an empty mask, the mob's `CharacterBody3D` itself won't
+                > push or get pushed by anything — it just slides forward. All
+                > the gameplay interactions (squashing and getting hit) will
+                > happen through the `Area3D` sensors we add next. This keeps
+                > the movement clean: mobs never get stuck on the player or on
+                > each other.
 
                 > Note: The mobs don't need to mask the "world" layer
                 > because they only move on the XZ plane. We don't apply
