@@ -41,6 +41,7 @@ func _on_player_hit():
     # Hide the on-screen virtual joystick while the retry overlay is
     # shown, so it doesn't get in the way of the player reading the score.
     $UI/VirtualJoystickLeft.hide()
+    $UI/VirtualJoystickLeft.set_process_input(false)
 
 
 func _input(event):

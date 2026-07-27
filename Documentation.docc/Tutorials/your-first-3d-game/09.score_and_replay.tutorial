@@ -248,28 +248,28 @@
                 @Code(name: "main.gd", file: main-3d-06.gd, previousFile: main-3d-05.gd)
             }
             @Step {
-                Then, when the player gets hit, we show the overlay and hide
-                the virtual joystick so it doesn't interfere with the retry screen.
+                Then, when the player gets hit, we show the overlay, hide
+                the virtual joystick, and disable its input processing so it
+                doesn't interfere with the retry screen.
 
                 @Code(name: "main.gd", file: main-3d-07.gd, previousFile: main-3d-06.gd)
             }
             @Step {
                 Finally, when the `Retry` node is visible, we need to
                 listen to the player's input and restart the game if they
-                press enter or tap the screen. We use `_input()` instead of
-                `_unhandled_input()` to catch the input before the joystick can
-                process it.
+                press enter or tap the screen. We use `_input()` to catch
+                input events early in the input processing chain.
 
                 We check for two types of input: the predefined `ui_accept` action
                 (Enter key or gamepad A button) or a screen touch event. When either
                 occurs, we reload the scene and call `set_input_as_handled()` to
-                prevent other nodes (like the joystick) from processing the same input.
+                mark the input as processed.
 
                 > Note: `ui_accept` is a built-in action mapped to Enter
                 > and gamepad A by default, so we don't need to add it to
-                > our Input Map. For touch input, we check for
-                > `InputEventScreenTouch` and call `set_input_as_handled()`
-                > to prevent the joystick from receiving the tap.
+                > our Input Map. We use `_input()` instead of
+                > `_unhandled_input()` so we can call `set_input_as_handled()`
+                > to consume the event before it reaches other nodes.
 
                 @Code(name: "main.gd", file: main-3d-08.gd, previousFile: main-3d-07.gd)
             }

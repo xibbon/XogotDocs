@@ -39,6 +39,7 @@ func _on_player_hit():
     $MobTimer.stop()
     $UI/Labels/Retry.show()
     $UI/VirtualJoystickLeft.hide()
+    $UI/VirtualJoystickLeft.set_process_input(false)
 
 
 func _input(event):
