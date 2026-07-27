@@ -45,33 +45,45 @@
             }
             You can close the window.
 
-            Next we'll update the player script. We add two `@onready`
-            references — one to the skeleton `AnimationPlayer` inside
-            the model, one to the scene `AnimationPlayer` we just
-            added.
-
-            In `_physics_process()`, we speed the skeleton up to `4x`
-            while the player is moving and reset it to `1x` when
-            standing still. When the player jumps, we switch the skeleton
-            animation to `Idle` so the run cycle doesn't keep playing in
-            the air. We also tilt the `Pivot` based on the vertical velocity
-            so the character arcs when jumping.
-
-            Finally, the `bounce()` function applies the jump impulse,
-            switches the skeleton animation to `Idle`, and plays the jump
-            animation on the scene `AnimationPlayer` using the full library
-            path `"Animations/jump.res"`. This gives the player a satisfying
-            bounce arc when they squash a mob.
+            Now we'll update the player script in several steps. First, we'll
+            add references to both animation players and control the skeleton's
+            playback speed.
 
             @Step {
-                Open the `player.gd` script and add the animation references and controls.
+                Open the `player.gd` script. Add two `@onready` references — one
+                to the skeleton `AnimationPlayer` inside the model, one to the scene
+                `AnimationPlayer` we just added. Then in `_physics_process()`, speed
+                the skeleton up to `4x` while the player is moving and reset it to
+                `1x` when standing still.
+
+                @Code(name: "player.gd", file: player-3d-11a.gd, previousFile: player-3d-10.gd)
+            }
+
+            Next we'll improve how the jump looks by switching the skeleton animation
+            and tilting the character.
+
+            @Step {
+                When the player jumps, switch the skeleton animation to `Idle` so
+                the run cycle doesn't keep playing in the air. Also tilt the `Pivot`
+                based on the vertical velocity to give the jump a nice arc.
+
+                @Code(name: "player.gd", file: player-3d-11b.gd, previousFile: player-3d-11a.gd)
+            }
+
+            Finally, we'll update the `bounce()` function to play the custom jump
+            animation when bouncing off mobs.
+
+            @Step {
+                Update the `bounce()` function to use `jump_impulse` (same strength
+                as regular jumping), switch the skeleton to `Idle`, and play the
+                custom jump animation from the scene `AnimationPlayer`.
 
                 > Note: When playing an animation, we use the full library path
                 > `"Animations/jump.res"` rather than just the filename. Godot's
                 > `AnimationPlayer` requires the library name followed by the
                 > animation name when referencing animations.
 
-                @Code(name: "player.gd", file: player-3d-11.gd, previousFile: player-3d-10.gd)
+                @Code(name: "player.gd", file: player-3d-11.gd, previousFile: player-3d-11b.gd)
             }
 
             @Step {
