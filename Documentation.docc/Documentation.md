@@ -33,10 +33,13 @@ To get started building games with Xogot, check out our <doc:Getting-Started> gu
 
 ### Mac
 
+- <doc:Differences-Mac>
 - <doc:mac_command_line>
 - <doc:integrating_with_ai_tools>
 - <doc:MacSourceControl>
 - <doc:Mac-Testing>
+- <doc:mac_dotnet>
+- <doc:mac_swift>
 
 ### 2D
 
