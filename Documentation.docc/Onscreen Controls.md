@@ -95,26 +95,32 @@ have not yet configured joypad actions yet, you can follow these steps:
    **“Settings”**.
 3. Tap **General** in the drop down at the top of the dialog and select **Input
    Map**.
-4. Find and select an **Input Action** in the left-hand column that you want to
+4. Make sure the segmented control at the top of the left-hand column is set to
+   **Actions**.
+5. Find and select an **Input Action** in the left-hand column that you want to
    connect to a hardware action event.
-5. Tap the **+** button in the upper-right corner to create a **New Input
+6. Tap the **+** button above the **Action Events** list to create a **New Input
    Event**.
-6. Tap **Keyboard Keys** in the drop down at the top of the dialog and select
-**Joypad Buttons** or **Joypad Axes** to locate the button or axes direction you
-want to connect
+7. Select **Joypad Buttons** or **Joypad Axes** in the segmented control at the
+   top of the dialog to locate the button or axis direction you want to connect.
   - **Button Mapping**: Note that the Virtual Controller buttons use the **Xbox
-    naming convention** (e.g., "A," "B," "X," "Y").
+    naming convention** (e.g., "A," "B," "X," "Y").  Each row also shows the
+    Nintendo and Sony glyphs for the same logical button.
   - **Joypad Axis**: Note that the Virtual Controller will map Joypad Axis 0 and
     1 to the Left Thumbstick, and Joypad Axis 2 and 3 map to the Right
     Thumbstick
-7. When you've selected the button or axis direction you want to connect, tap
+8. When you've selected the button or axis direction you want to connect, tap
    **Create** to finish connecting the Input Action Event.
-8. Repeat steps 4-7 above for each Input Action you want to map to a virtual
+9. Repeat steps 5-8 above for each Input Action you want to map to a virtual
    controller input event.
 
 If your project does not currently have any Input Map configured, you will first
 need to add and configure Input Actions using the **+** button in the left-hand
 column of the Input Map configuration screen.
+
+You can skip most of this work by applying one of the built-in input templates:
+every gameplay template already binds both the keyboard and a gamepad.  See
+<doc:Input-Map>.
 
 
 ## How to Add the Virtual Joystick Addon

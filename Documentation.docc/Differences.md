@@ -60,6 +60,10 @@ from Godot, such as Input Map, Autoload and Plugins, can be navigated to by
 tapping on the **General** in the drop-down list at the top of the Settings
 dialog.
 
+The **Input Map** pane is reorganized, and it adds a library of reusable input
+templates, a command to save your input map as a template, and a command to
+import the input map of another project.  See <doc:Input-Map>.
+
 ## Additional Resources
 
 Watch this video to get an overview and a minimal project to break the ice:

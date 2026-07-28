@@ -23,7 +23,8 @@ you can define multiple keys for the same action (e.g. the keyboard escape key a
 You can then more easily change this mapping in the project settings without updating your code,
 and even build a key mapping feature on top of it to allow your game to change the key mapping at runtime!
 
-You can set up your InputMap under **Project > Project Settings > Input Map** and then use those actions like this:
+You can set up your InputMap in the **Input Map** pane of the Project Settings
+(see <doc:Input-Map>) and then use those actions like this:
 
 ```
 func _process(delta):
@@ -183,7 +184,8 @@ keyboard on PC, Joypad on console).
 - Actions to be triggered programmatically at runtime.
 
 Actions can be created from the Project Settings menu in the **Input Map**
-tab and assigned input events.
+tab and assigned input events.  Xogot also ships templates of ready-made
+actions for common game genres; see <doc:Input-Map>.
 
 Any event has the methods [InputEvent.is_action()](https://docs.godotengine.org/en/stable/classes/class_inputevent.html#class-inputevent-method-is-action),
 [InputEvent.is_pressed()](https://docs.godotengine.org/en/stable/classes/class_inputevent.html#class-inputevent-method-is-pressed) and [InputEvent.is_echo()](https://docs.godotengine.org/en/stable/classes/class_inputevent.html#class-inputevent-method-is-echo).

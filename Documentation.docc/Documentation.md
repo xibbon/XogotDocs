@@ -23,6 +23,7 @@ To get started building games with Xogot, check out our <doc:Getting-Started> gu
 - <doc:Embedded-Game-View>
 - <doc:Importing-Assets>
 - <doc:Asset-Placer>
+- <doc:Input-Map>
 - <doc:Onscreen-Controls>
 - <doc:Publishing-to-the-Web>
 - <doc:Remote-Debugging>
@@ -252,6 +253,7 @@ To get started building games with Xogot, check out our <doc:Getting-Started> gu
 
 ### Input handling
 
+- <doc:Input-Map>
 - <doc:inputevent>
 - <doc:input_examples>
 - <doc:mouse_and_input_coordinates>

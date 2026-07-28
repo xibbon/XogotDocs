@@ -109,15 +109,24 @@ func _input(event):
 The [InputMap](https://docs.godotengine.org/en/stable/classes/class_inputmap.html#class-inputmap) is the most flexible way to handle a
 variety of inputs. You use this by creating named input actions, to which
 you can assign any number of input events, such as keypresses or mouse clicks.
-To see them, and to add your own, open Project -> Project Settings and select
-the InputMap tab:
 
+To see them, and to add your own, open the **Input Map** pane of the Project
+Settings. On iPad and iPhone, tap the **...** button in the top right corner,
+choose **Settings**, tap **General** in the drop-down list, and select **Input
+Map**. On Mac, choose **Project > Project Settings** and select the **Input
+Map** tab.
+
+<!-- This screenshot predates the Actions / Templates segmented control; retake it. -->
 @Image(source: "inputs_inputmap.png")
 
 > Tip:
-> A new Godot project includes a number of default actions already defined.
-> To see them, turn on `Show Built-in Actions` in the InputMap dialog.
+> A new project includes a number of default actions already defined.
+> To see them, turn on **Show Built-in** at the bottom of the action list.
 >
+
+Xogot extends this pane with a library of reusable input-map templates, with
+ready-to-use maps for common genres, and with commands to save your input map as
+a template or to import the input map of another project. See <doc:Input-Map>.
 
 ### Capturing actions
 
