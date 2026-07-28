@@ -2,6 +2,70 @@
 
 Release notes for our preview release of Xogot to TestFlight.
 
+## Release 4942 (July 26th, 2026)
+
+Godot 4.7 comes to our beta!
+
+This release comes in two forms, the XogotBeta TestFlight comes bundled with
+Godot 4.7, while the regular Xogot Testflight continues to be based on Godot
+4.6.xx
+
+### Improvements
+
+- Coding Assistant gets a new composer: what we had was ok for a first
+  prototype, but I am taking inspiration from the UI in other agents and
+  adjusting the style (centered pill).   It also has a much simpler model
+  picker.
+  
+- Coding Assistant Inspector got bulk operations for managing conversations
+  (#3050).
+
+- Added expanded AI settings for conversation behavior, images, skills, advanced
+  controls, and response display. #3081
+
+- Added a clearer full-access confirmation sheet that explains the capabilities
+  being requested. #3071
+
+- Improved live-output scrolling with reliable follow-to-bottom behavior on both
+  the coding assistant and the Debugger REPL.
+  
+- Debugger REPL: persistent debugger command history, and repeat-last-command
+  support - for that LLDB/GDB experience that every iOS user is craving #3097, #3100
+
+### Bug Fixes
+
+- Fixed ChatGPT sign-in on iOS by allowing the OAuth redirect URL to be pasted
+  directly into Xogot. #3042
+
+- Fixed the signed-out Coding Assistant view not filling the available panel
+  height. #3041
+
+- Fixed failed or incomplete game exports and background uploads being reported
+  as successful, while improving cancellation, retry, and cleanup behavior.
+  #3072
+
+- Fixed the code-editor tab bar disappearing after closing some tabs, and
+  stopped scene or file drops from inserting an extra bare node name into code.
+
+- Fixed the Create Script dialog jumping as its state changed, removed the
+  incorrect background from the Inherit Node sheet, and corrected the oversized
+  scroll indicator in the Add Node dialog. #3059, #3058, #3085
+
+- Fixed unwanted focus behavior in Inspector controls and removed a stray scroll
+  indicator beneath Scene tabs. #2891, #2949
+
+- Fixed dragged `@onready` declarations and the Remote Inspector using engine
+  class names instead of custom script class names. #2747, #2751
+
+- Fixed debugger controls becoming unreachable when the bottom panel was
+  collapsed and aligned the REPL prompt with its output. #3040, #3078
+
+- Fixed a crash when the Skeleton3D Inspector stopped observing an object that
+  Godot had already released. #3070
+
+- Fixed SpriteFrames editor integration so it appears in and owns the correct
+  bottom-panel tab. #2502
+
 ## Release 4874 (July 17th)
 
 ## Improvements

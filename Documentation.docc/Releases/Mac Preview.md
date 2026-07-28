@@ -13,8 +13,6 @@ differences between Godot on Mac and Xogot.
 
 The current Mac preview has the following known limitations:
 
-- C# / .NET is not supported.
-
 - The Profiler detail page is incomplete.
 
 - The Inspector has not yet been fully styled for macOS.
@@ -25,9 +23,141 @@ The current Mac preview has the following known limitations:
 
 # Releases
 
+## Build 1881 (July 27th, 2026)
+
+### Improvements
+
+#### .NET and Swift
+
+.NET and Swift come to Xogot.   You can now bring .NET projects, and we have
+bundled quite a nice experience - we have editor code completion, integrated
+debugging with both and we wired this up to our LSP-capable editor so plenty of
+capabilities that you have come to expect from tools like Visual Studio are just
+supported out of the box by both of them.
+
+For Swift, you can create "naked" scripts, just like GDScript, or you can
+include a proper Swift Package to organize your code from the start (we offer a
+menu option to prime your Swift project),
+
+There are hundreds of small touch-ups in this language integration experience,
+that we think will make your experience very pleasant.
+
+This is the first step in our journey to provide the full stack support, but we
+are incredibly pleased of where we are starting from - and would love nothing
+more than to get your feedback on which features we should prioritize to put a
+bow on the feature.
+
+#### Git
+
+Added multi-repository Git pull and push dialogs for projects with submodules,
+including per-repository rebasing, push destinations, force-with-lease, tag
+selection, batch operations, and retry support.
+
+#### Other Improvements
+
+The new Swift and .NET support made us reconsider the needs for tab management
+(as you often single-step or step into functions in files that you are editing).
+So we added transient and pinned editor tabs.
+
+Added full file paths to code and scene tab tooltips on Mac. #2876
+
+- Added direct keyboard, mouse, and gamepad input recording to Input Map
+  settings on Mac #2986
+
+- Added a GDExtensions page to Project Settings with compatibility details,
+  reload controls, and links to extension files. (a 4.7 feature  coming early #2746
+
+- Coding Assistant gets a new composer: what we had was ok for a first
+  prototype, but I am taking inspiration from the UI in other agents and
+  adjusting the style (centered pill).   It also has a much simpler model
+  picker.
+
+- Coding Assistant Inspector got bulk operations for managing conversations
+  (#3050).
+
+- Added expanded AI settings for conversation behavior, images, skills, advanced
+  controls, and response display. #3081
+
+- Added a clearer full-access confirmation sheet that explains the capabilities
+  being requested. #3071
+
+- Improved live-output scrolling with reliable follow-to-bottom behavior on both
+  the coding assistant and the Debugger REPL.
+  
+- Debugger REPL: persistent debugger command history, and repeat-last-command
+  support - for that LLDB/GDB experience that every iOS user is craving #3097,
+  #3100
+
+- Improved debugger workflow by bringing the editor forward at breakpoints,
+  returning the running game to the foreground on resume, and recycling
+  debugger-opened files into a dedicated transient tab.
+
+- Made the editor output-line limit apply consistently on launch and remain
+  synchronized with the editor log.
+
+### Bug fixes
+
+- Fixed a rare editor-settings crash caused by excessive SwiftUI view copies
+  exhausting background-thread stack space. #3108
+
+- Fixed a crash when closing or switching away from an invalidated Skeleton3D
+  inspector. #3070
+
+- Fixed the SpriteFrames editor integration so the correct editor appears
+  reliably in the bottom panel. #2502
+
+- Fixed failed or cancelled game exports being reported as successful. #3072
+
+- Fixed the code tab bar collapsing or disappearing while tabs were still open.
+
+- Fixed tab-closing shortcuts on Mac: Control-Command-W now closes the focused
+  code, shader, or scene tab, and Command-W works for focused shader tabs. #3055
+
+- Fixed debugger controls becoming unreachable when the bottom panel was
+  collapsed. #3040
+
+- Fixed debugger navigation stealing keyboard focus whenever execution stopped
+  or stepped. #3094
+
+- Fixed the .NET debugger stepping into generated or framework code and
+  attempting to open unavailable source files. #3104
+
+- Fixed dragged `@onready` references using the engine type instead of a node's
+  custom `class_name`. #2747
+
+- Fixed the remote inspector showing an engine class instead of a script's
+  custom `class_name`. #2751
+
+- Fixed the Create Script dialog jumping as its state changed. #3059
+
+- Fixed the Inherit Node dialog showing an incorrect floating-card background.
+  #3058
+
+- Fixed the Add Node dialog showing an oversized scroll indicator beside long
+  inheritance chains. #3085
+
+- Fixed a stray scroll indicator appearing beneath Scene tabs. #2949
+
+- Fixed inspector controls stealing focus and showing unwanted focus behavior.
+  #2891
+
+- Fixed the debugger REPL prompt not lining up with echoed output. #3078
+
+- Fixed Command Palette getting stuck in command mode or opening from a hidden
+  text editor. #3086
+
+- Fixed the Learning Center retaining the previous section's hero thumbnail
+  after switching sidebar groups.
+
+- Fixed the AI provider sign-in empty state not filling the available navigator
+  area. #3041
+
+- Fixes DirAccess: don't silently revert res:// change_dir when resource_path is
+  non-normalized #3105
+
 ## Build 1836 (July 17, 2026)
 
-# Improvements 
+### Improvements 
 
 - Reworked the New Scene dialog to clarify creating a new root or inheriting
   from an existing scene - and dropped the annoying jumping behavior. #2787
@@ -39,7 +169,7 @@ The current Mac preview has the following known limitations:
   still not cleaned up the list of models, it is too extensive, will clean up
   soon.
 
-  ## Bug Fixes
+### Bug Fixes
 
 - Fixed Skeleton3D scaling changes not remaining undoable in Transform Mode.
   #2776
