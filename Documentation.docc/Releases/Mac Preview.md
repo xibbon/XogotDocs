@@ -23,6 +23,30 @@ The current Mac preview has the following known limitations:
 
 # Releases
 
+## Build 1888 (July 28th, 2026) 
+
+## Improvements
+
+- Enabled C# and Swift project support by default on macOS.
+
+- Improved Git history and the source-control inspector: branch and tag names
+  now wrap, and extra references show an overflow indicator.
+
+- Improved the scene picker so it lists only supported scene file types. #3110
+
+## Bug fixes
+
+- Fixed Go to Definition across files and built-in class documentation in the
+  code editor. #3087
+
+- Fixed bottom spacing in Issue Navigator results. #3115
+
+- Fixed Find panel selection, replacement, result order, and search-history
+  behavior.
+
+- Fixed C# project launch: Xogot now gives clear guidance when .NET support is
+  off and starts .NET only for C# projects.
+
 ## Build 1881 (July 27th, 2026)
 
 ### Improvements

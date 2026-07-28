@@ -2,6 +2,42 @@
 
 Release notes for our preview release of Xogot to TestFlight.
 
+## Release
+
+### Improvements
+
+### Bug Fixes
+
+## Release 4964 (July 28th, 2026)
+
+### Improvements
+
+- Improved editor navigation by reusing temporary tabs and restoring open shader
+  tabs after restart.
+
+- Clarified the coding agent's full-access confirmation so it describes its actual access.
+
+### Bug fixes
+
+- Fixed Find in Files selection, replacement, and search-history behavior.
+
+- Fixed Go to Definition across files and added built-in class documentation.
+  #3087
+
+- Fixed extra space below the Issue Navigator search field. #3115
+
+- Fixed iPad touch defaults so editor controls use touch-friendly sizes. #3109
+
+- Fixed ChatGPT and OpenAI API model selection and provider setup. #3113
+
+- Fixed coding-agent approval menu and message action controls. #3114, #3112
+
+- Fixed project file access when resource paths contain unnormalized parts.
+  #3105
+
+- Fixed a rare crash when editor settings change, and made the Output line limit
+  apply after restart. #3108
+
 ## Release 4942 (July 26th, 2026)
 
 Godot 4.7 comes to our beta!
