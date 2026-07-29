@@ -23,6 +23,25 @@ The current Mac preview has the following known limitations:
 
 # Releases
 
+## Build 1895 (July 28th, 2026)
+
+### Improvements
+
+- Xogot now checks the C# component and .NET runtime before it opens a C#
+  project. If setup fails, Xogot gives clear guidance and can copy diagnostic
+  details for Xogot Support.
+
+### Bug fixes
+
+- Fixed a startup race that could prevent a C# project from finding the .NET
+  runtime.
+
+- Fixed macOS app signing for .NET JIT compilation, which C# project support
+  requires.
+
+- Fixed Swift Godot method calls that return small integer values. These calls
+  could corrupt memory and crash optimized builds.
+
 ## Build 1888 (July 28th, 2026) 
 
 ## Improvements
