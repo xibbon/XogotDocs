@@ -17,6 +17,10 @@ You need Xcode 16 or newer installed. Xogot does not include a Swift toolchain.
 It uses the Swift compiler, the Swift language server, and the debugger that
 come with Xcode, through `xcrun`.
 
+Updating Xcode is safe. The Swift the component ships is built so that a newer
+compiler can read it, so you do not have to wait for a matching Xogot release
+before you install a new Xcode.
+
 ## Turn on Swift support
 
 Swift support is off until you turn it on.
@@ -28,18 +32,19 @@ Swift support is off until you turn it on.
 <!-- @Image(source: "mac-swift-feature-flags.png",
        alt: "The Developer: Feature Flags window with Swift Support turned on") -->
 
-## Install the Swift Development Support component
+## Install the Swift Support component
 
-Xogot downloads the SwiftGodot SDK as an optional component, so that people who
-only use GDScript do not pay for it in the application download. The component
-holds the prebuilt SwiftGodot modules, the macro plugin that implements `@Godot`,
-the GDExtension headers, and a link stub. It is approximately 70 MB.
+Xogot downloads SwiftGodot as an optional component, so that people who only use
+GDScript do not pay for it in the application download. The component holds the
+SwiftGodot frameworks, the macro plugin that implements `@Godot`, and the
+GDExtension C module. The download is about 19 MB, and about 93 MB once
+installed.
 
 To install it, choose **Xogot Settings** (Command-Comma), select **Components**
-in the sidebar, and install **Swift Development Support**.
+in the sidebar, and install **Swift Support**.
 
 <!-- @Image(source: "mac-swift-components.png",
-       alt: "The Components pane of Xogot Settings, showing Swift Development Support") -->
+       alt: "The Components pane of Xogot Settings, showing Swift Support") -->
 
 Xogot also offers the component when you open a project that uses Swift. The
 message reads "Swift support is not installed. Install Swift Development Support
@@ -57,6 +62,20 @@ The component installs into your Application Support folder:
 
 You do not need to reopen the project. Xogot picks up the component on the next
 build.
+
+### Which SwiftGodot you are writing against
+
+The component ships a public
+[SwiftGodot](https://github.com/migueldeicaza/SwiftGodot) release — 0.77.2 at the
+time of writing, and it moves forward with the component — the same build you
+would get by adding
+[SwiftGodotBinary](https://github.com/migueldeicaza/SwiftGodotBinary) to a
+package of your own. So `import SwiftGodot` in an Xogot project means exactly
+what it means everywhere else: the upstream documentation applies, and code you
+find in SwiftGodot samples compiles here unchanged.
+
+Xogot supplies SwiftGodot to your build itself. You do not add it to a package
+manifest, and you should not — see below.
 
 ## Two ways to organize Swift code
 
@@ -86,6 +105,24 @@ references to them in your scenes and in `project.godot`.
 
 A project has one Swift package, and the move is one way. There is no command to
 go back to standalone files.
+
+The package is yours to edit — add targets, add dependencies, split your code up.
+Three things belong to Xogot, and changing them breaks the build:
+
+- **Do not add SwiftGodot as a dependency.** The manifest deliberately has none.
+  Xogot passes SwiftGodot to the compiler and the linker from the installed
+  component, which is also what keeps your manifest portable: it contains no
+  paths specific to your machine.
+- **Keep a dynamic library product named `GameCode`.** That is the library Xogot
+  loads into the game. If a build stops finding it you will get an error saying
+  so by name.
+- **`Sources/GameCode/EntryPoint.swift` is regenerated before every build.**
+  It registers your `@Godot` classes with the engine. Anything you write in it is
+  overwritten.
+
+One consequence of the first point: `swift build` inside the `Swift` folder will
+not work on its own, because SwiftGodot is not in the manifest for it to resolve.
+Build from Xogot.
 
 The first time a `.swift` file appears in a project, Xogot writes a
 `swift.gdextension` file in the project root and records in `project.godot` that
@@ -235,9 +272,10 @@ Swift support is new. These are the limits today:
 - Xogot finds your `@Godot` classes by reading your source files. A class that
   is declared conditionally, for example inside an `#if` block, may not be
   registered.
-- The SDK is built for a specific Swift compiler version. If you update Xcode to
-  a new Swift release before Xogot ships a matching component, builds fail until
-  the component is updated.
+- A `@Godot` class cannot take the name of a class the engine already registers.
+  `@Godot class Timer` collides with Godot's own `Timer`, so Xogot skips it and
+  reports it: "`Timer.swift: @Godot class Timer is skipped — Timer is already a
+  registered class in this process; rename it`". Rename yours and it builds.
 - You cannot export a project that contains Swift from Xogot yet. Xogot is
   compatible with Godot, so use Godot on Mac to export the project.
 
