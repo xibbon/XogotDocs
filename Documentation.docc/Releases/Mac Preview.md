@@ -23,6 +23,31 @@ The current Mac preview has the following known limitations:
 
 # Releases
 
+## Build 1901 (July 29th, 2026)
+
+### Improvements
+
+- Swift projects now use the public SwiftGodot SDK. This supports standard Swift
+  packages and compatible newer Xcode versions and addresses the previous
+  brittle support.
+
+- Swift games rebuild after Swift SDK updates. This keeps their runtime files
+  current.
+
+- Xogot detects Swift class-name conflicts before it builds a project. This
+  helps prevent editor exits.
+
+- C# projects now wait for Godot to finish builds and assembly reloads before
+  they start.
+
+
+### Bug fixes
+
+- Fixed C# tools that could stay unavailable when they started after the editor.
+- Fixed C# build status that could complete too early or fail from a timeout.
+- Fixed an editor crash caused by excess deferred socket operations.
+- Fixed the macOS .NET build integration.
+
 ## Build 1895 (July 28th, 2026)
 
 ### Improvements

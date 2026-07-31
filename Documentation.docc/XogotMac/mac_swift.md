@@ -8,8 +8,13 @@ Swift file next to your scene the same way you write a GDScript file, or you can
 organize your code in a real Swift package. Either way, Xogot compiles it, loads
 it into the game, and lets you set breakpoints in it.
 
-This is a Mac-only capability. Xogot on iPad and iPhone continues to support
-GDScript only.
+A Swift project is not limited to the Mac that you write it on. Xogot builds,
+signs and installs it on a connected iPhone or iPad, and on the iOS Simulator,
+the same way it does for a GDScript project. See
+[Run on a device or the simulator](#Run-on-a-device-or-the-simulator).
+
+You write the Swift code on a Mac. Xogot on iPad and iPhone continues to support
+GDScript only, so you author on the Mac and deploy from it.
 
 ## Before you start
 
@@ -204,6 +209,30 @@ Compiler errors and warnings appear in the **Issue Navigator**, against your own
 file and line, not against the generated package. The complete compiler output
 is available as a build entry in the **Report Navigator**.
 
+## Run on a device or the simulator
+
+Swift projects use the same run destinations as GDScript projects. Select the
+destination in the toolbar, then press Run:
+
+- **Local Editor** — the game runs on your Mac, inside Xogot. This is the
+  default, and it is the fastest way to iterate.
+- **My Mac** — the game runs as a separate, signed macOS application.
+- **An iOS Simulator** — Xogot lists the simulators that Xcode installed.
+- **A connected iPhone or iPad** — Xogot detects the hardware that you attached
+  with a cable, and the devices that you paired over the network, and it
+  deploys over either one.
+
+<!-- @Image(source: "mac-swift-destinations.png",
+            alt: "The run destination picker in the Xogot toolbar, showing Local Editor, My Mac, a simulator, and a connected iPad") -->
+
+Xogot packages, signs and installs the build for you. It is the same Xcode-like
+deployment path that <doc:Differences-Mac> describes, and your Swift code goes
+along with the game. The signing identity and the deployment options live in the
+Project Settings.
+
+For the details of signing, provisioning and testing on hardware, see
+<doc:Mac-Testing>.
+
 ## What the editor gives you
 
 Xogot replaces Godot's code editor with Monaco, the editor that powers Visual
@@ -239,7 +268,6 @@ While the game is stopped you get:
 
 - The call stack, including the SwiftGodot and engine frames below your code
 - Local variables with real Swift values, formatted by the Swift-aware debugger
-- Expression evaluation in the frame that you select
 
 The **Debug** menu holds the stepping commands:
 
@@ -260,15 +288,34 @@ For Swift, Xogot drives LLDB, so it does.
 In a project that mixes languages, breakpoints in `.gd` files and breakpoints in
 `.swift` files are routed to the correct debugger automatically.
 
+### Two caveats
+
+Xogot drives LLDB for you, but the LLDB interface itself is not available yet.
+You get the stack, the locals and the stepping commands through the Xogot user
+interface; there is no LLDB command prompt where you can type expressions to
+evaluate. GDScript keeps the expression prompt that <doc:Differences-Mac>
+describes.
+
+Swift debugging also applies to a **Local Editor** run only. It does not work
+when you deploy the game to a device. The game builds, installs and runs there,
+but breakpoints in `.swift` files are not hit.
+
 ## Current limitations
 
 Swift support is new. These are the limits today:
 
-- Swift is available on Mac only. It is not available on iPad or iPhone.
+- You write Swift on the Mac only. Xogot on iPad and iPhone edits GDScript
+  only, so you cannot open a Swift file and change it there. Deploying the
+  finished game to an iPad or an iPhone does work.
+- The LLDB interface is not available yet, so there is no prompt for evaluating
+  expressions at a Swift breakpoint.
+- Swift breakpoints work in a **Local Editor** run. They are not hit when you
+  deploy the game to a device.
 - While the game is stopped at a Swift breakpoint the whole process is frozen,
   so the remote scene tree, live edit, and remote object inspection are not
   available. They continue to work at a GDScript breakpoint.
-- There is no hot reload. Each run builds your code and starts a new process.
+- Hot reload applies to `@Godot` classes in a tool extension. Outside of that,
+  a run builds your code and starts a new process.
 - Xogot finds your `@Godot` classes by reading your source files. A class that
   is declared conditionally, for example inside an `#if` block, may not be
   registered.
@@ -276,8 +323,11 @@ Swift support is new. These are the limits today:
   `@Godot class Timer` collides with Godot's own `Timer`, so Xogot skips it and
   reports it: "`Timer.swift: @Godot class Timer is skipped — Timer is already a
   registered class in this process; rename it`". Rename yours and it builds.
-- You cannot export a project that contains Swift from Xogot yet. Xogot is
-  compatible with Godot, so use Godot on Mac to export the project.
+- Deploying and exporting are not the same thing. Xogot builds, signs and
+  installs a Swift project on your own Mac, simulator, iPhone or iPad. It
+  cannot yet produce a distributable build of a Swift project for TestFlight or
+  the App Store. Xogot is compatible with Godot, so use Godot on Mac to export
+  the project.
 
 ## See also
 

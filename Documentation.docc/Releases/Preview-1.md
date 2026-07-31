@@ -8,6 +8,26 @@ Release notes for our preview release of Xogot to TestFlight.
 
 ### Bug Fixes
 
+## Beta Release 669 (July 30, 2026)
+
+This only applies to the TestFlight for XogotBeta which contains the 4.7
+runtime.
+
+These are fixed specific to the 4.7 upgrade (everything in 4964), plus:
+
+
+- Fixes the selected-row color in ScenePad on iOS 27. #3120
+
+- Fixes the floating-card layout in class-picker sheets. #3058
+
+- Fixes the touch gestures on the 3D editor.
+
+## Release 4977 (July 29th, 2026)
+
+### Improvements
+
+Preparation for the AppStore release.
+
 ## Release 4964 (July 28th, 2026)
 
 ### Improvements
