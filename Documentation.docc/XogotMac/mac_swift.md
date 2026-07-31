@@ -9,8 +9,9 @@ organize your code in a real Swift package. Either way, Xogot compiles it, loads
 it into the game, and lets you set breakpoints in it.
 
 A Swift project is not limited to the Mac that you write it on. Xogot builds,
-signs and installs it on a connected iPhone or iPad, and on the iOS Simulator,
-the same way it does for a GDScript project. See
+signs and installs it on a connected iPhone, iPad or Apple Vision Pro, on a
+simulator, and on your Mac, the same way it does for a GDScript project — and
+your Swift breakpoints work on all of them. See
 [Run on a device or the simulator](#Run-on-a-device-or-the-simulator).
 
 You write the Swift code on a Mac. Xogot on iPad and iPhone continues to support
@@ -217,10 +218,11 @@ destination in the toolbar, then press Run:
 - **Local Editor** — the game runs on your Mac, inside Xogot. This is the
   default, and it is the fastest way to iterate.
 - **My Mac** — the game runs as a separate, signed macOS application.
-- **An iOS Simulator** — Xogot lists the simulators that Xcode installed.
-- **A connected iPhone or iPad** — Xogot detects the hardware that you attached
-  with a cable, and the devices that you paired over the network, and it
-  deploys over either one.
+- **A simulator** — Xogot lists the iOS and visionOS simulators that Xcode
+  installed.
+- **A connected device** — Xogot detects the iPhone, iPad and Apple Vision Pro
+  hardware that you attached with a cable, and the devices that you paired over
+  the network, and it deploys over either one.
 
 <!-- @Image(source: "mac-swift-destinations.png",
             alt: "The run destination picker in the Xogot toolbar, showing Local Editor, My Mac, a simulator, and a connected iPad") -->
@@ -229,6 +231,9 @@ Xogot packages, signs and installs the build for you. It is the same Xcode-like
 deployment path that <doc:Differences-Mac> describes, and your Swift code goes
 along with the game. The signing identity and the deployment options live in the
 Project Settings.
+
+Your breakpoints come along. Swift debugging works on every one of these
+destinations — see [Debugging](#Debugging).
 
 For the details of signing, provisioning and testing on hardware, see
 <doc:Mac-Testing>.
@@ -288,17 +293,38 @@ For Swift, Xogot drives LLDB, so it does.
 In a project that mixes languages, breakpoints in `.gd` files and breakpoints in
 `.swift` files are routed to the correct debugger automatically.
 
-### Two caveats
+### Debugging a deployed game
+
+Swift debugging is not limited to a **Local Editor** run. Xogot uses the same
+LLDB session for every run destination: it prepares the debugger before the
+launch, and attaches once the platform reports the process ID of your game. Set
+your breakpoints and press Run, the same way you do locally.
+
+How the attach happens depends on the destination:
+
+- **My Mac** — Xogot attaches as soon as the launcher reports the process ID.
+  Because a Mac build has no startup barrier, code that runs very early can
+  execute before the attach completes. Put a breakpoint a little later if you
+  need to be sure that it is hit.
+- **A simulator** — Xogot starts the app with `--wait-for-debugger`, so the app
+  waits for the debugger before it runs anything.
+- **A device** — Xogot starts the app in a stopped state, reads its process ID,
+  and tells LLDB to select the device and attach. Nothing in your game runs
+  before the debugger is ready.
+
+If the attach does not succeed, Xogot tells you and does not leave a stopped app
+on the device. A Mac app keeps running without Swift debugging. A simulator or
+device app is removed and started one more time without the debugger, so you
+still get to play the build. If you press Stop while this is happening, Xogot
+stops the suspended app and does not start it again.
+
+### One caveat
 
 Xogot drives LLDB for you, but the LLDB interface itself is not available yet.
 You get the stack, the locals and the stepping commands through the Xogot user
 interface; there is no LLDB command prompt where you can type expressions to
 evaluate. GDScript keeps the expression prompt that <doc:Differences-Mac>
 describes.
-
-Swift debugging also applies to a **Local Editor** run only. It does not work
-when you deploy the game to a device. The game builds, installs and runs there,
-but breakpoints in `.swift` files are not hit.
 
 ## Current limitations
 
@@ -309,8 +335,9 @@ Swift support is new. These are the limits today:
   finished game to an iPad or an iPhone does work.
 - The LLDB interface is not available yet, so there is no prompt for evaluating
   expressions at a Swift breakpoint.
-- Swift breakpoints work in a **Local Editor** run. They are not hit when you
-  deploy the game to a device.
+- On **My Mac**, Xogot attaches after the app starts, so code that runs very
+  early can execute before the debugger is ready. Simulator and device runs hold
+  the app until the attach completes.
 - While the game is stopped at a Swift breakpoint the whole process is frozen,
   so the remote scene tree, live edit, and remote object inspection are not
   available. They continue to work at a GDScript breakpoint.
