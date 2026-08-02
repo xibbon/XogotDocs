@@ -15,7 +15,6 @@ runtime.
 
 These are fixed specific to the 4.7 upgrade (everything in 4964), plus:
 
-
 - Fixes the selected-row color in ScenePad on iOS 27. #3120
 
 - Fixes the floating-card layout in class-picker sheets. #3058

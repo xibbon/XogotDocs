@@ -2,7 +2,7 @@
 
 Release notes for public releases of Xogot to the App Store.
 
-## Release
+## Release 1.6.6 (4982)
 
 - InputMap definition got support for templates, we are shipping various
   presets for different kinds of games, and an import input map so you can

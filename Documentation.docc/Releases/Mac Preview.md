@@ -23,6 +23,71 @@ The current Mac preview has the following known limitations:
 
 # Releases
 
+## Build
+
+# Improvements
+
+- Added Go to Definition for Swift and SwiftGodot symbols in the macOS code
+  editor. #3137
+
+- Added detailed, live Swift build progress, including the current build phase,
+  active item, and completed-unit counts. #3146
+
+- Expanded `xo` editor automation with scene state, unsaved scene creation,
+  undo/redo information, and direct editor-output access.
+
+- Added a context menu when right-clicking empty space in the FileSystem
+  browser. #2633
+
+- Prevented Swift-based scenes from losing their Swift classes during Clean and
+  Build operations, with safeguards for unsaved work and undo history.   This
+  covers plenty of scenarios, and I really would like to get some feedback on
+  whether the prompts are acceptable on clean/reload.
+
+- UI Improvements: Kept Scene tree row controls and Debugger variable values
+  visible instead of allowing them to scroll out of view. #3147.   And now we
+  always dock those icons on the right.
+
+# Bug Fixes
+
+- Fixed a crash while formatting profiler monitor values. #3153
+
+## Build 1920 (July 31st, 2026)
+
+## Improvements
+
+Swift support gets a number of new features:
+
+- Hot reloading for your Swift-based tools
+
+- Added Swift build and deployment support for Mac, iPhone, iPad, and Apple
+  simulators, including native libraries.
+
+- Added Swift debugging for apps that run on Mac, in the iOS Simulator, and on
+  connected iOS devices.
+
+- Improved Swift project setup with an option to create a Swift package after
+  the first Swift script and an always-available Create Swift Package command.
+
+Made the C# pipeline more resilient and also fixed:
+
+- .NET builds that could remain in progress and block later build or play actions.
+
+- C# scripts that failed to load when a project ran in a separate Mac game window.
+
+## Bug Fixes
+
+- Fixed the Root Type class picker in Advanced Import Settings and restored the correct picker appearance. #3058
+
+- Fixed the SpriteFrames editor so that it opens for a SpriteFrames resource inside a custom resource.
+
+- Fixed missing main-screen and toolbar buttons in editor plug-ins, and fixed
+  pop-up menus that did not respond. #3122
+
+- Fixed code editor shortcuts so that Shift-Command-Comma opens Project Settings
+  and Command-Shift-K cleans the project instead of deleting a line. #3133,
+  #3118
+
 ## Build 1901 (July 29th, 2026)
 
 ### Improvements
