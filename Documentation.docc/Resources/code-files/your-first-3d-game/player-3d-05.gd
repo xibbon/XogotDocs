@@ -7,6 +7,10 @@ extends CharacterBody3D
 
 var target_velocity = Vector3.ZERO
 
+# The AnimationPlayer that lives inside the glTF model. It holds the
+# model's embedded animations, "Idle" and "Run".
+@onready var skeleton_animation_player = $Pivot/Character/AnimationPlayer
+
 
 func _physics_process(delta):
     # We create a local variable to store the input direction.
@@ -25,6 +29,17 @@ func _physics_process(delta):
         direction = direction.normalized()
         # Setting the basis property will affect the rotation of the node.
         $Pivot.basis = Basis.looking_at(direction)
+
+    # --- Character animation ---
+    # Play the model's Run cycle while the player is moving, and the Idle
+    # cycle when they are standing still.
+    if direction != Vector3.ZERO:
+        skeleton_animation_player.play("Run")
+        # Speed the run cycle up so the legs keep pace with the character.
+        skeleton_animation_player.speed_scale = 4
+    else:
+        skeleton_animation_player.play("Idle")
+        skeleton_animation_player.speed_scale = 1
 
     # Ground Velocity
     target_velocity.x = direction.x * speed

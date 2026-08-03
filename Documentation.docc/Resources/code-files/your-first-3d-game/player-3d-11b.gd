@@ -9,9 +9,6 @@ signal hit
 @export var fall_acceleration = 75
 # Vertical impulse applied to the character upon jumping in meters per second.
 @export var jump_impulse = 20
-# Vertical impulse applied to the character upon bouncing over a mob in
-# meters per second.
-@export var bounce_impulse = 16
 # Grace period (in seconds) after leaving the ground during which the
 # player can still jump. This is "coyote time": for a brief moment after
 # walking off a ledge, the game pretends the player is still on the
@@ -35,7 +32,7 @@ var _coyote_timer = 0.0
 var _jump_buffer_timer = 0.0
 
 # The AnimationPlayer that lives inside the glTF model. It holds the
-# model's embedded animations, like "Idle" and "Run".
+# model's embedded animations, "Idle" and "Run".
 @onready var skeleton_animation_player = $Pivot/Character/AnimationPlayer
 # The AnimationPlayer we added to the Player scene. It holds the custom
 # "jump" animation we loaded from resources/jump.res.
@@ -59,10 +56,20 @@ func _physics_process(delta):
         direction = direction.normalized()
         # Setting the basis property will affect the rotation of the node.
         $Pivot.basis = Basis.looking_at(direction)
-        # Speed up the run animation while the character is moving.
+
+    # --- Character animation ---
+    # Pick the animation that matches what the character is doing. While we
+    # are in the air we hold the Idle pose, so the run cycle doesn't keep
+    # churning through the whole jump.
+    if not is_on_floor():
+        skeleton_animation_player.play("Idle")
+        skeleton_animation_player.speed_scale = 1
+    elif direction != Vector3.ZERO:
+        skeleton_animation_player.play("Run")
+        # Speed the run cycle up so the legs keep pace with the character.
         skeleton_animation_player.speed_scale = 4
     else:
-        # Back to normal speed when standing still.
+        skeleton_animation_player.play("Idle")
         skeleton_animation_player.speed_scale = 1
 
     # Ground Velocity
@@ -100,9 +107,6 @@ func _physics_process(delta):
     # off the coyote window.
     if _jump_buffer_timer > 0.0 and _coyote_timer > 0.0:
         target_velocity.y = jump_impulse
-        # While in the air, switch the skeleton back to Idle so the run cycle
-        # doesn't keep playing.
-        skeleton_animation_player.play("Idle")
         _coyote_timer = 0.0
         _jump_buffer_timer = 0.0
 
@@ -123,4 +127,4 @@ func die():
 
 # Called by Main after a mob is squashed: the squasher bounces back up.
 func bounce():
-    target_velocity.y = bounce_impulse
+    target_velocity.y = jump_impulse

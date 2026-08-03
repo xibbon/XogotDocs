@@ -137,6 +137,31 @@
 
                 @Code(name: "player.gd", file: player-3d-03.gd, previousFile: player-3d-02.gd)
             }
+            The character now turns to face the way it's going, but it still
+            slides around in its resting pose. Let's make it *look* like it's
+            moving.
+
+            Back when we set up the player scene, we told the model's
+            `AnimationPlayer` to autoplay `Idle`. The axolotl's `.glb` also
+            ships with a `Run` cycle, so all we need to do is pick between the
+            two from code.
+
+            @Step {
+                Add an `@onready` reference to the `AnimationPlayer` that lives
+                inside the imported model. Then play `Run` while the player is
+                moving and `Idle` when they are standing still.
+
+                We also raise the run cycle's `speed_scale` to `4`, so the legs
+                keep pace with the character's `14 m/s` movement speed instead
+                of looking like they're slipping on ice.
+
+                > Note: Calling `play()` every frame is safe. If the animation
+                > you ask for is already the one playing, the `AnimationPlayer`
+                > lets it continue from its current position rather than
+                > restarting it from the beginning.
+
+                @Code(name: "player.gd", file: player-3d-03a.gd, previousFile: player-3d-03.gd)
+            }
             Then, we update the velocity. We have to calculate the ground
             velocity and the fall speed separately. Be sure to go back one tab
             so the lines are inside the `_physics_process()` function but
@@ -146,7 +171,7 @@
                 Calculate the ground velocity by multiplying the direction's
                 horizontal components by `speed`.
 
-                @Code(name: "player.gd", file: player-3d-04.gd, previousFile: player-3d-03.gd)
+                @Code(name: "player.gd", file: player-3d-04.gd, previousFile: player-3d-03a.gd)
             }
             @Step {
                 The `CharacterBody3D.is_on_floor()` function returns `true` if

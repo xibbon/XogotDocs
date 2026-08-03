@@ -38,5 +38,7 @@ func _on_mob_squashed(by):
 func _on_player_hit():
     $MobTimer.stop()
     $UI/Labels/Retry.show()
+    # Hide the on-screen virtual joystick while the retry overlay is
+    # shown, so it doesn't get in the way of the player reading the score.
     $UI/VirtualJoystickLeft.hide()
     $UI/VirtualJoystickLeft.set_process_input(false)

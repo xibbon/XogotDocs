@@ -164,7 +164,8 @@
         @Steps {
             @Step {
                 Open the `mob.gd` script. We'll add the `squashed` signal,
-                the `squash()` function, and the callback for the hit box.
+                the `squash()` function, and `_on_hit_box_body_entered()` —
+                the callback Xogot generated when we connected the signal.
 
                 The signal carries the body that did the squashing (`by`),
                 so `Main` can make that body bounce. The callback only
@@ -174,12 +175,12 @@
                 @Code(name: "mob.gd", file: mob-3d-05.gd, previousFile: mob-3d-04.gd)
             }
             @Step {
-                Now open the `player.gd` script. We'll add the
-                `bounce_impulse` property and the `bounce()` function.
+                Now open the `player.gd` script and add the `bounce()`
+                function.
 
                 `bounce()` is called by `Main` after the player squashes a
-                mob — it gives the player an upward impulse so they bounce
-                off the snake's head.
+                mob — it reuses `jump_impulse` to fling the player back up off
+                the snake's head, so a bounce carries exactly as far as a jump.
 
                 @Code(name: "player.gd", file: player-3d-09.gd, previousFile: player-3d-08.gd)
             }

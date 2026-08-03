@@ -24,7 +24,17 @@
                 applies the jump impulse when the player is on the
                 floor and just pressed the "jump" action.
 
-                @Code(name: "player.gd", file: player-3d-07.gd, previousFile: player-3d-06.gd)
+                @Code(name: "player.gd", file: player-3d-07a.gd, previousFile: player-3d-06.gd)
+            }
+            @Step {
+                The character can now leave the ground, so the animation block
+                we wrote earlier needs a third case. While `is_on_floor()` is
+                `false`, hold the `Idle` pose instead of running.
+
+                Without this, the run cycle keeps churning away in mid-air — an
+                axolotl sprinting through empty space looks distinctly odd.
+
+                @Code(name: "player.gd", file: player-3d-07.gd, previousFile: player-3d-07a.gd)
             }
             That's all you need to jump!
 

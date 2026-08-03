@@ -40,15 +40,3 @@ func _physics_process(delta):
     else:
         skeleton_animation_player.play("Idle")
         skeleton_animation_player.speed_scale = 1
-
-    # Ground Velocity
-    target_velocity.x = direction.x * speed
-    target_velocity.z = direction.z * speed
-
-    # Vertical Velocity
-    if not is_on_floor(): # If in the air, fall towards the floor. Literally gravity
-        target_velocity.y = target_velocity.y - (fall_acceleration * delta)
-
-    # Moving the Character
-    velocity = target_velocity
-    move_and_slide()

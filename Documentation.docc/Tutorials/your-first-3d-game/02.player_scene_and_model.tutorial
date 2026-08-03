@@ -142,8 +142,16 @@
             }
             @Step {
                 Then open the tree for the `Animation Player` and select `Idle`. Inside the settings, in the _Inspector_ set the `Loop Mode` to `Linear`.
-                
+
                 Do the same for `Run`, then press **ReImport**
+
+                > Note: We set up both animations now because the axolotl uses
+                > both. Once we write the movement code, the player script will
+                > switch between them — `Run` while the character is moving and
+                > `Idle` when it is standing still. Looping matters because each
+                > one needs to play continuously for as long as the character
+                > stays in that state.
+
                 @Image(source: 02-14.animation-loop-mode.png)
             }
             @Step {
@@ -217,16 +225,23 @@
         @ContentAndMedia {
             The glb file comes with embedded animations, like `Idle` and `Run`,
             stored on an `AnimationPlayer` node inside the model. We want the
-            axolotl to play `Idle` as soon as the game starts.
+            axolotl to play `Idle` as soon as the game starts — that's its
+            resting state, and the movement code we write later will switch it
+            over to `Run` whenever the player is moving.
 
             @Image(source: 02-22.animation-autoplay-concept.png)
         }
         @Steps {
             @Step {
-                In the _Scene Tree_, expand the `Armature` node and select the
-                `AnimationPlayer` child.
+                In the _Scene Tree_, select the `AnimationPlayer` node. It sits
+                directly under the scene root, alongside `Armature` — not
+                inside it.
 
-                @Image(source: 02-23.select-animation-player.png, alt: "Select the AnimationPlayer inside the Armature")
+                > Note: That position matters later. When this scene is
+                > instanced into the player and renamed `Character`, the script
+                > reaches the animations at `$Pivot/Character/AnimationPlayer`.
+
+                @Image(source: 02-23.select-animation-player.png, alt: "Select the AnimationPlayer beside the Armature, under the scene root")
             }
             @Step {
                 Open the **Animation** drawer, press the `A` icon next to the animation you want to turn autoplay on for. We will do this for `Idle`. This tells the AnimationPlayer to start playing the
