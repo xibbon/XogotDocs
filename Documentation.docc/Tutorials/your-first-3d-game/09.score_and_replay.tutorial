@@ -260,7 +260,8 @@
                 press enter or tap the screen. We use `_input()` to catch
                 input events early in the input processing chain.
 
-                We check for two types of input: the predefined `ui_accept` action
+                In the following function, we check for two types of input:
+                the predefined `ui_accept` action
                 (Enter key or gamepad A button) or a screen touch event. When either
                 occurs, we mark the input as handled, release any pressed movement
                 actions from the joystick, re-enable the joystick's input processing,

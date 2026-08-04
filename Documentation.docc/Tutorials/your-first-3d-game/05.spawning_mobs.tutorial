@@ -254,13 +254,20 @@
 
             1. Instantiate the mob scene.
             2. Sample a random position on the spawn path.
-            3. Get the player's ground position (flattening the Y coordinate).
-            4. Call the mob's `initialize()` method, passing it the random
+            3. Add the mob as a child of the _Main_ node.
+            4. Get the player's ground position (flattening the Y coordinate).
+            5. Call the mob's `initialize()` method, passing it the random
                position and the player's position.
-            5. Add the mob as a child of the _Main_ node.
 
             @Step {
                 Add the spawn logic to the `_on_mob_timer_timeout` function.
+
+                > Note: Order matters here. We add the mob to the scene
+                > *before* calling `initialize()`, because a node's `@onready`
+                > variables are only assigned when it enters the scene tree.
+                > Later on the mob will use `@onready` references in
+                > `initialize()`, and calling it first would leave them
+                > `null`.
 
                 @Code(name: "main.gd", file: main-3d-02.gd, previousFile: main-3d-01.gd)
             }
