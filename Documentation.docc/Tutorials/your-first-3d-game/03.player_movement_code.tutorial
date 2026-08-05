@@ -15,7 +15,7 @@
         > for more details, and be careful to type method names precisely when
         > connecting signals.
 
-        @Image(source: 03-01.attach-script-to-player.png)
+        @Image(source: 03-18.game-orthogonal-view.png)
     }
     @Section(title: "Starting the player script") {
         @ContentAndMedia {
@@ -212,7 +212,7 @@
             in 2D, in 3D, you won't see anything if your viewport doesn't have a
             camera pointing at something.
 
-            @Image(source: 03-07.testing-player-concept.png)
+            @Image(source: 03-18.game-orthogonal-view.png)
         }
         @Steps {
             @Step {
@@ -321,8 +321,6 @@
             }
             Test your scene and you should be able to move in all 8 directions
             and not glitch through the floor!
-
-            @Image(source: 03-18.game-orthogonal-view.png)
 
             Ultimately, we have both player movement and the view in place.
             Next, we will work on the monsters.

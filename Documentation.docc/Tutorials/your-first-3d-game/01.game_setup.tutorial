@@ -248,9 +248,9 @@
                 @Image(source: 01-20.project-settings-menu.png)
             }
             @Step {
-                The **Input Map** panel allows you to add new actions at the top;
-                they are your labels. In the bottom part, you can bind keys to these
-                actions.
+                The **Input Map** panel allows you to add new actions on the left side. 
+                These are the actions your game will respond to, and they are your labels. 
+                In the right part, you can bind keys to these actions.
 
                 > Tip: Xogot projects come with some predefined actions designed
                 > for user interface design. These will become visible if you
@@ -264,7 +264,7 @@
             `move_forward`, `move_back`, and `jump`.
 
             @Step {
-                To add an action, tap the **+** icon and then type its name.
+                To add an action, tap the **+** icon to the top of the panel and then type its name.
 
                 @Image(source: 01-22.adding-action.png)
             }

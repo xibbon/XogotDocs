@@ -114,7 +114,7 @@
             judge where the mob is.
 
             The starter project includes a gradient texture for exactly this
-            purpose, in `resources/CircleGrandient.tres`.
+            purpose, in `resources/shadow.tres`.
 
             @Image(source: 04-11.blob-shadow-concept.png)
         }
@@ -127,12 +127,12 @@
                 @Image(source: 04-12.add-sprite3d-node.png, alt: "Add a Sprite3D child to the Mob node")
             }
             @Step {
-                In the _Inspector_, assign `resources/CircleGrandient.tres` to
+                In the _Inspector_, assign `resources/shadow.tres` to
                 the _Texture_ property by tapping `Pick Resource` and then `Load` and navigating to the `resources` folder.
-                
+
                 Tap the `shadow.tres` file and press **Select**.
 
-                @Image(source: 04-13.assign-circle-gradient.png, alt: "Assign the CircleGrandient texture to the Sprite3D")
+                @Image(source: 04-13.assign-circle-gradient.png, alt: "Assign the shadow texture to the Sprite3D")
             }
             @Step {
                 Tap the Circle next to `Modulate` and change the color to black by setting the `Red`, `Green` and `Blue` sliders to `0`. 

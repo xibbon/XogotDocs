@@ -110,13 +110,13 @@
             keyframes that slide the `Pivot` a little to the side and
             back, looping forever. We'll use round numbers for both the
             timing (`0`, `0.6`, and `1.2` seconds) and the slide
-            distance (`0.5` units), so it's easy to follow and to tweak
+            distance (`1.0` units), so it's easy to follow and to tweak
             later.
 
             @Image(source: 10-06.mob-animation-concept.png)
         }
         @Steps {
-        Go back to the 3D view and open `mob.tscn`.
+            Go back to the 3D view and open `mob.tscn`.
             @Step {
                 Select the `Mob` node and add a child
                 [AnimationPlayer](https://docs.godotengine.org/en/stable/classes/class%5Fanimationplayer.html#class-animationplayer).
@@ -163,7 +163,7 @@
                 You should see the `Pivot` (and the snake) jump to the
                 side in the viewport.
 
-                @Image(source: 10-10.key-pivot-slide-0-6.png, alt: "At 0.6s, slide the Pivot 0.0 units on X and key it")
+                @Image(source: 10-10.key-pivot-slide-0-6.png, alt: "At 0.6s, set the Pivot's X position to 0.0 and key it")
             }
             @Step {
                 Move the playhead to `1.2` seconds. Set the `Pivot`'s
