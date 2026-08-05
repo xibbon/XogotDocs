@@ -7,6 +7,9 @@ Xogot Connect is a Godot extension that bridges your desktop Godot editor on
 Windows, macOS, or Linux to Xogot running on iOS, enabling full remote debugging, 
 live scene inspection, and even onscreen touch controls for quick gameplay testing.
 
+> Xogot Connect is not included in Xogot’s free tier. Using it requires
+> an active Xogot subscription or license on the paired iPhone or iPad.
+
 @Image(source: "XogotConnectDebug.png", alt: "A screenshot of Godot debugging Kenney 3D Platformer Starter Kit debugging to iPhone using Xogot Connect")
 
 ---
