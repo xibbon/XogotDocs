@@ -23,7 +23,24 @@ The current Mac preview has the following known limitations:
 
 # Releases
 
-## Build
+## Build 1945 (July 3rd, 2026) 
+
+### Improvements
+   
+- The Coding Assistant now uses Command-0 as its keyboard shortcut, matching
+  Xcode.  
+
+ - The Coding Assistant now receives project-specific Swift build guidance,
+   including the exact build command and clear instructions when Swift Support
+   must be installed or a build must be run from  Xogot 
+
+ ## Bug Fixes 
+
+ - Improved Coding Assistant error presentation and moved model configuration
+   into a dismissible sheet, so the configuration screen is no longer
+   inescapable. #3116
+ 
+## Build 1942 (August 2nd, 2026)
 
 # Improvements
 

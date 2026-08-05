@@ -126,12 +126,26 @@ For any issues related to accessing builds on TestFlight, please
 [Contact Us](https://xogot.com/contact-us) and provide the email
 address associated with your Apple account.
 
-## Localization
+## How do I change the language of Xogot?
 
-Xogot is localized to a handful of languages, and it will default to running on
-the language that your phone is configured to use.   You can change this setting
-to use English or any of the other supported languages by going to your device
-Settings > Apps > Xogot > Language and changing the language there.
+Xogot uses the language that the operating system selects for the app. You
+cannot change the language in Xogot.
+
+On iPhone or iPad:
+
+1. Open **Settings**.
+2. Select **Apps → Xogot → Language**.
+3. Select a language.
+
+On Mac:
+
+1. Open **System Settings**.
+2. Select **General → Language & Region**.
+3. In the **Applications** section, click the add (**+**) button.
+4. Select **Xogot**, select a language, and click **Add**.
+
+If Xogot is already in the **Applications** list, select a language from the
+menu next to Xogot. Close and reopen Xogot to apply the change.
 
 If you find problems with the localization, please reach out to
-support@xibbon.com 
+support@xibbon.com
