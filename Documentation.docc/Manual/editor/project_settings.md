@@ -17,7 +17,7 @@ Project Settings, select **Project > Project Settings** from the main menu.
 
 The **Project Settings** window is mainly used to change settings in the
 **General** tab. Additionally, there are tabs for the
-<doc:input_examples#Input-Map>,
+<doc:Input-Map>,
 <doc:internationalizing_games>,
 <doc:singletons_autoload>,
 <doc:installing_plugins#Enabling-A-Plugin>, and

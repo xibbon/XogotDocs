@@ -13,8 +13,6 @@ differences between Godot on Mac and Xogot.
 
 The current Mac preview has the following known limitations:
 
-- C# / .NET is not supported.
-
 - The Profiler detail page is incomplete.
 
 - The Inspector has not yet been fully styled for macOS.
@@ -26,6 +24,399 @@ The current Mac preview has the following known limitations:
 # Releases
 
 ## Build
+
+# Improvements
+
+- Added Go to Definition for Swift and SwiftGodot symbols in the macOS code
+  editor. #3137
+
+- Added detailed, live Swift build progress, including the current build phase,
+  active item, and completed-unit counts. #3146
+
+- Expanded `xo` editor automation with scene state, unsaved scene creation,
+  undo/redo information, and direct editor-output access.
+
+- Added a context menu when right-clicking empty space in the FileSystem
+  browser. #2633
+
+- Prevented Swift-based scenes from losing their Swift classes during Clean and
+  Build operations, with safeguards for unsaved work and undo history.   This
+  covers plenty of scenarios, and I really would like to get some feedback on
+  whether the prompts are acceptable on clean/reload.
+
+- UI Improvements: Kept Scene tree row controls and Debugger variable values
+  visible instead of allowing them to scroll out of view. #3147.   And now we
+  always dock those icons on the right.
+
+# Bug Fixes
+
+- Fixed a crash while formatting profiler monitor values. #3153
+
+## Build 1920 (July 31st, 2026)
+
+## Improvements
+
+Swift support gets a number of new features:
+
+- Hot reloading for your Swift-based tools
+
+- Added Swift build and deployment support for Mac, iPhone, iPad, and Apple
+  simulators, including native libraries.
+
+- Added Swift debugging for apps that run on Mac, in the iOS Simulator, and on
+  connected iOS devices.
+
+- Improved Swift project setup with an option to create a Swift package after
+  the first Swift script and an always-available Create Swift Package command.
+
+Made the C# pipeline more resilient and also fixed:
+
+- .NET builds that could remain in progress and block later build or play actions.
+
+- C# scripts that failed to load when a project ran in a separate Mac game window.
+
+## Bug Fixes
+
+- Fixed the Root Type class picker in Advanced Import Settings and restored the correct picker appearance. #3058
+
+- Fixed the SpriteFrames editor so that it opens for a SpriteFrames resource inside a custom resource.
+
+- Fixed missing main-screen and toolbar buttons in editor plug-ins, and fixed
+  pop-up menus that did not respond. #3122
+
+- Fixed code editor shortcuts so that Shift-Command-Comma opens Project Settings
+  and Command-Shift-K cleans the project instead of deleting a line. #3133,
+  #3118
+
+## Build 1901 (July 29th, 2026)
+
+### Improvements
+
+- Swift projects now use the public SwiftGodot SDK. This supports standard Swift
+  packages and compatible newer Xcode versions and addresses the previous
+  brittle support.
+
+- Swift games rebuild after Swift SDK updates. This keeps their runtime files
+  current.
+
+- Xogot detects Swift class-name conflicts before it builds a project. This
+  helps prevent editor exits.
+
+- C# projects now wait for Godot to finish builds and assembly reloads before
+  they start.
+
+
+### Bug fixes
+
+- Fixed C# tools that could stay unavailable when they started after the editor.
+- Fixed C# build status that could complete too early or fail from a timeout.
+- Fixed an editor crash caused by excess deferred socket operations.
+- Fixed the macOS .NET build integration.
+
+## Build 1895 (July 28th, 2026)
+
+### Improvements
+
+- Xogot now checks the C# component and .NET runtime before it opens a C#
+  project. If setup fails, Xogot gives clear guidance and can copy diagnostic
+  details for Xogot Support.
+
+### Bug fixes
+
+- Fixed a startup race that could prevent a C# project from finding the .NET
+  runtime.
+
+- Fixed macOS app signing for .NET JIT compilation, which C# project support
+  requires.
+
+- Fixed Swift Godot method calls that return small integer values. These calls
+  could corrupt memory and crash optimized builds.
+
+## Build 1888 (July 28th, 2026) 
+
+## Improvements
+
+- Enabled C# and Swift project support by default on macOS.
+
+- Improved Git history and the source-control inspector: branch and tag names
+  now wrap, and extra references show an overflow indicator.
+
+- Improved the scene picker so it lists only supported scene file types. #3110
+
+## Bug fixes
+
+- Fixed Go to Definition across files and built-in class documentation in the
+  code editor. #3087
+
+- Fixed bottom spacing in Issue Navigator results. #3115
+
+- Fixed Find panel selection, replacement, result order, and search-history
+  behavior.
+
+- Fixed C# project launch: Xogot now gives clear guidance when .NET support is
+  off and starts .NET only for C# projects.
+
+## Build 1881 (July 27th, 2026)
+
+### Improvements
+
+#### .NET and Swift
+
+.NET and Swift come to Xogot.   You can now bring .NET projects, and we have
+bundled quite a nice experience - we have editor code completion, integrated
+debugging with both and we wired this up to our LSP-capable editor so plenty of
+capabilities that you have come to expect from tools like Visual Studio are just
+supported out of the box by both of them.
+
+For Swift, you can create "naked" scripts, just like GDScript, or you can
+include a proper Swift Package to organize your code from the start (we offer a
+menu option to prime your Swift project),
+
+There are hundreds of small touch-ups in this language integration experience,
+that we think will make your experience very pleasant.
+
+This is the first step in our journey to provide the full stack support, but we
+are incredibly pleased of where we are starting from - and would love nothing
+more than to get your feedback on which features we should prioritize to put a
+bow on the feature.
+
+#### Git
+
+Added multi-repository Git pull and push dialogs for projects with submodules,
+including per-repository rebasing, push destinations, force-with-lease, tag
+selection, batch operations, and retry support.
+
+#### Other Improvements
+
+The new Swift and .NET support made us reconsider the needs for tab management
+(as you often single-step or step into functions in files that you are editing).
+So we added transient and pinned editor tabs.
+
+Added full file paths to code and scene tab tooltips on Mac. #2876
+
+- Added direct keyboard, mouse, and gamepad input recording to Input Map
+  settings on Mac #2986
+
+- Added a GDExtensions page to Project Settings with compatibility details,
+  reload controls, and links to extension files. (a 4.7 feature  coming early #2746
+
+- Coding Assistant gets a new composer: what we had was ok for a first
+  prototype, but I am taking inspiration from the UI in other agents and
+  adjusting the style (centered pill).   It also has a much simpler model
+  picker.
+
+- Coding Assistant Inspector got bulk operations for managing conversations
+  (#3050).
+
+- Added expanded AI settings for conversation behavior, images, skills, advanced
+  controls, and response display. #3081
+
+- Added a clearer full-access confirmation sheet that explains the capabilities
+  being requested. #3071
+
+- Improved live-output scrolling with reliable follow-to-bottom behavior on both
+  the coding assistant and the Debugger REPL.
+  
+- Debugger REPL: persistent debugger command history, and repeat-last-command
+  support - for that LLDB/GDB experience that every iOS user is craving #3097,
+  #3100
+
+- Improved debugger workflow by bringing the editor forward at breakpoints,
+  returning the running game to the foreground on resume, and recycling
+  debugger-opened files into a dedicated transient tab.
+
+- Made the editor output-line limit apply consistently on launch and remain
+  synchronized with the editor log.
+
+### Bug fixes
+
+- Fixed a rare editor-settings crash caused by excessive SwiftUI view copies
+  exhausting background-thread stack space. #3108
+
+- Fixed a crash when closing or switching away from an invalidated Skeleton3D
+  inspector. #3070
+
+- Fixed the SpriteFrames editor integration so the correct editor appears
+  reliably in the bottom panel. #2502
+
+- Fixed failed or cancelled game exports being reported as successful. #3072
+
+- Fixed the code tab bar collapsing or disappearing while tabs were still open.
+
+- Fixed tab-closing shortcuts on Mac: Control-Command-W now closes the focused
+  code, shader, or scene tab, and Command-W works for focused shader tabs. #3055
+
+- Fixed debugger controls becoming unreachable when the bottom panel was
+  collapsed. #3040
+
+- Fixed debugger navigation stealing keyboard focus whenever execution stopped
+  or stepped. #3094
+
+- Fixed the .NET debugger stepping into generated or framework code and
+  attempting to open unavailable source files. #3104
+
+- Fixed dragged `@onready` references using the engine type instead of a node's
+  custom `class_name`. #2747
+
+- Fixed the remote inspector showing an engine class instead of a script's
+  custom `class_name`. #2751
+
+- Fixed the Create Script dialog jumping as its state changed. #3059
+
+- Fixed the Inherit Node dialog showing an incorrect floating-card background.
+  #3058
+
+- Fixed the Add Node dialog showing an oversized scroll indicator beside long
+  inheritance chains. #3085
+
+- Fixed a stray scroll indicator appearing beneath Scene tabs. #2949
+
+- Fixed inspector controls stealing focus and showing unwanted focus behavior.
+  #2891
+
+- Fixed the debugger REPL prompt not lining up with echoed output. #3078
+
+- Fixed Command Palette getting stuck in command mode or opening from a hidden
+  text editor. #3086
+
+- Fixed the Learning Center retaining the previous section's hero thumbnail
+  after switching sidebar groups.
+
+- Fixed the AI provider sign-in empty state not filling the available navigator
+  area. #3041
+
+- Fixes DirAccess: don't silently revert res:// change_dir when resource_path is
+  non-normalized #3105
+
+## Build 1836 (July 17, 2026)
+
+### Improvements 
+
+- Reworked the New Scene dialog to clarify creating a new root or inheriting
+  from an existing scene - and dropped the annoying jumping behavior. #2787
+
+- Recent Projects will always display full project paths and show exact paths on
+  hover. #3022
+
+- Upgraded PiSwift to v0.80.10 which includes the latest GPT models - we have
+  still not cleaned up the list of models, it is too extensive, will clean up
+  soon.
+
+### Bug Fixes
+
+- Fixed Skeleton3D scaling changes not remaining undoable in Transform Mode.
+  #2776
+
+- Fixed a spectrum of race conditions on the PiSwift agent - too many ways that
+  were easy to deadlock the UI, removed.
+
+- Added a gizmo-free Select Mode to the 3D editor and renamed the original
+  Select tool to Transform Mode, with dedicated keyboard shortcuts - this is a
+  change we missed from Godot https://github.com/godotengine/godot/pull/101168
+  #2776
+
+
+## Build 1827 (July 16, 2026)
+
+- Added file-size information to the Asset Browser, calculated only when needed
+  to keep browsing responsive. #2632
+
+- Improved AI conversations with selectable transcript text, grouped related
+  activity, and smoother automatic scrolling while responses stream.
+
+- Improved the signal connection sheet with a clearer grouped layout for
+  methods, source paths, signals, and targets.
+
+## Fixes
+
+- Fixed the code editor dropping keyboard input after extending a selection
+  backward with Shift. #3033
+
+- Fixed the `xo` command sometimes reporting that no Xogot instances were
+  running after its background service restarted.
+
+- Fixed AI edit commands sometimes rejecting valid replacement instructions
+  instead of applying them.
+
+- Fixed Retry failing after a connection error left the conversation in an
+  invalid state.
+
+- Fixed overlapping Coding Assistant interactions that could start runaway
+  background work.
+
+### Fixes
+
+- Fixed the code editor dropping keyboard input after extending a selection backward with Shift. #3033
+
+
+## Build 1812 (July 15, 2026)
+
+### Improvements
+
+- Very early: Added a built-in Coding Assistant with persistent project
+  conversations and “Fix with AI” actions.   It stores credentials on the
+  Keychains
+
+  The coding assistant is based on PiSwift/pi.det.   To use it, you need to
+  either log into an existing known provider and we even include a version so
+  run against your local LLM if you want.
+
+  The UI is still not finished, we are aware that some places are overwhelming
+  (like the amount of LLM providers and models that PiSwift surfaces), we will
+  be tuning this.   
+
+- Git gained LFS support. Expanded Git LFS with tracking rules, file and lock
+  management, transfer progress and cancellation, large-file warnings,
+  integrity checks, pruning, and File Browser status badges (#3013).
+  
+- Git tied the room together with some important actions that were missing:
+  including cherry-pick, force push, branch and remote deletion, refreshed
+  pulls, and commit and branch details in the Inspector (#3014, #3015).   The
+  inspiration, once again, was Xcode.
+
+- Added support for creating, assigning, and opening built-in scripts directly
+  from Resource properties (#2953).
+
+- Inspector properties can now be rendered in the same modes that Godot
+  supports: localized, GD-script styled (they call it raw) and the current
+  system ("Model Options")
+
+- Improved Inspector performance by caching valid property types and added
+  localized property names (#2990, #1631).
+
+- Updated editor window titles to display the project name instead of its
+  directory (#2995).
+
+- Expanded localization across the editor, including the Bottom Bar (#3016).
+
+- Dropped the ugly icon that we used in the text editor gutter, which was taking
+  extra space.   Now, we use Monaco's CodeLens, so you get a hint above your
+  function.    Not sure if it is obvious enough or not.
+
+- Not visible in this build, but we started to make Xogot Sandbox-friendly for
+  distributing eventually on the AppStore.  The downside is that it will have
+  many of the same limitations that the iPad has (like no .NET, no third party
+  dynamic library extensions).
+
+### Bug Fixes
+
+- Fixed a frequent crash during shutdown caused by deleted 3D gizmo objects
+  being accessed (#3006).
+
+- Fixed a crash that could occur after selecting an imported GLB model (#3019).
+
+- Fixed embedded games being incorrectly sized or partially hidden behind the
+  bottom panel (#3009).
+
+- Fixed the macOS Attach Node Script dialog, including class selection,
+  confirmation controls, inheritance paths, and state restoration when switching
+  modes (#3028).
+
+- Fixed Project Launcher focus problems and improved the display of projects
+  with duplicate names.
+
+
+## Build 1773
 
 ### Improvements
 
@@ -55,6 +446,7 @@ The current Mac preview has the following known limitations:
 * Fixes a crash in the wild when closing Xogot:
   https://github.com/xibbon/Xogot/issues/3005
 
+* 
 ## Build 1752 (July 5th, 2026)
 
 ### Improvements

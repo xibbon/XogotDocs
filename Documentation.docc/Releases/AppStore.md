@@ -2,7 +2,33 @@
 
 Release notes for public releases of Xogot to the App Store.
 
-## Release 1.6.4
+## Release 1.6.6 (4982)
+
+- InputMap definition got support for templates, we are shipping various
+  presets for different kinds of games, and an import input map so you can
+  just bring existing definitions from another project.
+
+- The Asset Browser now has additional filters, details and you can hide assets. 
+
+- Added a gizmo-free Select mode and faster touch menus.
+
+- Performance improvements: startup and the use of the inspector are faster.
+
+- Added better support for resource scripts, external scene changes, and
+  shared resources.
+
+- Improved editor navigation - we now support temporary tabs, we now also
+  restore shader tabs. 
+
+- Includes 60 user-visible fixes.
+
+- Added an Output and Debug panel on iPhone, with better live-output scrolling
+  and command history.
+
+- Improved scene and resource editing with external-change reloads,
+  shared-resource indicators, and clearer resource actions.
+
+## Release 1.6.4 (4660)
 
 * New: Asset Placer for faster 3D scene building, including grid, surface,
   vertex, spline, paint, scatter, MultiMesh, collision, material override.

@@ -37,7 +37,7 @@ repeating loop.
        alt: "A flowchart of the everyday Xogot source control loop: start, pull latest changes, edit the project, review what changed, stage the changes, write a commit message, commit, and if there is more work loop back to editing, otherwise push to the remote.")
 
 1. **Pull first.** If you collaborate or work across machines, start with
-   Integrate > Pull so your project includes everyone else's latest commits
+   Integrate > Pull… so your project includes everyone else's latest commits
    before you add your own. On a solo project with no remote, you can skip this.
 2. **Work in Xogot.** Edit scenes, scripts, and assets as usual. As you go,
    status badges in the file pad show you what you have changed.
@@ -52,7 +52,7 @@ repeating loop.
    easier to understand later than one large one.
 6. **Repeat as you work.** Steps 2–5 are the inner loop of a work session: edit,
    review, stage, commit, as many times as you like.
-7. **Push when you are ready.** Run Integrate > Push to send your commits to the
+7. **Push when you are ready.** Run Integrate > Push… to send your commits to the
    remote. Until you do, your work exists only on this Mac. Pushing backs it up
    and shares it with collaborators.
 
@@ -240,7 +240,7 @@ yet.
 Xogot creates the repository on the hosting service and adds it as a local Git
 remote. After the remote is added, push your current branch:
 
-1. Choose Integrate > Push.
+1. Choose Integrate > Push…, then push from the sync sheet.
 2. The first push links your local branch to the remote (its *upstream*), so
    later pushes and pulls know where to go. Xogot sets this up automatically.
 
@@ -260,10 +260,10 @@ another Git hosting service.
 7. Enter a remote name, usually `origin`.
 8. Paste the remote URL.
 9. Click Add.
-10. Choose Integrate > Push.
+10. Choose Integrate > Push…, then push from the sync sheet.
 
-After the first push, use Integrate > Fetch, Integrate > Pull, and Integrate >
-Push to sync with the remote.
+After the first push, use Integrate > Fetch Changes, Integrate > Pull…, and
+Integrate > Push… to sync with the remote.
 
 ## Cloning an Existing Repository
 
@@ -414,12 +414,13 @@ changes so you can adjust them. Use it to:
 - Add a file or change you forgot to include in the last commit.
 
 Amend rewrites history rather than appending to it, so the amended commit gets a
-new identity that replaces the old one. That has one important consequence: only
-amend commits you have **not** pushed yet. Once a commit is on a remote and
-others may have pulled it, amending it forces the local and remote histories to
-disagree, and the next ordinary push is rejected. Reconciling that requires a
-force push, which Xogot does not surface — so treat Amend as a tool for tidying
-up local, not-yet-published work.
+new identity that replaces the old one. That has one important consequence: be
+careful amending commits you have already pushed. Once a commit is on a remote
+and others may have pulled it, amending it forces the local and remote histories
+to disagree, and the next ordinary push is rejected. Publishing the amended
+history then requires a force push (available in the [sync sheet's push
+options](#Push-Options)), which can discard other people's commits — so prefer
+Amend for tidying up local, not-yet-published work.
 
 
 ## Syncing with Remotes
@@ -430,9 +431,9 @@ Use the Integrate menu for repository-wide sync commands:
 
 | Command | What it does |
 | --- | --- |
-| Fetch | Downloads remote updates without merging them. |
-| Pull | Fetches and integrates remote changes into the current branch. |
-| Push | Uploads local commits. If needed, Xogot sets the upstream branch. |
+| Fetch Changes | Downloads remote updates for the project and its submodules without merging them. |
+| Pull… | Opens the sync sheet to bring in remote changes. See [The Sync Sheet](#The-Sync-Sheet). |
+| Push… | Opens the sync sheet to publish your commits. See [The Sync Sheet](#The-Sync-Sheet). |
 | Refresh Status | Reloads Git status from disk. |
 | Undo Last Commit | Removes the last commit while keeping its changes staged. |
 
@@ -440,6 +441,61 @@ If your current branch has a hosted remote, Create Pull Request opens the
 hosting provider's pull request or merge request page in your browser when Xogot
 can build the URL. This is a handoff to the provider website; Xogot does not
 create the pull request inside the app.
+
+### The Sync Sheet
+
+<!-- Screenshot needed: Pull sync sheet listing the root repository and submodules, each with a checkbox and a remote-branch destination picker, plus the Rebase Local Changes control. -->
+<!-- Screenshot needed: Push sync sheet showing per-repository destinations, the Force Push and Tags controls, and the progress/summary line. -->
+
+Both Pull… and Push… open the same **sync sheet**. It lists every repository
+involved in your project — the root repository and any initialized Git
+submodules — so you can synchronize them together in one place.
+
+If your project has no submodules, the sheet simply lists the one repository;
+the extra controls below only matter once submodules are present.
+
+Each repository appears as a row with:
+
+- **A checkbox** to include or exclude it from this operation.
+- **A destination** — for a pull, the remote branch to pull from; for a push,
+  the remote to push to.
+
+Choose the repositories and destinations you want, then click **Pull** or
+**Push**. Xogot runs the selected repositories in a safe order: pulls run the
+root repository first, and pushes send submodules before their parents, so a
+parent never publishes a reference to a submodule commit that has not been
+pushed yet.
+
+As the operation runs, the sheet shows progress and then a summary such as
+"3 succeeded, 1 failed". If some repositories fail, their selections are kept
+so you can fix the problem and click **Retry** to run just those again. After a
+pull, Xogot refreshes the repository tree, since a pull can add or remove
+submodules.
+
+#### Pull Options
+
+For a pull, you can choose which repositories **rebase** their local changes
+onto the incoming ones (rather than merging). Use the **Rebase Local Changes…**
+control to select them. Xogot seeds this from your Git configuration
+(`pull.rebase`, or a per-branch `branch.<name>.rebase` setting) so it defaults
+to your usual preference, and it always runs each pull explicitly as `--rebase`
+or `--no-rebase`.
+
+#### Push Options
+
+For a push, the sheet adds two controls:
+
+- **Force Push…** — select the repositories that should force push. Force
+  pushing rewrites the remote branch to match your local one, which you need
+  after rewriting history that was already pushed (for example, amending or
+  rebasing pushed commits — see [Commit vs. Amend](#Commit-vs.-Amend)). Because
+  it can discard commits on the remote that you do not have, Xogot asks you to
+  confirm and lists exactly which repositories will be force pushed. It uses
+  `--force-with-lease`, a safer form that refuses to proceed if the remote
+  changed in a way you have not seen, protecting a collaborator's commits from
+  being silently overwritten.
+- **Tags** — choose whether to push **None**, **All**, or **Selected** tags. With
+  Selected, a menu lets you pick individual tags per repository.
 
 ## Accounts and Credentials
 
@@ -489,6 +545,9 @@ Control-click a branch, remote branch, or tag to:
 - Rename a local branch.
 - Create a tag at the selected reference.
 - Merge a branch into the current branch.
+- Delete the branch, remote branch, or tag. Xogot asks you to confirm first,
+  since deletion cannot be undone. Deleting a remote branch removes it on the
+  hosting service.
 
 Selecting a branch opens a branch history tab in the editor. The history view
 shows commits on the branch and the selected commit's details and diffs.
@@ -501,6 +560,26 @@ Use the history scope picker to show:
 - Commits from the last 30 days.
 
 Use the filter field to search by author, email, subject, body, or commit hash.
+
+### Working with a Commit
+
+<!-- Screenshot needed: Commit-history context menu open on a commit, showing Checkout, Copy Commit Message, Copy Identifier, Email author, Tag, New Branch from, Cherry-pick, and View on provider. -->
+
+Control-click a commit in the history list to act on that specific commit:
+
+| Command | What it does |
+| --- | --- |
+| Checkout “abc1234” | Checks out that exact commit. Your working copy moves to that commit in a *detached* state, not on any branch — create a branch from it if you want to keep committing there. |
+| Copy Commit Message | Copies the commit's message to the clipboard. |
+| Copy Identifier | Copies the full commit SHA. |
+| Email *author* | Opens a new mail message addressed to the commit's author. |
+| Tag “abc1234”… | Creates a tag at the commit. |
+| New Branch from “abc1234”… | Creates a new branch starting at the commit. |
+| Cherry-pick “abc1234” | Applies that commit's changes onto your current branch. If it conflicts, Xogot shows the operation banner so you can resolve and continue, or abort. See [Merge and Rebase States](#Merge-and-Rebase-States). |
+| View on *provider* | Opens the commit's page on the hosting provider (GitHub, GitLab, and so on) in your browser, when the remote is recognized. |
+
+(“abc1234” stands for the commit's abbreviated identifier; the menu shows the
+real one.)
 
 ## Stashes
 
@@ -520,6 +599,39 @@ Control-click a stash to:
 - Apply the stashed changes.
 - Export the stash as a patch file.
 - Delete the stash.
+
+## The Source Control Inspector
+
+<!-- Screenshot needed: Source Control inspector showing a selected commit's identifier, date, author, verification, containing branches, message, and changed files. -->
+
+The Source Control inspector is a read-only panel that summarizes whatever you
+have selected in the Source Control navigator or a branch history tab. It appears
+in the editor's inspector area, and Xogot switches to it automatically the first
+time you select a Git item during a visit to the navigator. You can switch back
+to the other inspectors (such as the Properties inspector) at any time; Xogot
+does not force it open again after that.
+
+What it shows depends on the selection:
+
+- **Commit** — the identifier, date, and author; the signature verification
+  status when the commit is signed; the branches that contain the commit; the
+  commit message; and the list of changed files.
+- **Branch** — the branch name and its upstream remote branch, followed by the
+  details of the commit it points to.
+- **Tag** — the tag name and message, followed by the details of the commit it
+  points to.
+- **Stash** — the stash title, message, and creation date, followed by its
+  changed files.
+
+Details load asynchronously, and the inspector always reflects the current
+selection rather than a stale one.
+
+### Signature Verification
+
+When a commit is signed, the inspector reports the verification result, such as
+"Signed — verified", "Signed — unknown validity", or "Signed — bad signature".
+Verification uses the signing keys configured in your Git environment; a commit
+that is not signed simply omits this row.
 
 ## Merge and Rebase States
 
@@ -748,6 +860,7 @@ Settings > Source Control.
 | Clone repository | Integrate > Clone Repository |
 | Open Git LFS sheet | Integrate > Git LFS... |
 | Add accounts and global settings | Xogot Settings > Source Control |
+| Source Control inspector | Appears automatically when you select a Git item in the navigator |
 
 ### Integrate Menu
 
@@ -762,9 +875,9 @@ Settings > Source Control.
 | Add Selected Files | Available for selected untracked files. |
 | Create Pull Request | Opens the provider web flow when available. |
 | Discard All Changes | Reverts discardable tracked changes. |
-| Fetch | Fetches remote updates. |
-| Pull | Fetches and integrates remote updates. |
-| Push | Pushes the current branch. |
+| Fetch Changes | Fetches remote updates for the project and its submodules. |
+| Pull… | Opens the sync sheet to pull (per-repository remote branch and rebase choice). |
+| Push… | Opens the sync sheet to push (per-repository remote, force-push and tag choices). |
 | Stash Changes | Saves uncommitted work, including untracked files. |
 | Undo Last Commit | Removes the last commit and keeps its changes staged. |
 | Refresh Status | Reloads Git state. |
@@ -801,12 +914,13 @@ Settings > Source Control.
 
 | Item | Commands |
 | --- | --- |
-| Branch | Switch, create branch from reference, rename local branch, tag, merge into current branch. |
-| Remote branch | Create branch from reference, tag, merge into current branch. |
-| Tag | Create branch from reference, tag. |
+| Branch | Switch, create branch from reference, rename local branch, tag, merge into current branch, delete branch (confirmed). |
+| Remote branch | Create branch from reference, tag, merge into current branch, delete remote branch (confirmed). |
+| Tag | Create branch from reference, tag, delete tag (confirmed). |
 | Remotes group | New Remote, Add Existing Remote. |
 | Remote | Show in hosting provider, delete remote. |
 | Stash | Apply, export as patch file, delete. |
+| Commit (history list) | Checkout, copy message, copy identifier, email author, tag, new branch from commit, cherry-pick, view on hosting provider. |
 
 ## Known Limitations
 

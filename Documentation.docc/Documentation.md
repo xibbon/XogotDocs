@@ -23,6 +23,7 @@ To get started building games with Xogot, check out our <doc:Getting-Started> gu
 - <doc:Embedded-Game-View>
 - <doc:Importing-Assets>
 - <doc:Asset-Placer>
+- <doc:Input-Map>
 - <doc:Onscreen-Controls>
 - <doc:Publishing-to-the-Web>
 - <doc:Remote-Debugging>
@@ -33,10 +34,13 @@ To get started building games with Xogot, check out our <doc:Getting-Started> gu
 
 ### Mac
 
+- <doc:Differences-Mac>
 - <doc:mac_command_line>
 - <doc:integrating_with_ai_tools>
 - <doc:MacSourceControl>
 - <doc:Mac-Testing>
+- <doc:mac_dotnet>
+- <doc:mac_swift>
 
 ### 2D
 
@@ -249,6 +253,7 @@ To get started building games with Xogot, check out our <doc:Getting-Started> gu
 
 ### Input handling
 
+- <doc:Input-Map>
 - <doc:inputevent>
 - <doc:input_examples>
 - <doc:mouse_and_input_coordinates>

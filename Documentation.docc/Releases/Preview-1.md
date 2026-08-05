@@ -2,6 +2,221 @@
 
 Release notes for our preview release of Xogot to TestFlight.
 
+## Release
+
+### Improvements
+
+### Bug Fixes
+
+## Beta Release 669 (July 30, 2026)
+
+This only applies to the TestFlight for XogotBeta which contains the 4.7
+runtime.
+
+These are fixed specific to the 4.7 upgrade (everything in 4964), plus:
+
+- Fixes the selected-row color in ScenePad on iOS 27. #3120
+
+- Fixes the floating-card layout in class-picker sheets. #3058
+
+- Fixes the touch gestures on the 3D editor.
+
+## Release 4977 (July 29th, 2026)
+
+### Improvements
+
+Preparation for the AppStore release.
+
+## Release 4964 (July 28th, 2026)
+
+### Improvements
+
+- Improved editor navigation by reusing temporary tabs and restoring open shader
+  tabs after restart.
+
+- Clarified the coding agent's full-access confirmation so it describes its actual access.
+
+### Bug fixes
+
+- Fixed Find in Files selection, replacement, and search-history behavior.
+
+- Fixed Go to Definition across files and added built-in class documentation.
+  #3087
+
+- Fixed extra space below the Issue Navigator search field. #3115
+
+- Fixed iPad touch defaults so editor controls use touch-friendly sizes. #3109
+
+- Fixed ChatGPT and OpenAI API model selection and provider setup. #3113
+
+- Fixed coding-agent approval menu and message action controls. #3114, #3112
+
+- Fixed project file access when resource paths contain unnormalized parts.
+  #3105
+
+- Fixed a rare crash when editor settings change, and made the Output line limit
+  apply after restart. #3108
+
+## Release 4942 (July 26th, 2026)
+
+Godot 4.7 comes to our beta!
+
+This release comes in two forms, the XogotBeta TestFlight comes bundled with
+Godot 4.7, while the regular Xogot Testflight continues to be based on Godot
+4.6.xx
+
+### Improvements
+
+- Coding Assistant gets a new composer: what we had was ok for a first
+  prototype, but I am taking inspiration from the UI in other agents and
+  adjusting the style (centered pill).   It also has a much simpler model
+  picker.
+  
+- Coding Assistant Inspector got bulk operations for managing conversations
+  (#3050).
+
+- Added expanded AI settings for conversation behavior, images, skills, advanced
+  controls, and response display. #3081
+
+- Added a clearer full-access confirmation sheet that explains the capabilities
+  being requested. #3071
+
+- Improved live-output scrolling with reliable follow-to-bottom behavior on both
+  the coding assistant and the Debugger REPL.
+  
+- Debugger REPL: persistent debugger command history, and repeat-last-command
+  support - for that LLDB/GDB experience that every iOS user is craving #3097, #3100
+
+### Bug Fixes
+
+- Fixed ChatGPT sign-in on iOS by allowing the OAuth redirect URL to be pasted
+  directly into Xogot. #3042
+
+- Fixed the signed-out Coding Assistant view not filling the available panel
+  height. #3041
+
+- Fixed failed or incomplete game exports and background uploads being reported
+  as successful, while improving cancellation, retry, and cleanup behavior.
+  #3072
+
+- Fixed the code-editor tab bar disappearing after closing some tabs, and
+  stopped scene or file drops from inserting an extra bare node name into code.
+
+- Fixed the Create Script dialog jumping as its state changed, removed the
+  incorrect background from the Inherit Node sheet, and corrected the oversized
+  scroll indicator in the Add Node dialog. #3059, #3058, #3085
+
+- Fixed unwanted focus behavior in Inspector controls and removed a stray scroll
+  indicator beneath Scene tabs. #2891, #2949
+
+- Fixed dragged `@onready` declarations and the Remote Inspector using engine
+  class names instead of custom script class names. #2747, #2751
+
+- Fixed debugger controls becoming unreachable when the bottom panel was
+  collapsed and aligned the REPL prompt with its output. #3040, #3078
+
+- Fixed a crash when the Skeleton3D Inspector stopped observing an object that
+  Godot had already released. #3070
+
+- Fixed SpriteFrames editor integration so it appears in and owns the correct
+  bottom-panel tab. #2502
+
+## Release 4874 (July 17th)
+
+## Improvements
+
+- Enabled the Coding Assistant in iPhone and iPad TestFlight builds, including
+  AI settings and direct access to project-editing tools.   It requires you to
+  enable "Developer Mode" - will drop this in a future Testflight
+  release.
+    
+- Improved the Coding Assistant with secure credential storage, clearer provider setup, grouped tool activity, and selectable transcript text.
+  
+- Reworked the New Scene dialog to clarify creating a new root or inheriting
+  from an existing scene - and dropped the annoying jumping behavior. #2787
+
+
+- Added a gizmo-free Select Mode to the 3D editor and renamed the original
+  Select tool to Transform Mode, with dedicated keyboard shortcuts - this is a
+  change we missed from Godot https://github.com/godotengine/godot/pull/101168
+  #2776
+
+- Added file-size information to the Asset Browser, calculated only when needed
+  to keep browsing responsive. #2632
+
+- Made keyboard tool menus faster and more responsive, with instant long-menu
+  popovers and drag selection inspired by Codea, and driven by feedback on Discord. #2782
+
+- Improved signal connection details, form layouts, AI provider settings, and
+  the debugger’s Step Out icon.
+
+- Upgraded PiSwift to v0.80.10 which includes the latest GPT models - we have
+  still not cleaned up the list of models, it is too extensive, will clean up
+  soon.
+
+## Bug Fixes
+  
+- Fixed a spectrum of race conditions on the PiSwift agent - too many ways
+  that were easy to deadlock the UI, removed.
+
+- Fixed editor and Coding Assistant layout update loops that could cause
+  instability or unnecessary redraws.
+
+
+## Release 4862 (July 16th)
+
+- We brought the unified Output/Debug Added a unified Output and Debug bottom
+  panel to the iPhone where is feels as convenient as on the Mac, with quick
+  page switching.   iPad remains with two tabs, as we think that works better
+  there #2997
+
+- Added file-size information to the Asset Browser, calculated only when needed
+  to keep browsing responsive. #2632
+
+- Enabled the AI assistant, it was too hard to reach, and now we have it as a
+  bona-fide action.   But also, it is currently only enabled in Testflight when
+  you enable developer mode, as we are not ready for mainstream use.
+
+- Added AI settings and provider controls on iPhone and iPad, including a
+  selectable working folder, clearer forms, compact thinking-level controls, and
+  improved sign-in and API-key sheets. We are still working on improving the
+  look and feel of these dialogs
+
+- Improved AI conversations with selectable transcript text, grouped related
+  activity, and smoother automatic scrolling while responses stream.
+
+- Improved the security and reliability of AI provider credentials by migrating
+  them to protected Keychain storage.
+
+- We did a major audit of our use of style for TextFields across our codebase to
+  make sure that we used the proper idioms in Forms that have captions and
+  prompts.   I hope you enjoy it.
+
+## Release 4835
+
+## Improvements
+
+- Replaced Monaco’s signal markers with clickable CodeLens entries and
+  improved restoration of editor decorations. #3025
+
+- Refined the Create Script and Create Shader dialogs with clearer fields,
+  validation, and iOS layouts.
+  
+- Expanded localization coverage across the editor and Coding Assistant.
+
+## Fixes
+
+- Fixed a crash when selecting GLB models in the Scene Import dialog. #3019
+
+- Fixed embedded scripts on Resources so they can be created and opened in the
+  code editor. #2953
+
+- Fixed the editor title to display the project name instead of its directory.
+  #2995
+
+- Fixed game previews being cropped or leaving blank space when the bottom panel
+  is visible. #3009
+
 ## Release 4800
 
 ### Improvements
