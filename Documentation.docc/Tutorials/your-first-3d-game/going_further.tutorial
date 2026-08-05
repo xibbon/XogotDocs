@@ -15,7 +15,7 @@
         and build upon what you've learned so far.
 
         But before that, here's a link to download a completed version of the
-        project: <https://github.com/godotengine/godot-demo-projects/releases>.
+        project: <https://github.com/xogot-projects/Save-the-Axolotl-Snake-Stomp>.
     }
     @Section(title: "Exploring the manual") {
         @ContentAndMedia {
@@ -28,17 +28,17 @@
             Here are the sections we recommend you to explore next:
 
             1. Read the
-               [Scripting section](https://docs.godotengine.org/en/stable/tutorials/scripting/index.html#toc-scripting-core-features)
-               to learn essential programming features you'll use in every
-               project.
+              [Scripting section](https://docs.godotengine.org/en/stable/tutorials/scripting/index.html#toc-scripting-core-features)
+              to learn essential programming features you'll use in every
+              project.
             2. The
-               [3D](https://docs.godotengine.org/en/stable/tutorials/3d/index.html#toc-learn-features-3d)
-               and
-               [Physics](https://docs.godotengine.org/en/stable/tutorials/physics/index.html#toc-learn-features-physics)
-               sections will teach you more about 3D game creation in the engine.
+              [3D](https://docs.godotengine.org/en/stable/tutorials/3d/index.html#toc-learn-features-3d)
+              and
+              [Physics](https://docs.godotengine.org/en/stable/tutorials/physics/index.html#toc-learn-features-physics)
+              sections will teach you more about 3D game creation in the engine.
             3.
-               [Inputs](https://docs.godotengine.org/en/stable/tutorials/inputs/index.html#toc-learn-features-inputs)
-               is another important one for any game project.
+              [Inputs](https://docs.godotengine.org/en/stable/tutorials/inputs/index.html#toc-learn-features-inputs)
+              is another important one for any game project.
 
             In this series, we only scratched the surface of working with
             glTF models and animations. To go deeper, read the following
