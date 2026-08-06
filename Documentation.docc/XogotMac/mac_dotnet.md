@@ -7,8 +7,13 @@ Xogot for Mac can open and edit Godot projects that use C#. You write your game
 logic in C#, build it from the **Project** menu, and set breakpoints in your C#
 code the same way you set them in GDScript.
 
-This is a Mac-only capability. Xogot on iPad and iPhone continues to support
-GDScript only.
+A C# project is not limited to the editor. Xogot builds, signs and installs it
+on your Mac, on the iOS Simulator, and on a connected iPhone or iPad, and your
+C# breakpoints work on all of them. See
+[Run on a device or the simulator](#Run-on-a-device-or-the-simulator).
+
+You write the C# code on a Mac. Xogot on iPad and iPhone edits GDScript only,
+so you author on the Mac and deploy from it.
 
 ## Before you start
 
@@ -138,6 +143,91 @@ without producing a diagnostic.
 <!-- @Image(source: "mac-dotnet-issue-navigator.png",
        alt: "A C# compiler error shown in the Issue Navigator") -->
 
+## Run on a device or the simulator
+
+C# projects use the same run destinations as GDScript projects. Select the
+destination in the toolbar, then press Run:
+
+- **Local Editor** — the game runs on your Mac, inside Xogot. This is the
+  default, and it is the fastest way to iterate.
+- **My Mac** — the game runs as a separate, signed macOS application.
+- **An iOS Simulator** — Xogot lists the simulators that Xcode installed.
+- **A connected iPhone or iPad** — Xogot detects the hardware that you attached
+  with a cable, and the devices that you paired over the network.
+
+<!-- @Image(source: "mac-dotnet-destinations.png",
+            alt: "The run destination picker in the Xogot toolbar with a C# project") -->
+
+Xogot builds your project, publishes it for the destination, then packages,
+signs and installs it. This is the same Xcode-like deployment path that
+<doc:Differences-Mac> describes. For the details of signing, provisioning and
+testing on hardware, see <doc:Mac-Testing>.
+
+A deployed C# game needs an export template that includes .NET. Xogot offers to
+download the correct one when you first select a destination that does not have
+it yet. You can also install it before you start the editor, with the `xo`
+command-line tool that <doc:integrating_with_ai_tools> describes:
+
+```bash
+xo component list
+xo component install <id>
+```
+
+A running editor picks up a component that you installed this way. You do not
+have to restart it.
+
+### Two runtimes, one project
+
+The runtime that carries your C# code is not the same on every destination, and
+this is not a choice Xogot makes:
+
+| Destination | Runtime |
+| --- | --- |
+| **Local Editor** | CoreCLR |
+| **My Mac** | CoreCLR, self-contained |
+| **iOS Simulator and devices** | NativeAOT |
+
+Apple does not let an application generate machine code while it runs, so a
+runtime that compiles your code just in time cannot ship on an iPhone or an
+iPad. Godot uses **NativeAOT** there: your C# is compiled ahead of time, into
+native arm64 code, when Xogot publishes the project. There is no other option
+on those platforms.
+
+Most of the time you do not have to think about this. The build, the deploy and
+the breakpoints all look the same. But NativeAOT is a different runtime, so read
+[What to watch for with NativeAOT](#What-to-watch-for-with-NativeAOT) before you
+put much work into a device build.
+
+### What to watch for with NativeAOT
+
+NativeAOT compiles the code that it can see. Anything that your game finds at
+run time, instead of at build time, is where the trouble starts:
+
+- **Reflection.** A type or member that your code only ever reaches through
+  `System.Reflection` can be removed by the compiler, because nothing appears to
+  use it. The same code runs correctly in the **Local Editor**, where CoreCLR
+  can look anything up. Test on the device early.
+- **Code that is generated at run time.** `System.Reflection.Emit`, dynamic
+  methods, and anything that builds and compiles code while the game runs cannot
+  work. There is no compiler in the process.
+- **Serializers and other libraries that use reflection.** Prefer a library with
+  a source generator, which does its work at build time.
+- **Build warnings are worth reading.** Publishing for iOS reports trimming and
+  AOT warnings, in the `IL2026`, `IL2075` and `IL3050` families. Some come from
+  GodotSharp itself and are expected. Warnings against your own code are the
+  ones to act on.
+
+Because of these constraints, C# on iOS is marked experimental upstream in
+Godot, and it is experimental in Xogot too. GDScript and Swift do not have this
+restriction.
+
+> Note:
+> Apple Vision Pro is not available for C#. Microsoft does not publish a
+> NativeAOT runtime for visionOS, so there is nothing to compile your C# code
+> with, and Xogot does not offer visionOS as a destination for a C# project. A
+> Vision Pro can run your iPhone or iPad build in compatibility mode. Swift and
+> GDScript projects do deploy to visionOS — see <doc:mac_swift>.
+
 ## What the editor gives you
 
 Xogot replaces Godot's code editor with Monaco, the editor that powers Visual
@@ -205,18 +295,85 @@ to the game when you resume.
 In a project that mixes languages, breakpoints in `.gd` files and breakpoints in
 `.cs` files are routed to the correct debugger automatically.
 
+### Debugging a deployed game
+
+Breakpoints work on every run destination, not only in the **Local Editor**.
+Set them and press Run, the same way you do locally. Which debugger Xogot uses
+follows the runtime of the destination:
+
+- **My Mac** runs CoreCLR, so it gets the same managed debugger as the editor.
+  Xogot arms the startup barrier before the launch, attaches once the runtime is
+  ready, and then releases the game. You get everything in the list above,
+  including the REPL.
+- **A simulator or a device** runs NativeAOT, which no managed debugger can
+  attach to. Xogot uses LLDB there instead. Your `.cs` breakpoints still bind by
+  file and line, the game still stops, and the stack still shows your own
+  methods. What you can read at the stop is narrower — see below.
+
+<!-- @Image(source: "mac-dotnet-device-debug.png",
+            alt: "Xogot stopped at a C# breakpoint in a game running on a connected iPad") -->
+
+### What a NativeAOT stop can show you
+
+At a breakpoint on a simulator or a device:
+
+- Simple values, such as `int`, `float` and `bool`, read correctly.
+- Strings, arrays, `List<T>` and null references read correctly.
+- Any other object shows its address, and you cannot open it to see its fields.
+  The compiled program does not carry the layout of those types, so there is
+  nothing for the debugger to read.
+- `this` is often reported as not available.
+
+Plan around this. A value that you want to inspect on a device is easier to
+reach if you copy it into a local variable first. If you need the full picture,
+reproduce the problem in the **Local Editor** or on **My Mac**, where the
+managed debugger gives you everything.
+
+Because the debugger here is LLDB, the command prompt in the Output pane is an
+LLDB prompt, and it accepts the full LLDB command surface — `frame variable`,
+`memory read`, `image list` and the rest. That is often the way to get at
+something the variables view cannot show you. <doc:mac_swift> documents the
+prompt and the few commands that Xogot answers itself.
+
+On **My Mac** and in the **Local Editor** the prompt is the C# REPL instead,
+because the debugger there is the managed one.
+
+There is no heap analysis and no memory profiling on a device.
+
+> Note:
+> A project that uses both Swift and C# gets one native debugger on a device,
+> not two. LLDB cannot attach twice to the same process, and Swift takes it, so
+> your C# breakpoints do not stop that build. Deploy is not affected: both
+> languages run.
+
+While the game is stopped on a device, the editor may still report it as
+running. The game really is stopped, and Continue really does resume it; the
+status is what has not caught up yet.
+
 ## Current limitations
 
 C# support is new. These are the limits today:
 
-- C# is available on Mac only, and only in the direct-download build. It is not
-  available on iPad or iPhone, and not in the sandboxed App Store build.
+- You write C# on the Mac only, and only in the direct-download build. Xogot on
+  iPad and iPhone edits GDScript only, and the sandboxed App Store build cannot
+  use C# at all. Deploying the finished game to an iPad or an iPhone does work.
 - The .NET SDK is not included. You install it yourself.
 - Installing the component while a project is open has no effect until you
   reopen the project.
 - There is no hot reload. Each run builds your code and starts a new process.
-- You cannot export a project that contains C# from Xogot yet. Xogot is
-  compatible with Godot, so use Godot on Mac to export the project.
+- C# on iOS is experimental, because it runs on NativeAOT. See
+  [What to watch for with NativeAOT](#What-to-watch-for-with-NativeAOT).
+- C# cannot deploy to Apple Vision Pro, because there is no NativeAOT runtime
+  for visionOS.
+- On a simulator or a device you cannot open a reference type in the debugger,
+  apart from strings, arrays and lists.
+- A project that uses both Swift and C# gets Swift breakpoints on a device, not
+  C# ones.
+- Deploying and exporting are not the same thing. Xogot builds, signs and
+  installs a C# project on your own Mac, simulator, iPhone or iPad. It cannot
+  yet produce a distributable build of a C# project for TestFlight or the App
+  Store. Xogot is compatible with Godot, so use Godot on Mac to export the
+  project.
 
 For the general Godot C# reference material, such as how signals, exports, and
 collections work in C#, see the Godot documentation for C#.

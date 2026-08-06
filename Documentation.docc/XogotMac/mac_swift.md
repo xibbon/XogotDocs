@@ -312,19 +312,69 @@ How the attach happens depends on the destination:
   and tells LLDB to select the device and attach. Nothing in your game runs
   before the debugger is ready.
 
+A device gets one native debugger, not two. If your project uses both Swift and
+C#, LLDB attaches for Swift, so your Swift breakpoints stop the game and your C#
+ones do not. Both languages still run. See <doc:mac_dotnet>.
+
 If the attach does not succeed, Xogot tells you and does not leave a stopped app
 on the device. A Mac app keeps running without Swift debugging. A simulator or
 device app is removed and started one more time without the debugger, so you
 still get to play the build. If you press Stop while this is happening, Xogot
 stops the suspended app and does not start it again.
 
-### One caveat
+### The command prompt
 
-Xogot drives LLDB for you, but the LLDB interface itself is not available yet.
-You get the stack, the locals and the stepping commands through the Xogot user
-interface; there is no LLDB command prompt where you can type expressions to
-evaluate. GDScript keeps the expression prompt that <doc:Differences-Mac>
-describes.
+While the game is stopped, the Output pane gives you a command prompt, the same
+one that <doc:Differences-Mac> describes for GDScript. For Swift, that prompt is
+LLDB.
+
+Xogot keeps a small set of commands for itself, because they move the editor and
+not only the debugger:
+
+| Command | Aliases | What it does |
+| --- | --- | --- |
+| `continue` | `c` | Resume |
+| `next` | `n` | Step over |
+| `step` | `s` | Step into |
+| `finish` | — | Step out |
+| `stop` | `kill` | Stop the game |
+| `thread list` | `threads` | List the threads |
+| `thread select` | `t` | Select a thread |
+| `frame select` | `f` | Select a frame |
+| `up`, `down` | — | Move up or down the stack |
+| `breakpoint set <file>:<line>` | `b` | Set a breakpoint |
+| `breakpoint enable`, `breakpoint disable` | — | Arm or disarm every breakpoint |
+| `help` | `h`, `?` | List these commands |
+
+**Every other line goes to LLDB.** Type `po node`, `frame variable`, `register
+read`, `image list`, `memory read`, `thread backtrace all`, `expression -O -- x`,
+`script`, or `x/4g $sp`, and you get LLDB's own answer. Nothing is filtered.
+
+`print` and `bt` are in the table above but are still answered by LLDB, which
+does the job better: `print` returns a typed value and accepts a format suffix
+such as `p/x flags` on any type, and `bt` walks the live stack. `help` on its own
+lists the local commands; `help <lldb command>` is passed to LLDB, so
+`help register` works.
+
+Line numbers that you type are the ones the editor margin shows. A path can be
+project-relative, absolute, or a `res://` path, so `b scripts/Player.swift:42`,
+`b res://scripts/Player.swift:42` and the full path on disk all set the same
+breakpoint.
+
+Four things to know:
+
+- `b <file>:<line>` places a real editor breakpoint: it draws the gutter dot,
+  appears in the navigator, and survives the run. A breakpoint that you set with
+  a raw LLDB command instead, such as `br set -n foo` or `b foo`, arms the
+  running process only. It does not reach the editor, and it is gone when the
+  game stops. This matches the Debug Console in Visual Studio Code.
+- The result of a forwarded `print` does not appear in the Evaluation tab. It is
+  printed in the Output pane.
+- `script` prints its output twice, once as console output and once as the
+  result.
+- The first expression that you evaluate can take a while. LLDB builds a Swift
+  expression context the first time, over a large number of symbols. It is not
+  stuck; later expressions are fast.
 
 ## Current limitations
 
@@ -333,8 +383,9 @@ Swift support is new. These are the limits today:
 - You write Swift on the Mac only. Xogot on iPad and iPhone edits GDScript
   only, so you cannot open a Swift file and change it there. Deploying the
   finished game to an iPad or an iPhone does work.
-- The LLDB interface is not available yet, so there is no prompt for evaluating
-  expressions at a Swift breakpoint.
+- A breakpoint that you set with a raw LLDB command, rather than with
+  `b <file>:<line>`, arms the running process only. It does not appear in the
+  gutter or in the navigator, and it does not survive the run.
 - On **My Mac**, Xogot attaches after the app starts, so code that runs very
   early can execute before the debugger is ready. Simulator and device runs hold
   the app until the attach completes.

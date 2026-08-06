@@ -23,7 +23,120 @@ The current Mac preview has the following known limitations:
 
 # Releases
 
-## Build 1945 (July 3rd, 2026) 
+## Build 1978 (Aug 5th, 2026)
+
+## Improvements
+
+- Added `xo component` commands to list, install, and remove language support
+  and export templates without starting Xogot.
+
+- `xo project run` now reports missing language support, the .NET 8 SDK, or
+  export templates in a structured format, including installation guidance for
+  automation.
+
+- Running swift projects repeatedly will no longer ask for permission to access
+  your folders, only the first time (we now make sure we have a stable bundle ID
+  for Apple's TCC)
+
+- Improved .NET deployment feedback with live publishing status and output, plus
+  persistent publish logs in deployment reports.
+
+## Bug Fixes
+
+- Fixed native debugger communication failures that could leave Pause
+  unavailable; debugger disconnects and pause, continue, and step failures are
+  now reported clearly.
+
+- Fixed breakpoint changes made while the native debugger was attaching being
+  lost.
+
+- Fixed Swift debugger startup stalls from holding the game indefinitely; the
+  game now starts if attachment exceeds the timeout.
+
+- Fixed .NET deployment performing an unnecessary second synchronous build
+  before launch, which could freeze the editor or run an outdated assembly after
+  a failed deployment.
+
+- Fixed .NET pack and ZIP exports unnecessarily publishing managed output that
+  is not embedded.
+
+- Fixed an editor icon fallback recursion caused by an empty class name.
+
+- Fixed camera override manipulation.
+
+- Fixed Git panel content not expanding to fill its tab.
+
+## Build 1971 (Aug 4th, 2026)
+
+## Improvements
+
+- Added support for device deployment of .NET code: we are extending our .NET
+  support from just the "Local Editor" configuration to the packaged versions
+  for Mac and iOS systems using Native AOT.   Contains publish, deployment and
+  debugging of C# projects via LLDB, like our Swift support does
+
+- There are some known gaps: currently the publish stage is using the existing
+  Godot infrastructure which builds much more than it should, and is a blocking
+  operation (so Xogot goes unresponsive while building).   This will be fixed in
+  an upcoming release.
+
+- For the native AOT .NET debugger, we roll out a different way of rendering
+  debug variables - as we can not rely on the traditional .NET debugger.   and
+  we improved the debugger variable display, including more readable C# type
+  names and values for strings, arrays, lists, null references, Godot strings,
+  and packed arrays.
+
+## Bug fixes
+
+- Fixed incorrect colors in the Inspector when using Dark Mode. #3165
+
+- Fixed Physics Layer changes not being applied to tiles.
+
+- Fixed a crash caused by recursive `_set_impl` calls.
+
+- Improved deployed-game debugger teardown and attachment handling to prevent
+  stale debugger processes from interfering with later launches.
+
+
+## Build 1966 (Aug 4th, 2026)
+
+## Improvements
+
+- Made local Swift debugging substantially more reliable, including support for
+  preparing a debuggable local app runner when needed.
+
+- The debugger REPL’s `b <file>:<line>` command now creates persistent editor
+  breakpoints, with gutter indicators and navigator entries.
+
+- Expanded the Swift debugger REPL to support the full LLDB command surface.
+  #3096
+
+- Added rich BBCode rendering and tappable source locations for engine
+  diagnostics in the output console.
+
+- Improved Coding Assistant support for Google API-key configuration.
+
+## Bug fixes
+
+- Fixed SwiftUI toolbar crashes caused by background rendering. #3161
+
+- Fixed a shutdown crash caused by Godot lifetime ordering. #999, #512
+
+- Fixed GDScript breakpoints failing to surface the debugger after a Swift debug stop.
+
+- Fixed double-clicking an Asset Browser item not opening its import view. #2920
+
+- Fixed a BBCode parser crash at the end of input. #3157
+
+- Fixed the AnimationTree panel not appearing. #3158
+
+- Fixed single-click selection in Find. #3138
+
+- Fixed project icons using the wrong aspect-ratio mode. #3141
+
+- Fixed a Reorderable Tab Bar crash during SwiftUI background rendering.
+
+## Build 1945 (Aug 3rd, 2026) 
 
 ### Improvements
    
