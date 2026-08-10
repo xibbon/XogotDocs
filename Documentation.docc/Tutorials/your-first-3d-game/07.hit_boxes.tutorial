@@ -39,7 +39,6 @@
             Physics layers are represented by numbers, but we can give them
             names to keep track of what's what.
 
-            @Image(source: 07-01.physics-layers-concept.png)
         }
         @Steps {
             @Step {
@@ -118,7 +117,6 @@
             cover the snake's body, so a wide, thin box works
             well. It should sit just above the model's back.
 
-            @Image(source: 07-06.hit-box-concept.png)
         }
         @Steps {
             @Step {

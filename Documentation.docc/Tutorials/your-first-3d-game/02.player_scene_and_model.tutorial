@@ -192,7 +192,6 @@
             > rotating the armature 180° around Y makes it face -Z so it
             > looks the right way when you steer it with code.
 
-            @Image(source: 02-18.model-scale-orientation.png)
         }
         @Steps {
             @Step {
@@ -229,7 +228,6 @@
             resting state, and the movement code we write later will switch it
             over to `Run` whenever the player is moving.
 
-            @Image(source: 02-22.animation-autoplay-concept.png)
         }
         @Steps {
             @Step {
@@ -264,7 +262,6 @@
             Now we'll instance the wrapper scene we just built inside
             `player.tscn`, under the `Pivot` node we created earlier.
 
-            @Image(source: 02-25.instantiate-model-concept.png)
         }
         @Steps {
             @Step {
@@ -294,7 +291,6 @@
             > they just need to feel right when you play the game. A box is
             > simple, reliable, and performs well.
 
-            @Image(source: 02-28.collision-shape-fitting.png)
         }
         @Steps {
             @Step {

@@ -73,7 +73,6 @@
             > this series. To learn more about creating and editing themes, see
             > [Introduction to GUI skinning](https://docs.godotengine.org/en/stable/tutorials/ui/gui%5Fskinning.html#doc-gui-skinning).
 
-            @Image(source: 09-07.ui-theme-concept.png)
         }
         @Steps {
             @Step {
@@ -137,7 +136,6 @@
             > to keep your code simple. Programming is always a balancing
             > act.
 
-            @Image(source: 09-11.score-tracking-concept.png)
         }
         @Steps {
             @Step {

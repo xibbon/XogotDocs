@@ -3,7 +3,7 @@
         In this part, we're going to spawn monsters along a path randomly. By the
         end, you will have monsters roaming the game board.
 
-        @Image(source: 05-01.monsters-path-preview.png)
+        @Image(source: 05-29.mobs-spawning-in-game.png)
     }
     @Section(title: "Modifying the project settings") {
         @ContentAndMedia {
@@ -57,7 +57,6 @@
             how it reflects light, and more. We can use them to change the
             color of a mesh.
 
-            @Image(source: 05-06.spawn-path-concept.png)
         }
         @Steps {
             @Step {

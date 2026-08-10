@@ -91,7 +91,6 @@
             > `_physics_process()`, see
             > [Idle and Physics Processing](https://docs.godotengine.org/en/stable/tutorials/scripting/idle%5Fand%5Fphysics%5Fprocessing.html#doc-idle-and-physics-processing).
 
-            @Image(source: 03-06.physics-process-concept.png)
         }
         @Steps {
             @Step {

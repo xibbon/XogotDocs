@@ -23,7 +23,6 @@
             works well. We'll place this one under the `Pivot` so it rotates
             and moves with the model.
 
-            @Image(source: 08-01.hurt-box-concept.png)
         }
         @Steps {
             @Step {
