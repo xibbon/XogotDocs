@@ -35,6 +35,9 @@
         as `ball.tscn`. However, you can modify each independently, such as changing
         how they bounce, how heavy they are, or any property exposed by the source
         scene.
+
+        @Steps {
+        }
     }
     @Section(title: "In practice") {
         @ContentAndMedia {
@@ -217,6 +220,9 @@
 
         Later, we could create scenes representing guards and add them to the citadel.
         They would be indirectly added to the overall game world.
+
+        @Steps {
+        }
     }
     @Section(title: "Summary") {
         Instancing, the process of producing an object from a blueprint, has many handy
@@ -225,6 +231,8 @@
         * The ability to divide your game into reusable components.
         * A tool to structure and encapsulate complex systems.
         * A language to think about your game project's structure in a natural way.
-        
+
+        @Steps {
+        }
     }
 }
