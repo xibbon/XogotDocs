@@ -41,7 +41,7 @@
                 In the new window, tap **New Library** to create a new
                 `AnimationLibrary` sub-resource. You can name it anything.
 
-                Expand it by taping on it and tap **Load Animation into Library**
+                Expand it by tapping on it and tap **Load Animation into Library**
                 then navigate to `resources/jump.res` and tap **Select**.
 
                 @Image(source: 10-05.load-jump-resource.png, alt: "Load jump.res into the AnimationLibrary")

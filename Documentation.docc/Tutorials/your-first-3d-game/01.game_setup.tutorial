@@ -452,7 +452,7 @@
 
                 In the Settings dialog, from the General menu, scroll down to the **Input Devices** section.
 
-                @Image(source: 01-20.project-settings-menu.png)
+                @Image(source: 01-20.scroll-project-settings-menu.png)
             }
             @Step {
                 In the **Input Devices** section, find the **Virtual Controller**

@@ -48,7 +48,7 @@
                 @Image(source: 02-03.new-scene-menu.png)
             }
             @Step {
-                In the `New Scene` window set the name to `player`, pick the `Scenes` folder location and then in the *New* tab set the type to **Empty** and press **Create**
+                In the `New Scene` window set the name to `player`, pick the `scenes` folder location and then in the *New* tab set the type to **Empty** and press **Create**
 
                 @Image(source: 02-04.new-scene-empty-type.png)
             }

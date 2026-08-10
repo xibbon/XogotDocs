@@ -33,7 +33,7 @@
                 @Image(source: 04-01a.advanced-import-window-main.png)
             }
             @Step {
-                Got to the **Move** animation node and open the _Inspector_.
+                Go to the **Move** animation node and open the _Inspector_.
                 
                 Set the **Loop Mode** to `Linear`; then press **Reimport**.
                 @Image(source: 04-01b.advanced-import-window-main.png)

@@ -39,7 +39,7 @@
             }
             Before creating the script, let's create a folder to help with organization.
             @Step {
-                Tap the *folder* icone next to `res://scenes/player.gd`
+                Tap the *folder* icon next to `res://scenes/player.gd`
                 
                 In the new window, press the three dots in the top right, press **Folders** and then **res://**.
                 
@@ -74,7 +74,7 @@
 
                 @Code(name: "player.gd", file: player-3d-01.gd, previousFile: player-3d-00.gd)
             }
-            We use `@export` to add variables to the _Inspector_ when selecting the node a script is linked to. It allows you to edit those values and test different speeds.+
+            We use `@export` to add variables to the _Inspector_ when selecting the node a script is linked to. It allows you to edit those values and test different speeds.
         }
     }
     @Section(title: "Coding the movement") {
