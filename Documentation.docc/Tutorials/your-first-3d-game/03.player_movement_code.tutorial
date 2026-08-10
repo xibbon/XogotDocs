@@ -23,7 +23,7 @@
             define the class's properties: a movement speed, a fall acceleration
             representing gravity, and a velocity we'll use to move the character.
             
-            @Image(source: 03-02.script-template-empty.png)
+            @Image(source: 03-18.game-orthogonal-view.png)
         }
         @Steps {
             @Step {

@@ -70,6 +70,8 @@
             }
             @Step {
                 Save the `enemy_snake.tscn` wrapper scene.
+
+                @Image(source: 04-06.save-enemy-snake-scene.png, alt: "Save the enemy_snake.tscn scene")
             }
         }
     }

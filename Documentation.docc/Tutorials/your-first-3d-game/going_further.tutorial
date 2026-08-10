@@ -16,6 +16,8 @@
 
         But before that, here's a link to download a completed version of the
         project: <https://github.com/xogot-projects/Save-the-Axolotl-Snake-Stomp>.
+        
+        @Image(source: going-01.further-learning-resources.png)
     }
     @Section(title: "Exploring the manual") {
         @ContentAndMedia {

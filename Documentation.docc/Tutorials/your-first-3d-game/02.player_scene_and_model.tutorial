@@ -255,6 +255,7 @@
                 We'll use the exact same pattern — inherit the `.glb`, scale
                 the armature, rotate 180° on Y, set autoplay — for the mob
                 model later in the series.
+                @Image(source: 02-17.save-wrapper-scene.png, alt: "Save the player_axolotl.tscn scene")
             }
         }
     }
@@ -311,6 +312,7 @@
                 Save the scene.
 
                 In the next lesson, we'll code the player's movement.
+                @Image(source: 02-30.save-player-scene.png, alt: "Save the player.tscn scene")
             }
         }
     }

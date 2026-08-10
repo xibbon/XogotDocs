@@ -50,7 +50,7 @@
         
     }
     @Chapter(name: "Your First 3D Game") {
-        @Image(source: squash-the-creeps-final.gif,
+        @Image(source: index-01.game-preview-animation.gif,
             alt: "An animation of Save the Axolotl: Snake Stomp running")
 
         The game we'll code here is Save the Axolotl: Snake Stomp. It's similar to

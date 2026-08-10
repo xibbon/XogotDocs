@@ -32,9 +32,10 @@
             }
             @Step {
                 With the `AnimationPlayer` selected, head to the
-                _Animation Drawer_ at the bottom of the screen. You can open it by tapping **Animation**.
+                _Animation Drawer_ at the bottom of the screen. You can open it by tapping **Animation**. (1)
                 
-                Tap **Options** and then **Edit Animations**. 
+                Tap **Options** (2) and then **Edit Animations** (3). 
+                @Image(source: 10-05.edit-animation-library.png, alt: "Edit the AnimationPlayer's library")
             }
             @Step {
                 In the new window, tap **New Library** to create a new
