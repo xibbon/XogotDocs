@@ -12,6 +12,8 @@
         the mob in this lesson — that comes in a later lesson dedicated to
         hit boxes and hurt boxes. For now, the mob just needs to look right
         and move.
+
+        @Image(source: 04-04.scale-rotate-snake-armature.png)
     }
     @Section(title: "Creating a wrapper scene for the mob model") {
         @ContentAndMedia {

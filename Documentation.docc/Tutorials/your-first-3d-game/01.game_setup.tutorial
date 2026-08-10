@@ -7,6 +7,8 @@
         We've prepared a starter project with the 3D models and sounds we'll use for this
         tutorial. You can download the archive here:
         [Save the Axolotl: Snake Stomp assets](https://github.com/xogot-projects/Your-First-3D-Game-Project/releases/download/starters/3d_save_the_axolotl_snake_stomp.zip).
+
+        @Image(source: 01-18.project-with-light.png)
     }
     @Section(title: "Importing the start assets") {
         @ContentAndMedia {

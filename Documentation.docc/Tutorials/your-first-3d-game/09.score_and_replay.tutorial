@@ -2,6 +2,8 @@
     @Intro(title: "Score and replay") {
         In this part, we'll add the score, music playback, and the ability to
         restart the game.
+
+        @Image(source: 09-12.score-displayed-in-game.png)
     }
     @Section(title: "Creating the score label") {
         @ContentAndMedia {

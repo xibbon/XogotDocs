@@ -17,6 +17,8 @@
 
         First, though, we need to set up physics layers so the right
         bodies listen to each other.
+
+        @Image(source: 07-08.resize-hit-box-shape.png)
     }
     @Section(title: "Controlling physics interactions") {
         @ContentAndMedia {

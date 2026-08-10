@@ -14,6 +14,8 @@
         the player (loaded from a ready-made resource) and one holding a sway
         for the mobs (keyed by hand in the editor). Then we'll drive both from
         code.
+
+        @Image(source: 10-11.key-pivot-return-1-2.png)
     }
     @Section(title: "Adding the jump animation to the player") {
         @ContentAndMedia {
