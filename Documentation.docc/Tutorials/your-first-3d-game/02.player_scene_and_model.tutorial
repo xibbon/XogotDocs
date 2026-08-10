@@ -105,7 +105,7 @@
             }
             @Step {
                 Then, move the collision shape up so its bottom roughly aligns with
-                the grid's plane. It should now have a Transform position on the `y-axis` of 0.5.
+                the grid's plane. It should now have a Transform position on the `y-axis` of 0.5 and `z-axis` of -1.2.
 
                 @Image(source: 02-10.move-collision-box-up.png)
             }
