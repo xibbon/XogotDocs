@@ -1,0 +1,378 @@
+@Tutorial(time: 25) {
+    @Intro(title: "Score and replay") {
+        In this part, we'll add the score, music playback, and the ability to
+        restart the game.
+
+        @Image(source: 09-12.score-displayed-in-game.png)
+    }
+    @Section(title: "Creating the score label") {
+        @ContentAndMedia {
+            In the main scene, we already have a `UI` CanvasLayer from when
+            we added the virtual joystick. Now we'll add a
+            [Control](https://docs.godotengine.org/en/stable/classes/class%5Fcontrol.html#class-control)
+            child node to `UI` and name it `Labels`. Ensure you are on the 2D
+            screen, where you can edit your User Interface (UI).
+
+            The `Labels` Control node allows us to group our UI labels in a
+            branch of the scene tree and use a theme resource that will
+            propagate to all its children. We'll use it to set our game's font.
+
+            @Image(source: 09-01.score-label-concept.png)
+        }
+        @Steps {
+            @Step {
+                Select the existing `UI` CanvasLayer node and add a child node
+                [Control](https://docs.godotengine.org/en/stable/classes/class%5Fcontrol.html#class-control)
+                to it. Rename this Control node to `Labels`.
+
+                @Image(source: 09-02.add-user-interface-control.png, alt: "The Labels Control node added as child of UI")
+            }
+            @Step {
+                Add a
+                [Label](https://docs.godotengine.org/en/stable/classes/class%5Flabel.html#class-label)
+                node and name it `ScoreLabel`.
+
+                @Image(source: 09-03.add-score-label.png)
+            }
+            @Step {
+                In the _Inspector_, set the _Label_'s _Text_ to a placeholder
+                like "Score: 0".
+
+                @Image(source: 09-04.score-placeholder-text.png)
+            }
+            @Step {
+                Also, the text is white by default, like our game's
+                background. We need to change its color to see it at runtime.
+
+                Scroll down to _Theme Overrides_, and expand _Colors_ and
+                enable _Font Color_ in order to tint the text to black (which
+                contrasts well with the white 3D scene).
+
+                > Tip: If you want a quick visual sanity check, set the
+                > color to something loud (red or green) while you build
+                > the layout, then dial it back to a more sensible color
+                > when you're done.
+
+                @Image(source: 09-05.score-font-color-black.png)
+            }
+            @Step {
+                Finally, tap and drag on the text in the viewport to move it
+                away from the top-left corner.
+
+                @Image(source: 09-06.score-label-positioned.png)
+            }
+        }
+    }
+    @Section(title: "Creating a UI theme") {
+        @ContentAndMedia {
+            We'll create a theme resource on the `Labels` node that
+            defines the default font and font size for all label children.
+
+            > See also: You can add more properties to the theme resource to
+            > design complex user interfaces, but that is beyond the scope of
+            > this series. To learn more about creating and editing themes, see
+            > [Introduction to GUI skinning](https://docs.godotengine.org/en/stable/tutorials/ui/gui%5Fskinning.html#doc-gui-skinning).
+
+        }
+        @Steps {
+            @Step {
+                Select the `Labels` node. In the
+                _Inspector_, create a new theme resource in _Theme -> Theme_.
+
+                @Image(source: 09-08.create-theme-resource.png)
+            }
+            @Step {
+                Tap on it to open the theme editor in the bottom panel. It
+                gives you a preview of how all the built-in UI widgets will
+                look with your theme resource.
+
+                By default, a theme only has a few properties: _Default Base
+                Scale_, _Default Font_ and _Default Font Size_.
+
+                @Image(source: 09-09.theme-preview-panel.png)
+            }
+
+            The _Default Font_ expects a font file like the ones you have
+            on your computer. Two common font file formats are TrueType
+            Font (TTF) and OpenType Font (OTF).
+
+            @Step {
+                In the _File Tree_, expand the `fonts` directory and
+                tap and drag the `Montserrat-Medium.ttf` file we included in
+                the project onto the _Default Font_. The text will reappear
+                in the theme preview. The text is a bit small, so set the _Default Font Size_ to `50`
+                pixels to increase the text's size.
+
+                @Image(source: 09-10.font-montserrat-size-50.png)
+            }
+        }
+    }
+    @Section(title: "Keeping track of the score") {
+        @ContentAndMedia {
+            Let's work on the score next. Attach a new script to the
+            `ScoreLabel` and define the `score` variable.
+
+            The score should increase by `1` every time we squash a monster.
+            We can use their `squashed` signal to know when that happens.
+            However, because we instantiate monsters from the code, we
+            cannot connect the mob signal to the `ScoreLabel` via the
+            editor. Instead, we have to make the connection from the code
+            every time we spawn a monster.
+
+            The second line in `_on_mob_squashed()` uses the value of the
+            `score` variable to replace the placeholder `%s`. When using
+            this feature, Xogot automatically converts values to string
+            text, which is convenient when outputting text in labels or when
+            using the `print()` function.
+
+            > See also: You can learn more about string formatting here:
+            > [GDScript format strings](https://docs.godotengine.org/en/stable/tutorials/scripting/gdscript/gdscript%5Fformat%5Fstring.html#doc-gdscript-printf).
+
+            > Note: In a complex game, you may want to completely separate
+            > your user interface from the game world. In that case, you
+            > would not keep track of the score on the label. Instead, you
+            > may want to store it in a separate, dedicated object. But
+            > when prototyping or when your project is simple, it is fine
+            > to keep your code simple. Programming is always a balancing
+            > act.
+
+        }
+        @Steps {
+            @Step {
+                Attach a new script to the `ScoreLabel`.
+
+                @Code(name: "score_label.gd", file: score_label-3d-00.gd, reset: true)
+            }
+            @Step {
+                Define the `score` variable.
+
+                @Code(name: "score_label.gd", file: score_label-3d-01.gd, previousFile: score_label-3d-00.gd)
+            }
+            @Step {
+                Open the script `main.gd` (if it's still open, you can tap
+                on its name in the script editor's left column; alternatively, you can double-tap the `main.gd` file in the
+                _File Tree_). At the bottom of the `_on_mob_timer_timeout()` function, add
+                the line that connects the mob's `squashed` signal to the
+                `ScoreLabel`'s callback.
+
+                @Code(name: "main.gd", file: main-3d-05.gd, previousFile: main-3d-04.gd)
+            }
+            This line means that when the mob emits the `squashed` signal,
+            the `ScoreLabel` node will receive it and call the function
+            `_on_mob_squashed()`.
+
+            @Step {
+                Head back to the `score_label.gd` script to define the
+                `_on_mob_squashed()` callback function. There, we increment
+                the score and update the displayed text.
+
+                > Note: The `squashed` signal passes a `by` parameter (the
+                > node that did the squashing), but the score label doesn't
+                > need it. We prefix the parameter with an underscore (`_by`)
+                > to indicate it's intentionally unused. This is a GDScript
+                > convention that helps with code clarity.
+
+                @Code(name: "score_label.gd", file: score_label-3d-02.gd, previousFile: score_label-3d-01.gd)
+            }
+            @Step {
+                You can now play the game and squash a few enemies to see
+                the score increase.
+
+                @Image(source: 09-12.score-displayed-in-game.png)
+            }
+        }
+    }
+    @Section(title: "Retrying the game") {
+        @ContentAndMedia {
+            We'll now add the ability to play again after dying. When the
+            player dies, we'll display a message on the screen and wait for
+            input.
+
+            @Image(source: 09-13.retry-overlay-concept.png)
+        }
+        @Steps {
+            @Step {
+                Switch to 3D mode and head back to the `main.tscn` scene, select the
+                `Labels` node, add a child node
+                [ColorRect](https://docs.godotengine.org/en/stable/classes/class%5Fcolorrect.html#class-colorrect),
+                and name it `Retry`. This node fills a rectangle with a
+                uniform color and will serve as an overlay to darken the
+                screen.
+
+                @Image(source: 09-14.add-color-rect-retry.png)
+            }
+            @Step {
+                To make it span over the whole viewport, you can use the
+                _Anchor Preset_ menu in the toolbar. Open it and apply the
+                _Full Rect_ command.
+
+                @Image(source: 09-15.full-rect-anchor-preset.png)
+            }
+            @Step {
+                Let's change its color so it darkens the game area. Select
+                `Retry` and in the _Inspector_, set its _Color_ to
+                something both dark and transparent. To do so, in the color
+                picker, drag the _A_ slider to the left. It controls the
+                color's Alpha channel, that is to say, its
+                opacity/transparency.
+
+                > Tip: A black rectangle at 50% alpha (Color(0, 0, 0, 0.5))
+                > gives a classic "modal" feel — the player can still see
+                > the world behind the overlay, but it's clearly dimmed.
+
+                @Image(source: 09-17.retry-color-transparent.png)
+            }
+            @Step {
+                Next, add a
+                [Label](https://docs.godotengine.org/en/stable/classes/class%5Flabel.html#class-label)
+                as a child of `Retry` and give it the _Text_ "Press Enter or touch the screen to
+                retry." To move it and anchor it in the center of the
+                screen, apply _Anchor Preset -> Center_ to it.
+
+                @Image(source: 09-18.retry-label-centered.png)
+            }
+            The screen looks cluttered now, but once you play it back at scale, things will look correct.
+        }
+    }
+    @Section(title: "Coding the retry option") {
+        @ContentAndMedia {
+            We can now head to the code to show and hide the `Retry` node
+            when the player dies and plays again.
+        }
+        @Steps {
+            @Step {
+                Open the script `main.gd`. First, we want to hide the
+                overlay at the start of the game. Add this line to the
+                `_ready()` function.
+
+                @Code(name: "main.gd", file: main-3d-06.gd, previousFile: main-3d-05.gd)
+            }
+            @Step {
+                Then, when the player gets hit, we show the overlay, hide
+                the virtual joystick, and disable its input processing so it
+                doesn't interfere with the retry screen.
+
+                @Code(name: "main.gd", file: main-3d-07.gd, previousFile: main-3d-06.gd)
+            }
+            @Step {
+                Finally, when the `Retry` node is visible, we need to
+                listen to the player's input and restart the game if they
+                press enter or tap the screen. We use `_input()` to catch
+                input events early in the input processing chain.
+
+                In the following function, we check for two types of input:
+                the predefined `ui_accept` action
+                (Enter key or gamepad A button) or a screen touch event. When either
+                occurs, we mark the input as handled, release any pressed movement
+                actions from the joystick, re-enable the joystick's input processing,
+                then reload the scene.
+
+                > Note: We must release the movement actions (`move_left`,
+                > `move_right`, `move_forward`, `move_back`) and re-enable
+                > input processing before reloading. When we disabled the
+                > joystick's input processing, any actions it had pressed
+                > remained pressed. Releasing them and re-enabling input
+                > processing ensures a clean state for the reloaded scene.
+
+                @Code(name: "main.gd", file: main-3d-08.gd, previousFile: main-3d-07.gd)
+            }
+            The function `get_tree()` gives us access to the global
+            [SceneTree](https://docs.godotengine.org/en/stable/classes/class%5Fscenetree.html#class-scenetree)
+            object, which allows us to reload and restart the current
+            scene.
+        }
+    }
+    @Section(title: "Adding music") {
+        @ContentAndMedia {
+            To add music that plays continuously in the background, we're
+            going to use another feature in Xogot:
+            [autoloads](https://docs.godotengine.org/en/stable/tutorials/scripting/singletons%5Fautoload.html#doc-singletons-autoload).
+
+            To play audio, all you need to do is add an
+            [AudioStreamPlayer](https://docs.godotengine.org/en/stable/classes/class%5Faudiostreamplayer.html#class-audiostreamplayer)
+            node to your scene and attach an audio file to it. When you
+            start the scene, it can play automatically. However, when you
+            reload the scene, like we do to play again, the audio nodes are
+            also reset, and the music starts back from the beginning.
+        }
+        @Steps {
+            @Step {
+                Create a new empty scene by opening the **Document Menu** (the down-arrow
+                icon) in the upper-left corner and tapping **New Scene**. 
+                
+                Set the type to `Empty` and name the scene `music_player`. Saving it to the `scenes` folder.
+
+                @Image(source: 09-21.new-scene-music-player.png)
+            }
+            @Step {
+                Tap the _Other Node_ button to create an
+                [AudioStreamPlayer](https://docs.godotengine.org/en/stable/classes/class%5Faudiostreamplayer.html#class-audiostreamplayer)
+                and rename it to `MusicPlayer`.
+
+                @Image(source: 09-22.audio-stream-player-node.png)
+            }
+            @Step {
+                We included a music soundtrack in the `art/` directory,
+                `House In a Forest Loop.ogg`. Hold and drag it onto the
+                _Stream_ property in the _Inspector_. Also, turn on
+                _Autoplay_ so the music plays automatically at the start of
+                the game.
+                
+                Save the scene.
+
+                > Tip: Toggle off _Autoplay_ here if you want to start the
+                > music from a script later (e.g. fade in over the first
+                > few seconds). Otherwise, leave it on and the music
+                > starts as soon as the scene loads.
+
+                @Image(source: 09-23.music-stream-autoplay.png)
+            }
+            @Step {
+                We have to register it as an autoload. Tap the **Toolbar Menu**
+                button in the upper-right corner, choose **Settings**, and then tap
+                the **Dropdown Menu** next to **General** to select **Globals -> Autoload**. 
+                @Image(source: 09-24a.register-autoload-settings.png)
+            }
+            @Step {
+                Tap **New Autoload**. Then in the _Path_ field, tap the folder icon to open the file browser and
+                double-tap on `music_player.tscn`. Then, tap the _Add_
+                button on the right to register the node.
+
+                > Important: When registering the autoload, the _Node
+                > Name_ defaults to the file's name (`music_player`).
+                > Leave it as is — that's the name we'll use to reference
+                > the autoload from any script.
+
+                @Image(source: 09-24b.register-autoload-settings.png)
+            }
+            You can use the autoload feature to have Xogot load a node or a
+            scene automatically at the start of the game, outside the
+            current scene. You can also use it to create globally
+            accessible objects.
+            
+            `music_player.tscn` now loads into any scene you open or
+            play. So if you run the game now, the music will play
+            automatically in any scene.
+
+            @Step {
+                Before we wrap up this lesson, here's a quick look at how it
+                works under the hood. When you run the game, your _Scene Tree_
+                changes to give you two tabs: _Remote_ and _Local_.
+                
+                The _Remote_ tab allows you to visualize the node tree of your
+                running game. There, you will see the _Main_ node and
+                everything the scene contains and the instantiated mobs at the
+                bottom.
+
+                @Image(source: 09-25.scene-dock-remote-local.png)
+            }
+            And that does it for this lesson. In the next part, we'll add
+            an animation to make the game both look and feel much nicer.
+
+            @Step {
+                Here is the complete `main.gd` script for reference.
+                @Code(name: "main.gd", file: main-3d-08.gd, reset: true)
+            }
+        }
+    }
+}

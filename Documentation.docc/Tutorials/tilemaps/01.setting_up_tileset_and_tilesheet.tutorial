@@ -24,6 +24,9 @@
         tile has the same size (large objects can be split into several tiles). This
         image is called a *tilesheet*. Tiles do not have to be square: they can be
         rectangular, hexagonal, or isometric (pseudo-3D perspective).
+
+        @Steps {
+        }
     }
     @Section(title: "Using a tilesheet") {
         @ContentAndMedia {

@@ -1,0 +1,232 @@
+@Tutorial(time: 20) {
+    @Intro(title: "Hit boxes") {
+        The player can jump, but nothing happens when they land on a
+        monster. Let's fix that by adding a **hit box** to the mob: a
+        wide, thin
+        [Area3D](https://docs.godotengine.org/en/stable/classes/class_area3d.html#class-area3d)
+         that detects a stomp. When the player
+        lands on it, we squash the mob and the player bounces off.
+
+        We'll deal with the player getting hurt — the **hurt box** — in
+        the next lesson. For now, the player is invincible; we just want
+        the satisfying part, the squash.
+
+        Putting the sensor on the mob keeps the player's code simple: the
+        mob is in charge of its own life and death, and tells the rest of
+        the game what happened through a signal.
+
+        First, though, we need to set up physics layers so the right
+        bodies listen to each other.
+
+        @Image(source: 07-08.resize-hit-box-shape.png)
+    }
+    @Section(title: "Controlling physics interactions") {
+        @ContentAndMedia {
+            Physics bodies have access to two complementary properties: layers
+            and masks. Layers define on which physics layer(s) an object is.
+
+            Masks control the layers that a body will listen to and detect. This
+            affects collision detection. When you want two bodies to interact,
+            you need at least one to have a mask corresponding to the other.
+
+            The important point is that you can use layers and masks to filter
+            physics interactions, control performance, and remove the need for
+            extra conditions in your code.
+
+            By default, all physics bodies and areas are set to both layer and
+            mask `1`. This means they all collide with each other.
+
+            Physics layers are represented by numbers, but we can give them
+            names to keep track of what's what.
+
+        }
+        @Steps {
+            @Step {
+                Let's give our physics layers a name. Tap the **Toolbar Menu**
+                button in the upper-right corner and choose **Settings** to open Project
+                Settings.
+
+                @Image(source: 07-01a.open-project-settings.png)
+            }
+            @Step {
+                In the left menu, navigate down to _Layer Names -> 3D Physics_.
+                You can see a list of layers with a field next to each of them
+                on the right. Name the first three layers _player_, _enemies_, and _world_, in that order.
+
+                > Tip: Naming the layers is purely for the editor's benefit
+                > — the layers themselves are still just integers. But using
+                > readable names makes the _Collision_ section of the
+                > _Inspector_ far easier to scan.
+
+                @Image(source: 07-02.physics-layer-names.png)
+            }
+
+            Now, we can assign them to our physics nodes.
+            @Step {
+                In the _Main_ scene, select the `Ground` node. In the
+                _Inspector_, tap to open the _Collision_ section. The ground is part of
+                the world, so we want it to be part of the third layer. Tap the lit button to toggle **off** the
+                first _Layer_ and toggle **on** the third one. Then, toggle
+                **off** the _Mask_ by tapping on it.
+
+                > Note: The _Mask_ property allows a node to
+                > listen to interaction with other physics objects, but we
+                > don't need it to have collisions. `Ground` doesn't need to
+                > listen to anything; it's just there to prevent creatures
+                > from falling.
+
+                > Tip: You can tap the blue "List" button on the right side of
+                > the properties to see a list of named layers.
+
+                @Image(source: 07-03.ground-collision-settings.png)
+            }
+            @Step {
+                Next up is the `Player`. Open `player.tscn` by double-tapping
+                the file in the _File Tree_.
+
+                Select the _Player_ node and set its _Collision -> Mask_ to
+                both "enemies" and "world", deselecting Layer 1. You can leave the default _Layer_
+                property as it is, because the first layer is the "player"
+                layer.
+
+                @Image(source: 07-04.player-physics-mask.png)
+            }
+            @Step {
+                Then, open the _Mob_ scene by double-tapping on `mob.tscn`,
+                select the `Mob` node, and set its _Collision -> Layer_ to "enemies". Unset its
+                _Collision -> Mask_ entirely, leaving the mask empty.
+
+                > Note: With an empty mask, the mob's `CharacterBody3D` itself won't
+                > push or get pushed by anything — it just slides forward. All
+                > the gameplay interactions (squashing and getting hit) will
+                > happen through the `Area3D` sensors we add next. This keeps
+                > the movement clean: mobs never get stuck on the player or on
+                > each other.
+
+                > Note: The mobs don't need to mask the "world" layer
+                > because they only move on the XZ plane. We don't apply
+                > any gravity to them by design.
+
+                @Image(source: 07-05.mob-physics-mask.png)
+            }
+        }
+    }
+    @Section(title: "Adding the hit box") {
+        @ContentAndMedia {
+            The hit box is the area that detects a stomp. We want it to
+            cover the snake's body, so a wide, thin box works
+            well. It should sit just above the model's back.
+
+        }
+        @Steps {
+            @Step {
+                Select the `Mob` node and add a child
+                [Area3D](https://docs.godotengine.org/en/stable/classes/class_area3d.html#class-area3d).
+                Name it `HitBox`. 
+                
+                Add a
+                [CollisionShape3D](https://docs.godotengine.org/en/stable/classes/class_collisionshape3d.html#class-collisionshape3d)
+                as a child of it.
+
+                @Image(source: 07-07.add-hit-box-area.png, alt: "Add an Area3D named HitBox with a CollisionShape3D child to the Mob")
+            }
+            @Step {
+                In the _Inspector_, assign a
+                [BoxShape3D](https://docs.godotengine.org/en/stable/classes/class_boxshape3d.html#class-boxshape3d)
+                to the _Shape_ property. Set its _Size_ to about `4` on X,
+                `1` on Y, and `5` on Z — a wide, thin box.
+
+                > Tip: The exact size isn't critical. You want it wide enough
+                > that landing near the snake counts as a stomp, but thin
+                > enough in height that the player only triggers it while
+                > coming down on top. Tweak it when you test the game.
+                
+                @Image(source: 07-08.resize-hit-box-shape.png, alt: "Resize the BoxShape3D to a wide thin box above the snake's back")
+            }
+            @Step {
+                Select the `HitBox` node and, in the _Signals_ tab, connect
+                its `body_entered` signal to the `Mob` node's script.
+                
+                @Image(source: 07-09.connect-body-entered-signal.png, alt: "Connect the HitBox body_entered signal to the Mob")
+            }
+        }
+    }
+    @Section(title: "Coding the squash and the bounce") {
+        @ContentAndMedia {
+            Now we wire up the logic. The mob needs a `squashed` signal and
+            a `squash()` function, plus the `body_entered` callback we just
+            connected. The player needs a `bounce()` function. And `Main`
+            needs to connect the mob's `squashed` signal so the squasher
+            bounces.
+
+            Let's start with the mob.
+        }
+        @Steps {
+            @Step {
+                Open the `mob.gd` script. We'll add the `squashed` signal,
+                the `squash()` function, and `_on_hit_box_body_entered()` —
+                the callback Xogot generated when we connected the signal.
+
+                The signal carries the body that did the squashing (`by`),
+                so `Main` can make that body bounce. The callback only
+                squashes the mob if the entering body is falling —
+                `body.velocity.y < 0` — which means a player landing on top.
+
+                @Code(name: "mob.gd", file: mob-3d-05.gd, previousFile: mob-3d-04.gd)
+            }
+            @Step {
+                Now open the `player.gd` script and add the `bounce()`
+                function.
+
+                `bounce()` is called by `Main` after the player squashes a
+                mob — it reuses `jump_impulse` to fling the player back up off
+                the snake's head, so a bounce carries exactly as far as a jump.
+
+                @Code(name: "player.gd", file: player-3d-09.gd, previousFile: player-3d-08.gd)
+            }
+            @Step {
+                Finally, open the `main.gd` script. We connect the mob's
+                `squashed` signal to a new `_on_mob_squashed(by)` function
+                that calls `by.bounce()` if the squasher has a `bounce`
+                method.
+                
+                We also add a `mob.squashed.connect()` line to bind that new function.
+
+                @Code(name: "main.gd", file: main-3d-03.gd, previousFile: main-3d-02.gd)
+            }
+            You can now run the game by tapping the **Play** button in
+            the toolbar. Jump on a snake to squash it and bounce off it. The
+            player can't die yet — that's the next lesson.
+        }
+    }
+    @Section(title: "Code checkpoint") {
+        @ContentAndMedia {
+            Here are the complete scripts for the `Mob`, `Player`, and
+            `Main` nodes at this point, for reference. You can use them to
+            compare and check your code.
+        }
+        @Steps {
+            @Step {
+                Starting with `mob.gd`.
+                
+                @Code(name: "mob.gd", file: mob-3d-05.gd, reset: true)
+            }
+            @Step {
+                Next is `player.gd`.
+                
+                @Code(name: "player.gd", file: player-3d-09.gd, reset: true)
+            }
+            @Step {
+                Finally, the `main.gd` script.
+                
+                @Code(name: "main.gd", file: main-3d-03.gd, reset: true)
+            }
+            > Tip: If you copy any of this code directly and overwrite a 
+            linked function, you will need to 
+            link the signal again to ensure it works correctly.
+            
+            In the next lesson, we'll add the hurt box so the player can
+            die — and make jumping over a snake a safe strategy.
+        }
+    }
+}

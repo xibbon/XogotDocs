@@ -21,6 +21,9 @@
         optimized for drawing large numbers of tiles. Finally, you can add collision,
         occlusion, and navigation shapes to tiles, adding greater functionality to
         the TileMap.
+
+        @Steps {
+        }
     }
     @Section(title: "Saving the TileSet in the TileMapLayer") {
         @ContentAndMedia {
@@ -94,6 +97,9 @@
         > Tip: `TileMap` built-in navigation has many practical limitations that result in inferior pathfinding performance and pathfollowing quality. After designing the `TileMap` consider baking it to a more optimized navigation mesh (and disabling the `TileMap` NavigationLayer) using a [`NavigationRegion2D`](https://docs.godotengine.org/en/stable/classes/class_navigationregion2d.html#class-navigationregion2d) or the [`NavigationServer2D`](https://docs.godotengine.org/en/stable/classes/class_navigationserver2d.html#class-navigationserver2d).
 
         > Warning: 2D navigation meshes can not be "layered" or stacked on top of each other like visuals or physic shapes. Attempting to stack navigation meshes on the same navigation map will result in merge and logical errors that break the pathfinding.
+
+        @Steps {
+        }
     }
     @Section(title: "Working with nodes and Reordering layers") { 
         @ContentAndMedia {
@@ -111,6 +117,9 @@
         > You can create, rename or reorder layers in the future without affecting
         existing tiles. Be careful though, as *removing* a layer will also remove
         all tiles that were placed on the layer. However, if you saved the `TileSet` resource, it will not destroy that resource, so you can always link the resource again and place new tiles.
+
+        @Steps {
+        }
     }
     @Section(title: "Saving and loading premade tile placements using patterns") {
         @ContentAndMedia {

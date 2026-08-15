@@ -35,6 +35,9 @@
             - [`CollisionShape2D`](https://docs.godotengine.org/en/stable/classes/class_collisionshape2d.html#class-collisionshape2d): A child node that defines the character's physical shape so they do not fall through the floor.
         @Image(source: "nodes_and_scenes_character_nodes.png")
         }
+
+        @Steps {
+        }
     }
     @Section(title: "Scenes") {
         @ContentAndMedia {
@@ -52,6 +55,9 @@
             1. **One Root Node:** Every scene must have exactly one node at the very top of its tree, like the main "Player" node in our earlier example.
             2. **Savable:** You can save them as files to your computer and load them up whenever you need them.
             3. **Reusable (Instancing):** You can create endless copies, or "instances," of a scene. For example, you could easily place ten enemies in a level by copying one single Enemy scene. 
+        }
+
+        @Steps {
         }
     }
     @Section(title: "Creating your first scene") {

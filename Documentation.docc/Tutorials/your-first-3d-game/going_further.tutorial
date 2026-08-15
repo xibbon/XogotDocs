@@ -1,0 +1,75 @@
+@Tutorial(time: 5) {
+    @Intro(title: "Going further") {
+        You can pat yourself on the back for having completed your first 3D
+        game with Xogot.
+
+        In this series, we went over a wide range of techniques and editor
+        features. Hopefully, you've witnessed how intuitive Xogot's scene system
+        can be and learned a few tricks you can apply in your projects.
+
+        But we just scratched the surface: Xogot has a lot more in store for you
+        to save time creating games. And you can learn all that by browsing the
+        documentation.
+
+        Where should you begin? Below, you'll find a few pages to start exploring
+        and build upon what you've learned so far.
+
+        But before that, here's a link to download a completed version of the
+        project: <https://github.com/xogot-projects/Save-the-Axolotl-Snake-Stomp>.
+        
+        @Image(source: going-01.further-learning-resources.png)
+    }
+    @Section(title: "Exploring the manual") {
+        @ContentAndMedia {
+            The manual is your ally whenever you have a doubt or you're curious
+            about a feature. It does not contain tutorials about specific game
+            genres or mechanics. Instead, it explains how Xogot works in
+            general. In it, you will find information about 2D, 3D, physics,
+            rendering and performance, and much more.
+
+            Here are the sections we recommend you to explore next:
+
+            1. Read the
+              [Scripting section](https://docs.godotengine.org/en/stable/tutorials/scripting/index.html#toc-scripting-core-features)
+              to learn essential programming features you'll use in every
+              project.
+            2. The
+              [3D](https://docs.godotengine.org/en/stable/tutorials/3d/index.html#toc-learn-features-3d)
+              and
+              [Physics](https://docs.godotengine.org/en/stable/tutorials/physics/index.html#toc-learn-features-physics)
+              sections will teach you more about 3D game creation in the engine.
+            3.
+              [Inputs](https://docs.godotengine.org/en/stable/tutorials/inputs/index.html#toc-learn-features-inputs)
+              is another important one for any game project.
+
+            In this series, we only scratched the surface of working with
+            glTF models and animations. To go deeper, read the following
+            pages:
+
+            - [Importing 3D scenes](https://docs.godotengine.org/en/stable/tutorials/assets_pipeline/importing_3d_scenes.html#doc-importing-3d-scenes)
+              covers the import dock, advanced options, and the
+              inheritance pattern we used.
+            - [Import configuration](https://docs.godotengine.org/en/stable/tutorials/assets_pipeline/import_configuration.html#doc-import-configuration)
+              explains how to tune per-resource import settings,
+              including animation loop modes and compression.
+            - [Model export considerations](https://docs.godotengine.org/en/stable/tutorials/assets_pipeline/exporting_models/model_export_considerations.html#doc-model-export-considerations)
+              gives tips for preparing models in tools like Blender so
+              they import cleanly.
+            - The [Animation](https://docs.godotengine.org/en/stable/tutorials/animation/index.html#toc-learn-features-animation)
+              section introduces the [AnimationTree](https://docs.godotengine.org/en/stable/tutorials/animation/animation_tree.html#doc-animation-tree),
+              which lets you blend and transition between animations —
+              the natural next step beyond the two `AnimationPlayer`s we
+              used here.
+
+            You can start with these or, if you prefer, look at the **Sidebar**
+            (_Scene Tree_ and _File Tree_) and pick your options.
+
+            We hope you enjoyed this tutorial series, and we're looking forward to
+            seeing what you achieve using Xogot.
+
+            @Image(source: going-01.further-learning-resources.png)
+        }
+        @Steps {
+        }
+    }
+}

@@ -1,0 +1,71 @@
+@Tutorial(time: 60, projectFiles: "3d_squash_the_creeps_starter.zip") {
+    @Intro(title: "Your first 3D game") {
+        In this step-by-step tutorial series, you will create your first complete 3D
+        game with Xogot. By the end of the series, you will have a simple yet finished
+        project of your own like the animated gif below.
+
+        @Image(source: index-01.game-preview-animation.gif, alt: "Animated gif of Save the Axolotl: Snake Stomp running")
+
+        The game we'll code here is **Save the Axolotl: Snake Stomp**. It's
+        similar to [Your first 2D game](https://docs.xogot.com/documentation/tutorials/your-first-2d-game),
+        with a twist: you can now jump and your goal is to squash the snakes. This way,
+        you will both **recognize patterns** you learned in the previous tutorial and
+        **build upon them** with new code and features.
+
+        You will learn to:
+
+        - Work with 3D coordinates with a jumping mechanic.
+        - Use kinematic bodies to move 3D characters and detect when and how they collide.
+        - Use physics layers and a group to detect interactions with specific entities.
+        - Code basic procedural gameplay by instancing monsters at regular time intervals.
+        - Design a movement animation and change its speed at runtime.
+        - Draw a user interface on a 3D game.
+
+        And more.
+
+        This tutorial is for beginners who followed the complete getting started series.
+        We'll start slow with detailed instructions and shorten them as we do similar
+        steps. If you're an experienced programmer, you can browse the complete demo's
+        source code here:
+
+        - [Save the Axolotl: Snake Stomp source code (GDScript)](https://github.com/godotengine/godot-demo-projects/tree/master/3d/squash%5Fthe%5Fcreeps)
+
+        > Note: You can follow this series without having done the 2D one. However, if
+        > you're new to game development, we recommend you to start with 2D. 3D game
+        > code is always more complex and the 2D series will give you foundations to
+        > follow along more comfortably.
+
+        We prepared some game assets so we can jump straight to the code. You can
+        download them here:
+        [Save the Axolotl: Snake Stomp assets](https://github.com/godotengine/godot-docs-project-starters/releases/download/latest-4.x/3d%5Fsquash%5Fthe%5Fcreeps%5Fstarter.zip).
+
+        We will first set up the game area and the player's input actions, then
+        build the player scene and import the player's 3D model, then code the
+        player's movement. We will then add the monsters that we'll spawn randomly
+        around the screen. After that, we'll add the jump and the hit box and hurt box
+        mechanics for squashing monsters and dying. We'll then add the score and the
+        retry screen, and wrap up by refining the game with some nice character
+        animations.
+    }
+    @Section(title: "Contents") {
+        @ContentAndMedia {
+            This tutorial is divided into the following lessons:
+
+            - [Setting up the game area](doc:01.game_setup)
+            - [Player scene and model](doc:02.player_scene_and_model)
+            - [Moving the player with code](doc:03.player_movement_code)
+            - [Designing the mob scene](doc:04.mob_scene)
+            - [Spawning monsters](doc:05.spawning_mobs)
+            - [Jumping](doc:06.jump)
+            - [Hit boxes](doc:07.hit_boxes)
+            - [Hurt boxes](doc:08.hurt_boxes)
+            - [Score and replay](doc:09.score_and_replay)
+            - [Character animation](doc:10.adding_animations)
+            - [Going further](doc:going_further)
+
+            @Image(source: index-02.tutorial-overview.png)
+        }
+        @Steps {
+        }
+    }
+}

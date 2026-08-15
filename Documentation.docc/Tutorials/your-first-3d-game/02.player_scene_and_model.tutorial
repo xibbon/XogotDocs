@@ -1,0 +1,315 @@
+@Tutorial(time: 40) {
+    @Intro(title: "Player scene and model") {
+        In this lesson, we'll build the `Player` scene from a
+        [CharacterBody3D](https://docs.godotengine.org/en/stable/classes/class%5Fcharacterbody3d.html#class-characterbody3d),
+        then import the axolotl 3D model included in the starter project and
+        instance it inside the scene. By the end, you'll have a character in
+        the viewport, idling on the spot, ready to move.
+
+        Character bodies are complementary to the area and rigid bodies used in the
+        2D game tutorial. Like rigid bodies, they can move and collide with the
+        environment, but instead of being controlled by the physics engine,
+        **you** dictate their movement. You will see how we use the node's unique
+        features when we code the jump and squash mechanics.
+
+        > See also: To learn more about the different physics node types, see the
+        > [Physics introduction](https://docs.godotengine.org/en/stable/tutorials/physics/physics%5Fintroduction.html#doc-physics-introduction).
+
+        When you import a 3D model into Xogot, the file becomes a scene. You
+        can then instance it inside other scenes, just like any other scene
+        file. But for game characters, you'll often want to apply a few tweaks
+        — scale the model, rotate it to face the right direction, or set an
+        animation to autoplay — without modifying the original file. Xogot
+        gives you a clean way to do this: **scene inheritance**.
+
+        We'll create a wrapper scene that inherits the `.glb` file, apply our
+        tweaks there, and then instance that wrapper inside the `Player` scene.
+        This keeps the original import clean and makes the tweaks easy to
+        review.
+
+        @Image(source: 02-01.character-body3d-concept.png)
+    }
+    @Section(title: "Creating the player scene") {
+        @ContentAndMedia {
+            We'll start by creating a `Player` scene from a
+            [CharacterBody3D](https://docs.godotengine.org/en/stable/classes/class%5Fcharacterbody3d.html#class-characterbody3d).
+
+            We're also going to create a basic rig for our character's 3D model. This
+            will allow us to rotate the model later via code while it plays an
+            animation.
+
+            @Image(source: 02-02.player-scene-structure.png)
+        }
+        @Steps {
+            @Step {
+                Create a new scene by opening the **Document Menu** (the down-arrow
+                icon) in the upper-left corner and tapping **New Scene**.
+
+                @Image(source: 02-03.new-scene-menu.png)
+            }
+            @Step {
+                In the `New Scene` window set the name to `player`, pick the `scenes` folder location and then in the *New* tab set the type to **Empty** and press **Create**
+
+                @Image(source: 02-04.new-scene-empty-type.png)
+            }
+            @Step {
+                Tap the **Create Other Node** button and select the `CharacterBody3D` node
+                type to create a `CharacterBody3D` as the root node.
+
+                @Image(source: 02-05.add-character-body3d.png)
+            }
+            @Step {
+                Rename the
+                [CharacterBody3D](https://docs.godotengine.org/en/stable/classes/class%5Fcharacterbody3d.html#class-characterbody3d)
+                to `Player`.
+
+                @Image(source: 02-06.rename-to-player.png, alt: "The CharacterBody3D node renamed to Player")
+            }
+            Add a
+            [Node3D](https://docs.godotengine.org/en/stable/classes/class%5Fnode3d.html#class-node3d)
+            node as a child of `Player`.
+            @Step {
+                Select the `Player` node in the **Scene
+                Tree** and tap the **Create New Node** button (the "+" icon) to add a
+                child node. Rename it to `Pivot`.
+
+                > Note: The `Pivot` node will hold the character model. It lets
+                > us rotate the model to face its movement direction without
+                > fighting the physics body. We'll instance the axolotl
+                > under it later in this lesson.
+
+                @Image(source: 02-07.adding-pivot-node3d.png)
+            }
+            As with all kinds of physics nodes, we need a collision shape for our
+            character to collide with the environment.
+
+            @Step {
+                Select the `Player` node again and add a child node
+                [CollisionShape3D](https://docs.godotengine.org/en/stable/classes/class%5Fcollisionshape3d.html#class-collisionshape3d).
+                In the _Inspector_, on the **Shape** property, add a new
+                [BoxShape3D](https://docs.godotengine.org/en/stable/classes/class_boxshape3d.html#class-boxshape3d).
+
+                The Box's wireframe appears below the character.
+
+                @Image(source: 02-08.add-box-shape3d.png)
+            }
+            The box will be the shape the physics engine uses to collide with the
+            environment, so we want to pick one that will best fit the 3D model.
+
+            @Step {
+                Make the box a bit larger by dragging the orange dot in the
+                viewport or editing the shape size property in the _Inspector_. 
+                We want it to have a size of 1.2 on the `x-axis`, 1.0 on the `y-axis` and 2.6 on the `z-axis`.
+
+                @Image(source: 02-09.resize-collision-box.png)
+            }
+            @Step {
+                Then, move the collision shape up so its bottom roughly aligns with
+                the grid's plane. It should now have a Transform position on the `y-axis` of 0.5 and `z-axis` of -1.2.
+
+                @Image(source: 02-10.move-collision-box-up.png)
+            }
+            @Step {
+                Save the scene as `player.tscn`.
+
+                @Image(source: 02-11.save-player-scene.png, alt: "Save the scene as player.tscn")
+            }
+            With the player scene ready, let's import the 3D model and instance
+            it under the `Pivot` node.
+        }
+    }
+    @Section(title: "Creating a wrapper scene from the glb") {
+        @ContentAndMedia {
+            A `.glb` file is a self-contained glTF 2.0 archive. When Xogot
+            imports it, it generates a `PackedScene` you can instance or
+            inherit from. Inheriting from the `.glb` lets us override
+            individual properties — like a node's transform or an
+            `AnimationPlayer`'s autoplay — while keeping everything else from
+            the original file.
+
+            > See also: To learn more about glTF and the other 3D formats Xogot
+            > supports, see
+            > [Available 3D formats](https://docs.godotengine.org/en/stable/tutorials/assets_pipeline/importing_3d_scenes/available_formats.html).
+
+            @Image(source: 02-12.scene-inheritance-concept.png)
+        }
+        @Steps {
+            @Step {
+                In the _File Tree_, locate `art/player_axolotl.glb`.
+                
+                First, double click the file to open the import settings pane.
+                @Image(source: 02-13.glb-import-settings.png)
+            }
+            @Step {
+                Then open the tree for the `Animation Player` and select `Idle`. Inside the settings, in the _Inspector_ set the `Loop Mode` to `Linear`.
+
+                Do the same for `Run`, then press **ReImport**
+
+                > Note: We set up both animations now because the axolotl uses
+                > both. Once we write the movement code, the player script will
+                > switch between them — `Run` while the character is moving and
+                > `Idle` when it is standing still. Looping matters because each
+                > one needs to play continuously for as long as the character
+                > stays in that state.
+
+                @Image(source: 02-14.animation-loop-mode.png)
+            }
+            @Step {
+                Now, tap the file `player_axolotl.glb` once to select it, and in the _Inspector_ press the **Open Scene** button.
+
+                @Image(source: 02-15.open-scene-button.png, alt: "Long-press the glb file and choose New Inherited Scene")
+            }
+            @Step {
+                In the pop-up window select **New Inherited** to create a new copy of the scene.
+                
+                @Image(source: 02-16.new-inherited-scene-dialog.png)
+            }
+            @Step {
+                A new scene will open with the glb's contents as its root. Save it
+                as `player_axolotl.tscn` inside the `scenes/` folder (create
+                the folder if it doesn't exist yet).
+
+                > Note: Because this scene inherits from the `.glb`, any
+                > change you make here only affects instances of this wrapper.
+                > The original `.glb` file stays untouched. If you re-export
+                > the model from Blender later, your tweaks are preserved.
+
+                @Image(source: 02-17.save-wrapper-scene.png, alt: "Save the inherited scene as player_axolotl.tscn")
+            }
+        }
+    }
+    @Section(title: "Scaling and orienting the model") {
+        @ContentAndMedia {
+            When you look at the model in the viewport, two things are likely
+            off: it's very small, and it faces the wrong way. Models from 3D
+            software often come in at a different scale and facing +Z, while
+            Xogot's forward direction is -Z. We'll fix both with a single
+            transform on the model's `Armature` node.
+
+            > Note: In Xogot 3D, the -Z axis is "forward." Code like
+            > `Basis.looking_at(direction)` rotates a node so its -Z points
+            > along the given direction. If your model faces +Z by default,
+            > rotating the armature 180° around Y makes it face -Z so it
+            > looks the right way when you steer it with code.
+
+        }
+        @Steps {
+            @Step {
+                In the _Scene Tree_, expand the root node and select the
+                `Armature` node (the node that holds the `Skeleton3D`).
+
+                @Image(source: 02-19.select-armature-node.png, alt: "Select the Armature node in the Scene Tree")
+            }
+            @Step {
+                In the _Inspector_, expand the _Transform_ section. Set the
+                _Scale_ to `4` on the X, Y, and Z axes to make the axolotl
+                roughly life-sized in the scene. 
+
+                @Image(source: 02-20.scale-armature-to-4.png, alt: "Scale the Armature to 4 on all axes")
+            }
+            @Step {
+                Now rotate the armature 180° around the Y axis so it faces -Z.
+                You can either drag the red arc in the viewport, or enter
+                `180` in the _Rotation_ Y field in the _Inspector_.
+
+                > Tip: After rotating, the axolotl should now face away from
+                > the camera (towards -Z). When we steer it with code later,
+                > it will face the direction it moves.
+
+                @Image(source: 02-21.rotate-armature-180-y.png, alt: "Rotate the Armature 180 degrees on Y")
+            }
+        }
+    }
+    @Section(title: "Setting an animation to autoplay") {
+        @ContentAndMedia {
+            The glb file comes with embedded animations, like `Idle` and `Run`,
+            stored on an `AnimationPlayer` node inside the model. We want the
+            axolotl to play `Idle` as soon as the game starts — that's its
+            resting state, and the movement code we write later will switch it
+            over to `Run` whenever the player is moving.
+
+        }
+        @Steps {
+            @Step {
+                In the _Scene Tree_, select the `AnimationPlayer` node. It sits
+                directly under the scene root, alongside `Armature` — not
+                inside it.
+
+                > Note: That position matters later. When this scene is
+                > instanced into the player and renamed `Character`, the script
+                > reaches the animations at `$Pivot/Character/AnimationPlayer`.
+
+                @Image(source: 02-23.select-animation-player.png, alt: "Select the AnimationPlayer beside the Armature, under the scene root")
+            }
+            @Step {
+                Open the **Animation** drawer, press the `A` icon next to the animation you want to turn autoplay on for. We will do this for `Idle`. This tells the AnimationPlayer to start playing the
+                `Idle` animation as soon as the scene loads.
+
+                @Image(source: 02-24.set-autoplay-idle.png, alt: "Set the Autoplay property to Idle")
+            }
+            @Step {
+                Save the `player_axolotl.tscn` scene.
+
+                We'll use the exact same pattern — inherit the `.glb`, scale
+                the armature, rotate 180° on Y, set autoplay — for the mob
+                model later in the series.
+                @Image(source: 02-17.save-wrapper-scene.png, alt: "Save the player_axolotl.tscn scene")
+            }
+        }
+    }
+    @Section(title: "Instantiating the model in the Player scene") {
+        @ContentAndMedia {
+            Now we'll instance the wrapper scene we just built inside
+            `player.tscn`, under the `Pivot` node we created earlier.
+
+        }
+        @Steps {
+            @Step {
+                Open `player.tscn`. In the _File Tree_ long press and drag `player_axolotl.tscn` 
+                onto the `Pivot` node.
+
+                @Image(source: 02-26.drag-to-pivot-node.png, alt: "Instantiate player_axolotl.tscn under Pivot")
+            }
+            @Step {
+                Rename the instantiated node to `Character`. This name keeps
+                the player and mob scenes symmetric, which will come in handy
+                later.
+
+                @Image(source: 02-27.scene-structure-complete.png)
+            }
+            Your scene tree should now have a `Player` root, a `Pivot` child,
+            and a `Character` child (the axolotl model).
+        }
+    }
+    @Section(title: "Resizing the collision shape to fit the model") {
+        @ContentAndMedia {
+            The `BoxShape3D` we added earlier was sized generically. We'll now
+            resize it to wrap the axolotl's body, which is longer along the Z
+            axis (front-to-back) than it is wide.
+
+            > Tip: Collision shapes don't need to match the model exactly —
+            > they just need to feel right when you play the game. A box is
+            > simple, reliable, and performs well.
+
+        }
+        @Steps {
+            @Step {
+                Move the `CollisionShape3D` down so the box's bottom aligns with
+                the players feet if it doesn't already, and shift it slightly forward in -Z so it
+                covers the body. You can drag the gizmo in the viewport or
+                enter values directly in the _Transform_ section.
+
+                > Tip: Toggle the `Character` node's visibility with the eye
+                > icon to see the collision shape clearly while you resize it.
+
+                @Image(source: 02-29.position-collision-box-final.png, alt: "Position the box so it wraps the axolotl body")
+            }
+            @Step {
+                Save the scene.
+
+                In the next lesson, we'll code the player's movement.
+                @Image(source: 02-30.save-player-scene.png, alt: "Save the player.tscn scene")
+            }
+        }
+    }
+}

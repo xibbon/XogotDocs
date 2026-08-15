@@ -1,0 +1,162 @@
+@Tutorial(time: 20) {
+    @Intro(title: "Hurt boxes") {
+        In the previous lesson, we made the player able to squash monsters
+        by landing on them. Now let's add the consequence: when the player
+        runs into a snake from the side, the player dies.
+
+        We'll add a second
+        [Area3D](https://docs.godotengine.org/en/stable/classes/class_area3d.html#class-area3d)
+        to the mob - we will call it a **hurt box**: a capsule along the snake's body that
+        detects the player running into it. The trick is that the hurt box
+        only kills the player if they're on the floor, so jumping *over* a
+        snake is a safe strategy.
+
+        When the player dies, they emit a `hit` signal, and `Main` stops
+        spawning new mobs.
+
+        @Image(source: 08-03.capsule-shape-settings.png)
+    }
+    @Section(title: "Adding the hurt box") {
+        @ContentAndMedia {
+            The hurt box is the area that damages the player. We want it to
+            cover the snake's body, so a capsule oriented along the body
+            works well. We'll place this one under the `Pivot` so it rotates
+            and moves with the model.
+
+        }
+        @Steps {
+            @Step {
+                Go back to the 3D view.
+                
+                Open the `Mob` scene. Select the `Pivot` node and add an
+                [Area3D](https://docs.godotengine.org/en/stable/classes/class_area3d.html#class-area3d)
+                child named `HurtBox`. Add a
+                [CollisionShape3D](https://docs.godotengine.org/en/stable/classes/class_collisionshape3d.html#class-collisionshape3d)
+                child to it.
+
+                @Image(source: 08-02.add-hurt-box-area.png, alt: "Add an Area3D named HurtBox under Pivot with a CollisionShape3D child")
+            }
+            @Step {
+                In the _Inspector_, assign a
+                [CapsuleShape3D](https://docs.godotengine.org/en/stable/classes/class_capsuleshape3d.html#class-capsuleshape3d)
+                to the _Shape_ property. Tap it to open the new resource and set its _Radius_ to about `0.6` and
+                _Height_ to about `2.5`. 
+                
+                In the Transform section: Rotate the capsule `90` degrees on
+                `Y` and `Z` so it lies along the snake's body, and position it so
+                it covers the head of the snake. For mine, `Z` is set to `-1.2` in the position parameter
+
+                @Image(source: 08-03.capsule-shape-settings.png, alt: "Resize and orient the capsule along the snake's body")
+            }
+            @Step {
+                Select the `HurtBox` node and, in the _Signals_ tab, connect
+                its `body_entered` signal to the `Mob` node.
+
+                @Image(source: 08-04.connect-hurt-box-signal.png, alt: "Connect the HurtBox body_entered signal to the Mob")
+            }
+        }
+    }
+    @Section(title: "Coding the hurt box's callback") {
+        @ContentAndMedia {
+            The callback we just connected will call `body.die()` when the
+            player touches the snake's body. We only kill the player if
+            they're on the floor — that's what makes jumping over a snake
+            safe. The player doesn't have a `die()` function yet; we'll add
+            it next.
+
+        }
+        @Steps {
+            @Step {
+                Open the `mob.gd` script if it's not open. 
+                Next, add the following to the `_on_hurt_box_body_entered`
+                callback. It bails out early if the entering body has no
+                `die` method, and again if the body is in the air — so a
+                player jumping over the snake is untouched.
+
+                @Code(name: "mob.gd", file: mob-3d-06.gd, previousFile: mob-3d-05.gd)
+            }
+        }
+    }
+    @Section(title: "Coding the player's death") {
+        @ContentAndMedia {
+            The mob's callback calls `body.die()`, so the player needs a
+            `die()` function. When it runs, the player emits a `hit` signal
+            — `Main` will listen for that to stop the game — and then frees
+            itself.
+        }
+        @Steps {
+            @Step {
+                Open the `player.gd` script. We add the `hit` signal at the top and
+                the `die()` function near the bottom.
+
+                @Code(name: "player.gd", file: player-3d-10.gd, previousFile: player-3d-09.gd)
+            }
+        }
+    }
+    @Section(title: "Ending the game") {
+        @ContentAndMedia {
+            When the player dies, the `Player` emits its `hit` signal. We
+            can use that to stop spawning new mobs. Connect the signal to
+            the `Main` node and stop the `MobTimer` in reaction.
+        }
+        @Steps {
+            @Step {
+                Switch back to 3D mode and open `main.tscn`. Select the `Player` node, and in the
+                _Signals_ tab, connect its `hit` signal to the `Main` node. Name the function `_on_player_hit`.
+
+                @Image(source: 08-08.player-hit-signal-connection.png)
+            }
+            @Step {
+                In the `_on_player_hit()` function that was just added, stop
+                the `MobTimer`.
+
+                @Code(name: "main.gd", file: main-3d-04.gd, previousFile: main-3d-03.gd)
+            }
+            If you try the game now, running into a snake on the ground
+            kills the player and the monsters stop spawning, while the
+            remaining ones leave the screen. Jump over a snake and you're
+            safe.
+
+            > Note: If you had tried the game earlier before we did this, 
+            > you'll notice that the game no longer crashes or displays an error when
+            > the player dies. Because we stop the `MobTimer`, it no longer
+            > triggers the `_on_mob_timer_timeout()` function — and the
+            > player node has been `queue_free`'d, so any subsequent
+            > reference to `$Player` in the timer callback would fail.
+
+            You can pat yourself on the back: you prototyped a complete 3D
+            game, even if it's still a bit rough. From there, we'll add a
+            score, the option to retry the game, and you'll see how you can
+            make the game feel much more alive with the model's built-in
+            animations.
+        }
+    }
+    @Section(title: "Code checkpoint") {
+        @ContentAndMedia {
+            Here are the complete scripts for the `Mob`, `Player`, and
+            `Main` nodes at this point, for reference. You can use them to
+            compare and check your code.
+
+            @Image(source: 08-09.code-checkpoint-reference.png)
+        }
+        @Steps {
+            @Step {
+                Starting with `mob.gd`.
+
+                @Code(name: "mob.gd", file: mob-3d-06.gd, reset: true)
+            }
+            @Step {
+                Next is `player.gd`.
+
+                @Code(name: "player.gd", file: player-3d-10.gd, reset: true)
+            }
+            @Step {
+                Finally, the `main.gd` script.
+
+                @Code(name: "main.gd", file: main-3d-04.gd, reset: true)
+            }
+            In the next lesson, we'll add the score and the option to
+            retry the game.
+        }
+    }
+}

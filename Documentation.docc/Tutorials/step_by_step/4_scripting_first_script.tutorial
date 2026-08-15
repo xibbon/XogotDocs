@@ -12,6 +12,9 @@
             
             Now that we've stated that, let's have fun learning to code in GDScript!
         }
+
+        @Steps {
+        }
     }
     @Section(title: "Project setup") {
         @ContentAndMedia {

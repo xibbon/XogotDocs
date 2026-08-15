@@ -37,6 +37,9 @@
             
             Be careful to type the method names precisely when connecting signals.
         }
+
+        @Steps {
+        }
     }
     @Section(title: "Scene setup") {
         @ContentAndMedia {
@@ -341,6 +344,9 @@
 
             In the next tutorial, "Your First 2D Game", you'll create a complete 2D
             game and put everything you learned so far into practice.
+        }
+
+        @Steps {
         }
     }
 }

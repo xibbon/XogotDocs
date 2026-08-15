@@ -1,0 +1,224 @@
+@Tutorial(time: 35) {
+    @Intro(title: "Character animation") {
+        In this final lesson, we'll bring our characters to life using a
+        mix of glTF-embedded animations, a loaded animation resource,
+        and a hand-authored animation.
+
+        The characters are already partly animated. The player switches between
+        the axolotl's built-in `Idle` and `Run` cycles — we wired that up back
+        when we wrote the movement code — and the snake's `Move` animation
+        autoplays from its wrapper scene.
+
+        What's missing is the custom work. In this lesson we'll add a second
+        `AnimationPlayer` to each gameplay scene: one holding a jump arc for
+        the player (loaded from a ready-made resource) and one holding a sway
+        for the mobs (keyed by hand in the editor). Then we'll drive both from
+        code.
+
+        @Image(source: 10-11.key-pivot-return-1-2.png)
+    }
+    @Section(title: "Adding the jump animation to the player") {
+        @ContentAndMedia {
+            Let's start with the player. We'll add a scene-level
+            `AnimationPlayer` and load `jump.res` into it.
+
+            @Image(source: 10-03.jump-animation-setup.png)
+        }
+        @Steps {
+            @Step {
+                In the 3D view, open `player.tscn`. Select the `Player` node and add a
+                child
+                [AnimationPlayer](https://docs.godotengine.org/en/stable/classes/class%5Fanimationplayer.html#class-animationplayer).
+
+                @Image(source: 10-04.add-animation-player-player.png, alt: "Add an AnimationPlayer child to the Player node")
+            }
+            @Step {
+                With the `AnimationPlayer` selected, head to the
+                _Animation Drawer_ at the bottom of the screen. You can open it by tapping **Animation**. (1)
+                
+                Tap **Options** (2) and then **Edit Animations** (3). 
+                @Image(source: 10-05.edit-animation-library.png, alt: "Edit the AnimationPlayer's library")
+            }
+            @Step {
+                In the new window, tap **New Library** to create a new
+                `AnimationLibrary` sub-resource. You can name it anything.
+
+                Expand it by tapping on it and tap **Load Animation into Library**
+                then navigate to `resources/jump.res` and tap **Select**.
+
+                @Image(source: 10-05.load-jump-resource.png, alt: "Load jump.res into the AnimationLibrary")
+            }
+            You can close the window.
+
+            Now we'll update the player script in three small steps.
+
+            @Step {
+                Open the `player.gd` script and add an `@onready` reference to
+                the scene `AnimationPlayer` we just created.
+
+                The reference to the model's own `AnimationPlayer` is already
+                there — we added it when we taught the character to run.
+
+                @Code(name: "player.gd", file: player-3d-11a.gd, previousFile: player-3d-10.gd)
+            }
+
+            Next we'll improve how the jump looks.
+
+            @Step {
+                Tilt the `Pivot` based on the character's vertical velocity to
+                give the jump a nice arc — nose up on the way up, nose down on
+                the way back down.
+
+                @Code(name: "player.gd", file: player-3d-11b.gd, previousFile: player-3d-11a.gd)
+            }
+
+            Finally, we'll update the `bounce()` function to play the custom jump
+            animation when bouncing off mobs.
+
+            @Step {
+                Update the `bounce()` function to play the custom jump animation
+                from the scene `AnimationPlayer`, so squashing a mob looks the
+                same as a deliberate jump.
+
+                The skeleton looks after itself here: the animation block in
+                `_physics_process()` already switches to `Idle` the moment the
+                bounce lifts the character off the floor.
+
+                > Note: When playing an animation, we use the full library path
+                > `"Animations/jump.res"` rather than just the filename. Godot's
+                > `AnimationPlayer` requires the library name followed by the
+                > animation name when referencing animations.
+
+                @Code(name: "player.gd", file: player-3d-11.gd, previousFile: player-3d-11b.gd)
+            }
+
+            @Step {
+                Here is the complete `player.gd` so you can check your code
+                against it.
+                @Code(name: "player.gd", file: player-3d-11.gd, reset: true)
+            }
+        }
+    }
+    @Section(title: "Animating the mobs") {
+        @ContentAndMedia {
+            The mobs get the same treatment. The snake's `Move`
+            animation is already autoplaying from the wrapper scene. Now
+            we'll **author** a gentle looping sway by hand so we can learn how that is done
+            and add it to a scene-level `AnimationPlayer`.
+            Then we'll scale both players' speed with the mob's random
+            movement speed, so faster mobs also animate faster.
+
+            Authoring the sway ourselves is a great introduction to the
+            animation editor. The sway itself is simple: three
+            keyframes that slide the `Pivot` a little to the side and
+            back, looping forever. We'll use round numbers for both the
+            timing (`0`, `0.6`, and `1.2` seconds) and the slide
+            distance (`1.0` units), so it's easy to follow and to tweak
+            later.
+
+            @Image(source: 10-06.mob-animation-concept.png)
+        }
+        @Steps {
+            Go back to the 3D view and open `mob.tscn`.
+            @Step {
+                Select the `Mob` node and add a child
+                [AnimationPlayer](https://docs.godotengine.org/en/stable/classes/class%5Fanimationplayer.html#class-animationplayer).
+
+                @Image(source: 10-07.add-animation-player-mob.png, alt: "Add an AnimationPlayer child to the Mob node")
+            }
+            @Step {
+                With the `AnimationPlayer` selected, open the
+                _Animation_ panel at the bottom of the editor. Tap the
+                _Add Animation_ button. Name it
+                `Sway`.
+                @Image(source: 10-08a.new-sway-animation.png, alt: "Create a new animation named Sway")
+            }
+            @Step {
+                Next to the play settings at the top of the panel,
+                turn on the **Loop** toggle so the sway plays
+                continuously.
+                
+                Then, set the animation length to `1.2`
+                seconds by tapping the 0.00/1.00 in the upper right. 
+                Enter the new time and press `Return`.
+
+                @Image(source: 10-08b.new-sway-animation.png, alt: "Enable looping, set length to 1.2 seconds")
+            }
+            @Step {
+                Now we key the sway. Select the `Pivot` node. Leave the
+                playhead at `0.0` seconds, so the `Pivot` is at its
+                rest position. In the _Inspector_, find the _Position_ attribute 
+                inside of the _Transform_ property. Set the X property to `1.0` and tap the **key** icon 
+                that appears next to it — this inserts a keyframe for 
+                the `Pivot`'s position at time `0.0`.
+
+                In the pop-up, tap **OK**. You'll see a diamond representing \
+                the keyframe appear in the timeline.
+
+                @Image(source: 10-09.key-pivot-position-0.png, alt: "Key the Pivot's position at time 0.0")
+            }
+            @Step {
+                Move the playhead to `0.6` seconds. In the _Inspector_,
+                change the `Pivot`'s _Position_ **X** value to `0.0`. Tap the
+                key icon next to _Position_ to insert the second
+                keyframe.
+
+                You should see the `Pivot` (and the snake) jump to the
+                side in the viewport.
+
+                @Image(source: 10-10.key-pivot-slide-0-6.png, alt: "At 0.6s, set the Pivot's X position to 0.0 and key it")
+            }
+            @Step {
+                Move the playhead to `1.2` seconds. Set the `Pivot`'s
+                _Position_ back to `1.0`. Tap the key icon to insert the third
+                keyframe.
+
+                Press the _Play_ button in the animation panel to
+                preview the sway. The snake should slide to the side
+                and back, then repeat.
+
+                > Note: We used a `1.0` unit slide over `1.2` seconds
+                > because that lines up with the preset `Move` animation 
+                > in the snake's wrapper scene.
+
+                @Image(source: 10-11.key-pivot-return-1-2.png, alt: "At 1.2s, return the Pivot to its start position and key it")
+            }
+            @Step {
+                Finally, tap the little A icon next to `Sway` in the animation panel to set it to autoplay. 
+                The snake should start swaying automatically when they spawn in.
+
+                @Image(source: 10-12.autoplay-sway-animation.png, alt: "Set the AnimationPlayer autoplay to Sway")
+            }
+            @Step {
+                Open `mob.gd`. We add `@onready` references to both
+                animation players, a `min_anim_speed`/`max_anim_speed`
+                range, and a `_sync_animation_speed()` helper that maps
+                the mob's movement speed onto that range. We call it at
+                the end of `initialize()`.
+
+                @Code(name: "mob.gd", file: mob-3d-07.gd, previousFile: mob-3d-06.gd)
+            }
+            @Step {
+                Here is the complete `mob.gd` for reference.
+
+                @Code(name: "mob.gd", file: mob-3d-07.gd, reset: true)
+            }
+        }
+    }
+    @Section(title: "Trying it out") {
+        @ContentAndMedia {
+            That's the whole game. Run the project on an iPhone or iPad and
+            the on-screen joystick appears wherever you touch the left half
+            of the screen. Tap and drag to move the axolotl: it switches
+            between `Idle` and `Run` as you go, tilts through the arc of a
+            jump, and the snakes sway as they cross the platform.
+
+            Land on a snake to squash it and you'll see the custom jump
+            animation play on the bounce. The rest of the input — jump, and
+            tapping to retry — already works through the on-screen controls,
+            an external keyboard, or a gamepad.
+        }
+        @Steps {
+        }
+    }
+}
