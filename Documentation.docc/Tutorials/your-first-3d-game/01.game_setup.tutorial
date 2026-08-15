@@ -1,12 +1,11 @@
-@Tutorial(time: 50) {
+@Tutorial(time: 50, projectFiles: "3d_save_the_axolotl_snake_stomp.zip") {
     @Intro(title: "Setting up the game area") {
         In this first part, we're going to set up the game area and register the
         player's input actions. Let's get started by importing the start assets
         and setting up the game scene.
 
         We've prepared a starter project with the 3D models and sounds we'll use for this
-        tutorial. You can download the archive here:
-        [Save the Axolotl: Snake Stomp assets](https://github.com/xogot-projects/Your-First-3D-Game-Project/releases/download/starters/3d_save_the_axolotl_snake_stomp.zip).
+        tutorial. 
 
         @Image(source: 01-18.project-with-light.png)
     }
@@ -115,9 +114,11 @@
             }
             
             @Step {
-                > Note: A warning sign next to the `CollisionShape3D` appears because
-                > we haven't defined its shape yet. If you tap the warning icon, a
-                > popup appears with more information.
+                Tap the "i" information icon next to the `CollisionShape3D` in the Scene Tree.
+                A popup appears with more information.
+                
+                > Note: The information warning appears because
+                > we haven't defined its shape yet.  
 
                 @Image(source: 01-08.collision-shape-warning.png)
             }

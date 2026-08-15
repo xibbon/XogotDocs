@@ -1,4 +1,4 @@
-@Tutorial(time: 60, projectFiles: "3d_squash_the_creeps_starter.zip") {
+@Tutorial(time: 60, projectFiles: "3d_save_the_axolotl_snake_stomp.zip") {
     @Intro(title: "Your first 3D game") {
         In this step-by-step tutorial series, you will create your first complete 3D
         game with Xogot. By the end of the series, you will have a simple yet finished
