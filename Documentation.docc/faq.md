@@ -1,6 +1,7 @@
 # FAQ
 
-Frequently Asked Questions
+Answers to common questions about Xogot, Godot compatibility, supported
+features, subscriptions, and working across Apple platforms.
 
 ## Is Xogot Compatible with Godot?
 

@@ -1,7 +1,7 @@
-# Differences between Xogot and Godot
+# Differences from Godot: iPad and iPhone
 
-Notable differences between Godot and our readaptaion of the UI to be Apple
-platform focused.
+Notable differences between Xogot and Godot, including changes that make the
+editor feel native on Apple platforms.
 
 We have three sections:
 

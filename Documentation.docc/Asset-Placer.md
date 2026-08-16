@@ -1,6 +1,8 @@
-# Asset Placer User Guide
+# Asset Browser and Asset Placer
 
-Asset Placer is the 3D level-building workflow in the bottom Asset Browser panel. It lets you browse project assets, arm a placeable scene or mesh, preview it in the 3D viewport, and place one object, paint many objects, generate collision, override materials, or build along splines.
+Browse and organize project assets, then use Asset Placer to preview scenes and
+meshes in the 3D viewport, place individual objects, paint many objects, generate
+collision, override materials, or build along splines.
 
 ## What You Can Place
 
@@ -254,4 +256,3 @@ Surface mode depends on collision. If the preview does not stick to the visible 
 4. Add a Deform layer for road meshes, or a Scatter layer for fence posts, lights, rocks, and similar repeated pieces.
 5. Tune offsets, scale, spacing, and alignment.
 6. Bake when the result is ready for hand editing.
-

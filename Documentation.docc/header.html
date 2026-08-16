@@ -14,33 +14,74 @@
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
   })(window,document,'script','dataLayer','__GTM_ID__');
 </script>
-<script src="/js/header.js"></script>
-<header id="header" role="banner" hidden>
-  <div class="container">
-    <nav id="home" role="navigation">
-      <a aria-label="xogot.com"
-         href="https://xogot.com"
-         id="logo"
-         role="img"
-         title="xogot.com"
-      >Swift.org</a>
-    </nav>
-    <button id="small-menu-toggle"></button>
-    <nav id="menu">
-      <ul class="links">
-        <li><a href="https://xogot.com/contact-us">Contact</a></li>
-        <li><a href="https://blog.xogot.com/">Blog</a></li>
-        <li><a href="https://docs.xogot.com/documentation/xogot/">Docs</a></li>
-        <li><a href="https://docs.xogot.com/tutorials/xogot-tutorials">Tutorials</a></li>
-        <li><a href="https://xogot.com/connect">Connect</a></li>
-        <li><a href="https://discord.gg/TDEcyfHZAh">Discord</a></li>
-        <li><a href="https://xogot.com/mac">Mac</a></li>
-        <li class="app-store-item">
-          <a class="app-store-link" href="https://apps.apple.com/us/app/xogot-make-games-anywhere/id6469385251" aria-label="Download on the App Store">
-            <img class="app-store-badge" src="/img/app-store-badge.svg" alt="Download on the App Store">
+<script src="/js/header.js?v=20260816-6"></script>
+<script src="/js/landing.js?v=20260816-4"></script>
+
+<header id="header" class="site-header" role="banner" hidden>
+  <div class="container header-inner">
+    <a class="brand" href="https://xogot.com/" aria-label="Xogot home">
+      <img src="/img/xogot-icon.png" alt="" width="30" height="30">
+      <span>Xogot</span>
+    </a>
+
+    <div class="header-menu">
+      <nav class="desktop-nav" aria-label="Primary">
+        <a href="https://xogot.com/ios">iPad &amp; iPhone</a>
+        <a href="https://xogot.com/mac">Mac</a>
+        <a href="https://xogot.com/connect">Connect</a>
+        <a class="active" href="https://docs.xogot.com/" aria-current="page">Docs</a>
+        <a href="https://blog.xogot.com/">Blog</a>
+      </nav>
+
+      <a class="button" href="https://xogot.com/downloads/xogot-mac-latest.pkg">Download Xogot for Mac</a>
+
+      <a
+        class="header-app-store-link"
+        href="https://apps.apple.com/us/app/xogot-make-games-anywhere/id6469385251"
+        aria-label="Download Xogot on the App Store"
+      >
+        <img
+          class="header-app-store-badge"
+          src="/img/app-store-badge.svg"
+          alt="Download Xogot on the App Store"
+          width="126"
+          height="42"
+        >
+      </a>
+    </div>
+
+    <details class="mobile-menu">
+      <summary aria-label="Open navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </summary>
+      <div class="mobile-panel">
+        <nav class="mobile-nav" aria-label="Mobile primary">
+          <a href="https://xogot.com/ios">iPad &amp; iPhone</a>
+          <a href="https://xogot.com/mac">Mac</a>
+          <a href="https://xogot.com/connect">Connect</a>
+          <a class="active" href="https://docs.xogot.com/" aria-current="page">Docs</a>
+          <a href="https://blog.xogot.com/">Blog</a>
+        </nav>
+
+        <div class="mobile-download-actions">
+          <a class="button" href="https://xogot.com/downloads/xogot-mac-latest.pkg">Download Xogot for Mac</a>
+          <a
+            class="header-app-store-link"
+            href="https://apps.apple.com/us/app/xogot-make-games-anywhere/id6469385251"
+            aria-label="Download Xogot on the App Store"
+          >
+            <img
+              class="header-app-store-badge"
+              src="/img/app-store-badge.svg"
+              alt="Download Xogot on the App Store"
+              width="126"
+              height="42"
+            >
           </a>
-        </li>
-      </ul>
-    </nav>
+        </div>
+      </div>
+    </details>
   </div>
 </header>

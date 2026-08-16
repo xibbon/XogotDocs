@@ -1,6 +1,6 @@
 # Embedded Game View
 
-Run and live-edit your game directly within the main editor interface
+Run and live-edit your game directly within the main editor interface.
 
 ## Testing Your Game with Xogot’s Embedded Game View
 

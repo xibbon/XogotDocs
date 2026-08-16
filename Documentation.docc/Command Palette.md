@@ -1,9 +1,7 @@
 # Command Palette
 
-Xogot provides a convenient shortcut to access different resources, trigger
-commands and lookup information with its Command Palette.   It is accessible via
-the menus, but keyboard users can access it by using the Command-P shortcut or
-the Command-shift shortcut.
+Open files, run commands, jump to lines and symbols, and search Xogot
+documentation from a single keyboard-friendly interface.
 
 It is inspired by both MacOS's Spotlight search and the Visual Studio command
 command palette. 
@@ -121,4 +119,3 @@ exclude documentation nodes that contain that word.   For example, if you type
 `?vector return -prevent` this will display the documentation nodes that contain
 both the word vector and the word return in their body, but will exlude any
 docuemnts that contains the word `prevent` from being displayed.
-

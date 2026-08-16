@@ -1,6 +1,7 @@
-# Onscreen Controls in Xogot
+# Onscreen Controls
 
-Using Onscreen Controls to quickly touch-enable projects
+Quickly touch-enable projects for testing and playing games directly on iPhone
+and iPad.
 
 ## Onscreen Controls
 

@@ -1,6 +1,7 @@
-# Differences between Xogot for Mac and Godot on Mac
+# Differences from Godot: Mac
 
-This document is focused on the differences in Godot on Mac and Xogot on Mac.
+Learn how Xogot for Mac differs from Godot on Mac while keeping projects fully
+compatible across Xogot and desktop Godot.
 
 While they both use the same Godot engine, and under the surface, large parts of
 the Godot editor are still present, we have made various chages in Xogot to work

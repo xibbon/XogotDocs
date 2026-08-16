@@ -10,7 +10,7 @@
    // [1]: https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements#internal_vs._external_styles
    const link = document.createElement('link');
    link.setAttribute('rel', 'stylesheet');
-   link.setAttribute('href', '__BASE_PATH__/css/footer.css');
+   link.setAttribute('href', '/css/footer.css?v=20260816-1');
    link.onload = () => {
      footer.hidden = false;
    };
