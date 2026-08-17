@@ -70,17 +70,4 @@
         @TutorialReference(tutorial: "doc:10.adding_animations")
         @TutorialReference(tutorial: "doc:going_further")
     }
-
-    @Chapter(name: "Xogot for Mac Tutorials") {
-        @Image(source: iPhoneMacSimulator.png)
-
-        Learn the Xogot for Mac workflow, configure signing, and deploy your game
-        to Macs, simulators, iPhones, and iPads.
-
-        @TutorialReference(tutorial: "doc:00.xogot_for_mac_tour")
-        @TutorialReference(tutorial: "doc:01.signing_setup")
-        @TutorialReference(tutorial: "doc:04.testing_on_mac")
-        @TutorialReference(tutorial: "doc:02.simulator_deployment")
-        @TutorialReference(tutorial: "doc:03.deploying_to_ios_and_ipados")
-    }
 }

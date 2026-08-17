@@ -99,7 +99,26 @@
     return link;
   };
 
+  const enhanceEngineReferenceNavigator = () => {
+    document.querySelectorAll(".navigator-card-item").forEach((card) => {
+      const title = card.querySelector(".leaf-link")?.textContent?.trim();
+      const isEngineReference = title === "Engine Reference";
+      const isGroupMarker = card.classList.contains("is-group");
+
+      card.classList.toggle(
+        "xogot-engine-reference-marker",
+        isEngineReference && isGroupMarker
+      );
+      card.classList.toggle(
+        "xogot-engine-reference-parent",
+        isEngineReference && !isGroupMarker && Boolean(card.querySelector(".tree-toggle"))
+      );
+    });
+  };
+
   const enhanceLandingPage = () => {
+    enhanceEngineReferenceNavigator();
+
     const isLandingPage = landingPathPattern.test(window.location.pathname);
     document.body.classList.toggle("xogot-landing-page", isLandingPage);
 

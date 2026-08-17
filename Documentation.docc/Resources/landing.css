@@ -1,3 +1,23 @@
+.nav-menu-settings .nav-menu-setting.language-container {
+  display: none !important;
+}
+
+.navigator-card-item.xogot-engine-reference-marker {
+  display: none !important;
+}
+
+.navigator-card-item.xogot-engine-reference-parent {
+  margin-top: 12px;
+}
+
+.navigator-card-item.xogot-engine-reference-parent .navigator-icon-wrapper {
+  display: none;
+}
+
+.navigator-card-item.xogot-engine-reference-parent .leaf-link {
+  font-weight: 700;
+}
+
 body.xogot-landing-page {
   --xogot-landing-accent: #1676d2;
   --xogot-landing-accent-hover: #0e5fae;

@@ -21,7 +21,7 @@
   if (!document.querySelector('link[data-xogot-landing-styles]')) {
     const landingStyles = document.createElement("link");
     landingStyles.setAttribute("rel", "stylesheet");
-    landingStyles.setAttribute("href", "/css/landing.css?v=20260816-8");
+    landingStyles.setAttribute("href", "/css/landing.css?v=20260816-11");
     landingStyles.setAttribute("data-xogot-landing-styles", "");
     document.head.appendChild(landingStyles);
   }
