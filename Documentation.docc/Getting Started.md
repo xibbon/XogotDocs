@@ -59,26 +59,12 @@ This video is also available for further exploration of Xogot's interface and wo
     caption: "Xogot for Godot Users: Getting Oriented on iPad & iPhone"
 )
 
-## 4. Known Issues in This Preview Release
+## 4. Getting Help and Reporting Issues
 
-As Xogot is currently in its preview release, there are a few known issues that
-you should be aware of.  Check our <doc:Preview-1> document for a list of known
-limitations in this release.
+If you need help, encounter an issue, or have a suggestion, you can reach the Xogot team in any of these ways:
 
-We are actively working to resolve these issues and appreciate your patience and feedback.
+- Visit [Xogot Support](https://xogot.com/contact-us).
+- Email us at [hello@xogot.com](mailto:hello@xogot.com).
+- Join the help forums in the [Xogot Discord](https://discord.gg/TDEcyfHZAh).
 
-## 5. Filing Issues in Xogot's GitHub Issue Tracker
-
-Your feedback is invaluable to improving Xogot. If you encounter any issues or have suggestions, please follow these steps to file an issue:
-
-1. **Visit the XogotIssues GitHub repository** at [github.com/xibbon/XogotIssues](https://github.com/xibbon/XogotIssues).
-2. **Sign in to your GitHub account** (if you don't have one, you can create it for free).
-3. Click on the **"Issues"** tab.
-4. Select **"New Issue"** and provide a clear and descriptive title.
-5. In the issue body, include:
-   - A detailed description of the problem or suggestion.
-   - Steps to reproduce the issue (if applicable).
-   - Screenshots or screen recordings, if helpful.
-6. Click **"Submit new issue"** to file it.
-
-Thank you for being an early adopter and helping to shape Xogot into the best game development tool for iPad. We can’t wait to see what you create!
+Your feedback is invaluable to improving Xogot. We can’t wait to see what you create!
