@@ -4,6 +4,14 @@ Browse and organize project assets, then use Asset Placer to preview scenes and
 meshes in the 3D viewport, place individual objects, paint many objects, generate
 collision, override materials, or build along splines.
 
+See Asset Placer in action in this short walkthrough, which demonstrates how to
+browse a kit, place individual assets, and build up a 3D level with repeated
+objects:
+@Video(
+    source: "https://customer-fku244tec8fwlbfi.cloudflarestream.com/7881b1f87eb265b29f6cc471301f1d1b/manifest/video.m3u8",
+    caption: "Xogot Asset Placer: Faster 3D Level Building in Godot"
+)
+
 ## What You Can Place
 
 Asset Placer accepts placeable assets from the Asset Browser:
