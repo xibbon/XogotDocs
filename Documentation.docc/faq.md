@@ -3,6 +3,21 @@
 Answers to common questions about Xogot, Godot compatibility, supported
 features, subscriptions, and working across Apple platforms.
 
+## Is Xogot for Mac included with my iPad or iPhone purchase?
+
+No. Xogot for Mac is a separate product and will require its own license. A
+purchase or subscription for Xogot on iPad or iPhone, including the lifetime
+unlock, covers iPad and iPhone but does not include Xogot for Mac.
+
+We have not finalized pricing for Xogot for Mac, but are exploring bundles and
+discounts for existing Xogot customers.
+
+Bringing Xogot to the Mac is a significant undertaking. On iPad and iPhone, we
+can focus on making the most important parts of Godot work well in a touch-first
+environment. Godot is already free on Mac, so Xogot for Mac needs to provide
+substantial additional value to justify the product and support its continued
+development.
+
 ## Is Xogot Compatible with Godot?
 
 Xogot provides an alternative user interface on top of the Godot and the Godot
