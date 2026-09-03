@@ -43,7 +43,7 @@
                 @Image(source: "scripting_first_script_scene_tree.png")
             }
             @Step {
-                A Sprite2D node needs a texture to display. We can add this in the Scope on the right; you can open it by tapping the Scope icon if it's closed. 
+                A Sprite2D node needs a texture to display. We can add this in the Inspector on the right; you can open it by tapping the sidebar icon if it's closed. 
                 
                 Inside, you
                 can see that the Texture property says `Pick Resource`. 
@@ -94,7 +94,7 @@
             By extending we have access to inherited properties which include the ones you can see in the Inspector dock, like
                 our node's `texture` property.
 
-            > Tip: By default, the Scope displays a node's properties in "Title Case", with
+            > Tip: By default, the Inspector displays a node's properties in "Title Case", with
                 capitalized words separated by a space. In GDScript code, these properties
                 are in "snake_case", which is lowercase with words separated by an underscore. You can hover over any property's name in the Inspector to see a description and
                 its identifier in code.

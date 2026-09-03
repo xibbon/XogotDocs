@@ -110,7 +110,7 @@
             requires a `SpriteFrames` resource, which is a list of the animations it can
             display. To create one, we'll need to open the `Inspector`. 
             @Step {  
-                Tap the "scope" icon (1) in the upper-right corner of the app to show the Inspector.
+                Tap the sidebar icon (1) in the upper-right corner of the app to show the Inspector.
                 
                 > The Inspector shows various properties and settings for the currently selected
                 node, with related settings grouped into sections. 
@@ -133,7 +133,7 @@
             @Step {  
                 
                 We're done with the *Inspector* for now, so let's 
-                hide it by tapping the *scope* toolbar button.
+                hide it by tapping the *sidebar* toolbar button.
                 
                 Expand the *SpriteFrames* panel by tapping **SpriteFrames** at the bottom of the app.
                 

@@ -69,7 +69,7 @@ and appearance of nodes in your scene.
 
 ### Accessing the Inspector
 
-To show or hide the Inspector, tap the **scope icon** (second-from-the-right) in the 
+To show or hide the Inspector, tap the **sidebar icon** (second-from-the-right) in the 
 upper-right corner of the Xogot interface.
 
 ### Inspector Tabs

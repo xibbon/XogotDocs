@@ -140,7 +140,7 @@
                 @Image(source: "instancing_ball_scene_open.png")
             }
             @Step {
-                In the Scene dock on the left, select the Ball node. Then, with the **Scope** open and in the **Inspector** tab (1), press on the `PhysicsMaterial` property to expand it (2).
+                In the Scene dock on the left, select the Ball node. Then, with the **Inspector** open and in the **Inspector** tab (1), press on the `PhysicsMaterial` property to expand it (2).
                 @Image(source: "instancing_physics_material_expand.png")
             }
             @Step {
@@ -168,7 +168,7 @@
                 of the ball from the `Main` scene. This is because `PhysicsMaterial` is a *resource*, and needs
                 to be made unique before you can edit it in a scene that is linking to its
                 original scene. To make a resource unique for one instance, press the three dots on
-                the Physics Material property in the **Scope** and press **Make Unique**
+                the Physics Material property in the **Inspector** and press **Make Unique**
                 in the context menu. 
                 
                 > Resources are another essential building block of Godot Engine games we will cover

@@ -95,7 +95,7 @@
                 Drag the button closer to the sprite.
 
                 You can also write a label on the Button by editing its **Text** property
-                in the Scope. Enter `Toggle motion`.
+                in the Inspector. Enter `Toggle motion`.
                 @Image(source: "signals_08_toggle_motion_text.png")
             }
             @Step {
@@ -122,7 +122,7 @@
             You can connect signals in the Node dock. 
             @Step {
                 Select the Button node and, on the
-                right side of the editor in the Scope dock, press on the tab that looks like a line connecting two circles next to the Inspector tab.
+                right side of the editor in the sidebar, press on the tab that looks like a line connecting two circles next to the Inspector tab.
                 @Image(source: "signals_11_pressed_signals.png")
             }
             The **Signals** tab displays a list of signals available on the selected node.
@@ -201,7 +201,7 @@
                 @Image(source: "signals_15_scene_tree.png")
             }
             @Step {
-                With the `Timer` node selected, open the **Scope** and in the **Inspector** tab and enable the `Autostart` option by hitting the toggle switch.
+                With the `Timer` node selected, open the **Inspector** and enable the `Autostart` option by hitting the toggle switch.
                 @Image(source: "signals_18_timer_autostart.png")
             }
             @Step {
