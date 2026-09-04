@@ -34,12 +34,6 @@ Xogot provides a straightforward way to import assets through its **File Pad**:
 4. Once imported, these files will become accessible in the File Pad, ready for
    use in your game scenes.  
 
-You can also use the **Import** button in the toolbar at the top of the screen to
-quickly access the Import Files dialog.
-
-@Image(source: "ImportButton.png",
-       alt: "A screenshot of Xogot's toolbar with the Import button magnified")
-
 ## Drag and Drop Assets
 
 Xogot supports **drag and drop** for importing assets, allowing for an intuitive workflow:
