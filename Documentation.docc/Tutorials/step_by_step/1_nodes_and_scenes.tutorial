@@ -211,7 +211,7 @@
             By default when you press **Play** it runs the *main scene*. Since we already picked a *main scene* in the last section; the way we can change the *main scene* now, is by going to our **Project Settings**.
             
             @Step {
-                To enter the **Project Settings**, Press the furthest right icon, next to the **Inspector** button. (1) Inside the dropdown, press **Settings**. (2)
+                To enter the **Project Settings**, tap the **Settings** icon in the top toolbar, next to the **Inspector** button (1). Inside the dropdown, press **Settings** (2).
                 @Image(source: "nodes_and_scenes_settings_dropdown.png")
             }
             @Step {

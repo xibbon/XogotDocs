@@ -53,9 +53,9 @@
         }
         @Steps {
             @Step {
-                Press this icon and then open **Settings**.
+                Tap the **Settings** icon in the top toolbar (1) and select **Settings** (2).
                 @Image(source: "nodes_and_scenes_settings_dropdown.png")
-                }
+            }
             @Step {
                 Inside setting scroll to **Input Devices** and press **Virtual Controller**.
                 @Image(source: "scripting_virtual_controller_settings.png")
