@@ -86,12 +86,12 @@ These indicate that you need to enable importing S3TC BPTC and ETC2 ASTC.
 To configure a compatible renderer, refer to this screenshot and follow the 
 steps below:
 
-@Image(source: "enable_imports.png"
+@Image(source: "enable_imports.png")
 
-1. Open settings by tapping the **...** in the upper-right corner and selecting **Settings**
+1. Open settings by tapping the **Settings** icon in the top toolbar and selecting **Settings**
 2. Tap **Show Advanced** at the bottom of the *Project Settings* dialog
 3. Type "*import*" in the search box
-4. Enable **Import S3TC BPTC** **Import ETC2 ASTC**
+4. Enable **Import S3TC BPTC** and **Import ETC2 ASTC**
 5. Close the dialog
 
 Then close and reopen the project so that these imports will run and the project should work as expected. 
