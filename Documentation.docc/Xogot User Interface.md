@@ -25,8 +25,8 @@ screenshot to help you locate each feature.
 5. Open Script Editor
 6. Open Game Tab
 7. Run Project
-8. Show/Hide Inspector
-9. Settings menu
+8. Settings menu
+9. Show/Hide Inspector
 
 Refer to the screenshot above to better understand the numbered elements of
 the toolbar.
@@ -69,7 +69,7 @@ and appearance of nodes in your scene.
 
 ### Accessing the Inspector
 
-To show or hide the Inspector, tap the **sidebar icon** (second-from-the-right) in the 
+To show or hide the Inspector, tap the **sidebar icon** (furthest to the right) in the 
 upper-right corner of the Xogot interface.
 
 ### Inspector Tabs
