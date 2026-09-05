@@ -181,7 +181,7 @@
         @Steps {
             We're going to use an add-on for Xogot called [*Virtual Joystick*](https://github.com/MarcoFazioRandom/Virtual-Joystick-Godot).
             @Step {
-                Tap on the dropdown next to scope (1) and access the `Asset Library` (2)
+                Tap on the dropdown next to the Inspector button (1) and access the `Asset Library` (2)
                 @Image(source: fin_asset_library_menu.png)
             }
             @Step {
@@ -208,11 +208,11 @@
                 @Image(source: fin_instantiate.png)
             }
             @Step {
-                Select the Joystick node and in the Scope set the `Joystick Mode` to "Following" (1) and the `Visibility Mode` to "When Touched" (2)
+                Select the Joystick node and in the Inspector set the `Joystick Mode` to "Following" (1) and the `Visibility Mode` to "When Touched" (2)
                 @Image(source: fin_joystick_settings.png)
             }
             @Step {
-                Next, with the Scope still open, change `action_left` through to `action_down` to equal the names of the custom input actions we added in the project settings.
+                Next, with the Inspector still open, change `action_left` through to `action_down` to equal the names of the custom input actions we added in the project settings.
                 
                 It should look like this.
                 
@@ -243,7 +243,7 @@
             
             Now, we also need to disable the iOS virtual controller we enabled earlier in this tutorial. 
             @Step {
-                Hit the dropdown next to scope, press Settings and then inside **Project Settings** go to **Input Devices > Virtual Controller** and set `Enable Controller` and `Enable Left Thumbstick` to **Disabled** by hitting the toggle switches.
+                Hit the dropdown next to the Inspector button, press Settings and then inside **Project Settings** go to **Input Devices > Virtual Controller** and set `Enable Controller` and `Enable Left Thumbstick` to **Disabled** by hitting the toggle switches.
                 @Image(source: fin_project_settings.png)
             }
             With that, we are finally done customizing the new Virtual Controller! Congrats!

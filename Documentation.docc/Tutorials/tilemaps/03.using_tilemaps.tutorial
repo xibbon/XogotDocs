@@ -62,7 +62,7 @@
     }
     @Section(title: "TileMapLayer node properties") {
         @ContentAndMedia {
-        After creating a `TileMapLayer` node, the scope will show a number of settings that can been adjusted. The following is a description of all your optional settings you can adjust by exploring the sub-menus within `TileMapLayer` nodes.
+        After creating a `TileMapLayer` node, the inspector will show a number of settings that can be adjusted. The following is a description of all your optional settings you can adjust by exploring the sub-menus within `TileMapLayer` nodes.
         @Image(source: "tilemaplayer_settings_header.png")
         }
         Main Settings:

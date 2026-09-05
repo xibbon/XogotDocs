@@ -110,12 +110,12 @@
             - The `Label` appears, selected, in the
                 top-left corner of the viewport. 
             - The node appears in the Scene dock on the left,
-                and the node's properties appear in the **Scope** pane on the right if open. 
-                > Note: By default in a new Xogot project the **Scope** is closed. 
+                and the node's properties appear in the **Inspector** pane on the right if open. 
+                > Note: By default in a new Xogot project the **Inspector** is closed. 
             
-            Let's open the **Scope** now and take a look at the available properties. We will edit them in the next section.
+            Let's open the **Inspector** now and take a look at the available properties. We will edit them in the next section.
             @Step {
-                Press the cross-hair icon in the top right to open the **Scope**.
+                Press the sidebar icon in the top right to open the **Inspector**.
                 @Image(source: "nodes_and_scenes_06_scope.png")
             }
         }
@@ -129,12 +129,12 @@
         }
         @Steps {
             @Step {
-                Head to the **Scope** dock on the right of the viewport. Press inside the field
+                Head to the **Inspector** dock on the right of the viewport. Press inside the field
                 below the **Text property** (1) and type "Hello World" (2). Press **Save** when finished (3).
                 @Image(source: "nodes_and_scenes_06_label_text.png")
             }
             @Step {
-                > Tip: You can edit any property listed in the Scope as we did with
+                > Tip: You can edit any property listed in the Inspector as we did with
                 the Text.
 
                 You can move your `Label` node in the viewport by selecting the move tool in the
@@ -211,7 +211,7 @@
             By default when you press **Play** it runs the *main scene*. Since we already picked a *main scene* in the last section; the way we can change the *main scene* now, is by going to our **Project Settings**.
             
             @Step {
-                To enter the **Project Settings**, Press the furthest right icon, next to the **Scope**. (1) Inside the dropdown, press **Settings**. (2)
+                To enter the **Project Settings**, tap the **Settings** icon in the top toolbar, next to the **Inspector** button (1). Inside the dropdown, press **Settings** (2).
                 @Image(source: "nodes_and_scenes_settings_dropdown.png")
             }
             @Step {

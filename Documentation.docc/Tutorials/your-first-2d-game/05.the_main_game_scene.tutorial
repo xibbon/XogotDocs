@@ -41,7 +41,7 @@
                 Set **MobTimer** to `0.5` seconds, **ScoreTimer** to `1.0` second, and 
                 **StartTimer** to `2.0` seconds.
                 
-                > Important: In addition, select **StartTimer** and set the `One Shot` property to "On" in the Scope.
+                > Important: In addition, select **StartTimer** and set the `One Shot` property to "On" in the Inspector.
                 
                 @Image(source: main_timers.png)
             }

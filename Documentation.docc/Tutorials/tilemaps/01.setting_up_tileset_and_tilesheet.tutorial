@@ -53,7 +53,7 @@
                 Select the new node and create a new TileSet resource in the **Inspector** by tapping `PickResource` and selecting `New TileSet`:
                 @Image(source: "tileset_create_new_resource.png")
                 
-                >Tip: If the **Scope** dock is closed, press the cross-hair icon in the upper right, next to the **Play** button, to open it.
+                >Tip: If the **Inspector** sidebar is closed, press the sidebar icon in the upper right, next to the **Play** button, to open it.
             }
             This will automatically open the TileMap editor dock on the bottom. We will explore these tabs in a bit.
             @Step {
@@ -86,7 +86,7 @@
             earlier in the TileSet resource. This greatly speeds up initial tile setup.
             
             @Step {
-                Let's get a better look at your tileset image by closing both the **Scope** (1) and **Scene Tree** panels (2).
+                Let's get a better look at your tileset image by closing both the **Inspector** (1) and **Scene Tree** panels (2).
                 
                 Then drag up on the pull handle to expand the **TileSet** panel (3).
                 @Image(source: "tileset_get_better_look.png")
@@ -104,7 +104,7 @@
             It is also possible to use one image per tile this way (although using
             tilesheets is recommended for better usability).
             @Step { 
-                You can adjust properties for the atlas by opening the **Scope** (1) and selecting **Setup** (2) in the **Atlas Inspector** tab.
+                You can adjust properties for the atlas by opening the **Inspector** (1) and selecting **Setup** (2) in the **Atlas Inspector** tab.
                 @Image(source: "using_tilesets_properties.png")
             }
             The following properties can be adjusted in the **Atlas Inspector**:
