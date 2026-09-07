@@ -18,6 +18,11 @@
   font-weight: 700;
 }
 
+main img[alt="A screenshot of Xogot with numbered toolbar elements."] {
+  border-radius: 6px;
+  box-shadow: 0 8px 24px rgba(22, 34, 51, 0.2);
+}
+
 body.xogot-landing-page {
   --xogot-landing-accent: #1676d2;
   --xogot-landing-accent-hover: #0e5fae;
