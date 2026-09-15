@@ -24,7 +24,7 @@ to end.
 For short procedures for common operations, see
 <doc:Xogot-Modeler-HOW-TOs>.
 
-@Image(source: "modeler-ref-overview.webp",
+@Image(source: "modeler-ref-overview.png",
        alt: "A courtyard level made with Xogot Modeler, with the Add Mesh palette and the viewport HUD visible")
 
 ## Concepts
@@ -49,10 +49,13 @@ Some terms appear in all of this guide:
 
 ## Add a mesh
 
+The tutorial <doc:01.modeler_block_out> uses these tools to block out a
+courtyard.
+
 Open **Add Mesh** in the 3D toolbar. The palette shows the 12 shapes: Cube, Prism,
 Sprite, Plane, Cylinder, Cone, Sphere, Pipe, Torus, Arch, Door, and Stairs.
 
-@Image(source: "modeler-ref-add-mesh-palette.webp",
+@Image(source: "modeler-ref-add-mesh-palette.png",
        alt: "The Add Mesh palette in the 3D toolbar, showing the twelve shape tiles")
 
 You can add a shape in two ways:
@@ -107,7 +110,7 @@ When you tap a shape tile, the Shape tool starts. The viewport HUD shows the sha
 name, the current step, the dimensions, the drawing plane, **Snap**, **Done**, and
 **Cancel**.
 
-@Image(source: "modeler-ref-draw-shape-hud.webp",
+@Image(source: "modeler-ref-draw-shape-hud.png",
        alt: "The viewport HUD while a Cube is drawn, showing the phase, dimensions, Snap, Done, and Cancel")
 
 1. Move the pointer over the grid or over a mesh surface.
@@ -148,7 +151,7 @@ hold Option or Alt and drag.
 
 A Poly Shape is a mesh made from an outline that you draw. It can have holes.
 
-@Image(source: "modeler-ref-poly-shape.webp",
+@Image(source: "modeler-ref-poly-shape.png",
        alt: "A Poly Shape outline with a hole, before the height is set")
 
 1. Start **Poly Shape**.
@@ -174,11 +177,14 @@ Click or tap the curve to add a knot. Press Return to create the tube.
 
 ## Change a shape
 
+The tutorial <doc:02.modeler_customize_shapes> changes recipes to add a gate,
+an arch, stairs, and a fountain.
+
 Select a shape to show the **Editable Mesh** inspector. The inspector shows the
 shape recipe, the mesh counts, the vertex positions, the material slots, the UV2
 status, the collision state, and the export and editable-data controls.
 
-@Image(source: "modeler-ref-inspector.webp",
+@Image(source: "modeler-ref-inspector.png",
        alt: "The Editable Mesh inspector for a Stairs shape, showing size, pivot, rotation, and stair settings")
 
 When you change a recipe value, Xogot rebuilds the mesh in place. The node, its
@@ -220,11 +226,14 @@ These gestures use the default Xogot navigation scheme. You can change them in t
 
 ## Select elements
 
+The tutorial <doc:03.modeler_edit_elements> shows element selection on the
+courtyard walls.
+
 Select an editable mesh. Then use the mode control in the viewport HUD to select
 **Vertex**, **Edge**, or **Face** mode. Press H to cycle through the modes. Press
 Escape to go back to Object mode. The HUD shows the number of selected elements.
 
-@Image(source: "modeler-ref-hud-modes.webp",
+@Image(source: "modeler-ref-hud-modes.png",
        alt: "The viewport HUD with the Object, Vertex, Edge, and Face mode control and the selection count")
 
 | Input | Result |
@@ -280,6 +289,9 @@ inspector. Vertex Positions accepts local or world coordinates.
 
 ## Actions
 
+The tutorial <doc:03.modeler_edit_elements> uses Extrude Faces, Bevel Edges,
+Delete Faces, Mirror Objects, and Merge Objects.
+
 The HUD **Actions** menu lists the commands for the current mode. Its caption tells
 you the mode: **Object Actions**, **Vertex Actions**, **Edge Actions**, or **Face
 Actions**. A command that cannot run on the current selection or topology shows in
@@ -289,7 +301,7 @@ gray. To find the commands of a different mode, change the mode.
 > gray for the edges of a closed cube. To enable it, turn on **Allow Non-Manifold
 > Actions** in the Modeler preferences.
 
-@Image(source: "modeler-ref-actions-menu.webp",
+@Image(source: "modeler-ref-actions-menu.png",
        alt: "The Face Actions menu, with commands grouped into Select, Build, Separate, Join, Normals, Move, and Object")
 
 The menu groups commands by intent: **Select**, **Build**, **Separate**, **Join**,
@@ -314,7 +326,7 @@ Some actions show their result and then open the **live bar** below the viewport
 - Extrude Faces
 - Offset Elements
 
-@Image(source: "modeler-ref-live-bar.webp",
+@Image(source: "modeler-ref-live-bar.png",
        alt: "The live bar for Extrude Faces, with the distance value, Options, Undo, and Done")
 
 Change the values in the live bar and look at the result. Select **Done** to keep
@@ -351,7 +363,7 @@ An action that is not valid for the selection does not change the mesh.
 bevel distance. Open it from the button beside **Paint**, or from the Options icon
 beside **Add Mesh**. You do not have to select a node.
 
-@Image(source: "modeler-ref-options-sheet.webp",
+@Image(source: "modeler-ref-options-sheet.png",
        alt: "The Options sheet with the Bevel category selected")
 
 Options has these categories: Selection & Handles, Snapping, Extrude, Bevel, Weld,
@@ -362,6 +374,9 @@ Changes save immediately. The sheet has no Apply or Cancel button. **Reset to
 Defaults** restores all the saved Modeler values.
 
 ## Cut a face
+
+The tutorial <doc:03.modeler_edit_elements> cuts a doorway with this tool. For
+a short procedure, see <doc:Xogot-Modeler-HOW-TOs>.
 
 The Cut tool draws a new face inside one flat face.
 
@@ -374,10 +389,12 @@ Xogot adds edges to connect the new face to the original face. The new face is
 selected. Invalid segments show in red. Press Delete or Backspace to remove the
 last point. Press Escape to cancel.
 
-@Image(source: "modeler-ref-cut-tool.webp",
+@Image(source: "modeler-ref-cut-tool.png",
        alt: "The Cut tool with a door outline drawn on a wall face")
 
 ## Paint
+
+The tutorial <doc:04.modeler_paint> paints the courtyard with these controls.
 
 Select **Paint** in the HUD to open the Paint panel. It has three tabs: **Material**,
 **Colour**, and **Shading**. The header shows what you will paint. If you did not
@@ -390,7 +407,7 @@ On iPhone, Paint opens as a sheet.
 
 ### Materials
 
-@Image(source: "modeler-ref-paint-material.webp",
+@Image(source: "modeler-ref-paint-material.png",
        alt: "The Material tab of the Paint panel, with numbered material tiles")
 
 - Click or tap a material tile to paint the selected faces. In Object mode, the
@@ -418,7 +435,7 @@ other scenes and projects.
 
 ### Colors
 
-@Image(source: "modeler-ref-paint-colour.webp",
+@Image(source: "modeler-ref-paint-colour.png",
        alt: "The Colour tab of the Paint panel, with the current color and ten swatches")
 
 The Colour tab shows the current color, its hexadecimal value, its alpha value,
@@ -436,7 +453,7 @@ color goes only on the selected vertices. This can make a gradient across a face
 
 ### Shading
 
-@Image(source: "modeler-ref-paint-shading.webp",
+@Image(source: "modeler-ref-paint-shading.png",
        alt: "The Shading tab of the Paint panel, with smoothing groups and Tint faces by group turned on")
 
 Select **Smooth** to make the selected faces look smooth, or **Faceted** to show
@@ -449,6 +466,9 @@ Turn on **Tint faces by group** to show each group in a different color. Turn on
 **Show normals** to show the normals, and set their length.
 
 ## UV Editor
+
+The tutorial <doc:05.modeler_uvs> aligns the courtyard textures with the UV
+Editor.
 
 UVs are 2D coordinates. They tell the renderer which part of a texture goes on each
 part of a face. The UV Editor shows the UVs of the selected mesh on a flat canvas,
@@ -466,7 +486,7 @@ The **Mesh UV** tab is available only while an editable mesh is selected. If you
 select a node that is not an editable mesh, the panel tells you to select an
 editable mesh.
 
-@Image(source: "modeler-ref-uv-panel.webp",
+@Image(source: "modeler-ref-uv-panel.png",
        alt: "The Mesh UV bottom panel with the toolbar, the UV canvas, the control groups, and the status bar")
 
 The panel has four parts:
@@ -483,7 +503,7 @@ you select faces in one, the other shows the same faces.
 
 ### Toolbar
 
-@Image(source: "modeler-ref-uv-toolbar.webp",
+@Image(source: "modeler-ref-uv-toolbar.png",
        alt: "The UV Editor toolbar with the Select, Move, Rotate, and Scale tools, the Vertex, Edge, and Face modes, the Channel menu, Scope, Texture, and Center UV View")
 
 | Control | Use |
@@ -553,7 +573,7 @@ Select the **Move**, **Rotate**, or **Scale** tool. Then drag anywhere on the ca
 to change the selected UVs. Each completed drag is one undo step. Press Escape to
 cancel a drag.
 
-@Image(source: "modeler-ref-uv-rotate-pivot.webp",
+@Image(source: "modeler-ref-uv-rotate-pivot.png",
        alt: "The Rotate tool on the UV canvas, with the pivot marker at the center of the selected faces")
 
 The **Rotate** and **Scale** tools turn around a **pivot**. The pivot marker is a
@@ -603,7 +623,7 @@ The **Auto UVs** group shows the settings of the first selected face. Change the
 values, and then select **Apply Auto Settings**. The settings go on the selected
 faces and on all faces in their texture groups. Those faces become Auto.
 
-@Image(source: "modeler-ref-uv-auto-group.webp",
+@Image(source: "modeler-ref-uv-auto-group.png",
        alt: "The Auto UVs group with Fill, Anchor, Offset, Rotation, Tiling, World Space, and the texture group controls")
 
 | Setting | Result |
@@ -638,7 +658,7 @@ When you make or join a group, all its faces use the Auto settings of its first 
 
 ### Manual UVs
 
-@Image(source: "modeler-ref-uv-manual-group.webp",
+@Image(source: "modeler-ref-uv-manual-group.png",
        alt: "The Manual UVs group with the projection, edit, and weld buttons")
 
 | Button | Result |
@@ -668,7 +688,7 @@ Turn on **Scope** in the UV Editor toolbar. The move, rotate, and scale handles 
 the 3D viewport now change the selected UVs, not the geometry. The handles use the
 UV pivot and the grid increment.
 
-@Image(source: "modeler-ref-uv-scope.webp",
+@Image(source: "modeler-ref-uv-scope.png",
        alt: "Scope turned on, with the viewport move handle shifting the texture on a wall")
 
 Shift-drag does not extrude while **Scope** is on. Turn off **Scope** to edit the
@@ -729,12 +749,15 @@ Select **Save UV Image**, and choose a location. The default file name is
 
 ## Collision and triggers
 
+The tutorial <doc:06.modeler_collision> adds an invisible wall and a gate
+trigger.
+
 Xogot adds a collision node as a child of each new mesh. Set the collider type in
 the Modeler preferences. Mesh and convex collision shapes follow geometry changes.
 Box collision shapes change size only when automatic resize is on. Xogot does not
 change collision nodes that you add yourself.
 
-@Image(source: "modeler-ref-collision-tree.webp",
+@Image(source: "modeler-ref-collision-tree.png",
        alt: "The Scene tree showing a Modeler mesh with its generated collision child")
 
 - **Set Collider** makes a mesh an invisible wall. The mesh keeps its collision,
@@ -751,11 +774,14 @@ read-only in the UV editor.
 
 ## Make a mesh editable
 
+The tutorial <doc:07.modeler_convert_export> converts a SphereMesh and a CSG
+shape.
+
 **Make Editable** copies an existing mesh into a new editable mesh. The source asset
 does not change. You can use it on imported meshes, on primitive meshes such as
 `SphereMesh`, and on a CSG root.
 
-@Image(source: "modeler-ref-make-editable.webp",
+@Image(source: "modeler-ref-make-editable.png",
        alt: "The Make Editable panel with vertex, edge, face, and triangle counts and the import options")
 
 The panel shows the vertex, edge, face, and triangle counts of the result. It can
@@ -781,10 +807,12 @@ stay in the scene. Closed meshes give the best results.
 
 ## Export
 
+The tutorial <doc:07.modeler_convert_export> exports the fountain meshes.
+
 Select **Export Mesh** in the Object Actions menu. Choose a format and its options,
 and then choose the destination file.
 
-@Image(source: "modeler-ref-export-dialog.webp",
+@Image(source: "modeler-ref-export-dialog.png",
        alt: "The export dialog with the OBJ format selected")
 
 | Format | Result |
@@ -802,6 +830,9 @@ and then choose the destination file.
 If a companion file already exists, Xogot asks before it replaces the file.
 
 ## Remove the editable data
+
+The tutorial <doc:07.modeler_convert_export> strips a final mesh at the end of
+the series.
 
 **Strip Editable Mesh Data** in the Editable Mesh inspector removes the editable
 data. The mesh, its materials, and its collision nodes stay. Use Undo to restore the

@@ -84,7 +84,7 @@ you apply or cancel the cut.
 5. Click or tap the corners of the shape on the face. Use at least three points.
 6. To close the outline, click or tap the first point, or press Return.
 
-@Image(source: "modeler-ref-cut-tool.webp",
+@Image(source: "modeler-ref-cut-tool.png",
        alt: "The Cut tool with a door outline drawn on a wall face")
 
 Xogot adds edges from the new face to the corners of the original face. The new
@@ -104,7 +104,7 @@ bottom edge of the wall.
 > Note: The Cut tool works on one face. If you select more than one face, or a
 > face that is not flat, **Cut** is not available in the Face Actions menu.
 
-@Image(source: "modeler-howto-cut-result.webp",
+@Image(source: "modeler-howto-cut-result.png",
        alt: "A door-shaped face cut into a wall, selected, with edges from its corners to the corners of the wall face")
 
 ### Make an opening
@@ -114,7 +114,7 @@ The new face stays selected after the cut. To make a hole, remove it:
 1. Open the **Face Actions** menu.
 2. Select **Delete Faces**.
 
-@Image(source: "modeler-howto-cut-opening.webp",
+@Image(source: "modeler-howto-cut-opening.png",
        alt: "The wall with a door-shaped opening where the cut face was deleted")
 
 ### Make a recess or a panel
@@ -129,7 +129,7 @@ To push the new face into the wall, or to pull it out, extrude it:
 You can also press Command-E on macOS or Ctrl-E on other platforms, and then set
 the distance in the live bar.
 
-@Image(source: "modeler-howto-cut-recess.webp",
+@Image(source: "modeler-howto-cut-recess.png",
        alt: "The cut face pushed into the wall to make a recessed door panel")
 
 ## Shortcut summary

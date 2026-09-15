@@ -50,13 +50,16 @@
 
     }
     @Chapter(name: "Xogot Modeler") {
-        @Image(source: "modeler-chapter-courtyard.webp",
+        @Image(source: "modeler-chapter-courtyard.png",
                alt: "A courtyard level built with Xogot Modeler")
 
         Build 3D environments directly in Xogot. In these tutorials, you create a
         courtyard level from primitive shapes. You customize and position the shapes,
         edit their vertices, edges, and faces, paint materials and colors, align
         textures, add collision, and export your work.
+
+        The reference page <doc:/documentation/Xogot/Xogot-Modeler> describes every tool, action, and
+        shortcut. <doc:/documentation/Xogot/Xogot-Modeler-HOW-TOs> has short procedures for common tasks.
 
         @TutorialReference(tutorial: "doc:01.modeler_block_out")
         @TutorialReference(tutorial: "doc:02.modeler_customize_shapes")

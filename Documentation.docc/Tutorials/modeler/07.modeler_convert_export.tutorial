@@ -3,11 +3,15 @@
         > This page is a continuation of <doc:06.modeler_collision>. Please open your
         > `courtyard.tscn` scene.
 
+        In the reference, see <doc:/documentation/Xogot/Xogot-Modeler#Make-a-mesh-editable>,
+        <doc:/documentation/Xogot/Xogot-Modeler#Boolean-operations>, <doc:/documentation/Xogot/Xogot-Modeler#Export>, and
+        <doc:/documentation/Xogot/Xogot-Modeler#Remove-the-editable-data>.
+
         Modeler can also edit meshes that it did not create. In this tutorial, you
         convert a primitive mesh and a CSG shape, you cut a round window with a
         Boolean operation, and you prepare the courtyard for your game.
 
-        @Image(source: "modeler-07-intro-final.webp",
+        @Image(source: "modeler-07-intro-final.png",
                alt: "The finished courtyard with a boulder, a round window, and exported files")
     }
 
@@ -16,7 +20,7 @@
             Make Editable copies an existing mesh into a new editable mesh. The source
             does not change.
 
-            @Image(source: "modeler-07-boulder.webp",
+            @Image(source: "modeler-07-boulder.png",
                    alt: "A boulder made from an edited SphereMesh")
         }
 
@@ -25,7 +29,7 @@
                 Add a `MeshInstance3D` to the courtyard. In the inspector, set its
                 **Mesh** to a new `SphereMesh`.
 
-                @Image(source: "modeler-07-sphere-mesh.webp",
+                @Image(source: "modeler-07-sphere-mesh.png",
                        alt: "A MeshInstance3D with a SphereMesh")
             }
 
@@ -34,7 +38,7 @@
 
                 A lower count gives a lighter mesh that is easier to edit.
 
-                @Image(source: "modeler-07-sphere-segments.webp",
+                @Image(source: "modeler-07-sphere-segments.png",
                        alt: "SphereMesh with Radial Segments 12 and Rings 6")
             }
 
@@ -44,7 +48,7 @@
                 The panel shows the vertex, edge, face, and triangle counts of the
                 result. Keep **quads** and **materials** on.
 
-                @Image(source: "modeler-07-make-editable-panel.webp",
+                @Image(source: "modeler-07-make-editable-panel.png",
                        alt: "The Make Editable panel with counts and import options")
             }
 
@@ -68,7 +72,7 @@
             Make Editable also accepts a CSG root. It bakes a new editable mesh and
             keeps the CSG source.
 
-            @Image(source: "modeler-07-csg-baked.webp",
+            @Image(source: "modeler-07-csg-baked.png",
                    alt: "A CSG shape and the editable mesh baked from it")
         }
 
@@ -77,7 +81,7 @@
                 Add a `CSGCombiner3D` with a `CSGBox3D` and a `CSGCylinder3D` child.
                 Set the cylinder operation to **Subtraction**.
 
-                @Image(source: "modeler-07-csg-tree.webp",
+                @Image(source: "modeler-07-csg-tree.png",
                        alt: "A CSGCombiner3D with a box and a subtracted cylinder")
             }
 
@@ -87,7 +91,7 @@
                 Xogot adds an editable mesh. You can now edit it like any other Modeler
                 mesh. Hide or delete the CSG source when you do not need it.
 
-                @Image(source: "modeler-07-csg-make-editable.webp",
+                @Image(source: "modeler-07-csg-make-editable.png",
                        alt: "The editable mesh created from the CSG root")
             }
         }
@@ -101,7 +105,7 @@
             > Note: Boolean operations are experimental. To use them, turn on
             > experimental features in the Modeler preferences.
 
-            @Image(source: "modeler-07-round-window.webp",
+            @Image(source: "modeler-07-round-window.png",
                    alt: "A round window cut through the front wall")
         }
 
@@ -110,7 +114,7 @@
                 Place a **Cylinder** through the front wall, beside the gate. Rotate it
                 so that it goes through the wall.
 
-                @Image(source: "modeler-07-cylinder-through-wall.webp",
+                @Image(source: "modeler-07-cylinder-through-wall.png",
                        alt: "A Cylinder that goes through the front wall")
             }
 
@@ -118,7 +122,7 @@
                 Select the wall first, and then the cylinder. Select **Boolean** in the
                 Object Actions menu, and select **Subtraction**.
 
-                @Image(source: "modeler-07-boolean-panel.webp",
+                @Image(source: "modeler-07-boolean-panel.png",
                        alt: "The Boolean panel with Subtraction selected")
             }
 
@@ -128,7 +132,7 @@
                 Xogot creates a new editable mesh next to the wall. Both source objects
                 stay. Hide or delete them to see the result.
 
-                @Image(source: "modeler-07-boolean-result.webp",
+                @Image(source: "modeler-07-boolean-result.png",
                        alt: "The Boolean result with the source objects hidden")
             }
         }
@@ -138,7 +142,7 @@
         @ContentAndMedia {
             Export a mesh to use it in another application or project.
 
-            @Image(source: "modeler-07-export-dialog.webp",
+            @Image(source: "modeler-07-export-dialog.png",
                    alt: "The export dialog with the OBJ format selected")
         }
 
@@ -147,7 +151,7 @@
                 Select the fountain meshes. Select **Export Mesh** in the Object Actions
                 menu.
 
-                @Image(source: "modeler-07-export-command.webp",
+                @Image(source: "modeler-07-export-command.png",
                        alt: "The Export Mesh command in the Object Actions menu")
             }
 
@@ -157,7 +161,7 @@
 
                 Xogot writes an OBJ file, an MTL file, and PNG textures.
 
-                @Image(source: "modeler-07-export-obj-options.webp",
+                @Image(source: "modeler-07-export-obj-options.png",
                        alt: "The OBJ export options")
             }
 
@@ -167,8 +171,6 @@
 
                 If a file already exists, Xogot asks before it replaces the file.
 
-                <!-- @Image(source: "modeler-07-export-overwrite.png",
-                       alt: "The confirmation to replace existing export files") -->
             }
         }
     }
@@ -178,7 +180,7 @@
             The editable data is necessary only in the editor. You can remove it when
             the level is final.
 
-            @Image(source: "modeler-07-stripped.webp",
+            @Image(source: "modeler-07-stripped.png",
                    alt: "The inspector of a mesh after its editable data was removed")
         }
 
@@ -194,7 +196,7 @@
                 > the mesh with Modeler again. Keep a copy of the scene if you plan more
                 > changes.
 
-                @Image(source: "modeler-07-strip-command.webp",
+                @Image(source: "modeler-07-strip-command.png",
                        alt: "The Strip Editable Mesh Data command in the inspector")
             }
 
@@ -204,12 +206,12 @@
                 All of the courtyard meshes are ordinary Godot `MeshInstance3D` nodes.
                 The scene also opens in stock Godot.
 
-                @Image(source: "modeler-07-final-courtyard.webp",
+                @Image(source: "modeler-07-final-courtyard.png",
                        alt: "The finished courtyard level")
             }
 
             Congratulations, you built a complete level with Xogot Modeler. For all of
-            the tools, actions, and shortcuts, see <doc:Xogot-Modeler>.
+            the tools, actions, and shortcuts, see <doc:/documentation/Xogot/Xogot-Modeler>.
         }
     }
 }

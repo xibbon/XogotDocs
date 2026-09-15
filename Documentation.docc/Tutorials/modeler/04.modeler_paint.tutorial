@@ -3,11 +3,13 @@
         > This page is a continuation of <doc:03.modeler_edit_elements>. Please open
         > your `courtyard.tscn` scene.
 
+        In the reference, see <doc:/documentation/Xogot/Xogot-Modeler#Paint>.
+
         Modeler applies materials and colors to each face. In this tutorial, you paint
         the floor, the walls, and the fountain, and you control smooth and hard
         shading.
 
-        @Image(source: "modeler-04-intro-painted.webp",
+        @Image(source: "modeler-04-intro-painted.png",
                alt: "The courtyard painted with stone, grass, and water materials")
     }
 
@@ -15,7 +17,7 @@
         @ContentAndMedia {
             The Paint panel has three tabs: Material, Colour, and Shading.
 
-            @Image(source: "modeler-04-paint-panel.webp",
+            @Image(source: "modeler-04-paint-panel.png",
                    alt: "The Paint panel with the Material tab open")
         }
 
@@ -26,7 +28,7 @@
                 If no faces are selected, Paint asks you to select faces, and the paint
                 controls are disabled.
 
-                @Image(source: "modeler-04-paint-empty.webp",
+                @Image(source: "modeler-04-paint-empty.png",
                        alt: "The Paint panel asking you to select faces")
             }
 
@@ -36,7 +38,7 @@
                 The Paint header shows the target. In Object mode, paint goes on all of
                 the faces of the mesh.
 
-                @Image(source: "modeler-04-paint-target.webp",
+                @Image(source: "modeler-04-paint-target.png",
                        alt: "The Paint header showing the floor as the target")
             }
         }
@@ -46,7 +48,7 @@
         @ContentAndMedia {
             Each tile is a material slot. Click or tap a tile to paint.
 
-            @Image(source: "modeler-04-material-tiles.webp",
+            @Image(source: "modeler-04-material-tiles.png",
                    alt: "Material tiles with slot numbers and names")
         }
 
@@ -57,7 +59,7 @@
                 New shapes use the Grid material. The Checker material helps you see
                 the scale of the texture.
 
-                @Image(source: "modeler-04-checker-floor.webp",
+                @Image(source: "modeler-04-checker-floor.png",
                        alt: "The floor painted with the Checker material")
             }
 
@@ -67,7 +69,7 @@
                 > Tip: You can make a material in the FileSystem dock: right-click a
                 > folder, and create a new `StandardMaterial3D`.
 
-                @Image(source: "modeler-04-empty-slot.webp",
+                @Image(source: "modeler-04-empty-slot.png",
                        alt: "The material picker open for an empty slot")
             }
 
@@ -77,7 +79,7 @@
 
                 Keys 1 through 9 paint with the related slot.
 
-                @Image(source: "modeler-04-number-key-paint.webp",
+                @Image(source: "modeler-04-number-key-paint.png",
                        alt: "The walls painted with the stone material")
             }
 
@@ -88,7 +90,7 @@
                 Materials go on the selected faces, so one mesh can use several
                 materials.
 
-                @Image(source: "modeler-04-face-material.webp",
+                @Image(source: "modeler-04-face-material.png",
                        alt: "One face of the flower bed painted with a grass material")
             }
 
@@ -99,7 +101,7 @@
                 The menu can replace the material, set it from the selection, select its
                 faces, inspect it, rename it, or clear it.
 
-                @Image(source: "modeler-04-tile-menu.webp",
+                @Image(source: "modeler-04-tile-menu.png",
                        alt: "The menu of a material tile")
             }
 
@@ -109,7 +111,7 @@
                 You can also press Shift and a number key to put the material of the
                 selection into that slot.
 
-                @Image(source: "modeler-04-eyedropper.webp",
+                @Image(source: "modeler-04-eyedropper.png",
                        alt: "The eyedropper in the Paint header")
             }
         }
@@ -119,7 +121,7 @@
         @ContentAndMedia {
             Vertex colors tint a mesh without a new material.
 
-            @Image(source: "modeler-04-colors.webp",
+            @Image(source: "modeler-04-colors.png",
                    alt: "The fountain tinted with blue vertex colors")
         }
 
@@ -130,7 +132,7 @@
                 The tab shows the current color, its hexadecimal value, its alpha
                 value, and 10 swatches.
 
-                @Image(source: "modeler-04-colour-tab.webp",
+                @Image(source: "modeler-04-colour-tab.png",
                        alt: "The Colour tab with ten swatches")
             }
 
@@ -138,7 +140,7 @@
                 Set the current color to a light blue. Select an empty swatch to store
                 it.
 
-                @Image(source: "modeler-04-store-swatch.webp",
+                @Image(source: "modeler-04-store-swatch.png",
                        alt: "A light blue color stored in a swatch")
             }
 
@@ -149,7 +151,7 @@
                 > vertex colors. If you do not see the color, turn on vertex colors
                 > in the material.
 
-                @Image(source: "modeler-04-paint-sphere.webp",
+                @Image(source: "modeler-04-paint-sphere.png",
                        alt: "The fountain Sphere painted light blue")
             }
 
@@ -160,7 +162,7 @@
                 In Vertex and Edge modes, the color goes only on the selected vertices.
                 This makes a gradient across each side face.
 
-                @Image(source: "modeler-04-vertex-gradient.webp",
+                @Image(source: "modeler-04-vertex-gradient.png",
                        alt: "A gradient on the basin from vertex colors")
             }
         }
@@ -170,7 +172,7 @@
         @ContentAndMedia {
             Shading decides if a surface looks smooth or has hard edges.
 
-            @Image(source: "modeler-04-shading.webp",
+            @Image(source: "modeler-04-shading.png",
                    alt: "Smooth pillars beside faceted pillars")
         }
 
@@ -181,7 +183,7 @@
 
                 The pillars now show hard edges between the sides.
 
-                @Image(source: "modeler-04-faceted.webp",
+                @Image(source: "modeler-04-faceted.png",
                        alt: "The pillars with Faceted shading")
             }
 
@@ -191,7 +193,7 @@
                 Smooth faces are in a smoothing group. The tab lists the groups that the
                 mesh contains.
 
-                @Image(source: "modeler-04-smooth-groups.webp",
+                @Image(source: "modeler-04-smooth-groups.png",
                        alt: "The Shading tab listing smoothing groups")
             }
 
@@ -201,7 +203,7 @@
                 Each group shows in a different color. Use these displays to find faces
                 with the wrong shading.
 
-                @Image(source: "modeler-04-tint-normals.webp",
+                @Image(source: "modeler-04-tint-normals.png",
                        alt: "Faces tinted by smoothing group, with normals visible")
             }
         }
@@ -211,7 +213,7 @@
         @ContentAndMedia {
             A palette keeps your materials and colors for other scenes.
 
-            @Image(source: "modeler-04-palette-menu.webp",
+            @Image(source: "modeler-04-palette-menu.png",
                    alt: "The Paint overflow menu with Save Palette and Load Palette")
         }
 
@@ -223,7 +225,7 @@
                 The resource contains the materials, their embedded textures, the
                 labels, and the colors.
 
-                @Image(source: "modeler-04-save-palette.webp",
+                @Image(source: "modeler-04-save-palette.png",
                        alt: "The save dialog for courtyard_palette.tres")
             }
 
@@ -233,7 +235,7 @@
                 Save the scene. In the next tutorial, you align the textures with the UV
                 editor.
 
-                @Image(source: "modeler-04-load-palette.webp",
+                @Image(source: "modeler-04-load-palette.png",
                        alt: "The palette loaded in another scene")
             }
         }
