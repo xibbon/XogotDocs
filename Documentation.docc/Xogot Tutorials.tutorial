@@ -50,9 +50,8 @@
 
     }
     @Chapter(name: "Xogot Modeler") {
-        <!-- @Image(source: "modeler-chapter-courtyard.png",
-               alt: "A courtyard level built with Xogot Modeler") -->
-        @Image(source: 3DToolbar.png, alt: "Placeholder: replace with modeler-chapter-courtyard.png")
+        @Image(source: "modeler-chapter-courtyard.webp",
+               alt: "A courtyard level built with Xogot Modeler")
 
         Build 3D environments directly in Xogot. In these tutorials, you create a
         courtyard level from primitive shapes. You customize and position the shapes,

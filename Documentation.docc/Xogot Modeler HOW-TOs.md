@@ -69,6 +69,69 @@ During the scale drag, Shift does two operations:
 To make a recess, move the new face inward along its normal. To make a raised
 area, move it outward along its normal.
 
+## Cut a shape into a face
+
+The Cut tool draws a new face inside one flat face. Use it to add a door, a
+window, or a panel to a wall. The tool is modal. You draw the outline, and then
+you apply or cancel the cut.
+
+### Draw the cut
+
+1. Select an editable mesh.
+2. Enter **Face** mode.
+3. Select one flat face.
+4. Open the **Face Actions** menu and select **Cut**.
+5. Click or tap the corners of the shape on the face. Use at least three points.
+6. To close the outline, click or tap the first point, or press Return.
+
+@Image(source: "modeler-ref-cut-tool.webp",
+       alt: "The Cut tool with a door outline drawn on a wall face")
+
+Xogot adds edges from the new face to the corners of the original face. The new
+face is selected.
+
+While you draw, the tool shows the outline on the face:
+
+- A segment that is not valid shows in red. A segment is not valid when it
+  crosses the outline, repeats a point, or leaves the face. Move the next point,
+  or remove the last point.
+- Press Delete or Backspace to remove the last point.
+- Press Escape to cancel the tool. The face does not change.
+
+The outline can touch the edges of the face. For a door, put two points on the
+bottom edge of the wall.
+
+> Note: The Cut tool works on one face. If you select more than one face, or a
+> face that is not flat, **Cut** is not available in the Face Actions menu.
+
+@Image(source: "modeler-howto-cut-result.webp",
+       alt: "A door-shaped face cut into a wall, selected, with edges from its corners to the corners of the wall face")
+
+### Make an opening
+
+The new face stays selected after the cut. To make a hole, remove it:
+
+1. Open the **Face Actions** menu.
+2. Select **Delete Faces**.
+
+@Image(source: "modeler-howto-cut-opening.webp",
+       alt: "The wall with a door-shaped opening where the cut face was deleted")
+
+### Make a recess or a panel
+
+To push the new face into the wall, or to pull it out, extrude it:
+
+1. Select the **Move** tool.
+2. Hold Shift before you start the drag.
+3. Drag the move handle along the normal of the face. Drag into the wall for a
+   recess. Drag out of the wall for a raised panel.
+
+You can also press Command-E on macOS or Ctrl-E on other platforms, and then set
+the distance in the live bar.
+
+@Image(source: "modeler-howto-cut-recess.webp",
+       alt: "The cut face pushed into the wall to make a recessed door panel")
+
 ## Shortcut summary
 
 | Input | Result |
@@ -76,6 +139,9 @@ area, move it outward along its normal.
 | Command-E or Ctrl-E | Extrude the selection in Edge or Face mode. |
 | Shift-drag a move handle | Extrude the selection and move the new elements. |
 | Shift-drag the uniform scale handle | Extrude at zero distance and make an inset. |
+| Return, in the Cut tool | Close the outline and apply the cut. |
+| Delete or Backspace, in the Cut tool | Remove the last point of the outline. |
+| Escape, in the Cut tool | Cancel the cut. |
 
 You can change the keyboard shortcuts. Open the shortcut settings and search for
 `modeler/`.
