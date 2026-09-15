@@ -2,6 +2,51 @@
 
 Release notes for public releases of Xogot to the App Store.
 
+## Release 1.6.10
+
+- Kept OAuth login inside the app so Agent/iOS callbacks can land correctly.
+
+- Region editor resize handles now stay stable when zooming.
+
+- Improved editor interactions: full-scene click handling in the scene tree,
+  multi-select in Groups inspector, restored linked editing in iOS numeric
+  popover, and smoother drag-and-drop material preview behavior.
+
+- Added the New Scene dialog “Other” root path and related autoload UX work.
+
+- Better responsiveness for embedded instances by scheduling frame delays
+  through run-loop timers.
+
+- Updated Version UI and related export/version wording for clarity.
+
+- Terrain3D should now also work for gameplay, before it would only be useful
+  for editing.
+
+- Over 12 visible bug fixes.
+
+## Release 1.6.8 (5108)
+
+- Added a complete AnimationTree editor with blend-space, blend-tree,
+  state-machine, and clear editor-path support.
+
+- Added a GraphEdit minimap with tap, drag, keyboard, and accessibility
+  controls.
+
+- Improved debugger variables with nested trees, saved expansion state, change
+  highlights, Copy Value, and View As controls (#3148).
+
+- Improved Input Map pages with clear keyboard and controller bindings, and kept
+  template import available on all pages.
+
+- Added an in-game camera override control.
+
+- Added formatted engine messages and detailed help for TileSet properties.
+
+- Improved live report and console updates, and kept large reports responsive
+  (#3135).
+
+- Over 23 visible bug fixes.
+
 ## Release 1.6.6 (4982)
 
 - InputMap definition got support for templates, we are shipping various

@@ -23,6 +23,338 @@ The current Mac preview has the following known limitations:
 
 # Releases
 
+## Build 2154
+
+### New: Xogot Modeler.   
+
+The Xogot Modeler lets you build and edit 3D levels directly in Xogot.
+  
+Start with ready-made shapes like boxes, cylinder, spheres, stairs, or draw your
+own shapes and then edit vertices, edges, and faces to shape them into your
+needs.    You can then add materials, colors, UV maps, smoothing, and collision.
+Go from a quick level layout to an exported game mesh in one workflow.
+
+Some of the features supported:
+
+  - Select, move, rotate, and scale vertices, edges, faces, or complete objects.
+
+  - Extrude, bevel, subdivide, weld, collapse, cut, fill, offset, and
+    triangulate geometry.
+  
+  - Merge, mirror, duplicate, detach, freeze, and change object pivots.
+
+  - Assign materials and vertex colors, control smoothing, and edit normals.
+
+  - Project and edit UVs, generate lightmap UVs, and create collision shapes.
+
+  - Combine meshes with Boolean operations such as union, intersection, and subtraction.
+
+  - Export meshes as OBJ, STL, PLY, Godot Mesh, or GLB files.
+
+The Mesh UV editor lets you map textures without leaving Xogot
+
+# Improvements
+
+- Improved 3D navigation to match upstream Godot, including modifier-based
+  pan/zoom/orbit behavior, navigation presets, mouse buttons, and modifier
+  synchronization. (#3175)
+
+- Gemini authentication now uses API keys instead of the unsupported Gemini CLI
+  OAuth flow.
+
+- New mesh creation defaults to a 20-sided cylinder.
+
+- Automation: the "xo" command can now be used to transfer screenshots from
+  remote devices over the debugger connection (#3209).
+
+# Bug fixes
+
+- Fixed positional key bindings on macOS with non-QWERTY keyboard layouts in the
+  embedded Game Tab. (#3244)
+
+- Fixed crashes when handling zero-initialized NIL Variants from extensions that
+  were created without an attached Godot instance.
+
+- Fixed Android exports passing `--scene` to stock Godot templates, which do not
+  support that option, same limitation as Web Exports. (#3245)
+
+## Build 2126
+
+Users will now be offered to upgrade their Xogot 4.6 editors to 4.7, keeping
+both editors active (4.6 is renamed).   Not strictly necessary, but a rehearsal
+for future updates - we think that we will be shipping multiple side-by-side
+editors as it is a common industry practice.
+
+### Improvements
+
+- Console: we are experimenting with having  `SwiftTerm` as an optional output
+  backend.
+
+- Expanded `xo` automation capabilities to close a Godot AI gap `#3211`, including large Xo command and XPC API surface increases for workflows, classes, files, resources, grids/maps/input maps, and game automation.
+- Broadened export/debug support for Android/Web and added export-log reporting in the Report Navigator.
+- Improved editor workflow/UX and tooling polish:
+  - Removed empty inspector nav bar above filter field.
+  - Added in-game camera override support and cleaned up redundant gesture/camera manipulation settings.
+  - Better deployment/run destination and web template policy plumbing.
+
+## Bug Fixes
+- Fixed several 4.7 merge regressions in editor tools and 3D navigation:
+  - `Surface the Godot 4.7 Follow Selection on all platforms` — restores behavior for `#2759`.
+  - `Surface the Godot 4.7 Path3D Snap to Colliders option in the Xogot toolbar` — restores `#2739`.
+  - `Restore the 4.7 vertex-snap mouse-motion handler` — restores `#2756`.
+  - `Surface the Godot 4.7 3D ruler tool with a Show Components toggle` — restores `#2758`.
+  - `Surface the Godot 4.7 trackball rotation toggle` — restores `#2879`.
+  - `Fix #3213: restore Xogot trackpad navigation on macOS for 4.7` — restores `#3213`.
+- Fixed inspector embedded-controls rendering regressions in 4.7.
+- Fixed debugger type-name display path to show Godot 4.7 type names instead of `ObjectID`.
+- Addressed Android/Web export correctness issues.
+- Resolved 4.7 build regressions (coverage/build argument and related plumbing issues).
+## Build 2097
+
+## Improvements
+
+Continued updates to our export story, and polishing it across the board, one of
+the new features is that we now added Web export support, along with debugging
+capabilities.   
+
+We have also added preliminary Android support.
+
+- Added a dedicated tab for export logs in the Report Navigator and routed
+  command output into progress reporting.
+
+## Bug Fixes
+
+- Fixed macOS native file dialogs for embedded display server modes, resolving
+  issues with `file_dialog_show` and `use_native_dialog` on macOS; fixes #3234,
+  #542.
+
+- Fixed export output validation so PCK/ZIP/patch exports skip platform
+  runtime-template validation when appropriate.
+
+- Fixed signal connection and code-drop regressions in the scene workflow (issue
+  #3217).
+
+- Fixed export reporting and log wiring issues that required a separate report
+  tab and more stable progress updates; this also resolves #3230.
+
+
+## Build 2075 (4.6), 2077 (4.7)
+
+### Game Exporting
+
+The major theme for this release is that we are bringing the "Export" window to
+Xogot on Mac.  This allows you to manage all the capabilities like encryption,
+script-export, patching to your project, and you can now export your project to
+Android, Web, Linux and Windows - but we blended all of our helper tools to
+continue to help you with Apple development - like you would in Xcode.
+
+We have also folded support for debug/release
+builds in this version.   
+
+Release builds are notorious in that they have smaller
+payloads but they can not be debugged.
+
+Currently, only the Apple-based templates are runnable, that is, those are the
+only ones that show up on the target menu and the only ones we can debug and
+run, but we are working on both Web and Android support now.
+
+Our exporting templates use the published Godot templates.
+
+The entire Export functionality is also available to AI agents via "xo"
+
+# Improvements
+
+- Added full multi-selection support in Groups inspector so GroupPad checks/edit state correctly across selected nodes and group operations are applied consistently.
+
+- Added major MeshLibrary authoring support by porting the Godot MeshLibrary
+  editor into Xogot with GridMap integration and live inspector-backed resource
+  editing. (#2741)
+
+- When you open a project with a different Godot version, we can now offer to
+  launch the other version of Godot for you.
+
+- Added clearer version-mismatch UI/behavior so relaunching stays on running
+  version by default and relaunch targets are labeled with versions.
+
+- Added version-aware Godot 4.7 support improvements in the debugger/property
+  inspector layer (object type naming and related compatibility checks). (#2738,
+  #2896)
+
+### Bug fixes
+
+- Fixed auto-detection so a removed Swift codebase no longer forces Swift
+  compilation in editor startup flows.
+
+- Fixed generated-export detection (`dummy.swift`) to avoid incorrectly
+  triggering the Swift plugin selector.
+
+- Fixed Autoload dialog behavior and validation edge cases (duplicate entries,
+  scene-name validation, and legacy root-save flow); fixed related lifecycle 
+  issues so the dialog no longer leaves dead state. (#2750)
+
+- Fixed MeshLibrary drill-down behavior that could collapse the bottom panel.
+
+- Fixed drag-and-drop material/node preview cleanup and reset behavior to avoid
+  stranded preview materials/nodes.
+
+- Fixed hidden-script-editor cursor/interaction glitches by hiding the
+  code-editor web view from hit-testing when it is off-screen.
+
+- Fixed region-editor resize handles shrinking at high zoom levels.
+
+- Fixes localization for Chinese and Portuguese #3224.
+
+- Fixed Xogot remote version handoff launch handling that could leave projects
+  routed incorrectly when target app was already running.
+
+- Fixed autoload deletion in macOS Project Settings when names and IDs were
+  getting mismatched.
+
+- Fixed export preset hash caching so preset/credentials changes invalidate
+  deployment bundles instead of reusing stale artifacts.
+
+## Build 2037
+
+## Improvements
+
+- Added C# language availability UX improvements: the script picker now clearly
+  marks unavailable languages, and project parsing now checks `[xogot]` markers
+  for both Swift and C# language support.
+
+- Added C# flow in editor for opt-in activation (project action +
+  restart/install marker handling).
+
+## Bug Fixes
+
+- Fixed blank inspector state after closing a scene tab by restoring the
+  previously selected inspector page instead of leaving `.noneSelected`.
+
+- Fixed Scene Tree clicks on newly expanded children that previously resolved to
+  no selection and emptied the inspector (#2409).
+
+- Fixed inspector value updates when the same Godot object was re-wrapped with a new store by comparing providers by identity instead of object handle.
+
+- Fixed the C# activation path and related UI flow so projects can properly
+  show/enable the C# option when supported, addressing #3214.
+
+## Build 2033 (Aug 14th, 2026)
+
+### Improvements
+
+- Added Godot 4.7 Pilot Camera support across platforms. (#2761)
+- Added an “Other” root-node option to the New Scene dialog, allowing scenes to be created with any node type. (#3196)
+- Redesigned agent-run presentation with compact work regions, clearer transcript grouping, expandable tool activity, timing, usage summaries, and improved incremental rendering. (#3204)
+- Updated the Marker3D icon to match Marker2D.
+
+### Bug fixes
+
+- Fixed embedded Godot frame delays blocking the macOS run loop, which could stall remote-control and agent requests for up to several minutes in backgrounded editors.
+- Fixed Swift package completion for vanilla packages by excluding generated runtime sources from scanning and `.swift.uid` sidecars from SwiftPM targets; improved component-install completion handling.
+- Fixed a crash encountered during testing.
+
+## Build 2023 (Aug 13th, 2026)
+
+### Improvements
+
+- Added embedded game screenshots to XO/Agent remote capture.
+
+- Improved editor UI performance and responsiveness during heavy
+  transcript/tool-result rendering.
+
+- Added the Godot 4.7 trackball rotation toggle (#2879).
+
+### Bug Fixes
+
+- Fixed Godot 4.7 Follow Selection so it works from the toolbar and keyboard
+  shortcut, with a native follow-mode control in the viewport (#2759).
+
+- Fixed a project-close crash in both Godot engine variants caused by
+  double-freeing an extension method binding.
+
+- Fixed Mac deployment signing by resolving to the corrected zsign version.
+
+## Build 2015 (Aug 11th, 2026)
+
+### Improvements
+
+- Added a **Versions** window for managing installed Xogot release lines, update
+  channels, upgrades, downgrades, and separate installations.   This will come
+  in handy when we release 4.7 in parallel
+
+- Added `xo` default-application management and improved `xo doctor` diagnostics
+  for app and broker configuration.
+
+- Added a GraphEdit minimap, direct minimap navigation, and Magic Trackpad
+  panning.
+
+- Improved component downloads with progress during verification, cancellation
+  during extraction, cleanup of partial files, and recovery after failed
+  installs. #3190
+
+- Added the ability to delete AI conversation folders; their conversations are
+  returned to the main Conversations list.
+
+- Improved AnimationTree breadcrumbs by showing the actual node type.
+
+- Added contextual help for TileSet editor properties.
+
+- Kept the macOS editor responsive to `xo` remote-control requests while it is
+  in the background.
+
+- Improved asset-store compatibility by using the running engine version when
+  checking assets.
+
+## Bug Fixes
+
+- Fixed adding AnimationTree states for animations in named libraries. #3191
+
+- Fixed a TileSet inspector crash when hovering property rows.
+
+- Fixed undo after deleting a TileSet Scene Collection entry.
+
+- Fixed stale text in the macOS multiline property editor after undo or redo.
+  #3199
+
+- Fixed selecting a path when creating a shader, including loading an existing
+  shader. #3197
+
+- Fixed Scene tree visibility indicators failing to update when switching
+  TabContainer tabs. #3198
+
+- Fixed an editor dependency compatibility issue. #3201
+
+## Build 1984 (Aug 7th, 2026)
+
+## Improvements
+
+- Improved iOS device deployment from the macOS editor: PCK exports now run in a
+  separate process, keeping the editor responsive, showing packing progress, and
+  allowing the operation to be stopped.
+
+- Improved Chat performance and reliability for long conversations, with
+  smoother scrolling, more reliable rendering of large responses.   
+  
+- Chat interface: force the width to be the same as the input box, looks better
+
+- New AnimationTree editor support: we have been working on this for a while, a
+  replacement for the Godot one - and finally closed all the gaps - would love
+  to hear your feedback.  We think we improved upon many of the core UI elements.
+
+
+## Bug Fixes
+
+ - Prevented crashes when opening a .NET project on installations without .NET
+   support.
+
+- Fixed cross-file Rename Symbol for Swift and GDScript, including reliable
+  saving and language-server updates after renames. #3136
+
+- Fixed AnimationPlayer playback when animations or animation libraries are
+  removed, replaced, or renamed during playback. #3164
+
+- Fixed cancelled deployments that could leave the editor unable to deploy again
+  or leave Console Output appearing to run indefinitely.
+
 ## Build 1978 (Aug 5th, 2026)
 
 ## Improvements

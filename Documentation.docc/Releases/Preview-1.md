@@ -2,11 +2,186 @@
 
 Release notes for our preview release of Xogot to TestFlight.
 
-## Release
+## Release 5203
 
 ### Improvements
 
+- Expanded localization coverage by completing app-catalog translations and
+  converting app-string literals to generated localization symbols.
+
+## Bug Fixes
+
+- Fixed the signal connection and code-drop flow to avoid unsafe/incorrect
+  generation behavior (issue #3217).
+
+## Release 5191 (build-5099 → build-5191)
+
+## Xogot Beta Improvements
+
+- Added Godot 4.7 debugger support for human-readable object type-name display.
+
+- Added follow-selection support for Godot 4.7 across platforms. (#2759)
+
+## Both Improvements
+
+- Kept OAuth login inside the app so Agent/iOS callbacks can land correctly.
+
+- Region editor resize handles now stay stable when zooming.
+
+- Improved editor interactions: full-scene click handling in the scene tree,
+  multi-select in Groups inspector, restored linked editing in iOS numeric
+  popover, and smoother drag-and-drop material preview behavior.
+
+- Added the New Scene dialog “Other” root path and related autoload UX work.
+
+- Added AI inspector folder deletion support.
+
+- Added embedded game screenshot capture for remote sessions.
+
+- Better responsiveness for embedded instances by scheduling frame delays
+  through run-loop timers.
+
+- Updated Version UI and related export/version wording for clarity.
+
+## Bug fixes
+
+- Another attempt to fix crash in #3159.
+- Fixed mesh library crash/interaction issues (#2741), including bottom panel
+  collapse during drill-down.
+
+- Fixed autoload/New Scene root flow issues (#2750).
+
+- Fixed TileSet scene-collection list visibility and delete-undo behavior on
+  iOS.
+
+- Fixed TileSet inspector hover crash.
+
+- Fixed inspector state issues when closing scene tabs.
+
+- Fixed shader path editing in the Create Shader dialog. (#3197)
+
+- Fixed project TabBar/TabContainer visibility updates when toggling scene
+  state. (#3198)
+
+- Fixed the iPhone/iPad endless-loop sheet issue triggered by software keyboard
+  handling. (#3200)
+
+- Fixed New Scene “Other” root flow regressions. (#3196)
+
+- Fixed crash-on-close behavior across both Godot engine variants.
+
+- Fixes localization for Chinese and Portuguese #3224.
+
+- Fixed a stale-version companion UI/path regression for XogotUI.
+
+## Release 5099
+
+### Improvements
+
+- Added a complete AnimationTree editor with blend-space, blend-tree,
+  state-machine, and clear editor-path support.
+
+- Added a GraphEdit minimap with tap, drag, keyboard, and accessibility
+  controls.
+
+- Added an in-game camera override setting. #3161
+
+- Improved shell tab layout when the available space is limited.
+
 ### Bug Fixes
+
+- Fixed AnimationTree state names being rejected when derived from valid names.
+  #3191
+
+- Fixed ResourceEditor Quick Lookup entering a present/dismiss loop on iPhone.
+  #3192
+
+- Fixed gizmo dragging orbiting the camera and pinch/pan gestures clearing
+  selection on iOS. #3189
+
+- Fixed double-tapping an Asset Browser item not opening the import view. #2920
+
+- Fixed scripts opening through the wrong GameState write path. #3136
+
+- Hardened AnimationPlayer against animation and library mutations during
+  playback.
+
+- Fixed applying a Physics layer to a tile.
+
+- Fixed toolbar crashes caused by SwiftUI work running on a background thread.
+
+### Bug Fixes
+
+## Release
+
+## Improvements
+
+- Added a navigation minimap to GraphEdit with tap, drag, keyboard, and
+  accessibility controls.
+
+- Improved the AnimationTree path bar to show the item type and make numbered
+  items easier to identify.
+
+- Added clear help text for TileSet properties.
+
+- Added swipe and context menu actions to delete AI conversation folders without
+  deleting their conversations.
+
+## Bug Fixes
+
+- Fixed Quick Lookup that opened and closed repeatedly on iPhone (#3192).
+
+- Fixed animations from named libraries that users could not add to an
+  AnimationTree (#3191).
+
+
+- Fixed component downloads so that users can cancel extraction, temporary files
+  are removed, failed updates restore the installed component, and progress
+  stays accurate (#3190).
+
+- Fixed crashes when users opened property help for TileSet properties, 2D snap
+  settings, and Optimize Animation.
+
+- Fixed invisible TileSet Scene Collection lists on iOS and an Undo action that
+  restored a deleted scene incorrectly.
+
+## Release 5092 (August 10th, 2026)
+
+# Improvements
+
+- Improved the debugger variable view with nested values, saved expansion state,
+  change highlights, value copying, and additional display formats.
+
+- Improved the coding assistant with compact recoverable errors #3116
+
+# Bug fixes
+
+- Fixed the ScenePad selection color on iOS 27. #3120
+
+- Fixed the Attach Image command in the coding assistant so that it opens Photos
+  on iPad. #3128
+
+- Fixed the SpriteFrames editor so that SpriteFrames resources inside custom
+  resources open correctly.
+
+- Fixed duplicate editor tabs for different paths that identify the same project
+  file. #3144
+
+- Fixed the debugger variable tree on iPad so that expanded items stay open and
+  loading rows clear correctly.
+
+- Fixed a crash that could occur in release builds when Godot methods returned
+  small integer values.
+
+- Fixed a crash that could occur when the profiler received an invalid value.
+  #3153
+
+- Fixed a crash that could occur when users reordered editor tabs. #3155
+
+- Fixed the Report Navigator so that progress does not replace the item icon.
+  #3145
+
+- Fixed extra floating backgrounds in class picker sheets. #3058
 
 ## Beta Release 669 (July 30, 2026)
 
