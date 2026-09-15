@@ -1,0 +1,162 @@
+@Tutorial(time: 10) {
+    @Intro(title: "Add Collision and Triggers") {
+        > This page is a continuation of <doc:05.modeler_uvs>. Please open your
+        > `courtyard.tscn` scene.
+
+        A level must stop the player and detect events. In this tutorial, you look at
+        the collision that Modeler makes, you add an invisible wall, and you add a
+        trigger at the gate.
+
+        @Image(source: "modeler-06-intro-collision.webp",
+               alt: "The courtyard with collision shapes, an invisible wall, and a gate trigger visible")
+    }
+
+    @Section(title: "Look at Generated Collision") {
+        @ContentAndMedia {
+            Modeler adds a collision node to each new mesh.
+
+            @Image(source: "modeler-06-collision-child.webp",
+                   alt: "The Scene tree with a generated collision child under a wall")
+        }
+
+        @Steps {
+            @Step {
+                Expand a wall in the Scene tree.
+
+                The wall has a generated collision child. It is an ordinary Godot node.
+
+                Every shape that you drew has a collision child, including the roof
+                over the gate. A falling object stops on the roof, the same as it
+                stops on a wall.
+
+                @Image(source: "modeler-06-scene-tree-collision.webp",
+                       alt: "A wall expanded in the Scene tree, showing its collision child")
+            }
+
+            @Step {
+                Select **Preferences** in the Add Mesh palette. Look at the collider
+                settings.
+
+                Mesh and convex collision shapes follow geometry changes. Box shapes
+                change size only when automatic resize is on. Xogot does not change
+                collision nodes that you add yourself.
+
+                @Image(source: "modeler-06-collider-preferences.webp",
+                       alt: "The collider settings on the Modeler page of Editor Settings")
+            }
+        }
+    }
+
+    @Section(title: "Add an Invisible Wall") {
+        @ContentAndMedia {
+            An invisible wall stops the player but is not drawn in the game.
+
+            @Image(source: "modeler-06-invisible-wall.webp",
+                   alt: "A collider-only cube on top of the platform edge")
+        }
+
+        @Steps {
+            @Step {
+                Draw a thin **Cube** along the front edge of the platform, 2 units high.
+
+                @Image(source: "modeler-06-draw-barrier.webp",
+                       alt: "A thin cube along the platform edge")
+            }
+
+            @Step {
+                Select **Set Collider** in the Object Actions menu.
+
+                The cube shows a colored grid in the editor. When the game runs, the cube
+                is hidden, but its collision stays.
+
+                @Image(source: "modeler-06-set-collider.webp",
+                       alt: "The cube with the Collider grid material")
+            }
+        }
+    }
+
+    @Section(title: "Add a Gate Trigger") {
+        @ContentAndMedia {
+            A trigger detects when a body goes into a volume.
+
+            @Image(source: "modeler-06-trigger.webp",
+                   alt: "A trigger volume that fills the gate opening")
+        }
+
+        @Steps {
+            @Step {
+                Draw a **Cube** that fills the gate opening. Rename it to `GateTrigger`.
+
+                @Image(source: "modeler-06-draw-trigger.webp",
+                       alt: "A cube named GateTrigger in the gate opening")
+            }
+
+            @Step {
+                Select **Set Trigger** in the Object Actions menu, or press
+                Option-Shift-T.
+
+                Xogot adds an `Area3D` with a convex collision shape. The cube is hidden
+                when the game runs.
+
+                @Image(source: "modeler-06-set-trigger.webp",
+                       alt: "The GateTrigger with the Trigger material and an Area3D child")
+            }
+
+            @Step {
+                Attach a script to the `Courtyard` root node.
+
+                The script finds the `Area3D` under `GateTrigger`, and prints a message
+                when a body goes through the gate.
+
+                @Code(name: "courtyard.gd", file: "modeler-courtyard.gd")
+            }
+        }
+    }
+
+    @Section(title: "Test the Collision") {
+        @ContentAndMedia {
+            Put a ball in the gate opening to test the floor collision and the trigger.
+
+            @Image(source: "modeler-06-test-run.webp",
+                   alt: "A ball resting on the floor and the Output panel showing the gate message")
+        }
+
+        @Steps {
+            @Step {
+                Add a `Camera3D` and a `DirectionalLight3D` to the scene, so that you
+                can see the game when it runs.
+
+                @Image(source: "modeler-06-camera-light.webp",
+                       alt: "A Camera3D and a DirectionalLight3D in the Scene tree")
+            }
+
+            @Step {
+                Add a `RigidBody3D` inside the gate opening, below the top of the
+                opening. Give it a `CollisionShape3D` with a `SphereShape3D`, and a
+                `MeshInstance3D` with a `SphereMesh`.
+
+                > Note: Do not put the ball above the gate. The roof and the top of
+                > the Door frame have collision, so a ball that falls from above stops
+                > on them and does not reach the trigger.
+
+                @Image(source: "modeler-06-rigid-body.webp",
+                       alt: "A RigidBody3D ball inside the gate opening")
+            }
+
+            @Step {
+                Run the scene.
+
+                The ball starts inside the trigger volume, falls, and stops on the
+                floor. The trigger reports the ball as soon as the game starts, and the
+                Output panel shows the message. The invisible wall and the trigger are
+                not drawn.
+
+                @Image(source: "modeler-06-output.webp",
+                       alt: "The Output panel with the message from the gate trigger")
+            }
+
+            In the next tutorial, you convert other meshes, use a Boolean operation,
+            and export your work.
+        }
+    }
+}

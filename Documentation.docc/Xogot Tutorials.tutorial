@@ -47,7 +47,25 @@
         @TutorialReference(tutorial: "doc:02.editing_tilesets")
         @TutorialReference(tutorial: "doc:03.using_tilemaps")
         @TutorialReference(tutorial: "doc:04.painting_tiles")
-        
+
+    }
+    @Chapter(name: "Xogot Modeler") {
+        <!-- @Image(source: "modeler-chapter-courtyard.png",
+               alt: "A courtyard level built with Xogot Modeler") -->
+        @Image(source: 3DToolbar.png, alt: "Placeholder: replace with modeler-chapter-courtyard.png")
+
+        Build 3D environments directly in Xogot. In these tutorials, you create a
+        courtyard level from primitive shapes. You customize and position the shapes,
+        edit their vertices, edges, and faces, paint materials and colors, align
+        textures, add collision, and export your work.
+
+        @TutorialReference(tutorial: "doc:01.modeler_block_out")
+        @TutorialReference(tutorial: "doc:02.modeler_customize_shapes")
+        @TutorialReference(tutorial: "doc:03.modeler_edit_elements")
+        @TutorialReference(tutorial: "doc:04.modeler_paint")
+        @TutorialReference(tutorial: "doc:05.modeler_uvs")
+        @TutorialReference(tutorial: "doc:06.modeler_collision")
+        @TutorialReference(tutorial: "doc:07.modeler_convert_export")
     }
     @Chapter(name: "Your First 3D Game") {
         @Image(source: index-01.game-preview-animation.gif,

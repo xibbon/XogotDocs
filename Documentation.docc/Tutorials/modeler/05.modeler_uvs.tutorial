@@ -1,0 +1,400 @@
+@Tutorial(time: 20) {
+    @Intro(title: "Align Textures with the UV Editor") {
+        > This page is a continuation of <doc:04.modeler_paint>. Please open your
+        > `courtyard.tscn` scene.
+
+        UVs tell the renderer which part of a texture goes on each part of a face. In
+        this tutorial, you use the UV Editor to set the texture size on the floor, to
+        line up the texture across the walls, and to fit an image on the sign.
+
+        @Image(source: "modeler-05-intro-uvs.webp",
+               alt: "The courtyard with aligned stone textures on the walls and floor")
+    }
+
+    @Section(title: "Open the UV Editor") {
+        @ContentAndMedia {
+            The UV Editor opens in the **Mesh UV** tab of the bottom panel. It shows the
+            UVs of the selected mesh on a flat canvas.
+
+            @Image(source: "modeler-05-mesh-uv-panel.webp",
+                   alt: "The Mesh UV bottom panel with the toolbar, canvas, control groups, and status bar")
+        }
+
+        @Steps {
+            @Step {
+                Select the floor. Select **UV Editor** in the Object Actions menu.
+
+                You can also use **UV Editor** in the Editable Mesh inspector, or the
+                **Mesh UV** tab. The tab is available only while an editable mesh is
+                selected.
+
+                @Image(source: "modeler-05-open-uv-editor.webp",
+                       alt: "The UV Editor command in the Object Actions menu")
+            }
+
+            @Step {
+                Look at the toolbar.
+
+                From left to right: the **Select**, **Move**, **Rotate**, and **Scale**
+                tools, the **Vertex**, **Edge**, and **Face** modes, **Channel**,
+                **Scope**, **Texture**, and **Center UV View**.
+
+                @Image(source: "modeler-05-toolbar.webp",
+                       alt: "The UV Editor toolbar")
+            }
+
+            @Step {
+                Select **Face** in the toolbar, and click or tap the floor face on the
+                canvas.
+
+                The same face is selected in the viewport. The status bar shows `1
+                selected`. Blue faces are Auto. Orange faces are Manual.
+
+                @Image(source: "modeler-05-selection-sync.webp",
+                       alt: "The same face selected in the viewport and on the UV canvas, with the status bar")
+            }
+
+            @Step {
+                Make sure that **Texture** is on.
+
+                The canvas shows the texture of the selected material behind the UVs.
+                The square outline is the 0–1 texture area.
+
+                @Image(source: "modeler-05-texture-preview.webp",
+                       alt: "The Texture toggle on, with the floor texture behind the UVs")
+            }
+
+            @Step {
+                Pinch to zoom the canvas. Drag with two fingers, or scroll on a trackpad,
+                to pan.
+
+                Press 0, or select **Center UV View**, to frame the selection again.
+
+                <!-- @Image(source: "modeler-05-canvas-navigation.gif",
+                       alt: "The UV canvas zoomed and panned, then centered") -->
+            }
+        }
+    }
+
+    @Section(title: "Tile the Floor") {
+        @ContentAndMedia {
+            New shapes use Auto UVs. Xogot calculates them from the face and its
+            settings, so the texture stays correct when you edit the mesh.
+
+            @Image(source: "modeler-05-auto-tiling.webp",
+                   alt: "The floor texture tiled with Auto UVs")
+        }
+
+        @Steps {
+            @Step {
+                With the floor face selected, find the **Auto UVs** group. Make sure that
+                **Fill** is **Tile**.
+
+                With **Tile**, one world unit is one texture repeat, so a 20-unit floor
+                shows the texture 20 times.
+
+                @Image(source: "modeler-05-auto-group.webp",
+                       alt: "The Auto UVs group with Fill set to Tile")
+            }
+
+            @Step {
+                Set **Tiling U** and **Tiling V** to 0.25, and select **Apply Auto
+                Settings**.
+
+                A smaller tiling value makes the texture larger. Now each texture repeat
+                is four units wide.
+
+                @Image(source: "modeler-05-tiling-values.webp",
+                       alt: "Tiling U and Tiling V set to 0.25, with Apply Auto Settings")
+            }
+
+            @Step {
+                Set **Rotation** to 45, and select **Apply Auto Settings**. Then set it
+                back to 0, and apply again.
+
+                Use **Offset U**, **Offset V**, and **Anchor** to move the texture on the
+                face. **Tiling Presets** sets both tiling values at once.
+
+                @Image(source: "modeler-05-rotation.webp",
+                       alt: "The floor texture rotated 45 degrees")
+            }
+        }
+    }
+
+    @Section(title: "Line Up the Walls") {
+        @ContentAndMedia {
+            Separate objects can share one world-space texture, so that the stone rows
+            line up at the corners.
+
+            @Image(source: "modeler-05-walls-aligned.webp",
+                   alt: "Stone rows that line up at the corner of two walls")
+        }
+
+        @Steps {
+            @Step {
+                Select a wall. In the viewport, select its inner face.
+
+                The UV Editor now shows the wall.
+
+                @Image(source: "modeler-05-wall-face.webp",
+                       alt: "The inner face of a wall selected in the viewport and in the UV Editor")
+            }
+
+            @Step {
+                Turn on **World Space**, and select **Apply Auto Settings**.
+
+                The texture now uses world positions. It stays in place when you move the
+                wall. Do the same on the other walls.
+
+                @Image(source: "modeler-05-world-space.webp",
+                       alt: "World Space turned on in the Auto UVs group")
+            }
+
+            @Step {
+                Select the stairs. In **Face** mode, select the top faces of all steps and
+                the front faces between them.
+
+                @Image(source: "modeler-05-stair-faces.webp",
+                       alt: "The top and front faces of the stairs selected")
+            }
+
+            @Step {
+                Select **New Group** in the **Auto UVs** group.
+
+                The faces are now in one texture group. Xogot projects them together, so
+                the texture continues across the steps. The faces in a group must be
+                edge-adjacent.
+
+                @Image(source: "modeler-05-texture-group.webp",
+                       alt: "The stair faces in one texture group with a continuous texture")
+            }
+
+            To add more faces to the group, type its number in **Texture Group**, and
+            select **Join**. **Break** removes faces from their group. **Select Group**
+            selects all the faces of a group.
+        }
+    }
+
+    @Section(title: "Fit an Image on the Sign") {
+        @ContentAndMedia {
+            Manual UVs keep the values that you set. Use them to put a complete image on
+            a face.
+
+            @Image(source: "modeler-05-manual-uvs.webp",
+                   alt: "The sign with a manual UV layout that shows the complete image")
+        }
+
+        @Steps {
+            @Step {
+                Paint the Sprite sign with a material that has a sign image. Select the
+                sign face.
+
+                @Image(source: "modeler-05-sign-selected.webp",
+                       alt: "The sign face selected, with its image on the canvas")
+            }
+
+            @Step {
+                In the **Manual UVs** group, select **Planar**.
+
+                Xogot projects the face flat, and changes it to Manual. The face now shows
+                in orange on the canvas.
+
+                @Image(source: "modeler-05-planar-projection.webp",
+                       alt: "Planar projection applied to the sign, shown in orange")
+            }
+
+            @Step {
+                Select **Island** in **Selection and Grid**, and then select **Fit**.
+
+                **Fit** scales the UVs to fill the 0–1 texture area, so the complete
+                image shows on the sign.
+
+                @Image(source: "modeler-05-fit-uvs.webp",
+                       alt: "The sign UV island fitted to the texture area")
+            }
+
+            @Step {
+                If the image is mirrored, select **Flip Horizontal** or **Flip Vertical**.
+
+                @Image(source: "modeler-05-flip.webp",
+                       alt: "The sign image flipped to read correctly")
+            }
+
+            To go back to calculated UVs, select **Convert to Auto**. This replaces
+            your manual UVs. Use Undo if you change your mind.
+        }
+    }
+
+    @Section(title: "Adjust UVs by Hand") {
+        @ContentAndMedia {
+            The canvas tools move, rotate, and scale the selected UVs with a drag.
+
+            @Image(source: "modeler-05-canvas-tools.webp",
+                   alt: "The Rotate tool on the canvas with the pivot marker")
+        }
+
+        @Steps {
+            @Step {
+                Select the flower bed, and select its top face in **Face** mode. Select
+                the **Rotate** tool.
+
+                A pivot marker, a cross in a circle, shows at the center of the
+                selection.
+
+                @Image(source: "modeler-05-rotate-tool.webp",
+                       alt: "The Rotate tool selected with the pivot marker at the face center")
+            }
+
+            @Step {
+                Hold Command or Ctrl, and drag on the canvas to turn the texture by 45°.
+
+                The rotation snaps to steps of 15°. On a touch screen, turn on **Snap to
+                Grid** in **Selection and Grid**.
+
+                @Image(source: "modeler-05-rotate-drag.gif",
+                       alt: "The texture rotated by dragging on the canvas")
+            }
+
+            @Step {
+                Drag the pivot marker to a corner of the face, and then scale with the
+                **Scale** tool.
+
+                The texture now scales from that corner. **Center UV View** puts the pivot
+                back at the center.
+
+                @Image(source: "modeler-05-pivot-drag.webp",
+                       alt: "The pivot marker moved to a corner of the face")
+            }
+
+            @Step {
+                To type exact values, use the **Transform** group. Set **Move U**,
+                **Move V**, **Rotation**, **Scale U**, or **Scale V**, and select **Apply
+                Transform**.
+
+                In **Face** mode, Auto faces stay Auto. In Vertex and Edge modes, the
+                faces change to Manual.
+
+                @Image(source: "modeler-05-transform-group.webp",
+                       alt: "The Transform group with Apply Transform")
+            }
+        }
+    }
+
+    @Section(title: "Stitch Two Faces") {
+        @ContentAndMedia {
+            **Stitch** joins the UVs of two adjacent faces along their common edge. This
+            removes a seam in the texture.
+
+            @Image(source: "modeler-05-stitch.webp",
+                   alt: "Two platform faces stitched so the texture continues over the edge")
+        }
+
+        @Steps {
+            @Step {
+                Select the platform. In **Face** mode, select its top face and one
+                adjacent side face.
+
+                @Image(source: "modeler-05-stitch-select.webp",
+                       alt: "The top face and one side face of the platform selected")
+            }
+
+            @Step {
+                Select **Stitch** in the **Manual UVs** group.
+
+                The side face moves and turns on the canvas to line up with the top face.
+                The texture now continues over the edge.
+
+                @Image(source: "modeler-05-stitch-result.webp",
+                       alt: "The stitched faces side by side on the UV canvas")
+            }
+
+            On macOS, you can also select one face, and then Command-click an adjacent
+            face on the canvas to stitch it. Command-Shift-click copies the layout of the
+            selected face to the clicked face.
+        }
+    }
+
+    @Section(title: "Move a Texture in the Viewport") {
+        @ContentAndMedia {
+            **Scope** lets the viewport handles change UVs instead of geometry. You can
+            align a texture while you look at the 3D scene.
+
+            @Image(source: "modeler-05-uv-scope.webp",
+                   alt: "Scope turned on, with the viewport move handle shifting the texture on a wall")
+        }
+
+        @Steps {
+            @Step {
+                Turn on **Scope** in the UV Editor toolbar. Select a wall face, and drag
+                the move handle in the viewport.
+
+                The texture moves on the face. The geometry does not move.
+
+                <!-- @Image(source: "modeler-05-uv-scope-drag.gif",
+                       alt: "The texture moved with the viewport handle while Scope is on") -->
+            }
+
+            @Step {
+                Turn off **Scope** to edit geometry again.
+
+                Shift-drag does not extrude while **Scope** is on.
+
+                @Image(source: "modeler-05-uv-scope-off.webp",
+                       alt: "The Scope toggle turned off")
+            }
+        }
+    }
+
+    @Section(title: "Check Lightmap UVs and Save a UV Image") {
+        @ContentAndMedia {
+            Baked lighting uses a second UV channel, UV2. A UV image helps you paint your
+            own texture.
+
+            @Image(source: "modeler-05-uv2.webp",
+                   alt: "The UV2 channel with the Lightmap UVs group")
+        }
+
+        @Steps {
+            @Step {
+                Select the back wall. In the Editable Mesh inspector, select **Generate
+                Lightmap UVs**.
+
+                Xogot writes UV2. Your UV channel and your geometry do not change.
+
+                @Image(source: "modeler-05-generate-lightmap.webp",
+                       alt: "The Generate Lightmap UVs command in the inspector")
+            }
+
+            @Step {
+                Set **Channel** to **UV2** in the toolbar.
+
+                The canvas shows the lightmap layout. UV2 is read-only. Select
+                **Rebuild Selected UV2** in the **Lightmap UVs** group to generate it
+                again.
+
+                @Image(source: "modeler-05-uv2-channel.webp",
+                       alt: "The Channel menu set to UV2, with the Lightmap UVs group")
+            }
+
+            @Step {
+                Set **Channel** back to **UV**. Select the sign.
+
+                In the **UV Template** group, set **Image Size** to 1024.
+
+                @Image(source: "modeler-05-template-group.webp",
+                       alt: "The UV Template group with Image Size, Hide Grid, and the color settings")
+            }
+
+            @Step {
+                Select **Save UV Image**, and save the file.
+
+                Open the PNG in an image editor, and paint your texture over the lines.
+
+                @Image(source: "modeler-05-save-template.webp",
+                       alt: "A saved UV image of the sign")
+            }
+
+            Save the scene. In the next tutorial, you add collision and a trigger.
+        }
+    }
+}

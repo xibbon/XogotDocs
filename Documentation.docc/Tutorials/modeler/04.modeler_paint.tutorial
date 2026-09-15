@@ -1,0 +1,241 @@
+@Tutorial(time: 15) {
+    @Intro(title: "Paint Materials, Colors, and Shading") {
+        > This page is a continuation of <doc:03.modeler_edit_elements>. Please open
+        > your `courtyard.tscn` scene.
+
+        Modeler applies materials and colors to each face. In this tutorial, you paint
+        the floor, the walls, and the fountain, and you control smooth and hard
+        shading.
+
+        @Image(source: "modeler-04-intro-painted.webp",
+               alt: "The courtyard painted with stone, grass, and water materials")
+    }
+
+    @Section(title: "Open Paint") {
+        @ContentAndMedia {
+            The Paint panel has three tabs: Material, Colour, and Shading.
+
+            @Image(source: "modeler-04-paint-panel.webp",
+                   alt: "The Paint panel with the Material tab open")
+        }
+
+        @Steps {
+            @Step {
+                Select **Paint** in the viewport HUD.
+
+                If no faces are selected, Paint asks you to select faces, and the paint
+                controls are disabled.
+
+                @Image(source: "modeler-04-paint-empty.webp",
+                       alt: "The Paint panel asking you to select faces")
+            }
+
+            @Step {
+                Select the floor in Object mode.
+
+                The Paint header shows the target. In Object mode, paint goes on all of
+                the faces of the mesh.
+
+                @Image(source: "modeler-04-paint-target.webp",
+                       alt: "The Paint header showing the floor as the target")
+            }
+        }
+    }
+
+    @Section(title: "Paint Materials") {
+        @ContentAndMedia {
+            Each tile is a material slot. Click or tap a tile to paint.
+
+            @Image(source: "modeler-04-material-tiles.webp",
+                   alt: "Material tiles with slot numbers and names")
+        }
+
+        @Steps {
+            @Step {
+                Tap the **Checker** tile to paint the floor.
+
+                New shapes use the Grid material. The Checker material helps you see
+                the scale of the texture.
+
+                @Image(source: "modeler-04-checker-floor.webp",
+                       alt: "The floor painted with the Checker material")
+            }
+
+            @Step {
+                Select an empty slot. Choose a stone material from your project.
+
+                > Tip: You can make a material in the FileSystem dock: right-click a
+                > folder, and create a new `StandardMaterial3D`.
+
+                @Image(source: "modeler-04-empty-slot.webp",
+                       alt: "The material picker open for an empty slot")
+            }
+
+            @Step {
+                Select the walls in Object mode, and press the number key of the stone
+                slot.
+
+                Keys 1 through 9 paint with the related slot.
+
+                @Image(source: "modeler-04-number-key-paint.webp",
+                       alt: "The walls painted with the stone material")
+            }
+
+            @Step {
+                Select the flower bed. Select **Face** mode, and select only the top face
+                inside the hole. Paint it with a soil or grass material.
+
+                Materials go on the selected faces, so one mesh can use several
+                materials.
+
+                @Image(source: "modeler-04-face-material.webp",
+                       alt: "One face of the flower bed painted with a grass material")
+            }
+
+            @Step {
+                Long-press a tile on iPad or iPhone, or right-click it on macOS, to open
+                its menu.
+
+                The menu can replace the material, set it from the selection, select its
+                faces, inspect it, rename it, or clear it.
+
+                @Image(source: "modeler-04-tile-menu.webp",
+                       alt: "The menu of a material tile")
+            }
+
+            @Step {
+                Select a face that has a material. Use the eyedropper to sample it.
+
+                You can also press Shift and a number key to put the material of the
+                selection into that slot.
+
+                @Image(source: "modeler-04-eyedropper.webp",
+                       alt: "The eyedropper in the Paint header")
+            }
+        }
+    }
+
+    @Section(title: "Paint Colors") {
+        @ContentAndMedia {
+            Vertex colors tint a mesh without a new material.
+
+            @Image(source: "modeler-04-colors.webp",
+                   alt: "The fountain tinted with blue vertex colors")
+        }
+
+        @Steps {
+            @Step {
+                Select the **Colour** tab.
+
+                The tab shows the current color, its hexadecimal value, its alpha
+                value, and 10 swatches.
+
+                @Image(source: "modeler-04-colour-tab.webp",
+                       alt: "The Colour tab with ten swatches")
+            }
+
+            @Step {
+                Set the current color to a light blue. Select an empty swatch to store
+                it.
+
+                @Image(source: "modeler-04-store-swatch.webp",
+                       alt: "A light blue color stored in a swatch")
+            }
+
+            @Step {
+                Select the fountain Sphere, and tap the blue swatch.
+
+                > Important: Colors change the display only when the material uses
+                > vertex colors. If you do not see the color, turn on vertex colors
+                > in the material.
+
+                @Image(source: "modeler-04-paint-sphere.webp",
+                       alt: "The fountain Sphere painted light blue")
+            }
+
+            @Step {
+                Select the Pipe basin in **Vertex** mode. Select only the top vertices,
+                and paint them white.
+
+                In Vertex and Edge modes, the color goes only on the selected vertices.
+                This makes a gradient across each side face.
+
+                @Image(source: "modeler-04-vertex-gradient.webp",
+                       alt: "A gradient on the basin from vertex colors")
+            }
+        }
+    }
+
+    @Section(title: "Control Shading") {
+        @ContentAndMedia {
+            Shading decides if a surface looks smooth or has hard edges.
+
+            @Image(source: "modeler-04-shading.webp",
+                   alt: "Smooth pillars beside faceted pillars")
+        }
+
+        @Steps {
+            @Step {
+                Select the **Shading** tab. Select the merged pillars, and select
+                **Faceted**.
+
+                The pillars now show hard edges between the sides.
+
+                @Image(source: "modeler-04-faceted.webp",
+                       alt: "The pillars with Faceted shading")
+            }
+
+            @Step {
+                Select **Smooth** to make them round again.
+
+                Smooth faces are in a smoothing group. The tab lists the groups that the
+                mesh contains.
+
+                @Image(source: "modeler-04-smooth-groups.webp",
+                       alt: "The Shading tab listing smoothing groups")
+            }
+
+            @Step {
+                Turn on **Tint faces by group** and **Show normals**.
+
+                Each group shows in a different color. Use these displays to find faces
+                with the wrong shading.
+
+                @Image(source: "modeler-04-tint-normals.webp",
+                       alt: "Faces tinted by smoothing group, with normals visible")
+            }
+        }
+    }
+
+    @Section(title: "Save a Palette") {
+        @ContentAndMedia {
+            A palette keeps your materials and colors for other scenes.
+
+            @Image(source: "modeler-04-palette-menu.webp",
+                   alt: "The Paint overflow menu with Save Palette and Load Palette")
+        }
+
+        @Steps {
+            @Step {
+                Open the overflow menu in the Paint header, and select **Save Palette**.
+                Save it as `courtyard_palette.tres`.
+
+                The resource contains the materials, their embedded textures, the
+                labels, and the colors.
+
+                @Image(source: "modeler-04-save-palette.webp",
+                       alt: "The save dialog for courtyard_palette.tres")
+            }
+
+            @Step {
+                In another scene, select **Load Palette** to use the same materials.
+
+                Save the scene. In the next tutorial, you align the textures with the UV
+                editor.
+
+                @Image(source: "modeler-04-load-palette.webp",
+                       alt: "The palette loaded in another scene")
+            }
+        }
+    }
+}

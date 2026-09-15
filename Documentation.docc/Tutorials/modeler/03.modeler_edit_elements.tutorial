@@ -1,0 +1,340 @@
+@Tutorial(time: 20) {
+    @Intro(title: "Edit Vertices, Edges, and Faces") {
+        > This page is a continuation of <doc:02.modeler_customize_shapes>. Please open
+        > your `courtyard.tscn` scene.
+
+        Shapes are a good start, but real levels need custom details. In this
+        tutorial, you select and change the elements of a mesh. You raise the
+        gatehouse, and you add windows, a doorway, and beveled edges.
+
+        @Image(source: "modeler-03-intro-edited.webp",
+               alt: "The courtyard with a raised gatehouse, window insets, and a cut doorway")
+    }
+
+    @Section(title: "Select Elements") {
+        @ContentAndMedia {
+            The viewport HUD controls the mode. In Vertex, Edge, and Face modes, you
+            select and change the parts of one mesh.
+
+            @Image(source: "modeler-03-hud-modes.webp",
+                   alt: "The viewport HUD with Object, Vertex, Edge, and Face modes and the selection count")
+        }
+
+        @Steps {
+            @Step {
+                Select the back wall. In the HUD, select **Face** mode.
+
+                You can also press H to cycle through Vertex, Edge, and Face modes.
+                Press Escape to go back to Object mode.
+
+                @Image(source: "modeler-03-face-mode.webp",
+                       alt: "The back wall in Face mode")
+            }
+
+            @Step {
+                Click or tap the top face of the wall.
+
+                The HUD shows `1` selected. The Actions caption changes to **Face
+                Actions**.
+
+                @Image(source: "modeler-03-top-face-selected.webp",
+                       alt: "The top face of the wall selected, with the HUD showing one selected face")
+            }
+
+            @Step {
+                Shift-click another face to add it to the selection.
+
+                On a touch screen, turn on **Add to Selection** in the HUD, and then
+                tap. The control turns off after one use.
+
+                @Image(source: "modeler-03-add-to-selection.webp",
+                       alt: "The Add to Selection control in the HUD, with two faces selected")
+            }
+
+            @Step {
+                Select **Edge** mode. Select the fountain Pipe, and double-click or
+                double-tap an edge around the Pipe.
+
+                Xogot selects the complete edge loop.
+
+                @Image(source: "modeler-03-edge-loop.webp",
+                       alt: "An edge loop selected around the Pipe basin")
+            }
+
+            @Step {
+                Shift-drag across the viewport to select with a rectangle.
+
+                Turn on **Select Hidden** to also select elements behind surfaces.
+                Turn on **X-ray** to see selected elements through surfaces.
+
+                @Image(source: "modeler-03-rectangle-select.gif",
+                       alt: "A rectangle selection over vertices, with X-ray showing hidden selected vertices")
+            }
+        }
+    }
+
+    @Section(title: "Raise the Gatehouse") {
+        @ContentAndMedia {
+            An extrusion pulls faces out and builds new side walls. Use it to make the
+            gate taller than the walls.
+
+            @Image(source: "modeler-03-gatehouse.webp",
+                   alt: "The Door gate extruded up above the courtyard walls")
+        }
+
+        @Steps {
+            @Step {
+                Select the Door gate. Select **Face** mode, and select the top face of
+                the Door.
+
+                @Image(source: "modeler-03-door-top-face.webp",
+                       alt: "The top face of the Door selected")
+            }
+
+            @Step {
+                Hold Shift and drag the move handle up by 1.5 units.
+
+                Xogot extrudes the face one time, and the new face follows the handle.
+                On a touch screen, turn on **Extrude on Next Drag**, and then drag the
+                handle.
+
+                @Image(source: "modeler-03-shift-drag-extrude.gif",
+                       alt: "The top face of the Door extruded up with Shift-drag")
+            }
+
+            @Step {
+                Press Escape to go back to Object mode. Move the Prism roof up to the new
+                top of the gate.
+
+                @Image(source: "modeler-03-roof-moved.webp",
+                       alt: "The Prism roof on top of the raised gatehouse")
+            }
+        }
+    }
+
+    @Section(title: "Inset Windows") {
+        @ContentAndMedia {
+            An inset makes a smaller face inside a face. Then you can push the smaller
+            face in to make a window.
+
+            @Image(source: "modeler-03-windows.webp",
+                   alt: "Recessed windows in the side wall")
+        }
+
+        @Steps {
+            @Step {
+                Select the inner face of a side wall.
+
+                @Image(source: "modeler-03-side-face.webp",
+                       alt: "The inner face of a side wall selected")
+            }
+
+            @Step {
+                Switch to the scale handle. Hold Shift, and drag the scale handle
+                inward.
+
+                Xogot extrudes the face at zero distance and scales the new face. This
+                makes an inset.
+
+                @Image(source: "modeler-03-shift-scale-inset.gif",
+                       alt: "A face inset with Shift and the scale handle")
+            }
+
+            @Step {
+                Open **Face Actions**, and select **Extrude Faces**.
+
+                Xogot shows the result and opens the live bar below the viewport.
+
+                @Image(source: "modeler-03-face-actions-menu.webp",
+                       alt: "The Face Actions menu with Extrude Faces highlighted")
+            }
+
+            @Step {
+                In the live bar, set the distance to -0.3. The face moves into the wall.
+
+                Select **Done** to keep the result as one undo step. Select **Undo** or
+                press Escape to restore the face.
+
+                @Image(source: "modeler-03-live-bar-extrude.webp",
+                       alt: "The live bar for Extrude Faces with a distance of -0.3")
+            }
+        }
+    }
+
+    @Section(title: "Bevel the Platform") {
+        @ContentAndMedia {
+            A bevel replaces a sharp edge with a small angled face.
+
+            @Image(source: "modeler-03-bevel.webp",
+                   alt: "The platform with beveled top edges")
+        }
+
+        @Steps {
+            @Step {
+                Select the platform. Select **Edge** mode, and select the top edges.
+
+                @Image(source: "modeler-03-platform-edges.webp",
+                       alt: "The top edges of the platform selected")
+            }
+
+            @Step {
+                Select **Bevel Edges** in the Edge Actions menu. Set the distance to 0.1
+                in the live bar, and select **Done**.
+
+                @Image(source: "modeler-03-live-bar-bevel.webp",
+                       alt: "The live bar for Bevel Edges")
+            }
+
+            @Step {
+                To change the start value of the bevel, select **Options** beside
+                **Paint**, and open the **Bevel** category.
+
+                Changes save immediately. The next bevel starts with the new value.
+
+                @Image(source: "modeler-03-options-bevel.webp",
+                       alt: "The Options sheet with the Bevel category selected")
+            }
+        }
+    }
+
+    @Section(title: "Cut a Doorway") {
+        @ContentAndMedia {
+            The Cut tool draws a new face inside a flat face. Delete the new face to
+            make an opening.
+
+            @Image(source: "modeler-03-doorway.webp",
+                   alt: "A doorway cut through a side wall")
+        }
+
+        @Steps {
+            @Step {
+                Select the outer face of the other side wall in **Face** mode.
+
+                **Cut** is available only when one flat face is selected.
+
+                @Image(source: "modeler-03-cut-face.webp",
+                       alt: "One flat outer wall face selected")
+            }
+
+            @Step {
+                Select **Cut** in the Face Actions menu. Click or tap four points to draw
+                a doorway on the face. Click or tap the first point to apply the cut.
+
+                Invalid segments show in red. Press Delete or Backspace to remove the
+                last point.
+
+                @Image(source: "modeler-03-cut-outline.webp",
+                       alt: "The Cut tool with a doorway outline on the wall face")
+            }
+
+            @Step {
+                The new face is selected. Select **Delete Faces** in the Face Actions
+                menu.
+
+                The wall now has an opening on one side. Cut the opposite face in the
+                same way, and use **Bridge Edges** or **Fill Hole** to close the sides of
+                the opening.
+
+                @Image(source: "modeler-03-delete-face.webp",
+                       alt: "The doorway face deleted from the wall")
+            }
+        }
+    }
+
+    @Section(title: "Use the Contextual Menu") {
+        @ContentAndMedia {
+            You can open the actions at the geometry.
+
+            @Image(source: "modeler-03-context-menu.webp",
+                   alt: "The contextual action menu open on selected faces")
+        }
+
+        @Steps {
+            @Step {
+                Select some faces. Right-click the selected faces, or long-press them on
+                a touch screen.
+
+                The contextual menu shows the same commands as the Actions menu.
+
+                @Image(source: "modeler-03-context-menu-open.webp",
+                       alt: "The contextual menu with Select, Build, and Normals groups")
+            }
+        }
+    }
+
+    @Section(title: "Understand Recipe Protection") {
+        @ContentAndMedia {
+            After you edit elements, the shape recipe cannot rebuild the mesh without
+            losing your edits.
+
+            @Image(source: "modeler-03-stale-recipe.webp",
+                   alt: "The inspector with read-only recipe controls and the Rebuild Shape button")
+        }
+
+        @Steps {
+            @Step {
+                Select the Door gate in Object mode. Look at the inspector.
+
+                The recipe controls are read-only, because you edited the faces.
+
+                @Image(source: "modeler-03-recipe-read-only.webp",
+                       alt: "Read-only recipe controls for the edited Door")
+            }
+
+            @Step {
+                Select **Rebuild Shape**.
+
+                Xogot asks for confirmation. A rebuild replaces your raised gatehouse
+                with the original Door. Select **Cancel** to keep the edits.
+
+                > Tip: If you rebuild by mistake, use Undo. Undo restores the edited
+                > mesh.
+
+                @Image(source: "modeler-03-rebuild-confirm.webp",
+                       alt: "The Rebuild Shape confirmation")
+            }
+        }
+    }
+
+    @Section(title: "Use Object Actions") {
+        @ContentAndMedia {
+            Object actions change complete meshes.
+
+            @Image(source: "modeler-03-object-actions.webp",
+                   alt: "The Object Actions menu")
+        }
+
+        @Steps {
+            @Step {
+                Select the stairs. Select **Mirror Objects** in the Object Actions menu.
+
+                Mirror asks for confirmation, because it can add a node to the scene.
+                Turn on **Duplicate** to make a second stair on the other side.
+
+                @Image(source: "modeler-03-mirror-confirm.webp",
+                       alt: "The Mirror Objects confirmation sheet with Duplicate turned on")
+            }
+
+            @Step {
+                Select the four pillars. Select **Merge Objects**, and confirm.
+
+                The pillars become one mesh. Element editing changes one mesh at a time,
+                so merge objects when you want to edit them together.
+
+                @Image(source: "modeler-03-merge-objects.webp",
+                       alt: "The four pillars merged into one mesh")
+            }
+
+            @Step {
+                Use **Center Pivot** to move the node origin to the center of the merged
+                mesh.
+
+                Save the scene. In the next tutorial, you paint materials and colors on
+                the courtyard.
+
+                @Image(source: "modeler-03-center-pivot.webp",
+                       alt: "The merged pillars with the pivot at the center")
+            }
+        }
+    }
+}

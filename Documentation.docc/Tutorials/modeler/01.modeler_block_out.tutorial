@@ -1,0 +1,334 @@
+@Tutorial(time: 15) {
+    @Intro(title: "Block Out a Courtyard") {
+        In this series, you build a small courtyard level with Xogot Modeler. You
+        do not need 3D modeling experience.
+
+        In this first tutorial, you draw the floor, the walls, a platform, pillars,
+        and a flower bed. You use only primitive shapes.
+
+        @Image(source: "modeler-01-intro-blockout.webp",
+               alt: "The blocked-out courtyard: a floor, four walls, a platform, pillars, and a flower bed")
+    }
+
+    @Section(title: "Prepare the Scene") {
+        @ContentAndMedia {
+            Modeler works in the 3D editor. Start with an empty 3D scene.
+
+            @Image(source: "modeler-01-empty-scene.webp",
+                   alt: "A new 3D scene with a Node3D root named Courtyard")
+        }
+
+        @Steps {
+            @Step {
+                Create a new scene. Select **3D Scene** as the root node.
+
+                Rename the root node to `Courtyard`. Save the scene as
+                `courtyard.tscn`.
+
+                @Image(source: "modeler-01-new-3d-scene.webp",
+                       alt: "The Scene tree with a Node3D root named Courtyard")
+            }
+
+            @Step {
+                Find **Add Mesh** in the 3D toolbar, and open it.
+
+                The palette shows the 12 shapes that Modeler can create.
+
+                @Image(source: "modeler-01-add-mesh-palette.webp",
+                       alt: "The Add Mesh palette open in the 3D toolbar, showing the twelve shape tiles")
+            }
+        }
+    }
+
+    @Section(title: "Draw the Floor") {
+        @ContentAndMedia {
+            To draw a shape, you tap its tile. Then you draw the base of the shape
+            on the grid.
+
+            @Image(source: "modeler-01-floor-done.webp",
+                   alt: "A flat Plane that covers the courtyard floor")
+        }
+
+        @Steps {
+            @Step {
+                Tap **Plane** in the palette.
+
+                The palette closes, and the viewport HUD shows the name of the shape
+                and the current step.
+
+                @Image(source: "modeler-01-plane-armed-hud.webp",
+                       alt: "The viewport HUD for the Plane tool, waiting for the first point")
+            }
+
+            @Step {
+                Hold Command (macOS) or Ctrl, then press and drag on the grid to draw
+                a 20 × 20 base. The HUD shows the dimensions.
+
+                On a touch screen, turn on **Snap** in the HUD, and drag with one
+                finger.
+
+                @Image(source: "modeler-01-plane-base-drag.gif",
+                       alt: "A Plane base drawn on the grid while the HUD shows its dimensions")
+            }
+
+            @Step {
+                Release.
+
+                A Plane has no height, so the shape is complete when you release. Xogot
+                selects the new mesh.
+
+                @Image(source: "modeler-01-plane-selected.webp",
+                       alt: "The completed floor Plane, selected in the viewport and in the Scene tree")
+            }
+
+            @Step {
+                Rename the new node to `Floor`.
+
+                > Tip: Give each shape a clear name. A level with many shapes is
+                > easier to edit when you can find each node in the Scene tree.
+
+                @Image(source: "modeler-01-floor-renamed.webp",
+                       alt: "The Scene tree with a node named Floor under Courtyard")
+            }
+        }
+    }
+
+    @Section(title: "Draw the Walls") {
+        @ContentAndMedia {
+            A Cube needs two steps. First you draw the base, and then you set the
+            height.
+
+            @Image(source: "modeler-01-four-walls.webp",
+                   alt: "Four walls around the courtyard floor")
+        }
+
+        @Steps {
+            @Step {
+                Open **Add Mesh** and tap **Cube**.
+
+                Hold Command or Ctrl, and draw a long, thin base along one edge of the
+                floor. Make it 20 units long and 1 unit wide.
+
+                @Image(source: "modeler-01-wall-base.webp",
+                       alt: "A long, thin Cube base along the edge of the floor")
+            }
+
+            @Step {
+                Release. Then move the pointer up to set the height of the wall to 4
+                units.
+
+                The preview shows the wall before you complete it. The HUD shows the
+                height.
+
+                @Image(source: "modeler-01-wall-height.gif",
+                       alt: "The wall height set by moving the pointer up, with the HUD in the Height phase")
+            }
+
+            @Step {
+                Hold Shift, and click or tap to complete the wall.
+
+                Because you held Shift, the Cube tool stays active with the same
+                settings.
+
+                @Image(source: "modeler-01-wall-shift-repeat.webp",
+                       alt: "The first wall complete, with the Cube tool still active for the next wall")
+            }
+
+            @Step {
+                Draw the three other walls in the same way. Complete the last wall
+                without Shift, or select **Done**.
+
+                Leave a 4-unit gap in the front wall for a gate.
+
+                @Image(source: "modeler-01-walls-with-gap.webp",
+                       alt: "Four walls around the floor, with a gap in the front wall")
+            }
+
+            @Step {
+                If you make a mistake, press Escape or select **Cancel** before you
+                complete the shape.
+
+                After you complete a shape, use Undo. One Undo removes the complete
+                shape.
+
+                @Image(source: "modeler-01-hud-cancel.webp",
+                       alt: "The Cancel and Done buttons in the viewport HUD")
+            }
+        }
+    }
+
+    @Section(title: "Build a Platform") {
+        @ContentAndMedia {
+            Modeler draws on the surface under the pointer. This lets you stack
+            shapes on top of other shapes.
+
+            @Image(source: "modeler-01-platform.webp",
+                   alt: "A raised platform at the back of the courtyard")
+        }
+
+        @Steps {
+            @Step {
+                Tap **Cube**. Move the pointer over the floor, near the back wall.
+
+                The placement cursor sits on the floor surface.
+
+                @Image(source: "modeler-01-surface-cursor.webp",
+                       alt: "The placement cursor on the floor surface")
+            }
+
+            @Step {
+                Draw an 8 × 4 base, and set the height to 1.5 units. Complete the
+                shape. Rename it to `Platform`.
+
+                @Image(source: "modeler-01-platform-height.webp",
+                       alt: "The platform Cube in the Height phase")
+            }
+
+            @Step {
+                You can also draw above empty space. Tap **Cube**, and before you start
+                the base, press `]` two times.
+
+                The drawing plane moves up to Y = 2. The HUD shows the Y value. Press
+                `[` to move it down. Press Escape to cancel this shape.
+
+                > Note: The bracket keys are for a keyboard. On a touch screen, draw
+                > on an existing surface at the height that you need.
+
+                @Image(source: "modeler-01-drawing-plane-y.webp",
+                       alt: "The HUD showing the drawing plane at Y = 2")
+            }
+        }
+    }
+
+    @Section(title: "Place Pillars Immediately") {
+        @ContentAndMedia {
+            You do not always have to draw a shape. You can place a shape at the
+            center of the view with one gesture.
+
+            @Image(source: "modeler-01-pillars.webp",
+                   alt: "Four cylinder pillars at the corners of the platform")
+        }
+
+        @Steps {
+            @Step {
+                Orbit the camera so that the center of the view is on a corner of the
+                platform.
+
+                The camera orbits around its focus point. Modeler places immediate
+                shapes at this point.
+
+                @Image(source: "modeler-01-focus-point.webp",
+                       alt: "The view centered on a corner of the platform")
+            }
+
+            @Step {
+                Open **Add Mesh**. Option-tap or Alt-tap **Cylinder**. On a touch
+                screen, touch and hold the **Cylinder** tile.
+
+                Xogot creates the cylinder at the focus point. The palette now marks
+                Cylinder as the last-used shape.
+
+                @Image(source: "modeler-01-cylinder-immediate.webp",
+                       alt: "A Cylinder created at the focus point, with Cylinder marked in the palette")
+            }
+
+            @Step {
+                Move the view to each of the other corners, and press
+                **Option-Shift-K**.
+
+                Each time, Xogot creates the last-used shape at the focus point. You
+                change the size of the pillars in the next tutorial.
+
+                @Image(source: "modeler-01-option-shift-k.webp",
+                       alt: "Four pillars created with Option-Shift-K")
+            }
+        }
+    }
+
+    @Section(title: "Draw a Flower Bed") {
+        @ContentAndMedia {
+            A Poly Shape is a mesh made from an outline that you draw. It can have
+            holes. Use it to make a raised flower bed.
+
+            @Image(source: "modeler-01-flower-bed.webp",
+                   alt: "A raised flower bed with a hole in the middle for soil")
+        }
+
+        @Steps {
+            @Step {
+                Start **Poly Shape**. Click or tap on the floor to add six points of an
+                outline.
+
+                A preview line connects the points.
+
+                @Image(source: "modeler-01-poly-outline.webp",
+                       alt: "A six-point Poly Shape outline on the floor")
+            }
+
+            @Step {
+                Click or tap the first point to close the outline.
+
+                @Image(source: "modeler-01-poly-closed.webp",
+                       alt: "The closed Poly Shape outline")
+            }
+
+            @Step {
+                Select **Add Hole**. Add four points inside the outline, and click or tap
+                the first point of the hole to close it.
+
+                @Image(source: "modeler-01-poly-hole.webp",
+                       alt: "A hole drawn inside the Poly Shape outline")
+            }
+
+            @Step {
+                Move the pointer up to set a height of 0.5 units. Click or press Return
+                to create the mesh.
+
+                The tool stays active, so you can draw more outlines. Press Escape when
+                you are done.
+
+                @Image(source: "modeler-01-poly-height.webp",
+                       alt: "The flower bed Poly Shape with its height set")
+            }
+        }
+    }
+
+    @Section(title: "Move Around the Courtyard") {
+        @ContentAndMedia {
+            Use the camera to look at your work from all sides. Camera gestures also
+            work while a Modeler tool is active.
+
+            @Image(source: "modeler-01-courtyard-overview.webp",
+                   alt: "The blocked-out courtyard seen from above")
+        }
+
+        @Steps {
+            @Step {
+                With a mouse or trackpad: drag on empty space to orbit, drag with the
+                middle button or scroll with two fingers to pan, and use the mouse
+                wheel or pinch to zoom.
+
+                @Image(source: "modeler-01-camera-mouse.gif",
+                       alt: "The camera orbiting the courtyard with the mouse")
+            }
+
+            @Step {
+                On a touch screen: drag with one finger on empty space to orbit, drag
+                with two fingers to pan, and pinch to zoom.
+
+                @Image(source: "modeler-01-camera-touch.gif",
+                       alt: "The camera orbiting the courtyard with touch gestures")
+            }
+
+            @Step {
+                Save the scene.
+
+                In the next tutorial, you change the size and settings of these shapes,
+                and you add a gate, an arch, stairs, and a fountain.
+
+                @Image(source: "modeler-01-saved.webp",
+                       alt: "The saved courtyard scene")
+            }
+        }
+    }
+}

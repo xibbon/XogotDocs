@@ -53,7 +53,7 @@ Some of the features supported:
 
 The Mesh UV editor lets you map textures without leaving Xogot
 
-# Improvements
+### Improvements
 
 - Improved 3D navigation to match upstream Godot, including modifier-based
   pan/zoom/orbit behavior, navigation presets, mouse buttons, and modifier
@@ -67,7 +67,7 @@ The Mesh UV editor lets you map textures without leaving Xogot
 - Automation: the "xo" command can now be used to transfer screenshots from
   remote devices over the debugger connection (#3209).
 
-# Bug fixes
+### Bug fixes
 
 - Fixed positional key bindings on macOS with non-QWERTY keyboard layouts in the
   embedded Game Tab. (#3244)

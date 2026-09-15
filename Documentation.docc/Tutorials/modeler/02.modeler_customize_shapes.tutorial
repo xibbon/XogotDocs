@@ -1,0 +1,283 @@
+@Tutorial(time: 15) {
+    @Intro(title: "Customize and Position Shapes") {
+        > This page is a continuation of <doc:01.modeler_block_out>. Please open your
+        > `courtyard.tscn` scene.
+
+        Each Modeler shape keeps a recipe: its size, pivot, rotation, and settings.
+        In this tutorial, you change recipes to add a gate, an arch, stairs, and a
+        fountain. You also move the shapes into position.
+
+        @Image(source: "modeler-02-intro-shapes.webp",
+               alt: "The courtyard with a door, an arch, stairs, pillars, and a fountain")
+    }
+
+    @Section(title: "Look at a Shape Recipe") {
+        @ContentAndMedia {
+            The Editable Mesh inspector shows the recipe of the selected shape.
+
+            @Image(source: "modeler-02-inspector-overview.webp",
+                   alt: "The Editable Mesh inspector for a wall Cube")
+        }
+
+        @Steps {
+            @Step {
+                Select one of the walls.
+
+                The inspector shows the shape type, size, pivot, rotation, the mesh
+                counts, and the material slots.
+
+                @Image(source: "modeler-02-inspector-cube.webp",
+                       alt: "The Editable Mesh inspector showing the Cube recipe and mesh counts")
+            }
+
+            @Step {
+                Change the **Size** Y value from 4 to 5.
+
+                Xogot rebuilds the mesh in place. The node, its name, and its
+                children stay. One Undo restores the old size.
+
+                @Image(source: "modeler-02-size-change.webp",
+                       alt: "The wall rebuilt with a height of 5")
+            }
+
+            @Step {
+                Look at **Pivot**. **Center** puts the node origin at the center of the
+                shape. **First Vertex** puts the node origin at the first corner.
+
+                A pivot change does not move the visible mesh. It changes the point
+                that the handles rotate and scale around.
+
+                @Image(source: "modeler-02-pivot.webp",
+                       alt: "The Pivot control set to First Vertex, with the gizmo at the wall corner")
+            }
+        }
+    }
+
+    @Section(title: "Position the Pillars") {
+        @ContentAndMedia {
+            In Object mode, the normal move, rotate, and scale handles move the
+            complete mesh node.
+
+            @Image(source: "modeler-02-pillars-positioned.webp",
+                   alt: "Four pillars aligned to the platform corners")
+        }
+
+        @Steps {
+            @Step {
+                Select a pillar. Set its recipe **Size** to 0.6, 3, 0.6.
+
+                Use the recipe size, not the node scale, to set the dimensions. The
+                mesh then keeps correct UVs and collision.
+
+                @Image(source: "modeler-02-pillar-size.webp",
+                       alt: "A pillar with Size 0.6, 3, 0.6 in the inspector")
+            }
+
+            @Step {
+                Set **Sides** to 12. Keep **Smooth** on.
+
+                Fewer sides make a lighter mesh. Smooth makes the sides look round.
+
+                @Image(source: "modeler-02-cylinder-sides.webp",
+                       alt: "Cylinder settings with Sides set to 12 and Smooth turned on")
+            }
+
+            @Step {
+                Hold Command or Ctrl and drag the move handle to put the pillar on the
+                corner of the platform.
+
+                The pillar snaps to the grid.
+
+                @Image(source: "modeler-02-move-snap.gif",
+                       alt: "A pillar moved with snapping to the corner of the platform")
+            }
+
+            @Step {
+                Change the other three pillars in the same way.
+
+                > Tip: Make one pillar, then duplicate it with Command-D or Ctrl-D, and
+                > move the copies.
+
+                @Image(source: "modeler-02-four-pillars.webp",
+                       alt: "Four matching pillars at the corners of the platform")
+            }
+        }
+    }
+
+    @Section(title: "Add a Gate") {
+        @ContentAndMedia {
+            The Door shape is a frame with an opening. It fits into the gap in the
+            front wall.
+
+            @Image(source: "modeler-02-gate.webp",
+                   alt: "A Door shape in the gap of the front wall")
+        }
+
+        @Steps {
+            @Step {
+                Open **Add Mesh** and tap **Door**. Draw a base that fills the gap in
+                the front wall, and set the height to the wall height.
+
+                @Image(source: "modeler-02-door-draw.webp",
+                       alt: "A Door drawn in the wall gap")
+            }
+
+            @Step {
+                In the inspector, set **Side Width** to 1 and **Pediment Height** to 1.5.
+
+                The side width is the width of each side of the frame. The pediment is
+                the part above the opening.
+
+                @Image(source: "modeler-02-door-settings.webp",
+                       alt: "Door settings with Side Width and Pediment Height")
+            }
+        }
+    }
+
+    @Section(title: "Add an Arch") {
+        @ContentAndMedia {
+            Put an arch on the platform, between the back pillars.
+
+            @Image(source: "modeler-02-arch.webp",
+                   alt: "An arch on the platform between two pillars")
+        }
+
+        @Steps {
+            @Step {
+                Tap **Arch**. Draw it on the platform surface between the back pillars.
+
+                @Image(source: "modeler-02-arch-draw.webp",
+                       alt: "An Arch drawn on the platform")
+            }
+
+            @Step {
+                Set **Sides** to 12, **Arch Degrees** to 180, and **Thickness** to 0.4.
+                Keep **End Caps** on.
+
+                More sides make a rounder arch. With 2 sides, the arch becomes a peaked
+                roof.
+
+                @Image(source: "modeler-02-arch-settings.webp",
+                       alt: "Arch settings with 12 sides and 180 degrees")
+            }
+        }
+    }
+
+    @Section(title: "Build Stairs to the Platform") {
+        @ContentAndMedia {
+            The Stairs shape makes straight or curved stairs.
+
+            @Image(source: "modeler-02-stairs.webp",
+                   alt: "Straight stairs from the floor to the platform")
+        }
+
+        @Steps {
+            @Step {
+                Tap **Stairs**. Draw a 3 × 3 base in front of the platform, and set the
+                height to the platform height.
+
+                @Image(source: "modeler-02-stairs-draw.webp",
+                       alt: "Stairs drawn in front of the platform")
+            }
+
+            @Step {
+                Set **Steps** to 6. Keep **Equal Steps** on.
+
+                If the stairs go the wrong direction, set the recipe **Rotation** Y to
+                180.
+
+                @Image(source: "modeler-02-stairs-settings.webp",
+                       alt: "Stairs settings with six steps")
+            }
+
+            @Step {
+                To try curved stairs, set **Circumference** to 90°, then set it back
+                to 0.
+
+                A negative value turns the stairs to the left. **Inner Radius** moves
+                the stairs away from the center of the curve.
+
+                @Image(source: "modeler-02-stairs-curved.webp",
+                       alt: "Curved stairs with a Circumference of 90 degrees")
+            }
+        }
+    }
+
+    @Section(title: "Make a Fountain") {
+        @ContentAndMedia {
+            Combine curved shapes to make a fountain in the center of the courtyard.
+
+            @Image(source: "modeler-02-fountain.webp",
+                   alt: "A fountain made of a Pipe basin, a Torus rim, and a Sphere")
+        }
+
+        @Steps {
+            @Step {
+                Change one pillar to a basin: duplicate a pillar, move it to the center
+                of the courtyard, and set its **Type** to **Pipe**.
+
+                The size, pivot, and rotation stay. The shape loads the saved Pipe
+                settings.
+
+                @Image(source: "modeler-02-type-to-pipe.webp",
+                       alt: "The Type control changed from Cylinder to Pipe")
+            }
+
+            @Step {
+                Set the Pipe **Size** to 3, 0.8, 3, **Thickness** to 0.2, and **Sides**
+                to 24.
+
+                @Image(source: "modeler-02-pipe-basin.webp",
+                       alt: "A Pipe basin with a size of 3, 0.8, 3")
+            }
+
+            @Step {
+                Draw a **Torus** on top of the basin. Set **Tube Radius** to 0.15,
+                **Rows** to 12, and **Columns** to 24.
+
+                @Image(source: "modeler-02-torus-rim.webp",
+                       alt: "A Torus rim on top of the basin")
+            }
+
+            @Step {
+                Place a **Sphere** in the center of the basin. Set **Subdivisions** to 2.
+
+                Increase subdivisions only when you need more detail. Each step makes
+                the sphere about four times heavier.
+
+                @Image(source: "modeler-02-sphere.webp",
+                       alt: "A Sphere with two subdivisions in the center of the fountain")
+            }
+        }
+    }
+
+    @Section(title: "Add Details") {
+        @ContentAndMedia {
+            Use Prism and Sprite for simple details.
+
+            @Image(source: "modeler-02-details.webp",
+                   alt: "A Prism roof over the gate and a Sprite sign beside it")
+        }
+
+        @Steps {
+            @Step {
+                Draw a **Prism** above the gate to make a small roof. Set the recipe
+                **Rotation** so that the ridge goes along the wall.
+
+                @Image(source: "modeler-02-prism-roof.webp",
+                       alt: "A Prism roof above the gate")
+            }
+
+            @Step {
+                Draw a **Sprite** beside the gate for a sign. A Sprite is one flat
+                quad, so it completes when you release the base.
+
+                Save the scene. In the next tutorial, you edit the vertices, edges, and
+                faces of these shapes.
+
+                @Image(source: "modeler-02-sprite-sign.webp",
+                       alt: "A Sprite sign beside the gate")
+            }
+        }
+    }
+}

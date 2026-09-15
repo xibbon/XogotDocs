@@ -2,6 +2,65 @@
 
 Release notes for our preview release of Xogot to TestFlight.
 
+## Release 5261
+
+- In this version we are switching to a Godot 4.7-based runtime engine,
+  upgrading from 4.6.
+
+
+### New: Xogot Modeler.   
+
+The Xogot Modeler lets you build and edit 3D levels directly in Xogot.
+  
+Start with ready-made shapes like boxes, cylinder, spheres, stairs, or draw your
+own shapes and then edit vertices, edges, and faces to shape them into your
+needs.    You can then add materials, colors, UV maps, smoothing, and collision.
+Go from a quick level layout to an exported game mesh in one workflow.
+
+Some of the features supported:
+
+  - Select, move, rotate, and scale vertices, edges, faces, or complete objects.
+
+  - Extrude, bevel, subdivide, weld, collapse, cut, fill, offset, and
+    triangulate geometry.
+  
+  - Merge, mirror, duplicate, detach, freeze, and change object pivots.
+
+  - Assign materials and vertex colors, control smoothing, and edit normals.
+
+  - Project and edit UVs, generate lightmap UVs, and create collision shapes.
+
+  - Combine meshes with Boolean operations such as union, intersection, and subtraction.
+
+  - Export meshes as OBJ, STL, PLY, Godot Mesh, or GLB files.
+
+The Mesh UV editor lets you map textures without leaving Xogot
+
+### Improvements
+
+- Improved 3D navigation to match upstream Godot, including modifier-based
+  pan/zoom/orbit behavior, navigation presets, mouse buttons, and modifier
+  synchronization. (#3175)
+
+- Gemini authentication now uses API keys instead of the unsupported Gemini CLI
+  OAuth flow.
+
+- New mesh creation defaults to a 20-sided cylinder.
+
+- Automation: the "xo" command can now be used to transfer screenshots from
+  remote devices over the debugger connection (#3209).
+
+### Bug fixes
+
+- Fixed positional key bindings on macOS with non-QWERTY keyboard layouts in the
+  embedded Game Tab. (#3244)
+
+- Fixed crashes when handling zero-initialized NIL Variants from extensions that
+  were created without an attached Godot instance.
+
+- Fixed Android exports passing `--scene` to stock Godot templates, which do not
+  support that option, same limitation as Web Exports. (#3245)
+
 ## Release 5203
 
 ### Improvements
