@@ -24,6 +24,9 @@ to end.
 For short procedures for common operations, see
 <doc:Xogot-Modeler-HOW-TOs>.
 
+Modeler builds the geometry of a level. To fill a level with scenes and models
+from an asset kit, see <doc:Asset-Placer>.
+
 @Image(source: "modeler-ref-overview.png",
        alt: "A courtyard level made with Xogot Modeler, with the Add Mesh palette and the viewport HUD visible")
 

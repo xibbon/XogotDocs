@@ -32,6 +32,7 @@ Follow a complete learning path for Xogot or jump directly into a focused Xogot 
 
 @Links(visualStyle: detailedGrid) {
     - <doc:Command-Palette>
+    - <doc:Xogot-Modeler>
     - <doc:Asset-Placer>
     - <doc:Embedded-Game-View>
     - <doc:Onscreen-Controls>

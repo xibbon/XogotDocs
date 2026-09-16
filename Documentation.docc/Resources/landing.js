@@ -6,6 +6,7 @@
     ["/documentation/xogot/xogot-connect", { kicker: "Remote tools" }],
     ["/documentation/xogot/faq", { kicker: "Help" }],
     ["/documentation/xogot/command-palette", { kicker: "Productivity" }],
+    ["/documentation/xogot/xogot-modeler", { kicker: "World building" }],
     ["/documentation/xogot/asset-placer", { kicker: "World building" }],
     ["/documentation/xogot/embedded-game-view", { kicker: "Workflow" }],
     ["/documentation/xogot/onscreen-controls", { kicker: "Input" }],
@@ -32,6 +33,13 @@
       body: "Build a TileSet, edit tiles, paint layers, and learn the core Xogot TileMap workflow.",
       href: "/tutorials/xogot-tutorials#tilesets-and-tilemaps",
       image: "/images/com.xibbon.Xogot/tileset_placing.gif",
+    },
+    {
+      kicker: "Xogot tutorial",
+      title: "Build a Level with Modeler",
+      body: "Block out a courtyard from primitive shapes, edit its faces, paint materials, align textures, and add collision.",
+      href: "/tutorials/xogot-tutorials#build-a-level-with-modeler",
+      image: "/images/com.xibbon.Xogot/modeler-chapter-courtyard.png",
     },
     {
       kicker: "Xogot tutorial",

@@ -260,6 +260,9 @@ Mouse-wheel shortcuts require a mouse wheel or a trackpad gesture that the syste
 
 ### Block Out a Level
 
+To build the walls, floors, and stairs of a level from primitive shapes, use
+<doc:Xogot-Modeler>. Then use Asset Placer to fill the level with kit pieces.
+
 1. Use Grid mode.
 2. Set `Grid Size` to match your kit, such as 1, 2, or 4 units.
 3. Keep `Show Grid` enabled.
