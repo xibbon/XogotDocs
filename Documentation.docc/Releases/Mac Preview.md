@@ -23,6 +23,28 @@ The current Mac preview has the following known limitations:
 
 # Releases
 
+## Build 2162
+
+### Improvements
+
+- Added remote Modeler editing, editor-history commands, and expanded Modeler
+  workflows through the `xo` commands.
+
+- Improved Modeler UV editing, including UV-orientation preservation and clearer feedback for unavailable actions.
+
+### Bug fixes
+
+- Fixed Modeler loop and ring selection being swapped on quad meshes.
+
+- Fixed Modeler pivot behavior to match the specification.
+
+- Fixed Modeler palette reliability issues that could leave the palette unusable.
+
+- Fixed Modeler project-path handling and improved remote workflow path
+  handling.
+
+- Fixed focus handling when opening a native exclusive child window.
+
 ## Build 2154
 
 ### New: Xogot Modeler.   

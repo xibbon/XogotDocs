@@ -49,7 +49,7 @@
         @TutorialReference(tutorial: "doc:04.painting_tiles")
 
     }
-    @Chapter(name: "Xogot Modeler") {
+    @Chapter(name: "Build a Level with Modeler") {
         @Image(source: "modeler-chapter-courtyard.png",
                alt: "A courtyard level built with Xogot Modeler")
 
@@ -58,8 +58,8 @@
         edit their vertices, edges, and faces, paint materials and colors, align
         textures, add collision, and export your work.
 
-        The reference page <doc:/documentation/Xogot/Xogot-Modeler> describes every tool, action, and
-        shortcut. <doc:/documentation/Xogot/Xogot-Modeler-HOW-TOs> has short procedures for common tasks.
+        The reference page <doc:Xogot-Modeler> describes every tool, action, and
+        shortcut. <doc:Xogot-Modeler-HOW-TOs> has short procedures for common tasks.
 
         @TutorialReference(tutorial: "doc:01.modeler_block_out")
         @TutorialReference(tutorial: "doc:02.modeler_customize_shapes")

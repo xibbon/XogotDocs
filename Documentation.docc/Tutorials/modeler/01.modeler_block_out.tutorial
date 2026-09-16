@@ -7,9 +7,9 @@
         and a flower bed. You use only primitive shapes.
 
         Every tool in this series has a full description in the reference page
-        <doc:/documentation/Xogot/Xogot-Modeler>. This tutorial uses <doc:/documentation/Xogot/Xogot-Modeler#Add-a-mesh>,
-        <doc:/documentation/Xogot/Xogot-Modeler#Draw-a-shape>, <doc:/documentation/Xogot/Xogot-Modeler#Draw-a-Poly-Shape>, and
-        <doc:/documentation/Xogot/Xogot-Modeler#Move-the-camera>.
+        <doc:Xogot-Modeler>. This tutorial uses <doc:Xogot-Modeler#Add-a-mesh>,
+        <doc:Xogot-Modeler#Draw-a-shape>, <doc:Xogot-Modeler#Draw-a-Poly-Shape>, and
+        <doc:Xogot-Modeler#Move-the-camera>.
 
         @Image(source: "modeler-01-intro-blockout.png",
                alt: "The blocked-out courtyard: a floor, four walls, a platform, pillars, and a flower bed")

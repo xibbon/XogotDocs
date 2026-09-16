@@ -313,6 +313,9 @@ secondary button.
 
 You can also find the mesh actions in the <doc:Command-Palette>.
 
+For a description of each action, and the jobs that it is good for, see
+<doc:Xogot-Modeler-Actions>.
+
 ### Adjust the result of an action
 
 Some actions show their result and then open the **live bar** below the viewport:
@@ -349,13 +352,14 @@ can add or remove nodes in the scene. They show a sheet, and you must confirm th
 
 | Mode | Actions |
 | --- | --- |
-| Vertex | Connect Vertices, Collapse Vertices, Weld Vertices, Split Vertices, Fill Hole, Set Pivot to Selection, Offset Elements |
-| Edge | Extrude Edges, Bevel Edges, Bridge Edges, Connect Edges, Insert Edge Loop, Subdivide Edges, Fill Hole, Select Loop, Select Ring, Select Hole |
-| Face | Extrude Faces, Bevel, Subdivide Faces, Merge Faces, Detach Faces, Duplicate Faces, Delete Faces, Flip Face Normals, Flip Face Edge, Conform Face Normals, Triangulate Faces, Cut, Select by Material, Select by Vertex Color, Select Smoothing Group |
-| All element modes | Select All, Deselect All, Invert Selection, Grow Selection, Shrink Selection |
-| Object | Center Pivot, Freeze Transform, Flip Object Normals, Conform Object Normals, Subdivide Object, Triangulate Object, Merge Objects, Mirror Objects, Make Editable, Set Collider, Set Trigger, Boolean, UV Editor, Export Mesh |
+| Vertex | Connect Vertices, Collapse Vertices, Weld Vertices, Split Vertices, Dissolve Vertices, Fill Hole, Select Holes, Select by Color, Set Pivot to Selection, Offset Elements |
+| Edge | Extrude Edges, Bevel Edges, Bridge Edges, Connect Edges, Insert Edge Loop, Subdivide Edges, Dissolve Edges, Fill Hole, Select Loop, Select Ring, Select Holes, Select by Color, Set Pivot to Selection, Offset Elements |
+| Face | Extrude Faces, Bevel Edges, Subdivide Faces, Merge Faces, Dissolve Faces, Detach Faces, Duplicate Faces, Delete Faces, Flip Faces, Turn Face Edges, Conform Normals, Triangulate Faces, Cut, Select Loop, Select Ring, Select by Material, Select by Color, Select Smoothing Group, Set Pivot to Selection, Offset Elements |
+| All element modes | Select All Elements, Clear Element Selection, Invert Selection, Grow Selection, Shrink Selection |
+| Object | Select All Elements, Invert Selection, Center Pivot, Freeze Transform, Flip Faces, Conform Normals, Subdivide Faces, Triangulate Faces, Merge Objects, Mirror Objects, Set Collider, Set Trigger, Generate Lightmap UVs, Boolean, UV Editor, Export Mesh |
 
-An action that is not valid for the selection does not change the mesh.
+An action that is not valid for the selection does not change the mesh. See
+<doc:Xogot-Modeler-Actions> for what each action does and when to use it.
 
 ## Options
 
@@ -878,3 +882,10 @@ You can change all of these shortcuts. Open the shortcut settings and search for
 - Boolean operations are experimental. They work best with closed meshes.
 - Select Hidden does not detect shader vertex displacement or alpha cutouts.
 - The UV2 unwrap settings are saved, but they do not change the generated UV2.
+
+## Topics
+
+### Reference
+
+- <doc:Xogot-Modeler-Actions>
+- <doc:Xogot-Modeler-HOW-TOs>

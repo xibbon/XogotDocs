@@ -7,7 +7,6 @@ Release notes for our preview release of Xogot to TestFlight.
 - In this version we are switching to a Godot 4.7-based runtime engine,
   upgrading from 4.6.
 
-
 ### New: Xogot Modeler.   
 
 The Xogot Modeler lets you build and edit 3D levels directly in Xogot.

@@ -3,8 +3,8 @@
         > This page is a continuation of <doc:01.modeler_block_out>. Please open your
         > `courtyard.tscn` scene.
 
-        In the reference, see <doc:/documentation/Xogot/Xogot-Modeler#Shapes-and-settings> and
-        <doc:/documentation/Xogot/Xogot-Modeler#Change-a-shape>.
+        In the reference, see <doc:Xogot-Modeler#Shapes-and-settings> and
+        <doc:Xogot-Modeler#Change-a-shape>.
 
         Each Modeler shape keeps a recipe: its size, pivot, rotation, and settings.
         In this tutorial, you change recipes to add a gate, an arch, stairs, and a

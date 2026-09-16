@@ -91,6 +91,7 @@ Follow a complete learning path for Xogot or jump directly into a focused Xogot 
 - <doc:Importing-Assets>
 - <doc:Asset-Placer>
 - <doc:Xogot-Modeler>
+- <doc:Xogot-Modeler-Actions>
 - <doc:Xogot-Modeler-HOW-TOs>
 - <doc:Input-Map>
 - <doc:Onscreen-Controls>
@@ -202,6 +203,7 @@ Follow a complete learning path for Xogot or jump directly into a focused Xogot 
 
 - <doc:Asset-Placer>
 - <doc:Xogot-Modeler>
+- <doc:Xogot-Modeler-Actions>
 - <doc:Xogot-Modeler-HOW-TOs>
 - <doc:csg_tools>
 - <doc:using_gridmaps>

@@ -3,9 +3,9 @@
         > This page is a continuation of <doc:06.modeler_collision>. Please open your
         > `courtyard.tscn` scene.
 
-        In the reference, see <doc:/documentation/Xogot/Xogot-Modeler#Make-a-mesh-editable>,
-        <doc:/documentation/Xogot/Xogot-Modeler#Boolean-operations>, <doc:/documentation/Xogot/Xogot-Modeler#Export>, and
-        <doc:/documentation/Xogot/Xogot-Modeler#Remove-the-editable-data>.
+        In the reference, see <doc:Xogot-Modeler#Make-a-mesh-editable>,
+        <doc:Xogot-Modeler#Boolean-operations>, <doc:Xogot-Modeler#Export>, and
+        <doc:Xogot-Modeler#Remove-the-editable-data>.
 
         Modeler can also edit meshes that it did not create. In this tutorial, you
         convert a primitive mesh and a CSG shape, you cut a round window with a
@@ -211,7 +211,7 @@
             }
 
             Congratulations, you built a complete level with Xogot Modeler. For all of
-            the tools, actions, and shortcuts, see <doc:/documentation/Xogot/Xogot-Modeler>.
+            the tools, actions, and shortcuts, see <doc:Xogot-Modeler>.
         }
     }
 }

@@ -3,10 +3,10 @@
         > This page is a continuation of <doc:02.modeler_customize_shapes>. Please open
         > your `courtyard.tscn` scene.
 
-        In the reference, see <doc:/documentation/Xogot/Xogot-Modeler#Select-elements>,
-        <doc:/documentation/Xogot/Xogot-Modeler#Transform-elements>, <doc:/documentation/Xogot/Xogot-Modeler#Actions>, and
-        <doc:/documentation/Xogot/Xogot-Modeler#Cut-a-face>. For short procedures, see
-        <doc:/documentation/Xogot/Xogot-Modeler-HOW-TOs>.
+        In the reference, see <doc:Xogot-Modeler#Select-elements>,
+        <doc:Xogot-Modeler#Transform-elements>, <doc:Xogot-Modeler#Actions>, and
+        <doc:Xogot-Modeler#Cut-a-face>. For short procedures, see
+        <doc:Xogot-Modeler-HOW-TOs>.
 
         Shapes are a good start, but real levels need custom details. In this
         tutorial, you select and change the elements of a mesh. You raise the
