@@ -11,9 +11,6 @@
         only kills the player if they're on the floor, so jumping *over* a
         snake is a safe strategy.
 
-        When the player dies, they emit a `hit` signal, and `Main` stops
-        spawning new mobs.
-
         @Image(source: 08-03.capsule-shape-settings.png)
     }
     @Section(title: "Adding the hurt box") {

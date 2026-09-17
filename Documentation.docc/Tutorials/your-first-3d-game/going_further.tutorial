@@ -6,21 +6,21 @@
         In this series, we went over a wide range of techniques and editor
         features. Hopefully, you've witnessed how intuitive Xogot's scene system
         can be and learned a few tricks you can apply in your projects.
-
-        But we just scratched the surface: Xogot has a lot more in store for you
-        to save time creating games. And you can learn all that by browsing the
-        documentation.
-
-        Where should you begin? Below, you'll find a few pages to start exploring
-        and build upon what you've learned so far.
-
-        But before that, here's a link to download a completed version of the
-        project: <https://github.com/xogot-projects/Save-the-Axolotl-Snake-Stomp>.
         
         @Image(source: going-01.further-learning-resources.png)
     }
     @Section(title: "Exploring the manual") {
         @ContentAndMedia {
+            But we just scratched the surface: Xogot has a lot more in store for you
+            to save time creating games. And you can learn all that by browsing the
+            documentation.
+
+            Where should you begin? Below, you'll find a few pages to start exploring
+            and build upon what you've learned so far.
+
+            But before that, here's a link to download a completed version of the
+            project: <https://github.com/xogot-projects/Save-the-Axolotl-Snake-Stomp>.
+
             The manual is your ally whenever you have a doubt or you're curious
             about a feature. It does not contain tutorials about specific game
             genres or mechanics. Instead, it explains how Xogot works in

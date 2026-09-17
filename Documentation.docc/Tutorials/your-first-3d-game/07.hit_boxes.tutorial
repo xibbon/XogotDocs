@@ -11,17 +11,13 @@
         the next lesson. For now, the player is invincible; we just want
         the satisfying part, the squash.
 
-        Putting the sensor on the mob keeps the player's code simple: the
-        mob is in charge of its own life and death, and tells the rest of
-        the game what happened through a signal.
-
-        First, though, we need to set up physics layers so the right
-        bodies listen to each other.
-
         @Image(source: 07-08.resize-hit-box-shape.png)
     }
     @Section(title: "Controlling physics interactions") {
         @ContentAndMedia {
+            First, though, we need to set up physics layers so the right
+            bodies listen to each other.
+
             Physics bodies have access to two complementary properties: layers
             and masks. Layers define on which physics layer(s) an object is.
 
@@ -116,6 +112,10 @@
             The hit box is the area that detects a stomp. We want it to
             cover the snake's body, so a wide, thin box works
             well. It should sit just above the model's back.
+
+            Putting the sensor on the mob keeps the player's code simple: the
+            mob is in charge of its own life and death, and tells the rest of
+            the game what happened through a signal.
 
         }
         @Steps {

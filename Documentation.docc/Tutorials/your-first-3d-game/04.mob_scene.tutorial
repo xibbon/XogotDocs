@@ -8,11 +8,6 @@
         under a `Pivot`. We'll also add a fake blob shadow under the mob so
         it's easier to read its position on the ground.
 
-        We won't add the gameplay collision shapes for hitting or squashing
-        the mob in this lesson — that comes in a later lesson dedicated to
-        hit boxes and hurt boxes. For now, the mob just needs to look right
-        and move.
-
         @Image(source: 04-04.scale-rotate-snake-armature.png)
     }
     @Section(title: "Creating a wrapper scene for the mob model") {
@@ -24,6 +19,11 @@
 
             The snake's `Move` animation should also loop seamlessly. We'll
             configure that in the import settings.
+
+            We won't add the gameplay collision shapes for hitting or squashing
+            the mob in this lesson — that comes in a later lesson dedicated to
+            hit boxes and hurt boxes. For now, the mob just needs to look right
+            and move.
 
             @Image(source: 04-01.mob-wrapper-scene-concept.png)
         }
