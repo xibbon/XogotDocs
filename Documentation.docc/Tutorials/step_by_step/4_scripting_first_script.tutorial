@@ -1,5 +1,8 @@
 @Tutorial(time: 35) {
     @Intro(title: "Creating your first script") {
+        Write your first GDScript and use it to rotate and move the Godot icon.
+
+        This lesson assumes some basic programming familiarity.
 
         @Image(source: "scripting_first_script_rotating_godot.gif")
     }

@@ -1,5 +1,7 @@
 @Tutorial(time: 20) {
     @Intro(title: "Creating instances") {
+        Learn how saved scenes work as reusable blueprints. You will instance a ball
+        scene several times, customize the copies, and see how source changes affect them.
 
         @Image(source: "instantcing_multi_ball_scene.gif")
     }

@@ -1,12 +1,5 @@
 @Tutorial(time: 15) {
     @Intro(title: "Convert, Combine, and Export Meshes") {
-        > This page is a continuation of <doc:06.modeler_collision>. Please open your
-        > `courtyard.tscn` scene.
-
-        In the reference, see <doc:Xogot-Modeler#Make-a-mesh-editable>,
-        <doc:Xogot-Modeler#Boolean-operations>, <doc:Xogot-Modeler#Export>, and
-        <doc:Xogot-Modeler#Remove-the-editable-data>.
-
         Modeler can also edit meshes that it did not create. In this tutorial, you
         convert a primitive mesh and a CSG shape, you cut a round window with a
         Boolean operation, and you prepare the courtyard for your game.
@@ -19,6 +12,11 @@
         @ContentAndMedia {
             Make Editable copies an existing mesh into a new editable mesh. The source
             does not change.
+
+            > See also: For more about conversion and export, see
+            > <doc:Xogot-Modeler#Make-a-mesh-editable>,
+            > <doc:Xogot-Modeler#Boolean-operations>, <doc:Xogot-Modeler#Export>, and
+            > <doc:Xogot-Modeler#Remove-the-editable-data>.
 
             @Image(source: "modeler-07-boulder.png",
                    alt: "A boulder made from an edited SphereMesh")
@@ -65,6 +63,9 @@
             The converted mesh keeps the UV layout of the source mesh, so its texture
             looks the same. In the UV Editor, its faces show as Manual UVs.
         }
+
+        > Important: This lesson continues from <doc:06.modeler_collision>. Open your
+        > `courtyard.tscn` scene before you begin.
     }
 
     @Section(title: "Bake a CSG Shape") {
@@ -210,8 +211,10 @@
                        alt: "The finished courtyard level")
             }
 
-            Congratulations, you built a complete level with Xogot Modeler. For all of
-            the tools, actions, and shortcuts, see <doc:Xogot-Modeler>.
+            Congratulations, you built a complete level with Xogot Modeler.
+
+            > See also: For all of the tools, actions, and shortcuts, see
+            > <doc:Xogot-Modeler>.
         }
     }
 }

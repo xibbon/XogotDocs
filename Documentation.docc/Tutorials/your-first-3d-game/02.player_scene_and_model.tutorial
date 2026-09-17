@@ -3,29 +3,8 @@
         In this lesson, we'll build the `Player` scene from a
         [CharacterBody3D](https://docs.godotengine.org/en/stable/classes/class%5Fcharacterbody3d.html#class-characterbody3d),
         then import the axolotl 3D model included in the starter project and
-        instance it inside the scene. By the end, you'll have a character in
-        the viewport, idling on the spot, ready to move.
-
-        Character bodies are complementary to the area and rigid bodies used in the
-        2D game tutorial. Like rigid bodies, they can move and collide with the
-        environment, but instead of being controlled by the physics engine,
-        **you** dictate their movement. You will see how we use the node's unique
-        features when we code the jump and squash mechanics.
-
-        > See also: To learn more about the different physics node types, see the
-        > [Physics introduction](https://docs.godotengine.org/en/stable/tutorials/physics/physics%5Fintroduction.html#doc-physics-introduction).
-
-        When you import a 3D model into Xogot, the file becomes a scene. You
-        can then instance it inside other scenes, just like any other scene
-        file. But for game characters, you'll often want to apply a few tweaks
-        — scale the model, rotate it to face the right direction, or set an
-        animation to autoplay — without modifying the original file. Xogot
-        gives you a clean way to do this: **scene inheritance**.
-
-        We'll create a wrapper scene that inherits the `.glb` file, apply our
-        tweaks there, and then instance that wrapper inside the `Player` scene.
-        This keeps the original import clean and makes the tweaks easy to
-        review.
+        instance it inside the scene. By the end, the character will be idling in the
+        viewport and ready to move.
 
         @Image(source: 02-01.character-body3d-concept.png)
     }
@@ -37,6 +16,18 @@
             We're also going to create a basic rig for our character's 3D model. This
             will allow us to rotate the model later via code while it plays an
             animation.
+
+            Character bodies can move and collide with the environment, but unlike
+            rigid bodies, their movement is controlled by your code. We will use those
+            features later for the jump and squash mechanics.
+
+            > See also: To learn more about the available physics node types, see the
+            > [Physics introduction](https://docs.godotengine.org/en/stable/tutorials/physics/physics%5Fintroduction.html#doc-physics-introduction).
+
+            Xogot imports a 3D model as a scene. For a game character, a wrapper scene
+            lets you adjust the model's scale, orientation, and animation settings
+            without modifying the imported `.glb` file. Later in this lesson, you will
+            create that inherited wrapper and instance it inside the `Player` scene.
 
             @Image(source: 02-02.player-scene-structure.png)
         }

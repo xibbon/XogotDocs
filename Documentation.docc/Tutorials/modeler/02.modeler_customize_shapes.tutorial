@@ -1,11 +1,5 @@
 @Tutorial(time: 15) {
     @Intro(title: "Customize and Position Shapes") {
-        > This page is a continuation of <doc:01.modeler_block_out>. Please open your
-        > `courtyard.tscn` scene.
-
-        In the reference, see <doc:Xogot-Modeler#Shapes-and-settings> and
-        <doc:Xogot-Modeler#Change-a-shape>.
-
         Each Modeler shape keeps a recipe: its size, pivot, rotation, and settings.
         In this tutorial, you change recipes to add a gate, an arch, stairs, and a
         fountain. You also move the shapes into position.
@@ -17,6 +11,10 @@
     @Section(title: "Look at a Shape Recipe") {
         @ContentAndMedia {
             The Editable Mesh inspector shows the recipe of the selected shape.
+
+            > See also: For more about shape recipes, see
+            > <doc:Xogot-Modeler#Shapes-and-settings> and
+            > <doc:Xogot-Modeler#Change-a-shape>.
 
             @Image(source: "modeler-02-inspector-overview.png",
                    alt: "The Editable Mesh inspector for a wall Cube")
@@ -54,6 +52,9 @@
                        alt: "The Pivot control set to First Vertex, with the gizmo at the wall corner")
             }
         }
+
+        > Important: This lesson continues from <doc:01.modeler_block_out>. Open
+        > your `courtyard.tscn` scene before you begin.
     }
 
     @Section(title: "Position the Pillars") {

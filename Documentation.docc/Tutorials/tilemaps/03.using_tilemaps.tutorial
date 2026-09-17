@@ -1,16 +1,16 @@
 @Tutorial(time: 20) {
     @Intro(title: "Using the TileMap editor") {
-        > This page assumes you have created or downloaded a TileSet already. If not,
-            please read <doc:01.setting_up_tileset_and_tilesheet> first as you will need a `TileSet`
-            to create a `TileMap`.
-        In this tutorial we will go over how to use the **TileMap** editor once you've created a `TileSet` resource.
+        Use the TileMap editor to organize layers, place reusable patterns, and build a
+        level from a `TileSet` resource.
+
         @Image(source: "tilemap_header.gif")
     }
     @Section(title: "Why use a TileMapLayer node?") {
         @ContentAndMedia {
-        A tilemap is a grid of tiles used to create a game's layout. There are several
-        benefits to using [`TileMapLayer`](https://docs.godotengine.org/en/stable/classes/class_tilemaplayer.html#class-tilemaplayer) nodes to design your levels.
-        @Image(source: "tilemap_overview.png")
+            A tilemap is a grid of tiles used to create a game's layout. There are several
+            benefits to using [`TileMapLayer`](https://docs.godotengine.org/en/stable/classes/class_tilemaplayer.html#class-tilemaplayer) nodes to design your levels.
+
+            @Image(source: "tilemap_overview.png")
         }
         
         First, they make it possible to draw the layout by "painting" the tiles onto a
@@ -24,6 +24,9 @@
 
         @Steps {
         }
+
+        > Important: This lesson requires an existing `TileSet`. If you do not have
+        > one, complete <doc:01.setting_up_tileset_and_tilesheet> first.
     }
     @Section(title: "Saving the TileSet in the TileMapLayer") {
         @ContentAndMedia {

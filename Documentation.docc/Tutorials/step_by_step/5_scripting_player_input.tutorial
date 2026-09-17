@@ -1,5 +1,7 @@
 @Tutorial(time: 30) {
     @Intro(title: "Listening to player input") {
+        Make the Godot icon respond to continuous player input. You will read movement
+        actions in GDScript and enable Xogot's virtual controller for touch input.
 
         @Image(source: "scripting_first_script_moving_with_input.gif")
     }

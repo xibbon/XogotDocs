@@ -6,11 +6,6 @@
         In this first tutorial, you draw the floor, the walls, a platform, pillars,
         and a flower bed. You use only primitive shapes.
 
-        Every tool in this series has a full description in the reference page
-        <doc:Xogot-Modeler>. This tutorial uses <doc:Xogot-Modeler#Add-a-mesh>,
-        <doc:Xogot-Modeler#Draw-a-shape>, <doc:Xogot-Modeler#Draw-a-Poly-Shape>, and
-        <doc:Xogot-Modeler#Move-the-camera>.
-
         @Image(source: "modeler-01-intro-blockout.png",
                alt: "The blocked-out courtyard: a floor, four walls, a platform, pillars, and a flower bed")
     }
@@ -18,6 +13,11 @@
     @Section(title: "Prepare the Scene") {
         @ContentAndMedia {
             Modeler works in the 3D editor. Start with an empty 3D scene.
+
+            > See also: For details about the tools in this lesson, see
+            > <doc:Xogot-Modeler#Add-a-mesh>, <doc:Xogot-Modeler#Draw-a-shape>,
+            > <doc:Xogot-Modeler#Draw-a-Poly-Shape>, and
+            > <doc:Xogot-Modeler#Move-the-camera>.
 
             @Image(source: "modeler-01-empty-scene.png",
                    alt: "A new 3D scene with a Node3D root named Courtyard")

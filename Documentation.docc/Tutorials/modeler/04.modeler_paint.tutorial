@@ -1,10 +1,5 @@
 @Tutorial(time: 15) {
     @Intro(title: "Paint Materials, Colors, and Shading") {
-        > This page is a continuation of <doc:03.modeler_edit_elements>. Please open
-        > your `courtyard.tscn` scene.
-
-        In the reference, see <doc:Xogot-Modeler#Paint>.
-
         Modeler applies materials and colors to each face. In this tutorial, you paint
         the floor, the walls, and the fountain, and you control smooth and hard
         shading.
@@ -16,6 +11,9 @@
     @Section(title: "Open Paint") {
         @ContentAndMedia {
             The Paint panel has three tabs: Material, Colour, and Shading.
+
+            > See also: For a complete description of the painting tools, see
+            > <doc:Xogot-Modeler#Paint>.
 
             @Image(source: "modeler-04-paint-panel.png",
                    alt: "The Paint panel with the Material tab open")
@@ -42,6 +40,10 @@
                        alt: "The Paint header showing the floor as the target")
             }
         }
+
+        > Important: This lesson continues from
+        > <doc:03.modeler_edit_elements>. Open your `courtyard.tscn` scene before you
+        > begin.
     }
 
     @Section(title: "Paint Materials") {

@@ -1,13 +1,5 @@
 @Tutorial(time: 20) {
     @Intro(title: "Edit Vertices, Edges, and Faces") {
-        > This page is a continuation of <doc:02.modeler_customize_shapes>. Please open
-        > your `courtyard.tscn` scene.
-
-        In the reference, see <doc:Xogot-Modeler#Select-elements>,
-        <doc:Xogot-Modeler#Transform-elements>, <doc:Xogot-Modeler#Actions>, and
-        <doc:Xogot-Modeler#Cut-a-face>. For short procedures, see
-        <doc:Xogot-Modeler-HOW-TOs>.
-
         Shapes are a good start, but real levels need custom details. In this
         tutorial, you select and change the elements of a mesh. You raise the
         gatehouse, and you add windows, a doorway, and beveled edges.
@@ -20,6 +12,12 @@
         @ContentAndMedia {
             The viewport HUD controls the mode. In Vertex, Edge, and Face modes, you
             select and change the parts of one mesh.
+
+            > See also: For more about these tools, see
+            > <doc:Xogot-Modeler#Select-elements>,
+            > <doc:Xogot-Modeler#Transform-elements>, <doc:Xogot-Modeler#Actions>, and
+            > <doc:Xogot-Modeler#Cut-a-face>. For short procedures, see
+            > <doc:Xogot-Modeler-HOW-TOs>.
 
             @Image(source: "modeler-03-hud-modes.png",
                    alt: "The viewport HUD with Object, Vertex, Edge, and Face modes and the selection count")
@@ -76,6 +74,10 @@
                        alt: "A rectangle selection over vertices, with X-ray showing hidden selected vertices")
             }
         }
+
+        > Important: This lesson continues from
+        > <doc:02.modeler_customize_shapes>. Open your `courtyard.tscn` scene before
+        > you begin.
     }
 
     @Section(title: "Raise the Gatehouse") {

@@ -1,6 +1,8 @@
 @Tutorial(time: 15, projectFiles: "save_the_axolotl_2d_assets.zip") {
     @Intro(title: "Setting up the project") {
-            
+        Create and configure the project for Save the Axolotl, then import the assets
+        you will use throughout the game.
+
         @Image(source: setting_up.png,
                alt: "Xogot Welcome Screen")
     }

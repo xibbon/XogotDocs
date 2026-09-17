@@ -1,5 +1,7 @@
 @Tutorial(time: 25) {
     @Intro(title: "Getting started with TileSets") {
+        Create a `TileSet` from a tilesheet, configure its tiles, and add a collection
+        of reusable scenes.
 
         @Image(source: "using_scene_collection_header.gif")
     }

@@ -1,10 +1,5 @@
 @Tutorial(time: 20) {
     @Intro(title: "Align Textures with the UV Editor") {
-        > This page is a continuation of <doc:04.modeler_paint>. Please open your
-        > `courtyard.tscn` scene.
-
-        In the reference, see <doc:Xogot-Modeler#UV-Editor>.
-
         UVs tell the renderer which part of a texture goes on each part of a face. In
         this tutorial, you use the UV Editor to set the texture size on the floor, to
         line up the texture across the walls, and to fit an image on the sign.
@@ -17,6 +12,9 @@
         @ContentAndMedia {
             The UV Editor opens in the **Mesh UV** tab of the bottom panel. It shows the
             UVs of the selected mesh on a flat canvas.
+
+            > See also: For a complete description of its tools, see
+            > <doc:Xogot-Modeler#UV-Editor>.
 
             @Image(source: "modeler-05-mesh-uv-panel.png",
                    alt: "The Mesh UV bottom panel with the toolbar, canvas, control groups, and status bar")
@@ -74,6 +72,9 @@
 
             }
         }
+
+        > Important: This lesson continues from <doc:04.modeler_paint>. Open your
+        > `courtyard.tscn` scene before you begin.
     }
 
     @Section(title: "Tile the Floor") {

@@ -1,6 +1,8 @@
 @Tutorial(time: 20) {
     @Intro(title: "Editing your TileSet resource") {
-        > This page is a continuation of <doc:01.setting_up_tileset_and_tilesheet>. To complete this tutorial you will need a `TileSet` resource created and attached to a `TileMapLayer` node.
+        Add collision, navigation, occlusion, custom data, and terrain information to
+        the tiles in a `TileSet` resource.
+
         @Image(source: "using_tilesets_collision_header.png")
     }
     @Section(title: "Adding collision, navigation and occlusion to the TileSet") {
@@ -73,6 +75,10 @@
                 @Image(source: "using_tilesets_drawing_custom_collision_paint.png")
             }
         }
+
+        > Important: This lesson continues from
+        > <doc:01.setting_up_tileset_and_tilesheet>. Before you begin, create a
+        > `TileSet` resource and attach it to a `TileMapLayer` node.
     }
     @Section(title: "Assigning custom metadata to the TileSet's tiles") {
         @ContentAndMedia {

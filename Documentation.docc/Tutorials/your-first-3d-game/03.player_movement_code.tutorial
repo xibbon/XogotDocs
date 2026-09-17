@@ -4,17 +4,6 @@
         to move the character. With the axolotl model now in the scene, you'll
         see it rotate to face its movement direction.
 
-        > Note: Xogot uses GDScript, and we'll follow the GDScript naming
-        > conventions in this project:
-        >
-        > - Classes (nodes) use PascalCase.
-        > - Variables and functions use snake\_case.
-        > - Constants use ALL\_CAPS.
-        >
-        > See the [GDScript style guide](https://docs.godotengine.org/en/stable/tutorials/scripting/gdscript/gdscript%5Fstyleguide.html#doc-gdscript-styleguide)
-        > for more details, and be careful to type method names precisely when
-        > connecting signals.
-
         @Image(source: 03-18.game-orthogonal-view.png)
     }
     @Section(title: "Starting the player script") {
@@ -22,6 +11,12 @@
             We'll start by adding an empty script to the `Player` node. We'll then
             define the class's properties: a movement speed, a fall acceleration
             representing gravity, and a velocity we'll use to move the character.
+
+            > Note: This project follows the GDScript naming conventions: classes and
+            > nodes use PascalCase, variables and functions use snake\_case, and
+            > constants use ALL\_CAPS. See the
+            > [GDScript style guide](https://docs.godotengine.org/en/stable/tutorials/scripting/gdscript/gdscript%5Fstyleguide.html#doc-gdscript-styleguide)
+            > for more details.
             
             @Image(source: 03-18.game-orthogonal-view.png)
         }

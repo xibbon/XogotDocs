@@ -1,10 +1,5 @@
 @Tutorial(time: 10) {
     @Intro(title: "Add Collision and Triggers") {
-        > This page is a continuation of <doc:05.modeler_uvs>. Please open your
-        > `courtyard.tscn` scene.
-
-        In the reference, see <doc:Xogot-Modeler#Collision-and-triggers>.
-
         A level must stop the player and detect events. In this tutorial, you look at
         the collision that Modeler makes, you add an invisible wall, and you add a
         trigger at the gate.
@@ -16,6 +11,9 @@
     @Section(title: "Look at Generated Collision") {
         @ContentAndMedia {
             Modeler adds a collision node to each new mesh.
+
+            > See also: For more about collision and triggers, see
+            > <doc:Xogot-Modeler#Collision-and-triggers>.
 
             @Image(source: "modeler-06-collision-child.png",
                    alt: "The Scene tree with a generated collision child under a wall")
@@ -45,6 +43,9 @@
                        alt: "The collider settings on the Modeler page of Editor Settings")
             }
         }
+
+        > Important: This lesson continues from <doc:05.modeler_uvs>. Open your
+        > `courtyard.tscn` scene before you begin.
     }
 
     @Section(title: "Add an Invisible Wall") {

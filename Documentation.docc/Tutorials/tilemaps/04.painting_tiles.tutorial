@@ -1,6 +1,8 @@
 @Tutorial(time: 15) {
     @Intro(title: "Painting with TileMaps") {
-        > This page is a continuation of <doc:03.using_tilemaps>. Please make sure you have a `TileMapLayer` and `TileSet` resource ready.
+        Paint a level with single tiles, patterns, lines, rectangles, fills, and terrain
+        tools in the TileMap editor.
+
         @Image(source: "terrain_painting.gif")
     }
     @Section(title: "Selecting tiles and other painting tools") {
@@ -114,6 +116,9 @@
             All tiles within the selection are always removed.
             
         }
+
+        > Important: This lesson continues from <doc:03.using_tilemaps>. Before you
+        > begin, have a `TileMapLayer` and `TileSet` resource ready.
     }
     @Section(title: "Handling missing tiles") {
         @ContentAndMedia {

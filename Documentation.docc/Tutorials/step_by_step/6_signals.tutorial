@@ -1,5 +1,7 @@
 @Tutorial(time: 25) {
     @Intro(title: "Using signals") {
+        Use signals to let nodes react to one another without tightly coupling their
+        code. You will connect a button that starts and stops the Godot icon.
 
         @Image(source: "signals_01_final.png")
     }
