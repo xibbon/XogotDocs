@@ -6,8 +6,8 @@
     ["/documentation/xogot/xogot-connect", { kicker: "Remote tools" }],
     ["/documentation/xogot/faq", { kicker: "Help" }],
     ["/documentation/xogot/command-palette", { kicker: "Productivity" }],
-    ["/documentation/xogot/xogot-modeler", { kicker: "World building" }],
-    ["/documentation/xogot/asset-placer", { kicker: "World building" }],
+    ["/documentation/xogot/xogot-modeler", { kicker: "World Building" }],
+    ["/documentation/xogot/asset-placer", { kicker: "World Building" }],
     ["/documentation/xogot/embedded-game-view", { kicker: "Workflow" }],
     ["/documentation/xogot/onscreen-controls", { kicker: "Input" }],
   ]);
