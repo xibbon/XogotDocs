@@ -187,14 +187,14 @@
             @Step {
                 With the new UI node selected, tap the **+** button at the top of the Scene tree to add a child node.
                 
-                Search for `VirtualJoystick`, select it, and tap **Create**.
+                Search for `VirtualJoystick`, select it, and tap **Add**.
                 
                 Rename the node to "Virtual Joystick Left".
                 
                 @Image(source: fin_instantiate.png)
             }
             @Step {
-                Select the Virtual Joystick node and in the Inspector set the `Joystick Mode` to "Following" (1) and the `Visibility Mode` to "When Touched" (2).
+                Select the Virtual Joystick node and in the Inspector set the `Joystick Mode` to "Following" and the `Visibility Mode` to "When Touched".
                 
                 > Tip: In **Following** mode, the joystick dynamically appears wherever the player touches the screen and follows their finger if they move beyond the clamp zone.
                 
@@ -210,7 +210,7 @@
                 @Image(source: fin_actions.png)
             }
             @Step {
-                With the Virtual Joystick Left node selected, inside the anchors (1), set the anchor mode to `Full Rect` (2).
+                With the Virtual Joystick Left node selected, inside the anchors, set the anchor mode to `Full Rect`.
                 
                 This expands the control to cover the entire screen, allowing the player to touch anywhere to control the character.
                 
