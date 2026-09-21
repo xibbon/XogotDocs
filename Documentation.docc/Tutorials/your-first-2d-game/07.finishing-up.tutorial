@@ -176,52 +176,44 @@
     }
     @Section(title: "Making your game even more customizable") {
         @ContentAndMedia {
-            For extra credit: Let's make the controller a better more customizable experience for players by using an add-on from the Asset Library!
+            For extra credit: Let's give the player on-screen touch controls by using Godot's built-in VirtualJoystick node!
         }
         @Steps {
-            We're going to use an add-on for Xogot called [*Virtual Joystick*](https://github.com/MarcoFazioRandom/Virtual-Joystick-Godot).
-            @Step {
-                Tap on the dropdown next to the Inspector button (1) and access the `Asset Library` (2)
-                @Image(source: fin_asset_library_menu.png)
-            }
-            @Step {
-                Find or search for Virtual Joystick (3) and once selected press **Import** (4).
-                > Tip: There are lots of other add-ons for Xogot, with more being added all the time; trying out the available add-ons is a great way to learn Xogot.
-                @Image(source: fin_asset_library_browser.png)
-            }
-            @Step {
-                Exit the **Asset Library** and you should now have a `addons` folder in your working directory.
-                Inside you'll find the `virtual_joystick` folder containing its scene.
-                
-                >Tip: You can also find example implementations inside the folder `test` if you'd like to dive deeper.
-                @Image(source: fin_assets.png)
-            }
+            We're going to use Godot's built-in [`VirtualJoystick`](https://docs.godotengine.org/en/4.7/classes/class_virtualjoystick.html) node to provide responsive touch controls without needing any third-party add-ons.
             @Step {
                 In the Main scene, with the Main node selected; Add a CanvasLayer node (1) and rename it to "UI" (2).
                 @Image(source: fin_rename_ui.png)
             }
             @Step {
-                With the new UI node selected; Instantiate a new child scene (1) and search for the Virtual Joystick scene: `virtual_joystick_scene.tscn` (2).
+                With the new UI node selected, tap the **+** button at the top of the Scene tree to add a child node.
                 
-                Rename the node to "Virtual Joystick Left"
+                Search for `VirtualJoystick`, select it, and tap **Add**.
+                
+                Rename the node to "Virtual Joystick Left".
                 
                 @Image(source: fin_instantiate.png)
             }
             @Step {
-                Select the Joystick node and in the Inspector set the `Joystick Mode` to "Following" (1) and the `Visibility Mode` to "When Touched" (2)
+                Select the Virtual Joystick node and in the Inspector set the `Joystick Mode` to "Following" and the `Visibility Mode` to "When Touched".
+                
+                > Tip: In **Following** mode, the joystick dynamically appears wherever the player touches the screen and follows their finger if they move beyond the clamp zone.
+                
                 @Image(source: fin_joystick_settings.png)
             }
             @Step {
-                Next, with the Inspector still open, change `action_left` through to `action_down` to equal the names of the custom input actions we added in the project settings.
+                Next, with the Inspector still open, configure `action_left`, `action_right`, `action_up`, and `action_down` to equal the names of the custom input actions we added in the project settings: `move_left`, `move_right`, `move_up`, and `move_down`.
                 
                 It should look like this.
                 
-                > Important: Make sure you keep track of capitalization as these variables are case-sensitive.
+                > Important: Make sure you keep track of capitalization, as these action names are case-sensitive.
                 
                 @Image(source: fin_actions.png)
             }
             @Step {
-                With the Virtual Joystick Left node selected, inside the achors (1), set the anchor mode to `Full Rect` (2).
+                With the Virtual Joystick Left node selected, inside the anchors, set the anchor mode to `Full Rect`.
+                
+                This expands the control to cover the entire screen, allowing the player to touch anywhere to control the character.
+                
                 @Image(source: fin_full_rect.png)
             }
             Finally, let's make sure the joystick is hidden when in the main menu, otherwise it would show whenever a player touched the screen. 
@@ -243,7 +235,7 @@
             
             Now, we also need to disable the iOS virtual controller we enabled earlier in this tutorial. 
             @Step {
-                Hit the dropdown next to the Inspector button, press Settings and then inside **Project Settings** go to **Input Devices > Virtual Controller** and set `Enable Controller` and `Enable Left Thumbstick` to **Disabled** by hitting the toggle switches.
+                Hit the dropdown next to the Inspector button, press Settings and then inside **Project Settings** go to **Input Devices > Virtual Controller** and set `Enable Controller` and `Enable Right Thumbstick` to **Disabled** by hitting the toggle switches.
                 @Image(source: fin_project_settings.png)
             }
             With that, we are finally done customizing the new Virtual Controller! Congrats!
