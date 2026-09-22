@@ -2,6 +2,112 @@
 
 Release notes for our preview release of Xogot to TestFlight.
 
+## Release 5304
+
+## Improvements
+
+- Added experimental **Bezier Plane** modeling with flat strips, improved
+  tangent editing, plane-constrained dragging, clearer handle selection, and
+  width controls.
+
+- Added experimental **Bezier Block** modeling, including extrusion height
+  editing by touch, pointer, or Options controls, plus editable height in saved
+  recipes.
+
+- Added iPad trackpad and mouse support for setting modeler extrusion height.
+
+## Bug Fixes
+
+- Fixed iOS GDExtension loading and extension-list writes. (#3268)
+
+- Fixed a call that could crash the Duo simulator.
+
+- Fixed Metal shader reflection and sampler binding issues on Duo.
+
+- Avoided repeated resource-type traversal when determining allowed types. (#3277)
+
+## Release 5295
+
+### Improvements
+
+- Redesigned the Modeler mesh palette and iOS editing HUD for a cleaner, more
+  discoverable interface, including quick-access Selection and Handles controls.
+
+- Added keyboard-shortcut hints to viewport context menus when using a hardware
+  keyboard.
+
+- Improved localization coverage and added translations for new and existing
+  editor UI.
+
+
+## Bug Fixes
+
+- Fixed the Modeler options page not displaying correctly on iOS. (#3260)
+
+- Fixed a regression that could cause a crash while clearing the remote debugger
+  inspector. (#3264)
+
+## Release 5289
+
+### Improvements
+
+- Added touch support for setting Modeler shape height on iOS and kept the
+  undo/redo controls clear of the on-screen HUD.
+
+- Added temporary snap overrides for Modeler editing, keeping custom and native
+  transform gizmos in sync.
+
+- Improved Modeler performance during editing and dragging, including faster
+  mesh loading, fewer inspector updates, lighter previews, and more efficient
+  gizmo rendering.
+
+- Added downloading of the model catalog from pi.dev, so newly released models
+  become available without an app update. #3212
+
+- Expanded localization across editor commands, settings, exporting, and Modeler
+  workflows.
+
+## Bug Fixes
+
+- Restored on-screen keyboard support for multiline TextEdit and CodeEdit
+  controls in the editor. #3255
+
+- Fixed Modeler extrusion and grouped moves so holding Shift no longer
+  incorrectly changes the configured snap increment.
+
+- Fixed several Modeler presentation issues, including incorrect labels and the
+  paint color picker background.
+
+## Release 5277
+
+### Improvements
+
+- Modeler: Improved modeler vertex handles with clearer, circular rendering and
+  better visibility.
+
+- Modeler: Improved modeler toolbar placement so it remains accessible above the
+  bottom panel and avoids viewport occlusion.
+
+- Modeler: Remember the last tab opened in the paint window.
+
+- Modeler: add support for dissolving vertices, edges, and faces.
+
+- Added Modeler pivot controls that preserve world geometry and child placement
+  while supporting center, first-vertex, and custom pivots.
+
+- Improved Modeler UV editing, including UV-orientation preservation and 
+  clearer feedback for unavailable actions.
+
+### Bug Fixes
+
+- Prevented conflicts between Xogot’s commands and built-in Godot editor
+
+- Modeler: Fixed gizmo selection tracking when node instances are recreated.
+
+- Fixed Modeler loop and ring selection being swapped on quad meshes.
+
+- Fixed command conflicts between Xogot and built-in Godot commands.
+
 ## Release 5261
 
 - In this version we are switching to a Godot 4.7-based runtime engine,

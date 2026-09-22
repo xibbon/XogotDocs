@@ -23,6 +23,100 @@ The current Mac preview has the following known limitations:
 
 # Releases
 
+## Build 2203
+
+## Improvements
+
+- Added experimental **Bezier Plane** modeling with flat strips, improved
+  tangent editing, plane-constrained dragging, clearer handle selection, and
+  width controls.
+
+- Added experimental **Bezier Block** modeling, including extrusion height
+  editing by touch, pointer, or Options controls, plus editable height in saved
+  recipes.
+
+- Added MCP server support to the coding assistant, including configuration and
+  management from AI settings, Keychain-backed bearer tokens, platform
+  filtering, and improved MCP runtime lifecycle. (#3095)
+
+- Added keyboard shortcut hints to the modeler viewport context menu.
+
+- Synchronized the native editor and Godot editor when the bottom panel is
+  closed.
+
+## Bug Fixes
+
+- Fixed a shutdown crash caused by deferred editor selection callbacks during
+  Godot teardown. (#3262)
+
+- Fixed a regression where clearing the remote debugger inspector could access
+  editor docks after they had started exiting. (#3264)
+
+- Fixed embedded game screenshot support by replacing dynamic method invocation
+  and stale cached method bindings with SwiftGodot APIs. (#3272)
+
+- Avoided repeated resource-type traversal when determining allowed types.
+  (#3277)
+
+
+## Build 2186
+
+Fixes the upgrade path from Xogot 4.6 to 4.7
+
+## Build 2183
+
+Intermediate build to fix the upgrade paths  from 4.6 to 4.7
+
+## Build 2180
+
+### Improvements
+
+- Modeler: Performance improvements during mesh editing and drag operations.
+
+- Modeler: now snap is consistent across gizmos.
+
+- Coding Assistant: it will now for downloading the latest AI model catalog from
+  pi.dev, so newly released models become available without an app update
+  (#3212).
+
+
+## Bug Fixes
+
+- The macOS file picker back and forward buttons now work (#3250).
+
+- The Asset Store search field’s clear now works (#3249).
+
+- Fixed the on-screen keyboard not appearing for multiline text fields and code
+  editors (#3255).
+
+- Fixed stale mouse focus after opening an exclusive child window, which could
+  break VisualShader node dragging and shader toolbar interactions.
+
+## Build 2172
+
+### Improvements
+
+- Modeler: Improved modeler vertex handles with clearer, circular rendering and
+  better visibility.
+
+- Modeler: Improved modeler toolbar placement so it remains accessible above the
+  bottom panel and avoids viewport occlusion.
+
+- Modeler: Remember the last tab opened in the paint window.
+
+### Bug Fixes
+
+- Fixed a macOS hang when opening Project Settings.
+
+- Fixed Command-A incorrectly invoking add-child while a sheet is presented.
+
+- Prevented conflicts between Xogot’s commands and built-in Godot editor
+  shortcuts.
+
+- Modeler: Fixed gizmo selection tracking when node instances are recreated.
+
+- Modeler: Fixed cylinder cap geometry by using center triangle fans.
+
 ## Build 2162
 
 ### Improvements
@@ -32,11 +126,12 @@ The current Mac preview has the following known limitations:
 
 - Improved Modeler UV editing, including UV-orientation preservation and clearer feedback for unavailable actions.
 
+- Added Modeler pivot controls that preserve world geometry and child placement
+  while supporting center, first-vertex, and custom pivots.
+
 ### Bug fixes
 
 - Fixed Modeler loop and ring selection being swapped on quad meshes.
-
-- Fixed Modeler pivot behavior to match the specification.
 
 - Fixed Modeler palette reliability issues that could leave the palette unusable.
 

@@ -157,7 +157,7 @@ A Poly Shape is a mesh made from an outline that you draw. It can have holes.
 @Image(source: "modeler-ref-poly-shape.png",
        alt: "A Poly Shape outline with a hole, before the height is set")
 
-1. Start **Poly Shape**.
+1. Start **Poly Shape** and choose a drawing plane in the viewport HUD before you place the first point.
 2. Click or tap to add the points of the outline.
 3. Click or tap the first point, or press Return, to close the outline.
 4. To add a hole, select **Add Hole**, add the points, and close the hole at its
@@ -165,6 +165,12 @@ A Poly Shape is a mesh made from an outline that you draw. It can have holes.
 5. Move the pointer to set the height. Click or press Return to create the mesh.
 
 The tool stays active, so you can draw another outline. Press Escape to stop.
+
+The drawing plane can follow a surface, one selected editable face, the camera,
+the XY, XZ, or YZ world plane, or a custom origin, normal, and tangent. Select
+the face before you start Poly Shape. Open the tool's **Options** to offset the
+plane, flip its normal, or turn it by quarter turns. The plane stays fixed while
+you draw one outline. Use a vertical plane to draw an upright shape.
 
 To edit a Poly Shape, drag a point to move it. Click or tap an outline edge to add
 a point. Drag the center handle to change the height. Press Delete or Backspace to
@@ -278,14 +284,20 @@ faces. A completed handle drag is one undo step.
 - Hold Command or Ctrl during a drag to snap to the grid increment.
 - Hold Shift when you start a drag in Edge or Face mode to **extrude** the
   selection. The new elements then follow the handle.
-- Hold Shift and drag a scale handle in Face mode to make an **inset**. The face is
-  extruded at zero distance and then scaled.
+- Hold Shift and drag a scale handle in Face mode to extrude at zero distance and
+  scale the new face. Use **Inset Faces** for a constant-width rim.
 - On a touch screen, turn on **Extrude on Next Drag** in the HUD. The next handle
   drag extrudes one time. The control then turns off.
 
 The Modeler preferences set the handle orientation (Global, Local, or Normal), the
 pivot (selection center, individual origins, or active element), and the snap
 behavior.
+
+In Vertex mode, turn on **Soft Selection** in the viewport HUD or Options.
+Set a radius measured along mesh edges and choose a Linear, Smooth, Sharp, or
+Constant curve. Move, rotate, and scale then affect nearby connected vertices.
+Disconnected parts stay in place. Falloff controls how quickly the influence
+decreases within the radius.
 
 To type exact values, use **Offset Elements**, or edit **Vertex Positions** in the
 inspector. Vertex Positions accepts local or world coordinates.
@@ -330,6 +342,7 @@ Some actions show their result and then open the **live bar** below the viewport
 - Subdivide Edges
 - Fill Hole
 - Extrude Faces
+- Inset Faces
 - Offset Elements
 
 @Image(source: "modeler-ref-live-bar.png",
@@ -357,9 +370,9 @@ can add or remove nodes in the scene. They show a sheet, and you must confirm th
 | --- | --- |
 | Vertex | Connect Vertices, Collapse Vertices, Weld Vertices, Split Vertices, Dissolve Vertices, Fill Hole, Select Holes, Select by Color, Set Pivot to Selection, Offset Elements |
 | Edge | Extrude Edges, Bevel Edges, Bridge Edges, Connect Edges, Insert Edge Loop, Subdivide Edges, Dissolve Edges, Fill Hole, Select Loop, Select Ring, Select Holes, Select by Color, Set Pivot to Selection, Offset Elements |
-| Face | Extrude Faces, Bevel Edges, Subdivide Faces, Merge Faces, Dissolve Faces, Detach Faces, Duplicate Faces, Delete Faces, Flip Faces, Turn Face Edges, Conform Normals, Triangulate Faces, Cut, Select Loop, Select Ring, Select by Material, Select by Color, Select Smoothing Group, Set Pivot to Selection, Offset Elements |
+| Face | Extrude Faces, Inset Faces, Bevel Edges, Subdivide Faces, Merge Faces, Dissolve Faces, Detach Faces, Duplicate Faces, Delete Faces, Flip Faces, Turn Face Edges, Conform Normals, Triangulate Faces, Cut, Select Loop, Select Ring, Select by Material, Select by Color, Select Smoothing Group, Set Pivot to Selection, Offset Elements |
 | All element modes | Select All Elements, Clear Element Selection, Invert Selection, Grow Selection, Shrink Selection |
-| Object | Select All Elements, Invert Selection, Center Pivot, Freeze Transform, Flip Faces, Conform Normals, Subdivide Faces, Triangulate Faces, Merge Objects, Mirror Objects, Set Collider, Set Trigger, Generate Lightmap UVs, Boolean, UV Editor, Export Mesh |
+| Object | Select All Elements, Invert Selection, Center Pivot, Freeze Transform, Flip Faces, Conform Normals, Subdivide Faces, Triangulate Faces, Merge Objects, Mirror Objects, Create Reusable Part, Set Collider, Set Trigger, Generate Lightmap UVs, Boolean, UV Editor, Export Mesh |
 
 An action that is not valid for the selection does not change the mesh. See
 <doc:Xogot-Modeler-Actions> for what each action does and when to use it.
@@ -373,7 +386,7 @@ beside **Add Mesh**. You do not have to select a node.
 @Image(source: "modeler-ref-options-sheet.png",
        alt: "The Options sheet with the Bevel category selected")
 
-Options has these categories: Selection & Handles, Snapping, Extrude, Bevel, Weld,
+Options has these categories: Snapping, Soft Selection, Extrude, Inset, Bevel, Weld,
 Subdivide, Fill Hole, Detach & Duplicate, Offset, Mirror, Grow Selection, Viewport
 Feedback, Generated Data, and Appearance & Logging. You can search the categories.
 
@@ -788,6 +801,16 @@ shape.
 does not change. You can use it on imported meshes, on primitive meshes such as
 `SphereMesh`, and on a CSG root.
 
+Modeler treats meshes in scene instances as read-only. Open the source scene to
+edit an instance mesh. This keeps all instances linked to the same editable mesh.
+
+## Reuse a Modeler part
+
+Select a local Modeler object and choose **Create Reusable Part** from Object
+Actions. Save its branch as a scene, then place instances of that scene. To
+change the part's geometry later, open the saved scene and edit it there. The
+changes then reach its instances.
+
 @Image(source: "modeler-ref-make-editable.png",
        alt: "The Make Editable panel with vertex, edge, face, and triangle counts and the import options")
 
@@ -853,6 +876,22 @@ The Modeler page in Editor Settings contains the selection, snapping, collider,
 lightmap, export, appearance, overlay, and logging settings. To open it, select
 **Preferences** in the Add Mesh palette. Action start values are in
 [Options](#Options).
+
+## Script Modeler edits
+
+On macOS, `xo modeler info` reports the current `mesh_revision`, and
+`xo modeler mesh` reports that revision with persistent face, edge, logical
+vertex, and vertex-record IDs. Use `--face-id`, `--edge-id`, `--vertex-id`, or
+`--record-id` in commands that select elements. If you use numeric indices,
+pass `--mesh-revision` from the mesh report so a later topology change does
+not redirect the edit to a different element.
+
+The command line also accepts soft-selection settings for vertex transforms,
+a tangent and roll for shape placement, and face IDs for cut and UV stitch.
+Run `xo modeler --help` for the available commands and options. Use
+`xo scene extract /Ship/Truss --path res://parts/truss.tscn` to save a branch
+as a scene and replace it with an instance. Add `--copy-only` to keep the
+source node.
 
 ## Keyboard shortcuts
 

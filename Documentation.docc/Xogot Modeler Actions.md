@@ -37,6 +37,7 @@ use Alt. Command shortcuts use Ctrl on those keyboards.
 | [Select by Color](#Select-by-Color) | V E F | | Select all elements with one vertex color. |
 | [Select Smoothing Group](#Select-Smoothing-Group) | F | | Select all faces in one smoothing group. |
 | [Extrude Faces](#Extrude-Faces) | F | Command-E | Pull a face out to make a solid part. |
+| [Inset Faces](#Inset-Faces) | F | | Make a constant-width rim inside faces. |
 | [Extrude Edges](#Extrude-Edges) | E | Command-E | Pull an open edge out to make a wall. |
 | [Bevel Edges](#Bevel-Edges) | E F | | Round or chamfer a hard edge. |
 | [Insert Edge Loop](#Insert-Edge-Loop) | E | Option-U | Add a line of edges across a strip of quads. |
@@ -65,6 +66,7 @@ use Alt. Command shortcuts use Ctrl on those keyboards.
 | [Center Pivot](#Center-Pivot) | O | | Put the pivot in the middle of the mesh. |
 | [Freeze Transform](#Freeze-Transform) | O | | Bake the node transform into the vertices. |
 | [Mirror Objects](#Mirror-Objects) | O | | Make a mirror copy of a mesh. |
+| [Create Reusable Part](#Create-Reusable-Part) | O | | Save a Modeler branch as a scene for reuse. |
 | [Set Collider](#Set-Collider) | O | | Make an invisible wall. |
 | [Set Trigger](#Set-Trigger) | O | Option-Shift-T | Make an invisible trigger volume. |
 | [Generate Lightmap UVs](#Generate-Lightmap-UVs) | O | | Prepare a mesh for baked lighting. |
@@ -281,6 +283,17 @@ Non-Manifold Actions** in the Modeler preferences to extrude closed edges.
 
 Hold Shift when you start a handle drag in Edge mode to extrude and move in one
 step.
+
+### Inset Faces
+
+Builds a rim of constant width inside the selected planar faces. Connected
+coplanar faces form one region. Turn on **Individual Faces** in the live bar to
+give each face its own rim. The new inner faces stay selected.
+
+Use it to make a panel border or prepare a face for a recess. Set **Width** in
+model units, then select **Done**. If the width cannot produce valid geometry,
+Modeler keeps the source mesh unchanged. Shift-dragging a scale handle also
+creates an inner face, but scales it from the pivot.
 
 ### Bevel Edges
 
@@ -548,7 +561,7 @@ the Modeler preferences.
 Removes the selected vertices, edges, or faces, and replaces the area with one
 face that keeps the same outline. It does not make an opening, and it does not
 move other vertices. In the menu, it shows as **Dissolve Vertices**, **Dissolve
-Edges**, or **Dissolve Faces**.
+Edges**, or **Dissolve Faces**, in the **Join** group.
 
 Use it to simplify a flat area.
 
@@ -560,7 +573,7 @@ Use it to simplify a flat area.
 
 The faces around the selection must be on one plane, must have the same
 material and attributes, and must form one connected region without holes. When
-the selection does not meet these rules, the menu does not show the command.
+the selection does not meet these rules, the menu shows the command in gray.
 
 Dissolve is not Delete Faces. Delete Faces removes the surface and leaves an
 opening. Dissolve keeps the surface.
@@ -723,6 +736,13 @@ Use it to make a symmetric copy.
 The **Mirror** category in Options sets the axes, and whether the result is a
 new node. Turn on **Duplicate** to keep the original. The action shows a sheet
 and asks for confirmation.
+
+### Create Reusable Part
+
+Saves the selected local Modeler object and its children as a separate scene.
+Place instances of that scene when you need the part more than once. Open the
+saved scene to change the editable mesh; Modeler does not edit mesh data through
+an instance in a parent scene.
 
 ### Set Collider
 

@@ -47,27 +47,32 @@ handle. The control turns off after one drag.
 
 ## Inset faces
 
-An inset makes a smaller face inside the selected face. You can then move the new
-face to make a recess or a raised area.
+**Inset Faces** makes a constant-width rim around the selected faces. You can
+then move the new inner faces to make a recess or a raised area.
 
 1. Enter **Face** mode.
-2. Select one or more faces.
-3. Select the **Scale** tool.
-4. Set the pivot to **Center**.
-5. For a face that does not align with a global axis, set the orientation to
-   **Normal**.
-6. Hold Shift before you start the scale drag.
-7. Drag the uniform scale handle inward.
-8. Select the **Move** tool.
-9. Move the new face to the required position.
+2. Select one or more planar faces.
+3. Choose **Inset Faces** from Face Actions.
+4. Set **Width** in the live bar. Connected planar faces form one region. Turn on
+   **Individual Faces** to give each face its own rim.
+5. Select **Done**. The new inner faces remain selected.
+6. Select **Move** and move the inner faces if you need depth.
 
-During the scale drag, Shift does two operations:
-
-- It extrudes the selected face at zero distance.
-- It keeps the scale uniform on the two axes of the face.
+For a proportional inset, hold Shift while you start a Face mode scale drag.
+This extrudes at zero distance and then scales the new face.
 
 To make a recess, move the new face inward along its normal. To make a raised
 area, move it outward along its normal.
+
+## Reuse a Modeler part
+
+1. Select a local Modeler object in Object mode.
+2. Choose **Create Reusable Part** from Object Actions.
+3. Save the branch as a scene.
+4. Place instances of that scene where you need the part.
+
+To change its geometry, open the saved scene and edit the mesh there. A Modeler
+mesh inside an instance is read-only in the parent scene.
 
 ## Cut a shape into a face
 
@@ -138,7 +143,7 @@ the distance in the live bar.
 | --- | --- |
 | Command-E or Ctrl-E | Extrude the selection in Edge or Face mode. |
 | Shift-drag a move handle | Extrude the selection and move the new elements. |
-| Shift-drag the uniform scale handle | Extrude at zero distance and make an inset. |
+| Shift-drag the uniform scale handle | Extrude at zero distance and make a proportional inset. |
 | Return, in the Cut tool | Close the outline and apply the cut. |
 | Delete or Backspace, in the Cut tool | Remove the last point of the outline. |
 | Escape, in the Cut tool | Cancel the cut. |
