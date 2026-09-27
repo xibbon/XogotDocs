@@ -23,9 +23,162 @@ The current Mac preview has the following known limitations:
 
 # Releases
 
+# Xogot macOS Release Notes
+
+## Build 2252
+
+### Improvements
+
+- Improved Modeler tool state handling and test diagnostics, including safer
+  scene and selection tracking across embedded editor instances.
+
+
+## Bug Fixes
+
+- Fixed a crash during documentation generation when an inherited property has
+  no matching ancestor (#3318).
+
+- Prevented duplicate SwiftGodot type registration, addressing a reported crash.
+
+- Fixed Modeler tools being incorrectly cancelled when bridge wrappers
+  represented the same Godot object, and ensured tools are cancelled safely when
+  their editing node is removed or the selection changes.
+
+- Prevented pending resource renderers from colliding when multiple embedded
+  editors are active.
+
+- Embedded Godot callables are now initialized correctly, making registered
+  callable methods available to the embedded editor.
+
+## Build 2242
+
+- Fixes a crash when the agents stop the editor.
+
+## Build 2239
+
+- Improved direct-signing reliability by preserving `CFBundleSupportedPlatforms`
+  metadata, rebuilding affected cached bundles automatically, and reporting
+  clearer errors.
+
+
+- Added further AppSigner diagnostics.
+
+- Improved Modeler HUD defaults on iOS.
+
+- Updated PiSwift and SwiftUI integration, including a fix for Claude Opus 5.5
+  not working.
+
+- Restored the build configuration for affected Godot components.
+
+## Build 2236
+
+- Added functional **View** and **Gizmos** toggles to the 2D editor toolbar.
+- Fixed the TileMap editor so its grid clears when the layer is deselected.
+- Fixed a news-carousel selection crash.
+- Added configurable local development signing backends.
+- Improved localization for the new signing configuration.
+- Restricted MCP imports from other tools to macOS, where the feature is
+  supported.
+
+
+## Build 2230
+
+- Expanded AppSigner diagnostics.
+
+- Added raw bundle-export testing without logging key material.
+
+- Added Apple certificate checks and local fingerprint comparisons to make
+  signing failures easier to diagnose.
+
+
+## Build 2228
+
+- Added additional AppSigner diagnostics to identify keychain-lock and signing failures.
+
+## Build 2226
+
+### Improvements
+
+Modeler: user interface improvements.
+
+iOS: Export to this platform now has a fast path
+
+iOS: diagnostics for signing
+
+## Build 2222
+
+### Improvements
+
+- Code Assistant: import MCP servers from Codex and Claude configurations, with
+  selection controls and clear handling of unsupported or duplicate servers.
+
+- Modeler: improve inset editing, material assignment, selection behavior,
+  polygon creation, construction-frame placement, and default grid/checker
+  materials. New shapes share a project-local Grid material instead of embedding
+  duplicate textures.
+
+## Bug fixes
+
+- Modeler: fix polygon extrusion direction, UV placement after frame transforms,
+  vertex-selection mode inference, and inset rim generation.
+
+- Fix Metal rendering issues involving sampler stage masks and shader reflection
+  across stages.
+
+- Fix Jolt and physics-interpolation reinitialization when the engine is
+  reinitialized.
+
+- Fix built-in resource destruction after stopping an engine instance.
+
+- Fixed iOS export validation and export to use the template selected by the
+  user instead of always choosing the Mono template.
+
+- Improved iOS deployment diagnostics and add some recovery guidance.
+
+
+## Build 2215
+
+### Improvements
+
+- Modeler is now enabled by default and has a few new features: face insets,
+  soft selection, oriented-poly shape creation, persisten mesh element IDs,
+  stale-revision protection and scene extraction.
+
+- Added support for managing Android Gradle templates from the export workflow
+  and `xo`, including status, installation, upgrades, prerelease templates, and
+  conflict reporting (#3283).
+
+- “Export Game” from the menu now triggers the Export Game Option, and
+  introduced a dedicated "Export Game to games.xogot.com" optjon
+
+- Coding Assistant: Added `/review` and `/end-review` commands to the coding
+  assistant, with improved review-session state, questions, folder selection,
+  cancellation, and extension notices (#3068).
+
+- The editor command palette now includes global commands when opened from the
+  editor.
+
+
+## Bug fixes
+
+- Fixed Modeler mesh sharing for nodes inside scene instances, avoiding unwanted
+  private mesh copies and preserving correct save/undo behavior.
+
+- Fixed `xo` inline evaluation to return expression values and support inline,
+  block, and complete `EditorScript` forms.
+
+- Fixed targeted screenshots to honor camera elevation, azimuth, and field of
+  view, wait for the updated frame, and restore the editor camera.
+
+- Fixed cinematic capture producing a black frame by rendering the shared 3D
+  world.
+
+- Made Swift debugger navigation ignore symbol names and other locations that
+  are not readable Swift source files, avoiding invalid resource loads.
+
 ## Build 2203
 
-## Improvements
+### Improvements
 
 - Added experimental **Bezier Plane** modeling with flat strips, improved
   tangent editing, plane-constrained dragging, clearer handle selection, and
@@ -44,7 +197,7 @@ The current Mac preview has the following known limitations:
 - Synchronized the native editor and Godot editor when the bottom panel is
   closed.
 
-## Bug Fixes
+### Bug Fixes
 
 - Fixed a shutdown crash caused by deferred editor selection callbacks during
   Godot teardown. (#3262)

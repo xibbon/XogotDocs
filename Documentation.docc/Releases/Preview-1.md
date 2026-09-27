@@ -2,6 +2,38 @@
 
 Release notes for our preview release of Xogot to TestFlight.
 
+## Release 5343
+
+### Improvements
+
+- Renamed “Export Game” and added an option to export to xogot.com, with
+  localization support.
+
+- Expanded the Modeler with face insets, soft selection, oriented poly-shape planes, persistent mesh IDs, stale-revision protection, scene extraction, and 
+improved mesh editing workflows.
+
+- Enabled the Modeler by default and improved its iOS HUD.
+
+
+### Bug fixes
+
+- Fixed a crash when stopping the running project by uninstalling the automation
+  agent before destroying the Godot instance.
+
+- Fixed the news carousel crashing when its selected item disappears during a
+  feed refresh. (#3286)
+
+- Fixed the TileMap editor grid and highlighting remaining visible after
+  deselection, scene changes, deletion, or reload. (#2677)
+
+- Fixed the 2D editor View and Gizmos toggles so changes are sent to the editor
+  instead of only reflecting state.
+
+- Fixed Modeler mesh ownership in scene instances, boundary cuts, insets, vertex
+  selection, poly-shape height and UV placement, and merge/detach behavior.
+
+- Fixed `xo` evaluation, targeted screenshots, and cinematic capture behavior.
+
 ## Release 5304
 
 ## Improvements

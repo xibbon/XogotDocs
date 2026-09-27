@@ -160,6 +160,48 @@ Show list of selectable nodes at position clicked.
 Refer to the screenshot above to better understand the numbered elements of
 these 3D Editor Toolbar.
 
+### Instant Transform
+
+Use Instant Transform to move, rotate, or scale the selected nodes with the
+pointer. You do not have to drag a gizmo handle. This feature operates the same
+as the transform shortcuts in Blender.
+
+To start an Instant Transform:
+
+1. Select one or more nodes in the 3D editor.
+2. Put the pointer in the 3D viewport.
+3. Push **G**, or select **3D > Instant Transform** in the menu bar.
+
+The active tool mode sets the type of transform:
+
+| Tool Mode | Transform |
+|-----------|-----------|
+| Rotate Mode | Rotate |
+| Scale Mode | Scale |
+| All other modes | Move |
+
+When the transform starts, move the pointer to change the nodes.
+
+To control the transform, push these keys:
+
+* **X**, **Y**, or **Z**: Lock the transform to one axis.
+* **Shift-X**, **Shift-Y**, or **Shift-Z**: Lock the transform to a plane. The
+  plane does not include the axis of the key. For example, **Shift-X** locks the
+  transform to the YZ plane.
+* **0** to **9** and **.**: Type a value for the transform.
+* **-**: Change the sign of the value.
+* **G** again in Rotate Mode: Change between usual rotation and trackball
+  rotation.
+
+To stop the transform:
+
+* To keep the change, click in the viewport, or push **Return** or **Space**.
+* To cancel the change, push **Escape**. The nodes go back to their initial
+  position.
+
+> Note: Instant Transform does not start when no node is selected, when
+> freelook is active, or when the viewport shows a camera preview.
+
 ## 2D Editor Toolbar
 
 Like the 3D Editor Toolbar, the 2D Editor Toolbar floats in the 2D editor workspace
