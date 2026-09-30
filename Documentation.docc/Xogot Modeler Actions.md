@@ -39,7 +39,8 @@ use Alt. Command shortcuts use Ctrl on those keyboards.
 | [Extrude Faces](#Extrude-Faces) | F | Command-E | Pull a face out to make a solid part. |
 | [Inset Faces](#Inset-Faces) | F | | Make a constant-width rim inside faces. |
 | [Extrude Edges](#Extrude-Edges) | E | Command-E | Pull an open edge out to make a wall. |
-| [Bevel Edges](#Bevel-Edges) | E F | | Round or chamfer a hard edge. |
+| [Bevel Mode](#Bevel-Mode) | V E F | Command-B | Preview a chamfer, fillet, or cut corner. |
+| [Bevel Edges](#Bevel-Edges) | E F | | Make a flat chamfer on a hard edge. |
 | [Insert Edge Loop](#Insert-Edge-Loop) | E | Option-U | Add a line of edges across a strip of quads. |
 | [Subdivide Edges](#Subdivide-Edges) | E | Option-S | Split edges into equal segments. |
 | [Subdivide Faces](#Subdivide-Faces) | O F | Option-S | Add more faces to a flat area. |
@@ -295,10 +296,40 @@ model units, then select **Done**. If the width cannot produce valid geometry,
 Modeler keeps the source mesh unchanged. Shift-dragging a scale handle also
 creates an inner face, but scales it from the pivot.
 
+### Bevel Mode
+
+Replaces selected edges with a flat chamfer or a rounded fillet. It can also cut
+off selected vertices. Use it when you want to set the bevel shape before you
+apply it.
+
+In Edge mode, select the edges to bevel. In Face mode, select faces; Bevel Mode
+uses the outside edge of the selected region. In Vertex mode, it bevels the
+edges at the selected vertices. Command-Shift-B cuts off the selected vertices
+instead. You can also choose **Vertices** in the **Affect** setting.
+
+Select **Bevel Mode** in the Build group of the Actions menu, or press
+Command-B. The panel shows a preview. Set **Amount** and **Segments**, then
+choose an **Amount Type**: Offset, Width, Depth, or Percent. **Profile** changes
+the curve shape. **Clamp Overlap** reduces the amount where faces would cross.
+**Harden Normals** keeps the original faces flat while the bevel looks smooth.
+
+Select **Apply** or press Return to make one undo step. Select **Cancel** or
+press Escape to restore the mesh and selection. The last-used settings change
+only when you apply the bevel. Bevel Mode needs a closed, valid mesh around its
+targets; it does not bevel open border edges.
+
+For automation, this command applies a bevel without opening the preview panel:
+
+```sh
+xo modeler bevel /Node --mode edge --edges 0-1 --amount 0.1 --segments 3
+```
+
+Run `xo modeler bevel --help` for the other settings.
+
 ### Bevel Edges
 
-Replaces each selected edge with a flat chamfer face. In Face mode, it bevels
-each edge around the outside of the selected faces.
+Replaces each selected edge with a flat chamfer face. It always uses one segment.
+In Face mode, it bevels each edge around the outside of the selected faces.
 
 Use it to soften a hard edge or to catch light on a corner.
 

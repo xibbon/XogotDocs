@@ -25,13 +25,139 @@ The current Mac preview has the following known limitations:
 
 # Xogot macOS Release Notes
 
+## Build 2278
+
+### Improvements
+
+- Added Linux export support for non-x86 architectures.
+
+### Coding Assistatnt
+
+- Improved `xo` editor screenshots and viewport handling.
+
+- Added automatic screenshot source selection based on the selected node or
+  scene contents, including 2D scenes while the editor is in another mode.
+
+- Added mode information to screenshot output.
+
+- Added node-path targets and `--no-collision` to `xo modeler create` (for
+  example, `xo modeler create /Wall --type cube`), while keeping the original
+  syntax.
+
+- Improved Modeler state output with concise quiet-mode summaries, including
+  batch JSON output.
+
+## Bug fixes
+
+- Fixed deployment when a platform has one export preset: it is selected and
+  saved automatically before deployment (#3327).
+
+- Deployment errors caused by invalid Apple export settings now offer a way to
+  open Export Presets. The destination menu refreshes when the sheet closes
+  (#3327).
+
+## Build 2267
+
+### Modeler
+
+ - New: added Bevel Mode, with live topology previews, adjustable
+   amount/profile/segments/clamping/normal handling, validation, undo/redo
+   support.   Activate with Command-B / Command-Shift-B shortcuts.
+ 
+- Added Blender-style instant transforms for move, rotate, and scale, including
+  axis/plane locks and numeric input via `G`.   Then you can use X/Y/Z or
+  Shift-X/Y/Z to lock the movement to a direction/plane
+
+- Improved Modeler collider refresh after mesh edits without replacing scene
+  nodes or changing ownership/order.
+
+- Improved remote-edit safeguards so edits cannot modify transient Modeler
+  previews, and instanced-scene child/override edits are rejected when they
+  would be discarded.
+
+### Improvements
+
+- Improved `xo eval` with timeouts, awaited calls, multiline dictionaries, and
+  clearer parse errors.
+
+- Embedded macOS games continue rendering while the editor is inactive.
+
+- Added RevenueCat App User ID migration for signed-in users. #3290
+
+- Favorites handling now compares normalized file paths, avoiding duplicate 
+favorites when node identifiers differ.
+
+# Bug fixes
+
+- Prevented heavy CPU consumption when a missing dynamic library is queued for
+  loading or unloading.
+
+- Fixed game crashes when running projects on iOS.
+
+- Fixed edited Modeler colliders not being refreshed in the physics space.
+
+- Improved GDScript evaluation compile-error diagnostics, including captured
+  compiler output and numbered wrapped source.
+
+
+## Build 2260
+
+### Improvements
+
+- Open shared settings directly from the project launcher, including
+  application-level AI, account, runtime, and MCP settings.
+
+- Improve `xo` game workflows with clearer coordinate help, reliable game-start
+  waiting, richer game-control output, and better diagnostics for scripts,
+  breakpoints, and captured output.
+
+- Improve `xo` scene and modeler workflows: support real-world modeler use
+  cases, align command-line arguments, fit 2D/3D collision shapes from visual
+  bounds, report skipped sources, and respect `.gdignore` directories.
+
+- Improve batch command output with structured JSON for validation failures and
+  more complete rollback/status information.
+
+- Improve Xogot agent guidance and skill routing, including safer workflows for
+  scene edits, stale instances, scripts, autoloads, screenshots, and runtime
+  checks.
+
+- Split the agent skill bundle into focused references and improve its macOS
+  tooling documentation.
+
+- Make editor tabs fully clickable across supported platforms, preserve
+  transient-tab promotion on double-click, and avoid automatically selecting
+  another tab when one is closed.
+
+- Add macOS text-field prompts that explain where users should paste code.
+
+## Bug Fixes
+
+- Fix a stale Control pointer in the editor’s offset-transform preview that
+  could be used after the node was freed. (#3319)
+
+
+- Fix modeler command handling and remote-control behavior exposed by real-world
+  use, including scene-save timing, scene-path handling, property 
+validation, shape-bound calculations, and game-instance selection.
+
+- Fix `xo` batch validation failures so JSON output has the same complete result
+  shape as successful batches.
+
+- Fix reported game-control centers and clarify that mouse coordinates are
+  relative to the game window.
+
+- Improve errors when a game exits, stops at a breakpoint, or fails to become
+  live during `xo project run`.
+
+
+
 ## Build 2252
 
 ### Improvements
 
 - Improved Modeler tool state handling and test diagnostics, including safer
   scene and selection tracking across embedded editor instances.
-
 
 ## Bug Fixes
 

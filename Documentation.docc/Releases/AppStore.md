@@ -2,7 +2,7 @@
 
 Release notes for public releases of Xogot to the App Store.
 
-## Release 1.6.10
+## Release 1.6.10 (5231)
 
 - Kept OAuth login inside the app so Agent/iOS callbacks can land correctly.
 

@@ -358,6 +358,28 @@ Xogot keeps the current result first.
 Actions without values, such as Flip Face Normals, run immediately. Selection
 actions also run immediately. You can undo them.
 
+### Bevel Mode
+
+Use **Bevel Mode** to make a flat chamfer, a rounded edge, or a cut corner. It
+works in Vertex, Edge, and Face modes on one editable mesh. Select **Bevel Mode**
+in the Build group of the Actions menu, or press Command-B. Command-Shift-B
+starts a vertex bevel.
+
+The panel previews the result before it changes the mesh. **Amount** sets the
+size. **Segments** sets how many faces cross the bevel: one makes a flat edge;
+more make a rounded edge. **Amount Type** offers Offset, Width, Depth, and
+Percent. **Profile** changes the curve. **Clamp Overlap** reduces the amount
+where faces would cross. **Harden Normals** keeps the original faces flat.
+
+In Edge mode, the tool uses selected edges. In Face mode, it uses the outside
+edges of the selected region. In Vertex mode, it bevels edges at the selected
+vertices. Set **Affect** to **Vertices** to cut off those corners instead.
+
+Select **Apply** or press Return to commit one undo step. Select **Cancel** or
+press Escape to leave the mesh as it was. The saved bevel settings change only
+after you apply the result. Open border edges cannot be beveled. For the full
+command reference, see <doc:Xogot-Modeler-Actions>.
+
 ### Actions that ask first
 
 **Merge Objects**, **Detach Faces**, **Duplicate Faces**, and **Mirror Objects**
@@ -368,9 +390,9 @@ can add or remove nodes in the scene. They show a sheet, and you must confirm th
 
 | Mode | Actions |
 | --- | --- |
-| Vertex | Connect Vertices, Collapse Vertices, Weld Vertices, Split Vertices, Dissolve Vertices, Fill Hole, Select Holes, Select by Color, Set Pivot to Selection, Offset Elements |
-| Edge | Extrude Edges, Bevel Edges, Bridge Edges, Connect Edges, Insert Edge Loop, Subdivide Edges, Dissolve Edges, Fill Hole, Select Loop, Select Ring, Select Holes, Select by Color, Set Pivot to Selection, Offset Elements |
-| Face | Extrude Faces, Inset Faces, Bevel Edges, Subdivide Faces, Merge Faces, Dissolve Faces, Detach Faces, Duplicate Faces, Delete Faces, Flip Faces, Turn Face Edges, Conform Normals, Triangulate Faces, Cut, Select Loop, Select Ring, Select by Material, Select by Color, Select Smoothing Group, Set Pivot to Selection, Offset Elements |
+| Vertex | Bevel Mode, Connect Vertices, Collapse Vertices, Weld Vertices, Split Vertices, Dissolve Vertices, Fill Hole, Select Holes, Select by Color, Set Pivot to Selection, Offset Elements |
+| Edge | Bevel Mode, Extrude Edges, Bevel Edges, Bridge Edges, Connect Edges, Insert Edge Loop, Subdivide Edges, Dissolve Edges, Fill Hole, Select Loop, Select Ring, Select Holes, Select by Color, Set Pivot to Selection, Offset Elements |
+| Face | Bevel Mode, Extrude Faces, Inset Faces, Bevel Edges, Subdivide Faces, Merge Faces, Dissolve Faces, Detach Faces, Duplicate Faces, Delete Faces, Flip Faces, Turn Face Edges, Conform Normals, Triangulate Faces, Cut, Select Loop, Select Ring, Select by Material, Select by Color, Select Smoothing Group, Set Pivot to Selection, Offset Elements |
 | All element modes | Select All Elements, Clear Element Selection, Invert Selection, Grow Selection, Shrink Selection |
 | Object | Select All Elements, Invert Selection, Center Pivot, Freeze Transform, Flip Faces, Conform Normals, Subdivide Faces, Triangulate Faces, Merge Objects, Mirror Objects, Create Reusable Part, Set Collider, Set Trigger, Generate Lightmap UVs, Boolean, UV Editor, Export Mesh |
 
@@ -885,6 +907,16 @@ vertex, and vertex-record IDs. Use `--face-id`, `--edge-id`, `--vertex-id`, or
 `--record-id` in commands that select elements. If you use numeric indices,
 pass `--mesh-revision` from the mesh report so a later topology change does
 not redirect the edit to a different element.
+
+Use `xo modeler bevel` to apply Bevel Mode without a preview. For example:
+
+```sh
+xo modeler bevel /Wall --mode edge --edges 0-1 --amount 0.1 --segments 3
+```
+
+Set `--affect vertices` to cut off selected corners. Use `--amount-type` for
+Offset, Width, Depth, or Percent and `--profile` to change the curve. Each
+command commits one bevel; its options do not change the saved UI settings.
 
 The command line also accepts soft-selection settings for vertex transforms,
 a tangent and roll for shape placement, and face IDs for cut and UV stitch.

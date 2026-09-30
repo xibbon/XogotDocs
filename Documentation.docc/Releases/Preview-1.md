@@ -2,6 +2,124 @@
 
 Release notes for our preview release of Xogot to TestFlight.
 
+## Release 5376
+
+### Coding Assistatnt
+
+- Improved `xo` editor screenshots and viewport handling.
+
+- Added automatic screenshot source selection based on the selected node or
+  scene contents, including 2D scenes while the editor is in another mode.
+
+- Added mode information to screenshot output.
+
+- Added node-path targets and `--no-collision` to `xo modeler create` (for
+  example, `xo modeler create /Wall --type cube`), while keeping the original
+  syntax.
+
+- Improved Modeler state output with concise quiet-mode summaries, including
+  batch JSON output.
+
+## Release 5366
+
+### Modeler
+
+ - New: added Bevel Mode, with live topology previews, adjustable
+   amount/profile/segments/clamping/normal handling, validation, undo/redo
+   support.   Activate with Command-B / Command-Shift-B shortcuts.
+ 
+- Added Blender-style instant transforms for move, rotate, and scale, including
+  axis/plane locks and numeric input via `G`.   Then you can use X/Y/Z or
+  Shift-X/Y/Z to lock the movement to a direction/plane
+
+- Improved Modeler collider refresh after mesh edits without replacing scene
+  nodes or changing ownership/order.
+
+- Improved remote-edit safeguards so edits cannot modify transient Modeler
+  previews, and instanced-scene child/override edits are rejected when they
+  would be discarded.
+
+### Improvements
+
+- Improved game automation input timing so key presses and releases arrive on
+  process frames and `is_action_just_pressed` works reliably.
+
+- Favorites handling now compares normalized file paths, avoiding duplicate
+  favorites when node identifiers differ.
+
+- Improved `xo eval` with timeouts, awaited calls, multiline dictionaries, and
+  clearer parse errors.
+
+- Embedded macOS games continue rendering while the editor is inactive.
+
+- Added RevenueCat App User ID migration for signed-in users. #3290
+
+- Favorites handling now compares normalized file paths, avoiding duplicate 
+favorites when node identifiers differ.
+
+# Bug fixes
+
+- Prevented heavy CPU consumption when a missing dynamic library is queued for
+  loading or unloading.
+
+- Fixed game crashes when running projects on iOS.
+
+- Fixed edited Modeler colliders not being refreshed in the physics space.
+
+- Improved GDScript evaluation compile-error diagnostics, including captured
+  compiler output and numbered wrapped source.
+
+
+## Release 5358
+
+### Improvements
+
+- Added Blender-style instant transforms to the 3D editor: move, rotate, and
+  scale with axis/plane locking and numeric input.   The "G" key or the menu 
+  option on the iPad can lock the next operation.
+
+
+- Improved the `xo` automation workflow with clearer project/game guidance,
+  better skill routing, project run synchronization, and more reliable scene and
+  modeler operations.
+
+- Added access to shared Appearance, Components, and AI settings from the
+  project launcher when no project is open.
+
+- Improved modeler tooling and command-line argument compatibility.
+
+- Improved game automation output, coordinate handling, breakpoint recovery
+  messages, collision-shape fitting, and `.gdignore` directory handling.
+
+
+### Bug fixes
+
+- Fixed a popular crash (#3318).
+
+- Fixed crashes when running projects from the multi-instance iOS editor by
+  registering editor plugins only in the actual editor instance.
+
+- Prevented duplicate type registration that could cause engine crashes.
+
+- Fixed embedded Godot callables and modeler selection/resource identity
+  handling.
+
+- Fixed modeler and `xo` issues found through real-world use.
+
+- Fixed an engine issue reported in #3319.
+
+- Fixed invalid `xo` batch results, scene-save timing, scene-path handling,
+  script diagnostics, game input coordinates, and project-run behavior.
+
+- Fixed editor tabs not being automatically selected when closing another tab.
+
+### Duo Preparation
+
+- Preserved text-editor undo history, selection, language mode, and scroll
+  position across SwiftUI view rebuilds.
+
+- Kept Project Launcher tabs visible and usable on iPhone Duo layouts (#3278).
+
 ## Release 5343
 
 ### Improvements
