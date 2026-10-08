@@ -38,9 +38,9 @@ You can also connect an external AI coding tool to control Xogot, change files,
 and debug issues. Open **Editor Settings > AI > External Agents** and install
 the Xogot skill for your tool.
 
-Access to Xogot is not done via MCP, as we believe that MCP is both too rigid,
-and consumes too much of your precious token space, instead we rely on the `xo`
-tool and self-discovery capabilities to let your agent communicate with Xogot.
+External agents control Xogot through the `xo` tool. The built-in assistant can
+also use MCP servers to access additional services. See <doc:MCP-Servers> for
+setup instructions.
 
 Learn more in <doc:integrating_with_ai_tools>.
 

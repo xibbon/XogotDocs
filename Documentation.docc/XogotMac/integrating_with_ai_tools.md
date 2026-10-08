@@ -13,6 +13,8 @@ To work with AI inside Xogot on Mac, iPad, or iPhone, use the built-in
 <doc:Coding-Assistant>. That page explains how to choose an AI integration and
 connect a provider. This page explains how to connect an external AI tool on Mac.
 
+To add MCP tools to the built-in assistant, see <doc:MCP-Servers>.
+
 ## Install the Xogot skill
 
 Open **Editor Settings**, then choose **AI > External Agents**. This section lists the

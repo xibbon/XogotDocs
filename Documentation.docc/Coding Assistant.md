@@ -152,6 +152,8 @@ the assistant already has access to Xogot's project and editor tools.
 Servers with a web address are supported on all three platforms. Local command
 servers require an unsandboxed Mac app.
 
+For setup steps, connection tests, imports, and examples, see <doc:MCP-Servers>.
+
 ## Troubleshooting
 
 - If the Coding Assistant button is missing, check that your Xogot build has
