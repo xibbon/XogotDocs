@@ -2,6 +2,43 @@
 
 Release notes for our preview release of Xogot to TestFlight.
 
+## Release 5395 (Beta: 756)
+
+Important, this release comes in two shapes: TestFlight 5395 and XogotBeta 756.
+
+They are identicaly in features, but we are testing a new multi-process system
+in XogotBeta 756, and we would love if you could take it for a spin.  
+
+### Improvements
+
+- Updated the Learning Center for Godot 4.7, including refreshed samples, new
+  tutorials and videos, updated featured samples, and removal of the outdated 2D
+  Platformer Starter Kit.
+
+- Added Godot engine updates for Duo and iOS Simulator support.
+
+## Release 5390
+
+### Improvements
+
+- Made Godot keyboard shortcuts work regardless of GridMap editor focus.
+
+- Added modeler bevel support to the coding agent.
+
+- Modeler operations now show up on the Inspector if it is open and vanish from
+  the scene, or go into the scene if you close the inspector.
+
+- Improved iOS editor shell separator visibility.
+
+- Fixed GridMap meshes being rebuilt continuously, should be a lot faster to
+  scroll and pan when you have a GridMap selected.
+
+- Fixed large AI file writes hanging.
+
+### Bug fixes
+
+- Fixed missing registrations that caused the `helo` warning.
+
 ## Release 5376
 
 ### Coding Assistatnt

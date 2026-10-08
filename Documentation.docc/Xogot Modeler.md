@@ -178,11 +178,66 @@ remove the selected point.
 
 ### Bezier Shape
 
-Bezier Shape is experimental. It makes a tube along a curve. To use it, turn on
-experimental features in the Modeler preferences.
+**Bezier Plane** makes a flat strip along a curve. **Bezier Block** adds height
+to the strip.
+
+**Rows** sets the number of divisions along each curve segment. **Columns** sets
+the number of divisions across the strip width. Both values can be from 1 to 128.
+Use one column for a strip with no divisions across its width.
+Bezier Block and Bezier Plane start with one column.
 
 Click or tap to add knots. Drag a knot or a tangent handle to change the curve.
-Click or tap the curve to add a knot. Press Return to create the tube.
+A point drag stays on the curve's drawing plane. Click or tap the curve to add a knot.
+Press Return to create a Bezier Plane. For a Bezier Block, press Return to start
+the height step, then set the height and select **Done**.
+
+#### Move a knot or tangent handle with G
+
+To create or edit a Bezier shape, select a knot or tangent handle in the
+viewport. Press **G**, then move the pointer. G always starts a move, even when
+the object tool is set to Rotate or Scale. The shape's node position stays the
+same. If no point or handle is selected, select one before you press G.
+
+Use these keys while the move is active:
+
+| Key | Action |
+| --- | --- |
+| X, Y, or Z | Constrain movement to the world X, Y, or Z axis. |
+| Shift+X | Constrain movement to the world YZ plane. |
+| Shift+Y | Constrain movement to the world XZ plane. |
+| Shift+Z | Constrain movement to the world XY plane. |
+| Repeat the same axis or plane key | Switch to local axes. Repeat it again to return to free movement on the view plane. |
+| Digits, decimal point, and minus | Enter a distance. Minus changes the sign. |
+| Backspace | Remove the last character from the distance. Remove all characters to use pointer movement again. |
+| Return or Space | Accept the move. |
+| Escape | Cancel the move and restore the point or handle. |
+
+World axes follow the scene. Local axes follow the shape's construction frame.
+For example, press **G**, **X**, **2**, then **Return** to move the selected knot
+or handle two units along the world X axis. A typed distance applies to each axis
+in a plane constraint. Without a constraint, a typed distance uses the world X
+axis. Pointer movement stops when you enter a distance.
+
+You can also click the left mouse button to accept the move, or click the right
+mouse button to cancel it. The Bezier tool stays open after either action. Accept
+the move before you complete the shape with **Done**. HUD **Cancel** cancels
+only the point move and keeps the curve open.
+
+If the viewport shows that a constraint is not valid, change the axis or enter
+a distance before you accept the move.
+
+Axis and plane constraints can move a point out of the curve's drawing plane.
+A knot move also moves both attached handles. A move of one tangent handle
+keeps the other handle in place. The drawing plane stays fixed after a G move.
+
+A move uses the viewport where it starts. To move with touch, drag with one finger
+and release to accept, or use **Done** to accept the point move. Camera gestures
+remain available. Alt with a mouse button controls the camera without accepting
+or canceling the move.
+
+Finish or cancel vertex snap before you start a G move. Vertex snap cannot start
+while the point move is active. With snap enabled, free movement snaps on world
+axes. This can move the point away from the view plane.
 
 ## Change a shape
 
@@ -930,13 +985,16 @@ source node.
 | Shortcut | Action |
 | --- | --- |
 | H | Cycle through Vertex, Edge, and Face modes. |
-| Escape | Go back to Object mode, or cancel the active tool. |
+| Escape | Cancel an active Bezier point move. Otherwise, go back to Object mode or cancel the active tool. |
 | Command-E or Ctrl-E | Extrude. |
 | Option-Shift-K | Create the last-used shape. |
 | Option-Shift-T | Set Trigger. |
 | `[` and `]` | Lower or raise the drawing plane while the Shape tool waits for the base. |
-| Return | Complete the active tool. |
-| Delete or Backspace | Remove the last point in a tool. |
+| G (Bezier tool) | Move the selected knot or tangent handle. |
+| X, Y, or Z (Bezier move) | Constrain movement to an axis. Use Shift for a plane constraint. |
+| Return | Accept an active Bezier point move. Otherwise, complete the active tool. |
+| Space (Bezier move) | Accept the move. |
+| Delete or Backspace | Remove a point in a tool. During a Bezier move, Backspace edits the typed distance. |
 | 1 through 9 | Paint with a material slot while Paint is open. |
 | Shift+1 through Shift+9 | Put the selection's material into a slot while Paint is open. |
 | Shift-drag a handle | Extrude while you transform. |
@@ -945,8 +1003,9 @@ source node.
 | + or = / - | Zoom the UV Editor canvas in or out, while the canvas has focus. |
 | Escape (UV Editor) | Cancel a drag on the UV canvas. |
 
-You can change all of these shortcuts. Open the shortcut settings and search for
-`modeler/`. You can also use all Modeler commands without a keyboard.
+To change Modeler action shortcuts, open the shortcut settings and search for
+`modeler/`. Search for `spatial_editor/` to find the viewport move and axis
+constraint shortcuts. You can also use Modeler commands without a keyboard.
 
 ## Limits
 

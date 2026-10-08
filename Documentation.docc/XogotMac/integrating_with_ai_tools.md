@@ -9,9 +9,13 @@ Use this integration when you want an AI tool to inspect the active scene, read
 editor state, capture screenshots, edit nodes, open files, run the project, or
 debug a project that is already open in Xogot.
 
+To work with AI inside Xogot on Mac, iPad, or iPhone, use the built-in
+<doc:Coding-Assistant>. That page explains how to choose an AI integration and
+connect a provider. This page explains how to connect an external AI tool on Mac.
+
 ## Install the Xogot skill
 
-Open **Editor Settings**, then choose **AI**. The AI settings page lists the
+Open **Editor Settings**, then choose **AI > External Agents**. This section lists the
 bundled **Xogot Editor Control** skill and the supported AI agents.
 
 For each agent you use, choose a scope and click **Install**:

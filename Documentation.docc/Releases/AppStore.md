@@ -2,6 +2,24 @@
 
 Release notes for public releases of Xogot to the App Store.
 
+## Release 1.7.2 ()
+
+Xogot upgraded its internal engine from Godot 4.6 to Godot 4.7
+
+This include features like trackball rotation Follow Selection, the 3D ruler and component visibility, Path3D Snap to Colliders, and debugger type-name display.
+
+- New Modeler: Xogot Modeler lets you create complete 3D level blockouts, environments, and simple props directly inside Xogot. Start from configurable primitives or draw custom shapes, then refine geometry with familiar vertex, edge, and face tools—without switching to an external modeling app. Materials, colors, collisions, triggers, and reusable parts are all part of the same workflow, helping you iterate faster from idea to playable scene.
+
+Because Modeler produces standard Godot MeshInstance3D, ArrayMesh, and collision nodes, your work stays portable and requires no custom runtime or plugin. Built-in UV editing, lightmap UV generation, mesh conversion, export formats, and scripting support make it easy to take assets from rapid prototyping through final production while remaining compatible with standard Godot projects.
+ 
+- Added 2D View and Gizmos toolbar controls.
+
+- Added instant transform mode to the 3D editor.
+
+- Improved iPad mouse-wheel zoom behavior, and command-palette coverage.
+
+- Over 50 user visible bugs fixed.
+
 ## Release 1.6.10 (5231)
 
 - Kept OAuth login inside the app so Agent/iOS callbacks can land correctly.

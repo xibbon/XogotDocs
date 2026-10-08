@@ -15,15 +15,78 @@ The current Mac preview has the following known limitations:
 
 - The Profiler detail page is incomplete.
 
-- The Inspector has not yet been fully styled for macOS.
-
-- Export templates are not currently included. At this stage, only Mac, iOS, and
-  iPadOS deployments are supported.   Since Xogot is compatible with Godot, you
-  can just use Godot to export to those platforms.
-
 # Releases
 
 # Xogot macOS Release Notes
+
+## Build 2307
+
+### Improvements
+
+- Swift package migration is more robust: it validates source names, preserves
+  open tabs and breakpoints when files move, updates references safely, handles
+  errors per file, and improves new-script placement and attach-script paths.
+
+- Bezier drawing in the modeler is no longer experimental.
+
+### Bug fixes
+
+- Keep open scenes synchronized after creating a Swift package, avoiding
+  repeated external-change warnings.
+
+- Preserve literal debugger variable-name suffixes and stable debugger paths
+  when uniquing duplicate names.
+
+- Prevent startup cleanup from calling back into Xogot after startup failure,
+  fixing #3350; startup errors are now logged for diagnosis.
+
+## Build 2299
+
+## Improvements
+
+- Apple Exports: Improved export preset parsing and management for Apple
+  platforms, this fixes several problems in the deployment capabilities tab
+
+- Mac Export: Added support for signing with non-exportable signing keys for Mac
+
+- Updated the Learning Center for Godot 4.7 with refreshed samples, tutorials,
+  videos, and featured content.
+
+- Fixed the native debugger occasionally leaving device games paused after
+  attaching by waiting for the attach stop before completing configuration.
+
+- Fixed embedded macOS games missing the initial mouse-enter and focus events
+  when starting in the Game tab. #3229
+
+- Fixed macOS project configuration and entitlements for supported simulator and
+  Mac builds.
+
+## Build 2291
+
+### Improvements
+
+- Added a redesigned macOS file picker with an open-panel toolbar, favorites and
+  recents sidebar, sortable table and icon views, and grouping. (#3251)
+
+- Added modeler bevel support to the coding agent.
+
+- Modeler operations now show up on the Inspector if it is open and vanish from
+  the scene, or go into the scene if you close the inspector.
+
+- Split the component page into two pages.
+
+- Added support for external agents including opencode and hermes.
+
+- Made Godot keyboard shortcuts work regardless of GridMap editor focus.
+
+### Bug fixes
+
+- Fixed GridMap meshes being rebuilt continuously, should be a lot faster to
+  scroll and pan when you have a GridMap selected.
+  
+- Fixed missing registrations that caused the `helo` warning.
+
+- Fixed large AI file writes hanging.
 
 ## Build 2278
 

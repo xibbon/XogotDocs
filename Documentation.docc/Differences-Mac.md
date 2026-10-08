@@ -30,10 +30,13 @@ diagnostics, navigation and refactoring work in those files as well.  See
 
 ## AI accessible
 
-You can connect your favorite AI Agent code tool to control Xogot remotely, make
-changes and debug issues in your project without any additional plugins.   Just
-activate the support in "Settings>AI" and install the SKILLs file for your
-favorite AI agent, and you can start doing work via an agent.
+Use the built-in <doc:Coding-Assistant> to ask questions, change your project,
+and get help with errors inside Xogot. That guide also explains how to choose
+an AI integration.
+
+You can also connect an external AI coding tool to control Xogot, change files,
+and debug issues. Open **Editor Settings > AI > External Agents** and install
+the Xogot skill for your tool.
 
 Access to Xogot is not done via MCP, as we believe that MCP is both too rigid,
 and consumes too much of your precious token space, instead we rely on the `xo`

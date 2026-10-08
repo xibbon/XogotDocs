@@ -36,6 +36,7 @@ Follow a complete learning path for Xogot or jump directly into a focused Xogot 
     - <doc:Asset-Placer>
     - <doc:Embedded-Game-View>
     - <doc:Onscreen-Controls>
+    - <doc:Coding-Assistant>
 }
 
 ## More Xogot Documentation
@@ -101,6 +102,7 @@ Follow a complete learning path for Xogot or jump directly into a focused Xogot 
 - <doc:Working-with-Source-Control>
 - <doc:Xogot-Connect>
 - <doc:Command-Palette>
+- <doc:Coding-Assistant>
 - <doc:Testflight>
 
 ### Mac
