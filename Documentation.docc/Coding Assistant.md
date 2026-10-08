@@ -28,10 +28,8 @@ On Mac, **Editor Settings > AI** has two sections: **Built-in AI** and
 settings. An external skill installation does not connect a provider to the
 built-in assistant. Each integration has its own setup.
 
-@Comment {
-    Screenshot needed: Mac Editor Settings > AI with the Built-in AI and External Agents tabs visible. Select Built-in AI and show Accounts, Add Provider, and Defaults.
-
-    @Image(source: "coding-assistant-settings.png", alt: "AI settings with Built-in AI selected, provider accounts, and defaults.")
+@Image(source: "coding-assistant-settings.png", alt: "AI settings with Built-in AI selected, a connected provider, and tool approval set to Ask.") {
+    Use Built-in AI to connect a provider and select the assistant defaults.
 }
 
 ## Connect a provider
@@ -81,10 +79,8 @@ On Mac, press **Command-0** to show the assistant. In AI settings, use
 Hold **Option** when you select **New Conversation** to use the other location.
 Press **Shift-Command-0** to open a new assistant window.
 
-@Comment {
-    Screenshot needed: A Coding Assistant conversation beside an open player script. Show a request, the assistant response, a tool result, and the provider, model, Effort, and tool approval controls below the message field.
-
-    @Image(source: "coding-assistant-conversation.png", alt: "A conversation beside a player script, with model and tool approval controls.")
+@Image(source: "coding-assistant-conversation.png", alt: "An assistant window with a request about player.gd, completed tool actions, and a response about movement and jumping.") {
+    The assistant reads the sample player script and explains its movement controls.
 }
 
 ## Add context to a request
@@ -129,10 +125,8 @@ The conversation shows tool actions and results. Check the changed files and
 run your game to verify the result. Select the stop button to stop the assistant.
 You can also send another message while it works to give it new instructions.
 
-@Comment {
-    Screenshot needed: A conversation waiting for tool approval. Show the proposed action, its arguments, and the available approval and denial buttons.
-
-    @Image(source: "coding-assistant-approval.png", alt: "A proposed tool action waiting for approval in a conversation.")
+@Image(source: "coding-assistant-approval.png", alt: "A command to read player.gd waiting for approval, with Allow once, Always allow bash, and Deny buttons.") {
+    Check the proposed command before you allow it to run.
 }
 
 ## Manage conversations and settings
