@@ -1,6 +1,265 @@
-# TestFlight Release Notes
+## TestFlight Release Notes
 
 Release notes for our preview release of Xogot to TestFlight.
+
+## Release 
+
+## Release XX (Beta: 872)
+## Release 5568
+
+### Improvements
+
+- Introduced durable agent conversations that survive app termination.
+
+- Enabled the new native transcript renderer by default on iOS.
+
+- Improved AgentCore transcript rendering performance
+
+### Bug fixes
+
+- Fixed a crash when closing a project by guarding project-shutdown handling.
+
+- Fixed editable mesh gizmo attachment after using Make Editable (#3451).
+
+- Fixed Asset Store addon path handling so the addons root is preserved by
+  default (#3445).
+
+- Fixed Modeler tool lifecycle by cancelling the active tool before stopping the
+  host.
+
+- Prevented new meshes from receiving a duplicate gizmo.
+
+- Ensured element editing leaves Godot’s Select mode correctly.
+
+## Release 5557 (Beta: 869)
+
+- Agent runs can continue in the background on iOS, with live progress, tool
+  status, cancellation, expiration handling, and notifications when user input
+  or completion requires attention.
+
+- Background agent task subtitles now show user-facing tool labels, such as
+  “Editing the scene,” instead of internal tool names.
+
+- Agent transcript rendering is substantially faster and more memory-efficient
+  for long conversations, using measured, windowed layouts and batched Markdown
+  updates.
+
+
+### Bug fixes
+
+- Fixed failed game launches so they report localized failure reasons, preserve
+  startup diagnostics, and close the failed host after dismissal. (#3441)
+
+- Fixed iPad trackpad hover input incorrectly orbiting the 3D camera without a
+  click by initializing mouse-button and modifier state correctly.
+
+- Fixed Agent transcripts stopping auto-scroll after an elastic bounce or
+  status-bar tap, so new streamed content follows the end only when appropriate.
+
+- Fixed AnimationPlayer track sizing on iPad, preventing main-thread work on
+  every frame and avoiding clipped rows under the timeline. (#2728)
+
+
+## Release 5550
+
+### Improvements
+
+- Start a new coding-assistant conversation from the AI button, reusing an
+  existing empty conversation instead of creating duplicates.
+
+- Improve the coding-assistant model picker by showing recommended models first
+  and grouping older models and variants under “Other.”
+
+- Keep inline prompt-card controls on one row when space is limited, using an
+  icon for Cancel and allowing other labels to wrap.
+
+- Default the “Sign in with ChatGPT” provider to GPT-5.6 Terra.
+
+### Bug fixes
+
+- Fix transcript scrolling on iPad: eliminate large jumps and incorrect
+  positions during dragging, flicking, and content updates by correcting height
+  handling and scroll-follow behavior.
+
+
+## Release 5542 (Beta: 864)
+
+### Improvements
+
+- AI Agent: you can now export your conversation to HTML (#3433)
+
+- AI Agent: you can now rename conversations.
+
+- Enabled the Asset Browser outside TestFlight builds.
+
+- AI Agent: styled so that the send control reflects whether a message can be
+  sent, and the terminal activity indicator no longer interrupts typed text.
+
+- AI Agent: Improved default model selection for new conversations and provider
+  model controls, preferring suitable provider defaults over alphabetical model
+  selection.
+
+- Enabled networking for AgentCore virtual bash sessions. (#3437)
+
+## Release 5534 (Beta: 860)
+
+For the standard Xogot release, this also includes the change sfrom Beta 851.
+
+### Improvements
+
+- Added the 4.7 scene painter to the Xogot toolbar. (#2532)
+
+- Improved the Project Manager by showing which Godot version last edited a
+  project. (#2753)
+
+- Improved iOS Asset Browser search by providing more room while the search
+  field is focused. (#2857)
+
+- AI Agent: Preserves the requested AI thinking levels without resetting them.
+
+- AI Agent: Keeps iOS from going to sleep if there is a task ongoing.
+
+### Fixes
+
+- Beta only: fixes an rare crash at startup we observed on TestFlight
+
+- Hardening for agents doing work while using the UI.
+
+## Release 5515 (Beta: 851)
+
+### Improvements
+
+- Added built-in AI access on iOS for Xogot Pro
+
+- AI Agent can now get its own floating window
+
+- AI Agent now nhas support for the  structured `ask_user` prompts for the
+  built-in agent, including multi-question forms, custom answers, notes,
+  cancellation, and chat follow-up.
+
+- Added `@` and `$` completion support to the composer context on iOS.
+
+- Improved AI prompt cards and prompt presentation, and refreshed model names
+  and organization.
+
+- Improved Inspector performance - found a very nice set of optimizations to
+  speed up populating the inspector with new data
+
+- Improved the Modeler with safer lightmap UV handling
+
+- Improved plugin handling by preserving addon-folder capitalization.
+
+- Improved the Asset Browser search experience on iOS. (#2857)
+
+- Refined the iOS launcher layout for the Duo hero column. (#3398)
+
+### Bug fixes
+
+- Fixed a debugger issue where remote polling continued after the game stopped
+  responding.
+
+- Fixed a crash when the debugger stopped and the scene was deleted.
+
+- Fixed subresource checks incorrectly using internal serialization getters to
+  improve the inspector.
+
+## Release 5480 (Beta 841)
+
+### Improvements
+
+- Added floating AI chat support on iPad, tracking the Mac changes, we brought
+  back our floating window from last year.
+
+- Improved AI chat on iOS: transcript scrolling, follow-the-end behavior, list
+  status indicators, hardware-keyboard Return/Shift-Return handling, and
+  formatted completed reasoning.
+
+- Added native file-dialog support for games on iOS, including
+  project/outside-project directory browsing and file selection callbacks.
+
+- **Expanded Learning Center content:** Marco’s samples and the Terrain3D demo
+  are now available, with the new material added across supported localizations.
+
+- **Animation editing is clearer:** BlendSpace 1D entries show the animation’s
+  friendly name when available instead of exposing only its resource path.
+
+- Coding Assistant now has a new "Allow Edits" mode, similar to Claude's system
+  intended to reduce the number of approvals that edit your project, laxer than
+  Ask, stricter than allow everything.
+
+- Duo support is here, it should not change things for folks right now, but
+  would love the additional testing
+
+### Bug fixes
+
+- Fixed the selected run scene remaining active after its file was deleted or
+  renamed.
+
+- Fixed an export bug
+
+
+## Relesae 5446 (Beta: 804)
+
+- Fixed a crash when returning to the editor after reloading the game.
+
+- Fixes game exporting
+
+## Release 5436 (Beta: 796)
+
+### Improvements
+
+- Improved import progress reporting by counting meshes dynamically and scaling
+  progress totals to match the actual workload. (#2883)
+
+- Modeler: Bezier drawing in the modeler is no longer experimental.
+
+- Modeler: new bevel operations.
+
+- Inspector: added support for metadata editing in objects.
+
+- Inspector: Added editable Skeleton3D Bone Map controls to Advanced Import
+  Settings, including profile, group, humanoid bone mapping, and automatic
+  mapping.
+
+- Agent: we now allowSupport editing existing custom provider accounts, 
+  including credentials, endpoints, dialects, model limits, and model lists
+  while preserving the provider identity and existing model settings.
+
+- Agent: Upgraded the AI integration to PiSwift 1.0.4 and its built-in MCP
+  provider, improving MCP tool permissions, server lifecycle handling, sign-in
+  flows, nested tool display, and slash commands. (#3333). 
+
+- Agent: Added composer context.
+
+- Preserve literal debugger variable-name suffixes and stable debugger paths
+  when uniquing duplicate names.
+
+- Improved project launcher tabs on Duo (#3278).
+
+- Updated the Learning Center for Godot 4.7.
+
+### Bug fixes
+
+- Fixed the Bone Map inspector layout so the silhouette and pickers remain
+  stable without reflowing.
+
+- Fixed double-click scene loading and improved scene reloading/RID-cache
+  reinitialization.
+
+- Fixed hot reload leaving freed classes in ClassDB (#3379).
+
+- Fixed startup signal-disconnect handling and added diagnostics (#3350).
+
+- Fixed iPad FilePad visibility while renaming nodes (#3361).
+
+- Fixed Inspector background/jumping while drilling into groups on iOS (#3348).
+
+- Fixed GridMap meshes being rebuilt continuously.
+
+- Fixed large AI file writes hanging.
+
+- Fixed missing files and asset cleanup problems that could exhaust storage.
+
 
 ## Release 5395 (Beta: 756)
 
@@ -191,7 +450,7 @@ improved mesh editing workflows.
 
 ## Release 5304
 
-## Improvements
+### Improvements
 
 - Added experimental **Bezier Plane** modeling with flat strips, improved
   tangent editing, plane-constrained dragging, clearer handle selection, and
@@ -203,7 +462,7 @@ improved mesh editing workflows.
 
 - Added iPad trackpad and mouse support for setting modeler extrusion height.
 
-## Bug Fixes
+### Bug Fixes
 
 - Fixed iOS GDExtension loading and extension-list writes. (#3268)
 
@@ -227,7 +486,7 @@ improved mesh editing workflows.
   editor UI.
 
 
-## Bug Fixes
+### Bug Fixes
 
 - Fixed the Modeler options page not displaying correctly on iOS. (#3260)
 
@@ -254,7 +513,7 @@ improved mesh editing workflows.
 - Expanded localization across editor commands, settings, exporting, and Modeler
   workflows.
 
-## Bug Fixes
+### Bug Fixes
 
 - Restored on-screen keyboard support for multiline TextEdit and CodeEdit
   controls in the editor. #3255
@@ -360,20 +619,20 @@ The Mesh UV editor lets you map textures without leaving Xogot
 - Expanded localization coverage by completing app-catalog translations and
   converting app-string literals to generated localization symbols.
 
-## Bug Fixes
+### Bug Fixes
 
 - Fixed the signal connection and code-drop flow to avoid unsafe/incorrect
   generation behavior (issue #3217).
 
 ## Release 5191 (build-5099 → build-5191)
 
-## Xogot Beta Improvements
+### Xogot Beta Improvements
 
 - Added Godot 4.7 debugger support for human-readable object type-name display.
 
 - Added follow-selection support for Godot 4.7 across platforms. (#2759)
 
-## Both Improvements
+### Both Improvements
 
 - Kept OAuth login inside the app so Agent/iOS callbacks can land correctly.
 
@@ -394,7 +653,7 @@ The Mesh UV editor lets you map textures without leaving Xogot
 
 - Updated Version UI and related export/version wording for clarity.
 
-## Bug fixes
+### Bug fixes
 
 - Another attempt to fix crash in #3159.
 - Fixed mesh library crash/interaction issues (#2741), including bottom panel
@@ -465,7 +724,7 @@ The Mesh UV editor lets you map textures without leaving Xogot
 
 ## Release
 
-## Improvements
+### Improvements
 
 - Added a navigation minimap to GraphEdit with tap, drag, keyboard, and
   accessibility controls.
@@ -478,7 +737,7 @@ The Mesh UV editor lets you map textures without leaving Xogot
 - Added swipe and context menu actions to delete AI conversation folders without
   deleting their conversations.
 
-## Bug Fixes
+### Bug Fixes
 
 - Fixed Quick Lookup that opened and closed repeatedly on iPhone (#3192).
 
@@ -498,14 +757,14 @@ The Mesh UV editor lets you map textures without leaving Xogot
 
 ## Release 5092 (August 10th, 2026)
 
-# Improvements
+### Improvements
 
 - Improved the debugger variable view with nested values, saved expansion state,
   change highlights, value copying, and additional display formats.
 
 - Improved the coding assistant with compact recoverable errors #3116
 
-# Bug fixes
+### Bug fixes
 
 - Fixed the ScenePad selection color on iOS 27. #3120
 
@@ -649,7 +908,7 @@ Godot 4.7, while the regular Xogot Testflight continues to be based on Godot
 
 ## Release 4874 (July 17th)
 
-## Improvements
+### Improvements
 
 - Enabled the Coding Assistant in iPhone and iPad TestFlight builds, including
   AI settings and direct access to project-editing tools.   It requires you to
@@ -680,7 +939,7 @@ Godot 4.7, while the regular Xogot Testflight continues to be based on Godot
   still not cleaned up the list of models, it is too extensive, will clean up
   soon.
 
-## Bug Fixes
+### Bug Fixes
   
 - Fixed a spectrum of race conditions on the PiSwift agent - too many ways
   that were easy to deadlock the UI, removed.
@@ -720,7 +979,7 @@ Godot 4.7, while the regular Xogot Testflight continues to be based on Godot
 
 ## Release 4835
 
-## Improvements
+### Improvements
 
 - Replaced Monaco’s signal markers with clickable CodeLens entries and
   improved restoration of editor decorations. #3025
@@ -730,7 +989,7 @@ Godot 4.7, while the regular Xogot Testflight continues to be based on Godot
   
 - Expanded localization coverage across the editor and Coding Assistant.
 
-## Fixes
+### Fixes
 
 - Fixed a crash when selecting GLB models in the Scene Import dialog. #3019
 

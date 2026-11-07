@@ -19,6 +19,423 @@ The current Mac preview has the following known limitations:
 
 # Xogot macOS Release Notes
 
+Each build below lists changes since the previous Mac build on the same
+branch. Builds 2429, 2466, and 2492 are on `testflight-mac`. Builds 2430,
+2442, 2468, 2471, 2475, 2482, and 2493 are on `testflight-mac-4.8`.
+
+## Build 2493 (`testflight-mac-4.8`)
+
+### Improvements
+
+- Improved `xo` feedback when it controls a running game, including from the
+  Coding Assistant.
+
+### Bug fixes
+
+- Fixed accessibility queries in embedded Mac games and a stale
+  AnimationPlayer reference.
+
+## Build 2492 (`testflight-mac`)
+
+### Improvements
+
+- Improved `xo` feedback when it controls a running game, including from the
+  Coding Assistant.
+
+- Coding Assistant now gives a conversation a title after the first message.
+
+- Xogot can open more files in large projects.
+
+### Bug fixes
+
+- Fixed saves when a project directory is read-only but the target file is
+  writable.
+
+- Fixed mouse movement in embedded games across multiple Mac displays.
+
+- Fixed several engine memory leaks.
+
+## Build 2482 (`testflight-mac-4.8`)
+
+### Improvements
+
+- Coding Assistant now gives a conversation a title after the first message.
+
+- Xogot can open more files in large projects.
+
+### Bug fixes
+
+- Fixed saves when a project directory is read-only but the target file is
+  writable.
+
+- Fixed mouse movement in embedded games across multiple Mac displays.
+
+- Fixed the display setup used to start an embedded Mac game.
+
+- Fixed several engine memory leaks.
+
+## Build 2475 (`testflight-mac-4.8`)
+
+### Bug fixes
+
+- Fixed an embedded Mac game startup check that used the display driver
+  instead of the embedded game setting.
+
+## Build 2471 (`testflight-mac-4.8`)
+
+### Bug fixes
+
+- Fixed embedded Mac games that failed to start without a window ID.
+
+## Build 2468 (`testflight-mac-4.8`)
+
+### Improvements
+
+- Updated this preview line to Godot 4.8 beta 2.
+
+- Coding Assistant conversations now remain available after an app restart
+  and use a native Mac transcript.
+
+- Added a keyboard shortcut for a new Coding Assistant conversation. #3444
+
+- The Modeler now lets you select and drag mesh elements in the 3D editor.
+  Its gizmo appears after you choose Make Editable. #3451
+
+- AnimationPlayer uses more compact rows with consistent track heights. #2728
+
+### Bug fixes
+
+- Fixed Asset Store installs that removed the add-on's root folder. #3445
+
+- Fixed a crash when closing a project.
+
+- Fixed game launches that failed without a useful error message.
+
+## Build 2466 (`testflight-mac`)
+
+### Improvements
+
+- Added a Terminal tab to the Mac bottom bar and enabled the Asset Browser.
+
+- Coding Assistant conversations now remain available after an app restart
+  and use a native Mac transcript.
+
+- Added a keyboard shortcut for a new Coding Assistant conversation. #3444
+
+- The Modeler now lets you select and drag mesh elements in the 3D editor.
+  Its gizmo appears after you choose Make Editable. #3451
+
+- AnimationPlayer uses more compact rows with consistent track heights. #2728
+
+### Bug fixes
+
+- Fixed Asset Store installs that removed the add-on's root folder. #3445
+
+- Fixed a crash when closing a project.
+
+- Fixed game launches that failed without a useful error message.
+
+## Build 2442 (`testflight-mac-4.8`)
+
+### Improvements
+
+- Added a Terminal tab to the Mac bottom bar and enabled the Asset Browser.
+
+- Updated the Coding Assistant's default models and added a disclosure
+  message. #3431
+
+### Bug fixes
+
+- Fixed a Coding Assistant command that could not access the network. #3437
+
+- Fixed an editor update that could start a second engine instance.
+
+## Build 2430 (`testflight-mac-4.8`)
+
+### Improvements
+
+- Added Scene Paint 2D tools to the 2D toolbar, including painting, an
+  eyedropper, pinning, and snap modes. #2532
+
+- Project Manager now shows which Godot version last edited each project. #2753
+
+- Coding Assistant conversations now keep their selected thinking effort
+  after an app restart or model change.
+
+- AI Settings now identifies expired sign-ins and offers a way to sign in
+  again. #3407
+
+- Xogot keeps the screen awake during active work.
+
+### Bug fixes
+
+- Fixed a crash when switching scene tabs quickly and prevented a new scene
+  with a custom root from replacing edits in another tab.
+
+- Enlarged the 2D resize and anchor handles' hit areas at higher editor
+  scales. #3430
+
+## Build 2429 (`testflight-mac`)
+
+### Improvements
+
+- Added Scene Paint 2D tools to the 2D editor toolbar for Godot 4.7 and later,
+  including painting, eyedropper, pinning, and snap modes. #2532
+
+- Project Manager now shows whether a project was last edited with an older or
+  newer Godot version. #2753
+
+- AI Agent conversations preserve their requested thinking effort across
+  restarts and model changes.
+
+- AI Settings now reports expired OAuth sign-ins and offers a direct
+  reauthentication option. #3407
+
+### Bug fixes
+
+- Fixed crashes when switching scenes while the AI Agent was active.
+
+- Fixed a crash when rapidly switching scene tabs by deferring scene-tree
+  scrolling with stable object IDs.
+
+- Fixed new scenes with custom roots being inserted into the wrong tab and
+  overwriting existing edits; duplicate scene paths are now rejected.
+
+## Build 2410
+
+### Improvements
+
+- AI Agent now has support for the  structured `ask_user` prompts for the
+  built-in agent, including multi-question forms, custom answers, notes,
+  cancellation, and chat follow-up.
+
+- Improved AI prompt cards and prompt presentation, and refreshed model names
+  and organization.
+
+- Improved device discovery by hiding `devicectl` devices without a live tunnel.
+
+### Bug fixes
+
+- Fixed a debugger issue where remote polling continued after the game stopped
+  responding.
+
+- Fixed a crash when the debugger stopped and the scene was deleted.
+
+- Fixed a macOS Sequoia text-field selection race.
+
+- Improved the Modeler with safer lightmap UV handling
+
+- Fixed the Mac inspector tab bar requiring a second click to switch tabs.
+
+### 4.8 build
+
+- Fixes a handful of regression from patches that we missed when upgrading th
+  eengine to 4.8
+
+## Build 2390
+
+### Improvements
+
+- Inspector performance: found a couple of nice SwiftUI optimizations that speed
+  up our inspector refresh.
+
+- "My Mac" deployments now retain Development signatures and support the fast
+  deployment path for projects with entitlements.
+
+- Export file pickers now accept `.entitlements` files and open at the current
+  path.
+
+- Plugins now preserve the add-on folder’s case when enabling plugins.
+
+- Duo: layout fixes for the launch screen
+  (#3398)
+
+## Bug fixes
+
+- Fixed launches without macOS activation opening no editor window, which could
+  leave `xo` stuck importing.
+
+- Fixed "My Mac" deployments losing entitlements such as Game Center and iCloud.
+
+## Build 2368
+
+### Improvements
+
+- **A smoother Mac export workflow:** export routing and option handling were
+  reworked, advanced export and signing data now flow through consistently, and
+  macOS compatibility checks were tightened. PKG exports are now explicitly
+  supported.
+
+- **A redesigned games.xogot.com export sheet** makes it clearer what will be
+  exported and how the result will be delivered (#3253).
+
+- **Native game file dialogs** are now used for opening and interacting with
+  files from exported games, with improved file-access bridging (#542).
+
+- **Inspector file paths are easier to edit:** Mac users can type or paste paths
+  directly into file-path properties (#3390).
+
+- **Animation editing is clearer:** BlendSpace 1D entries show the animation’s
+  friendly name when available instead of exposing only its resource path.
+
+- **Faster engine startup:** the dynamic libgodot work reduces overhead in the
+  engine-loading path, making project/editor startup more responsive.
+
+- **Expanded Learning Center content:** Marco’s samples and the Terrain3D demo
+  are now available, with the new material added across supported localizations.
+
+- **Improved secure networking:** domain-token-based TLS support is now
+  integrated into the Godot/Swift bridge.
+
+- **Duo support:** since we share a codebase with iOS, this release restructured
+  some internals to support the Duo, it should not have an impact, but that is a
+  big internal change.
+
+### Bug fixes
+
+- **Run Scene no longer keeps a stale selection:** when the selected scene file disappears, the editor clears that selection instead of trying to launch a missing file.
+
+## Build 2349
+
+## Improvements
+
+- Coding Assistant: we are leveraging PiSwift's new CodeMode which reduces
+  extensively the need to approve external tools like Bash did in the past.
+  
+  You can direct the built-in assistant to use bash if you prefer.
+
+- Coding Assistant now has a new "Allow Edits" mode, similar to Claude's system
+  intended to reduce the number of approvals that edit your project, laxer than
+  Ask, stricter than allow everything.
+
+- Our updater will now work for folks that chose to install Xogot in a
+  non-standard location and will now update that version in place.
+
+## Bug Fixes
+
+- Fixed Xogot failing to work after an unsuccessful deployment, if you canceled
+  an operation midway to a deployment to iOS, and then tried to run locally, the
+  local process would not launch.
+
+- Fixed SDK framework loading in Swift compiler macros.
+
+## Build 2342
+
+### Improvements
+
+- Improved macOS Swift build reliability by ensuring SwiftPM build tools can
+  locate SwiftGodot frameworks before staging, while removing the temporary SDK
+  search path from the staged game library.
+
+- Updated the bundled SwiftGodot component to v0.99.1.
+
+### Bug fixes
+
+- Fixed a crash when reloading Swift code after returning to the editor by
+  refreshing stale singleton bindings.
+
+- Fixed wireless device launches losing the Godot debugger before the game
+  started; GDScript breakpoints, game output, and cleanup now work correctly.
+  #3386
+
+
+## Build 2337
+
+### Improvements
+
+- Agent: we now allowSupport editing existing custom provider accounts, 
+  including credentials, endpoints, dialects, model limits, and model lists
+  while preserving the provider identity and existing model settings.
+
+- Inspector: added support for metadata editing in objects.
+
+- Modeler: Improve the bezier experience for editing, you can now "lock" the
+  bezier point while editing to allow you to move it across certain axis
+  (helpful to raise your bezier mesh for example),
+
+### Bug fixes
+
+- Fix a scenario that would trigger unreliable Swift builds.
+
+- Fix libgodot startup-failure cleanup in multi-instance builds, including
+  proper release of engine resources and failed-instance memory. (Crash#36)
+
+- Fix Swift build product lookup after successful builds when products are 
+  located outside the previously searched build-tree paths.
+
+## Build 2326
+
+### Improvements
+
+- Added editable Skeleton3D Bone Map controls to Advanced Import Settings,
+  including profile, group, humanoid bone mapping, and automatic mapping.
+
+- Improved import progress reporting by counting meshes dynamically and scaling
+  progress totals to match the actual workload. (#2883)
+
+- Synchronized Deployment Settings with the selected runnable Godot export
+  preset - two common locations now edit both places - and this also fixes the
+  missing version number which triggered errors from GameCenter.   
+
+- Improved macOS export reliability by waiting for active project scans and
+  imports to finish before exporting, with better texture preflight,
+  cancellation, diagnostics, and test coverage.
+
+- Upgraded the AI integration to PiSwift 1.0.4 and its built-in MCP provider,
+  improving MCP tool permissions, server lifecycle handling, sign-in flows,
+  nested tool display, and slash commands. (#3333). 
+
+### Bug fixes
+
+- Fixes missing version number when deploying to iOS devices
+
+- Fixed macOS imports showing the wrong property editor when editing
+  resource-typed import options.
+
+- Fixed the Bone Map inspector layout so the silhouette and pickers remain
+  stable without reflowing.
+
+- Fixed export failures caused by starting an in-process PCK export while the
+  project filesystem was still being scanned.
+
+- Fixed cleanup of older macOS candidate assets to prevent storage exhaustion.
+
+## Build 2318
+
+### Coding Assistant Improvements
+
+- You can now open the coding assistant on a dedicated window.  You can
+  configure this as a setting to be the default, or you can use the hotkey
+  command-shift-0 to open the window, or click the window icon on the AI tab.
+
+- The composer now can include context for various elements in your project and
+  attach various assets.
+
+- The composer now can complete project files, scene notes, settings and other
+  bits.
+
+- Routine errors no longer look like panic situations, they are rendered mildly
+  like any other transient operation.
+
+### Improvements
+
+- Small improvements to the convert-to-swift-package process introduced in the
+  last release.
+
+- Improved `xo ui build` to accept bare JSON numbers and booleans in properties and report detailed validation paths.
+
+- Improved scene import progress reporting to show the actual import stages
+  instead of a hardcoded 104-step count. #2883
+
+### Bug fixes
+
+- Fixed double-clicking a scene not loading it and reinitialized RID caches.
+
+- Fixed scene reloading behavior.
+
+- Fixed hot reload leaving freed Swift classes registered in ClassDB, which
+  could crash during subsequent reload processing. #3379
+
 ## Build 2307
 
 ### Improvements
@@ -42,7 +459,7 @@ The current Mac preview has the following known limitations:
 
 ## Build 2299
 
-## Improvements
+### Improvements
 
 - Apple Exports: Improved export preset parsing and management for Apple
   platforms, this fixes several problems in the deployment capabilities tab
@@ -110,7 +527,7 @@ The current Mac preview has the following known limitations:
 - Improved Modeler state output with concise quiet-mode summaries, including
   batch JSON output.
 
-## Bug fixes
+### Bug fixes
 
 - Fixed deployment when a platform has one export preset: it is selected and
   saved automatically before deployment (#3327).
@@ -150,7 +567,7 @@ The current Mac preview has the following known limitations:
 - Favorites handling now compares normalized file paths, avoiding duplicate 
 favorites when node identifiers differ.
 
-# Bug fixes
+### Bug fixes
 
 - Prevented heavy CPU consumption when a missing dynamic library is queued for
   loading or unloading.
@@ -194,7 +611,7 @@ favorites when node identifiers differ.
 
 - Add macOS text-field prompts that explain where users should paste code.
 
-## Bug Fixes
+### Bug Fixes
 
 - Fix a stale Control pointer in the editor’s offset-transform preview that
   could be used after the node was freed. (#3319)
@@ -213,8 +630,6 @@ validation, shape-bound calculations, and game-instance selection.
 - Improve errors when a game exits, stops at a breakpoint, or fails to become
   live during `xo project run`.
 
-
-
 ## Build 2252
 
 ### Improvements
@@ -222,7 +637,7 @@ validation, shape-bound calculations, and game-instance selection.
 - Improved Modeler tool state handling and test diagnostics, including safer
   scene and selection tracking across embedded editor instances.
 
-## Bug Fixes
+### Bug Fixes
 
 - Fixed a crash during documentation generation when an inherited property has
   no matching ancestor (#3318).
@@ -306,7 +721,7 @@ iOS: diagnostics for signing
   materials. New shapes share a project-local Grid material instead of embedding
   duplicate textures.
 
-## Bug fixes
+### Bug fixes
 
 - Modeler: fix polygon extrusion direction, UV placement after frame transforms,
   vertex-selection mode inference, and inset rim generation.
@@ -348,7 +763,7 @@ iOS: diagnostics for signing
   editor.
 
 
-## Bug fixes
+### Bug fixes
 
 - Fixed Modeler mesh sharing for nodes inside scene instances, avoiding unwanted
   private mesh copies and preserving correct save/undo behavior.
@@ -422,7 +837,7 @@ Intermediate build to fix the upgrade paths  from 4.6 to 4.7
   (#3212).
 
 
-## Bug Fixes
+### Bug Fixes
 
 - The macOS file picker back and forward buttons now work (#3250).
 
@@ -570,7 +985,7 @@ editors as it is a common industry practice.
 - Resolved 4.7 build regressions (coverage/build argument and related plumbing issues).
 ## Build 2097
 
-## Improvements
+### Improvements
 
 Continued updates to our export story, and polishing it across the board, one of
 the new features is that we now added Web export support, along with debugging
@@ -581,7 +996,7 @@ We have also added preliminary Android support.
 - Added a dedicated tab for export logs in the Report Navigator and routed
   command output into progress reporting.
 
-## Bug Fixes
+### Bug Fixes
 
 - Fixed macOS native file dialogs for embedded display server modes, resolving
   issues with `file_dialog_show` and `use_native_dialog` on macOS; fixes #3234,
@@ -621,7 +1036,7 @@ Our exporting templates use the published Godot templates.
 
 The entire Export functionality is also available to AI agents via "xo"
 
-# Improvements
+### Improvements
 
 - Added full multi-selection support in Groups inspector so GroupPad checks/edit state correctly across selected nodes and group operations are applied consistently.
 
@@ -674,7 +1089,7 @@ The entire Export functionality is also available to AI agents via "xo"
 
 ## Build 2037
 
-## Improvements
+### Improvements
 
 - Added C# language availability UX improvements: the script picker now clearly
   marks unavailable languages, and project parsing now checks `[xogot]` markers
@@ -683,7 +1098,7 @@ The entire Export functionality is also available to AI agents via "xo"
 - Added C# flow in editor for opt-in activation (project action +
   restart/install marker handling).
 
-## Bug Fixes
+### Bug Fixes
 
 - Fixed blank inspector state after closing a scene tab by restoring the
   previously selected inspector page instead of leaving `.noneSelected`.
@@ -763,7 +1178,7 @@ The entire Export functionality is also available to AI agents via "xo"
 - Improved asset-store compatibility by using the running engine version when
   checking assets.
 
-## Bug Fixes
+### Bug Fixes
 
 - Fixed adding AnimationTree states for animations in named libraries. #3191
 
@@ -784,7 +1199,7 @@ The entire Export functionality is also available to AI agents via "xo"
 
 ## Build 1984 (Aug 7th, 2026)
 
-## Improvements
+### Improvements
 
 - Improved iOS device deployment from the macOS editor: PCK exports now run in a
   separate process, keeping the editor responsive, showing packing progress, and
@@ -799,8 +1214,7 @@ The entire Export functionality is also available to AI agents via "xo"
   replacement for the Godot one - and finally closed all the gaps - would love
   to hear your feedback.  We think we improved upon many of the core UI elements.
 
-
-## Bug Fixes
+### Bug Fixes
 
  - Prevented crashes when opening a .NET project on installations without .NET
    support.
@@ -816,7 +1230,7 @@ The entire Export functionality is also available to AI agents via "xo"
 
 ## Build 1978 (Aug 5th, 2026)
 
-## Improvements
+### Improvements
 
 - Added `xo component` commands to list, install, and remove language support
   and export templates without starting Xogot.
@@ -832,7 +1246,7 @@ The entire Export functionality is also available to AI agents via "xo"
 - Improved .NET deployment feedback with live publishing status and output, plus
   persistent publish logs in deployment reports.
 
-## Bug Fixes
+### Bug Fixes
 
 - Fixed native debugger communication failures that could leave Pause
   unavailable; debugger disconnects and pause, continue, and step failures are
@@ -859,7 +1273,7 @@ The entire Export functionality is also available to AI agents via "xo"
 
 ## Build 1971 (Aug 4th, 2026)
 
-## Improvements
+### Improvements
 
 - Added support for device deployment of .NET code: we are extending our .NET
   support from just the "Local Editor" configuration to the packaged versions
@@ -877,7 +1291,7 @@ The entire Export functionality is also available to AI agents via "xo"
   names and values for strings, arrays, lists, null references, Godot strings,
   and packed arrays.
 
-## Bug fixes
+### Bug fixes
 
 - Fixed incorrect colors in the Inspector when using Dark Mode. #3165
 
@@ -891,7 +1305,7 @@ The entire Export functionality is also available to AI agents via "xo"
 
 ## Build 1966 (Aug 4th, 2026)
 
-## Improvements
+### Improvements
 
 - Made local Swift debugging substantially more reliable, including support for
   preparing a debuggable local app runner when needed.
@@ -907,7 +1321,7 @@ The entire Export functionality is also available to AI agents via "xo"
 
 - Improved Coding Assistant support for Google API-key configuration.
 
-## Bug fixes
+### Bug fixes
 
 - Fixed SwiftUI toolbar crashes caused by background rendering. #3161
 
@@ -938,7 +1352,7 @@ The entire Export functionality is also available to AI agents via "xo"
    including the exact build command and clear instructions when Swift Support
    must be installed or a build must be run from  Xogot 
 
- ## Bug Fixes 
+ ### Bug Fixes 
 
  - Improved Coding Assistant error presentation and moved model configuration
    into a dismissible sheet, so the configuration screen is no longer
@@ -946,7 +1360,7 @@ The entire Export functionality is also available to AI agents via "xo"
  
 ## Build 1942 (August 2nd, 2026)
 
-# Improvements
+### Improvements
 
 - Added Go to Definition for Swift and SwiftGodot symbols in the macOS code
   editor. #3137
@@ -969,13 +1383,13 @@ The entire Export functionality is also available to AI agents via "xo"
   visible instead of allowing them to scroll out of view. #3147.   And now we
   always dock those icons on the right.
 
-# Bug Fixes
+### Bug Fixes
 
 - Fixed a crash while formatting profiler monitor values. #3153
 
 ## Build 1920 (July 31st, 2026)
 
-## Improvements
+### Improvements
 
 Swift support gets a number of new features:
 
@@ -996,7 +1410,7 @@ Made the C# pipeline more resilient and also fixed:
 
 - C# scripts that failed to load when a project ran in a separate Mac game window.
 
-## Bug Fixes
+### Bug Fixes
 
 - Fixed the Root Type class picker in Advanced Import Settings and restored the correct picker appearance. #3058
 
@@ -1055,7 +1469,7 @@ Made the C# pipeline more resilient and also fixed:
 
 ## Build 1888 (July 28th, 2026) 
 
-## Improvements
+### Improvements
 
 - Enabled C# and Swift project support by default on macOS.
 
@@ -1064,7 +1478,7 @@ Made the C# pipeline more resilient and also fixed:
 
 - Improved the scene picker so it lists only supported scene file types. #3110
 
-## Bug fixes
+### Bug fixes
 
 - Fixed Go to Definition across files and built-in class documentation in the
   code editor. #3087
@@ -1248,7 +1662,7 @@ Added full file paths to code and scene tab tooltips on Mac. #2876
 - Improved the signal connection sheet with a clearer grouped layout for
   methods, source paths, signals, and targets.
 
-## Fixes
+### Fixes
 
 - Fixed the code editor dropping keyboard input after extending a selection
   backward with Shift. #3033
@@ -1264,8 +1678,6 @@ Added full file paths to code and scene tab tooltips on Mac. #2876
 
 - Fixed overlapping Coding Assistant interactions that could start runaway
   background work.
-
-### Fixes
 
 - Fixed the code editor dropping keyboard input after extending a selection backward with Shift. #3033
 

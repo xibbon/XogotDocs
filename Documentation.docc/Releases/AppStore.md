@@ -2,7 +2,62 @@
 
 Release notes for public releases of Xogot to the App Store.
 
-## Release 1.7.2 ()
+## Release 1.7.12
+
+### Improvements
+
+- Conversation titles now appear as soon as the first user message is mapped,
+  rather than waiting for the turn to finish.
+
+- On iPhone, opening a conversation returns to the code editor, with a New
+  Conversation button available in the editor tab bar.
+
+- Increased the iOS memory limit to support larger projects. (#3457)
+
+- Improved reliability for large projects by raising the open-file soft limit
+  and avoiding unnecessary color-theme rebuilds while the app is inactive.
+
+- Plus bug fixes.
+
+## Bug fixes
+
+- Fixed the progress sheet remaining visible after launch or failing to close on
+  iOS. (#3429)
+
+- Fixed an iOS audio interruption crash. (#3460)
+
+- Fixed importing and saving files in read-only project directories.
+
+- Fixed a composer crash when typing, and preserved the caret after edits.
+  (#3459)
+
+- Fixed several engine memory leaks.
+
+- Added a missing null check and corrected Variant encoding in multi-instance
+  projects.
+
+- Fixes crashes on the composer
+
+## Release 1.7.10 (5570)
+
+## Release 1.7.8
+
+## Release 1.7.6
+
+## Release 1.7.4 (5444)
+ 
+- This release adds support for editing metadata on your Nodes and Resources to
+  the inspector.
+
+- You can now edit the Skeleton3D Bone Map in Advanced Import Settings.
+
+- We more precisely report the import steps
+
+- The 3D Mesh Modeler now support Bezier Paths and Bezier blocks.
+
+- Over 12 visible bug fixes as well as a couple of crashes.
+
+## Release 1.7.2 (5397)
 
 Xogot upgraded its internal engine from Godot 4.6 to Godot 4.7
 
