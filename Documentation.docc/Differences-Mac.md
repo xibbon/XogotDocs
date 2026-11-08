@@ -70,6 +70,10 @@ can deploy via USB or over the network to your Apple devices.
 We provide an Xcode-like experience to properly package, sign and deploy your
 games to Apple platforms, removing several steps from the process.
 
+When your game is ready, Xogot can export an App Store package for iPhone, iPad
+or Mac and upload it to App Store Connect from the export sheet. Refer to
+<doc:Publishing-to-the-App-Store>.
+
 ## Pads
 
 ### Output and Debug

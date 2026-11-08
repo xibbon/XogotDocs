@@ -1,14 +1,14 @@
 @Tutorial(time: 10) {
     @Intro(title: "Signing Setup") {
-        Sign in to an Apple Developer account so Xogot can sign builds for Mac, iPhone and iPad.
+        Connect your Apple Developer account so Xogot can sign builds for Mac, iPhone and iPad, and publish them to App Store Connect.
 
         @Image(source: signing-setup-menu.png)
     }
 
     @Section(title: "Open Signing Setup") {
         @ContentAndMedia {
-            Xogot uses signing information when you run a project on a physical iPhone or iPad.
-            You can sign in with an Apple ID or configure an App Store Connect API key.
+            Xogot uses signing information when you run a project on a physical iPhone or iPad,
+            and when you publish to App Store Connect. Do this setup one time on each Mac.
         }
 
         @Steps {
@@ -16,30 +16,123 @@
                 Open your project in Xogot for Mac, then open the run destination menu in the toolbar.
                 Choose **Signing Setup**.
 
+                If signing is not configured, the menu item shows a warning sign.
+
                 @Image(source: signing-setup-menu.png)
             }
 
             @Step {
-                In the **Signing Setup** dialog, choose a signing method.
+                In the **Apple Developer Account** section, select how to connect your account.
 
-                Use **Xcode Login** to sign in with an Apple ID. Use **App Store Connect API Key**
-                if your team manages signing with API credentials.
+                With a paid Apple Developer Program membership, use **Set it up for me** or **Set up
+                manually**. Both create an App Store Connect API key. Without a paid membership, select
+                **No paid membership? Sign in with your Apple ID instead**.
 
                 @Image(source: signing-setup-methods.png)
             }
         }
     }
 
-    @Section(title: "Sign in with Apple ID") {
+    @Section(title: "Let Xogot Create the API Key") {
         @ContentAndMedia {
-            The Xcode Login method stores the credentials needed to request signing assets for
-            your Apple Developer team.
+            Xogot can create the App Store Connect API key for you. You sign in on Apple's website,
+            and Xogot keeps only the API key.
         }
 
         @Steps {
             @Step {
-                Enter the Apple ID and password for your Apple Developer account, then click
-                **Sign In**.
+                Select **Set it up for me**. Read the message, then click **Continue**.
+
+                Xogot opens Apple's website in a private browser session. Xogot discards the session
+                after it creates the key.
+
+                @Image(source: signing-setup-automatic-confirm.png)
+            }
+
+            @Step {
+                Sign in to App Store Connect with your Apple Developer account.
+
+                You type your password directly on Apple's website. Your account must have the Admin
+                role to create a team API key.
+
+                @Image(source: signing-setup-automatic-signin.png)
+            }
+
+            @Step {
+                Wait while Xogot creates the API key. When it is done, the **Status** section shows
+                **App Store Connect API key configured**.
+
+                If Xogot cannot get all the values, it shows the manual steps. Complete the steps that
+                are not done.
+            }
+        }
+    }
+
+    @Section(title: "Create the API Key Manually") {
+        @ContentAndMedia {
+            You can also create the key yourself in App Store Connect. Select **Set up manually** to
+            show the four steps in Signing Setup.
+        }
+
+        @Steps {
+            @Step {
+                Select **Set up manually**, then click **Open App Store Connect**.
+
+                @Image(source: signing-setup-manual-steps.png)
+            }
+
+            @Step {
+                Sign in to [App Store Connect](https://appstoreconnect.apple.com), then open
+                **Users and Access**.
+
+                @Image(source: app-store-connect-home.png)
+            }
+
+            @Step {
+                Open **Integrations**, select **App Store Connect API**, then select **Team Keys**.
+
+                The **Issuer ID** shows at the top of this page. You paste it into Xogot later.
+
+                @Image(source: app-store-connect-integrations.png)
+            }
+
+            @Step {
+                Click the **+** button to generate an API key. Name it `Xogot`, for **Access** choose
+                **Admin**, then click **Generate**. Click **Download** for the new key.
+
+                App Store Connect lets you download the private key one time only. Keep the
+                `AuthKey_<KeyID>.p8` file in a safe location.
+
+                @Image(source: app-store-connect-generate-api-key.png)
+            }
+
+            @Step {
+                In Xogot, click **Import Key…** and select the `.p8` file, or copy the key text and
+                click **Paste**. Then click **Copy** next to **Issuer ID** in App Store Connect, paste
+                it into the **Issuer ID** field, and click **Save**.
+
+                Xogot reads the Key ID from the file name. If the file name does not contain the Key
+                ID, type it from the key row in App Store Connect. Xogot keeps the private key in the
+                macOS Keychain.
+
+                @Image(source: signing-setup-manual-import.png)
+            }
+        }
+    }
+
+    @Section(title: "Sign in with Apple ID") {
+        @ContentAndMedia {
+            Without a paid membership, sign in with your Apple ID. A free Apple ID gets a personal
+            team: apps run only on your own devices, certificates expire after 7 days, and you cannot
+            publish to the App Store.
+        }
+
+        @Steps {
+            @Step {
+                Select **No paid membership? Sign in with your Apple ID instead**. Enter your Apple ID
+                and password, then click **Sign In**.
+
+                To go back to the API key, select **Use an App Store Connect API key instead**.
 
                 @Image(source: signing-setup-password.png)
             }
@@ -52,76 +145,18 @@
             }
 
             @Step {
-                Enter the verification code from your trusted device and click **Continue**.
+                Enter the verification code from your trusted device or SMS, and click **Continue**.
+
+                Apple sends one code for each sign-in. If you cancel this sheet, the sign-in stops.
 
                 @Image(source: signing-setup-verification-code.png)
             }
 
             @Step {
                 After sign-in completes, confirm that the dialog shows **Signed in with Apple
-                Developer account**.
+                Developer account**. Click **Done**.
 
-                If your Apple ID belongs to more than one developer team, choose the team you
-                want Xogot to use for device builds.
-
-                @Image(source: signing-setup-signed-in.png)
-            }
-        }
-    }
-
-    @Section(title: "Use an API Key") {
-        @ContentAndMedia {
-            App Store Connect API keys are useful for teams that do not want to use an Apple ID
-            password on the development Mac.
-        }
-
-        @Steps {
-            @Step {
-                Sign in to [App Store Connect](https://appstoreconnect.apple.com), then open
-                **Users and Access**.
-
-                @Image(source: app-store-connect-home.png)
-            }
-
-            @Step {
-                In **Users and Access**, open **Integrations** and select **Team Keys**.
-
-                Team keys can be used by shared tools and services for your App Store Connect
-                team.
-
-                Copy the **Issuer ID** shown in this view. You will paste it into Xogot's
-                Signing Setup dialog later.
-
-                @Image(source: app-store-connect-integrations.png)
-            }
-
-            @Step {
-                Add a new App Store Connect API key.
-
-                Give the key a recognizable name, choose the access level your team wants to
-                use with Xogot, and click **Generate**.
-
-                Download the private key when App Store Connect offers it. The private key can
-                only be downloaded once.
-
-                @Image(source: app-store-connect-generate-api-key.png)
-            }
-
-            @Step {
-                Select **App Store Connect API Key** in the Xogot Signing Setup dialog.
-
-                Paste the **Issuer ID** from the Team Keys page. Use **Copy Key ID** next to
-                the key you generated to copy the **Key ID**, then paste or import the private
-                key file you downloaded when the key was generated.
-
-                @Image(source: signing-setup-methods.png)
-            }
-
-            @Step {
-                Click **Done** when the signing method is configured.
-
-                You can return to **Signing Setup** later to change teams, update credentials,
-                or sign out.
+                You can return to **Signing Setup** later to change teams or to log out.
 
                 @Image(source: signing-setup-signed-in.png)
             }

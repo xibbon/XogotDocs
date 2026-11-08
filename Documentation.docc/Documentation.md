@@ -55,6 +55,7 @@ Follow a complete learning path for Xogot or jump directly into a focused Xogot 
 ## Xogot for Mac
 
 @Links(visualStyle: detailedGrid) {
+    - <doc:Publishing-to-the-App-Store>
     - <doc:mac_command_line>
     - <doc:integrating_with_ai_tools>
     - <doc:MacSourceControl>
@@ -110,6 +111,7 @@ Follow a complete learning path for Xogot or jump directly into a focused Xogot 
 ### Mac
 
 - <doc:Differences-Mac>
+- <doc:Publishing-to-the-App-Store>
 - <doc:mac_command_line>
 - <doc:integrating_with_ai_tools>
 - <doc:MacSourceControl>
