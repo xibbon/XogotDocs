@@ -4,7 +4,56 @@ Release notes for our preview release of Xogot to TestFlight.
 
 ## Release 
 
-## Release XX (Beta: 872)
+## Release 5600 (Beta: 884)
+
+## Improvements
+
+- Improved the modeler layout on iPhone so the viewport HUD and toolbars remain
+  above the tab bar and clear of the 2D/3D switcher.
+
+- Made the iPhone inspector use the full side panel.
+
+- Added titles and close buttons to plugin panels presented in the iPhone sheet.
+
+- Improved `xo` and code-mode automation feedback, including batch retry advice,
+  editor dialog controls, scene reload handling, better value diagnostics,
+  import-aware file waiting, grouped debug errors, scene-tree layout inspection,
+  screenshot warnings, and game automation diagnostics.
+
+
+## Bug fixes
+
+- Fixed Editor Progress sheets occasionally remaining onscreen after a task
+  completed. (#3429)
+
+- Fixed a transcript-view crash caused by a released coordinator.
+
+- Fixed cancelled drag handling in the iPhone sheet. (#3466)
+
+- Fixed iPhone inspector presentation sizing. (#3463)
+
+- Fixed several embedded Godot and `xo` automation issues, including
+  accessibility, class metadata, animation editor behavior, batch preflight,
+  editor-tab persistence, script class reporting, and game-port feedback.
+
+## Release 5581
+
+### Improvements
+
+- Tapping a conversation on iPhone now opens the code editor, with a New Conversation button in the editor tab bar.
+- Conversations are automatically titled when their first user message is mapped.
+- Increased the open-file soft limit to 1024 for improved reliability with larger projects.
+- Added the increased-memory-limit entitlement for supported iOS devices (#3457).
+- Updated the embedded Godot engine with upstream improvements.
+
+### Bug Fixes
+
+- Fixed a composer selection crash on iOS and preserved the caret after edits.
+- Fixed EditorProgress remaining visible after launch (#3429).
+- Fixed an audio crash and failures importing files from read-only directories (#3460).
+- Prevented color-scheme changes from being applied while the iOS scene is inactive.
+
+
 ## Release 5568
 
 ### Improvements

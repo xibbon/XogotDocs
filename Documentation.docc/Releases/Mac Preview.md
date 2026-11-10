@@ -23,6 +23,23 @@ Each build below lists changes since the previous Mac build on the same
 branch. Builds 2429, 2466, and 2492 are on `testflight-mac`. Builds 2430,
 2442, 2468, 2471, 2475, 2482, and 2493 are on `testflight-mac-4.8`.
 
+## Build 2507
+
+- The toolbar now tries to pick the best match for the Mac kind you are using,
+  rather than a generic Mac icon. 
+
+- 4.8 early feature: Mark deprecated Inspector properties using the class
+  reference, with deprecation notes grouped by category. #3417
+
+- Usability: Add a Copy button to Output error details. #3458
+
+- Exporter: improved the diagnostics to publish packages, so we can guide you to
+  produce a package acceptable for AppStore publishing.   
+
+- Based on the change from Godot 5.8, we now surface  Build, Clean, and Rebuild
+  available on the Project menu for all projects, not just those that used Swift
+  or C#.
+
 ## Build 2493 (`testflight-mac-4.8`)
 
 ### Improvements
