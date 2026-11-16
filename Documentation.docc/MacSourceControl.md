@@ -64,8 +64,8 @@ around them, in detail.
 
 ## Before You Start
 
-Xogot's built-in Git support is available in Xogot for Mac. On iPad and iPhone,
-use the external workflows described in <doc:Working-with-Source-Control>.
+This guide is for Xogot for Mac. For Git in Xogot for iPad and iPhone, see
+<doc:iOSSourceControl>.
 
 ### Make Sure Git Is Installed
 
@@ -927,8 +927,6 @@ Settings > Source Control.
 Xogot for Mac source control is designed for common Git workflows. Some advanced
 or provider-specific workflows still require Terminal or a dedicated Git client.
 
-- The built-in Git UI is Mac-only. iPad and iPhone workflows still use external
-  tools such as Working Copy or iSH.
 - Hosted repository creation is limited to account types exposed by Xogot's
   account flow.
 - Git LFS features require the separate `git-lfs` program, which is not part of

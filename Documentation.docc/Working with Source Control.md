@@ -2,7 +2,11 @@
 
 Managing project files with Git on iPad and iOS.
 
-For Xogot's built-in Git tools on Mac, see <doc:MacSourceControl>.
+Xogot now has built-in Git support on iPad and iPhone. See
+<doc:iOSSourceControl>. For Xogot for Mac, see <doc:MacSourceControl>.
+
+This page tells you how to use external Git apps, such as Working Copy and
+iSH, with Xogot projects. You can still use them if you prefer.
 
 ## Working Copy
 

@@ -49,6 +49,7 @@ Follow a complete learning path for Xogot or jump directly into a focused Xogot 
     - <doc:Input-Map>
     - <doc:Publishing-to-the-Web>
     - <doc:Remote-Debugging>
+    - <doc:iOSSourceControl>
     - <doc:Working-with-Source-Control>
 }
 
@@ -101,6 +102,7 @@ Follow a complete learning path for Xogot or jump directly into a focused Xogot 
 - <doc:Onscreen-Controls>
 - <doc:Publishing-to-the-Web>
 - <doc:Remote-Debugging>
+- <doc:iOSSourceControl>
 - <doc:Working-with-Source-Control>
 - <doc:Xogot-Connect>
 - <doc:Command-Palette>

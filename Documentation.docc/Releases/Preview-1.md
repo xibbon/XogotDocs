@@ -2,11 +2,133 @@
 
 Release notes for our preview release of Xogot to TestFlight.
 
-## Release 
+## Release 5639
+
+### Improvements
+
+The Graph Editor is used by AnimationTree's Blend and State Machine editors.
+
+- **Graph editor overhaul:** Node cards now have clearer category accents, tinted icons, selection borders, and improved shadows. Wires use smoother curves, have better hit-testing, and behave correctly while dragging from inputs. Long-press a node on iPhone or iPad to open the same menu as the node’s action button; the minimap and node ports also participate correctly in canvas interactions. Zoomed-out graphs use compact node cards, and the graph remembers its view origin. Test graph editing, wire creation/selection, minimap interaction, and node menus in both light and dark appearances.
+
+- **Graph navigation:** The graph canvas now has a dot grid and wheel zoom. Keyboard focus follows the canvas, and `N`/`F` provide node navigation/focus actions. Test these with hardware keyboards and touch/trackpad input.
+
+- **Add-node and picker polish:** The add-node picker has improved port presentation and descriptions, including Blend Tree descriptions from the class reference. Deprecated-property notes are converted to readable text. Test searching for nodes, inspecting descriptions, and adding nodes in different graph contexts.
+
+- **Modeler touch workflow:** Touch-and-hold a palette shape on iPhone/iPad to place it immediately, and use the Create Last-Used Shape command even when a SwiftUI panel has keyboard focus. Test repeated shape placement with and without the 3D viewport focused.
+
+- **Project-list settings:** Xogot Settings is now available from the iOS project list with Appearance, Source Control, and AI pages. Settings follow the app theme and close cleanly when a project opens. AI settings share their models correctly and show Pro availability. Test opening settings before launching a project, switching pages, changing theme, and reopening the sheet.
+
+- **Git server sign-in:** Clone workflows now support Forgejo/Gitea and other Git servers with URL-based credentials and an iOS sign-in prompt. Clone dialog help explains the URL requirements, and insecure `http://` credentials are rejected. Test first-time sign-in, saved credentials, different server URLs, and HTTPS enforcement.
+
+- **Project cleanup:** Project > Clean now clears imported assets, shaders, UIDs, script classes, scene groups, and other `.godot` caches before restarting the editor. It asks for confirmation and also removes project build artifacts. Test cleaning a project with imported assets, shaders, open scenes, and unsaved changes, then verify the editor restarts and reimports correctly.
+
+- **Coding Agent/Automation:** The editor automation surface can now create, inspect, validate, and patch shaders; inspect bounded live resource graphs; bake 2D/3D navigation regions and query paths; create and edit VisualShader graphs; configure theme overrides and resource builders; fit collision shapes; generate and refresh mesh colliders; move/rename/remove project files; and step the running game one frame at a time. These workflows validate changes, preserve undo where appropriate, and report actionable failures. Test representative operations on real scenes and verify undo, dry-run, validation failures, sidecar files, and frame stepping.
+
+## Release 5631
+
+### Improvements
+- **Git and Source Control on iPhone and iPad:** use the Git panel for commits, history, stashes, conflict resolution, file badges, Open/Reveal, pull requests, cloning, new repositories, Git LFS, and discarding changes.
+
+- **Clone repositories from the Project Manager:** choose an external-storage destination, see the final folder name before cloning, open the project automatically after a successful clone, and get clear progress/background-time messages when iOS stops a transfer.   This version currently requires you to setup Git first inside an open project - next version will let you configure from the project page.
+
+- **GitHub sign-in:** iOS now supports the device-flow account sign-in, with clearer GitHub errors, account names, and SSH-key ordering.
+
+- **Git LFS support:** LFS transfers show byte progress, and the editor re-imports files when an LFS pointer is replaced by its real content.
+
+- **Agent checkpoints and Git:** restoring an agent checkpoint now refreshes open files and scans the project, waiting for a running game to stop first.
+
+- **Project Manager menus:** Select is directly alongside New, Browse, and Download, while Game Library’s Sort By, List, and Grid options have usable titles in collapsed toolbar menus. #3396
+
+- **Fresh-install editor themes:** regenerated themes now honor the renamed code-font-size setting instead of falling back to missing/zero font sizes. #3450
+
+## Bug fixes
+
+- Fixed project-list registration for clones in custom folders, including clones that were not immediately opened.
+## Release 5627
+
+### Improvements
+
+- **Play published games instantly with the new App Clip.** Open a shared game
+  link and try the game without installing the full editor. The loader now gives
+  clearer progress and error details, recovers from temporary network failures,
+  supports games from older minor engine versions, and checks published game
+  packs for compatibility.
+
+  For now, this requires you to test a handful of links from the Testflight app
+  directly, but will eventually work via links you open from Safari or Messages.
+
+## Bug fixes
+
+- Fixed iPhone editor sheets that could remain in a bad state after cancelling a
+  drag (#3466).
+
+- Fixed the iPhone Inspector layout so it occupies the full side of the editor
+  like the sidebar (#3463).
+
+- Fixed selection and options controls in the iPhone modeler so they remain
+  usable while editing (#3462, #3464).
+
+- Fixed Command Palette selected-row colors in iOS light mode.
+
+- Fixed pasteboard commands not reaching the currently focused text field on
+  iOS.
+
+- Fixed progress sheets that could fail to close on iOS (#3429).
+
+- Fixed crashes and stale UI caused by popup presentation after its Godot window
+  had been freed.
+
+- Fixed App Clip share-link parsing and loading failures, including recovery
+  after network interruptions.
+
+## Release 5621
+
+### Improvements
+
+- **App Clip game launching:** Xogot now includes an App Clip for playing
+  published games from share links, including games built with older minor
+  engine versions.  From Testflight, you can launch a couple of samples to try i tout.
+
+- **Modeler on iPhone:** The Modeler’s Options and selection handles are now
+  usable on iPhone. Test manipulating models and changing selection/options on a
+  narrow screen. (#3462, #3464)
+
+- **Inspector deprecation guidance:** Deprecated properties are now marked using
+  the class reference, and deprecation notes are read once per category instead
+  of repeatedly for every row. (#3417)
+
+- **Project maintenance menu:** Build, Clean, and Rebuild are always available,
+  and Clean works for every project. Test each action across project types.
+  (#3034)
+
+- **Publishing diagnostics:** App Store Connect upload failures now show the
+  reason returned by App Store Connect, making rejected uploads easier to
+  diagnose.
+
+- **Output diagnostics:** Error details now have a Copy button. (#3458)
+
+- **Pasteboard input:** Paste commands are now sent to the focused text field on
+  iOS; test pasting into editor fields and dialogs.
+
+
+## Bug fixes
+
+- **Sheet stability:** Added protection against attaching popups to Godot
+  windows that have already been freed (fixes a crash on the wild)
+
+- **Crash reporting:** Shared errors are now logged even when they occur during
+  a crash.
+
+- **Command palette appearance:** Fixed selected-row colors in the iOS
+  light-mode command palette.
+
+- **Run destination clarity:** The toolbar now shows the host Mac’s icon for the
+  run destination. (#2965)
+
 
 ## Release 5600 (Beta: 884)
 
-## Improvements
+### Improvements
 
 - Improved the modeler layout on iPhone so the viewport HUD and toolbars remain
   above the tab bar and clear of the 2D/3D switcher.
@@ -21,7 +143,7 @@ Release notes for our preview release of Xogot to TestFlight.
   screenshot warnings, and game automation diagnostics.
 
 
-## Bug fixes
+### Bug fixes
 
 - Fixed Editor Progress sheets occasionally remaining onscreen after a task
   completed. (#3429)

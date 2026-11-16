@@ -23,22 +23,50 @@ Each build below lists changes since the previous Mac build on the same
 branch. Builds 2429, 2466, and 2492 are on `testflight-mac`. Builds 2430,
 2442, 2468, 2471, 2475, 2482, and 2493 are on `testflight-mac-4.8`.
 
-## Build 2507
+## Build 2521 
 
-- The toolbar now tries to pick the best match for the Mac kind you are using,
-  rather than a generic Mac icon. 
+### Improvements
 
-- 4.8 early feature: Mark deprecated Inspector properties using the class
-  reference, with deprecation notes grouped by category. #3417
+- **Try the expanded 3D modeler tools.** Add meshes from the 3D editor menu, use the toolbar without losing it behind popups, and dissolve selected vertices, edges, or faces while preserving the surrounding mesh. Cylinder caps now use cleaner center-fan triangulation.
+- **Read animation names more easily in BlendSpace 1D.** The editor shows an animation’s name rather than its full path whenever it can.
+- **Get useful App Store Connect rejection details when exporting.** Failed uploads now surface Apple’s specific reason, such as a duplicate build number, instead of only a generic failure message (#3420).
 
-- Usability: Add a Copy button to Output error details. #3458
+### Bug fixes
 
-- Exporter: improved the diagnostics to publish packages, so we can guide you to
-  produce a package acceptable for AppStore publishing.   
+- Fixed a macOS hang that could peg a CPU core indefinitely when opening Project Settings.
+- Fixed popup presentation after the underlying Godot window had been freed, preventing stale UI and crashes (#3480).
+- Fixed mouse-move handling across multiple macOS displays.
+- Fixed embedded macOS accessibility queries, class-method metadata, and a stale AnimationPlayer pointer.
+- Fixed projects in read-only directories failing with an error.
+- Fixed an invalid embedded-game startup from reaching editor initialization.
+- Fixed a potential null-buffer read while packing lightmaps.
 
-- Based on the change from Godot 5.8, we now surface  Build, Clean, and Rebuild
-  available on the Project menu for all projects, not just those that used Swift
-  or C#.
+## Build 2507 (4.8: 2511)
+
+### Improvements
+
+- **Godot 4.8:** Xogot now runs on the Godot 4.8 engine line. Test opening existing projects, editing scenes, and running games in the embedded Game view.
+
+- **Scene Paint 2D:** Paint scenes directly from Xogot’s 2D toolbar. #2532
+
+- **Project maintenance:** Build, Clean, and Rebuild are always available, and Clean works for every project. Test each action across project types. (#3034)
+
+- **Publishing diagnostics:** App Store Connect upload failures now show the reason returned by App Store Connect, making rejected uploads easier to diagnose.
+
+- **Output diagnostics:** Error details now have a Copy button. (#3458)
+- **Native game file dialogs:** Games running on macOS can use native file dialogs. #542
+
+### Bug fixes
+
+- **2D canvas handles:** Resize and anchor handles now remain easy to target when the editor is scaled. #3430
+- **Embedded game launching:** Fixed macOS embedded games not starting correctly when launched without a window ID, and use the correct embedded display server.
+- **Multi-display mouse input:** Fixed mouse-move events for games on multiple displays.
+- **Universal exports:** Fixed Universal macOS exports selecting the runtime from the wrong build configuration.
+- **Scene tree drops:** Fixed file drops and node rearrangement being silently ignored on Godot 4.8.
+- **Project-version warnings:** Opening a project now compares it with the actual engine version in the installed Xogot build.
+- **Editor startup errors:** Startup failures are reported reliably instead of being lost during a SwiftUI update.
+- **Engine lifecycle:** Fixed repeated run/stop and failed-launch cleanup issues that could leave an embedded engine instance in a bad state.
+- **Game file dialogs:** Fixed the callback argument passed back from game file dialogs.
 
 ## Build 2493 (`testflight-mac-4.8`)
 
