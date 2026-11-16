@@ -83,9 +83,10 @@ identity before your first commit:
 3. In **Committer Identity**, type your name and email address.
 4. Tap **Save Identity**.
 
-Xogot uses this identity for all repositories on this device. If you commit
-and there is no identity, Xogot asks for your name and email. Then it saves
-them and makes the commit.
+Xogot uses this identity for all repositories on this device. If there is no
+identity, the commit composer shows **No committer identity** and a **Set…**
+button. If you commit and there is no identity, Xogot asks for your name and
+email. Then it saves them and makes the commit.
 
 @Image(source: "iOSSourceControl-iPad-settings-source-control.png",
        alt: "Xogot Settings on iPad, Source Control page, with the Accounts section, the SSH Keys and Known Hosts link, and the Committer Identity fields.")
@@ -125,7 +126,7 @@ Source Control navigator.
 @TabNavigator {
     @Tab("iPad") {
         @Image(source: "iOSSourceControl-iPad-actions-menu.png",
-               alt: "The Integrate menu open on iPad, with Fetch Changes, Pull, Push, Stage all changes, Unstage all changes, Selected Files, More, Git LFS, and Clone Repository.")
+               alt: "The Integrate menu open on iPad, with Fetch Changes, Pull, Push, Stage All Changes, Unstage All Changes, Selected Files, More, Git LFS, and Clone Repository.")
     }
     @Tab("iPhone") {
         @Image(source: "iOSSourceControl-iPhone-actions-menu.png",
@@ -136,7 +137,7 @@ Source Control navigator.
 The **More** submenu has the commands that you use less frequently:
 
 @Image(source: "iOSSourceControl-iPad-actions-menu-more.png",
-       alt: "The More submenu of the Integrate menu, with Create Pull Request, Discard all changes, Stash Changes, Undo Last Commit, Update All Submodules, Refresh Status, and New Git Repository.")
+       alt: "The More submenu of the Integrate menu, with Create Pull Request, Discard All Changes, Stash Changes, Undo Last Commit, Update All Submodules, Refresh Status, and New Git Repository.")
 
 [The Integrate Menu reference](#Integrate-Menu-Reference) gives all the
 commands.
@@ -146,7 +147,7 @@ commands.
 Clone a repository when the project is already in Git, for example on GitHub.
 
 1. In the project list, tap the Download button (the arrow in a circle).
-2. Tap **Clone Git repository…**.
+2. Tap **Clone Repository…**.
 3. In **Repository URL**, type or paste the URL of the repository. You can use
    an HTTPS URL (`https://github.com/owner/repo.git`) or an SSH URL
    (`git@github.com:owner/repo.git`).
@@ -154,13 +155,13 @@ Clone a repository when the project is already in Git, for example on GitHub.
 5. Optionally, type a branch name.
 6. Tap **Clone**.
 
-You can also clone from an open project: tap ⋯ > **Clone Repository** in the
+You can also clone from an open project: tap ⋯ > **Clone Repository…** in the
 Source Control navigator.
 
 @TabNavigator {
     @Tab("iPad") {
         @Image(source: "iOSSourceControl-iPad-projectlist-clone.png",
-               alt: "The project list on iPad with the Download menu open, showing Clone Git repository and Download from GitHub.")
+               alt: "The project list on iPad with the Download menu open, showing Clone Repository and Download from GitHub.")
     }
     @Tab("iPhone") {
         @Image(source: "iOSSourceControl-iPhone-projectlist-clone.png",
@@ -218,7 +219,7 @@ then show in the Changes tab.
 
 Then make the first commit:
 
-1. Tap ⋯ > **Stage all changes**.
+1. Tap ⋯ > **Stage All Changes**.
 2. Tap a file in the Changes tab to open the commit composer.
 3. Type a commit message, for example `Initial commit`.
 4. Tap **Commit**.
@@ -229,10 +230,12 @@ New Repository](#Publishing-a-New-Repository).
 ## Understanding File Status
 
 The file pad shows a badge next to each changed file. Use the badges to see
-which files you changed, and which new files Git does not track yet.
+which files you changed, and which new files Git does not track yet. A badge is
+a letter in a square. The square is filled when all the changes of the file
+are staged.
 
 @Image(source: "iOSSourceControl-iPad-filepad-badges.png",
-       alt: "The file pad on iPad with an M badge next to player.gd and README.md, and a question mark badge next to enemy.gd.")
+       alt: "The file pad on iPad with an M badge next to player.gd, a filled M badge next to the staged README.md, and a question mark badge next to enemy.gd.")
 
 | Badge | Meaning | What it tells you |
 | --- | --- | --- |
@@ -241,7 +244,7 @@ which files you changed, and which new files Git does not track yet.
 | D | Deleted | A tracked file that you removed. |
 | R | Renamed | A tracked file that you moved or renamed. |
 | ? | Untracked | A new file that Git does not track. The next commit does *not* include it until you add it. |
-| ! | Conflicted | A file with merge conflicts. Resolve them before you continue. |
+| ⚠︎ | Conflicted | A file with merge conflicts. Resolve them before you continue. |
 
 A file with no badge has no changes after the last commit.
 
@@ -249,24 +252,28 @@ Look carefully for the `?` badge. A new scene, script, or asset is not in a
 commit until you add it. If a person on your team cannot find a file, an
 untracked file is a frequent cause.
 
-The Changes tab shows all the changed files in one list. In the Changes tab, a
-filled badge shows a staged change. If the Changes tab is empty, there is
-nothing to commit.
+The Changes tab shows all the changed files in one list, with the same
+badges. If the Changes tab is empty, there is nothing to commit.
+
+VoiceOver reads the status of each file, for example "Modified, staged".
 
 Touch and hold a changed file in the Changes tab to see its commands:
 
 @Image(source: "iOSSourceControl-iPad-changes-context-menu.png",
-       alt: "The context menu of player.gd in the Changes tab, with Reveal in File Pad, Open, Stage Changes in File, Unstage Changes, Discard Changes, Add, Delete, Resolve Conflicts, and Mark as Resolved.")
+       alt: "The context menu of player.gd in the Changes tab, with Reveal in File Pad, Open, Stage Changes in File, Unstage Changes, Discard Changes in red, Add, Delete, Resolve Conflicts, and Mark as Resolved.")
 
 ## Committing Changes
 
 To open the commit composer, tap a changed file in the Changes tab. The
-composer opens as an editor tab. On iPhone, hide the sidebar to see it.
+composer opens as an editor tab, goes to the diff of that file, and selects it.
+If the filter hides the file, the filter changes to **All**. On iPhone, the
+sidebar closes so that you can see the composer, and the message and the diffs
+scroll together. Thus the diffs can use the full height of the screen.
 
 @TabNavigator {
     @Tab("iPad") {
         @Image(source: "iOSSourceControl-iPad-commit-composer.png",
-               alt: "The commit composer on iPad, with the Amend switch, the Commit button, the commit message, the Signed-off-by switch, the All, Unstaged and Staged filter, Stage All, and the diffs with Stage Hunk and Unstage Hunk buttons.")
+               alt: "The commit composer on iPad, with the committer name and email, the Amend switch, the Commit button, the commit message, the Signed-off-by switch, the All, Unstaged and Staged filter, Stage All, and the diffs with Stage Hunk and Unstage Hunk buttons.")
     }
     @Tab("iPhone") {
         @Image(source: "iOSSourceControl-iPhone-commit-composer.png",
@@ -463,6 +470,22 @@ If the key of a known server changes, the connection fails. This can show an
 attack. Remove the old key from **Known Hosts** only when you know that the
 server changed its key.
 
+### SSH Password Login
+
+Some SSH servers accept a password. If no SSH key works and the server accepts
+a password, Xogot asks for the password:
+
+- **Sign In** uses the password until you close Xogot.
+- **Sign In and Save** keeps the password in the Keychain when the server
+  accepts it.
+
+Xogot asks a maximum of three times for each connection. Servers that accept
+only keys, for example GitHub, never show this prompt.
+
+The **Saved Passwords** section of the SSH page shows the saved passwords.
+Swipe a password to remove it. If the server refuses a saved password, Xogot
+removes it.
+
 ## Publishing a New Repository
 
 After you make a local repository and commit, you can push it to a server.
@@ -475,7 +498,7 @@ Account](#Add-an-Account)).
 
 1. Open the Repositories tab of the Source Control navigator.
 2. Touch and hold **Remotes**.
-3. Tap **New Remote**.
+3. Tap **New Remote…**.
 4. Select the account. Type the repository name, and optionally the owner or
    organization and a description.
 5. Select **Private** or **Public**.
@@ -495,10 +518,12 @@ Use this procedure if the repository already exists on the server.
 6. Tap ⋯ > **Push**.
 
 @Image(source: "iOSSourceControl-iPad-remotes-context-menu.png",
-       alt: "The context menu of the Remotes group, with New Remote and Add Existing Remote.")
+       alt: "The context menu of the Remotes group, with New Remote… and Add Existing Remote….")
 
-Touch and hold a remote to open it on the hosting service (for example, **Show
-in GitHub**), or to delete it.
+Touch and hold a remote to open it on the hosting service (for example, **View
+on GitHub**), or to delete it. **Delete…** asks you to confirm. It removes the
+remote and its remote-tracking branches from your device. The repository on the
+server does not change.
 
 ## Branches, Tags, and History
 
@@ -521,7 +546,7 @@ Touch and hold a branch to see its commands:
 @TabNavigator {
     @Tab("iPad") {
         @Image(source: "iOSSourceControl-iPad-branch-context-menu.png",
-               alt: "The context menu of the feature/shooting branch, with Switch to Branch, Pull, Push, New Branch from, Rename, Tag, Merge into main, and Delete Branch.")
+               alt: "The context menu of the feature/shooting branch, with Switch to Branch, Pull, Push, New Branch from, Rename, Tag, Merge into main, and Delete Branch in red.")
     }
     @Tab("iPhone") {
         @Image(source: "iOSSourceControl-iPhone-branch-context-menu.png",
@@ -531,13 +556,20 @@ Touch and hold a branch to see its commands:
 
 - **Switch to Branch** makes the branch the current branch.
 - **Pull…** and **Push…** sync the current branch with its remote.
-- **New Branch from** makes a branch that starts at this branch.
-- **Rename** changes the name of a local branch.
-- **Tag** makes a tag at this branch.
+- **New Branch from…** makes a branch that starts at this branch.
+- **Rename…** changes the name of a local branch.
+- **Tag…** makes a tag at this branch.
 - **Merge into** merges the branch into the current branch.
 - **Delete Branch…** deletes the branch. Xogot asks you to confirm.
 
 If you switch to a remote branch, Xogot makes a local branch that tracks it.
+
+Touch and hold a tag to see its commands. **Check Out “*tag*” (Detached)**
+checks out the commit of the tag. You are then not on a branch. The tag menu
+also has **New Branch from…**, **Merge into**, and **Delete Tag…**.
+
+@Image(source: "iOSSourceControl-iPad-tag-context-menu.png",
+       alt: "The context menu of the tag v0.1, with Check Out (Detached), New Branch from, Merge into main, and Delete Tag in red.")
 
 ### History
 
@@ -562,7 +594,7 @@ Touch and hold a commit to see its commands:
 | Copy Commit Message | Copies the message of the commit. |
 | Copy Identifier | Copies the full commit hash. |
 | Email *author* | Writes an email to the author of the commit. |
-| Tag | Makes a tag at this commit. |
+| Tag… | Makes a tag at this commit. |
 | New Branch from | Makes a branch that starts at this commit. |
 | Cherry-pick | Applies the changes of this commit to the current branch. |
 | View on *service* | Opens the commit on the hosting service, for example GitHub. |
@@ -578,7 +610,8 @@ branch.
 - To see a stash, tap it in the Repositories tab. It opens in an editor tab.
 - To use the changes again, touch and hold the stash, then tap **Apply Stashed
   Changes**.
-- To remove a stash, touch and hold it, then tap **Delete**.
+- To remove a stash, touch and hold it, then tap **Delete…**. Xogot asks you
+  to confirm.
 
 @Image(source: "iOSSourceControl-iPad-stash.png",
        alt: "The Sound experiments stash open in an editor tab, with the Hierarchy and Flat file list and the diff of README.md.")
@@ -587,8 +620,8 @@ branch.
 
 A merge, rebase, cherry-pick, or pull can stop because of a conflict. A
 conflict occurs when your changes and the incoming changes change the same
-lines. Then Xogot shows a banner at the top of the Changes tab, and a `!`
-badge next to each file with a conflict.
+lines. Then Xogot shows a banner at the top of the Changes tab, and a warning
+triangle next to each file with a conflict.
 
 1. Tap a file with a conflict. The conflict resolver opens.
 2. For each conflict, select your code, the incoming code, or both. To write
@@ -642,6 +675,8 @@ For more information about tracking files and locks, see the Git LFS section of
   Mac version uses the SSH configuration of your Mac.
 - If no account applies to an HTTPS server, Xogot asks for your user name and
   password.
+- If an SSH server accepts a password login and no SSH key works, Xogot asks
+  for the password.
 
 ## Known Limitations
 
@@ -664,7 +699,7 @@ For more information about tracking files and locks, see the Git LFS section of
 | --- | --- |
 | Open the Source Control navigator | Sidebar, fifth button at the bottom |
 | Repository commands | ⋯ button at the top of the Source Control navigator |
-| Clone a repository | Project list > Download > Clone Git repository…, or ⋯ > Clone Repository |
+| Clone a repository | Project list > Download > Clone Repository…, or ⋯ > Clone Repository… |
 | Create a repository | Source Control navigator > Create Git Repository, or ⋯ > More > New Git Repository |
 | Accounts, SSH keys, identity | Settings > Xogot Settings > Source Control |
 | Git LFS sheet | ⋯ > Git LFS… |
@@ -676,29 +711,29 @@ For more information about tracking files and locks, see the Git LFS section of
 | Fetch Changes | Downloads the remote changes. It does not merge them. |
 | Pull | Opens the sync sheet to pull. |
 | Push | Opens the sync sheet to push. |
-| Stage all changes | Stages all the current changes. |
-| Unstage all changes | Removes all the changes from the staging area. |
-| Selected Files > Stage changes in selected files | Uses the selected files in the file pad. |
-| Selected Files > Unstage changes in selected files | Uses the selected files in the file pad. |
-| Selected Files > Mark selected files as resolved | For selected files with conflicts. |
-| Selected Files > Add selected files | For selected untracked files. |
+| Stage All Changes | Stages all the current changes. |
+| Unstage All Changes | Removes all the changes from the staging area. |
+| Selected Files > Stage Changes in Selected Files | Uses the selected files in the file pad. |
+| Selected Files > Unstage Changes in Selected Files | Uses the selected files in the file pad. |
+| Selected Files > Mark Selected Files as Resolved | For selected files with conflicts. |
+| Selected Files > Add Selected Files | For selected untracked files. |
 | More > Create Pull Request | Opens the pull request page of the hosting service. |
-| More > Discard all changes… | Removes all the changes to tracked files. You cannot undo this. |
+| More > Discard All Changes… | Removes all the changes to tracked files. You cannot undo this. |
 | More > Stash Changes | Keeps your uncommitted changes in a stash. |
 | More > Undo Last Commit | Removes the last commit. Its changes stay staged. |
 | More > Refresh Status | Reads the Git status again. |
-| More > New Git Repository | Starts Git in the project folder. |
+| More > New Git Repository | Starts Git in the project folder. Not available when the project is in a repository. |
 | Git LFS… | Opens the Git LFS sheet. |
-| Clone Repository | Opens the Clone Repository sheet. |
+| Clone Repository… | Opens the Clone Repository sheet. |
 
 ### Context Menus
 
 | Item | Commands |
 | --- | --- |
 | Changed file | Reveal in File Pad, Open, Stage Changes in File, Unstage Changes, Discard Changes…, Add, Delete, Resolve Conflicts…, Mark as Resolved. |
-| Branch | Switch to Branch, Pull…, Push…, New Branch from…, Rename…, Tag, Merge into the current branch, Delete Branch…. |
-| Tag | New Branch from…, Tag, Merge into the current branch, Delete Tag…. |
-| Remotes group | New Remote, Add Existing Remote…. |
-| Remote | Show in the hosting service, Delete. |
-| Stash | Apply Stashed Changes, Delete. |
+| Branch | Switch to Branch, Pull…, Push…, New Branch from…, Rename…, Tag…, Merge into the current branch, Delete Branch…. |
+| Tag | Check Out (Detached), New Branch from…, Merge into the current branch, Delete Tag…. |
+| Remotes group | New Remote…, Add Existing Remote…. |
+| Remote | View on the hosting service, Delete…. |
+| Stash | Apply Stashed Changes, Delete…. |
 | Commit (history) | Checkout, Copy Commit Message, Copy Identifier, Email author, Tag…, New Branch from…, Cherry-pick, View on the hosting service. |

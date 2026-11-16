@@ -2,6 +2,30 @@
 
 Release notes for our preview release of Xogot to TestFlight.
 
+## Build 5650
+
+### Git Improvements
+
+- **repositories can now be opened more flexibly.** Clone repositories that contain a Godot project in a subfolder, and choose which project to add or open when a repository contains several projects. Projects are registered even when you do not open them immediately.
+
+- **Support More Server Types.** Sign in to Forgejo, Gitea, and other Git servers using URL-based HTTPS credentials; Xogot asks for your username and password when needed. SSH URLs are also explained in the clone dialog.
+
+- **Remote branches are easier to use.** Check out a remote branch directly as a local tracking branch.
+
+- **Commits handle missing identity.** If Git has no configured user name or email, Xogot asks for them instead of failing without guidance.
+
+- **Cloning is more robust on iOS.** Clones can continue briefly when you switch apps, report clearly when iOS stops the background task, avoid overwriting existing folders by choosing a numbered destination, and preserve cloned files even when no Godot project is found.
+
+### Agent
+
+- **Image generation.** When using an OpenAI-based model, it is now possible to generate images.
+
+## Bug fixes
+
+- **Cloned projects are now handled consistently.** Projects in nested folders are added to the project list, last-used dates are cleared correctly for newly cloned projects, and the app gives a useful result when a clone has no Godot project.
+
+- **Private Git server credentials are safer.** Insecure `http://` credential URLs are rejected with an explanation, and credential lookup uses the server URL before legacy host credentials.
+
 ## Release 5639
 
 ### Improvements
