@@ -2,6 +2,44 @@
 
 Release notes for our preview release of Xogot to TestFlight.
 
+## Build 5657 
+
+### Improvements
+
+- **Git branch actions:** Local branch menus now offer **Pull…** and **Push…** (enabled for the current branch), making common remote operations easier to discover.
+
+- **Safer branch deletion:** Trying to delete an unmerged branch now offers a force-delete confirmation. Xogot verifies that the branch has not moved before removing it.
+
+- **Git repository workflow:** Added **Clone Repository…** to the Git actions menu. Clone fields retain their labels, and the repository URL field uses URL-friendly input.
+
+- **Clearer Git status:** Staged files now show padlock badges, and the Git actions menu has a larger 44-point touch target. On iPhone, opening a Git tab closes the sidebar so the Git workspace is immediately usable.
+
+- **Git safety and polish:** Deleting a remote now has a confirmation step and destructive actions are clearly marked. The commit composer and graph editor headers have also been updated.
+
+- **Universal links in XogotClip:** While a game is loading, opening a link for another game now cancels the current load and starts the new one. Links for the same game and non-game links are ignored. If the clip is already running, it pauses behind an alert asking you to close it from the app switcher before opening another game.
+
+### Bug fixes
+
+- Fixed force-deleting a branch that had already been removed elsewhere: the operation now succeeds when the requested branch is already gone instead of incorrectly reporting that it has new commits.
+
+- Fixed stale/cancelled XogotClip loads overwriting the title, phase, download state, or background task belonging to a newer load.
+
+- Fixed XogotClip pack checking so cancellation stops the checker rather than allowing the old load to continue.
+
+- Fixed the launch paywall on the project list ignoring the first tap.
+
+- Improved Crashlytics diagnostics: routine Godot/editor log lines are now breadcrumbs instead of non-fatal errors, keeping crash reports focused on actual failures while preserving useful context.
+
+## Build 5651
+
+### Improvements
+
+- **More Git actions from the branch menu:** Open **Pull…** and **Push…** directly from a local branch’s context menu. These actions are enabled for the current branch and launch the repository’s existing pull and push dialogs. Test pulling and pushing from both the current branch and another local branch.
+
+### Bug fixes
+
+- **Safer deletion of unmerged branches:** When deleting a branch that is not fully merged, Xogot now asks for confirmation before force-deleting it. The force delete is protected against deleting the wrong branch if its tip changed while the menu was open. Test deleting both merged and unmerged branches, including changing the branch before confirming.
+
 ## Build 5650
 
 ### Git Improvements

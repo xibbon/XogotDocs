@@ -38,6 +38,7 @@ Follow a complete learning path for Xogot or jump directly into a focused Xogot 
     - <doc:Onscreen-Controls>
     - <doc:Coding-Assistant>
     - <doc:MCP-Servers>
+    - <doc:Skills>
 }
 
 ## More Xogot Documentation
@@ -108,6 +109,7 @@ Follow a complete learning path for Xogot or jump directly into a focused Xogot 
 - <doc:Command-Palette>
 - <doc:Coding-Assistant>
 - <doc:MCP-Servers>
+- <doc:Skills>
 - <doc:Testflight>
 
 ### Mac

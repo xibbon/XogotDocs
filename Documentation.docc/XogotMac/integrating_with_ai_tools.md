@@ -1,7 +1,7 @@
 # Integrating with AI tools
 
-Xogot for Mac includes a small command-line tool, `xo`, and a bundled skill file
-that teaches AI coding agents how to use it. Together, they let chat-based
+Xogot for Mac includes a small command-line tool, `xo`, and a bundled skill
+that teaches AI coding agents Godot game design and how to use `xo`. Together, they let chat-based
 developer tools inspect and drive a running Xogot editor instead of guessing
 from project files alone.
 
@@ -13,12 +13,15 @@ To work with AI inside Xogot on Mac, iPad, or iPhone, use the built-in
 <doc:Coding-Assistant>. That page explains how to choose an AI integration and
 connect a provider. This page explains how to connect an external AI tool on Mac.
 
-To add MCP tools to the built-in assistant, see <doc:MCP-Servers>.
+To add MCP tools to the built-in assistant, see <doc:MCP-Servers>. To add
+skills to the built-in assistant, see <doc:Skills>. The skills on this page are
+only for external AI agents.
 
 ## Install the Xogot skill
 
-Open **Editor Settings**, then choose **AI > External Agents**. This section lists the
-bundled **Xogot Editor Control** skill and the supported AI agents.
+Open **Editor Settings**, then choose **AI > External Agents**. This section
+shows the bundled **Xogot Game Design** skill, its version, and the supported
+AI agents.
 
 For each agent you use, choose a scope and click **Install**:
 
@@ -27,25 +30,38 @@ For each agent you use, choose a scope and click **Install**:
 - **Global** installs the skill into your home directory. Use this when you want
   the same Xogot instructions available to that agent across projects.
 
-The installer also checks whether the installed skill is current, modified, or
-outdated. If Xogot ships a newer copy later, the AI settings page can update it.
-If you edited an installed skill yourself, Xogot asks before replacing it.
+Each agent shows the status of its installed skill:
+
+| Status | Action |
+| --- | --- |
+| Installed and current | The **Installed** menu has **Reinstall** and **Remove**. |
+| Outdated | This version of Xogot has a newer skill. Click **Update**. |
+| Modified | You changed the installed files. Click **Replace** to install the version that Xogot includes. Xogot shows the two versions and asks before it replaces your files. |
+| Installed for another copy of Xogot | The skill runs `xo` from a different copy of Xogot. Click **Update**. |
+
+Earlier versions of Xogot installed the skill as a single file in a folder
+named `xogot`. Xogot shows that installation as outdated. When you update it,
+Xogot asks first. Then it removes the `xogot` folder and installs the skill in
+the `xogot-game-design` folder.
 
 ## Skill file locations
 
-The skill is installed as a `SKILL.md` file named `xogot`. The exact location
-depends on the AI agent and the selected scope:
+The skill is a folder named `xogot-game-design`. The folder has a `SKILL.md`
+file and other files, such as references, that the agent reads when necessary.
+The location depends on the AI agent and the selected scope:
 
 | Agent | Project scope | Global scope |
 | --- | --- | --- |
-| Claude Code | `.claude/skills/xogot/SKILL.md` | `~/.claude/skills/xogot/SKILL.md` |
-| OpenAI Codex CLI | `.agents/skills/xogot/SKILL.md` | `~/.agents/skills/xogot/SKILL.md` |
-| Gemini CLI | `.gemini/skills/xogot/SKILL.md` | `~/.gemini/skills/xogot/SKILL.md` |
-| GitHub Copilot | `.github/skills/xogot/SKILL.md` | `~/.copilot/skills/xogot/SKILL.md` |
-| Pi | `.pi/skills/xogot/SKILL.md` | `~/.pi/agent/skills/xogot/SKILL.md` |
-| Cursor | `.cursor/skills/xogot/SKILL.md` | Not supported |
-| Qwen Code | `.qwen/skills/xogot/SKILL.md` | `~/.qwen/skills/xogot/SKILL.md` |
-| Cline | `.cline/skills/xogot/SKILL.md` | `~/.cline/skills/xogot/SKILL.md` |
+| Claude Code | `.claude/skills/xogot-game-design/` | `~/.claude/skills/xogot-game-design/` |
+| OpenAI Codex CLI | `.agents/skills/xogot-game-design/` | `~/.agents/skills/xogot-game-design/` |
+| Gemini CLI | `.gemini/skills/xogot-game-design/` | `~/.gemini/skills/xogot-game-design/` |
+| GitHub Copilot | `.github/skills/xogot-game-design/` | `~/.copilot/skills/xogot-game-design/` |
+| Pi | `.pi/skills/xogot-game-design/` | `~/.pi/agent/skills/xogot-game-design/` |
+| Cursor | `.cursor/skills/xogot-game-design/` | Not supported |
+| Qwen Code | `.qwen/skills/xogot-game-design/` | `~/.qwen/skills/xogot-game-design/` |
+| Cline | `.cline/skills/xogot-game-design/` | `~/.cline/skills/xogot-game-design/` |
+| OpenCode | `.opencode/skills/xogot-game-design/` | `~/.config/opencode/skills/xogot-game-design/` |
+| Hermes Agent | `.hermes/skills/xogot-game-design/` | `~/.hermes/skills/xogot-game-design/` |
 
 Project scope requires an open project. Cursor supports only project-scoped
 skills because it does not have a user-global skills folder.
@@ -55,7 +71,7 @@ skills because it does not have a user-global skills folder.
 `xo` is the command-line control surface for Xogot for Mac. It talks to a
 running Xogot instance through Xogot's macOS broker and instance APIs.
 
-The installed skill uses the correct `xo` command for your Xogot installation,
+The installed skill gives the full path to the `xo` tool in your copy of Xogot,
 so AI tools can run commands such as:
 
 ```bash
@@ -137,20 +153,19 @@ for help before using unfamiliar commands.
 
 ## Notes on `xo`
 
-When Xogot is installed in `/Applications`, the AI settings installer tries to
-make `/usr/local/bin/xo` point at the bundled tool. If that symlink is available,
-installed skill files use the bare command:
+The installed skill runs `xo` by its full path in the Xogot app bundle:
 
 ```bash
-xo --help
+/Applications/Xogot.app/Contents/MacOS/xo --help
 ```
 
-If the symlink cannot be created, or Xogot is running from another location, the
-installed skill uses the full path to the bundled tool instead:
+The examples on this page use `xo` without a path to make them shorter. Your
+agent uses the full path from the skill.
 
-```bash
-/path/to/Xogot.app/Contents/MacOS/xo --help
-```
+The **External Agents** section shows the location of Xogot. If you move or
+rename Xogot, the installed skills cannot find `xo`. Open **AI > External
+Agents** again and click **Update** for each agent.
 
-Move Xogot to `/Applications` if you want the simple `xo` command to be
-available from shells and AI tools.
+If macOS runs Xogot from a temporary location, you cannot install skills. This
+occurs when you open Xogot from a downloaded disk image or from the Downloads
+folder. Move Xogot to the Applications folder, then open it again.

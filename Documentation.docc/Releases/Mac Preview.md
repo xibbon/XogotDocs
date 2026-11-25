@@ -23,23 +23,52 @@ Each build below lists changes since the previous Mac build on the same
 branch. Builds 2429, 2466, and 2492 are on `testflight-mac`. Builds 2430,
 2442, 2468, 2471, 2475, 2482, and 2493 are on `testflight-mac-4.8`.
 
+## Build 2557 
+
+# Xogot for Mac — build 2557
+
+### Improvements
+
+- **A rebuilt Inspector experience.** The Inspector now hosts Godot editor-plugin controls directly alongside Xogot’s native controls, rather than relying on harvested Godot widgets. Exercise it with everyday scene editing: select nodes and resources, edit properties, expand embedded resources, and use specialized editors for curves, gradients, GradientTexture2D, StyleBoxes, fonts, meshes, textures, viewport previews, and AnimationTree Tree Root.
+
+- **More capable graph editors.** Graph canvases have a dot grid, mouse-wheel zoom, compact node cards at low zoom, restored canvas position, cleaner wiring and node menus, a single header row, and keyboard focus support for canvas shortcuts. Try navigating with **N** and **F**, zooming, reconnecting wires, and reopening a graph after moving around it.
+
+- **Built-in AI agent skills are manageable from Settings.** Browse available skills, install them, and turn them on or off for the built-in agent. #3432
+
+- **Expanded `xo` automation for Mac.** The command-line agent interface can now move, rename, and remove project files; step game frames; inspect live resource graphs; create, validate, and patch shaders; create and edit VisualShader graphs; bake and query navigation; generate collision shapes; and work with theme resources and builder-related targets. These additions make it practical to test richer editor automation workflows end to end.
+
+- **Git workflows are more complete on Mac.** You can clone repositories from the Git actions menu, check out remote branches as tracking local branches, pull and push from the branch menu, and force-delete unmerged branches. Clone flows now handle repositories containing multiple projects or projects inside a subfolder, and prompt for a Git name and email when needed.
+
+- **Improved access and sign-in flows for Git.** GitHub and other Git servers have clearer sign-in handling, HTTPS-only credential flows where appropriate, better GitHub error details, SSH-key ordering, and account-name presentation.
+
+- **Project and editor polish.** The Game Library’s Select control is integrated into its toolbar group, its menus have titles, and external scene-file changes are noticed even when the replacement has an older timestamp. #3396
+
+- **Modeler improvements.** Add meshes from the 3D editor menu, place shapes immediately, use **Option-Shift-K** regardless of focus, and access improved vertex visibility and dissolve options.
+
+### Bug fixes
+
+- **Clean now actually gives a project a fresh start.** **⇧⌘K** clears the project cache and restarts the editor as well as cleaning, resolving stale-cache problems. #3415
+
+- **Fixed a macOS layout hang when opening Project Settings.**
+
+- **Fixed editor-theme code-font replication** so it reads the renamed code-font-size setting. #3450
+
+- **Inspector review and regression fixes.** Addressed issues uncovered by dedicated end-to-end Inspector tests, including behavior around embedded plugin controls and the new Inspector surface.
+
+- **Safer Git/editor refreshes.** The editor rescans project changes after Git operations in order, reducing stale file and scene state after branch, clone, and repository changes.
+
 ## Build 2521 
 
 ### Improvements
 
-- **Try the expanded 3D modeler tools.** Add meshes from the 3D editor menu, use the toolbar without losing it behind popups, and dissolve selected vertices, edges, or faces while preserving the surrounding mesh. Cylinder caps now use cleaner center-fan triangulation.
-- **Read animation names more easily in BlendSpace 1D.** The editor shows an animation’s name rather than its full path whenever it can.
-- **Get useful App Store Connect rejection details when exporting.** Failed uploads now surface Apple’s specific reason, such as a duplicate build number, instead of only a generic failure message (#3420).
+- Improved the export upload failure screen: when App Store Connect rejects an upload, Xogot now shows Apple’s specific rejection reason alongside the general error. For example, a duplicate build upload can identify the previously used bundle version instead of only reporting that a value was already used. #3420
 
-### Bug fixes
 
-- Fixed a macOS hang that could peg a CPU core indefinitely when opening Project Settings.
-- Fixed popup presentation after the underlying Godot window had been freed, preventing stale UI and crashes (#3480).
-- Fixed mouse-move handling across multiple macOS displays.
-- Fixed embedded macOS accessibility queries, class-method metadata, and a stale AnimationPlayer pointer.
-- Fixed projects in read-only directories failing with an error.
-- Fixed an invalid embedded-game startup from reaching editor initialization.
-- Fixed a potential null-buffer read while packing lightmaps.
+## Bug fixes
+
+- Fixed a potential crash or broken embedded popup when a Godot popup window closes and is immediately reopened. Popup teardown is now safely delayed and cancelled if that same popup reappears, so rapidly opening and closing menus or dialogs should remain stable.
+
+- Fixed popup and embedded-game attachment handling after a Godot window has already been freed, preventing Xogot from trying to reconnect a stale native window.
 
 ## Build 2507 (4.8: 2511)
 

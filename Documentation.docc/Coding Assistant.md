@@ -154,6 +154,15 @@ servers require an unsandboxed Mac app.
 
 For setup steps, connection tests, imports, and examples, see <doc:MCP-Servers>.
 
+To give the assistant more instructions for a type of task, select
+**Skills > Manage Skills** in AI settings. You can add skills from skills.sh,
+GitHub, a link, or a file. You can enable, update, or remove each skill. Xogot
+includes a skill for Godot game design and editor control that is always on.
+To use a specific skill, start your message with `/skill:` and the skill name.
+
+For install steps, skill locations, and the `SKILL.md` format, see
+<doc:Skills>.
+
 ## Troubleshooting
 
 - If the Coding Assistant button is missing, check that your Xogot build has
@@ -167,5 +176,7 @@ For setup steps, connection tests, imports, and examples, see <doc:MCP-Servers>.
   your approval.
 - If a shell command is unavailable, check **Bash Execution**. Virtual Bash has
   a limited command set.
+- If the assistant does not use a skill, check that the skill is enabled in
+  **Skills > Manage Skills**. Then start a new conversation.
 - If an external tool cannot reach Xogot for Mac, use the troubleshooting steps
   in <doc:integrating_with_ai_tools>.
