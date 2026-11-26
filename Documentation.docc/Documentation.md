@@ -1,7 +1,7 @@
 # ``Xogot``
 
 @Metadata {
-    @TitleHeading("Godot for iPad, iPhone, and Mac")
+    @TitleHeading("Godot for iPad, iPhone, Mac, and Apple Vision Pro")
     @PageColor(blue)
 }
 
@@ -66,6 +66,15 @@ Follow a complete learning path for Xogot or jump directly into a focused Xogot 
     - <doc:mac_swift>
 }
 
+## Xogot for Apple Vision Pro
+
+@Links(visualStyle: detailedGrid) {
+    - <doc:vision_getting_started>
+    - <doc:vision_modes_and_reference>
+    - <doc:vision_porting_and_debugging>
+    - <doc:vision_spatial_audio_phase>
+}
+
 ## Release Notes
 
 @Links(visualStyle: detailedGrid) {
@@ -122,6 +131,13 @@ Follow a complete learning path for Xogot or jump directly into a focused Xogot 
 - <doc:Mac-Testing>
 - <doc:mac_dotnet>
 - <doc:mac_swift>
+
+### Apple Vision Pro
+
+- <doc:vision_getting_started>
+- <doc:vision_modes_and_reference>
+- <doc:vision_porting_and_debugging>
+- <doc:vision_spatial_audio_phase>
 
 ### Engine Reference
 - <doc:Engine-Reference>
